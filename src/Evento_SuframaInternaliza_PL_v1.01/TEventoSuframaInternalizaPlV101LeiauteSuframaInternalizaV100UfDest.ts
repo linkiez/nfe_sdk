@@ -1,0 +1,1 @@
+export type TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100UfDest = unknown;

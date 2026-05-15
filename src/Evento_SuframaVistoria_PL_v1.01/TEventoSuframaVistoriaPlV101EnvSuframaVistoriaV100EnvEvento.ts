@@ -1,0 +1,1 @@
+export type TEventoSuframaVistoriaPlV101EnvSuframaVistoriaV100EnvEvento = unknown;

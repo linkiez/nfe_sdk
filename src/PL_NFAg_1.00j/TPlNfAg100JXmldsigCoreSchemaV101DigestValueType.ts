@@ -1,0 +1,1 @@
+export type TPlNfAg100JXmldsigCoreSchemaV101DigestValueType = string;

@@ -1,0 +1,187 @@
+[
+  {
+    "collisions": [],
+    "files": 80,
+    "folderPath": "ConSitNFe_v2.01/ConSitNFe",
+    "retriesWithSanitizedPatterns": [
+      "ConSitNFe_v2.01/ConSitNFe/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 82,
+    "folderPath": "Evento_AtorInteressado_PL_v1.02",
+    "retriesWithSanitizedPatterns": [
+      "Evento_AtorInteressado_PL_v1.02/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 87,
+    "folderPath": "Evento_Averb_PL_v1.01",
+    "retriesWithSanitizedPatterns": [
+      "Evento_Averb_PL_v1.01/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 83,
+    "folderPath": "Evento_Canc_PL_v1.01_NT_2018_004/Evento_Canc_PL_v1.01",
+    "retriesWithSanitizedPatterns": [
+      "Evento_Canc_PL_v1.01_NT_2018_004/Evento_Canc_PL_v1.01/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 81,
+    "folderPath": "Evento_Canc_PL_v1.01",
+    "retriesWithSanitizedPatterns": [
+      "Evento_Canc_PL_v1.01/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 83,
+    "folderPath": "Evento_CancSubst_v1.01_NT_2018_004/Evento_CancSubst_v1.01",
+    "retriesWithSanitizedPatterns": [
+      "Evento_CancSubst_v1.01_NT_2018_004/Evento_CancSubst_v1.01/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 81,
+    "folderPath": "Evento_CCe_PL_v1.01",
+    "retriesWithSanitizedPatterns": [
+      "Evento_CCe_PL_v1.01/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 103,
+    "folderPath": "Evento_Econf_v1.00",
+    "retriesWithSanitizedPatterns": [
+      "Evento_Econf_v1.00/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 102,
+    "folderPath": "Evento_EntregaNFe_PL_v1.01",
+    "retriesWithSanitizedPatterns": [
+      "Evento_EntregaNFe_PL_v1.01/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 76,
+    "folderPath": "Evento_EPEC_NFCe_PL1.00",
+    "retriesWithSanitizedPatterns": [
+      "Evento_EPEC_NFCe_PL1.00/tiposBasico_v3.10.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 99,
+    "folderPath": "Evento_EPEC_PL_v1.01",
+    "retriesWithSanitizedPatterns": [
+      "Evento_EPEC_PL_v1.01/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 77,
+    "folderPath": "Evento_Generico_PL_v1.01",
+    "retriesWithSanitizedPatterns": [
+      "Evento_Generico_PL_v1.01/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 104,
+    "folderPath": "Evento_InsucessoNFe_PL_v1.02",
+    "retriesWithSanitizedPatterns": [
+      "Evento_InsucessoNFe_PL_v1.02/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 87,
+    "folderPath": "Evento_ManifestaDest_PL_v1.01",
+    "retriesWithSanitizedPatterns": [
+      "Evento_ManifestaDest_PL_v1.01/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 103,
+    "folderPath": "Evento_Prorrog_Indust_1.0/Schemas",
+    "retriesWithSanitizedPatterns": [
+      "Evento_Prorrog_Indust_1.0/Schemas/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 100,
+    "folderPath": "Evento_SuframaInternaliza_PL_v1.01",
+    "retriesWithSanitizedPatterns": [
+      "Evento_SuframaInternaliza_PL_v1.01/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 100,
+    "folderPath": "Evento_SuframaVistoria_PL_v1.01",
+    "retriesWithSanitizedPatterns": [
+      "Evento_SuframaVistoria_PL_v1.01/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 108,
+    "folderPath": "Eventos_RTC",
+    "retriesWithSanitizedPatterns": [
+      "Eventos_RTC/tiposBasico_v1.03.xsd"
+    ]
+  },
+  {
+    "collisions": [
+      "PL_010c_NT2022_002v1.30/CPl010CNt2022002V130LeiauteNFeV400Ipi.ts"
+    ],
+    "files": 193,
+    "folderPath": "PL_010c_NT2022_002v1.30",
+    "retriesWithSanitizedPatterns": [
+      "PL_010c_NT2022_002v1.30/DFeTiposBasicos_v1.00.xsd",
+      "PL_010c_NT2022_002v1.30/tiposBasico_v4.00.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 18,
+    "folderPath": "PL_ConsultaGTIN_v1.00/ccgConsGTIN",
+    "retriesWithSanitizedPatterns": []
+  },
+  {
+    "collisions": [],
+    "files": 252,
+    "folderPath": "PL_NFAg_1.00j",
+    "retriesWithSanitizedPatterns": [
+      "PL_NFAg_1.00j/DFeTiposBasicos_v1.00.xsd",
+      "PL_NFAg_1.00j/tiposGeralNFAg_v1.00.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 29,
+    "folderPath": "PL_NFeDistDFe_103",
+    "retriesWithSanitizedPatterns": []
+  },
+  {
+    "collisions": [],
+    "files": 239,
+    "folderPath": "PL_NFGas_1.00e",
+    "retriesWithSanitizedPatterns": [
+      "PL_NFGas_1.00e/DFeTiposBasicos_v1.00.xsd",
+      "PL_NFGas_1.00e/tiposGeralNFGas_v1.00.xsd"
+    ]
+  }
+]

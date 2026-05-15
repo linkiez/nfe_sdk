@@ -1,0 +1,1 @@
+export type TEventoInsucessoNFePlV102RetEventoCancInsucessoNFeV100RetEnvEvento = unknown;

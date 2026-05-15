@@ -1,0 +1,1 @@
+export type TEventoSuframaInternalizaPlV101SuframaInternalizaV100Evento = unknown;

@@ -1,0 +1,1 @@
+export type TPlConsultaGtinV100CcgConsGtinRetConsGtinV100RetConsGtin = unknown;

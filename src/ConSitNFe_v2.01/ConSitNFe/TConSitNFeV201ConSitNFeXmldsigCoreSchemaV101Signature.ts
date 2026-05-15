@@ -1,0 +1,3 @@
+import { CConSitNFeV201ConSitNFeXmldsigCoreSchemaV101SignatureType } from './CConSitNFeV201ConSitNFeXmldsigCoreSchemaV101SignatureType';
+
+export type TConSitNFeV201ConSitNFeXmldsigCoreSchemaV101Signature = CConSitNFeV201ConSitNFeXmldsigCoreSchemaV101SignatureType;

@@ -1,0 +1,1 @@
+export type TEventoAtorInteressadoPlV102TiposBasicoV103Dec0804Opc = string;

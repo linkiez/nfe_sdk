@@ -1,0 +1,1 @@
+export type TEventoEntregaNFePlV101TiposBasicoV103Latitude = string;

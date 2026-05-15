@@ -1,0 +1,1 @@
+export type TEventoSuframaInternalizaPlV101TiposBasicoV103Cpf = string;

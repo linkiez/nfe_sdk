@@ -1,0 +1,1 @@
+export type TPl010CNt2022002V130DFeTiposBasicosV100Dec1104OpRtc = string;

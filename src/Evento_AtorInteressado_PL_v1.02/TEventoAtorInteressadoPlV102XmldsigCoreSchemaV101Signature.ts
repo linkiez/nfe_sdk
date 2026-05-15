@@ -1,0 +1,3 @@
+import { CEventoAtorInteressadoPlV102XmldsigCoreSchemaV101SignatureType } from './CEventoAtorInteressadoPlV102XmldsigCoreSchemaV101SignatureType';
+
+export type TEventoAtorInteressadoPlV102XmldsigCoreSchemaV101Signature = CEventoAtorInteressadoPlV102XmldsigCoreSchemaV101SignatureType;

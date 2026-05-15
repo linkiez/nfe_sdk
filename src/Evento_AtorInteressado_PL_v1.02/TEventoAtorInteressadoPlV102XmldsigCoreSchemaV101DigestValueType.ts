@@ -1,0 +1,1 @@
+export type TEventoAtorInteressadoPlV102XmldsigCoreSchemaV101DigestValueType = string;

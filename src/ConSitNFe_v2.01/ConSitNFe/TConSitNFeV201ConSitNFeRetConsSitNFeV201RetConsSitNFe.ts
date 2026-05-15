@@ -1,0 +1,1 @@
+export type TConSitNFeV201ConSitNFeRetConsSitNFeV201RetConsSitNFe = unknown;

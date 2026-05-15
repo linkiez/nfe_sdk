@@ -1,0 +1,3 @@
+import { CPl010CNt2022002V130XmldsigCoreSchemaV101SignatureType } from './CPl010CNt2022002V130XmldsigCoreSchemaV101SignatureType';
+
+export type TPl010CNt2022002V130XmldsigCoreSchemaV101Signature = CPl010CNt2022002V130XmldsigCoreSchemaV101SignatureType;

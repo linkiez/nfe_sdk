@@ -1,0 +1,1 @@
+export type TEventoSuframaInternalizaPlV101TiposBasicoV103Dec1302Opc = string;

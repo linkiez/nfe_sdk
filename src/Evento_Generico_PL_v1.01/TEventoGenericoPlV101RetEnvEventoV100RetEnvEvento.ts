@@ -1,0 +1,1 @@
+export type TEventoGenericoPlV101RetEnvEventoV100RetEnvEvento = unknown;

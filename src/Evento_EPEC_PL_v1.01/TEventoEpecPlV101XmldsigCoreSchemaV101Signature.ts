@@ -1,0 +1,3 @@
+import { CEventoEpecPlV101XmldsigCoreSchemaV101SignatureType } from './CEventoEpecPlV101XmldsigCoreSchemaV101SignatureType';
+
+export type TEventoEpecPlV101XmldsigCoreSchemaV101Signature = CEventoEpecPlV101XmldsigCoreSchemaV101SignatureType;

@@ -1,0 +1,1 @@
+export type TEventoAtorInteressadoPlV102EventoAtorInteressadoV100Evento = unknown;

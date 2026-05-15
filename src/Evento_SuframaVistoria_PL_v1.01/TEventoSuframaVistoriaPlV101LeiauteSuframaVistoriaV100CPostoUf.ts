@@ -1,0 +1,1 @@
+export type TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100CPostoUf = string;

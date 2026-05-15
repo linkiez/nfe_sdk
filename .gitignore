@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.xsd2ts-work/
+src/generated/
+count.txt
+output.txt
+tsc_output.log
+tsc_output_ignore.log
+tsc_output_xargs.log
+typecheck_exit_status.txt
+typecheck_output.txt

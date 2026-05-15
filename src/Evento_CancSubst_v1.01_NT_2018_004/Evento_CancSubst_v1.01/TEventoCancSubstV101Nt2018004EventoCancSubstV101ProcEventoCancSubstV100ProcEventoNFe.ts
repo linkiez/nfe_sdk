@@ -1,0 +1,1 @@
+export type TEventoCancSubstV101Nt2018004EventoCancSubstV101ProcEventoCancSubstV100ProcEventoNFe = unknown;

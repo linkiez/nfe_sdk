@@ -1,0 +1,1 @@
+export type TPlNfAg100JRetConsStatServNfAgV100RetConsStatServNfAg = unknown;

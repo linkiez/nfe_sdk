@@ -1,0 +1,1 @@
+export type TEventoInsucessoNFePlV102EventoInsucessoNFeV100Evento = unknown;

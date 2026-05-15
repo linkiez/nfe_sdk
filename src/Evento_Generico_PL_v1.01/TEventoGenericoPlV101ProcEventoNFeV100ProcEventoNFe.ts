@@ -1,0 +1,1 @@
+export type TEventoGenericoPlV101ProcEventoNFeV100ProcEventoNFe = unknown;

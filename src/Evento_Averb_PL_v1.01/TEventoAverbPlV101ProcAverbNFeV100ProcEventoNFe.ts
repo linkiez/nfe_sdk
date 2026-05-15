@@ -1,0 +1,1 @@
+export type TEventoAverbPlV101ProcAverbNFeV100ProcEventoNFe = unknown;

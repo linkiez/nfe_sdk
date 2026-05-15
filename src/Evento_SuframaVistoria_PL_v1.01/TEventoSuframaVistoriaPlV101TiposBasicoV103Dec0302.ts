@@ -1,0 +1,1 @@
+export type TEventoSuframaVistoriaPlV101TiposBasicoV103Dec0302 = string;

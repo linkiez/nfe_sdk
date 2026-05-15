@@ -1,0 +1,3 @@
+import { CPlNfAg100JXmldsigCoreSchemaV101SignatureType } from './CPlNfAg100JXmldsigCoreSchemaV101SignatureType';
+
+export type TPlNfAg100JXmldsigCoreSchemaV101Signature = CPlNfAg100JXmldsigCoreSchemaV101SignatureType;

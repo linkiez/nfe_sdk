@@ -1,0 +1,1 @@
+export type TEventoEpecNfCePl100TiposBasicoV310IeDestNaoIsento = string;

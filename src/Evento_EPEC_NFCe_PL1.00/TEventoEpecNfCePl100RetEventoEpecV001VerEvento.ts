@@ -1,0 +1,1 @@
+export type TEventoEpecNfCePl100RetEventoEpecV001VerEvento = string;

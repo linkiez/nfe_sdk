@@ -1,0 +1,1 @@
+export type TEventoProrrogIndust10SchemasXmldsigCoreSchemaV101DigestValueType = string;

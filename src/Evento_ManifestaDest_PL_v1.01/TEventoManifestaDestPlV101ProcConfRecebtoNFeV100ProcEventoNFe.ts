@@ -1,0 +1,1 @@
+export type TEventoManifestaDestPlV101ProcConfRecebtoNFeV100ProcEventoNFe = unknown;

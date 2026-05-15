@@ -1,0 +1,1 @@
+export type TEventoProrrogIndust10SchemasTiposBasicoV103Dec1110 = string;

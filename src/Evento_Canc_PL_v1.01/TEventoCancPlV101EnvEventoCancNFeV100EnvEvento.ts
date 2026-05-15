@@ -1,0 +1,1 @@
+export type TEventoCancPlV101EnvEventoCancNFeV100EnvEvento = unknown;

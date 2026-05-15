@@ -1,0 +1,1 @@
+export type TEventoEpecNfCePl100TiposBasicoV310Dec0302Max100 = string;

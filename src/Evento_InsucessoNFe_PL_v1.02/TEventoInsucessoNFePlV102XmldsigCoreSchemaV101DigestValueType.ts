@@ -1,0 +1,1 @@
+export type TEventoInsucessoNFePlV102XmldsigCoreSchemaV101DigestValueType = string;
