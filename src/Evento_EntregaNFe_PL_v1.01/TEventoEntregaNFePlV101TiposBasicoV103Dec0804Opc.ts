@@ -1,1 +1,0 @@
-export type TEventoEntregaNFePlV101TiposBasicoV103Dec0804Opc = string;

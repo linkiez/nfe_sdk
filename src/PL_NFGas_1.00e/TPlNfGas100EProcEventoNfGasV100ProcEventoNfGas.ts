@@ -1,1 +1,0 @@
-export type TPlNfGas100EProcEventoNfGasV100ProcEventoNfGas = unknown;

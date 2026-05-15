@@ -1,3 +1,0 @@
-import { TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100COrgaoIbge } from './TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100COrgaoIbge';
-
-export type TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100COrgaoAutor = TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100COrgaoIbge;

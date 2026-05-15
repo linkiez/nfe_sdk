@@ -1,0 +1,6 @@
+import { TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100COrgaoIbge } from './TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100COrgaoIbge';
+
+/**
+ * Type alias for TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100COrgaoAutor.
+ */
+export type TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100COrgaoAutor = TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100COrgaoIbge;

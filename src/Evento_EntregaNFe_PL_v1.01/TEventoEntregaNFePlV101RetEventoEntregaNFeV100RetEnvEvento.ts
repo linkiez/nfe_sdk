@@ -1,1 +1,0 @@
-export type TEventoEntregaNFePlV101RetEventoEntregaNFeV100RetEnvEvento = unknown;

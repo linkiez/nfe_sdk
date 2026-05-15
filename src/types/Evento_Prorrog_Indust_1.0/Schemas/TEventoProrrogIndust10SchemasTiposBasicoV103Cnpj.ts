@@ -1,0 +1,4 @@
+/**
+ * Tipo Número do CNPJ
+ */
+export type TEventoProrrogIndust10SchemasTiposBasicoV103Cnpj = string;

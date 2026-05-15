@@ -1,1 +1,0 @@
-export type TPl010CNt2022002V130DFeTiposBasicosV100CompetApur = string;

@@ -1,1 +1,0 @@
-export type TEventoProrrogIndust10SchemasTiposBasicoV103CodMunIbge = string;

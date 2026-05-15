@@ -1,3 +1,0 @@
-import { CEventoEconfV100XmldsigCoreSchemaV101SignatureType } from './CEventoEconfV100XmldsigCoreSchemaV101SignatureType';
-
-export type TEventoEconfV100XmldsigCoreSchemaV101Signature = CEventoEconfV100XmldsigCoreSchemaV101SignatureType;

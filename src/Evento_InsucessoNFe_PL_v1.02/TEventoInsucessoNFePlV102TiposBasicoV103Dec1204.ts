@@ -1,1 +1,0 @@
-export type TEventoInsucessoNFePlV102TiposBasicoV103Dec1204 = string;

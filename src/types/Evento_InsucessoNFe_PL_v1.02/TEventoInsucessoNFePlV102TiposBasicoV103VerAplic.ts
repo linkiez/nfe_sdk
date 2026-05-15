@@ -1,0 +1,4 @@
+/**
+ * Tipo Versão do Aplicativo
+ */
+export type TEventoInsucessoNFePlV102TiposBasicoV103VerAplic = string;

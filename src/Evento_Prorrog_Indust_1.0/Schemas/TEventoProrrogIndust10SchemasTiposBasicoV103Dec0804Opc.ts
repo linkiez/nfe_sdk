@@ -1,1 +1,0 @@
-export type TEventoProrrogIndust10SchemasTiposBasicoV103Dec0804Opc = string;

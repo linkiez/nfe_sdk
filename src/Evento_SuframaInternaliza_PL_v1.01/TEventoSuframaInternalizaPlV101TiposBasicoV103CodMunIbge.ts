@@ -1,1 +1,0 @@
-export type TEventoSuframaInternalizaPlV101TiposBasicoV103CodMunIbge = string;

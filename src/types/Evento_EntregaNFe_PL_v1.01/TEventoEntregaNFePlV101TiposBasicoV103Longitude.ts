@@ -1,0 +1,4 @@
+/**
+ * Coordenada geográfica Longitude
+ */
+export type TEventoEntregaNFePlV101TiposBasicoV103Longitude = string;

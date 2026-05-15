@@ -1,1 +1,0 @@
-export type TEventoAtorInteressadoPlV102EnvEventoAtorInteressadoV100EnvEvento = unknown;

@@ -1,1 +1,0 @@
-export type TEventoAtorInteressadoPlV102TiposBasicoV103ChNFe = string;

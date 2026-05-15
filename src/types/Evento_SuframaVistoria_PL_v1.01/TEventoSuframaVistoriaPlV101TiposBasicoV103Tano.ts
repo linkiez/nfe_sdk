@@ -1,0 +1,4 @@
+/**
+ * Tipo ano
+ */
+export type TEventoSuframaVistoriaPlV101TiposBasicoV103Tano = string;

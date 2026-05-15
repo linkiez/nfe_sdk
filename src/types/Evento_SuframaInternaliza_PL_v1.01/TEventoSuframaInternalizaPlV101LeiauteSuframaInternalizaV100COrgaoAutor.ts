@@ -1,0 +1,6 @@
+import { TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100COrgaoIbge } from './TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100COrgaoIbge';
+
+/**
+ * Type alias for TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100COrgaoAutor.
+ */
+export type TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100COrgaoAutor = TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100COrgaoIbge;

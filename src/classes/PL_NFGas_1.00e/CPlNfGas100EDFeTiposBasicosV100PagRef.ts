@@ -1,0 +1,18 @@
+/**
+ * Tipo Pagamento que ocorre em DFe emitdo anteriormente
+ */
+export class CPlNfGas100EDFeTiposBasicosV100PagRef {
+    /**
+     * Runtime class discriminator.
+     */
+    public "@class"?: string;
+
+    /**
+     * Creates a new schema-backed CPlNfGas100EDFeTiposBasicosV100PagRef instance.
+     * Schema context: Tipo Pagamento que ocorre em DFe emitdo anteriormente
+     * @param props - Initial schema-backed values used to populate the instance.
+     */
+    public constructor(props?: CPlNfGas100EDFeTiposBasicosV100PagRef) {
+        this["@class"] = ".CPlNfGas100EDFeTiposBasicosV100PagRef";
+    }
+}

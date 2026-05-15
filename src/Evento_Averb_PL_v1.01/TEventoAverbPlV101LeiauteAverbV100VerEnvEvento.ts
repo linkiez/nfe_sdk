@@ -1,1 +1,0 @@
-export type TEventoAverbPlV101LeiauteAverbV100VerEnvEvento = string;

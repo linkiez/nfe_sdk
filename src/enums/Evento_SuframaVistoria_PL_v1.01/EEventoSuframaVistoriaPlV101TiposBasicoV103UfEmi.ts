@@ -1,0 +1,32 @@
+/**
+ * Tipo Sigla da UF de emissor // acrescentado em 24/10/08
+ */
+export enum EEventoSuframaVistoriaPlV101TiposBasicoV103UfEmi {
+  Ac = "AC",
+  Al = "AL",
+  Am = "AM",
+  Ap = "AP",
+  Ba = "BA",
+  Ce = "CE",
+  Df = "DF",
+  Es = "ES",
+  Go = "GO",
+  Ma = "MA",
+  Mg = "MG",
+  Ms = "MS",
+  Mt = "MT",
+  Pa = "PA",
+  Pb = "PB",
+  Pe = "PE",
+  Pi = "PI",
+  Pr = "PR",
+  Rj = "RJ",
+  Rn = "RN",
+  Ro = "RO",
+  Rr = "RR",
+  Rs = "RS",
+  Sc = "SC",
+  Se = "SE",
+  Sp = "SP",
+  To = "TO",
+}

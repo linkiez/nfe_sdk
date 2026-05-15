@@ -1,1 +1,0 @@
-export type TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100ChCTe = string;

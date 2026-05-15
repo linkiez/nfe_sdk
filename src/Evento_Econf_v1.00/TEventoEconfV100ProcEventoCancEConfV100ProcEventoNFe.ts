@@ -1,1 +1,0 @@
-export type TEventoEconfV100ProcEventoCancEConfV100ProcEventoNFe = unknown;

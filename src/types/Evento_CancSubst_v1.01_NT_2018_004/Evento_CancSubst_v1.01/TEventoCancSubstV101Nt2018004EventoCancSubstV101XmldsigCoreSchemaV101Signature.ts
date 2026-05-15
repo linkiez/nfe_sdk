@@ -1,0 +1,6 @@
+import { CEventoCancSubstV101Nt2018004EventoCancSubstV101XmldsigCoreSchemaV101SignatureType } from '../../../classes/Evento_CancSubst_v1.01_NT_2018_004/Evento_CancSubst_v1.01/CEventoCancSubstV101Nt2018004EventoCancSubstV101XmldsigCoreSchemaV101SignatureType';
+
+/**
+ * Type alias for TEventoCancSubstV101Nt2018004EventoCancSubstV101XmldsigCoreSchemaV101Signature.
+ */
+export type TEventoCancSubstV101Nt2018004EventoCancSubstV101XmldsigCoreSchemaV101Signature = CEventoCancSubstV101Nt2018004EventoCancSubstV101XmldsigCoreSchemaV101SignatureType;

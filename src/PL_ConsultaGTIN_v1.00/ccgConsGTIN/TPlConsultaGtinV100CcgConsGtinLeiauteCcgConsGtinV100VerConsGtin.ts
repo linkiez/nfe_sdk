@@ -1,1 +1,0 @@
-export type TPlConsultaGtinV100CcgConsGtinLeiauteCcgConsGtinV100VerConsGtin = string;

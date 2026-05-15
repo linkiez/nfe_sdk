@@ -1,0 +1,4 @@
+/**
+ * Tipo temp médio em segundos
+ */
+export type TEventoCancPlV101Nt2018004EventoCancPlV101TiposBasicoV103Med = string;

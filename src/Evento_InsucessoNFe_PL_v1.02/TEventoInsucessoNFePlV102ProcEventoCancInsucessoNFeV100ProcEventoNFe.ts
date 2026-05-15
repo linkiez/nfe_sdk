@@ -1,1 +1,0 @@
-export type TEventoInsucessoNFePlV102ProcEventoCancInsucessoNFeV100ProcEventoNFe = unknown;

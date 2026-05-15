@@ -1,1 +1,0 @@
-export type TEventoManifestaDestPlV101TiposBasicoV103Dec0302Opc = string;

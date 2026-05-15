@@ -1,1 +1,0 @@
-export type TEventoCancPlV101Nt2018004EventoCancPlV101TiposBasicoV103Dec1110 = string;

@@ -1,1 +1,0 @@
-export type TEventoProrrogIndust10SchemasProcRemIndusV100ProcEventoNFe = unknown;

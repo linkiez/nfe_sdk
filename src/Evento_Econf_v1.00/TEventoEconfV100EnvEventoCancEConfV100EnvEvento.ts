@@ -1,1 +1,0 @@
-export type TEventoEconfV100EnvEventoCancEConfV100EnvEvento = unknown;

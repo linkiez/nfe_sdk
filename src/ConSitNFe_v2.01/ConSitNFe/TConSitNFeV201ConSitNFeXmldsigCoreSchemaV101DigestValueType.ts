@@ -1,1 +1,0 @@
-export type TConSitNFeV201ConSitNFeXmldsigCoreSchemaV101DigestValueType = string;

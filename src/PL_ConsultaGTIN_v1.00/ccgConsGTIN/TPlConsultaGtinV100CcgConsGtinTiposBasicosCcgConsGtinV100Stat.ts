@@ -1,1 +1,0 @@
-export type TPlConsultaGtinV100CcgConsGtinTiposBasicosCcgConsGtinV100Stat = string;

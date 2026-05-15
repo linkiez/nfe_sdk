@@ -1,1 +1,0 @@
-export type TEventoManifestaDestPlV101XmldsigCoreSchemaV101DigestValueType = string;

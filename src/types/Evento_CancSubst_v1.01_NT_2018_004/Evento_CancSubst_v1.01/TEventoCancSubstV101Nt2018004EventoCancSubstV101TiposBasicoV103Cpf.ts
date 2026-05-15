@@ -1,0 +1,4 @@
+/**
+ * Tipo Número do CPF
+ */
+export type TEventoCancSubstV101Nt2018004EventoCancSubstV101TiposBasicoV103Cpf = string;

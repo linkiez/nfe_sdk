@@ -1,1 +1,0 @@
-export type TEventoManifestaDestPlV101TiposBasicoV103Dec1204 = string;

@@ -1,1 +1,0 @@
-export type TEventoProrrogIndust10SchemasEventoRemIndusV100Evento = unknown;

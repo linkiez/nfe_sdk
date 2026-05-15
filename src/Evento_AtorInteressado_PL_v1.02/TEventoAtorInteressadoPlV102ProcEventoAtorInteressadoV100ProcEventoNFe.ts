@@ -1,1 +1,0 @@
-export type TEventoAtorInteressadoPlV102ProcEventoAtorInteressadoV100ProcEventoNFe = unknown;

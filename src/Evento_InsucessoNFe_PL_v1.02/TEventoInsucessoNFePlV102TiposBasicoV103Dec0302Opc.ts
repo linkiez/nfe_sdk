@@ -1,1 +1,0 @@
-export type TEventoInsucessoNFePlV102TiposBasicoV103Dec0302Opc = string;

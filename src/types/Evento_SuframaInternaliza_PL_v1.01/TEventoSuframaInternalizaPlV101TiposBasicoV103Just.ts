@@ -1,0 +1,4 @@
+/**
+ * Tipo Justificativa
+ */
+export type TEventoSuframaInternalizaPlV101TiposBasicoV103Just = string;

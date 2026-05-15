@@ -1,0 +1,43 @@
+import { CEventoManifestaDestPlV101LeiauteConfRecebtoV100InfEvento } from './CEventoManifestaDestPlV101LeiauteConfRecebtoV100InfEvento';
+
+import { TEventoManifestaDestPlV101LeiauteConfRecebtoV100VerEvento } from '../../types/Evento_ManifestaDest_PL_v1.01/TEventoManifestaDestPlV101LeiauteConfRecebtoV100VerEvento';
+
+/**
+ * Tipo retorno do Evento
+ */
+export class CEventoManifestaDestPlV101LeiauteConfRecebtoV100TretEvento {
+    /**
+     * Runtime class discriminator.
+     */
+    public "@class"?: string;
+
+    /**
+     * Referenced or wildcard schema content not fully resolved by the generator.
+     */
+    public unknown?: unknown;
+    /**
+     * Identificação do Ambiente: 1 - Produção 2 - Homologação
+     */
+    public infEvento?: CEventoManifestaDestPlV101LeiauteConfRecebtoV100InfEvento;
+    /**
+     * Tipo Versão do Evento
+     */
+    public $versao?: TEventoManifestaDestPlV101LeiauteConfRecebtoV100VerEvento;
+
+    /**
+     * Creates a new schema-backed CEventoManifestaDestPlV101LeiauteConfRecebtoV100TretEvento instance.
+     * Schema context: Tipo retorno do Evento
+     * @param props - Initial schema-backed values used to populate the instance.
+     */
+    public constructor(props?: CEventoManifestaDestPlV101LeiauteConfRecebtoV100TretEvento) {
+        this["@class"] = ".CEventoManifestaDestPlV101LeiauteConfRecebtoV100TretEvento";
+
+
+        if (props) {
+
+        	this.unknown = props.unknown;
+        	this.infEvento = (props.infEvento) ? new CEventoManifestaDestPlV101LeiauteConfRecebtoV100InfEvento(props.infEvento): undefined;
+        	this.$versao = props.$versao;
+        }
+    }
+}

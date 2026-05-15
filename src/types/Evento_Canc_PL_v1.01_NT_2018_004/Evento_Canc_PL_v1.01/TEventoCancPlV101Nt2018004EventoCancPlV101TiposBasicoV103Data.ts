@@ -1,0 +1,4 @@
+/**
+ * Tipo data AAAA-MM-DD
+ */
+export type TEventoCancPlV101Nt2018004EventoCancPlV101TiposBasicoV103Data = string;

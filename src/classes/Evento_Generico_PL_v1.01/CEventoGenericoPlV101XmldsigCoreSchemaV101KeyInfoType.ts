@@ -1,0 +1,36 @@
+import { CEventoGenericoPlV101XmldsigCoreSchemaV101X509DataType } from './CEventoGenericoPlV101XmldsigCoreSchemaV101X509DataType';
+
+/**
+ * Runtime class for CEventoGenericoPlV101XmldsigCoreSchemaV101KeyInfoType.
+ */
+export class CEventoGenericoPlV101XmldsigCoreSchemaV101KeyInfoType {
+    /**
+     * Runtime class discriminator.
+     */
+    public "@class"?: string;
+
+    /**
+     * Schema property X509 Data.
+     */
+    public X509Data?: CEventoGenericoPlV101XmldsigCoreSchemaV101X509DataType;
+    /**
+     * Schema attribute id.
+     */
+    public $Id?: string;
+
+    /**
+     * Creates a new schema-backed CEventoGenericoPlV101XmldsigCoreSchemaV101KeyInfoType instance.
+     * Schema context: Runtime class for CEventoGenericoPlV101XmldsigCoreSchemaV101KeyInfoType.
+     * @param props - Initial schema-backed values used to populate the instance.
+     */
+    public constructor(props?: CEventoGenericoPlV101XmldsigCoreSchemaV101KeyInfoType) {
+        this["@class"] = ".CEventoGenericoPlV101XmldsigCoreSchemaV101KeyInfoType";
+
+
+        if (props) {
+
+        	this.X509Data = (props.X509Data) ? new CEventoGenericoPlV101XmldsigCoreSchemaV101X509DataType(props.X509Data): undefined;
+        	this.$Id = props.$Id;
+        }
+    }
+}

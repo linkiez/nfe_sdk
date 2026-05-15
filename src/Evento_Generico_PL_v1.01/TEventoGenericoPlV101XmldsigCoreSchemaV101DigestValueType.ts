@@ -1,1 +1,0 @@
-export type TEventoGenericoPlV101XmldsigCoreSchemaV101DigestValueType = string;

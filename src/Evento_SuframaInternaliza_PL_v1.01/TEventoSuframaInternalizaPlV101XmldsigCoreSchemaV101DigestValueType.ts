@@ -1,1 +1,0 @@
-export type TEventoSuframaInternalizaPlV101XmldsigCoreSchemaV101DigestValueType = string;

@@ -1,1 +1,0 @@
-export type TEventoManifestaDestPlV101ConfRecebtoV100Evento = unknown;

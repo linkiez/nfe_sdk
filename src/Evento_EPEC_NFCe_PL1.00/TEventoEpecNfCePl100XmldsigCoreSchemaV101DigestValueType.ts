@@ -1,1 +1,0 @@
-export type TEventoEpecNfCePl100XmldsigCoreSchemaV101DigestValueType = string;

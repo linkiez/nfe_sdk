@@ -1,0 +1,4 @@
+/**
+ * Tipo Código de orgão (UF da tabela do IBGE + 90 RFB)
+ */
+export type TEventoProrrogIndust10SchemasLeiauteRemIndusV100COrgaoIbge = "11" | "12" | "13" | "14" | "15" | "16" | "17" | "21" | "22" | "23" | "24" | "25" | "26" | "27" | "28" | "29" | "31" | "32" | "33" | "35" | "41" | "42" | "43" | "50" | "51" | "52" | "53" | "90" | "91" | "92";

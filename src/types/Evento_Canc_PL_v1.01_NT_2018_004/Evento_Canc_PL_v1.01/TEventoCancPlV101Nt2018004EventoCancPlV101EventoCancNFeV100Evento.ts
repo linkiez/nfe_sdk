@@ -1,0 +1,4 @@
+/**
+ * Type alias for TEventoCancPlV101Nt2018004EventoCancPlV101EventoCancNFeV100Evento.
+ */
+export type TEventoCancPlV101Nt2018004EventoCancPlV101EventoCancNFeV100Evento = unknown;
