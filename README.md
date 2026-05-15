@@ -32,6 +32,7 @@ Exemplos:
 
 - [tools/generate.ts](/home/linkiez/Projetos/nfe_schemas/tools/generate.ts): pipeline principal de conversão e pós-processamento.
 - [xsd](/home/linkiez/Projetos/nfe_schemas/xsd): diretório de entrada com os schemas.
+- [src](/home/linkiez/Projetos/nfe_schemas/src): saída TypeScript gerada diretamente pelo pipeline.
 - [package.json](/home/linkiez/Projetos/nfe_schemas/package.json): scripts e dependências do projeto.
 - [tsconfig.json](/home/linkiez/Projetos/nfe_schemas/tsconfig.json): configuração TypeScript do gerador.
 
@@ -57,7 +58,7 @@ npm run generate
 Gerar apenas um subconjunto:
 
 ```bash
-npm run generate -- ConSitNFe_v2.01
+npm run generate -- ConSitNFe
 ```
 
 Limpar artefatos temporários e saída gerada:
@@ -68,11 +69,32 @@ npm run clean
 
 ## Saída gerada
 
-O gerador escreve a saída em `generated-ts/`, espelhando a hierarquia relativa dos schemas processados. Cada declaração exportada vira um arquivo próprio, com `index.ts` por diretório para reexportar os módulos irmãos.
+O gerador escreve a saída em `src/`, com as categorias como filhas diretas da raiz de saída. Dentro de cada categoria, a hierarquia relativa dos schemas processados é preservada:
+
+- `classes/`
+- `interfaces/`
+- `types/`
+- `enums/`
+
+Cada declaração exportada vira um arquivo próprio, com `index.ts` por diretório para reexportar os módulos irmãos e permitir importações por pasta.
+
+Exemplo simplificado:
+
+```text
+src/
+	classes/
+		ConSitNFe/
+	interfaces/
+		ConSitNFe/
+	types/
+		ConSitNFe/
+	enums/
+		ConSitNFe/
+```
 
 Durante o pós-processamento, o pipeline também:
 
-- reescreve referências cruzadas entre arquivos do mesmo diretório;
+- reescreve referências cruzadas entre arquivos gerados, inclusive entre `classes`, `interfaces`, `types` e `enums`;
 - cria interfaces derivadas das classes geradas;
 - cria enums para unions literais finitas;
 - tenta contornar limitações do `xsd2ts` em schemas mais problemáticos.
@@ -82,7 +104,7 @@ Durante o pós-processamento, o pipeline também:
 Para validar a saída gerada com TypeScript estrito:
 
 ```bash
-find generated-ts -name "*.ts" ! -name "index.ts" -print0 | xargs -0 ./node_modules/.bin/tsc --noEmit --strict --skipLibCheck --ignoreConfig --pretty false
+find src -name "*.ts" ! -name "index.ts" -print0 | xargs -0 ./node_modules/.bin/tsc --noEmit --strict --skipLibCheck --ignoreConfig --pretty false
 ```
 
 ## Observações

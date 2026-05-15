@@ -25,6 +25,16 @@ interface DeclarationRecord {
 }
 
 /**
+ * Stores one emitted module after declaration companions are split into dedicated files.
+ */
+interface OutputModuleRecord {
+  kind: DeclarationKind;
+  name: string;
+  references: string[];
+  statementText: string;
+}
+
+/**
  * Tracks generation outcomes per source folder.
  */
 interface FolderResult {
@@ -33,10 +43,22 @@ interface FolderResult {
   retriesWithSanitizedPatterns: string[];
 }
 
+interface SchemaDocumentationContext {
+  declarationDocs: Map<string, string>;
+  memberDocs: Map<string, Map<string, string>>;
+}
+
 const ROOT_DIR = process.cwd();
-const OUTPUT_ROOT = path.join(ROOT_DIR, 'generated-ts');
+const INPUT_ROOT = path.join(ROOT_DIR, 'xsd');
+const OUTPUT_ROOT = path.join(ROOT_DIR, 'src');
 const TEMP_ROOT = path.join(ROOT_DIR, '.xsd2ts-work');
-const SKIPPED_DIRECTORIES = new Set(['node_modules', '.git', 'generated-ts', 'dist', '.xsd2ts-work']);
+const SKIPPED_DIRECTORIES = new Set(['node_modules', '.git', 'src', 'dist', '.xsd2ts-work']);
+const OUTPUT_KIND_DIRECTORIES: Record<DeclarationKind, string> = {
+  class: 'classes',
+  enum: 'enums',
+  interface: 'interfaces',
+  typeAlias: 'types',
+};
 
 /**
  * Runs the XSD to TypeScript conversion for all XSD files or a filtered subtree.
@@ -45,12 +67,12 @@ const SKIPPED_DIRECTORIES = new Set(['node_modules', '.git', 'generated-ts', 'di
  * npm run generate -- PL_010c_NT2022_002v1.30
  */
 function main(): void {
-  const filterPath = process.argv[2] ? path.resolve(ROOT_DIR, process.argv[2]) : undefined;
+  const filterPath = resolveFilterPath(process.argv[2]);
 
   ensureDirectory(OUTPUT_ROOT);
   ensureDirectory(TEMP_ROOT);
 
-  const xsdFiles = collectXsdFiles(ROOT_DIR, filterPath);
+  const xsdFiles = collectXsdFiles(INPUT_ROOT, filterPath);
 
   if (xsdFiles.length === 0) {
     throw new Error('No XSD files found for conversion.');
@@ -59,25 +81,26 @@ function main(): void {
   const resultsByFolder = new Map<string, FolderResult>();
 
   for (const xsdFile of xsdFiles) {
-    const relativeFilePath = path.relative(ROOT_DIR, xsdFile);
+    const relativeFilePath = path.relative(INPUT_ROOT, xsdFile);
     const relativeFolderPath = path.dirname(relativeFilePath);
-    const folderOutputPath = path.join(OUTPUT_ROOT, relativeFolderPath === '.' ? '' : relativeFolderPath);
     const folderResult = getOrCreateFolderResult(resultsByFolder, relativeFolderPath);
 
     console.log(`Generating ${relativeFilePath}`);
 
     const generatedSource = generateSourceFromXsd(xsdFile, folderResult);
-    const declarations = extractDeclarations(generatedSource);
+    const declarations = extractDeclarations(generatedSource, xsdFile);
+    const modules = declarations.flatMap(expandDeclarationModules);
+    const modulePathMap = buildModulePathMap(relativeFolderPath, modules);
 
-    for (const declaration of declarations) {
-      const collisionKey = path.join(relativeFolderPath, `${declaration.name}.ts`);
-      const targetFilePath = path.join(folderOutputPath, `${declaration.name}.ts`);
+    for (const moduleRecord of modules) {
+      const targetFilePath = path.join(OUTPUT_ROOT, modulePathMap.get(moduleRecord.name) ?? getModuleRelativePath(relativeFolderPath, moduleRecord));
+      const collisionKey = path.relative(OUTPUT_ROOT, targetFilePath);
+      const nextContent = renderModuleFile(moduleRecord, targetFilePath, modulePathMap);
 
-      ensureDirectory(folderOutputPath);
+      ensureDirectory(path.dirname(targetFilePath));
 
       if (fs.existsSync(targetFilePath)) {
         const currentContent = fs.readFileSync(targetFilePath, 'utf8');
-        const nextContent = renderDeclarationFile(declaration);
 
         if (currentContent !== nextContent) {
           folderResult.collisions.push(collisionKey);
@@ -86,16 +109,39 @@ function main(): void {
         continue;
       }
 
-      fs.writeFileSync(targetFilePath, renderDeclarationFile(declaration), 'utf8');
+      fs.writeFileSync(targetFilePath, nextContent, 'utf8');
       folderResult.files += 1;
     }
   }
 
   writeIndexFiles(OUTPUT_ROOT);
-  postProcessGeneratedModules(OUTPUT_ROOT);
+  postProcessGeneratedModules();
   writeManifest(resultsByFolder);
 
   console.log(`Converted ${xsdFiles.length} XSD files into ${OUTPUT_ROOT}`);
+}
+
+/**
+ * Resolves an optional CLI filter to an absolute path inside the xsd tree.
+ */
+function resolveFilterPath(filterArgument?: string): string | undefined {
+  if (!filterArgument) {
+    return undefined;
+  }
+
+  const directPath = path.resolve(ROOT_DIR, filterArgument);
+
+  if (fs.existsSync(directPath)) {
+    return directPath;
+  }
+
+  const xsdRelativePath = path.resolve(INPUT_ROOT, filterArgument);
+
+  if (fs.existsSync(xsdRelativePath)) {
+    return xsdRelativePath;
+  }
+
+  return directPath;
 }
 
 /**
@@ -168,8 +214,8 @@ function generateSourceFromXsd(xsdFilePath: string, folderResult: FolderResult):
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     const sanitizedFilePath = createSanitizedRetryFile(xsdFilePath);
-    folderResult.retriesWithSanitizedPatterns.push(path.relative(ROOT_DIR, xsdFilePath));
-    console.warn(`Retrying ${path.relative(ROOT_DIR, xsdFilePath)} without pattern restrictions: ${errorMessage}`);
+    folderResult.retriesWithSanitizedPatterns.push(path.relative(INPUT_ROOT, xsdFilePath));
+    console.warn(`Retrying ${path.relative(INPUT_ROOT, xsdFilePath)} without pattern restrictions: ${errorMessage}`);
     return normalizeGeneratedSource(runXsd2Ts(sanitizedFilePath, generatedFileName), xsdFilePath);
   }
 }
@@ -199,7 +245,7 @@ function runXsd2Ts(inputFilePath: string, generatedFileName: string): string {
  */
 function createSanitizedRetryFile(sourceFilePath: string): string {
   const retryDirectory = path.join(TEMP_ROOT, 'retry-inputs');
-  const relativeSourcePath = path.relative(ROOT_DIR, sourceFilePath);
+  const relativeSourcePath = path.relative(INPUT_ROOT, sourceFilePath);
   const sourceDirectoryPath = path.dirname(sourceFilePath);
   const relativeDirectoryPath = path.dirname(relativeSourcePath);
   const targetDirectoryPath = path.join(retryDirectory, relativeDirectoryPath === '.' ? '' : relativeDirectoryPath);
@@ -313,7 +359,7 @@ function rewriteExportNames(sourceText: string, xsdFilePath: string): string {
  * Builds a stable hierarchical identifier from the schema path and original export name.
  */
 function buildHierarchicalIdentifier(xsdFilePath: string, rawName: string, kind: DeclarationKind): string {
-  const relativeSchemaPath = path.relative(ROOT_DIR, xsdFilePath).replace(/\.xsd$/i, '');
+  const relativeSchemaPath = path.relative(INPUT_ROOT, xsdFilePath).replace(/\.xsd$/i, '');
   const hierarchicalPrefix = toPascalCaseIdentifier(relativeSchemaPath);
   const normalizedRawName = toPascalCaseIdentifier(stripSchemaTypePrefix(rawName));
   const hierarchicalName = hierarchicalPrefix.endsWith(normalizedRawName)
@@ -384,26 +430,275 @@ function escapeRegExp(value: string): string {
 /**
  * Splits the generated monolithic source into one declaration record per export.
  */
-function extractDeclarations(sourceText: string): DeclarationRecord[] {
+function extractDeclarations(sourceText: string, xsdFilePath: string): DeclarationRecord[] {
   const sourceFile = ts.createSourceFile('generated.ts', sourceText, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
   const exportedStatements = sourceFile.statements.filter(isSupportedExportedStatement);
   const exportedNames = new Set<string>(exportedStatements.map(getStatementName));
+  const documentationContext = extractSchemaDocumentationContext(xsdFilePath);
 
   return exportedStatements.map((statement) => {
     const name = getStatementName(statement);
     const kind = ts.isClassDeclaration(statement) ? 'class' : 'typeAlias';
+    const declarationDoc = documentationContext.declarationDocs.get(name);
+    const memberDocs = documentationContext.memberDocs.get(name) ?? new Map<string, string>();
 
     return {
       name,
       kind,
       references: collectReferences(statement, exportedNames, name),
       statementText: ts.isClassDeclaration(statement)
-        ? createStrictSafeClassText(statement, sourceFile)
-        : statement.getText(sourceFile),
-      interfaceText: ts.isClassDeclaration(statement) ? createInterfaceFromClass(statement, sourceFile) : undefined,
-      enumText: ts.isTypeAliasDeclaration(statement) ? createEnumFromTypeAlias(statement) : undefined,
+        ? createStrictSafeClassText(statement, sourceFile, declarationDoc, memberDocs, documentationContext.declarationDocs)
+        : createTypeAliasText(statement, sourceFile, declarationDoc),
+      interfaceText: ts.isClassDeclaration(statement)
+        ? createInterfaceFromClass(statement, sourceFile, declarationDoc, memberDocs, documentationContext.declarationDocs)
+        : undefined,
+      enumText: ts.isTypeAliasDeclaration(statement) ? createEnumFromTypeAlias(statement, declarationDoc) : undefined,
     };
   });
+}
+
+/**
+ * Splits declaration companions into dedicated output modules by kind.
+ */
+function expandDeclarationModules(declaration: DeclarationRecord): OutputModuleRecord[] {
+  const modules: OutputModuleRecord[] = [
+    {
+      kind: declaration.kind,
+      name: declaration.name,
+      references: declaration.references,
+      statementText: declaration.statementText,
+    },
+  ];
+
+  if (declaration.interfaceText) {
+    modules.push({
+      kind: 'interface',
+      name: replaceDeclarationPrefix(declaration.name, 'interface'),
+      references: declaration.references,
+      statementText: declaration.interfaceText,
+    });
+  }
+
+  if (declaration.enumText) {
+    modules.push({
+      kind: 'enum',
+      name: replaceDeclarationPrefix(declaration.name, 'enum'),
+      references: declaration.references,
+      statementText: declaration.enumText,
+    });
+  }
+
+  return modules;
+}
+
+/**
+ * Maps each emitted symbol name to its relative output module path.
+ */
+function buildModulePathMap(relativeFolderPath: string, modules: OutputModuleRecord[]): Map<string, string> {
+  const modulePathMap = new Map<string, string>();
+
+  for (const moduleRecord of modules) {
+    modulePathMap.set(moduleRecord.name, getModuleRelativePath(relativeFolderPath, moduleRecord));
+  }
+
+  return modulePathMap;
+}
+
+/**
+ * Builds the output module path for one emitted declaration.
+ */
+function getModuleRelativePath(relativeFolderPath: string, moduleRecord: OutputModuleRecord): string {
+  const basePath = relativeFolderPath === '.' ? '' : relativeFolderPath;
+
+  return path.join(OUTPUT_KIND_DIRECTORIES[moduleRecord.kind], basePath, `${moduleRecord.name}.ts`);
+}
+
+/**
+ * Extracts declaration and member documentation from one schema file.
+ */
+function extractSchemaDocumentationContext(xsdFilePath: string): SchemaDocumentationContext {
+  const xsdContent = fs.readFileSync(xsdFilePath, 'utf8');
+  const declarationDocs = new Map<string, string>();
+  const memberDocs = new Map<string, Map<string, string>>();
+  const schemaBlocks: Array<{ kind: 'class' | 'typeAlias'; blocks: SchemaDeclarationBlock[] }> = [
+    { kind: 'class', blocks: [...findNamedSchemaBlocks(xsdContent, 'complexType'), ...findNamedSchemaBlocks(xsdContent, 'element')] },
+    { kind: 'typeAlias', blocks: findNamedSchemaBlocks(xsdContent, 'simpleType') },
+  ];
+
+  for (const { kind, blocks } of schemaBlocks) {
+    collectDocumentationEntries(xsdFilePath, kind, blocks, declarationDocs, memberDocs);
+  }
+
+  return { declarationDocs, memberDocs };
+}
+
+interface SchemaDeclarationBlock {
+  name: string;
+  xml: string;
+}
+
+/**
+ * Collects documentation entries for one schema declaration pattern.
+ */
+function collectDocumentationEntries(
+  xsdFilePath: string,
+  kind: 'class' | 'typeAlias',
+  blocks: SchemaDeclarationBlock[],
+  declarationDocs: Map<string, string>,
+  memberDocs: Map<string, Map<string, string>>,
+): void {
+  for (const block of blocks) {
+    const declarationName = buildHierarchicalIdentifier(xsdFilePath, block.name, kind);
+    registerDeclarationDocumentation(declarationName, kind, block.xml, declarationDocs, memberDocs);
+  }
+}
+
+/**
+ * Finds full named XSD declaration blocks for one tag type.
+ */
+function findNamedSchemaBlocks(xsdContent: string, tagName: 'complexType' | 'element' | 'simpleType'): SchemaDeclarationBlock[] {
+  const blocks: SchemaDeclarationBlock[] = [];
+  const openingTagPattern = new RegExp(String.raw`<(?:xs:)?${tagName}\b[^>]*name="([^"]+)"[^>]*>`, 'g');
+  let match: RegExpExecArray | null = openingTagPattern.exec(xsdContent);
+
+  while (match) {
+    const blockStart = match.index;
+    const openingTag = match[0];
+    const blockEnd = findSchemaBlockEnd(xsdContent, tagName, blockStart + openingTag.length);
+
+    if (blockEnd !== undefined) {
+      blocks.push({
+        name: match[1],
+        xml: xsdContent.slice(blockStart, blockEnd),
+      });
+    }
+
+    match = openingTagPattern.exec(xsdContent);
+  }
+
+  return blocks;
+}
+
+/**
+ * Locates the end offset for one named XSD block, accounting for nested blocks of the same tag.
+ */
+function findSchemaBlockEnd(xsdContent: string, tagName: 'complexType' | 'element' | 'simpleType', searchStart: number): number | undefined {
+  const tokenPattern = new RegExp(String.raw`<(?:xs:)?${tagName}\b[^>]*>|</(?:xs:)?${tagName}>`, 'g');
+  tokenPattern.lastIndex = searchStart;
+  let depth = 1;
+  let tokenMatch: RegExpExecArray | null = tokenPattern.exec(xsdContent);
+
+  while (tokenMatch) {
+    const token = tokenMatch[0];
+
+    if (token.startsWith('</')) {
+      depth -= 1;
+
+      if (depth === 0) {
+        return tokenMatch.index + token.length;
+      }
+    } else if (!token.endsWith('/>')) {
+      depth += 1;
+    }
+
+    tokenMatch = tokenPattern.exec(xsdContent);
+  }
+
+  return undefined;
+}
+
+/**
+ * Stores declaration and member documentation for one parsed schema declaration.
+ */
+function registerDeclarationDocumentation(
+  declarationName: string,
+  kind: 'class' | 'typeAlias',
+  schemaBody: string,
+  declarationDocs: Map<string, string>,
+  memberDocs: Map<string, Map<string, string>>,
+): void {
+  const summary = extractDocumentationText(schemaBody);
+
+  if (summary) {
+    declarationDocs.set(declarationName, summary);
+
+    if (kind === 'class') {
+      declarationDocs.set(replaceDeclarationPrefix(declarationName, 'interface'), summary);
+    }
+  }
+
+  if (kind !== 'class') {
+    return;
+  }
+
+  const members = extractMemberDocumentation(schemaBody);
+
+  if (members.size === 0) {
+    return;
+  }
+
+  memberDocs.set(declarationName, members);
+  memberDocs.set(replaceDeclarationPrefix(declarationName, 'interface'), members);
+}
+
+/**
+ * Extracts member-level documentation from element and attribute declarations.
+ */
+function extractMemberDocumentation(schemaBody: string): Map<string, string> {
+  const docs = new Map<string, string>();
+  const memberPattern = /<(?:xs:)?(?:element|attribute)\b[^>]*name="([^"]+)"[^>]*>\s*<(?:xs:)?annotation>\s*<(?:xs:)?documentation>([\s\S]*?)<\/(?:xs:)?documentation>\s*<\/(?:xs:)?annotation>/g;
+  const anyPattern = /<(?:xs:)?any\b[^>]*>\s*<(?:xs:)?annotation>\s*<(?:xs:)?documentation>([\s\S]*?)<\/(?:xs:)?documentation>\s*<\/(?:xs:)?annotation>/g;
+  let match: RegExpExecArray | null = memberPattern.exec(schemaBody);
+
+  while (match) {
+    const memberName = match[1];
+    const memberSummary = normalizeDocumentationText(match[2]);
+
+    if (memberSummary) {
+      docs.set(memberName, memberSummary);
+    }
+
+    match = memberPattern.exec(schemaBody);
+  }
+
+  match = anyPattern.exec(schemaBody);
+
+  while (match) {
+    const memberSummary = normalizeDocumentationText(match[1]);
+
+    if (memberSummary) {
+      docs.set('unknown', memberSummary);
+    }
+
+    match = anyPattern.exec(schemaBody);
+  }
+
+  return docs;
+}
+
+/**
+ * Reads and normalizes xs:documentation blocks into a compact summary.
+ */
+function extractDocumentationText(xmlFragment: string): string | undefined {
+  const firstMatch = /<(?:xs:)?documentation>([\s\S]*?)<\/(?:xs:)?documentation>/u.exec(xmlFragment);
+
+  if (!firstMatch) {
+    return undefined;
+  }
+
+  return normalizeDocumentationText(firstMatch[1]);
+}
+
+/**
+ * Normalizes raw documentation content extracted from XSD annotations.
+ */
+function normalizeDocumentationText(rawText: string): string | undefined {
+  const normalizedText = rawText
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  return normalizedText.length > 0 ? normalizedText : undefined;
 }
 
 /**
@@ -471,7 +766,13 @@ function maybeAddReference(name: string, exportedNames: Set<string>, selfName: s
 /**
  * Creates a companion interface from the public properties of a generated class.
  */
-function createInterfaceFromClass(statement: ts.ClassDeclaration, sourceFile: ts.SourceFile): string {
+function createInterfaceFromClass(
+  statement: ts.ClassDeclaration,
+  sourceFile: ts.SourceFile,
+  declarationDoc?: string,
+  memberDocs: Map<string, string> = new Map<string, string>(),
+  declarationDocs: Map<string, string> = new Map<string, string>(),
+): string {
   const className = getStatementName(statement);
   const interfaceName = replaceDeclarationPrefix(className, 'interface');
   const seenProperties = new Set<string>();
@@ -486,44 +787,289 @@ function createInterfaceFromClass(statement: ts.ClassDeclaration, sourceFile: ts
 
       seenProperties.add(propertyName);
       const typeText = member.type ? member.type.getText(sourceFile) : 'unknown';
-      return `  ${propertyName}?: ${typeText};`;
+      const propertyDoc = resolvePropertyDocumentation(member, sourceFile, memberDocs, declarationDocs);
+
+      return [
+        indentJsDoc(createJsDoc(propertyDoc), '  '),
+        `  ${propertyName}?: ${typeText};`,
+      ].join('\n');
     })
     .filter((line): line is string => typeof line === 'string');
 
-  return [`export interface ${interfaceName} {`, '  "@class"?: string;', ...propertyLines, '}'].join('\n');
+  return [
+    createJsDoc(declarationDoc ?? `Type contract for ${interfaceName}.`),
+    `export interface ${interfaceName} {`,
+    indentJsDoc(createJsDoc('Runtime class discriminator.'), '  '),
+    '  "@class"?: string;',
+    ...propertyLines,
+    '}',
+  ].join('\n');
 }
 
 /**
  * Makes the generated class declarations compatible with strict mode.
  */
-function createStrictSafeClassText(statement: ts.ClassDeclaration, sourceFile: ts.SourceFile): string {
+function createStrictSafeClassText(
+  statement: ts.ClassDeclaration,
+  sourceFile: ts.SourceFile,
+  declarationDoc?: string,
+  memberDocs: Map<string, string> = new Map<string, string>(),
+  declarationDocs: Map<string, string> = new Map<string, string>(),
+): string {
   const classText = statement.getText(sourceFile);
 
   if (!classText.includes('{')) {
-    return createFallbackClassText(getStatementName(statement));
+    return createFallbackClassText(getStatementName(statement), declarationDoc);
   }
 
-  return sanitizeClassImplementation(
-    deduplicateClassMembers(
-    classText
-    .replace(/(export\s+class\s+[A-Za-z_$][\w$]*\s*\{\n)/u, `$1    public "@class"?: string;\n\n`)
-    .replace(/^(\s*public\s+)([A-Za-z_$][\w$]*)(\s*:\s*[^;]+;\s*)$/gmu, '$1$2?$3'),
+  return enrichClassTextWithJsDoc(
+    sanitizeClassImplementation(
+      deduplicateClassMembers(
+      classText
+      .replace(/(export\s+class\s+[A-Za-z_$][\w$]*\s*\{\n)/u, `$1    public "@class"?: string;\n\n`)
+      .replace(/^(\s*public\s+)([A-Za-z_$][\w$]*)(\s*:\s*[^;]+;\s*)$/gmu, '$1$2?$3'),
+      ),
     ),
+    declarationDoc ?? `Runtime class for ${getStatementName(statement)}.`,
+    memberDocs,
+    declarationDocs,
   );
 }
 
 /**
  * Creates a minimal strict-safe class when the parser only recovered a truncated class declaration.
  */
-function createFallbackClassText(className: string): string {
+function createFallbackClassText(className: string, declarationDoc?: string): string {
   return [
+    createJsDoc(declarationDoc ?? `Runtime class for ${className}.`),
     `export class ${className} {`,
+    indentJsDoc(createJsDoc('Runtime class discriminator.'), '    '),
     '    public "@class"?: string;',
     '',
+    indentJsDoc(createConstructorJsDoc(className, declarationDoc), '    '),
     `    public constructor(props?: ${className}) {`,
     `        this["@class"] = ".${className}";`,
     '    }',
     '}',
+  ].join('\n');
+}
+
+/**
+ * Adds JSDoc blocks to generated class declarations, members and helper methods.
+ */
+function enrichClassTextWithJsDoc(
+  classText: string,
+  declarationDoc: string,
+  memberDocs: Map<string, string>,
+  declarationDocs: Map<string, string>,
+): string {
+  const lines = classText.split('\n');
+  const enrichedLines: string[] = [];
+  const sourceFile = ts.createSourceFile('class.ts', classText, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
+  const propertyDocumentation = buildClassPropertyDocumentationMap(sourceFile, memberDocs, declarationDocs);
+
+  for (const line of lines) {
+    if (line.startsWith('export class ')) {
+      appendLineWithOptionalJsDoc(enrichedLines, line, createJsDoc(declarationDoc));
+      continue;
+    }
+
+    const propertyName = getPropertyDeclarationName(line);
+
+    if (propertyName) {
+      const normalizedPropertyName = propertyName.replace(/^"|"$/g, '');
+      const summary = normalizedPropertyName === '@class'
+        ? 'Runtime class discriminator.'
+        : propertyDocumentation.get(normalizedPropertyName) ?? createPropertyFallbackDocumentation(normalizedPropertyName);
+      appendLineWithOptionalJsDoc(enrichedLines, line, indentJsDoc(createJsDoc(summary), '    '));
+      continue;
+    }
+
+    const constructorMatch = /^\s*public constructor\(/u.exec(line);
+
+    if (constructorMatch) {
+      appendLineWithOptionalJsDoc(
+        enrichedLines,
+        line,
+        indentJsDoc(createConstructorJsDoc(extractClassNameFromClassText(classText), declarationDoc), '    '),
+      );
+      continue;
+    }
+
+    const methodMatch = /^\s*public\s+([A-Za-z_$][\w$]*)\(/u.exec(line);
+
+    if (methodMatch) {
+      const methodName = methodMatch[1];
+      const summary = memberDocs.get(methodName) ?? `Updates the ${methodName} branch for this schema choice.`;
+      appendLineWithOptionalJsDoc(enrichedLines, line, indentJsDoc(createChoiceMethodJsDoc(methodName, summary), '    '));
+      continue;
+    }
+
+    enrichedLines.push(line);
+  }
+
+  return enrichedLines.join('\n');
+}
+
+/**
+ * Builds a property-to-documentation map for one generated class.
+ */
+function buildClassPropertyDocumentationMap(
+  sourceFile: ts.SourceFile,
+  memberDocs: Map<string, string>,
+  declarationDocs: Map<string, string>,
+): Map<string, string> {
+  const propertyDocs = new Map<string, string>();
+
+  for (const statement of sourceFile.statements) {
+    if (!ts.isClassDeclaration(statement)) {
+      continue;
+    }
+
+    for (const member of statement.members) {
+      if (!ts.isPropertyDeclaration(member)) {
+        continue;
+      }
+
+      const propertyName = member.name.getText(sourceFile).replace(/^"|"$/g, '');
+      propertyDocs.set(propertyName, resolvePropertyDocumentation(member, sourceFile, memberDocs, declarationDocs));
+    }
+  }
+
+  return propertyDocs;
+}
+
+/**
+ * Resolves documentation for one generated property.
+ */
+function resolvePropertyDocumentation(
+  member: ts.PropertyDeclaration,
+  sourceFile: ts.SourceFile,
+  memberDocs: Map<string, string>,
+  declarationDocs: Map<string, string>,
+): string {
+  const propertyName = member.name.getText(sourceFile).replace(/^"|"$/g, '');
+  const directDoc = memberDocs.get(propertyName);
+
+  if (directDoc) {
+    return directDoc;
+  }
+
+  const referencedDeclarationDoc = resolveReferencedDeclarationDocumentation(member.type, declarationDocs);
+
+  if (referencedDeclarationDoc) {
+    return referencedDeclarationDoc;
+  }
+
+  return createPropertyFallbackDocumentation(propertyName);
+}
+
+/**
+ * Creates a readable fallback description for properties without schema documentation.
+ */
+function createPropertyFallbackDocumentation(propertyName: string): string {
+  const normalizedPropertyName = propertyName.replace(/^"|"$/g, '').replace(/[?.]+$/g, '');
+
+  if (normalizedPropertyName === 'unknown') {
+    return 'Referenced or wildcard schema content not fully resolved by the generator.';
+  }
+
+  if (normalizedPropertyName.startsWith('$')) {
+    return `Schema attribute ${humanizeIdentifier(normalizedPropertyName.slice(1)).toLowerCase()}.`;
+  }
+
+  return `Schema property ${humanizeIdentifier(normalizedPropertyName)}.`;
+}
+
+/**
+ * Resolves declaration documentation from a property type reference when available.
+ */
+function resolveReferencedDeclarationDocumentation(
+  typeNode: ts.TypeNode | undefined,
+  declarationDocs: Map<string, string>,
+): string | undefined {
+  if (!typeNode) {
+    return undefined;
+  }
+
+  if (ts.isArrayTypeNode(typeNode)) {
+    return resolveReferencedDeclarationDocumentation(typeNode.elementType, declarationDocs);
+  }
+
+  if (ts.isTypeReferenceNode(typeNode)) {
+    return declarationDocs.get(getEntityNameText(typeNode.typeName));
+  }
+
+  return undefined;
+}
+
+/**
+ * Appends one source line and an optional leading JSDoc block.
+ */
+function appendLineWithOptionalJsDoc(targetLines: string[], sourceLine: string, jsDoc?: string): void {
+  if (jsDoc) {
+    targetLines.push(jsDoc);
+  }
+
+  targetLines.push(sourceLine);
+}
+
+/**
+ * Extracts the generated class name from the full class text.
+ */
+function extractClassNameFromClassText(classText: string): string {
+  const classMatch = /export\s+class\s+([A-Za-z_$][\w$]*)/u.exec(classText);
+
+  if (!classMatch) {
+    return 'GeneratedClass';
+  }
+
+  return classMatch[1];
+}
+
+/**
+ * Builds constructor JSDoc with declaration context and parameter details.
+ */
+function createConstructorJsDoc(className: string, declarationDoc?: string): string {
+  const summary = declarationDoc
+    ? `Creates a new schema-backed ${className} instance.\nSchema context: ${declarationDoc}`
+    : `Creates a new schema-backed ${className} instance.`;
+
+  return createJsDoc(summary, ['@param props - Initial schema-backed values used to populate the instance.']);
+}
+
+/**
+ * Builds JSDoc for generated choice helper methods.
+ */
+function createChoiceMethodJsDoc(methodName: string, summary: string): string {
+  const normalizedSummary = summary.startsWith('Updates the ')
+    ? `Selects the ${humanizeIdentifier(methodName).toLowerCase()} branch for this schema choice.`
+    : summary;
+
+  return createJsDoc(normalizedSummary, [`@param arg - Branch value assigned to ${methodName}.`]);
+}
+
+/**
+ * Converts an identifier into a human-readable label.
+ */
+function humanizeIdentifier(identifier: string): string {
+  return identifier
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replaceAll('_', ' ')
+    .trim();
+}
+
+/**
+ * Creates a documented type alias block.
+ */
+function createTypeAliasText(
+  statement: ts.TypeAliasDeclaration,
+  sourceFile: ts.SourceFile,
+  declarationDoc?: string,
+): string {
+  return [
+    createJsDoc(declarationDoc ?? `Type alias for ${statement.name.text}.`),
+    statement.getText(sourceFile),
   ].join('\n');
 }
 
@@ -605,7 +1151,7 @@ function getAssignmentPropertyName(line: string): string | undefined {
 /**
  * Creates a companion enum for finite literal unions.
  */
-function createEnumFromTypeAlias(statement: ts.TypeAliasDeclaration): string | undefined {
+function createEnumFromTypeAlias(statement: ts.TypeAliasDeclaration, declarationDoc?: string): string | undefined {
   if (!ts.isUnionTypeNode(statement.type)) {
     return undefined;
   }
@@ -636,7 +1182,34 @@ function createEnumFromTypeAlias(statement: ts.TypeAliasDeclaration): string | u
     return `  ${uniqueName} = ${JSON.stringify(member)},`;
   });
 
-  return [`export enum ${enumName} {`, ...enumLines, '}'].join('\n');
+  return [
+    createJsDoc(declarationDoc ?? `Enumerates allowed values for ${statement.name.text}.`),
+    `export enum ${enumName} {`,
+    ...enumLines,
+    '}',
+  ].join('\n');
+}
+
+/**
+ * Builds a compact JSDoc block from a one-line or multi-line summary.
+ */
+function createJsDoc(summary: string, tags: string[] = []): string {
+  const lines = summary
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
+
+  return ['/**', ...lines.map((line) => ` * ${line}`), ...tags.map((line) => ` * ${line}`), ' */'].join('\n');
+}
+
+/**
+ * Applies indentation to every line of a JSDoc block.
+ */
+function indentJsDoc(jsDoc: string, indentation: string): string {
+  return jsDoc
+    .split('\n')
+    .map((line) => `${indentation}${line}`)
+    .join('\n');
 }
 
 /**
@@ -678,35 +1251,61 @@ function getUniqueEnumMemberName(baseName: string, usedNames: Set<string>): stri
 }
 
 /**
- * Renders one declaration into its own TypeScript module.
+ * Renders one emitted module into its own TypeScript file.
  */
-function renderDeclarationFile(declaration: DeclarationRecord): string {
-  const imports = declaration.references.map((reference) => `import { ${reference} } from './${reference}';`);
+function renderModuleFile(moduleRecord: OutputModuleRecord, moduleFilePath: string, modulePathMap: Map<string, string>): string {
+  const imports = moduleRecord.references
+    .map((reference) => buildModuleImportLine(reference, moduleFilePath, modulePathMap))
+    .filter((line): line is string => typeof line === 'string')
+    .sort((left, right) => left.localeCompare(right));
   const segments = [
     ...imports,
-    declaration.enumText,
-    declaration.interfaceText,
-    declaration.statementText,
+    moduleRecord.statementText,
   ].filter((segment): segment is string => typeof segment === 'string' && segment.length > 0);
 
-  return `${segments.join('\n\n')}\n`;
+  return normalizeGenericPropertyJsDoc(`${segments.join('\n\n')}\n`);
 }
 
 /**
- * Resolves cross-file references inside each generated folder after all declarations are written.
+ * Builds an import line for one referenced symbol when its output module is known.
  */
-function postProcessGeneratedModules(directoryPath: string): void {
-  const entries = fs.readdirSync(directoryPath, { withFileTypes: true });
+function buildModuleImportLine(referenceName: string, moduleFilePath: string, modulePathMap: Map<string, string>): string | undefined {
+  const targetRelativePath = modulePathMap.get(referenceName);
 
-  for (const entry of entries) {
-    if (entry.isDirectory()) {
-      postProcessGeneratedModules(path.join(directoryPath, entry.name));
-    }
+  if (!targetRelativePath) {
+    return undefined;
   }
 
-  const moduleFiles = entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith('.ts') && entry.name !== 'index.ts')
-    .map((entry) => path.join(directoryPath, entry.name));
+  const targetFilePath = path.join(OUTPUT_ROOT, targetRelativePath);
+  const importPath = toImportSpecifier(moduleFilePath, targetFilePath);
+
+  return `import { ${referenceName} } from '${importPath}';`;
+}
+
+/**
+ * Rewrites generic property JSDoc blocks using the declared property name.
+ */
+function normalizeGenericPropertyJsDoc(sourceText: string): string {
+  return sourceText.replace(
+    /(\n\s*\/\*\*\n\s*\* )Schema property [^.]+\.(\n\s*\*\/\n\s*[^\n]*:\s*[^;]+;)/g,
+    (match, prefix: string, suffix: string) => {
+      const propertyMatch = /(?:public\s+)?((?:"[^"]+")|[A-Za-z_$][\w$]*)\??:\s*[^;]+;/u.exec(suffix);
+
+      if (!propertyMatch) {
+        return match;
+      }
+
+      const normalizedPropertyName = propertyMatch[1].replace(/^"|"$/g, '');
+      return `${prefix}${createPropertyFallbackDocumentation(normalizedPropertyName)}${suffix}`;
+    },
+  );
+}
+
+/**
+ * Resolves cross-file references across the generated output tree after all modules are written.
+ */
+function postProcessGeneratedModules(): void {
+  const moduleFiles = collectGeneratedModuleFiles(OUTPUT_ROOT);
 
   if (moduleFiles.length === 0) {
     return;
@@ -716,12 +1315,35 @@ function postProcessGeneratedModules(directoryPath: string): void {
 
   for (const moduleFilePath of moduleFiles) {
     const sourceText = fs.readFileSync(moduleFilePath, 'utf8');
-    const nextSourceText = rewriteCrossFileReferences(moduleFilePath, sourceText, exportMap);
+    const nextSourceText = normalizeGenericPropertyJsDoc(rewriteCrossFileReferences(moduleFilePath, sourceText, exportMap));
 
     if (nextSourceText !== sourceText) {
       fs.writeFileSync(moduleFilePath, nextSourceText, 'utf8');
     }
   }
+}
+
+/**
+ * Recursively collects generated module files excluding barrel indexes.
+ */
+function collectGeneratedModuleFiles(directoryPath: string): string[] {
+  const entries = fs.readdirSync(directoryPath, { withFileTypes: true });
+  const moduleFiles: string[] = [];
+
+  for (const entry of entries) {
+    const entryPath = path.join(directoryPath, entry.name);
+
+    if (entry.isDirectory()) {
+      moduleFiles.push(...collectGeneratedModuleFiles(entryPath));
+      continue;
+    }
+
+    if (entry.isFile() && entry.name.endsWith('.ts') && entry.name !== 'index.ts') {
+      moduleFiles.push(entryPath);
+    }
+  }
+
+  return moduleFiles;
 }
 
 /**
@@ -907,9 +1529,18 @@ function resolveExportCandidate(referenceName: string, moduleFilePath: string, e
 
   return {
     exportName: candidates[0].exportName,
-    importPath: path.basename(candidates[0].filePath, '.ts'),
+      importPath: toImportSpecifier(moduleFilePath, candidates[0].filePath),
   };
 }
+
+  /**
+   * Converts two module file paths into a relative TypeScript import specifier.
+   */
+  function toImportSpecifier(fromFilePath: string, toFilePath: string): string {
+    const relativeImportPath = path.relative(path.dirname(fromFilePath), toFilePath).replaceAll('\\', '/').replace(/\.ts$/i, '');
+
+    return relativeImportPath.startsWith('.') ? relativeImportPath : `./${relativeImportPath}`;
+  }
 
 /**
  * Scores candidate exports by how much hierarchical prefix they share with the current module.

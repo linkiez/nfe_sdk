@@ -1,7 +1,6 @@
 node_modules/
 dist/
 .xsd2ts-work/
-src/generated/
 count.txt
 output.txt
 tsc_output.log
