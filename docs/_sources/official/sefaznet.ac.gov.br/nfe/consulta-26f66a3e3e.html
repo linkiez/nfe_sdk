@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="j_idt2">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="/nfe/resources/css/loading.css" rel="stylesheet" type="text/css" />
+        <link href="/nfe/resources/SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+        <script src="/nfe/resources/SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+        <script src="/nfe/resources/js/jquery-1.10.2.js" type="text/javascript"></script>
+        <script src="/nfe/resources/js/jquery-ui.js" type="text/javascript"></script>
+        <script src="/nfe/resources/js/js.js" type="text/javascript"></script>
+        <script src="/resources/js/cookie/jquery.cookie.js" type="text/javascript"></script>
+
+        <script src="/nfe/resources/SpryAssets/SpryTabbedPanels.js" type="text/javascript"></script>
+        <link href="/nfe/resources/SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
+
+        <script src="/nfe/resources/SpryAssets/SpryCollapsiblePanel.js" type="text/javascript"></script>
+        <link href="/nfe/resources/SpryAssets/SpryTabbedPanels.css" rel="stylesheet" type="text/css" />
+        <link href="/nfe/resources/css/default.css" rel="stylesheet" type="text/css" />
+
+        <link rel="shortcut icon" type="image/x-icon" href="/nfe/resources/imagens/favicon.ico" />
+        <title>
+        Consulta NF-e
+     </title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><script type="text/javascript" src="/nfe/javax.faces.resource/jsf.js.xhtml;jsessionid=0972eb2f401ba4296864b9d39d87?ln=javax.faces"></script></head><body>
+        <div id="sombra">
+            <div id="c">
+                <div class="container">
+                    <div class="circle1">
+                        <div class="circle3">
+                            <div class="circle2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bordaExterna borda_redonda">
+            <div class="todoConteudo borda_redonda">
+                <div class="logo borda_redonda">
+                    <table style="height: 150px; width: 100%;" class="borda_redonda">
+                        <tr>
+                            <td style="width: 285px; ">
+                                <div style="height: 150px; background-image: url(/nfe/resources/imagens/logo/brasao.png);background-repeat: no-repeat;                                      background-position-x: 50%;"></div>
+                            </td>
+                            <td>
+                                <div style="text-align: center">
+                                    <div style="font-family: 'Titillium Web';font-size: 45px;font-weight: 800;color: rgb(103, 103, 103);">
+                                        Governo do Estado do Acre<br />
+                                    </div>
+                                    <div style="font-family: 'Titillium Web'; font-size: 25px; letter-spacing: 5px; margin-top: -13px;color: rgb(103, 103, 103);">
+                                        Secretaria de Estado da Fazenda
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="width: 285px;">
+                                <div style="height: 150px; background-image: url(/nfe/resources/imagens/logo/logoNFE.png);background-repeat: no-repeat;                                      background-position: 50% 50%;"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <style>
+                    .center {
+                        display: table;
+                        width: 100%;
+                    }
+                    .v-align {
+                        display: table-cell;
+                        text-align: center;
+                        vertical-align: middle;
+                    }
+                    .box {
+                        display: inline-block;
+                        vertical-align: top; /* Removes the extra white space below the baseline */
+                    }
+                </style>
+
+                <div class="menu borda_redonda">
+                    <div class="center">
+                        <div class="v-align">
+                            <div class="box">
+                                <ul id="MenuBar1" class="MenuBarHorizontal" style="">
+                                    <li class="mb"><a href="/nfe">PRINCIPAL</a></li>
+                                    <li class="mb"><a href="/nfe/projetonfe.xhtml">PROJETO NF-e</a></li>
+                                    <li class="mb"><a class="MenuBarItemSubmenu" style="padding-right:30px" href="#">CREDENCIAMENTO</a>
+                                        <ul>
+                                            <li><a href="/nfe/procedimentos_credenciamento.xhtml">Procedimentos</a>      </li>
+                                            <li><a href="https://www.sefaz.rs.gov.br/NFE/NFE-CRD.aspx">Participantes</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb"><a href="#" class="MenuBarItemSubmenu" style="padding-right:30px">LEGISLAÇÃO</a>
+                                        <ul>
+                                            <li><a href="http://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=33ol5hhSYZk=">NACIONAL</a></li>
+                                            <li><a href="/nfe/legislacao_estadual.xhtml">ESTADUAL</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb"><a href="/nfe/duvidas.xhtml">DÚVIDAS</a></li>
+                                    <li class="mb"><a href="/nfe/consulta.xhtml" class="MenuBarItemSubmenu" style="padding-right:30px">CONSULTAS</a>
+                                        <ul>
+                                            <li><a href="/nfe/consulta.xhtml">Completa</a></li>
+                                            <li><a href="/nfe/inutilizacao.xhtml">Inutilização</a></li>
+                                            <li><a href="http://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx?versao=2.00">Disponibilidade de Serviços</a></li>
+                                            <li><a href="http://www.nfe.fazenda.gov.br/portal/webServices.aspx?tipoConteudo=Wak0FwB7dKs=">Relação de WEB SERVICES</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb"><a href="#" class="MenuBarItemSubmenu" style="padding-right:30px">DOWNLOAD</a>
+                                        <ul>
+                                            <li><a href="http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=Jd9VnWmU9wY=">Emissor NF-e</a></li>
+                                            <li><a href="http://www.nfe.fazenda.gov.br/portal/download.aspx?tipoConteudo=s/eYlu5e+Y4=">Visualizador DF-e</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb"><a href="/nfe/contato.xhtml">FALE CONOSCO</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="centro borda_redonda">
+                    <div style="margin: 10px;">
+        <h2>Consulta NF-e</h2>
+<form id="form_consulta_nfe" name="form_consulta_nfe" method="post" action="/nfe/consulta.xhtml;jsessionid=0972eb2f401ba4296864b9d39d87" class="shake" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="form_consulta_nfe" value="form_consulta_nfe" />
+<div id="msg"></div>
+            <table align="center">
+                <tr style="font-size: 16px;">
+                    <td align="right">Chave de acesso:  </td>
+                    <td colspan="2" align="left"><input id="chave" type="text" name="chave" value="" maxlength="54" style="width: 29em;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">Informe o código na imagem:  </td>
+                    <td align="left" valign="middle"><input type="text" name="j_idt12" maxlength="6" size="6" /> </td>
+                    <td><a id="j_idt14" href="#" onclick="mojarra.ab(this,event,'action',0,'captcha');return false">
+                            <img align="middle" src="/nfe/resources/imagens/refresh.png" style="margin-right: 10px" /></a><img id="captcha" src="data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAAyCAIAAACWMwO2AAAEUElEQVR42u2cjZKrIAyFefQ+Wt/M3dvOeiOQfwjUhnFmp61VPHyehFC3PE2tlON3e2bLhhHi+vILr30gS9ZvAtZukCVYNwRrE8iSrTuDtRCyBOtbwIqHLNn6IrAgUu2WYCVYocDZ+EuwEixduJxBYbYdwXqPYQBkU40wKdzUsWbjZcv6Vbgkgob2eLXpoTAALxVkMyBII5QgNSXHOkXdISGbdcbXCVdNTfZHqgYLXuVYA/sdinZDviXd81/Xq6GBL853wHu2O+R3e/y187AerbBr9FMov1iDLHKk5oJ1PWYIWACqDmQmsKrDPJo2ECzVnoW4+NFgaZGKAKs5chRYXRuTJ/71MF2d8fW3MrOzxYClwqW9fCFYNqQiwTp1+Y9XHFhAQRoyuCcbjU68uoNBoDYdLEHcZMHyILUErAteEh0PVdUAgMWm8G0EwXIsZ5mtF0D5yxSqgUVDWyiU++52YIGX9bl6+/TBwq4c2hU9PayUbe9voRoF5N1yNbqcYaJVahBu5EneR/G0A1hHNX8UgkUV5TiwJLrDFEoIlsrAWjW60bOLUTHlWPSew5HaBax2/kiARUvQBUtbfNKqga1p2tR4f5eIngPBmoTUerCgTDA+Yvvw1V4cLMdMllejH20RvIi4BgKxyNXMYMGy3H3A6prWVcfSzh8l99YksIiNPQXEhcWoqwZxm1WcScC6VHoFYJl52BGs1sCcYBnY0oJFxMSKJJsabF9aS+vuYKu8G8DYHKwar4VgaVegx26GHIuInv6Vrrlg2VSC6FRgdVn8myXxfYPVQb7eox5aBjUhvgdgpds9Wg1P8t5xNWuOxc+X4x1LNaBVQgDXl5mauy/TatWQrgQLyg20IRF2fowuNxiWpIQGtiYUYlWr6tP3NFt+x7SOFRasCLZojNaC1e45ijAFWA7bNILFSll1mAiFuhUe/Q9jsGVvdCkb+82PEmI/WGPd5DzUMrBgJoF9JF8rbAeIBouNa2qwrseRF0ir99v0y5lLtIJg79Nz3rnlBhtbtJT0R6r5C2SLnfYPLJCq3FGiRtVJ+W3GepvQ/PyoFVXl5hzoMLAO5FdEXWlgD9GVWqUFem5ctvJOq0GUvkbN051142FgnSO3BCxayiq90RrJDLC6p9OqIa9jadkalVH1lyIWgvVEFqRZsJCFEXGSERIKtWDRaqh+BBtDFZPs7g+WMENiHUul78DiSxGbsVwND17PkGZaX5zZOfNzUYoFA03eNuqiZqj03LgVSeE/oPkfr9PNWcSVxlG0zXuA9mPAmupYmCH50ew+M7Nh+xK8rEUaMVthz/tqk6EhndFVxl9nvAfN0WCtenLckGLP6xtBW4AgmxhYccm3zT8gCPtvEQNosz6c/Vl4FXOnwyau9wArbJawCV4ux0qwPoK2JfGkOCVIsOJp+wgDS7C+rsXglWAlXvuBtQlbSdWGeCVY2abgNWBIlrOVYO0Ia4KVbUb7Aec4guMh3LPbAAAAAElFTkSuQmCC;jsessionid=0972eb2f401ba4296864b9d39d87" style="vertical-align: middle" />
+                    </td>
+                </tr>
+                <tr><td><br /></td></tr>
+                <tr>
+                    <td colspan="3" align="center"><input id="j_idt17" type="submit" name="j_idt17" value="Consultar NF-e" class="btn" onclick="mojarra.ab(this,event,'action','form_consulta_nfe','form_consulta_nfe, msg');return false" /><input id="j_idt18" type="submit" name="j_idt18" value="Limpar" class="btn" onclick="mojarra.ab(this,event,'action','form_consulta_nfe','form_consulta_nfe, msg');return false" />
+                    </td>
+                </tr>
+            </table>
+            <script type="text/javascript">
+                loadingOff();
+            </script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+            <script>
+                $(document).ready(function () {
+                    var $seuCampoChave = $("#chave");
+                    $seuCampoChave.mask('0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000', {reverse: false});
+                });
+            </script><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="3412157150870630243:-7539734996526293563" autocomplete="off" />
+</form>
+
+                    </div>
+                </div>
+                <div class="rodape borda_redonda">
+                    <div style="margin-top: 10px;font-size: 16px;">
+                        © 2007-2020 - Secretaria de Estado de Fazenda - Todos os direitos reservados
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown: "/nferesources/SpryAssets/SpryMenuBarDownHover.gif", imgRight: "/nferesources/SpryAssets/SpryMenuBarRightHover.gif"});
+            var t = 0;
+            $(".mb").each(function (index) {
+                t = t + 1 + ($(this).width())
+            });
+            $("#MenuBar1").css("width", t + "px");
+        </script></body>
+
+
+
+</html>

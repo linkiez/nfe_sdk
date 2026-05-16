@@ -1,0 +1,959 @@
+{
+  "archived": [
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Downloads.aspx",
+      "filePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/downloads-34d3ce7f70.html",
+      "size": 100524,
+      "status": 200,
+      "url": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Downloads.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Legislacao.aspx",
+      "filePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/legislacao-740fb13c3a.html",
+      "size": 100053,
+      "status": 200,
+      "url": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Legislacao.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Servicos.aspx",
+      "filePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/servicos-9594adb2c3.html",
+      "size": 101160,
+      "status": 200,
+      "url": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Servicos.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Sobre.aspx",
+      "filePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/sobre-0c30916ab2.html",
+      "size": 111034,
+      "status": 200,
+      "url": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Sobre.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-d5cb6a5f17.html",
+      "size": 61412,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=04BIflQt1aY=",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-b62dcde362.html",
+      "size": 115495,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=04BIflQt1aY=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=BMPFMBoln3w=",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-f0fdfae921.html",
+      "size": 58271,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=BMPFMBoln3w=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=hXzemuyNHW4=",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-f655b32484.html",
+      "size": 38565,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=hXzemuyNHW4=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=04BIflQt1aY=",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-533e06ea86.html",
+      "size": 27216,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=04BIflQt1aY=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=BMPFMBoln3w=",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-00fa44a987.html",
+      "size": 26713,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=BMPFMBoln3w=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/manifestacaoDestinatario.aspx?tipoConteudo=o9MkXc+hmKs=",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/manifestacaodestinatario-8ed6ca3f3f.html",
+      "size": 2136,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/manifestacaoDestinatario.aspx?tipoConteudo=o9MkXc+hmKs=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/perguntasFrequentes.aspx?tipoConteudo=3Ow1nfTBzIo=",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/perguntasfrequentes-f507a1fe75.html",
+      "size": 29365,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/perguntasFrequentes.aspx?tipoConteudo=3Ow1nfTBzIo=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 0,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/principal.aspx",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-e5d30e895c.html",
+      "size": 39849,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Downloads.aspx",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-3994d2e8a8.html",
+      "size": 40001,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Sobre.aspx",
+      "filePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/descric-a-o-de-modelo-operacional-02c5cebf5d.html",
+      "size": 102745,
+      "status": 200,
+      "url": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Descri%C3%A7%C3%A3o-de-Modelo-Operacional.aspx"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-42847e28a1.html",
+      "size": 519061,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=6BTWDAit8To=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-39ef0ce4ea.html",
+      "size": 216272,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=7y4AFjI4sJ4=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-e239a8f55d.html",
+      "size": 39971,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/principal.aspx"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-8a67a42db9.html",
+      "size": 420893,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FHn62qOKXxo=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-24c3f27e29.html",
+      "size": 493313,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=FIDhg/zGft8=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-bb4f7552ac.html",
+      "size": 387612,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=lbpa538TYoA=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-3457d111f3.html",
+      "size": 874992,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=Li420kNzaH0=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-663b373466.html",
+      "size": 450947,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=NTdR2XGZ/1o=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-e239a8f55d.html",
+      "size": 39971,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/principal.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-e239a8f55d.html",
+      "size": 39971,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/principal.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-e239a8f55d.html",
+      "size": 39971,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/principal.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-e239a8f55d.html",
+      "size": 39971,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/principal.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-e239a8f55d.html",
+      "size": 39971,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/principal.aspx"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-48962050b6.html",
+      "size": 932084,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=ZD9Zq9iCs8w=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/cbenef-d5cb856477.html",
+      "size": 108058,
+      "status": 200,
+      "url": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/cBenef.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/item/index-fdb93e2dae.html",
+      "size": 1913,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/&"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/consulta-4c6fd7a5be.html",
+      "size": 30220,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/consulta.aspx?tipoConsulta=inutilizacao&amp;tipoConteudo=nDmpH/MjKrg=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/consultaepecconciliacao-08e75c0d16.html",
+      "size": 2134,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/consultaEPECConciliacao.aspx?tipoConteudo=uoOHfIFn8Nc=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/consultarecaptcha-da9d58551b.html",
+      "size": 30924,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&amp;tipoConteudo=7PhJ+gAVw2g=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/disponibilidade-cc6d35410d.html",
+      "size": 45948,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx?versao=0.00&amp;tipoConteudo=P2c98tUpxrI=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/download-971c0df10f.html",
+      "size": 28428,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/download.aspx?tipoConteudo=OFrcUd5//Lg=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/download-172a5a0cb6.html",
+      "size": 30289,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/download.aspx?tipoConteudo=vBO/4eBj5F4=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-dd412b3848.html",
+      "size": 345611,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=4TTWW00lVUc=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-e22005771a.html",
+      "size": 343967,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=8Jb%20bFd3mdM=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-dcc36cebbe.html",
+      "size": 338033,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=CnlB0bY/dZM=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-5f5f739888.html",
+      "size": 353879,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=e2WH33Ck/48=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-dc90bb376b.html",
+      "size": 461026,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=IwSVzZ/ibco=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-f0a9234608.html",
+      "size": 348468,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=PJO0usPAAuE=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-361a93e0c3.html",
+      "size": 353819,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=QurUUUf8Q1A=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-21d03301e7.html",
+      "size": 345835,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=TupjnFxb1ws=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-15e563eb2c.html",
+      "size": 293040,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/exibirArquivo.aspx?conteudo=XBgqrMtxPVY=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/infoestatisticas-beb992d2e9.html",
+      "size": 27808,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/infoEstatisticas.aspx?AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-1c42fa7d5e.html",
+      "size": 50899,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=3GhDwJ/ZeSI=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-eadf3048d8.html",
+      "size": 35074,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=AX0vPC2u8xc=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-ca0180d6c4.html",
+      "size": 39141,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=gPWmdzYAb0Y=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-af7e16abf3.html",
+      "size": 34648,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=ndIjl+iEFdE=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-1bf2c804ac.html",
+      "size": 28379,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=QIcipqxg0bU=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-115a3b69b6.html",
+      "size": 26915,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=6H4uVlIEaKs=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-8d17548311.html",
+      "size": 27949,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=esCrSQFUvGg=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-1b51e757d7.html",
+      "size": 27059,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=ndIjl+iEFdE=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/solicitacertificado-43d271a7b6.html",
+      "size": 2126,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/solicitaCertificado.aspx?tipoConteudo=49BQNAeyGfk=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/webservices-9bfd6ee423.html",
+      "size": 52743,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/webServices.aspx?tipoConteudo=OUC/YVNWZfo=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www1.sped.fazenda.gov.br/login/publico/bemvindo/index-0260835a40.html",
+      "size": 2396,
+      "status": 200,
+      "url": "https://www1.sped.fazenda.gov.br/login/publico/bemvindo/"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-e239a8f55d.html",
+      "size": 39971,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/principal.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-822fc86482.html",
+      "size": 28428,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-32a83adb2d.html",
+      "size": 28461,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&amp;Informe=443h418ivMU=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-2f02b4da0a.html",
+      "size": 28461,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&amp;Informe=eNB79g1iUBQ=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-601a113d2b.html",
+      "size": 28461,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&amp;Informe=lfrOVdQivIc=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-adfd518c4a.html",
+      "size": 28461,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&amp;Informe=PjvbpAEZcH8=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 1,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-ca941180b8.html",
+      "size": 28461,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&amp;Informe=Zb+gK161wfU=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/consulta-4eb7cfb5b0.html",
+      "size": 30334,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/consulta.aspx?tipoConsulta=inutilizacao&amp;tipoConteudo=nDmpH/MjKrg=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/consultarecaptcha-8fb7b4e6ff.html",
+      "size": 31038,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=resumo&amp;tipoConteudo=7PhJ+gAVw2g=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/disponibilidade-30f1e6a455.html",
+      "size": 46062,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx?versao=0.00&amp;tipoConteudo=P2c98tUpxrI=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/download-6f69356889.html",
+      "size": 28542,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/download.aspx?tipoConteudo=OFrcUd5//Lg=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/download-edf7bfeb22.html",
+      "size": 30403,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/download.aspx?tipoConteudo=vBO/4eBj5F4=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/infoestatisticas-95138f2d7b.html",
+      "size": 27922,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/infoEstatisticas.aspx?AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-98c64d2d71.html",
+      "size": 28541,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-04c66e64b8.html",
+      "size": 28574,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&amp;Informe=443h418ivMU=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-bc853814ad.html",
+      "size": 28574,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&amp;Informe=eNB79g1iUBQ=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-773943e967.html",
+      "size": 28574,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&amp;Informe=lfrOVdQivIc=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-7eedf1bf91.html",
+      "size": 28574,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&amp;Informe=PjvbpAEZcH8=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-18fd06868f.html",
+      "size": 28574,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&amp;Informe=Zb+gK161wfU=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-46383865f0.html",
+      "size": 61526,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-484a28996f.html",
+      "size": 115609,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=04BIflQt1aY=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-127a3afa6a.html",
+      "size": 51013,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=3GhDwJ/ZeSI=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-dc13b7ee6f.html",
+      "size": 35188,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=AX0vPC2u8xc=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-ae6c4ca140.html",
+      "size": 58385,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=BMPFMBoln3w=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-8ad6c6a00a.html",
+      "size": 39255,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=gPWmdzYAb0Y=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-ed021ccf1b.html",
+      "size": 38679,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=hXzemuyNHW4=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-8a84fa661b.html",
+      "size": 34762,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=ndIjl+iEFdE=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-f062985da6.html",
+      "size": 28493,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=QIcipqxg0bU=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-826946fb37.html",
+      "size": 27330,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=04BIflQt1aY=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-ddac8c8055.html",
+      "size": 27029,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=6H4uVlIEaKs=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-8d901bbf48.html",
+      "size": 26827,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=BMPFMBoln3w=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-995d713c90.html",
+      "size": 28177,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=esCrSQFUvGg=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-3e18cc4b16.html",
+      "size": 27173,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=ndIjl+iEFdE=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/perguntasfrequentes-329052b510.html",
+      "size": 29479,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/perguntasFrequentes.aspx?tipoConteudo=3Ow1nfTBzIo=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "http://www.nfe.fazenda.gov.br/portal/principal.aspx?AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/webservices-24c8f3a1fb.html",
+      "size": 52857,
+      "status": 200,
+      "url": "http://www.nfe.fazenda.gov.br/portal/webServices.aspx?tipoConteudo=OUC/YVNWZfo=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Descri%C3%A7%C3%A3o-de-Modelo-Operacional.aspx",
+      "filePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/descric-a-o-de-modelo-operacional-7e13f4883d.html",
+      "size": 102745,
+      "status": 200,
+      "url": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Descri%c3%a7%c3%a3o-de-Modelo-Operacional.aspx"
+    },
+    {
+      "contentType": "application/vnd.oasis.opendocument.spreadsheet",
+      "depth": 2,
+      "discoveredFrom": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/cBenef.aspx",
+      "filePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/downloads/tabela-cbenef-sp-v20260313-43791d8bd5.ods",
+      "size": 28801,
+      "status": 200,
+      "url": "https://portal.fazenda.sp.gov.br/servicos/nfe/Downloads/Tabela-cBenef-SP-v20260313.ods"
+    },
+    {
+      "contentType": "application/pdf",
+      "depth": 2,
+      "discoveredFrom": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/cBenef.aspx",
+      "filePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/downloads/tabela-cbenef-sp-v20260313-a389b45c83.pdf",
+      "size": 444211,
+      "status": 200,
+      "url": "https://portal.fazenda.sp.gov.br/servicos/nfe/Downloads/Tabela-cBenef-SP-v20260313.pdf"
+    },
+    {
+      "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "depth": 2,
+      "discoveredFrom": "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/cBenef.aspx",
+      "filePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/downloads/tabela-cbenef-sp-v20260313-659bb6faf8.xlsx",
+      "size": 51190,
+      "status": 200,
+      "url": "https://portal.fazenda.sp.gov.br/servicos/nfe/Downloads/Tabela-cBenef-SP-v20260313.xlsx"
+    },
+    {
+      "contentType": "application/x-java-jnlp-file",
+      "depth": 2,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/download.aspx?tipoConteudo=vBO/4eBj5F4=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/visualizador/visualizador-b89e201c4a.bin",
+      "size": 2657,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/visualizador/visualizador.jnlp"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=AX0vPC2u8xc=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-f3b8bb28c7.html",
+      "size": 39819,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/principal.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=AX0vPC2u8xc=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-f3b8bb28c7.html",
+      "size": 39819,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/principal.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=AX0vPC2u8xc=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-f3b8bb28c7.html",
+      "size": 39819,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/principal.aspx"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=6H4uVlIEaKs=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-09f0b5d926.html",
+      "size": 27333,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=ZmgtjvO0HR0=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=6H4uVlIEaKs=&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/sobrenfe-e5e9d6e145.html",
+      "size": 41893,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/sobreNFe.aspx?tipoConteudo=PEhYdxncZBE=&AspxAutoDetectCookieSupport=1"
+    },
+    {
+      "contentType": "text/html",
+      "depth": 2,
+      "discoveredFrom": "https://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&AspxAutoDetectCookieSupport=1",
+      "filePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-be46f58716.html",
+      "size": 28466,
+      "status": 200,
+      "url": "https://www.nfe.fazenda.gov.br/portal/informe.aspx?ehCTG=false&amp;page=1&amp;pagesize=5&AspxAutoDetectCookieSupport=1"
+    }
+  ],
+  "failed": [],
+  "generatedAt": "2026-05-16T11:36:29.305Z",
+  "outputRoot": "docs/_sources/official",
+  "seedUrls": [
+    "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Downloads.aspx",
+    "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Legislacao.aspx",
+    "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Servicos.aspx",
+    "https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Sobre.aspx",
+    "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=/NJarYc9nus=",
+    "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=04BIflQt1aY=",
+    "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=BMPFMBoln3w=",
+    "https://www.nfe.fazenda.gov.br/portal/listaConteudo.aspx?tipoConteudo=hXzemuyNHW4=",
+    "https://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=04BIflQt1aY=",
+    "https://www.nfe.fazenda.gov.br/portal/listaSubMenu.aspx?Id=BMPFMBoln3w=",
+    "https://www.nfe.fazenda.gov.br/portal/manifestacaoDestinatario.aspx?tipoConteudo=o9MkXc+hmKs=",
+    "https://www.nfe.fazenda.gov.br/portal/perguntasFrequentes.aspx?tipoConteudo=3Ow1nfTBzIo=",
+    "https://www.nfe.fazenda.gov.br/portal/principal.aspx"
+  ],
+  "skipped": []
+}

@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Área Restrita</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <script src="/login/bundles/jquery?v=FVs3ACwOLIVInrAl5sdzR2jrCDmVOWFbZMY6g6Q0ulE1"></script>
+
+    <link href="/login/Content/LoginTemplates/SPED/css/style?v=-akgoSwwbvqDbu-YFXxCipxfHHZTxclpdkkCGq0BDoo1" rel="stylesheet"/>
+
+
+</head>
+<body>
+    <div id="divCertificadoDigital">
+        <span>Certificado Digital</span>
+    </div>
+
+    <div id="divInfoCentral">
+        <p class="textoMarrom">Se você já possui Certificado Digital, clique no ícone abaixo</p>
+        <div id="divCert">
+            <form method="post" action="/login/publico/login/" id="frmLoginCert">
+                <div>
+                    <a id="linkFormSubmit" href="#" target="_top">
+                        <img alt="Certificado" class="imgCert" src="/login/Content/LoginTemplates/SPED/imagens/certificado.gif">
+                    </a>
+                    <br />
+                    <br />
+                    <a href="http://www.receita.fazenda.gov.br/atendvirtual/orientacoes/ComoObterRenRevCD.htm" class="linkObtencaoCert">Saiba como adquirir o certificado digital.</a>
+                </div>
+
+                    <input type="hidden" name="URL" value="https://www1.sped.fazenda.gov.br/JCConting">
+
+
+
+
+
+            </form>
+        </div>
+        <div id="divPoliticaPrivacidade">
+            <span>
+                As informações contidas nos sistemas informatizados da Administração Pública estão
+                protegidas por sigilo. Todo acesso é monitorado e controlado. Ao dar continuidade
+                à navegação neste serviço o usuário declara-se ciente das responsabilidades penais,
+                civis e administrativas descritas na <a href="http://idg.receita.fazenda.gov.br/sobre/politica-de-privacidade" target="_blank">
+    Política de Privacidade e uso.
+</a>
+            </span>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#linkFormSubmit").click(function (event) {
+                event.preventDefault();
+                $("#frmLoginCert").submit();
+            });
+        });
+
+    </script>
+
+</body>
+</html>

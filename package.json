@@ -21,6 +21,7 @@
   "scripts": {
     "clean": "rm -rf dist .xsd2ts-work",
     "generate": "tsx tools/generate.ts",
+    "download:official-docs": "tsx tools/download-official-docs.ts",
     "build": "npm run generate && tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json",
     "lint": "eslint .",
