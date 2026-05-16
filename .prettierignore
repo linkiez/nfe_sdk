@@ -1,0 +1,5 @@
+dist
+.xsd2ts-work
+node_modules
+src
+xsd

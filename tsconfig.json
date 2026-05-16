@@ -1,16 +1,20 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "ignoreDeprecations": "6.0",
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
     "skipLibCheck": true,
-    "types": ["node"],
+    "resolveJsonModule": true,
+    "types": ["node", "jest"],
     "outDir": "dist",
     "rootDir": "."
   },
-  "include": ["tools/**/*.ts"],
-  "exclude": ["generated-ts", "node_modules"]
+  "include": ["src/**/*.ts", "tools/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["dist", "node_modules"]
 }

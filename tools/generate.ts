@@ -1578,9 +1578,15 @@ function writeIndexFiles(directoryPath: string): void {
 
   const exportLines = entries
     .filter((entry) => entry.name !== 'index.ts')
-    .map((entry) => entry.name.replace(/\.ts$/i, ''))
-    .sort((left, right) => left.localeCompare(right))
-    .map((name) => `export * from './${name}';`);
+    .sort((left, right) => left.name.localeCompare(right.name))
+    .map((entry) => {
+      if (entry.name === 'manifest.json') {
+        return "export { default as manifest } from './manifest.json';";
+      }
+
+      const name = entry.name.replace(/\.ts$/i, '');
+      return `export * from './${name}';`;
+    });
 
   if (exportLines.length > 0) {
     fs.writeFileSync(path.join(directoryPath, 'index.ts'), `${exportLines.join('\n')}\n`, 'utf8');

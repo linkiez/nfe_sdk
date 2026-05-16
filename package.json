@@ -1,22 +1,56 @@
 {
-  "name": "nfe_schemas",
+  "name": "nfe-sdk",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "clean": "rm -rf dist .xsd2ts-work src",
-    "generate": "ts-node --project tsconfig.json tools/generate.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "TypeScript SDK for NFe, NFCe, and Manifestacao do Destinatario XSD schemas.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
   },
-  "keywords": [],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18.18"
+  },
+  "scripts": {
+    "clean": "rm -rf dist .xsd2ts-work",
+    "generate": "tsx tools/generate.ts",
+    "build": "npm run generate && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "test": "jest --passWithNoTests"
+  },
+  "keywords": [
+    "nfe",
+    "nfce",
+    "manifestacao-do-destinatario",
+    "xsd",
+    "typescript",
+    "esm"
+  ],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.8.0",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "jest": "^30.2.0",
     "prettier": "^3.8.3",
-    "ts-node": "^10.9.2",
+    "ts-jest": "^29.4.5",
+    "tsx": "^4.20.6",
     "typescript": "^6.0.3",
+    "typescript-eslint": "^8.46.4",
     "xsd2ts": "^0.9.17"
   }
 }

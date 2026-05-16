@@ -1,6 +1,6 @@
-# nfe_schemas
+# nfe-sdk
 
-Conversor de schemas XSD da NF-e para TypeScript usando `xsd2ts` com uma camada própria de normalização, particionamento e renomeação dos artefatos gerados.
+SDK e conversor de schemas XSD da NF-e, NFC-e e Manifestacao do Destinatario para TypeScript usando `xsd2ts` com uma camada própria de normalização, particionamento e renomeação dos artefatos gerados.
 
 ## Objetivo
 
@@ -41,10 +41,29 @@ Exemplos:
 - Node.js 18+ recomendado
 - npm
 
+## Diretrizes de desenvolvimento
+
+- O repositório deve evoluir como pacote npm em TypeScript com consumo ESM como alvo
+	principal.
+- Mudanças em contratos públicos, saída gerada ou regras de normalização devem incluir
+	validação automatizada com Jest e revisão de impacto de compatibilidade.
+- ESLint, Prettier e verificação de TypeScript compõem o baseline de qualidade esperado
+	para código mantido manualmente.
+
 ## Instalação
 
 ```bash
 npm install
+```
+
+## Scripts principais
+
+```bash
+npm run generate
+npm run typecheck
+npm run lint
+npm run format:check
+npm test
 ```
 
 ## Uso
