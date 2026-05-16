@@ -73,6 +73,8 @@ tools/
 tests/
 └── config/
 
+xsd/
+
 src/
 ├── classes/
 ├── enums/
@@ -81,7 +83,7 @@ src/
 └── manifest.json
 ```
 
-**Structure Decision**: Keep the existing single-package repository layout. This feature writes final artifacts to `docs/`, keeps planning artifacts in `specs/001-research-sefaz-docs/`, and only touches `tools/` or `tests/` if supporting automation becomes necessary.
+**Structure Decision**: Keep the existing single-package repository layout. The repository keeps original XML schemas in `xsd/` and generated TypeScript output in `src/`. This feature writes final artifacts to `docs/`, keeps planning artifacts in `specs/001-research-sefaz-docs/`, and only touches `tools/` or `tests/` if supporting automation becomes necessary.
 
 ## Complexity Tracking
 
