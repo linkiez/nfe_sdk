@@ -49,6 +49,9 @@ Exemplos:
 	validação automatizada com Jest e revisão de impacto de compatibilidade.
 - ESLint, Prettier e verificação de TypeScript compõem o baseline de qualidade esperado
 	para código mantido manualmente.
+- Pesquisas normativas, decisões de interoperabilidade e material documental devem registrar
+	fontes primárias e separar claramente referências secundárias confiáveis, sem tratar essas
+	fontes complementares como base normativa oficial.
 
 ## Instalação
 

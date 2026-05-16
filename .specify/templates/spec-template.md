@@ -104,6 +104,15 @@
 - **CC-004**: State the validation scope required for Jest, lint, format, and type or
   build verification.
 
+### Knowledge Sources & Provenance
+
+- **KS-001**: Identify the primary authoritative sources that justify the feature behavior,
+  deliverable content, or domain interpretation.
+- **KS-002**: List any secondary references separately, explain why they are needed, and
+  keep them explicitly non-normative.
+- **KS-003**: Record unresolved conflicts, access restrictions, or provenance gaps whenever
+  the primary sources are incomplete or ambiguous.
+
 *Example of marking unclear requirements:*
 
 - **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]

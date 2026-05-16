@@ -36,6 +36,8 @@
 
 **Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
 
+**Knowledge Sources**: [primary normative sources, approved secondary references, and unresolved provenance gaps or NEEDS CLARIFICATION]
+
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
@@ -44,6 +46,8 @@
   compatibility or migration notes.
 - Affected schema families and normalization rules are identified, with explicit note when
   emitted identifiers, shapes, or file layout may change.
+- Primary normative sources are identified for any domain-driven conclusion, and approved
+  secondary references are listed separately when they supplement a source gap.
 - The plan separates handwritten source boundaries from generated output boundaries and
   lists any strict-type exceptions that require justification.
 - Focused validation commands are listed for Jest, lint, format, and type or build

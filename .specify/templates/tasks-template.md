@@ -11,7 +11,9 @@ description: "Task list template for feature implementation"
 
 **Tests**: Include test tasks whenever the feature changes generator behavior, package
 exports, public contracts, schema normalization, or other observable behavior. Pure
-documentation-only work may omit tests if the specification makes that explicit.
+documentation-only work may omit tests if the specification makes that explicit, but work
+that depends on external domain knowledge MUST still include provenance or source-registry
+tasks when sources are added or changed.
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
@@ -154,6 +156,7 @@ Examples of foundational tasks (adjust based on your project):
 **Purpose**: Improvements that affect multiple user stories
 
 - [ ] TXXX [P] Documentation and package metadata updates in docs/ or root package files
+- [ ] TXXX [P] Update source registry or provenance notes for any new primary or secondary references
 - [ ] TXXX Code cleanup and refactoring
 - [ ] TXXX Performance or generation optimization across all stories
 - [ ] TXXX [P] Additional unit tests in tests/unit/
@@ -182,6 +185,7 @@ Examples of foundational tasks (adjust based on your project):
 ### Within Each User Story
 
 - Tests for behavioral or public contract changes MUST be written and FAIL before implementation
+- Provenance updates for new external knowledge sources MUST happen before implementation tasks that depend on them
 - Models before services
 - Services before endpoints
 - Core implementation before integration
