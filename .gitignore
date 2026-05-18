@@ -1,6 +1,10 @@
 node_modules/
 dist/
 .xsd2ts-work/
+.env*
+.DS_Store
+Thumbs.db
+*.log
 count.txt
 output.txt
 tsc_output.log

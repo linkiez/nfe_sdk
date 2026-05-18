@@ -7,9 +7,13 @@ describe('root functional facade contract', () => {
     ).toEqual([
       'createEnviNFe',
       'createNFe',
+      'createSigningContext',
+      'executeNFeSoapService',
       'publicPackageContract',
+      'resolveNFeServiceEndpoint',
       'serializeEnviNFeXml',
       'serializeNFeXml',
+      'signNFeXml',
     ]);
   });
 

@@ -18,16 +18,27 @@ describe('package contract documentation', () => {
     expect(documentedExports).toEqual([
       'createEnviNFe',
       'createNFe',
+      'createSigningContext',
+      'executeNFeSoapService',
       'publicPackageContract',
+      'resolveNFeServiceEndpoint',
       'serializeEnviNFeXml',
       'serializeNFeXml',
+      'signNFeXml',
     ]);
     expect(readme).toContain('`publicPackageContract`');
     expect(readme).toContain('`createNFe`');
     expect(readme).toContain('`createEnviNFe`');
+    expect(readme).toContain('`createSigningContext`');
+    expect(readme).toContain('`executeNFeSoapService`');
     expect(readme).toContain('`serializeNFeXml`');
     expect(readme).toContain('`serializeEnviNFeXml`');
+    expect(readme).toContain('`resolveNFeServiceEndpoint`');
+    expect(readme).toContain('`signNFeXml`');
     expect(readme).toContain('`manifest.json` permanece interno');
+    expect(readme).toContain(
+      '`enviNFe` permanece como envelope de transporte nao assinado',
+    );
     expect(readme).not.toContain('export * from');
   });
 });

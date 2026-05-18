@@ -2,17 +2,19 @@
 
 ## Visao geral
 
-Barrel da camada canonica inicial da feature 004.
+Barrel da camada canonica manual publicada pelo root import.
 
 ## Responsabilidades
 
 - Reexportar a facade publica de criacao canonica.
+- Reexportar a facade publica de assinatura digital.
+- Reexportar a facade publica inicial de transporte SOAP.
 - Reexportar os tipos publicos usados pela facade.
 
 ## Entradas e saidas
 
 - Entradas: nenhuma.
-- Saidas: `createNFe`, `createEnviNFe`, `serializeNFeXml`, `serializeEnviNFeXml` e tipos canonicos.
+- Saidas: `createNFe`, `createEnviNFe`, `createSigningContext`, `resolveNFeServiceEndpoint`, `executeNFeSoapService`, `serializeNFeXml`, `serializeEnviNFeXml`, `signNFeXml` e tipos canonicos/de assinatura/transporte.
 
 ## Fluxo principal
 
@@ -20,8 +22,10 @@ Barrel da camada canonica inicial da feature 004.
 flowchart TD
   A[src/index.ts] --> B[src/canonical/index.ts]
   B --> C[facade]
-  B --> D[serialization facade]
-  B --> E[shared contracts]
+  B --> D[signing facade]
+  B --> E[transport facade]
+  B --> F[serialization facade]
+  B --> G[shared contracts]
 ```
 
 ## Tratamento de erros e casos-limite
@@ -39,6 +43,12 @@ import { createNFe } from './index.js';
 
 - `./facade/create-envi-nfe.js`
 - `./facade/create-nfe.js`
+- `./facade/create-signing-context.js`
+- `./facade/execute-nfe-soap-service.js`
+- `./facade/resolve-nfe-service-endpoint.js`
 - `./facade/serialize-envi-nfe-xml.js`
 - `./facade/serialize-nfe-xml.js`
+- `./facade/sign-nfe-xml.js`
+- `./signing/contracts.js`
 - `./shared/contracts.js`
+- `./transport/contracts.js`

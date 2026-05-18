@@ -4,15 +4,19 @@ SDK em TypeScript para evoluir de uma base gerada a partir de XSDs da NF-e, NFC-
 
 ## Contrato publico minimo desta fase
 
-Nesta fase, o pacote publica somente o import raiz e uma superficie funcional enxuta para a primeira slice canonica:
+Nesta fase, o pacote publica somente o import raiz e uma superficie funcional enxuta para a slice canonica inicial, o primeiro slice aditivo de assinatura digital e o primeiro slice aditivo de transporte SOAP:
 
 ```ts
 import {
   createEnviNFe,
   createNFe,
+  createSigningContext,
+  executeNFeSoapService,
   publicPackageContract,
+  resolveNFeServiceEndpoint,
   serializeEnviNFeXml,
   serializeNFeXml,
+  signNFeXml,
 } from 'nfe-sdk';
 ```
 
@@ -22,11 +26,48 @@ import {
 
 `createEnviNFe` monta o lote canonico inicial de `enviNFe` com base no mesmo recorte funcional.
 
+`createSigningContext` prepara um contexto reutilizavel de assinatura digital a partir de um certificado A1 em arquivo `.pfx` ou em memoria.
+
 `serializeNFeXml` e `serializeEnviNFeXml` produzem XML deterministico para o mesmo recorte inicial.
+
+`signNFeXml` recebe um XML nao assinado de `NFe`, aplica XMLDSig, valida localmente a assinatura antes do retorno e devolve o XML assinado correspondente.
+
+`resolveNFeServiceEndpoint` resolve a entrada versionada do catalogo inicial de transporte para `homologation`, `nfe-status-service` e `nfe-authorization` usando os endpoints compartilhados da SVAN publicados no catalogo inicial `2026-05-18-initial-draft`.
+
+`executeNFeSoapService` monta o envelope SOAP 1.2, escolhe o endpoint homologado suportado, executa a chamada com executor injetado ou default e devolve `TransportOutcome` com classificacao e evidencia minima da troca.
+
+No slice inicial, `TransportOutcome.classification` distingue pelo menos `success`, `timeout`, `usage-error`, `unavailable`, `functional-rejection` e `protocol-error`, sem misturar transporte com orquestracao de dominio fiscal.
 
 O contrato normativo continua sendo `package.json`/exports. O README apenas explica o que foi estabilizado.
 
 `manifest.json` permanece interno e nao integra a superficie publica estavel.
+
+`enviNFe` permanece como envelope de transporte nao assinado do documento ja assinado nesta fase.
+
+## Exemplo rapido do slice SOAP
+
+```ts
+import { executeNFeSoapService, resolveNFeServiceEndpoint } from 'nfe-sdk';
+
+const endpoint = resolveNFeServiceEndpoint({
+  environment: 'homologation',
+  service: 'nfe-status-service',
+});
+
+const outcome = await executeNFeSoapService({
+  environment: 'homologation',
+  payloadXml: '<consStatServNFe versao="4.00">...</consStatServNFe>',
+  requestExecutor: async () => ({
+    headers: { 'content-type': 'application/soap+xml; charset=utf-8' },
+    responseXml: '<soap:Envelope>...</soap:Envelope>',
+    status: 200,
+  }),
+  service: 'nfe-status-service',
+  timeoutMs: 5000,
+});
+
+console.log(endpoint.endpointUrl, outcome.classification);
+```
 
 ## O que fica fora do contrato publico
 

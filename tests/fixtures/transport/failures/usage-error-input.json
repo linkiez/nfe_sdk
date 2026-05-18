@@ -1,0 +1,6 @@
+{
+  "environment": "homologation",
+  "payloadXml": "   ",
+  "service": "nfe-status-service",
+  "timeoutMs": 5000
+}

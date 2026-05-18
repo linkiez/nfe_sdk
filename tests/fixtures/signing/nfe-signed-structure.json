@@ -1,0 +1,10 @@
+{
+  "documentId": "NFe35160512345678000123550010000000011000000011",
+  "requiredFragments": [
+    "<Signature xmlns=\"http://www.w3.org/2000/09/xmldsig#\">",
+    "<SignedInfo>",
+    "<SignatureValue>",
+    "<X509Certificate>",
+    "Reference URI=\"#NFe35160512345678000123550010000000011000000011\""
+  ]
+}

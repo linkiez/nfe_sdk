@@ -7,9 +7,13 @@ describe('root entrypoint contract', () => {
     ).toEqual([
       'createEnviNFe',
       'createNFe',
+      'createSigningContext',
+      'executeNFeSoapService',
       'publicPackageContract',
+      'resolveNFeServiceEndpoint',
       'serializeEnviNFeXml',
       'serializeNFeXml',
+      'signNFeXml',
     ]);
     expect(publicApi.publicPackageContract).toEqual(
       expect.objectContaining({
@@ -17,8 +21,12 @@ describe('root entrypoint contract', () => {
           'publicPackageContract',
           'createNFe',
           'createEnviNFe',
+          'createSigningContext',
+          'resolveNFeServiceEndpoint',
+          'executeNFeSoapService',
           'serializeNFeXml',
           'serializeEnviNFeXml',
+          'signNFeXml',
         ],
         normativeSource: 'package.json#exports["."]',
       }),

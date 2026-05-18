@@ -10,6 +10,13 @@ O portal nacional da NF-e continua sendo a referencia publica inicial para a NFC
 
 O proprio portal nacional remete a `Portais Estaduais da NF-e` e apresenta a relacao de UFs integrantes do Cadastro Centralizado de Contribuintes, incluindo as 27 UFs listadas na feature. Isso confirma a necessidade de uma documentacao em duas camadas: uma nacional para regras compartilhadas e outra por UF para diferencas de acesso, servicos, disponibilidade e eventuais deltas operacionais.
 
+## Cobertura oficial consolidada
+
+- A base nacional consolidada ja inclui o MOC 7.0 compartilhado com NF-e, o manual tecnico de DANFE NFC-e e QR Code, o manual de contingencia offline e o manual de boas praticas de emissor.
+- As notas tecnicas internalizadas confirmam cobertura para temas que afetam diretamente NFC-e, como produtor rural pessoa fisica, RTC, CNPJ alfanumerico, CRT=4, cancelamento por substituicao e alteracoes de leiaute.
+- Os informes tecnicos internalizados cobrem atualizacoes de QR Code por UF, meios de pagamento, combustiveis, NCM e outras tabelas auxiliares relevantes para NFC-e.
+- A base nacional consolidada preserva a camada de servicos compartilhados e o mapa dos portais estaduais, que seguem sendo a fronteira natural da camada por UF.
+
 ## Mudancas recentes relevantes
 
 - O portal nacional exibe notas tecnicas e informes recentes que afetam conjuntamente NF-e e NFC-e, incluindo a NT 2025.002 v1.36 sobre leiautes ligados a RTC e a NT 2026.004 v1.00 sobre CNPJ alfanumerico.
@@ -26,6 +33,12 @@ O proprio portal nacional remete a `Portais Estaduais da NF-e` e apresenta a rel
 
 Ver [Matriz NFC-e por UF](./uf-matrix.md) para cobertura completa das 27 unidades federativas.
 
+## Trilhas de leitura no acervo
+
+- [Cobertura oficial de notas fiscais](../notas-fiscais/index.md) consolida a leitura transversal por fonte convertida.
+- [Documentos oficiais convertidos do Portal Nacional da NF-e](../documentos-oficiais-portal-nfe.md) concentra a sintese nacional de manuais, esquemas, NTs e informes.
+- [Matriz por UF](./uf-matrix.md) concentra o recorte estadual que nao cabe no resumo nacional.
+
 ## Fontes primarias
 
 - `SRC-NFCE-001` Portal Nacional da NF-e - pagina principal e navegacao publica.
@@ -40,5 +53,5 @@ Ver [Matriz NFC-e por UF](./uf-matrix.md) para cobertura completa das 27 unidade
 
 ## Lacunas e riscos abertos
 
-- Esta etapa ainda nao percorreu individualmente os 27 portais estaduais, portanto a matriz por UF permanece apenas estruturada.
-- Fluxos e requisitos estritamente estaduais da NFC-e ainda dependem de coleta detalhada por UF.
+- A camada nacional compartilhada agora esta incorporada na base oficial consolidada, mas a curadoria detalhada por UF continua incompleta.
+- Fluxos e requisitos estritamente estaduais da NFC-e ainda dependem de coleta e consolidacao editorial portal a portal.

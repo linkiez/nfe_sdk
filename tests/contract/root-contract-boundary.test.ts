@@ -7,8 +7,12 @@ describe('root contract boundary', () => {
         'publicPackageContract',
         'createNFe',
         'createEnviNFe',
+        'createSigningContext',
+        'resolveNFeServiceEndpoint',
+        'executeNFeSoapService',
         'serializeNFeXml',
         'serializeEnviNFeXml',
+        'signNFeXml',
       ],
       importSpecifier: 'nfe-sdk',
       path: '.',
@@ -18,8 +22,12 @@ describe('root contract boundary', () => {
       'publicPackageContract',
       'createNFe',
       'createEnviNFe',
+      'createSigningContext',
+      'resolveNFeServiceEndpoint',
+      'executeNFeSoapService',
       'serializeNFeXml',
       'serializeEnviNFeXml',
+      'signNFeXml',
     ]);
   });
 
@@ -27,7 +35,9 @@ describe('root contract boundary', () => {
     expect(publicPackageContract.compatibilityNotes).toEqual(
       expect.arrayContaining([
         'Only the root import is stable in this phase.',
-        'The initial functional facade is limited to canonical NFe and enviNFe creation and deterministic XML serialization in this phase.',
+        'The initial functional facade is limited to canonical NFe and enviNFe creation, deterministic XML serialization, the first additive digital-signing slice, and the first additive SOAP transport slice in this phase.',
+        'The digital-signing slice signs only NFe XML and keeps enviNFe as an unsigned transport envelope in this phase.',
+        'The SOAP transport slice covers only homologation, shared SVAN endpoints, and the initial status-service and authorization operations in this phase.',
         'Future functional phases may expand the root contract, but they must not silently republish the generated tree.',
       ]),
     );

@@ -10,6 +10,13 @@ O Portal Nacional da NF-e permanece como a base normativa e operacional publica 
 
 Na camada estadual, o portal da SEFAZ/SP confirma a definicao operacional da NF-e como documento exclusivamente digital, com validade juridica garantida por assinatura digital do emitente e recepcao previa pelo Fisco. O mesmo portal tambem expõe paginas publicas de servicos, downloads, legislacao, perguntas frequentes, contatos de atendimento e avisos de indisponibilidade ou contingencia, o que o torna uma referencia complementar util para verificar material publico por UF.
 
+## Cobertura oficial consolidada
+
+- A base nacional consolidada confirma a camada publica de servicos para consulta de NF-e, consulta de inutilizacao, disponibilidade, relacao de web services, agendamento SVC-AN e conciliacao de EPEC.
+- O FAQ nacional internalizado explicita a segmentacao operacional do dominio em emissao e autorizacao, correcao, cancelamento, inutilizacao, envio ao destinatario, consulta na internet, escrituracao, contingencia, DANFE e certificacao digital.
+- Os manuais internalizados confirmam que o MOC 7.0, os anexos de leiaute e regras de validacao e os manuais de contingencia ja fazem parte da base oficial consolidada.
+- As notas tecnicas internalizadas sustentam o acompanhamento continuo de alteracoes de leiaute, RTC, CNPJ alfanumerico, GTIN, eventos e distribuicao DFe.
+
 ## Mudancas recentes relevantes
 
 - O portal nacional publica informes e notas tecnicas recentes ainda relevantes para implementacao, incluindo referencias visiveis em 2026-05-16 para o Informe Tecnico 2026.002 v1.00, a NT 2024.003 v1.10, a NT 2026.004 v1.00 e a NT 2025.002 v1.36 sobre leiautes de NF-e e NFC-e relacionados a RTC.
@@ -32,11 +39,17 @@ Na camada estadual, o portal da SEFAZ/SP confirma a definicao operacional da NF-
 - `SRC-NFE-004` Portal SEFAZ/SP - Servicos da NF-e.
 - `SRC-NFE-005` Portal SEFAZ/SP - Downloads da NF-e.
 
+## Trilhas de leitura no acervo
+
+- [Cobertura oficial de notas fiscais](../notas-fiscais/index.md) consolida a leitura transversal por fonte convertida.
+- [Documentos oficiais convertidos do Portal Nacional da NF-e](../documentos-oficiais-portal-nfe.md) concentra a sintese nacional de manuais, esquemas, NTs e informes.
+- [Mudancas recentes](../mudancas-recentes.md) destaca os deltas com impacto imediato no SDK.
+
 ## Fontes secundarias
 
 - `SRC-SEC-001` node-dfe - referencia tecnica complementar para capacidades praticas e lacunas de implementacao em Node.js, sem valor normativo.
 
 ## Lacunas e riscos abertos
 
-- Esta etapa confirmou a superficie publica oficial, mas nao consolidou ainda o detalhamento completo de cada manual ou NT a partir das paginas internas de `Documentos` e `Downloads` do portal nacional.
-- Regras finas de obrigatoriedade, excecoes setoriais e cenarios detalhados de contingencia ainda precisam ser extraidos de artefatos normativos especificos.
+- A superficie publica principal e os principais hubs documentais do portal nacional agora estao incorporados na base oficial consolidada, mas a curadoria fina por manual e por NT ainda nao foi derivada integralmente para tabelas editoriais menores.
+- Regras finas de obrigatoriedade, excecoes setoriais e cenarios detalhados de contingencia ainda dependem de leitura dirigida dos anexos normativos ja capturados.
