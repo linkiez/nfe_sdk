@@ -2,6 +2,11 @@ import type {
   ResolveNFeServiceEndpointInput,
   ServiceCatalogEntry,
 } from './contracts.js';
+import {
+  getInitialTransportCatalogProvenance,
+  getOperationalTransportCatalogPlaceholders,
+  getOperationalTransportCatalogSources,
+} from './catalog-provenance.js';
 
 const TRANSPORT_CATALOG_VERSION = '2026-05-18-initial-draft' as const;
 
@@ -13,13 +18,20 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
     environment: 'homologation',
     layoutVersion: '4.00',
     provider: 'SVAN',
-    provenance: {
-      sources: [
-        'docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/webservices-9bfd6ee423.md',
-        'specs/006-add-soap-transport/research.md',
-      ],
-    },
+    provenance: getInitialTransportCatalogProvenance(),
     service: 'nfe-status-service',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeConsultaProtocolo4/NFeConsultaProtocolo4.asmx',
+    environment: 'homologation',
+    layoutVersion: '4.00',
+    provider: 'SVAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-document-situation',
   },
   {
     catalogVersion: TRANSPORT_CATALOG_VERSION,
@@ -28,15 +40,48 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
     environment: 'homologation',
     layoutVersion: '4.00',
     provider: 'SVAN',
-    provenance: {
-      sources: [
-        'docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/webservices-9bfd6ee423.md',
-        'specs/006-add-soap-transport/research.md',
-      ],
-    },
+    provenance: getInitialTransportCatalogProvenance(),
     service: 'nfe-authorization',
   },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeInutilizacao4/NFeInutilizacao4.asmx',
+    environment: 'homologation',
+    layoutVersion: '4.00',
+    provider: 'SVAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-inutilization',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento4/RecepcaoEvento4.asmx',
+    environment: 'homologation',
+    layoutVersion: '4.00',
+    provider: 'SVAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-cancellation',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento4/RecepcaoEvento4.asmx',
+    environment: 'homologation',
+    layoutVersion: '4.00',
+    provider: 'SVAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-correction-letter',
+  },
 ];
+
+const TRANSPORT_CATALOG_PLACEHOLDERS = getOperationalTransportCatalogPlaceholders();
 
 /**
  * Published catalog version for the initial SOAP transport slice.
@@ -65,4 +110,14 @@ export function findTransportServiceCatalogEntry(
     (entry) =>
       entry.environment === input.environment && entry.service === input.service,
   );
+}
+
+/**
+ * Returns the internal transport placeholders reserved for the operational MVP.
+ *
+ * @returns Read-only placeholder entries that do not yet publish new endpoints.
+ */
+export function getTransportCatalogPlaceholders():
+  ReturnType<typeof getOperationalTransportCatalogPlaceholders> {
+  return TRANSPORT_CATALOG_PLACEHOLDERS;
 }

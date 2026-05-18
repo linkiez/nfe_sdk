@@ -1,13 +1,19 @@
 const DOCUMENTED_SURFACE = [
   'publicPackageContract',
+  'authorizeNFe',
+  'cancelNFe',
   'createNFe',
   'createEnviNFe',
   'createSigningContext',
+  'queryNFeDocumentSituation',
+  'queryNFeServiceStatus',
   'resolveNFeServiceEndpoint',
   'executeNFeSoapService',
   'serializeNFeXml',
   'serializeEnviNFeXml',
   'signNFeXml',
+  'submitNFeCorrectionLetter',
+  'submitNFeInutilization',
 ] as const;
 
 const EXCLUDED_SURFACE = [
@@ -21,10 +27,11 @@ const EXCLUDED_SURFACE = [
 
 const COMPATIBILITY_NOTES = [
   'Only the root import is stable in this phase.',
-  'The initial functional facade is limited to canonical NFe and enviNFe creation, deterministic XML serialization, the first additive digital-signing slice, and the first additive SOAP transport slice in this phase.',
+  'The initial functional facade is limited to canonical NFe and enviNFe creation, deterministic XML serialization, the first additive digital-signing slice, the first additive SOAP transport slice, and the first additive operational authorization facade in this phase.',
   'Generated schema trees remain internal inventory until a later contract decision promotes them.',
   'The digital-signing slice signs only NFe XML and keeps enviNFe as an unsigned transport envelope in this phase.',
   'The SOAP transport slice covers only homologation, shared SVAN endpoints, and the initial status-service and authorization operations in this phase.',
+  'The first operational NFe slice currently exposes authorizeNFe, queryNFeServiceStatus, queryNFeDocumentSituation, submitNFeInutilization, cancelNFe, and submitNFeCorrectionLetter for homologation workflows on top of the canonical, signing, and transport layers.',
   'The initial transport catalog is versioned as 2026-05-18-initial-draft and remains restricted to one SVAN entry per supported service in this phase.',
   'Future functional phases may expand the root contract, but they must not silently republish the generated tree.',
 ] as const;
@@ -37,6 +44,7 @@ const REPOSITORY_EVIDENCE = [
   'specs/004-iniciar-sdk/contracts/public-functional-facade.md',
   'specs/005-add-digital-signing/contracts/public-signing-facade.md',
   'specs/006-add-soap-transport/contracts/public-soap-transport-facade.md',
+  'specs/007-nfe-operational-mvp/contracts/public-nfe-operational-facade.md',
 ] as const;
 
 /**

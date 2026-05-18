@@ -2,13 +2,15 @@
 
 ## Visao geral
 
-Mantem o catalogo versionado em memoria para o slice inicial de transporte SOAP.
+Mantem o catalogo versionado em memoria para o slice inicial de transporte SOAP e para o MVP operacional publicado no root import.
 
 ## Responsabilidades
 
 - Publicar a versao atual do catalogo.
 - Expor a lista de entradas suportadas.
 - Fornecer a busca exata por ambiente e servico.
+- Reusar a proveniencia oficial sem duplicar fontes nas entradas atuais.
+- Preservar a distincao entre entradas publicadas e placeholders ainda inexistentes.
 
 ## Entradas e saidas
 
@@ -21,6 +23,8 @@ Mantem o catalogo versionado em memoria para o slice inicial de transporte SOAP.
 export function findTransportServiceCatalogEntry(
   input: ResolveNFeServiceEndpointInput,
 ): ServiceCatalogEntry | undefined;
+
+export function getTransportCatalogPlaceholders(): readonly ReturnType<typeof getOperationalTransportCatalogPlaceholders>;
 ```
 
 ## Fluxo principal
@@ -37,6 +41,9 @@ sequenceDiagram
 
 - O arquivo nao lanca erros diretamente.
 - Quando a combinacao nao existe no catalogo inicial, a busca retorna `undefined`.
+- Os placeholders operacionais nao sao retornados por `findTransportServiceCatalogEntry`.
+- O primeiro incremento operacional de consultas adiciona a entrada homologada de `nfe-document-situation` ao catalogo publico.
+- O MVP operacional adiciona tambem `nfe-inutilization`, `nfe-cancellation` e `nfe-correction-letter` ao catalogo homologado publicado.
 
 ## Exemplos
 
@@ -47,5 +54,6 @@ const entries = getTransportServiceCatalog();
 ## Dependencias e integracoes
 
 - `contracts.ts`
+- `catalog-provenance.ts`
 - `resolve-nfe-service-endpoint.ts`
 - `specs/006-add-soap-transport/research.md`

@@ -1,7 +1,13 @@
 const SUPPORTED_NFE_SOAP_SERVICES = [
   'nfe-status-service',
   'nfe-authorization',
+  'nfe-inutilization',
+  'nfe-cancellation',
+  'nfe-correction-letter',
+  'nfe-document-situation',
 ] as const;
+
+const PLANNED_OPERATIONAL_TRANSPORT_SERVICES = [] as const;
 
 /**
  * Supported SOAP service identifiers for the initial transport slice.
@@ -21,6 +27,23 @@ export interface SupportedNFeSoapServiceDefinition {
   readonly unavailabilityStatusCodes: readonly string[];
 }
 
+/**
+ * Internal placeholder recorded for future operational transport services.
+ */
+export interface PlannedOperationalTransportServiceDefinition {
+  /** Domain family served by the placeholder. */
+  readonly documentFamily: 'nfe';
+  /** XML element expected in the request body. */
+  readonly requestElementName: string;
+  /** XML element expected in the response body. */
+  readonly responseElementName: string;
+  /** Planned service identifier kept outside the public support list for now. */
+  readonly service:
+    | 'nfe-cancellation'
+    | 'nfe-correction-letter'
+    | 'nfe-inutilization';
+}
+
 const SUPPORTED_SERVICE_DEFINITIONS: Readonly<
   Record<SupportedNFeSoapService, SupportedNFeSoapServiceDefinition>
 > = {
@@ -29,7 +52,39 @@ const SUPPORTED_SERVICE_DEFINITIONS: Readonly<
     requestElementName: 'enviNFe',
     responseElementName: 'retEnviNFe',
     service: 'nfe-authorization',
-    successStatusCodes: ['103', '104'],
+    successStatusCodes: ['100', '103', '104'],
+    unavailabilityStatusCodes: ['108', '109'],
+  },
+  'nfe-cancellation': {
+    documentFamily: 'nfe',
+    requestElementName: 'envEvento',
+    responseElementName: 'retEnvEvento',
+    service: 'nfe-cancellation',
+    successStatusCodes: ['128'],
+    unavailabilityStatusCodes: ['108', '109'],
+  },
+  'nfe-correction-letter': {
+    documentFamily: 'nfe',
+    requestElementName: 'envEvento',
+    responseElementName: 'retEnvEvento',
+    service: 'nfe-correction-letter',
+    successStatusCodes: ['128'],
+    unavailabilityStatusCodes: ['108', '109'],
+  },
+  'nfe-document-situation': {
+    documentFamily: 'nfe',
+    requestElementName: 'consSitNFe',
+    responseElementName: 'retConsSitNFe',
+    service: 'nfe-document-situation',
+    successStatusCodes: ['100'],
+    unavailabilityStatusCodes: ['108', '109'],
+  },
+  'nfe-inutilization': {
+    documentFamily: 'nfe',
+    requestElementName: 'inutNFe',
+    responseElementName: 'retInutNFe',
+    service: 'nfe-inutilization',
+    successStatusCodes: ['102'],
     unavailabilityStatusCodes: ['108', '109'],
   },
   'nfe-status-service': {
@@ -73,4 +128,13 @@ export function getSupportedTransportServiceDefinition(
   service: SupportedNFeSoapService,
 ): SupportedNFeSoapServiceDefinition {
   return SUPPORTED_SERVICE_DEFINITIONS[service];
+}
+
+/**
+ * Returns the internal placeholders reserved for future transport work that is not yet published.
+ *
+ * @returns Read-only planned transport service definitions.
+ */
+export function getPlannedOperationalTransportServiceDefinitions(): readonly PlannedOperationalTransportServiceDefinition[] {
+  return PLANNED_OPERATIONAL_TRANSPORT_SERVICES;
 }

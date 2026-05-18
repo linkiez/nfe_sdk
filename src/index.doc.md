@@ -7,6 +7,9 @@ Agrega a superficie publica estavel do pacote no import raiz `nfe-sdk`.
 ## Responsabilidades
 
 - Reexportar o contrato publico minimo herdado da fase 003.
+- Publicar a primeira facade operacional de NFe com `authorizeNFe`.
+- Publicar as primeiras consultas operacionais com `queryNFeServiceStatus` e `queryNFeDocumentSituation`.
+- Publicar as manutencoes operacionais `submitNFeInutilization`, `cancelNFe` e `submitNFeCorrectionLetter`.
 - Publicar a facade funcional inicial para criacao canonica de `NFe` e `enviNFe`.
 - Publicar o slice inicial de assinatura digital com `createSigningContext` e `signNFeXml`.
 - Publicar o slice inicial de transporte SOAP com resolucao de endpoint e execucao suportada.
@@ -23,14 +26,20 @@ Agrega a superficie publica estavel do pacote no import raiz `nfe-sdk`.
 flowchart TD
   A[Consumer importa nfe-sdk] --> B[src/index.ts]
   B --> C[publicPackageContract]
-  B --> D[createNFe]
-  B --> E[createEnviNFe]
-  B --> F[createSigningContext]
-  B --> G[resolveNFeServiceEndpoint]
-  B --> H[executeNFeSoapService]
-  B --> I[serializeNFeXml]
-  B --> J[serializeEnviNFeXml]
-  B --> K[signNFeXml]
+  B --> D[authorizeNFe]
+  B --> E[cancelNFe]
+  B --> F[queryNFeServiceStatus]
+  B --> G[queryNFeDocumentSituation]
+  B --> H[submitNFeInutilization]
+  B --> I[submitNFeCorrectionLetter]
+  B --> J[createNFe]
+  B --> K[createEnviNFe]
+  B --> L[createSigningContext]
+  B --> M[resolveNFeServiceEndpoint]
+  B --> N[executeNFeSoapService]
+  B --> O[serializeNFeXml]
+  B --> P[serializeEnviNFeXml]
+  B --> Q[signNFeXml]
 ```
 
 ## Tratamento de erros e casos-limite
@@ -42,15 +51,21 @@ flowchart TD
 
 ```ts
 import {
+  authorizeNFe,
+  cancelNFe,
   createEnviNFe,
   createNFe,
   createSigningContext,
   executeNFeSoapService,
   publicPackageContract,
+  queryNFeDocumentSituation,
+  queryNFeServiceStatus,
   resolveNFeServiceEndpoint,
   serializeEnviNFeXml,
   serializeNFeXml,
   signNFeXml,
+  submitNFeCorrectionLetter,
+  submitNFeInutilization,
 } from 'nfe-sdk';
 ```
 

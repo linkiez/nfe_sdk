@@ -8,19 +8,27 @@ Nesta fase, o pacote publica somente o import raiz e uma superficie funcional en
 
 ```ts
 import {
+  authorizeNFe,
+  cancelNFe,
   createEnviNFe,
   createNFe,
   createSigningContext,
   executeNFeSoapService,
   publicPackageContract,
+  queryNFeDocumentSituation,
+  queryNFeServiceStatus,
   resolveNFeServiceEndpoint,
   serializeEnviNFeXml,
   serializeNFeXml,
   signNFeXml,
+  submitNFeCorrectionLetter,
+  submitNFeInutilization,
 } from 'nfe-sdk';
 ```
 
 `publicPackageContract` descreve o contrato publicado e serve como ancora estavel para as proximas fases funcionais.
+
+`authorizeNFe` orquestra a autorizacao operacional inicial para uma NFe unica ou um lote suportado a partir de dados canonicos, devolvendo um resultado estruturado com classificacao, recibo ou protocolo e evidencia de transporte.
 
 `createNFe` monta o documento canonico inicial de `NFe` sem exigir importacao direta da arvore gerada.
 
@@ -37,6 +45,47 @@ import {
 `executeNFeSoapService` monta o envelope SOAP 1.2, escolhe o endpoint homologado suportado, executa a chamada com executor injetado ou default e devolve `TransportOutcome` com classificacao e evidencia minima da troca.
 
 No slice inicial, `TransportOutcome.classification` distingue pelo menos `success`, `timeout`, `usage-error`, `unavailable`, `functional-rejection` e `protocol-error`, sem misturar transporte com orquestracao de dominio fiscal.
+
+`queryNFeServiceStatus` devolve um retrato estruturado do status operacional do servico em homologacao sem exigir leitura manual do XML de retorno.
+
+`queryNFeDocumentSituation` consulta a situacao do documento por chave de acesso e devolve um resultado estruturado, inclusive quando a resposta ainda e inconclusiva do ponto de vista operacional.
+
+`submitNFeInutilization` executa a manutencao de inutilizacao em homologacao e devolve um resultado estruturado com classificacao operacional, protocolo quando disponivel e evidencia de transporte.
+
+`cancelNFe` executa o fluxo homologado de cancelamento sobre a chave de acesso informada e preserva a evidencia do transporte no resultado operacional.
+
+`submitNFeCorrectionLetter` executa a carta de correcao homologada com resultado estruturado e boundary explicita quando o ambiente solicitado fica fora do escopo publicado.
+
+## Exemplo rapido da autorizacao operacional
+
+```ts
+import { authorizeNFe, createSigningContext } from 'nfe-sdk';
+
+const signingContext = await createSigningContext({
+  passphrase: '***',
+  source: {
+    contentBase64: 'BASE64_PFX',
+    type: 'in-memory-content',
+  },
+});
+
+const authorization = await authorizeNFe({
+  documents: {
+    kind: 'single-document',
+    payload: {
+      documentId: 'NFE-123',
+      environment: 'homologation',
+      version: '4.00',
+    },
+  },
+  environment: 'homologation',
+  requestExecutor,
+  signingContext,
+  timeoutMs: 5000,
+});
+
+console.log(authorization.classification, authorization.protocolNumber);
+```
 
 O contrato normativo continua sendo `package.json`/exports. O README apenas explica o que foi estabilizado.
 

@@ -1,0 +1,11 @@
+<retEnvEvento>
+  <cStat>128</cStat>
+  <xMotivo>Lote de evento processado</xMotivo>
+  <retEvento>
+    <infEvento>
+      <cStat>135</cStat>
+      <xMotivo>Evento registrado e vinculado a NF-e</xMotivo>
+      <nProt>135250000000002</nProt>
+    </infEvento>
+  </retEvento>
+</retEnvEvento>

@@ -1,0 +1,8 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Body>
+    <retConsSitNFe>
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+    </retConsSitNFe>
+  </soap:Body>
+</soap:Envelope>

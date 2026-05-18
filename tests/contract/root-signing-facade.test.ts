@@ -5,15 +5,21 @@ describe('root signing facade contract', () => {
     expect(
       Object.keys(publicApi).sort((left, right) => left.localeCompare(right)),
     ).toEqual([
+      'authorizeNFe',
+      'cancelNFe',
       'createEnviNFe',
       'createNFe',
       'createSigningContext',
       'executeNFeSoapService',
       'publicPackageContract',
+      'queryNFeDocumentSituation',
+      'queryNFeServiceStatus',
       'resolveNFeServiceEndpoint',
       'serializeEnviNFeXml',
       'serializeNFeXml',
       'signNFeXml',
+      'submitNFeCorrectionLetter',
+      'submitNFeInutilization',
     ]);
   });
 

@@ -1,0 +1,9 @@
+{
+  "accessKey": "35190500000000000000550010000000011000000010",
+  "environment": "homologation",
+  "canonicalPayload": {
+    "tpEvento": "110111",
+    "nSeqEvento": "1",
+    "xJust": "Cancelamento homologado"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "environment": "homologation",
+  "canonicalPayload": {
+    "ano": "2025",
+    "cnpj": "00000000000000",
+    "serie": "1",
+    "nNFIni": "10",
+    "nNFFin": "10",
+    "xJust": "Numeracao nao utilizada em homologacao"
+  }
+}

@@ -2,31 +2,42 @@
 
 ## Visao geral
 
-Agrega as funcoes publicas da facade manual publicada pelo barrel canonico.
+Agrega as funcoes publicas da facade manual publicada pelo barrel canonico e concentra os tipos compartilhados que alimentam a facade operacional.
 
 ## Responsabilidades
 
+- Reexportar a autorizacao operacional de NFe publicada neste slice.
+- Reexportar as manutencoes operacionais homologadas publicadas neste slice.
 - Reexportar as funcoes de criacao publica.
 - Reexportar as funcoes publicas de assinatura digital.
 - Reexportar os wrappers publicos do slice inicial de transporte SOAP.
+- Reexportar os tipos compartilhados do slice operacional com autorizacao, consultas e manutencoes.
+- Reexportar as consultas operacionais de status e situacao do documento.
 - Servir como limite entre root import e implementacao interna.
 
 ## Entradas e saidas
 
 - Entradas: nenhuma.
-- Saidas: `createNFe`, `createEnviNFe`, `createSigningContext`, `signNFeXml`, `resolveNFeServiceEndpoint` e `executeNFeSoapService`.
+- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `createNFe`, `createEnviNFe`, `createSigningContext`, `signNFeXml`, `resolveNFeServiceEndpoint`, `executeNFeSoapService` e tipos operacionais compartilhados.
 
 ## Fluxo principal
 
 ```mermaid
 flowchart TD
   A[Root import] --> B[facade/index.ts]
-  B --> C[createNFe]
-  B --> D[createEnviNFe]
-  B --> E[createSigningContext]
-  B --> F[signNFeXml]
-  B --> G[resolveNFeServiceEndpoint]
-  B --> H[executeNFeSoapService]
+  B --> C[authorizeNFe]
+  B --> D[cancelNFe]
+  B --> E[queryNFeServiceStatus]
+  B --> F[queryNFeDocumentSituation]
+  B --> G[submitNFeInutilization]
+  B --> H[submitNFeCorrectionLetter]
+  B --> I[createNFe]
+  B --> J[createEnviNFe]
+  B --> K[createSigningContext]
+  B --> L[signNFeXml]
+  B --> M[resolveNFeServiceEndpoint]
+  B --> N[executeNFeSoapService]
+  B --> O[Operational shared types]
 ```
 
 ## Tratamento de erros e casos-limite
@@ -38,20 +49,33 @@ flowchart TD
 
 ```ts
 import {
+  authorizeNFe,
+  cancelNFe,
   createEnviNFe,
   createNFe,
   createSigningContext,
   executeNFeSoapService,
+  queryNFeDocumentSituation,
+  queryNFeServiceStatus,
   resolveNFeServiceEndpoint,
   signNFeXml,
+  submitNFeCorrectionLetter,
+  submitNFeInutilization,
 } from './index.js';
 ```
 
 ## Dependencias e integracoes
 
+- `./authorize-nfe.js`
+- `./cancel-nfe.js`
 - `./create-envi-nfe.js`
 - `./create-nfe.js`
 - `./create-signing-context.js`
 - `./execute-nfe-soap-service.js`
+- `./query-nfe-document-situation.js`
+- `./query-nfe-service-status.js`
+- `../nfe/index.js`
 - `./resolve-nfe-service-endpoint.js`
 - `./sign-nfe-xml.js`
+- `./submit-nfe-correction-letter.js`
+- `./submit-nfe-inutilization.js`

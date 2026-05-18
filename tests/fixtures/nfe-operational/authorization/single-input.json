@@ -1,0 +1,11 @@
+{
+  "environment": "homologation",
+  "documents": {
+    "kind": "single-document",
+    "payload": {
+      "documentId": "NFE-OPER-001",
+      "environment": "homologation",
+      "version": "4.00"
+    }
+  }
+}

@@ -6,27 +6,38 @@ describe('package tarball smoke validation', () => {
 
     expect(result.rootImportConsumable).toBe(true);
     expect(result.exportedKeys).toEqual([
+      'authorizeNFe',
+      'cancelNFe',
       'createEnviNFe',
       'createNFe',
       'createSigningContext',
       'executeNFeSoapService',
       'publicPackageContract',
+      'queryNFeDocumentSituation',
+      'queryNFeServiceStatus',
       'resolveNFeServiceEndpoint',
       'serializeEnviNFeXml',
       'serializeNFeXml',
       'signNFeXml',
+      'submitNFeCorrectionLetter',
+      'submitNFeInutilization',
     ]);
     expect(result.publishedFiles).toEqual(
       expect.arrayContaining([
         'README.md',
+        'dist/canonical/facade/cancel-nfe.d.ts',
         'dist/canonical/facade/create-envi-nfe.d.ts',
         'dist/canonical/facade/create-nfe.d.ts',
         'dist/canonical/facade/create-signing-context.d.ts',
         'dist/canonical/facade/execute-nfe-soap-service.d.ts',
+        'dist/canonical/facade/query-nfe-document-situation.d.ts',
+        'dist/canonical/facade/query-nfe-service-status.d.ts',
         'dist/canonical/facade/resolve-nfe-service-endpoint.d.ts',
         'dist/canonical/facade/serialize-envi-nfe-xml.d.ts',
         'dist/canonical/facade/serialize-nfe-xml.d.ts',
         'dist/canonical/facade/sign-nfe-xml.d.ts',
+        'dist/canonical/facade/submit-nfe-correction-letter.d.ts',
+        'dist/canonical/facade/submit-nfe-inutilization.d.ts',
         'dist/index.d.ts',
         'dist/index.js',
       ]),

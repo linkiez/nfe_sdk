@@ -7,6 +7,9 @@ Barrel da camada canonica manual publicada pelo root import.
 ## Responsabilidades
 
 - Reexportar a facade publica de criacao canonica.
+- Reexportar a facade publica inicial de autorizacao operacional.
+- Reexportar as facades publicas iniciais de consulta operacional.
+- Reexportar as facades publicas das tres manutencoes obrigatorias do MVP.
 - Reexportar a facade publica de assinatura digital.
 - Reexportar a facade publica inicial de transporte SOAP.
 - Reexportar os tipos publicos usados pela facade.
@@ -14,7 +17,7 @@ Barrel da camada canonica manual publicada pelo root import.
 ## Entradas e saidas
 
 - Entradas: nenhuma.
-- Saidas: `createNFe`, `createEnviNFe`, `createSigningContext`, `resolveNFeServiceEndpoint`, `executeNFeSoapService`, `serializeNFeXml`, `serializeEnviNFeXml`, `signNFeXml` e tipos canonicos/de assinatura/transporte.
+- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `createNFe`, `createEnviNFe`, `createSigningContext`, `resolveNFeServiceEndpoint`, `executeNFeSoapService`, `serializeNFeXml`, `serializeEnviNFeXml`, `signNFeXml` e tipos canonicos/de assinatura/transporte.
 
 ## Fluxo principal
 
@@ -36,19 +39,33 @@ flowchart TD
 ## Exemplos
 
 ```ts
-import { createNFe } from './index.js';
+import {
+  authorizeNFe,
+  cancelNFe,
+  createNFe,
+  queryNFeDocumentSituation,
+  queryNFeServiceStatus,
+  submitNFeCorrectionLetter,
+  submitNFeInutilization,
+} from './index.js';
 ```
 
 ## Dependencias e integracoes
 
+- `./facade/authorize-nfe.js`
+- `./facade/cancel-nfe.js`
 - `./facade/create-envi-nfe.js`
 - `./facade/create-nfe.js`
 - `./facade/create-signing-context.js`
 - `./facade/execute-nfe-soap-service.js`
+- `./facade/query-nfe-document-situation.js`
+- `./facade/query-nfe-service-status.js`
 - `./facade/resolve-nfe-service-endpoint.js`
 - `./facade/serialize-envi-nfe-xml.js`
 - `./facade/serialize-nfe-xml.js`
 - `./facade/sign-nfe-xml.js`
+- `./facade/submit-nfe-correction-letter.js`
+- `./facade/submit-nfe-inutilization.js`
 - `./signing/contracts.js`
 - `./shared/contracts.js`
 - `./transport/contracts.js`

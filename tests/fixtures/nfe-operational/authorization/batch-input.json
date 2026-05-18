@@ -1,0 +1,23 @@
+{
+  "environment": "homologation",
+  "documents": {
+    "kind": "batch",
+    "payload": {
+      "batchId": "000000000000001",
+      "documents": [
+        {
+          "documentId": "NFE-OPER-001",
+          "environment": "homologation",
+          "version": "4.00"
+        },
+        {
+          "documentId": "NFE-OPER-002",
+          "environment": "homologation",
+          "version": "4.00"
+        }
+      ],
+      "environment": "homologation",
+      "version": "4.00"
+    }
+  }
+}
