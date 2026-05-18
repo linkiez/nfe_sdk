@@ -33,8 +33,14 @@ const execFileAsync = promisify(execFile);
 export async function runOfficialDocDownload(): Promise<DownloadManifest> {
   const seedUrls = await loadSeedUrls();
   const manifest = createManifest(seedUrls);
-  const maxDepth = readPositiveInteger('OFFICIAL_DOCS_MAX_DEPTH', DEFAULT_MAX_DEPTH);
-  const maxPages = readPositiveInteger('OFFICIAL_DOCS_MAX_PAGES', DEFAULT_MAX_PAGES);
+  const maxDepth = readPositiveInteger(
+    'OFFICIAL_DOCS_MAX_DEPTH',
+    DEFAULT_MAX_DEPTH,
+  );
+  const maxPages = readPositiveInteger(
+    'OFFICIAL_DOCS_MAX_PAGES',
+    DEFAULT_MAX_PAGES,
+  );
   const visitedUrls = new Set<string>();
   const queuedUrls = new Set<string>();
   const queue = createInitialQueue(seedUrls, queuedUrls);
@@ -45,11 +51,22 @@ export async function runOfficialDocDownload(): Promise<DownloadManifest> {
     const target = queue.shift();
 
     if (target) {
-      await processTarget({ manifest, maxDepth, queue, queuedUrls, target, visitedUrls });
+      await processTarget({
+        manifest,
+        maxDepth,
+        queue,
+        queuedUrls,
+        target,
+        visitedUrls,
+      });
     }
   }
 
-  await fs.writeFile(MANIFEST_PATH, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
+  await fs.writeFile(
+    MANIFEST_PATH,
+    `${JSON.stringify(manifest, null, 2)}\n`,
+    'utf8',
+  );
   logManifestSummary(manifest);
 
   return manifest;
@@ -82,7 +99,8 @@ interface EnqueueLinksContext {
  * @param context - Mutable crawl state for the target.
  */
 async function processTarget(context: ProcessTargetContext): Promise<void> {
-  const { manifest, maxDepth, queue, queuedUrls, target, visitedUrls } = context;
+  const { manifest, maxDepth, queue, queuedUrls, target, visitedUrls } =
+    context;
 
   if (visitedUrls.has(target.url)) {
     return;
@@ -97,7 +115,11 @@ async function processTarget(context: ProcessTargetContext): Promise<void> {
 
   try {
     const fetchResult = await fetchDocument(target.url);
-    const archivedFilePath = await writeArchivedFile(fetchResult.finalUrl, fetchResult.contentType, fetchResult.body);
+    const archivedFilePath = await writeArchivedFile(
+      fetchResult.finalUrl,
+      fetchResult.contentType,
+      fetchResult.body,
+    );
 
     manifest.archived.push({
       contentType: fetchResult.contentType,
@@ -109,7 +131,10 @@ async function processTarget(context: ProcessTargetContext): Promise<void> {
       url: fetchResult.finalUrl,
     });
 
-    if (!isHtmlContentType(fetchResult.contentType) || target.depth >= maxDepth) {
+    if (
+      !isHtmlContentType(fetchResult.contentType) ||
+      target.depth >= maxDepth
+    ) {
       return;
     }
 
@@ -123,7 +148,11 @@ async function processTarget(context: ProcessTargetContext): Promise<void> {
       visitedUrls,
     });
   } catch (error: unknown) {
-    manifest.failed.push({ error: formatUnknownError(error), sourceUrl: target.sourceUrl, url: target.url });
+    manifest.failed.push({
+      error: formatUnknownError(error),
+      sourceUrl: target.sourceUrl,
+      url: target.url,
+    });
   }
 }
 
@@ -134,7 +163,10 @@ async function processTarget(context: ProcessTargetContext): Promise<void> {
  * @param queuedUrls - Set used to track queued URLs.
  * @returns Initial queue entries.
  */
-function createInitialQueue(seedUrls: string[], queuedUrls: Set<string>): CrawlTarget[] {
+function createInitialQueue(
+  seedUrls: string[],
+  queuedUrls: Set<string>,
+): CrawlTarget[] {
   const queue = seedUrls.map((url) => ({ depth: 0, sourceUrl: url, url }));
 
   for (const target of queue) {
@@ -160,7 +192,15 @@ async function ensureOutputDirectories(): Promise<void> {
  * @param context - Link discovery context.
  */
 function enqueueDiscoveredLinks(context: EnqueueLinksContext): void {
-  const { baseUrl, html, nextDepth, queue, queuedUrls, sourceUrl, visitedUrls } = context;
+  const {
+    baseUrl,
+    html,
+    nextDepth,
+    queue,
+    queuedUrls,
+    sourceUrl,
+    visitedUrls,
+  } = context;
   const discoveredUrls = extractRelevantLinks(baseUrl, html);
 
   for (const discoveredUrl of discoveredUrls) {
@@ -179,7 +219,7 @@ function enqueueDiscoveredLinks(context: EnqueueLinksContext): void {
  * @param sourceUrl - URL to fetch.
  * @returns Fetched response payload.
  */
-async function fetchDocument(sourceUrl: string): Promise<FetchResult> {
+export async function fetchDocument(sourceUrl: string): Promise<FetchResult> {
   try {
     return await fetchWithNodeFetch(sourceUrl);
   } catch {
@@ -205,7 +245,15 @@ async function fetchWithNodeFetch(sourceUrl: string): Promise<FetchResult> {
 
   return {
     body: Buffer.from(await response.arrayBuffer()),
-    contentType: response.headers.get('content-type')?.split(';')[0].trim().toLowerCase() ?? 'application/octet-stream',
+    contentType:
+      response.headers
+        .get('content-type')
+        ?.split(';')[0]
+        .trim()
+        .toLowerCase() ?? 'application/octet-stream',
+    downloadFileName: extractDownloadFileName(
+      response.headers.get('content-disposition'),
+    ),
     finalUrl: response.url,
     status: response.status,
   };
@@ -218,17 +266,35 @@ async function fetchWithNodeFetch(sourceUrl: string): Promise<FetchResult> {
  * @returns Fetched response payload.
  */
 async function fetchWithCurl(sourceUrl: string): Promise<FetchResult> {
-  const temporaryDirectory = await fs.mkdtemp(path.join(os.tmpdir(), 'official-docs-'));
+  const temporaryDirectory = await fs.mkdtemp(
+    path.join(os.tmpdir(), 'official-docs-'),
+  );
   const bodyPath = path.join(temporaryDirectory, 'body.bin');
   const cookiePath = path.join(temporaryDirectory, 'cookies.txt');
+  const headerPath = path.join(temporaryDirectory, 'headers.txt');
 
   try {
     const { stdout } = await execFileAsync('curl', [
-      '-L', '--silent', '--show-error', '--max-time', String(Math.ceil(REQUEST_TIMEOUT_MS / 1000)),
-      '--cookie-jar', cookiePath, '--cookie', cookiePath, '--output', bodyPath,
-      '--write-out', '%{http_code}\n%{content_type}\n%{url_effective}\n', sourceUrl,
+      '-L',
+      '--silent',
+      '--show-error',
+      '--max-time',
+      String(Math.ceil(REQUEST_TIMEOUT_MS / 1000)),
+      '--cookie-jar',
+      cookiePath,
+      '--cookie',
+      cookiePath,
+      '--output',
+      bodyPath,
+      '--dump-header',
+      headerPath,
+      '--write-out',
+      '%{http_code}\n%{content_type}\n%{url_effective}\n',
+      sourceUrl,
     ]);
-    const [statusLine, contentTypeLine, finalUrlLine] = stdout.trim().split('\n');
+    const [statusLine, contentTypeLine, finalUrlLine] = stdout
+      .trim()
+      .split('\n');
     const status = Number.parseInt(statusLine ?? '0', 10);
 
     if (Number.isNaN(status) || status < 200 || status >= 300) {
@@ -237,7 +303,13 @@ async function fetchWithCurl(sourceUrl: string): Promise<FetchResult> {
 
     return {
       body: await fs.readFile(bodyPath),
-      contentType: (contentTypeLine || 'application/octet-stream').split(';')[0].trim().toLowerCase(),
+      contentType: (contentTypeLine || 'application/octet-stream')
+        .split(';')[0]
+        .trim()
+        .toLowerCase(),
+      downloadFileName: extractDownloadFileName(
+        await readContentDisposition(headerPath),
+      ),
       finalUrl: finalUrlLine || sourceUrl,
       status,
     };
@@ -247,12 +319,60 @@ async function fetchWithCurl(sourceUrl: string): Promise<FetchResult> {
 }
 
 /**
+ * Extracts the suggested download file name from a Content-Disposition header.
+ *
+ * @param contentDisposition - Raw Content-Disposition header value.
+ * @returns Decoded file name when present.
+ */
+function extractDownloadFileName(
+  contentDisposition: string | null,
+): string | undefined {
+  if (!contentDisposition) {
+    return undefined;
+  }
+
+  const utf8Match = contentDisposition.match(/filename\*=UTF-8''([^;]+)/i);
+
+  if (utf8Match?.[1]) {
+    return decodeURIComponent(utf8Match[1]);
+  }
+
+  const basicMatch = contentDisposition.match(/filename="?([^";]+)"?/i);
+  return basicMatch?.[1]?.trim();
+}
+
+/**
+ * Reads the final Content-Disposition header block produced by curl.
+ *
+ * @param headerPath - Path to the curl header dump file.
+ * @returns Content-Disposition header when present.
+ */
+async function readContentDisposition(
+  headerPath: string,
+): Promise<string | null> {
+  const rawHeaders = await fs.readFile(headerPath, 'utf8');
+  const headerBlocks = rawHeaders
+    .split(/\r?\n\r?\n/)
+    .filter((block) => block.trim().length > 0);
+  const finalHeaderBlock = headerBlocks.at(-1) ?? '';
+  const contentDispositionLine = finalHeaderBlock
+    .split(/\r?\n/)
+    .find((line) => line.toLowerCase().startsWith('content-disposition:'));
+
+  return contentDispositionLine
+    ? contentDispositionLine.slice('content-disposition:'.length).trim()
+    : null;
+}
+
+/**
  * Logs a short crawl summary after the manifest has been written.
  *
  * @param manifest - Completed download manifest.
  */
 function logManifestSummary(manifest: DownloadManifest): void {
-  console.log(`Archived ${manifest.archived.length} official files into ${path.relative(ROOT_DIR, OUTPUT_ROOT)}`);
+  console.log(
+    `Archived ${manifest.archived.length} official files into ${path.relative(ROOT_DIR, OUTPUT_ROOT)}`,
+  );
   console.log(`Manifest written to ${path.relative(ROOT_DIR, MANIFEST_PATH)}`);
 
   if (manifest.failed.length > 0) {

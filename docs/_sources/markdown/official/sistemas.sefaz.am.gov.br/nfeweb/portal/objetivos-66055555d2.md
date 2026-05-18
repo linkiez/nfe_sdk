@@ -1,0 +1,26 @@
+![](images/tp_obj.gif)
+
+O objetivo principal do projeto Nota Fiscal Eletrônica é a implantação de um
+modelo nacional de documento fiscal eletrônico, que substitua a sistemática
+atual do documento fiscal em papel, com validade jurídica para todos os
+fins, simplificando as obrigações acessórias dos contribuintes, ao mesmo
+tempo que permite um controle em tempo real das operações comerciais pelo
+Fisco.
+
+A Nota Fiscal Eletrônica representa um grande avanço nas relações comerciais
+entre contribuintes e no cumprimento das obrigações acessórias
+correspondentes.
+
+Por outro lado, a Nota Fiscal Eletrônica representa uma forte mudança de
+cultura, ao se deixar uma realidade toda baseada no documento em papel,
+passando-se para um cenário virtual, baseado no documento de existência
+apenas digital, atendendo os requisitos definidos na Medida Provisória 2.200
+da Presidência da República.
+
+Neste contexto de mudança de cultura e de uso de nova tecnologia é
+importante que o projeto seja desenvolvido e implantado de forma gradativa,
+direcionado inicialmente para grandes contribuintes. A emissão da NF-e para
+os pequenos e médios contribuintes será implementada na segunda fase do
+projeto.
+
+![](images/baixodiv.gif)

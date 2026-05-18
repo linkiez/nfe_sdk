@@ -11,6 +11,18 @@ Mapear a cobertura documental das 27 UFs, destacando status, fontes consultadas,
 - `partial`: cobertura incompleta ou com necessidade de complemento.
 - `blocked`: fonte oficial indisponivel, restrita ou insuficiente no momento.
 
+## Uso no catalogo principal
+
+- Esta matriz sustenta a entrada `CAT-NFCE-002` do catalogo geral em `docs/capacidades-sdk.md`.
+- Enquanto a maior parte das UFs permanecer `partial` ou `blocked`, a leitura correta no catalogo principal continua sendo de cobertura parcial para variacoes estaduais de NFC-e.
+- O objetivo desta matriz e registrar o detalhe por UF sem duplicar esse conteudo no catalogo principal.
+
+## Normalizacao de leitura para o catalogo
+
+- `covered` e `covered-no-specific-delta` significam que a UF nao amplia a classificacao principal alem de `partial`; apenas reduzem incerteza local.
+- `partial` indica lacuna estadual explicita ainda aberta.
+- `blocked` indica falta de evidencia suficiente ou acesso restrito; no catalogo principal isso continua sendo lido como lacuna aberta, nao como inexistencia do dominio NFC-e.
+
 ## Matriz
 
 | UF | Status | Fontes primarias | Fontes secundarias | Deltas especificos | Lacunas | Ultima verificacao |
@@ -48,3 +60,10 @@ Mapear a cobertura documental das 27 UFs, destacando status, fontes consultadas,
 - Todas as 27 UFs estao registradas com cobertura parcial minima baseada na camada nacional.
 - Sao Paulo possui complemento oficial estadual consultado nesta rodada.
 - As demais UFs permanecem com lacuna explicita de revisao estadual individual.
+- O catalogo principal deve continuar apontando para esta matriz enquanto a cobertura estadual detalhada nao atingir fechamento suficiente por UF.
+
+## Leitura de compatibilidade
+
+- Esta matriz e auxiliar e nao altera contratos publicos do pacote nesta fase.
+- O risco principal aqui e de interpretacao: promover cobertura estadual parcial a suporte fechado sem evidencia suficiente.
+- Qualquer futura mudanca que consolide UFs como suporte confirmado deve registrar impacto de compatibilidade e manter rastreabilidade por fonte.

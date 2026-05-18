@@ -1,0 +1,292 @@
+![](images/tp_descricao.gif)
+
+O Projeto Nota Fiscal Eletrônica consiste na alteraçăo da sistemática atual
+de emissăo de nota fiscal em papel, modelos 1 e 1A, por nota fiscal de
+existęncia apenas eletrônica (digital).
+
+![](images/plus.gif) **Conceito NF-e**
+
+Para fins deste projeto, entende-se por Nota Fiscal Eletrônica (NF-e) como
+sendo um documento de existęncia exclusivamente digital, emitido e
+armazenado eletronicamente, com intuito de documentar uma operaçăo de
+circulaçăo de mercadoria ou prestaçăo de serviço, ocorrida entre as partes,
+cuja validade jurídica é garantida pela assinatura digital do emitente e
+recepçăo, pelo fisco, antes da ocorręncia do fato gerador. ![](images/minus.gif)
+
+![](images/plus.gif) **Descriçăo Simplificada do Modelo Operacional**
+
+De maneira simplificada, a empresa emissora de NF-E gerará um arquivo
+eletrônico contendo as informaçőes fiscais da operaçăo comercial, o qual
+deverá ser assinado digitalmente, de maneira a garantir a integridade dos
+dados e a autoria do emissor.
+
+Este arquivo eletrônico, que corresponde a Nota Fiscal Eletrônica, será
+entăo transmitido pela Internet para a Secretaria da Fazenda de jurisdiçăo
+do contribuinte que fará uma pré-validaçăo do arquivo e devolverá um
+protocolo de recebimento (Autorizaçăo de Uso), sem o qual năo poderá haver o
+trânsito da mercadoria.
+
+Após o recebimento da NF-e, a Secretaria da Fazenda disponibilizará
+consulta, através Internet, para o destinatário e outros legítimos
+interessados, que detenham a chave de acesso do documento eletrônico.
+
+Este mesmo arquivo da NF-e será ainda transmitido, pela Secretaria de
+Fazenda, para a Receita Federal e, no caso de uma operaçăo interestadual,
+para a Secretaria de Fazenda de destino da operaçăo.
+
+Para acobertar o trânsito da mercadoria, será impressa uma representaçăo
+gráfica simplificada da Nota Fiscal Eletrônica, intitulado DANF-e (Documento
+Auxiliar da Nota Fiscal Eletrônica) em papel comum, que conterá impressa, em
+destaque, a chave de acesso para consulta da NF-e na Internet e um código de
+barras bi-dimensional que facilitará a captura e a confirmaçăo de
+informaçőes da NF-e pelos Postos Fiscais de Fronteira.
+
+No momento inicial de implantaçăo do projeto, O DANF-e poderá ser
+escriturado normalmente pelo contribuinte destinatário, sendo sua validade
+vinculada a confirmaçăo da existęncia da NF-e no ambiente das administraçőes
+tributárias envolvidas no processo. ![](images/minus.gif)
+
+![](images/plus.gif) **Detalhamento das Etapas do Modelo Operacional**
+
+O processo de emissăo da Nota Fiscal Eletrônica (NF-e) será constituído das
+seguintes etapas:
+
+*Etapa 1 –* Habilitaçăo do contribuinte como emissor de NF-e;
+
+Etapa 1 – Habilitaçăo do Contribuinte como Emissor de NF-e
+Esta etapa corresponde ao processo eletrônico pelo qual um contribuinte
+solicita seu cadastramento como emissor de NF-e junto a Secretaria da
+Fazenda.
+
+Nesta fase inicial do projeto piloto, a habilitaçăo, como emissor de Nota
+Fiscal eletrônica, será feita via pedido de Regime Especial. Em um segundo
+momento, este processo será automatizado, conforme detalhado a seguir.
+
+O objetivo é que o contribuinte, através do acesso a site da Sefaz, solicite
+sua habilitaçăo como emissor de NF-e. Após a solicitaçăo, a Sefaz realizará
+a análise eletrônica do pedido, efetuando críticas referentes a situaçăo
+cadastral/econômico-fiscal e pagamentos realizados pelo contribuinte,
+(critérios próprios de cada UF);
+
+Cumprida, esta etapa inicial de cadastramento, o contribuinte deverá iniciar
+o envio de Notas Fiscais Eletrônicas, em ambiente de testes, para
+homologaçăo do seu sistema.
+
+Após a fase dos testes, o contribuinte receberá um código de habilitaçăo
+para emitir NF-e, podendo, a partir deste instante, iniciar a transmissăo de
+suas NF-e para a Secretaria da Fazenda. ![](images/recolher.gif)
+
+*Etapa 2 –* Emissăo e Transmissăo da NF-e;
+
+Etapa 2 –Emissăo e Transmissăo da NF-e (Grandes Contribuintes)
+Esta etapa descreve o processo de emissăo e transmissăo de uma Nota Fiscal
+Eletrônica, pelo contribuinte emissor, para a Secretaria de Fazenda, que
+após sua autorizaçăo de uso, transmitirá o documento eletrônico para a
+Secretaria da Receita Federal e Sefaz de destino da circunscriçăo do
+contribuinte, no caso de operaçőes interestaduais, permitindo assim o
+trânsito da mercadoria.
+
+Nesta etapa, o contribuinte deverá adaptar seu sistema de emissăo de Nota
+Fiscal de forma a que, após dispor dos dados da operaçăo comercial, possa
+extraí-los de seu banco de dados e preencher os campos do arquivo da Nota
+Fiscal Eletrônica. No caso de pequenos e médios contribuintes, será
+disponibilizada uma aplicaçăo para emissăo da NF-e (segunda etapa do
+projeto).
+
+Algoritmo fornecido pelo fisco calculará código numérico para composiçăo da
+chave única que identificará a NF-e, sendo calculado com base em hash code
+de campos relevantes da Nota Fiscal convertido em código numérico que
+integrará o arquivo XML (A chave única da NF-e será composta pelo: CNPJ do
+Emitente, número da NF-e e código numérico descrito anteriormente);
+
+De posse do arquivo de NF-e, e após efetuar validaçőes quanto ao correto
+preenchimento de seus campos, o contribuinte deverá proceder a assinatura
+digital do arquivo, através do padrăo ICPBrasil, formato e-CNPJ.
+
+Este arquivo, já com a assinatura digital, deverá ser transmitido, pela
+Internet, para a Secretaria da Fazenda, através do uso de tecnologia “web
+service”, previamente a ocorręncia do fato gerador, ou seja, da saída da
+mercadoria de seu estabelecimento.
+
+A transmissăo de dados utilizará protocolo de segurança e/ou criptografia,
+visando a proteçăo e sigilo da informaçăo (requisito crítico);
+
+A transmissăo para a Secretaria da Fazenda poderá ser feita a cada NF-e ou
+também em um lote de NF-e, lembrando que, mesmo no caso de um lote, cada
+NF-e deverá ter sua assinatura digital.
+
+A Secretaria da Fazenda, ao receber a NF-e pela Internet, realizará
+automaticamente uma validaçăo de recepçăo, momento no qual serăo avaliados
+eletronicamente os seguintes aspectos:
+
+emissor autorizado;
+assinatura digital do emitente;
+Integridade (hash code);
+formato dos campos do arquivo (esquema XML);
+regularidade fiscal do emitente;
+regularidade fiscal do destinatário (segunda etapa);
+năo existęncia da NF-e na base de dados da Secretaria da Fazenda (duplicidade);
+Se năo for detectado nenhum problema na etapa da validaçăo de recepçăo, a
+NF-e será recebida e armazenada pela SEFAZ que, simultaneamente, retornará
+com um protocolo de transaçăo com status “Autorizaçăo de Uso” e
+disponibilizará a NF-e, para consulta pela Internet, pelas partes envolvidas
+(emitente e destinatário) e aos terceiros legitimamente interessados
+(aqueles que dispuserem da chave de acesso da NF-e).
+
+Este protocolo de transaçăo, com status “Autorizaçăo de Uso” conterá ainda:
+a identificaçăo da NF-e através de sua chave de acesso; o momento em que a
+NF-e foi recebida pela SEFAZ (data/hora/minuto/segundo) e um código de
+protocolo. Opcionalmente este protocolo poderá ser assinado digitalmente
+pela Secretaria da Fazenda Receptora.
+
+Somente após o contribuinte emissor receber o protocolo de transaçăo com o
+status “Autorizaçăo de Uso” é que poderá haver a saída da mercadoria de seu
+estabelecimento, podendo ainda ser feita a transmissăo da NF-e autorizada,
+por qualquer meio, inclusive correio eletrônico, ao destinatário.
+
+Para facilitar o controle, o trânsito da mercadoria com uma NF-e autorizada,
+deverá ser feito acompanhado de um documento auxiliar, impresso em papel
+comum, intitulado DANF-e (documento auxiliar da NF-e).
+
+O DANF-e năo é uma nota fiscal, nem substitui uma nota fiscal, servindo
+apenas como instrumento auxiliar para consulta da NF-e por conter impresso a
+chave de acesso da NF-e, permitindo assim que a validade da operaçăo e da
+NF-e seja confirmada, pelo detentor deste documento auxiliar, através do
+site da SEFAZ na Internet. Apesar disto, no primeiro momento de implantaçăo
+do projeto, o contribuinte destinatário, năo emissor de NF-e, poderá
+escriturar este documento, sendo que sua validade fica vinculada a efetiva
+existęncia da NF-e nos arquivos das administraçőes tributárias envolvidas no
+processo.
+
+O DANF-e, conterá código de barras bi-dimensional (padrăo PDF 417 com os
+dados do cabeçalho, rodapé e chave única da NF-e).
+
+Uma NF-e recebida pela SEFAZ representa, simplesmente, que a declaraçăo de
+uma transaçăo comercial feita pelo contribuinte emitente do documento foi
+aceita em termos de formato pela SEFAZ, que a partir deste momento poderá
+proceder a homologaçăo do lançamento da NF-e, conforme legislaçăo em vigor.
+
+Se houver algum problema já na validaçăo de recepçăo, poderăo ocorrer tręs
+situaçőes distintas: interrupçăo da comunicaçăo, sem um protocolo de
+transaçăo em resposta da SEFAZ; resposta da SEFAZ com protocolo de transaçăo
+com status “Rejeiçăo” e resposta da SEFAZ com protocolo de transaçăo com
+status “Năo Autorizaçăo de Uso”.
+
+A primeira hipótese, de interrupçăo da comunicaçăo, sem um protocolo de
+transaçăo em resposta da SEFAZ, ocorrerá quando, por algum problema de ordem
+técnica na comunicaçăo de dados, năo for possível a recepçăo do arquivo pela
+SEFAZ. Neste caso, o contribuinte deverá proceder a um novo envio da NF-e
+para a SEFAZ.
+
+Já a segunda hipótese, corresponde a situaçăo de rejeiçăo da NF-e, devido a
+problemas, detectados pela SEFAZ, na validaçăo de recepçăo, como: assinatura
+digital inválida, năo preenchimento ou preenchimento inválido do número da
+NF-e, existęncia da NF-e na base de dados da SEFAZ, etc. Neste caso, o
+arquivo de NF-e, que foi rejeitado pela SEFAZ, năo será armazenado na base
+de consultas da SEFAZ, podendo o contribuinte corrigir o problema e enviar
+novamente o arquivo para a SEFAZ.
+
+O protocolo de transaçăo, com status “Rejeiçăo”, conterá, além da
+identificaçăo do status, a identificaçăo do motivo da rejeiçăo da NF-e.
+
+A última hipótese corresponde a situaçăo onde a NF-e năo teve seu uso
+autorizado pela SEFAZ. Este caso ocorrerá quando houver qualquer problemas
+com a regularidade fiscal do emissor, ou formatos de campos após a
+identificaçăo do número da NF-e, entre outros.
+
+Na hipótese da năo autorizaçăo de uso, a NF-e é armazenada para consulta na
+base de dados da SEFAZ com este status, năo podendo este mesmo número de
+NF-e ser utilizado novamente pelo contribuinte emissor. Da mesma forma, o
+contribuinte emissor năo poderá realizar a saída da mercadoria acobertada
+por uma NF-e cuja status seja “Năo Autorizado Uso”.
+
+O protocolo de transaçăo, com status “Năo Autorizaçăo de Uso”, conterá
+ainda, além de identificar este status: a identificaçăo da NF-e, através de
+sua chave de acesso; o momento em que a NF-e foi recebida pela SEFAZ
+(data/hora/minuto/segundo), a identificaçăo do motivo da năo autorizaçăo e
+um código de protocolo.
+
+![](images/figura1.png)
+*Figura 1 - Emissăo e Transmissăo de NF-e*
+
+![](images/recolher.gif)
+
+*Etapa 3 –* Consulta da NF-e;
+
+Etapa 3 – Consulta da NF-e;
+A existęncia de uma NF-e e sua validade poderăo ser verificadas através de
+uma consulta no site da Secretaria de Fazenda da Unidade da Federaçăo de
+origem do emitente da NF-e, para tanto, será necessário acessar a página da
+SEFAZ de origem e informar a chave de acesso da NF-e.
+
+A chave de acesso da NF-e , que consta impressa no DANF-e, é composta pelas
+seguintes informaçőes: CNPJ do emissor; número e série da NF-e; Unidade da
+Federaçăo do emissor e código de acesso.
+
+O código de acesso é uma seqüęncia de 10 posiçőes numéricas, geradas pelo
+emissor da NF-e, no momento de sua emissăo, através de algoritmo fornecido
+pelo Fisco, aplicado sobre informaçőes relevantes da NF-e.
+
+O resultado da consulta da NF-e no site da SEFAZ será a visualizaçăo
+completa na tela do computador, nos primeiros noventa dias da emissăo da
+NF-e, de todas as informaçőes constantes da NF-e, bem como do status da NF-e
+e o momento de sua recepçăo pela SEFAZ (data/hora/minuto/segundo). Além da
+visualizaçăo dos dados da NF-e, a consulta fornecerá um protocolo de
+consulta, que servirá como certidăo da consulta realizada.
+
+Após transcorridos o prazo de noventa dias da emissăo da NF-e, a critério da
+SEFAZ, poderá a consulta da NF-e retornar com informaçőes resumidas da NF-e,
+todavia capazes de garantir a existęncia e a validade da NF-e.
+
+![](images/figura2.png)
+
+*Figura 2 - Consulta NF-e pela Internet*
+
+![](images/recolher.gif)
+
+*Etapa 4 –* Envio da NF-e a Receita Federal e a Secretaria de Fazenda do
+destino;
+
+Etapa 4 – Envio da NF-e a RFB e Sefaz do Destino
+A NF-e após ter sido recebida, armazenada na base de dados da SEFAZ e
+disponibilizada para consulta via Internet, será enviada pela SEFAZ de
+origem para a Receita Federal do Brasil e, nos casos de operaçőes
+interestaduais, para a Secretaria da Fazenda do Estado de destino das
+mercadorias, via Rede de Informaçőes Sintegra (RIS). Dessa forma,
+tratando-se de operaçőes interestaduais, os Postos Fiscais de Fronteira
+receberăo a informaçăo prévia da NF-e, eliminando-se, assim, a necessidade
+atual de digitaçăo de notas fiscais, facilitando o controle do Fisco e
+reduzindo o tempo gasto pelo contribuinte nestas repartiçőes. A NF-e será
+transmitida para a Sefaz da Unidade Federada de embarque das mercadorias,
+tratando-se de exportaçăo de mercadorias através de portos ou aeroportos năo
+situados na UF da circunscriçăo do emitente da Nota Fiscal;
+
+![](images/figura3.png)
+*Figura 3 - Envio NF-e para Receita Federal e outra SEFAZ*
+
+![](images/recolher.gif)
+
+*Etapa 5 –* Etapa 5 –  Confirmaçăo de Recebimento da NF-e pelo destinatário.
+
+Etapa 5 – Confirmaçăo de Recebimento da NF-e pelo Destinatário
+A confirmaçăo do recebimento năo será implantada nesta fase inicial do
+projeto.
+
+Todavia, a título de esclarecimento, a confirmaçăo da NF-e pelo destinatário
+corresponde ao processo pelo qual o contribuinte destinatário da mercadoria
+realiza a confirmaçăo para a SEFAZ de que recebeu as mercadorias constantes
+de uma NF-e.
+
+O projeto da NF-e prevę que a confirmaçăo de recebimento do destinatário
+poderá ser realizada de duas formas: de forma manual no site da Sefaz, com o
+contribuinte destinatário identificandose pelo controle de acesso ou, de
+forma eletrônica, através de tecnologia “web service”.
+
+![](images/figura4.png)
+*Figura 4 - Confirmaçăo Recebimento via "web service"*
+
+![](images/recolher.gif)
+
+ *![](images/minus.gif)*
+
+![](images/baixodiv.gif)

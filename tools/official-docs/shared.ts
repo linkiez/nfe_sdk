@@ -3,16 +3,54 @@ import { promises as fs } from 'node:fs';
 import * as path from 'node:path';
 
 export const ROOT_DIR = process.cwd();
-export const SOURCE_REGISTRY_PATH = path.join(ROOT_DIR, 'docs', '_meta', 'source-registry.md');
+export const SOURCE_REGISTRY_PATH = path.join(
+  ROOT_DIR,
+  'docs',
+  '_meta',
+  'source-registry.md',
+);
 export const OUTPUT_ROOT = path.join(ROOT_DIR, 'docs', '_sources', 'official');
-export const MANIFEST_PATH = path.join(ROOT_DIR, 'docs', '_meta', 'official-download-manifest.json');
+export const MANIFEST_PATH = path.join(
+  ROOT_DIR,
+  'docs',
+  '_meta',
+  'official-download-manifest.json',
+);
 export const REQUEST_TIMEOUT_MS = 30_000;
 export const DEFAULT_MAX_DEPTH = 2;
 export const DEFAULT_MAX_PAGES = 250;
 
 const HTML_CONTENT_TYPES = new Set(['text/html', 'application/xhtml+xml']);
-const DOWNLOADABLE_EXTENSIONS = new Set(['.pdf', '.zip', '.xml', '.xsd', '.doc', '.docx', '.xls', '.xlsx', '.txt', '.csv', '.rtf', '.odt', '.ods']);
-const SKIPPED_EXTENSIONS = new Set(['.css', '.js', '.jpeg', '.jpg', '.png', '.gif', '.svg', '.ico', '.woff', '.woff2', '.ttf', '.eot', '.map']);
+const DOWNLOADABLE_EXTENSIONS = new Set([
+  '.pdf',
+  '.zip',
+  '.xml',
+  '.xsd',
+  '.doc',
+  '.docx',
+  '.xls',
+  '.xlsx',
+  '.txt',
+  '.csv',
+  '.rtf',
+  '.odt',
+  '.ods',
+]);
+const SKIPPED_EXTENSIONS = new Set([
+  '.css',
+  '.js',
+  '.jpeg',
+  '.jpg',
+  '.png',
+  '.gif',
+  '.svg',
+  '.ico',
+  '.woff',
+  '.woff2',
+  '.ttf',
+  '.eot',
+  '.map',
+]);
 const PRIMARY_TYPE_MARKER = '| primary |';
 const STATE_PORTAL_SEED_URLS = [
   'http://sefaznet.ac.gov.br/nfe/',
@@ -55,7 +93,9 @@ const EXTRA_SEED_URLS = [
   'https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Servicos.aspx',
   'https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/Sobre.aspx',
 ];
-const STATE_PORTAL_HOSTNAMES = new Set(STATE_PORTAL_SEED_URLS.map((url) => new URL(url).hostname));
+const STATE_PORTAL_HOSTNAMES = new Set(
+  STATE_PORTAL_SEED_URLS.map((url) => new URL(url).hostname),
+);
 
 /** Describes one crawl target in the queue. */
 export interface CrawlTarget {
@@ -102,6 +142,7 @@ export interface DownloadManifest {
 export interface FetchResult {
   body: Buffer;
   contentType: string;
+  downloadFileName?: string;
   finalUrl: string;
   status: number;
 }
@@ -113,7 +154,10 @@ export interface FetchResult {
  * @param fallbackValue - Default numeric value.
  * @returns Parsed positive integer.
  */
-export function readPositiveInteger(variableName: string, fallbackValue: number): number {
+export function readPositiveInteger(
+  variableName: string,
+  fallbackValue: number,
+): number {
   const rawValue = process.env[variableName];
 
   if (!rawValue) {
@@ -121,7 +165,9 @@ export function readPositiveInteger(variableName: string, fallbackValue: number)
   }
 
   const parsedValue = Number.parseInt(rawValue, 10);
-  return Number.isNaN(parsedValue) || parsedValue <= 0 ? fallbackValue : parsedValue;
+  return Number.isNaN(parsedValue) || parsedValue <= 0
+    ? fallbackValue
+    : parsedValue;
 }
 
 /**
@@ -133,12 +179,16 @@ export async function loadSeedUrls(): Promise<string[]> {
   const registryMarkdown = await fs.readFile(SOURCE_REGISTRY_PATH, 'utf8');
   const registryUrls = registryMarkdown
     .split('\n')
-    .filter((line) => line.includes(PRIMARY_TYPE_MARKER) && line.startsWith('| SRC-'))
+    .filter(
+      (line) => line.includes(PRIMARY_TYPE_MARKER) && line.startsWith('| SRC-'),
+    )
     .map(extractRegistryUrl)
     .filter((url): url is string => url !== undefined)
     .filter((url) => url.startsWith('https://'));
 
-  return Array.from(new Set([...registryUrls, ...EXTRA_SEED_URLS, ...STATE_PORTAL_SEED_URLS])).sort((left, right) => left.localeCompare(right));
+  return Array.from(
+    new Set([...registryUrls, ...EXTRA_SEED_URLS, ...STATE_PORTAL_SEED_URLS]),
+  ).sort((left, right) => left.localeCompare(right));
 }
 
 /**
@@ -173,18 +223,30 @@ export function shouldFetchUrl(candidateUrl: string): boolean {
     }
 
     if (parsedUrl.hostname === 'www.nfe.fazenda.gov.br') {
-      return parsedUrl.pathname.toLowerCase().startsWith('/portal/') && !parsedUrl.pathname.toLowerCase().includes('/arearestrita/') && !SKIPPED_EXTENSIONS.has(path.extname(parsedUrl.pathname.toLowerCase()));
+      return (
+        parsedUrl.pathname.toLowerCase().startsWith('/portal/') &&
+        !parsedUrl.pathname.toLowerCase().includes('/arearestrita/') &&
+        !SKIPPED_EXTENSIONS.has(path.extname(parsedUrl.pathname.toLowerCase()))
+      );
     }
 
     if (parsedUrl.hostname === 'portal.fazenda.sp.gov.br') {
-      return parsedUrl.pathname.toLowerCase().startsWith('/servicos/nfe/') && !SKIPPED_EXTENSIONS.has(path.extname(parsedUrl.pathname.toLowerCase()));
+      return (
+        parsedUrl.pathname.toLowerCase().startsWith('/servicos/nfe/') &&
+        !SKIPPED_EXTENSIONS.has(path.extname(parsedUrl.pathname.toLowerCase()))
+      );
     }
 
     if (STATE_PORTAL_HOSTNAMES.has(parsedUrl.hostname)) {
-      return !SKIPPED_EXTENSIONS.has(path.extname(parsedUrl.pathname.toLowerCase()));
+      return !SKIPPED_EXTENSIONS.has(
+        path.extname(parsedUrl.pathname.toLowerCase()),
+      );
     }
 
-    return parsedUrl.hostname === 'www1.sped.fazenda.gov.br' && parsedUrl.pathname.startsWith('/spednfeacesso/');
+    return (
+      parsedUrl.hostname === 'www1.sped.fazenda.gov.br' &&
+      parsedUrl.pathname.startsWith('/spednfeacesso/')
+    );
   } catch {
     return false;
   }
@@ -209,7 +271,10 @@ export function isHtmlContentType(contentType: string): boolean {
  */
 export function extractRelevantLinks(baseUrl: string, html: string): string[] {
   const links = new Set<string>();
-  const attributePatterns = [/href\s*=\s*['"]([^'"]+)['"]/gi, /<option[^>]+value=['"]([^'"]+)['"]/gi];
+  const attributePatterns = [
+    /href\s*=\s*['"]([^'"]+)['"]/gi,
+    /<option[^>]+value=['"]([^'"]+)['"]/gi,
+  ];
 
   for (const attributePattern of attributePatterns) {
     for (const match of html.matchAll(attributePattern)) {
@@ -244,8 +309,18 @@ export function extractRelevantLinks(baseUrl: string, html: string): string[] {
  * @param body - Raw response bytes.
  * @returns Absolute file path of the archived payload.
  */
-export async function writeArchivedFile(sourceUrl: string, contentType: string, body: Buffer): Promise<string> {
-  const targetFilePath = buildOutputFilePath(sourceUrl, contentType);
+export async function writeArchivedFile(
+  sourceUrl: string,
+  contentType: string,
+  body: Buffer,
+  downloadFileName?: string,
+): Promise<string> {
+  const targetFilePath = await buildOutputFilePath(
+    sourceUrl,
+    contentType,
+    body,
+    downloadFileName,
+  );
 
   await fs.mkdir(path.dirname(targetFilePath), { recursive: true });
   await fs.writeFile(targetFilePath, body);
@@ -282,7 +357,10 @@ export function formatUnknownError(error: unknown): string {
  * @returns The URL column when present.
  */
 function extractRegistryUrl(registryLine: string): string | undefined {
-  const columns = registryLine.split('|').map((column) => column.trim()).filter((column) => column.length > 0);
+  const columns = registryLine
+    .split('|')
+    .map((column) => column.trim())
+    .filter((column) => column.length > 0);
   return columns[2];
 }
 
@@ -293,7 +371,14 @@ function extractRegistryUrl(registryLine: string): string | undefined {
  * @returns True when the href should be ignored.
  */
 function shouldSkipHref(rawHref: string): boolean {
-  return rawHref.startsWith('#') || rawHref.startsWith('javascript:') || rawHref.startsWith('mailto:') || rawHref.includes('{{') || rawHref.includes('}}') || /^(https?|mailto)&/i.test(rawHref);
+  return (
+    rawHref.startsWith('#') ||
+    rawHref.startsWith('javascript:') ||
+    rawHref.startsWith('mailto:') ||
+    rawHref.includes('{{') ||
+    rawHref.includes('}}') ||
+    /^(https?|mailto)&/i.test(rawHref)
+  );
 }
 
 /**
@@ -303,17 +388,62 @@ function shouldSkipHref(rawHref: string): boolean {
  * @param contentType - Response content type.
  * @returns Absolute output file path.
  */
-function buildOutputFilePath(sourceUrl: string, contentType: string): string {
+async function buildOutputFilePath(
+  sourceUrl: string,
+  contentType: string,
+  body: Buffer,
+  downloadFileName?: string,
+): Promise<string> {
   const parsedUrl = new URL(sourceUrl);
-  const hashSuffix = createHash('sha1').update(sourceUrl).digest('hex').slice(0, 10);
-  const normalizedSegments = parsedUrl.pathname.split('/').filter((segment) => segment.length > 0).map((segment) => sanitizePathSegment(decodeURIComponent(segment)));
-  const extension = resolveFileExtension(parsedUrl.pathname, contentType);
+  const hashSuffix = createHash('sha1')
+    .update(sourceUrl)
+    .digest('hex')
+    .slice(0, 10);
+  const normalizedSegments = parsedUrl.pathname
+    .split('/')
+    .filter((segment) => segment.length > 0)
+    .map((segment) => sanitizePathSegment(decodeURIComponent(segment)));
+  const preferredDownloadFileName = resolveDownloadFileName(
+    downloadFileName,
+    parsedUrl.pathname,
+    contentType,
+  );
   const lastSegment = normalizedSegments.at(-1);
-  const needsSyntheticFileName = !lastSegment || path.extname(lastSegment).length === 0;
-  const fileName = needsSyntheticFileName ? `index-${hashSuffix}${extension}` : `${stripExtension(lastSegment)}-${hashSuffix}${extension}`;
-  const directorySegments = needsSyntheticFileName ? normalizedSegments : normalizedSegments.slice(0, -1);
+  const needsSyntheticFileName =
+    preferredDownloadFileName === undefined &&
+    (!lastSegment || path.extname(lastSegment).length === 0);
+  const syntheticBaseName = lastSegment ? stripExtension(lastSegment) : 'index';
+  const fileName =
+    preferredDownloadFileName ??
+    `${needsSyntheticFileName ? 'index' : syntheticBaseName}-${hashSuffix}${resolveFileExtension(parsedUrl.pathname, contentType)}`;
+  const directorySegments = needsSyntheticFileName
+    ? normalizedSegments
+    : normalizedSegments.slice(0, -1);
+  const baseDirectory = path.join(
+    OUTPUT_ROOT,
+    sanitizePathSegment(parsedUrl.hostname),
+    ...directorySegments,
+  );
+  const preferredFilePath = path.join(baseDirectory, fileName);
 
-  return path.join(OUTPUT_ROOT, sanitizePathSegment(parsedUrl.hostname), ...directorySegments, fileName);
+  try {
+    const currentFile = await fs.readFile(preferredFilePath);
+
+    if (currentFile.equals(body)) {
+      return preferredFilePath;
+    }
+
+    if (preferredDownloadFileName) {
+      return path.join(
+        baseDirectory,
+        `${stripExtension(preferredDownloadFileName)}-${hashSuffix}${path.extname(preferredDownloadFileName)}`,
+      );
+    }
+  } catch {
+    return preferredFilePath;
+  }
+
+  return preferredFilePath;
 }
 
 /**
@@ -323,15 +453,23 @@ function buildOutputFilePath(sourceUrl: string, contentType: string): string {
  * @param contentType - Response content type.
  * @returns Output file extension with leading dot.
  */
-function resolveFileExtension(pathname: string, contentType: string): string {
+function resolveFileExtension(
+  pathname: string,
+  contentType: string,
+  downloadFileName?: string,
+): string {
+  if (downloadFileName) {
+    const downloadExtension = path.extname(downloadFileName).toLowerCase();
+
+    if (downloadExtension.length > 0) {
+      return downloadExtension;
+    }
+  }
+
   const lowerCaseExtension = path.extname(pathname).toLowerCase();
 
   if (DOWNLOADABLE_EXTENSIONS.has(lowerCaseExtension)) {
     return lowerCaseExtension;
-  }
-
-  if (['.aspx', '.ashx', '.html', '.htm'].includes(lowerCaseExtension)) {
-    return '.html';
   }
 
   if (contentType === 'application/pdf') {
@@ -346,7 +484,56 @@ function resolveFileExtension(pathname: string, contentType: string): string {
     return '.xml';
   }
 
+  if (['.aspx', '.ashx', '.html', '.htm'].includes(lowerCaseExtension)) {
+    return '.html';
+  }
+
   return isHtmlContentType(contentType) ? '.html' : '.bin';
+}
+
+/**
+ * Resolves the preferred archive file name from server metadata.
+ *
+ * @param downloadFileName - File name provided by the remote server.
+ * @param pathname - URL pathname.
+ * @param contentType - Response content type.
+ * @returns Sanitized file name when available.
+ */
+function resolveDownloadFileName(
+  downloadFileName: string | undefined,
+  pathname: string,
+  contentType: string,
+): string | undefined {
+  if (!downloadFileName) {
+    return undefined;
+  }
+
+  const sanitizedBaseName = sanitizeDownloadFileName(
+    stripExtension(downloadFileName),
+  );
+  const sanitizedExtension = resolveFileExtension(
+    pathname,
+    contentType,
+    downloadFileName,
+  );
+
+  return `${sanitizedBaseName}${sanitizedExtension}`;
+}
+
+/**
+ * Sanitizes a download file name while preserving readable spaces and accents.
+ *
+ * @param rawFileName - File name suggested by the remote server.
+ * @returns File-system-safe name without changing its human-readable shape more than necessary.
+ */
+function sanitizeDownloadFileName(rawFileName: string): string {
+  return (
+    rawFileName
+      .replace(/[\\/:*?"<>|]+/g, '-')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .replace(/\.+$/g, '') || 'download'
+  );
 }
 
 /**
@@ -356,7 +543,14 @@ function resolveFileExtension(pathname: string, contentType: string): string {
  * @returns File-system-safe segment.
  */
 function sanitizePathSegment(rawSegment: string): string {
-  return rawSegment.normalize('NFKD').replace(/[^a-zA-Z0-9._-]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').toLowerCase() || 'item';
+  return (
+    rawSegment
+      .normalize('NFKD')
+      .replace(/[^a-zA-Z0-9._-]+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '')
+      .toLowerCase() || 'item'
+  );
 }
 
 /**
@@ -367,5 +561,7 @@ function sanitizePathSegment(rawSegment: string): string {
  */
 function stripExtension(fileName: string): string {
   const fileExtension = path.extname(fileName);
-  return fileExtension.length > 0 ? fileName.slice(0, -fileExtension.length) : fileName;
+  return fileExtension.length > 0
+    ? fileName.slice(0, -fileExtension.length)
+    : fileName;
 }

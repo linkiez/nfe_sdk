@@ -1,0 +1,98 @@
+
+
+<html>
+<link rel="stylesheet" href="../includes/sefaz.css">
+<script language="Javascript" src="../includes/sefaz.js"></script>
+
+<script language="JavaScript">
+function Consultar() {
+  if (document.frmConsulta.cboIndiceMunc.value == "") {
+    alert('Informe o Índice de Participação!'); 
+  }
+  else { 
+    if (document.frmConsulta.Ano.value == "") {
+      alert('Informe o Ano !');
+    }
+    else {	
+	  document.frmConsulta.submit();	  	
+    }
+  }
+}
+
+/***
+*** Function ConsultarIndice
+***/
+function ConsultarMuncAno(ano) {
+    frmConsulta.hdAno.value = ano;
+	frmConsulta.hdIndiceAno.value = 0;
+	
+    if (document.frmConsulta.Ano.value == "") {	  
+      alert('Informe o Ano!');
+    }
+    else {	
+	  frmConsulta.hdIndiceAno.value = 1;
+	  frmConsulta.action = 'TaxasRepasseConsIndices.asp';
+	  frmConsulta.submit();  	  	
+    }
+}
+
+/***
+*** Function ConsultarIndice
+***/
+function ConsultarMuncAnoIndice(ano, indice) {
+    frmConsulta.hdAno.value = ano;
+	frmConsulta.hdIndice.value = indice;
+	
+    if (document.frmConsulta.Ano.value == "") {
+      alert('Informe o Ano!');
+    }
+    else {	
+	  frmConsulta.action = 'TaxasRepasseIndices.asp';
+	  frmConsulta.submit();  	  	
+    }
+}
+</script>
+
+<head>
+<title>RPM - Consultar Taxas de Repasse para Munic&iacute;pios</title>
+</head>
+
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<table class ="Class CampoForm3" width="99%" border="0" align="center" height="11">
+  <tr> 
+    <td width="77%" height="8"> <div align="left"><u><font color="#000099" size="1"><b><font face="Verdana" color="#FFFFFF"><font color="#000066" size="2">REPASSE 
+        CONSTITUCIONAL PARA OS MUNICIPIOS </font></font></b></font></u><font color="#000099" size="1"><b><font face="Verdana"></font></b></font></div></td>
+    <td width="23%" align="right"><a href="javascript:history.back(-1)"><img src="../imagens/seta_voltar.gif" border="0"></a></td>
+  </tr>
+</table>
+
+
+
+<table border="0" width="99%" align="center">
+  <tr> 
+    <td class=TituloCampo2> Consultar &Iacute;ndice de Participa&ccedil;&atilde;o 
+      dos Munic&iacute;pios </td>
+  </tr>
+</table>
+
+<table width="99%" border="0" align="center">
+  <form name="frmConsulta" method="get" enctype="multipart/form-data" action="TaxasRepasseIndices.asp">
+  	<input type="hidden" name="hdIndiceAno" class="CampoNaoObrigatorio">
+	<input type="hidden" name="hdAno" class="CampoNaoObrigatorio">
+	<input type="hidden" name="hdIndice" class="CampoNaoObrigatorio">
+    <tr> 
+      <td class="TituloCampo" width="10%">Ano:</td>
+      <td class="CampoForm"><input type="text" name="Ano" value="" size="4" maxlength="4" onkeypress = "EhNumero(event)"> 
+        <img src="../imagens/lupa3.gif" border = "0" onClick="JavaScript:ConsultarMuncAno(frmConsulta.Ano.value);" onMouseOver="style.cursor='hand'"> 
+      </td>
+    </tr>
+	
+    <tr> 
+      <td class="TituloCampo" colspan=2 align="center"> <img onmouseover="style.cursor='hand'" onclick=JavaScript:history.go(-1) height=16 alt="Retorna para a página anterior" src="../imagens/Voltar_hp.gif" width=19> 
+      </td>
+    </tr>
+  </form>
+</table>
+</div>
+</html>

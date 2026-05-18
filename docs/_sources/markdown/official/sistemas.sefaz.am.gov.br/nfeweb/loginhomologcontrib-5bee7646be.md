@@ -1,0 +1,4 @@
+|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | | |  | | --- | | Sistema de Habilitação de Contribuintes | | |  |  | | --- | --- | | Esta é uma área de acesso restrito. Por favor, identifique-se. | | |  | | | Inscrição: |  | | Senha: |  | |  | | |  |  | |  | [Credenciamento de empresa](/nfeweb/credenciamento/credenciamento.do) | | | | | |
+| SECRETARIA DE ESTADO DA FAZENDA |

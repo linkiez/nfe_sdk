@@ -34,6 +34,7 @@ markitdown local-source-file.pdf -o converted-source.md
 ## Observacoes
 
 - Paginas com certificado, instabilidade ou bloqueio devem ser registradas como lacunas conhecidas.
-- Se a fonte for HTML, PDF ou XML, o Markdown final deve permanecer rastreavel ao artefato original.
+- Se a fonte for HTML ou PDF, o Markdown final deve permanecer rastreavel ao artefato original.
 - O uso do MarkItDown nao substitui a curadoria normativa: sempre revisar o resultado convertido antes de promover o conteudo para um dossie final.
 - O snapshot oficial automatizado e salvo em `docs/_sources/official/`, com manifesto em `docs/_meta/official-download-manifest.json`.
+- O acervo navegavel derivado dessas capturas fica publicado em `docs/_sources/markdown/official/` e indexado em `docs/_sources/index.md`.

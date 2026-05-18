@@ -1,0 +1,41 @@
+![](images/tp_hist.gif)
+
+Para atender o disposto Constitucional, foi realizado, nos dias 15 a 17 de
+julho de 2004, em Salvador, o 1º Encontro Nacional de Administradores
+Tributários – ENAT, reunindo os titulares das administrações tributárias
+federal, estaduais, do Distrito Federal e dos municípios de capitais.
+
+O encontro teve como objetivo buscar soluções conjuntas das três esferas de
+Governo que promovessem maior integração administrativa, padronização e
+melhor qualidade das informações; racionalização de custos e da carga de
+trabalho operacional no atendimento; maior eficácia da fiscalização; maior
+possibilidade de realização de ações fiscais coordenadas e integradas; maior
+possibilidade de intercâmbio de informações fiscais entre as diversas
+esferas governamentais; cruzamento de dados em larga escala com dados
+padronizados e uniformização de procedimentos.
+
+No ENAT foram aprovados dois protocolos de cooperação técnica nas áreas do
+cadastramento (Projeto do Cadastro Sincronizado) e Nota Fiscal Eletrônica.
+
+Visando alinhar as diretrizes do projeto, iniciado pelo ENAT, com o fórum de
+discussão dos Coordenadores e Administradores Tributários Estaduais (ENCAT),
+foi realizada uma Reunião Técnica do ENAT/ENCAT, em São Paulo-SP, em 27 de
+abril de 2005, para a unificação dos diferentes projetos em andamento no
+âmbito das Administrações Tributárias.
+
+A partir desse alinhamento, ficou definido que o projeto terá a participação
+da Secretaria da Receita Federal (SRF), inclusive com a disponibilização de
+recursos financeiros para o desenvolvimento do projeto, que será coordenado
+pelo ENCAT, conforme as especificações contidas nesse documento.
+
+No final de agosto último, no evento do II ENAT – Encontro Nacional de
+Administradores Tributários, em São Paulo, os Secretários de Fazenda dos
+Estados e DF, o Secretário da Receita Federal e os representantes das
+Secretarias de Finanças dos municípios das Capitais assinaram o Protocolo
+ENAT 03/2005 (Anexo I), visando o desenvolvimento e a implantação da Nota
+Fiscal Eletrônica, consolidando de forma definitiva a coordenação técnica e
+o desenvolvimento projeto sob a responsabilidade do Encat (Encontro Nacional
+dos Coordenadores e Administradores Tributários Estaduais) com a
+participação, da agora denominada, Receita Federal do Brasil (RFB).
+
+![](images/baixodiv.gif)

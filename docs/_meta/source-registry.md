@@ -4,6 +4,13 @@
 
 Centralizar as fontes consultadas, datas de acesso, restricoes observadas e o vinculo entre evidencias documentais e impactos futuros no SDK.
 
+## Papel no catalogo canonico
+
+- Este registro sustenta a proveniencia do catalogo canonico em `docs/capacidades-sdk.md`.
+- `docs/index.md` aponta para este arquivo como trilha de auditoria e validacao da leitura orientada a adocao.
+- Os dossies por dominio continuam sendo evidencia funcional detalhada; este arquivo centraliza a origem primaria e secundaria que justifica a classificacao do catalogo.
+- Nesta fase, a entrega permanece documental e este registro nao substitui o catalogo canonico nem cria superficie estruturada adicional para ferramentas.
+
 ## Campos obrigatorios por fonte
 
 | Campo | Descricao |
@@ -44,6 +51,22 @@ Centralizar as fontes consultadas, datas de acesso, restricoes observadas e o vi
 - Fontes primarias e secundarias nao devem ser misturadas.
 - Restricoes de acesso devem ser descritas sem tentar contornar protecoes oficiais.
 - Quando a mesma URL sustentar dominios diferentes, manter IDs distintos para preservar a rastreabilidade por dossie.
+- Toda entrada do catalogo geral em `docs/capacidades-sdk.md` deve apontar para pelo menos uma evidencia principal deste registro ou explicitar a lacuna correspondente.
+- Toda atualizacao de estado, impacto ou lacuna no catalogo canonico deve manter coerencia com as referencias cruzadas e com os dossies por dominio.
+
+## Uso no catalogo geral de capacidades
+
+| Entrada do catalogo | Evidencia principal | Tipo de evidencia | Observacao |
+| --- | --- | --- | --- |
+| CAT-SHARED-001 | README.md | readme | Sustenta a geracao em lote de artefatos TypeScript a partir de XSD |
+| CAT-SHARED-002 | README.md | readme | Sustenta a normalizacao e particionamento da saida gerada |
+| CAT-SHARED-003 | README.md | readme | Sustenta o alvo ESM e a compatibilidade com validacao TypeScript |
+| CAT-SHARED-004 | docs/index.md | dossier | Sustenta a organizacao documental versionada e navegavel |
+| CAT-SHARED-005 | docs/manifestacao-destinatario/capacidades-sdk.md | dossier | Sustenta a separacao entre capacidade do SDK e habilitacao operacional |
+| CAT-NFE-001 | docs/nfe/capacidades-sdk.md | dossier | Resume capacidades e lacunas atuais do dominio NFe |
+| CAT-NFCE-001 | docs/nfce/capacidades-sdk.md | dossier | Resume capacidades compartilhadas e sensiveis a UF para NFC-e |
+| CAT-NFCE-002 | docs/nfce/uf-matrix.md | dossier | Mantem o detalhe por UF fora do catalogo principal |
+| CAT-MD-001 | docs/manifestacao-destinatario/capacidades-sdk.md | dossier | Resume restricoes publicas e dependencia de certificado digital |
 
 ## Referencias cruzadas iniciais
 
@@ -63,6 +86,20 @@ Centralizar as fontes consultadas, datas de acesso, restricoes observadas e o vi
 | SRC-MD-002 | MD-CAP-001, MD-CAP-003, docs/manifestacao-destinatario/visao-geral.md |
 | SRC-MD-003 | MD-CAP-002, MD-CAP-003, docs/manifestacao-destinatario/visao-geral.md |
 | SRC-SEC-001 | docs/nfe/emissao-nfe.md, docs/nfce/emissao-nfce.md, docs/nfe/capacidades-sdk.md, docs/nfce/capacidades-sdk.md |
+
+## Referencias cruzadas do catalogo
+
+| Entrada | Registros relacionados |
+| --- | --- |
+| CAT-SHARED-001 | README.md |
+| CAT-SHARED-002 | README.md |
+| CAT-SHARED-003 | README.md |
+| CAT-SHARED-004 | docs/index.md, docs/_meta/source-registry.md |
+| CAT-SHARED-005 | SRC-MD-003, docs/manifestacao-destinatario/capacidades-sdk.md |
+| CAT-NFE-001 | SRC-NFE-001, SRC-NFE-003, SRC-NFE-004, docs/nfe/capacidades-sdk.md |
+| CAT-NFCE-001 | SRC-NFCE-001, SRC-NFCE-003, docs/nfce/capacidades-sdk.md |
+| CAT-NFCE-002 | SRC-NFCE-001, SRC-NFCE-004, SRC-NFCE-005, docs/nfce/uf-matrix.md |
+| CAT-MD-001 | SRC-MD-001, SRC-MD-002, SRC-MD-003, docs/manifestacao-destinatario/capacidades-sdk.md |
 
 ## Estado atual das fontes secundarias
 

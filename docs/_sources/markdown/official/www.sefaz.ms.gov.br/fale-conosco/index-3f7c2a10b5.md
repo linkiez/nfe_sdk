@@ -1,0 +1,140 @@
+[ir para conteúdo](#conteudo)
+[ir para navegação](#menu-principal)
+[ir para busca](#busca-principal)
+
+[Ouvidoria](https://falabr.cgu.gov.br/web/home)
+[Transparência](http://www.transparencia.ms.gov.br/)
+
+Siga @governoms
+
+![](https://www.sefaz.ms.gov.br/wp-content/themes/new-ms/assets/img/Logomarca.svg)
+
+![](https://www.sefaz.ms.gov.br/wp-content/themes/new-ms/assets/img/universal-access.svg)
+![](https://www.sefaz.ms.gov.br/wp-content/themes/new-ms/assets/img/Vlibras.svg)
+
+[ouvidoria](https://falabr.cgu.gov.br/web/home)
+[transparência](http://www.transparencia.ms.gov.br/)
+
+Siga @governoms
+
+[![Governo de MS](https://www.sefaz.ms.gov.br/wp-content/themes/new-ms/assets/img/logo_governo.svg)](https://www.sefaz.ms.gov.br/)
+
+**SEFAZ**
+
+Secretaria de Estado de Fazenda
+
+* Institucional
+  + [A Secretaria](https://www.sefaz.ms.gov.br/a-secretaria/)
+  + [Corregedoria-Geral da Administração Tributária](https://www.sefaz.ms.gov.br/unidade-administrativa/corregedoria-geral-da-administracao-tributaria/)
+  + [Tribunal Administrativo Tributário](https://www.sefaz.ms.gov.br/unidade-administrativa/tribunal-administrativo-tributario/)
+  + Superintendências
+    - [Superintendência de Administração](https://www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-administracao/)
+    - [Superintendência de Administração Tributária](https://www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-administracao-tributaria/)
+    - [Superintendência de Contabilidade Geral do Estado](https://www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-contabilidade-geral-do-estado/)
+    - [Superintendência de Logística e Infraestrutura](https://www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-logistica-e-infraestrutura/)
+    - [Superintendência de Loteria do Estado de Mato Grosso do Sul](https://www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-loteria-do-estado-de-mato-grosso-do-sul/)
+    - [Superintendência de Orçamento](https://www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-orcamento/)
+    - [Superintendência do Tesouro](https://www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-do-tesouro/)
+  + Coordenadorias
+    - [Coordenadoria de Acompanhamento e Prestação de Contas](https://www.sefaz.ms.gov.br/unidade-administrativa/coordenadoria-de-acompanhamento-e-prestacao-de-contas/)
+    - [Coordenadoria de Gestão Fiscal](https://www.sefaz.ms.gov.br/unidade-administrativa/coordenadoria-de-gestao-fiscal/)
+    - [Coordenadoria de Legislação](https://www.sefaz.ms.gov.br/unidade-administrativa/coordenadoria-de-legislacao/)
+    - [Coordenadoria de Modernização e Gestão Estratégica](https://www.sefaz.ms.gov.br/unidade-administrativa/coordenadoria-de-modernizacao-e-gestao-estrategica/)
+  + Órgãos Colegiados
+    - [Comitê de Ética da Secretaria de Estado de Fazenda – CESEFAZ](https://www.sefaz.ms.gov.br/orgaos_colegiados/comite-de-etica-da-secretaria-de-estado-de-fazenda-cesefaz/)
+    - [Conselho de Acompanhamento e Fiscalização do Índice de Participação dos Municípios – CAFIPM](https://www.sefaz.ms.gov.br/orgaos_colegiados/conselho-de-acompanhamento-e-fiscalizacao-do-indice-de-participacao-dos-municipios-cafipm/)
+    - [Comitê de Governança da Secretaria de Estado de Fazenda – CGSEFAZ](https://www.sefaz.ms.gov.br/orgaos_colegiados/comite-de-governanca-da-secretaria-de-estado-de-fazenda-cgsefaz/)
+    - [Conselho Superior da Superintendência de Administração Tributária – CONSAT](https://www.sefaz.ms.gov.br/orgaos_colegiados/conselho-superior-da-superintendencia-de-administracao-tributaria-consat/)
+  + [Agenda](https://www.sefaz.ms.gov.br/agenda/)
+  + [Legislação](https://www.sefaz.ms.gov.br/legislacao/)
+* [Serviços](https://www.sefaz.ms.gov.br/servicos/?chunk=8)
+* [Programas e Projetos](https://www.sefaz.ms.gov.br/programas-e-projetos/)
+* [Informativos](https://www.sefaz.ms.gov.br/informativos/)
+  + [Consulta de Contribuintes](https://www.sefaz.ms.gov.br/informativo/consulta-de-contribuintes/)
+  + [Consulta de Editais e Leilões](https://www.sefaz.ms.gov.br/informativos/consultas)
+  + [Cursos](https://www.sefaz.ms.gov.br/informativo/cursos/)
+  + [Guias e Manuais](https://www.sefaz.ms.gov.br/informativos/guias-e-manuais)
+  + [Indicadores](https://www.sefaz.ms.gov.br/indicadores)
+  + [Notícias](https://www.sefaz.ms.gov.br/noticias/)
+  + [Pautas de Julgamento](https://www.sefaz.ms.gov.br/informativo/pautas-de-julgamentos/)
+  + [Pesquisa de Acórdãos](https://www.sefaz.ms.gov.br/pesquisa-de-acordaos/)
+* [Fale Conosco](https://www.sefaz.ms.gov.br/fale-conosco/)
+* Sistemas
+  + [Intranet](https://www.acessobi.ms.gov.br/)
+  + [eFazenda](https://eservicos.sefaz.ms.gov.br/)
+  + [Ver todos](https://www.sefaz.ms.gov.br/sistemas/)
+
+Pesquisar por:
+
+Fale Conosco
+
+* [Contato principal](/fale-conosco)
+* [Unidades](/fale-conosco/unidades)
+* [Outros contatos](/fale-conosco/outros-contatos)
+* [Ouvidoria](/fale-conosco/ouvidoria)
+* [Perguntas frequentes](/fale-conosco/perguntas-frequentes)
+
+## Contato Principal
+
+Todas as informações relacionadas a ela.
+
+## Contatos
+
+Confira aqui os principais contatos, incluindo e-mail e telefones
+
+* Fale Conosco SEFAZ
+  **[Link de Contato](https://www.faleconosco.ms.gov.br/faleconosco/login/login.jsf)**
+* Denúncia - Fiscalização de Tributos Estaduais
+  **[Link de Contato](https://www.faleconosco.ms.gov.br/faleconosco/ouvidoria/ouvidoria.jsf)**
+* Telefone
+  **(67) 3318-3298**
+* Suporte Técnico
+  **(67) 3318-3600**
+* Suporte Técnico Whatsapp
+  **[Link de Contato](https://api.whatsapp.com/send?phone=556733183700)**
+
+E-mail:
+
+## Horário de funcionamento
+
+Atendimento ao público e operações internas
+
+* **Horário de funcionamento**
+
+  Segunda a Sexta
+  07:30 às 11:30 / 13:30 às 17:30
+* **Horário de atendimento**
+
+  Segunda a Sexta
+  07:30 às 11:30 / 13:30 às 17:30
+
+## Endereço
+
+Encontre o endereço principal e detalhes de localização.
+
+**Secretaria de Estado de Fazenda**
+
+Endereço
+**Av. Desembargador José Nunes da Cunha s/n - Bloco 2 - Parque dos Poderes - Campo Grande | MS CEP.: 79031-310**
+
+[Abrir mapa ![](https://www.sefaz.ms.gov.br/wp-content/themes/new-ms/assets/icons/link-externo.svg)](https://maps.app.goo.gl/npXUT3wrUCVqTMfq5)
+
+[LGPD](https://www.sefaz.ms.gov.br/encarregado-de-tratamento-de-dados-pessoais-da-secretaria-de-estado-de-fazenda-sefaz/)
+
+[Fala Servidor](https://www.canaldedenuncia.ms.gov.br/)
+
+[Acessibilidade](https://www.sefaz.ms.gov.br/acessibilidade)
+
+[Ordem Cronológica de Pagamentos](https://msindicadores.ms.gov.br/publico/sense/app/a771b134-8b45-4d50-9f33-d2ec5aab1087/sheet/710e4f3c-bb09-40cd-840f-15fb86906f06/state/analysis)
+
+[Planos de Contratações Anuais](https://pncp.gov.br/app/pca/02935843000105/2024)
+
+SECRETARIA DE ESTADO DE fazenda
+
+Av. Desembargador José Nunes da Cunha s/n - Bloco 2
+Parque dos Poderes - Campo Grande | MS
+CEP.: 79031-310
+
+[**MAPA**](https://maps.app.goo.gl/npXUT3wrUCVqTMfq5)
+
+SETDIG | Secretaria-Executiva de Transformação Digital

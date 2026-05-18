@@ -1,6 +1,6 @@
 # Feature Specification: Especificacao das Features do Projeto
 
-**Feature Branch**: `003-research-sefaz-docs`
+**Feature Branch**: `002-project-features`
 
 **Created**: 2026-05-16
 
@@ -14,6 +14,12 @@
 
 - Q: Qual criterio define "suporte confirmado" no catalogo de features? → A: Reservar "suporte confirmado" apenas para features ja estaveis como contrato publico do pacote; todo o resto fica como parcial ou futuro.
 - Q: Como o catalogo principal de features deve ser organizado? → A: Catalogar features por capacidades visiveis ao usuario do SDK e incluir separadamente capacidades transversais do projeto, como geracao, normalizacao e compatibilidade.
+- Q: Como a cobertura de NFC-e por UF deve aparecer na especificacao? → A: Tratar a cobertura de NFC-e como feature principal e registrar variacoes por UF em uma matriz ou secao auxiliar vinculada.
+- Q: Como classificar features cujo uso real depende de certificado, credenciamento ou acesso externo? → A: Separar capacidade do SDK de habilitacao operacional, deixando explicito que o SDK pode cobrir a feature enquanto o uso real depende de acesso externo.
+- Q: Qual nivel minimo de evidencia cada feature deve ter? → A: Exigir ao menos uma evidencia principal por feature, ou uma lacuna declarada quando a evidencia ainda nao for suficiente.
+- Q: Onde deve ficar a fonte canonica do catalogo de features? → A: Manter um catalogo canonico em `docs/capacidades-sdk.md`, com `docs/index.md` como navegacao e os dossies tematicos como evidencia e detalhamento.
+- Q: Esta feature deve produzir apenas catalogo documental ou tambem uma representacao estruturada adicional? → A: Manter esta feature apenas documental em `docs/`, sem exigir arquivo estruturado adicional em JSON ou YAML nesta etapa.
+- Q: Qual granularidade o catalogo de features deve usar? → A: Usar granularidade hibrida, com features principais amplas no catalogo canonico e subcapacidades ou fluxos relevantes descritos no escopo da entrada ou nos dossies vinculados.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -38,7 +44,7 @@ Como mantenedor do projeto, quero uma definicao consolidada das features esperad
 
 **Why this priority**: O projeto ja possui artefatos gerados, pesquisa normativa e dossies por dominio, mas ainda precisa de uma definicao unica que conecte capacidades atuais, lacunas e impactos de evolucao.
 
-**Independent Test**: Pode ser validada verificando que a especificacao diferencia claramente feature entregue, feature parcial, feature planejada e item fora de escopo, permitindo gerar um plano de trabalho sem reinterpretar a documentacao base.
+**Independent Test**: Pode ser validada verificando que a especificacao diferencia claramente feature confirmada, feature parcial, feature dependente de habilitacao externa e feature futura, permitindo gerar um plano de trabalho sem reinterpretar a documentacao base.
 
 **Acceptance Scenarios**:
 
@@ -72,20 +78,27 @@ Como revisor tecnico do projeto, quero que cada feature relevante deixe claro se
 ### Functional Requirements
 
 - **FR-001**: O sistema MUST definir um catalogo unico das features relevantes do projeto, organizado por capacidades visiveis ao usuario do SDK.
+- **FR-001A**: O sistema MUST tratar `docs/capacidades-sdk.md` como fonte canonica do catalogo principal, usando `docs/index.md` para navegacao e os dossies por dominio como evidencias e detalhamento complementar.
+- **FR-001B**: O sistema MUST permanecer documental nesta etapa, sem exigir um catalogo estruturado adicional em JSON, YAML ou formato equivalente como parte obrigatoria da feature.
 - **FR-002**: O sistema MUST descrever cada feature em termos de valor para o usuario do projeto, escopo funcional e dominios ou fluxos aos quais ela se aplica.
+- **FR-002A**: O sistema MUST usar granularidade hibrida no catalogo, mantendo entradas principais amplas e registrando subcapacidades, fluxos ou detalhamento operacional no escopo da entrada ou em dossies vinculados.
 - **FR-003**: O sistema MUST classificar cada feature pelo seu estado atual, diferenciando pelo menos suporte confirmado, suporte parcial, dependencia externa ou evolucao futura, e reservar "suporte confirmado" apenas para features ja estaveis como contrato publico do pacote.
 - **FR-004**: O sistema MUST destacar separadamente as capacidades compartilhadas entre NFe e NFC-e, as variacoes dependentes de UF e as restricoes especificas de Manifestacao do Destinatario.
+- **FR-004B**: O sistema MUST tratar a cobertura de NFC-e como feature principal no catalogo e registrar as variacoes por UF em matriz ou secao auxiliar vinculada.
 - **FR-004A**: O sistema MUST incluir, em secao separada do catalogo principal, as capacidades transversais do projeto, como geracao, normalizacao e compatibilidade.
 - **FR-005**: O sistema MUST indicar, para cada feature relevante, se o impacto esperado recai sobre documentacao, regras de normalizacao, artefatos gerados, contratos publicos do pacote ou apenas planejamento futuro.
 - **FR-006**: O sistema MUST explicitar dependencias externas, pre-requisitos normativos ou restricoes de acesso quando eles condicionarem o uso real de uma feature.
+- **FR-006A**: O sistema MUST separar, nas features afetadas, a capacidade do SDK da habilitacao operacional necessaria para uso real, como certificado digital, credenciamento ou acesso externo.
 - **FR-007**: O sistema MUST registrar lacunas conhecidas, ambiguidades normativas e areas ainda nao sustentadas por evidencia suficiente, sem apresentá-las como capacidades entregues.
 - **FR-008**: O sistema MUST permitir que um revisor conecte cada feature a evidencias existentes no projeto, incluindo codigo, artefatos gerados ou documentacao consolidada.
+- **FR-008A**: O sistema MUST exigir ao menos uma evidencia principal por feature catalogada ou, quando ela nao estiver disponivel, registrar explicitamente a lacuna correspondente.
 - **FR-009**: O sistema MUST preservar a diferenca entre comportamento atual do projeto e backlog de evolucao, evitando tratar intencao futura como suporte presente.
 - **FR-010**: Os usuarios MUST ser capazes de localizar rapidamente quais features sao centrais para adocao do SDK e quais exigem cuidado adicional por compatibilidade, cobertura estadual ou restricoes operacionais.
 
 ### Compatibility & Contract Constraints
 
 - **CC-001**: Esta feature nao altera por si so os caminhos de importacao ESM, os entrypoints publicados nem os identificadores expostos pelo pacote; ela formaliza o entendimento das capacidades do projeto.
+- **CC-001A**: Esta feature nao cria uma nova superficie de dados estruturados para consumo por ferramentas; qualquer consumo automatizado futuro permanece fora do escopo desta etapa.
 - **CC-002**: A especificacao deve identificar quais familias de schema, artefatos gerados ou regras de normalizacao sao afetados por cada feature e quais pontos precisam permanecer estaveis para consumidores atuais.
 - **CC-003**: Sempre que uma feature apontar necessidade futura de mudanca breaking, a especificacao deve registrar o risco, a necessidade de nota de migracao e o impacto esperado de versao sem aplicar a mudanca nesta etapa.
 - **CC-004**: A validacao da feature deve comprovar consistencia entre a especificacao produzida e os artefatos ja existentes no repositorio, incluindo README, dossies documentais e estrutura publicada em `src/`.
@@ -95,11 +108,13 @@ Como revisor tecnico do projeto, quero que cada feature relevante deixe claro se
 - **KS-001**: As fontes primarias para definir as features do projeto sao o README do repositorio, os artefatos gerados e os dossies documentais consolidados a partir de fontes oficiais da SEFAZ.
 - **KS-002**: Referencias secundarias podem ser usadas apenas para validar nomenclatura, cobertura percebida ou lacunas praticas, sem substituir a evidencia primaria presente no repositorio e nas fontes oficiais ja registradas.
 - **KS-003**: A especificacao deve registrar conflitos, restricoes de acesso e pontos sem evidencia conclusiva, especialmente quando houver cobertura parcial por UF ou dependencia de superficies oficiais restritas.
+- **KS-004**: Cada feature catalogada deve apontar para pelo menos uma evidencia principal do repositorio ou para uma lacuna declarada que explique a ausencia dessa evidencia.
 
 ### Key Entities *(include if feature involves data)*
 
 - **Feature Catalog Entry**: Registro individual de uma capacidade do projeto, incluindo nome, valor para o usuario, escopo, estado atual e impacto esperado.
 - **Domain Coverage**: Relacao entre uma feature e os dominios fiscais ou familias de schema aos quais ela se aplica.
+- **UF Coverage Matrix**: Estrutura auxiliar vinculada a feature principal de NFC-e que registra variacoes, lacunas e dependencias especificas por UF.
 - **Compatibility Constraint**: Regra que define o que a feature pode afetar em termos de contratos publicos, nomes gerados, output versionado ou comportamento interno.
 - **Evidence Source**: Artefato do repositorio ou fonte normativa consolidada que sustenta a existencia, a limitacao ou a prioridade de uma feature.
 
@@ -110,15 +125,21 @@ Como revisor tecnico do projeto, quero que cada feature relevante deixe claro se
 - **SC-001**: Um integrador consegue identificar em menos de 5 minutos se o projeto cobre o dominio fiscal e o tipo de capacidade de que ele precisa.
 - **SC-002**: 100% das features registradas possuem estado atual explicitado e escopo associado a pelo menos um dominio, fluxo ou comportamento do projeto.
 - **SC-003**: 100% das features que dependem de restricao externa, cobertura estadual ou evidencia incompleta registram esse fato de forma explicita.
+- **SC-003A**: 100% das features com dependencia operacional externa distinguem claramente entre cobertura do SDK e habilitacao necessaria para uso em producao.
 - **SC-004**: Um mantenedor consegue distinguir, sem leitura adicional do codigo-fonte, o que ja e suportado, o que e parcial e o que permanece como evolucao futura.
 - **SC-005**: Um revisor tecnico consegue identificar, para cada feature principal, se o impacto esperado e documental, interno ou potencialmente contratual.
 - **SC-006**: Nao permanecem features centrais do projeto sem referencia para evidencia existente no repositorio ou lacuna declarada.
+- **SC-006A**: 100% das features catalogadas apresentam ao menos uma evidencia principal rastreavel ou uma lacuna explicitamente declarada.
 - **SC-007**: A especificacao resultante permite derivar um backlog inicial de evolucao do SDK sem reclassificar manualmente o estado das capacidades listadas.
 
 ## Assumptions
 
 - O projeto continuara evoluindo como pacote npm ESM em TypeScript com foco principal em geracao e normalizacao de artefatos derivados de schemas XSD.
 - A especificacao desta feature descreve e organiza capacidades do projeto; ela nao implementa, por si so, novas features de runtime ou integracao com SEFAZ.
+- O catalogo principal das features sera mantido em `docs/capacidades-sdk.md`, enquanto os demais documentos de `docs/` funcionam como navegacao, evidencia e aprofundamento tematico.
+- O resultado desta feature permanece documental e nao inclui, nesta etapa, um arquivo estruturado obrigatorio para consumo por ferramentas externas.
+- O catalogo principal adotara entradas amplas o suficiente para leitura rapida por integradores, usando subcapacidades e dossies ligados para evitar inflacao excessiva do numero de features.
 - Os dossies documentais existentes em `docs/` e a estrutura atual em `src/` fornecem evidencia suficiente para uma primeira rodada de definicao das features do projeto.
 - Quando a evidencia atual for parcial, a especificacao pode marcar a feature como parcial ou futura, desde que a incerteza fique explicita.
 - Variacoes estaduais de NFC-e e restricoes de acesso em Manifestacao do Destinatario permanecem fatores reais de escopo e devem continuar aparecendo como condicionantes das features relacionadas.
+- Dependencias externas restritas, como certificado digital, credenciamento ou acesso oficial limitado, nao anulam a existencia de uma feature, mas devem permanecer separadas da habilitacao operacional exigida para uso real.

@@ -1,0 +1,2550 @@
+{
+  "converted": [
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/extracted/www.nfe.fazenda.gov.br/portal/PL_004/Alteração de Schemas PL_004.md",
+      "size": 4295,
+      "sourceFilePath": "docs/_sources/extracted/official/www.nfe.fazenda.gov.br/portal/PL_004/Alteração de Schemas PL_004.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/goias.gov.br/economia/index-3a4451d8ba.md",
+      "size": 21942,
+      "sourceFilePath": "docs/_sources/official/goias.gov.br/economia/index-3a4451d8ba.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/nfe.sefaz.ce.gov.br/pages/consulta/welcome-f75d9420bc.md",
+      "size": 2404,
+      "sourceFilePath": "docs/_sources/official/nfe.sefaz.ce.gov.br/pages/consulta/welcome-f75d9420bc.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/portal.fazenda.sp.gov.br/servicos/nfe/downloads/tabela-cbenef-sp-v20260313-a389b45c83.md",
+      "size": 64968,
+      "sourceFilePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/downloads/tabela-cbenef-sp-v20260313-a389b45c83.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/cbenef-d5cb856477.md",
+      "size": 7572,
+      "sourceFilePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/cbenef-d5cb856477.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/descric-a-o-de-modelo-operacional-02c5cebf5d.md",
+      "size": 7580,
+      "sourceFilePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/descric-a-o-de-modelo-operacional-02c5cebf5d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/descric-a-o-de-modelo-operacional-7e13f4883d.md",
+      "size": 7580,
+      "sourceFilePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/descric-a-o-de-modelo-operacional-7e13f4883d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/downloads-34d3ce7f70.md",
+      "size": 5207,
+      "sourceFilePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/downloads-34d3ce7f70.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/legislacao-740fb13c3a.md",
+      "size": 5291,
+      "sourceFilePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/legislacao-740fb13c3a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/servicos-9594adb2c3.md",
+      "size": 5392,
+      "sourceFilePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/servicos-9594adb2c3.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/sobre-0c30916ab2.md",
+      "size": 10089,
+      "sourceFilePath": "docs/_sources/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/sobre-0c30916ab2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/portal.sefaz.pi.gov.br/conteudos-institucional-documentos-eletronicos-69d6979dc41c7a09017fa749/index-8257899f53.md",
+      "size": 151,
+      "sourceFilePath": "docs/_sources/official/portal.sefaz.pi.gov.br/conteudos-institucional-documentos-eletronicos-69d6979dc41c7a09017fa749/index-8257899f53.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/portal.sefaz.pi.gov.br/index-e00e598976.md",
+      "size": 151,
+      "sourceFilePath": "docs/_sources/official/portal.sefaz.pi.gov.br/index-e00e598976.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/portalsped.fazenda.mg.gov.br/index-cf8c3a49a3.md",
+      "size": 4247,
+      "sourceFilePath": "docs/_sources/official/portalsped.fazenda.mg.gov.br/index-cf8c3a49a3.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sefaznet.ac.gov.br/nfce/index-8c0ce85418.md",
+      "size": 1631,
+      "sourceFilePath": "docs/_sources/official/sefaznet.ac.gov.br/nfce/index-8c0ce85418.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sefaznet.ac.gov.br/nfe/consulta-26f66a3e3e.md",
+      "size": 1350,
+      "sourceFilePath": "docs/_sources/official/sefaznet.ac.gov.br/nfe/consulta-26f66a3e3e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sefaznet.ac.gov.br/nfe/contato-e2eef42d0c.md",
+      "size": 1285,
+      "sourceFilePath": "docs/_sources/official/sefaznet.ac.gov.br/nfe/contato-e2eef42d0c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sefaznet.ac.gov.br/nfe/duvidas-3b87d3bdaf.md",
+      "size": 66290,
+      "sourceFilePath": "docs/_sources/official/sefaznet.ac.gov.br/nfe/duvidas-3b87d3bdaf.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sefaznet.ac.gov.br/nfe/index-e5977e640a.md",
+      "size": 2720,
+      "sourceFilePath": "docs/_sources/official/sefaznet.ac.gov.br/nfe/index-e5977e640a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sefaznet.ac.gov.br/nfe/inutilizacao-57fc3a0569.md",
+      "size": 1329,
+      "sourceFilePath": "docs/_sources/official/sefaznet.ac.gov.br/nfe/inutilizacao-57fc3a0569.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sefaznet.ac.gov.br/nfe/legislacao_estadual-f63aab47d6.md",
+      "size": 1462,
+      "sourceFilePath": "docs/_sources/official/sefaznet.ac.gov.br/nfe/legislacao_estadual-f63aab47d6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sefaznet.ac.gov.br/nfe/procedimentos_credenciamento-6587b32d88.md",
+      "size": 1498,
+      "sourceFilePath": "docs/_sources/official/sefaznet.ac.gov.br/nfe/procedimentos_credenciamento-6587b32d88.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sefaznet.ac.gov.br/nfe/projetonfe-3a399a9b78.md",
+      "size": 13141,
+      "sourceFilePath": "docs/_sources/official/sefaznet.ac.gov.br/nfe/projetonfe-3a399a9b78.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/loginhomologcontrib-5bee7646be.md",
+      "size": 695,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/loginhomologcontrib-5bee7646be.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/beneficios-458243e3a2.md",
+      "size": 2367,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/beneficios-458243e3a2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/beneficios-4edef497b8.md",
+      "size": 2586,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/beneficios-4edef497b8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/caracteristicas-216ceb281d.md",
+      "size": 1699,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/caracteristicas-216ceb281d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/casos-487e35f8c5.md",
+      "size": 7170,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/casos-487e35f8c5.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/casos-9430096602.md",
+      "size": 7083,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/casos-9430096602.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/descricao-517941bc03.md",
+      "size": 15577,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/descricao-517941bc03.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/descricao-a45a06f526.md",
+      "size": 14879,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/descricao-a45a06f526.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/gestao-012ce1304d.md",
+      "size": 520,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/gestao-012ce1304d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/gestao-b47592b9c0.md",
+      "size": 511,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/gestao-b47592b9c0.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/historico-6f9a2fa22e.md",
+      "size": 2509,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/historico-6f9a2fa22e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/historico-ff5d3b3c47.md",
+      "size": 2410,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/historico-ff5d3b3c47.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/home-8f8b25d881.md",
+      "size": 9391,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/home-8f8b25d881.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/index-97a2f6ff41.md",
+      "size": 339,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/index-97a2f6ff41.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/infra-0098799542.md",
+      "size": 806,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/infra-0098799542.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/infra-ec6abcbbe8.md",
+      "size": 810,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/infra-ec6abcbbe8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/justificativas-1b83e2add6.md",
+      "size": 4575,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/justificativas-1b83e2add6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/justificativas-caf734367f.md",
+      "size": 4479,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/justificativas-caf734367f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/objetivo-a07d54725c.md",
+      "size": 1337,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/objetivo-a07d54725c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/objetivos-66055555d2.md",
+      "size": 1242,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/objetivos-66055555d2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/pdf/credenciamento-844c20d3b9.md",
+      "size": 10771,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/pdf/credenciamento-844c20d3b9.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/projeto_conceitual_do_sistema-ebff33c6d4.md",
+      "size": 79632,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/projeto_conceitual_do_sistema-ebff33c6d4.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sistemas.sefaz.am.gov.br/nfeweb/portal/projeto-1e05c70bba.md",
+      "size": 509,
+      "sourceFilePath": "docs/_sources/official/sistemas.sefaz.am.gov.br/nfeweb/portal/projeto-1e05c70bba.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/sped.fazenda.pr.gov.br/index-704e8b126d.md",
+      "size": 67233,
+      "sourceFilePath": "docs/_sources/official/sped.fazenda.pr.gov.br/index-704e8b126d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/20250324 - Manual_de_Especificações_Técnicas_do_DANFE_NFC-e_QR_Code.md",
+      "size": 60850,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/20250324 - Manual_de_Especificações_Técnicas_do_DANFE_NFC-e_QR_Code.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/Anexo III - Manual de Contingência - NF-e.md",
+      "size": 44290,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/Anexo III - Manual de Contingência - NF-e.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/consulta-4c6fd7a5be.md",
+      "size": 4654,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/consulta-4c6fd7a5be.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/consulta-4eb7cfb5b0.md",
+      "size": 4768,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/consulta-4eb7cfb5b0.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/consultaepecconciliacao-08e75c0d16.md",
+      "size": 107,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/consultaepecconciliacao-08e75c0d16.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/consultaepecconciliacao-851e2e9755.md",
+      "size": 107,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/consultaepecconciliacao-851e2e9755.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/consultarecaptcha-8a8b3e74d8.md",
+      "size": 4537,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/consultarecaptcha-8a8b3e74d8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/consultarecaptcha-8fb7b4e6ff.md",
+      "size": 4651,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/consultarecaptcha-8fb7b4e6ff.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/consultarecaptcha-da9d58551b.md",
+      "size": 4537,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/consultarecaptcha-da9d58551b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/disponibilidade-30f1e6a455.md",
+      "size": 9960,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/disponibilidade-30f1e6a455.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/disponibilidade-ca5cfeb846.md",
+      "size": 9960,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/disponibilidade-ca5cfeb846.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/disponibilidade-cc6d35410d.md",
+      "size": 9846,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/disponibilidade-cc6d35410d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/download-172a5a0cb6.md",
+      "size": 6305,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/download-172a5a0cb6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/download-6f69356889.md",
+      "size": 6008,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/download-6f69356889.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/download-971c0df10f.md",
+      "size": 5894,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/download-971c0df10f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/download-edf7bfeb22.md",
+      "size": 6419,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/download-edf7bfeb22.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-15e563eb2c.md",
+      "size": 418776,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-15e563eb2c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-21d03301e7.md",
+      "size": 495825,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-21d03301e7.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-24c3f27e29.md",
+      "size": 693143,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-24c3f27e29.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-3457d111f3.md",
+      "size": 1190890,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-3457d111f3.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-361a93e0c3.md",
+      "size": 489385,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-361a93e0c3.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-39ef0ce4ea.md",
+      "size": 293145,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-39ef0ce4ea.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-42847e28a1.md",
+      "size": 756392,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-42847e28a1.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-48962050b6.md",
+      "size": 4,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-48962050b6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-5f5f739888.md",
+      "size": 505746,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-5f5f739888.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-663b373466.md",
+      "size": 649596,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-663b373466.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-8a67a42db9.md",
+      "size": 584063,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-8a67a42db9.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-bb4f7552ac.md",
+      "size": 540488,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-bb4f7552ac.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-dc90bb376b.md",
+      "size": 644009,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-dc90bb376b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-dcc36cebbe.md",
+      "size": 462460,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-dcc36cebbe.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-dd412b3848.md",
+      "size": 497872,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-dd412b3848.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-e22005771a.md",
+      "size": 491950,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-e22005771a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-f0a9234608.md",
+      "size": 496552,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/exibirarquivo-f0a9234608.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/formulariodepesquisa-fdb422dbea.md",
+      "size": 126,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/formulariodepesquisa-fdb422dbea.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/infoestatisticas-95138f2d7b.md",
+      "size": 5239,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/infoestatisticas-95138f2d7b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/infoestatisticas-beb992d2e9.md",
+      "size": 5125,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/infoestatisticas-beb992d2e9.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-04c66e64b8.md",
+      "size": 6095,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-04c66e64b8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-18fd06868f.md",
+      "size": 6095,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-18fd06868f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-2f02b4da0a.md",
+      "size": 5982,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-2f02b4da0a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-32a83adb2d.md",
+      "size": 5982,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-32a83adb2d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-601a113d2b.md",
+      "size": 5982,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-601a113d2b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-773943e967.md",
+      "size": 6095,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-773943e967.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-7eedf1bf91.md",
+      "size": 6095,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-7eedf1bf91.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-822fc86482.md",
+      "size": 5982,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-822fc86482.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-98c64d2d71.md",
+      "size": 6095,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-98c64d2d71.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-adfd518c4a.md",
+      "size": 5982,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-adfd518c4a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-bc853814ad.md",
+      "size": 6095,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-bc853814ad.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-be46f58716.md",
+      "size": 5982,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-be46f58716.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-ca941180b8.md",
+      "size": 5982,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/informe-ca941180b8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/item/index-fdb93e2dae.md",
+      "size": 126,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/item/index-fdb93e2dae.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-09f0b5d926.md",
+      "size": 5034,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-09f0b5d926.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-127a3afa6a.md",
+      "size": 23399,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-127a3afa6a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-1bf2c804ac.md",
+      "size": 6159,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-1bf2c804ac.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-1c42fa7d5e.md",
+      "size": 23285,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-1c42fa7d5e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-46383865f0.md",
+      "size": 27214,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-46383865f0.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-484a28996f.md",
+      "size": 61498,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-484a28996f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-8a84fa661b.md",
+      "size": 9962,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-8a84fa661b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-8ad6c6a00a.md",
+      "size": 15015,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-8ad6c6a00a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-ae6c4ca140.md",
+      "size": 23090,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-ae6c4ca140.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-af7e16abf3.md",
+      "size": 9848,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-af7e16abf3.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-b62dcde362.md",
+      "size": 61384,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-b62dcde362.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-ca0180d6c4.md",
+      "size": 14901,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-ca0180d6c4.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-d5cb6a5f17.md",
+      "size": 27100,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-d5cb6a5f17.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-dc13b7ee6f.md",
+      "size": 11469,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-dc13b7ee6f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-eadf3048d8.md",
+      "size": 11355,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-eadf3048d8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-ed021ccf1b.md",
+      "size": 12165,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-ed021ccf1b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-f062985da6.md",
+      "size": 6273,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-f062985da6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-f0fdfae921.md",
+      "size": 22976,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-f0fdfae921.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listaconteudo-f655b32484.md",
+      "size": 12051,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listaconteudo-f655b32484.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listasubmenu-00fa44a987.md",
+      "size": 4675,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-00fa44a987.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listasubmenu-115a3b69b6.md",
+      "size": 4758,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-115a3b69b6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listasubmenu-1b51e757d7.md",
+      "size": 4807,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-1b51e757d7.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listasubmenu-3e18cc4b16.md",
+      "size": 4921,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-3e18cc4b16.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listasubmenu-533e06ea86.md",
+      "size": 4868,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-533e06ea86.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listasubmenu-826946fb37.md",
+      "size": 4982,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-826946fb37.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listasubmenu-8d17548311.md",
+      "size": 5281,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-8d17548311.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listasubmenu-8d901bbf48.md",
+      "size": 4789,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-8d901bbf48.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listasubmenu-995d713c90.md",
+      "size": 5509,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-995d713c90.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/listasubmenu-ddac8c8055.md",
+      "size": 4872,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/listasubmenu-ddac8c8055.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/manifestacaodestinatario-8ed6ca3f3f.md",
+      "size": 107,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/manifestacaodestinatario-8ed6ca3f3f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/Manual de Boas Práticas NFC-e - BP 2018.001 - versão 1 0.md",
+      "size": 22346,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/Manual de Boas Práticas NFC-e - BP 2018.001 - versão 1 0.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/Manual de Orientação ao Contribuinte - MOC - versão 7.0 - NF-e e NFC-e.md",
+      "size": 454037,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/Manual de Orientação ao Contribuinte - MOC - versão 7.0 - NF-e e NFC-e.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/manual_emissor_nfe.md",
+      "size": 81182,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/manual_emissor_nfe.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/manual_usuarios_SVRS.md",
+      "size": 49824,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/manual_usuarios_SVRS.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/ManualContingencia.md",
+      "size": 99758,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/ManualContingencia.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/MOC NFe ABI Visão Geral - v1.00 - minuta.md",
+      "size": 89563,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/MOC NFe ABI Visão Geral - v1.00 - minuta.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/MOC_NFAg_Anexo I_Leiaute e Regras de Validação_v1.00k.md",
+      "size": 108311,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/MOC_NFAg_Anexo I_Leiaute e Regras de Validação_v1.00k.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/MOC_NFAg_Anexo_II_DANFAG - V1.01.md",
+      "size": 17907,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/MOC_NFAg_Anexo_II_DANFAG - V1.01.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/MOC_NFAg_VisaoGeral_v1.00k.md",
+      "size": 126224,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/MOC_NFAg_VisaoGeral_v1.00k.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/MOC_NFeABI_Anexo I Leiaute e RV - v2.00.md",
+      "size": 118234,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/MOC_NFeABI_Anexo I Leiaute e RV - v2.00.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/MOC_NFGas_Anexo I_Leiaute e Regras de Validação_v1.00f.md",
+      "size": 127065,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/MOC_NFGas_Anexo I_Leiaute e Regras de Validação_v1.00f.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/MOC_NFGas_Anexo II_DANFGas_v1.00.md",
+      "size": 18667,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/MOC_NFGas_Anexo II_DANFGas_v1.00.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/MOC_NFGas_VisaoGeral_v1.00f.md",
+      "size": 122361,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/MOC_NFGas_VisaoGeral_v1.00f.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/perguntasfrequentes-329052b510.md",
+      "size": 6421,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/perguntasfrequentes-329052b510.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/perguntasfrequentes-f507a1fe75.md",
+      "size": 6307,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/perguntasfrequentes-f507a1fe75.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/principal-3994d2e8a8.md",
+      "size": 7909,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-3994d2e8a8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/principal-e239a8f55d.md",
+      "size": 7909,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-e239a8f55d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/principal-e5d30e895c.md",
+      "size": 7757,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-e5d30e895c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/principal-f3b8bb28c7.md",
+      "size": 7757,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/principal-f3b8bb28c7.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/sobrenfe-e5e9d6e145.md",
+      "size": 17612,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/sobrenfe-e5e9d6e145.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/solicitacertificado-43d271a7b6.md",
+      "size": 107,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/solicitacertificado-43d271a7b6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/webservices-24c8f3a1fb.md",
+      "size": 16821,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/webservices-24c8f3a1fb.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/webservices-9bfd6ee423.md",
+      "size": 16707,
+      "sourceFilePath": "docs/_sources/official/www.nfe.fazenda.gov.br/portal/webservices-9bfd6ee423.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.receita.fazenda.df.gov.br/index-3d8b09225b.md",
+      "size": 6126,
+      "sourceFilePath": "docs/_sources/official/www.receita.fazenda.df.gov.br/index-3d8b09225b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.receita.fazenda.df.gov.br/index-d60dcc549a.md",
+      "size": 6126,
+      "sourceFilePath": "docs/_sources/official/www.receita.fazenda.df.gov.br/index-d60dcc549a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sef.sc.gov.br/saiba-mais/nfe-nota-fiscal-eletronica/index-44901c9411.md",
+      "size": 4515,
+      "sourceFilePath": "docs/_sources/official/www.sef.sc.gov.br/saiba-mais/nfe-nota-fiscal-eletronica/index-44901c9411.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefa.pa.gov.br/index-1eb2f25c81.md",
+      "size": 18,
+      "sourceFilePath": "docs/_sources/official/www.sefa.pa.gov.br/index-1eb2f25c81.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefa.pa.gov.br/index.php/component/banners/click/7/index-de6b9b122f.md",
+      "size": 18,
+      "sourceFilePath": "docs/_sources/official/www.sefa.pa.gov.br/index.php/component/banners/click/7/index-de6b9b122f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ba.gov.br/index-971cb1092f.md",
+      "size": 21560,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ba.gov.br/index-971cb1092f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/a-secretaria/index-cd76cad501.md",
+      "size": 13471,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/a-secretaria/index-cd76cad501.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/acessibilidade/index-5cf9496abe.md",
+      "size": 8712,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/acessibilidade/index-5cf9496abe.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/agenda/index-fab422e535.md",
+      "size": 11695,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/agenda/index-fab422e535.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/documentos-fiscais-eletronicos/nf-e/index-35d3c6d5df.md",
+      "size": 13880,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/documentos-fiscais-eletronicos/nf-e/index-35d3c6d5df.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/encarregado-de-tratamento-de-dados-pessoais-da-secretaria-de-estado-de-fazenda-sefaz/index-4ff64ebbf3.md",
+      "size": 11373,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/encarregado-de-tratamento-de-dados-pessoais-da-secretaria-de-estado-de-fazenda-sefaz/index-4ff64ebbf3.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/fale-conosco/index-3f7c2a10b5.md",
+      "size": 7026,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/fale-conosco/index-3f7c2a10b5.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/index-72835bad39.md",
+      "size": 12234,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/index-72835bad39.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/indicadores/index-e7572f9235.md",
+      "size": 7590,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/indicadores/index-e7572f9235.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/informativo/consulta-de-contribuintes/index-70d5bfacc1.md",
+      "size": 1479427,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/informativo/consulta-de-contribuintes/index-70d5bfacc1.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/informativo/cursos/index-fc1bbd9129.md",
+      "size": 6227,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/informativo/cursos/index-fc1bbd9129.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/informativo/pautas-de-julgamentos/index-a3eb1d4707.md",
+      "size": 37538,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/informativo/pautas-de-julgamentos/index-a3eb1d4707.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/informativos/consultas/index-a33e1c5eb8.md",
+      "size": 12218,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/informativos/consultas/index-a33e1c5eb8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/informativos/guias-e-manuais/index-9b5af6d162.md",
+      "size": 10243,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/informativos/guias-e-manuais/index-9b5af6d162.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/informativos/index-ce46b6cd4f.md",
+      "size": 7718,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/informativos/index-ce46b6cd4f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/legislacao/index-223cf6d198.md",
+      "size": 9479,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/legislacao/index-223cf6d198.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/noticias/index-00b7bb3039.md",
+      "size": 12503,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/noticias/index-00b7bb3039.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/orgaos_colegiados/comite-de-etica-da-secretaria-de-estado-de-fazenda-cesefaz/index-7c687ee711.md",
+      "size": 8621,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/orgaos_colegiados/comite-de-etica-da-secretaria-de-estado-de-fazenda-cesefaz/index-7c687ee711.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/orgaos_colegiados/comite-de-governanca-da-secretaria-de-estado-de-fazenda-cgsefaz/index-93eb5345ac.md",
+      "size": 6653,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/orgaos_colegiados/comite-de-governanca-da-secretaria-de-estado-de-fazenda-cgsefaz/index-93eb5345ac.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/orgaos_colegiados/conselho-de-acompanhamento-e-fiscalizacao-do-indice-de-participacao-dos-municipios-cafipm/index-6e8f5a15d2.md",
+      "size": 6803,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/orgaos_colegiados/conselho-de-acompanhamento-e-fiscalizacao-do-indice-de-participacao-dos-municipios-cafipm/index-6e8f5a15d2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/orgaos_colegiados/conselho-superior-da-superintendencia-de-administracao-tributaria-consat/index-fe4c5e252a.md",
+      "size": 7237,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/orgaos_colegiados/conselho-superior-da-superintendencia-de-administracao-tributaria-consat/index-fe4c5e252a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/pesquisa-de-acordaos/index-70572169e2.md",
+      "size": 536986,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/pesquisa-de-acordaos/index-70572169e2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/programas-e-projetos/index-0dd1f47d9f.md",
+      "size": 7800,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/programas-e-projetos/index-0dd1f47d9f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/servicos/index-52964fc402.md",
+      "size": 11183,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/servicos/index-52964fc402.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/sistemas/index-344423913b.md",
+      "size": 7612,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/sistemas/index-344423913b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/coordenadoria-de-acompanhamento-e-prestacao-de-contas/index-288cc74473.md",
+      "size": 9041,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/coordenadoria-de-acompanhamento-e-prestacao-de-contas/index-288cc74473.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/coordenadoria-de-gestao-fiscal/index-187231e41f.md",
+      "size": 6792,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/coordenadoria-de-gestao-fiscal/index-187231e41f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/coordenadoria-de-legislacao/index-6ace7d9bf2.md",
+      "size": 8346,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/coordenadoria-de-legislacao/index-6ace7d9bf2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/coordenadoria-de-modernizacao-e-gestao-estrategica/index-0f030b99b8.md",
+      "size": 9897,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/coordenadoria-de-modernizacao-e-gestao-estrategica/index-0f030b99b8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/corregedoria-geral-da-administracao-tributaria/index-42c1d2c7f2.md",
+      "size": 11243,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/corregedoria-geral-da-administracao-tributaria/index-42c1d2c7f2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-administracao-tributaria/index-3925ac3be0.md",
+      "size": 10378,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-administracao-tributaria/index-3925ac3be0.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-administracao/index-7aeb52954b.md",
+      "size": 7712,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-administracao/index-7aeb52954b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-contabilidade-geral-do-estado/index-c62c3e47c2.md",
+      "size": 9527,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-contabilidade-geral-do-estado/index-c62c3e47c2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-logistica-e-infraestrutura/index-cdab45b99c.md",
+      "size": 7527,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-logistica-e-infraestrutura/index-cdab45b99c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-loteria-do-estado-de-mato-grosso-do-sul/index-78df80ec02.md",
+      "size": 7780,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-loteria-do-estado-de-mato-grosso-do-sul/index-78df80ec02.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-orcamento/index-4737c39ec0.md",
+      "size": 9435,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-de-orcamento/index-4737c39ec0.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-do-tesouro/index-bbd8a4e570.md",
+      "size": 8277,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/superintendencia-do-tesouro/index-bbd8a4e570.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/unidade-administrativa/tribunal-administrativo-tributario/index-a8c9e7f5fb.md",
+      "size": 8165,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/unidade-administrativa/tribunal-administrativo-tributario/index-a8c9e7f5fb.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/wp-content/uploads/2025/07/instrucoes-para-baixar-arquivo-crt-53d03d9a84.md",
+      "size": 669,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/wp-content/uploads/2025/07/instrucoes-para-baixar-arquivo-crt-53d03d9a84.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.ms.gov.br/wp-content/uploads/2025/07/manual-cadeia-certificados-2021-40e4cef007.md",
+      "size": 15394,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ms.gov.br/wp-content/uploads/2025/07/manual-cadeia-certificados-2021-40e4cef007.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.mt.gov.br/nfe/pages/consultainutilizacao/consultar-aebac7a99c.md",
+      "size": 1192,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.mt.gov.br/nfe/pages/consultainutilizacao/consultar-aebac7a99c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.mt.gov.br/nfe/pages/consultanfe/consultarnfe-aaa6af52e3.md",
+      "size": 402,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.mt.gov.br/nfe/pages/consultanfe/consultarnfe-aaa6af52e3.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.mt.gov.br/portal/nfe/arqdownloads/nf-e-credenc.deoficiov.1.76-0e43595168.md",
+      "size": 3128649,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.mt.gov.br/portal/nfe/arqdownloads/nf-e-credenc.deoficiov.1.76-0e43595168.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.mt.gov.br/portal/nfe/arqdownloads/quadro_resumo_modalidades_de_contingencias_da_nf-e_adotadas_pela_sefaz-3c5659fc35.md",
+      "size": 4536,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.mt.gov.br/portal/nfe/arqdownloads/quadro_resumo_modalidades_de_contingencias_da_nf-e_adotadas_pela_sefaz-3c5659fc35.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.mt.gov.br/portal/nfe/arqdownloads/regras_facultativas_nt_2019_001_atualizada_27-11-19-2e780aa764.md",
+      "size": 3170,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.mt.gov.br/portal/nfe/arqdownloads/regras_facultativas_nt_2019_001_atualizada_27-11-19-2e780aa764.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.mt.gov.br/portal/nfe/index-4c9c1a3865.md",
+      "size": 5618,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.mt.gov.br/portal/nfe/index-4c9c1a3865.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.mt.gov.br/portal/nfe/pergfrequentesnfe-64748d9acf.md",
+      "size": 1458,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.mt.gov.br/portal/nfe/pergfrequentesnfe-64748d9acf.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/aidf-pafs/aidf-pafs-incluir/index-0d4c7f33f1.md",
+      "size": 12835,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/aidf-pafs/aidf-pafs-incluir/index-0d4c7f33f1.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/aidf-pedido/aidf-pedido-incluir/index-f893eb069c.md",
+      "size": 12867,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/aidf-pedido/aidf-pedido-incluir/index-f893eb069c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/aidf-requerimento-docs-fiscais/aidf-confeccao-incluir/index-34bab8c56e.md",
+      "size": 13074,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/aidf-requerimento-docs-fiscais/aidf-confeccao-incluir/index-34bab8c56e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/aidf-requerimento-livros-fiscais/aidf-livros-incluir/index-8c66c5ca09.md",
+      "size": 13006,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/aidf-requerimento-livros-fiscais/aidf-livros-incluir/index-8c66c5ca09.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/aidf-requerimento-nota-fiscal/aidf-nota-incluir/index-fc8241e71b.md",
+      "size": 12978,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/aidf-requerimento-nota-fiscal/aidf-nota-incluir/index-fc8241e71b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/announcements/10766/index-5848c1676c.md",
+      "size": 23862,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/announcements/10766/index-5848c1676c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/announcements/281-avisos-importantes/index-6448e24cbe.md",
+      "size": 16942,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/announcements/281-avisos-importantes/index-6448e24cbe.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/announcements/index-b0b5225672.md",
+      "size": 13949,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/announcements/index-b0b5225672.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/cidadao/ipva/index-2744501f83.md",
+      "size": 26351,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/cidadao/ipva/index-2744501f83.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/cidadao/leilao-veicular-gr1/index-04fc27f9d5.md",
+      "size": 12506,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/cidadao/leilao-veicular-gr1/index-04fc27f9d5.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/component/wrapper/index-c26904b952.md",
+      "size": 34095,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/component/wrapper/index-c26904b952.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/contact/index-f8988ea79e.md",
+      "size": 12468,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/contact/index-f8988ea79e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/denuncia/index-f6e423d97f.md",
+      "size": 12950,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/denuncia/index-f6e423d97f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/ecf-atestado-de-intervencao-tecnica/ecf-atestado-incluir/index-1a5a0823f6.md",
+      "size": 12867,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/ecf-atestado-de-intervencao-tecnica/ecf-atestado-incluir/index-1a5a0823f6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/ecf-solicitacao-de-intervensao/ecf-intervencao-incluir/index-abf29c8b89.md",
+      "size": 12945,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/ecf-solicitacao-de-intervensao/ecf-intervencao-incluir/index-abf29c8b89.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/index-38685ba30e.md",
+      "size": 32073,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/index-38685ba30e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/info/declaracoes/gia-st/index-4c3a1de35e.md",
+      "size": 16624,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/info/declaracoes/gia-st/index-4c3a1de35e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/info/declaracoes/gim/index-7e7d3e7a42.md",
+      "size": 25221,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/info/declaracoes/gim/index-7e7d3e7a42.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/info/declaracoes/sped-fiscal/index-69a81fe26c.md",
+      "size": 57806,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/info/declaracoes/sped-fiscal/index-69a81fe26c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/info/documentos-fiscais/aidf/index-adf69a52cb.md",
+      "size": 22824,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/info/documentos-fiscais/aidf/index-adf69a52cb.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/info/documentos-fiscais/ct-e/index-b1c1950ee4.md",
+      "size": 16715,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/info/documentos-fiscais/ct-e/index-b1c1950ee4.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/info/documentos-fiscais/emissor-de-cupom-fiscal-ecf/index-c4d5338099.md",
+      "size": 16047,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/info/documentos-fiscais/emissor-de-cupom-fiscal-ecf/index-c4d5338099.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/info/documentos-fiscais/mdf-e/index-72e0d57492.md",
+      "size": 23571,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/info/documentos-fiscais/mdf-e/index-72e0d57492.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/info/documentos-fiscais/processamento-eletronico-de-dados-ped/index-793c0e4f62.md",
+      "size": 14784,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/info/documentos-fiscais/processamento-eletronico-de-dados-ped/index-793c0e4f62.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/info/indices-e-tabelas/ufr-pb/index-e3e6d5133d.md",
+      "size": 15898,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/info/indices-e-tabelas/ufr-pb/index-e3e6d5133d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/27-fazenda-sede/index-d757dbf2be.md",
+      "size": 27347,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/27-fazenda-sede/index-d757dbf2be.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/assessoria-de-imprensa/index-931a6ec6d4.md",
+      "size": 12651,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/assessoria-de-imprensa/index-931a6ec6d4.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/centro-atendimento-cidadao/index-5a6493c6d0.md",
+      "size": 14668,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/centro-atendimento-cidadao/index-5a6493c6d0.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/comissai/index-a53161b778.md",
+      "size": 13457,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/comissai/index-a53161b778.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/corregedoria-fiscal/index-077deb9e4b.md",
+      "size": 13126,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/corregedoria-fiscal/index-077deb9e4b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/encarregado-lgpd/index-d5272a3566.md",
+      "size": 14302,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/encarregado-lgpd/index-d5272a3566.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/gerencias-regionais/index-0be3c61bb3.md",
+      "size": 15584,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/gerencias-regionais/index-0be3c61bb3.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/gestores/index-eb32571012.md",
+      "size": 22466,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/gestores/index-eb32571012.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/hierarquia-organizacional/index-67546bc7e7.md",
+      "size": 12519,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/hierarquia-organizacional/index-67546bc7e7.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/organograma/index-e6d7c36b53.md",
+      "size": 11143,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/organograma/index-e6d7c36b53.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/postos-fiscais/index-c30b31fe1e.md",
+      "size": 14024,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/postos-fiscais/index-c30b31fe1e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/secretarios/index-3b97f8f001.md",
+      "size": 15680,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/secretarios/index-3b97f8f001.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/instituciona/unidade-atendimento-cidadao/index-1f0e09fca8.md",
+      "size": 14149,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/instituciona/unidade-atendimento-cidadao/index-1f0e09fca8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/itcd-2/index-6eca22c2bf.md",
+      "size": 12403,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/itcd-2/index-6eca22c2bf.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/links-uteis/10079-informacoes-sobre-isencao-de-icms-de-aquisicao-de-veiculos-para-pcd-pessoas-com-deficiencia/index-4984a48475.md",
+      "size": 18047,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/links-uteis/10079-informacoes-sobre-isencao-de-icms-de-aquisicao-de-veiculos-para-pcd-pessoas-com-deficiencia/index-4984a48475.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/links-uteis/16475-refis2025/index-597a43427f.md",
+      "size": 19158,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/links-uteis/16475-refis2025/index-597a43427f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/login/index-110ebe45a6.md",
+      "size": 12242,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/login/index-110ebe45a6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/privacidade/index-c653007f1f.md",
+      "size": 15474,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/privacidade/index-c653007f1f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/search-legislacao/index-bd3c937a60.md",
+      "size": 42286,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/search-legislacao/index-bd3c937a60.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/2016-01-05-19-01-00/index-43a280a84a.md",
+      "size": 34181,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/2016-01-05-19-01-00/index-43a280a84a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/atendimento/agendamento/consultar/index-410f33fe00.md",
+      "size": 34181,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/atendimento/agendamento/consultar/index-410f33fe00.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/atendimento/agendamento/incluir/index-02020840d4.md",
+      "size": 34179,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/atendimento/agendamento/incluir/index-02020840d4.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/atendimento/dossie-do-contribuinte-ser/index-79d57242b6.md",
+      "size": 34181,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/atendimento/dossie-do-contribuinte-ser/index-79d57242b6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/cadastro/auto-atendimento/desligamento-contabilista/index-49c42bf0d9.md",
+      "size": 34201,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/cadastro/auto-atendimento/desligamento-contabilista/index-49c42bf0d9.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/cadastro/auto-atendimento/troca-email-usuario/index-b2e67b2cb9.md",
+      "size": 34200,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/cadastro/auto-atendimento/troca-email-usuario/index-b2e67b2cb9.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/cadastro/consultar-cadastro/index-1bb25b87a6.md",
+      "size": 34193,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/cadastro/consultar-cadastro/index-1bb25b87a6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/cadastro/consultar-validar-fic/index-e1583c0f0d.md",
+      "size": 34178,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/cadastro/consultar-validar-fic/index-e1583c0f0d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/cadastro/dados-de-contabilista/index-0ece690489.md",
+      "size": 34186,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/cadastro/dados-de-contabilista/index-0ece690489.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/cadastro/emitir-fic/index-e3b055daba.md",
+      "size": 34195,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/cadastro/emitir-fic/index-e3b055daba.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/cadastro/fac-com-certificado-digital/index-13b04ddc54.md",
+      "size": 34193,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/cadastro/fac-com-certificado-digital/index-13b04ddc54.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/cadastro/fac-eletronica/index-4316e4bf32.md",
+      "size": 34195,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/cadastro/fac-eletronica/index-4316e4bf32.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/cadastro/historico-de-contabilista/index-a2d193a80e.md",
+      "size": 34181,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/cadastro/historico-de-contabilista/index-a2d193a80e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/cadastro/historico-de-operacoes/index-28d6ec1170.md",
+      "size": 34190,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/cadastro/historico-de-operacoes/index-28d6ec1170.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/cadastro/historico/index-a40f9d51c7.md",
+      "size": 34191,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/cadastro/historico/index-a40f9d51c7.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/cadastro/socio-administrador/index-180596fe8f.md",
+      "size": 34184,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/cadastro/socio-administrador/index-180596fe8f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/caixa-de-mensagens/index-aaf6ed7628.md",
+      "size": 34162,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/caixa-de-mensagens/index-aaf6ed7628.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/certidoes/emissao-de-certidao-de-debitos-cidadao/index-d8528068ec.md",
+      "size": 34198,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/certidoes/emissao-de-certidao-de-debitos-cidadao/index-d8528068ec.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/certidoes/emissao-de-certidao-de-debitos-empresa/index-68ccd4a938.md",
+      "size": 34198,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/certidoes/emissao-de-certidao-de-debitos-empresa/index-68ccd4a938.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/certidoes/emitir-certidao-de-dados-cadastrais/index-367d8f84ae.md",
+      "size": 34193,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/certidoes/emitir-certidao-de-dados-cadastrais/index-367d8f84ae.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/certidoes/validar-certidao-cadastral/index-c418d82753.md",
+      "size": 34184,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/certidoes/validar-certidao-cadastral/index-c418d82753.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/consultas-fiscais/consolidacao-de-consultas-fiscais-da-gerencia-de-tributacao/index-173fd09669.md",
+      "size": 34204,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/consultas-fiscais/consolidacao-de-consultas-fiscais-da-gerencia-de-tributacao/index-173fd09669.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/carregar-gim-on-line/index-453e34143f.md",
+      "size": 34182,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/carregar-gim-on-line/index-453e34143f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-115/index-05169f519e.md",
+      "size": 34173,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-115/index-05169f519e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-126/carregar-arquivos-convenio-126/index-c7239100e8.md",
+      "size": 34247,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-126/carregar-arquivos-convenio-126/index-c7239100e8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-126/emitir-recibo-de-entrega-126/index-4d28e945b5.md",
+      "size": 34244,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-126/emitir-recibo-de-entrega-126/index-4d28e945b5.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-126/index-0bee559006.md",
+      "size": 34173,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-126/index-0bee559006.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-127/index-f9da4bfcbf.md",
+      "size": 34199,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-127/index-f9da4bfcbf.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-201/carregar-arquivos-convenio-201/index-bf06b1999b.md",
+      "size": 34247,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-201/carregar-arquivos-convenio-201/index-bf06b1999b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-201/emitir-recibo-de-entrega-201/index-87d7978bf8.md",
+      "size": 34244,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-201/emitir-recibo-de-entrega-201/index-87d7978bf8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-201/index-92d6f84b98.md",
+      "size": 34173,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/convenio-201/index-92d6f84b98.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/dasn-simei-pgdas/consultar-dasn-simei-processadas-contribuinte/index-6d562e861b.md",
+      "size": 34254,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/dasn-simei-pgdas/consultar-dasn-simei-processadas-contribuinte/index-6d562e861b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/dasn-simei-pgdas/consultar-pgdasd-processadas-contribuinte/index-22073a6d8c.md",
+      "size": 34248,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/dasn-simei-pgdas/consultar-pgdasd-processadas-contribuinte/index-22073a6d8c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/dasn-simei-pgdas/declaracoes-processadas/index-d5561d1994.md",
+      "size": 34248,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/dasn-simei-pgdas/declaracoes-processadas/index-d5561d1994.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/destda/consultar-destda-processadas/index-712a779fb1.md",
+      "size": 34231,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/destda/consultar-destda-processadas/index-712a779fb1.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gia-st/cruzamento-gia-gnre/index-0c32a8d149.md",
+      "size": 34283,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gia-st/cruzamento-gia-gnre/index-0c32a8d149.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gia-st/giast-processadas-contribuinte/index-230e448998.md",
+      "size": 34287,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gia-st/giast-processadas-contribuinte/index-230e448998.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gia-st/recibo-gia-st/index-39b54b2bcf.md",
+      "size": 34287,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gia-st/recibo-gia-st/index-39b54b2bcf.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gim/emissao-de-recibo-de-declaracoes/index-d40eafc1d6.md",
+      "size": 34233,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gim/emissao-de-recibo-de-declaracoes/index-d40eafc1d6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gim/historico-da-gim/index-572dc24673.md",
+      "size": 34224,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gim/historico-da-gim/index-572dc24673.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gim/notas-declaradas-contribuinte-gim/index-441b6b5157.md",
+      "size": 34236,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gim/notas-declaradas-contribuinte-gim/index-441b6b5157.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gim/notas-fiscais-declaradas-por-terceiros-gim/index-57d0f9ac16.md",
+      "size": 34236,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gim/notas-fiscais-declaradas-por-terceiros-gim/index-57d0f9ac16.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gim/relatorio-gim/index-97f75a98f8.md",
+      "size": 34237,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/gim/relatorio-gim/index-97f75a98f8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/declaracoes/giva/giva-contribuinte/index-fd20d30cfb.md",
+      "size": 34237,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/declaracoes/giva/giva-contribuinte/index-fd20d30cfb.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/2016-01-19-14-35-12/consultar-regularidade-nota-fiscal-avulsa/index-d877a712d3.md",
+      "size": 34236,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/2016-01-19-14-35-12/consultar-regularidade-nota-fiscal-avulsa/index-d877a712d3.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/aidf/aidf-consultas-docs-autenticados/index-0e1276bbc6.md",
+      "size": 34255,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/aidf/aidf-consultas-docs-autenticados/index-0e1276bbc6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/aidf/aidf-consultas-talonarios/index-a5f67a7d3a.md",
+      "size": 34245,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/aidf/aidf-consultas-talonarios/index-a5f67a7d3a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/aidf/consultar-documentos-fiscais-aidf/index-bd5981cf56.md",
+      "size": 34259,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/aidf/consultar-documentos-fiscais-aidf/index-bd5981cf56.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/aidf/consultar-pedido-de-aidf/index-0ce1034d95.md",
+      "size": 34248,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/aidf/consultar-pedido-de-aidf/index-0ce1034d95.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/aidf/consultar-situacao-da-grafica/index-58e24ae6c2.md",
+      "size": 34256,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/aidf/consultar-situacao-da-grafica/index-58e24ae6c2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/bilhete-de-passagem-eletronico-bp-e/consulta-completa-do-bp-e/index-73a300c3cd.md",
+      "size": 34231,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/bilhete-de-passagem-eletronico-bp-e/consulta-completa-do-bp-e/index-73a300c3cd.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/bilhete-de-passagem-eletronico-bp-e/consulta-por-emitente-comprador-bp-e/index-51a796e38c.md",
+      "size": 34244,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/bilhete-de-passagem-eletronico-bp-e/consulta-por-emitente-comprador-bp-e/index-51a796e38c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/conhecimento-de-transporte-eletronico-outros-servicos-ct-e-os/consulta-completa/index-2a3ae6df7a.md",
+      "size": 34250,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/conhecimento-de-transporte-eletronico-outros-servicos-ct-e-os/consulta-completa/index-2a3ae6df7a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/conhecimento-de-transporte-eletronico-outros-servicos-ct-e-os/consulta-por-emitente-tomador/index-abdb9bd82c.md",
+      "size": 34262,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/conhecimento-de-transporte-eletronico-outros-servicos-ct-e-os/consulta-por-emitente-tomador/index-abdb9bd82c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/consulta-unificada-dfe/index-aad051899f.md",
+      "size": 34188,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/consulta-unificada-dfe/index-aad051899f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ct-e/consulta-completa/index-b097c7c90c.md",
+      "size": 34231,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ct-e/consulta-completa/index-b097c7c90c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ct-e/consulta-remetente-destinatario-tomador-prestador/index-9882fe4a0b.md",
+      "size": 34253,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ct-e/consulta-remetente-destinatario-tomador-prestador/index-9882fe4a0b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ct-e/consulta-resumida/index-afa011c7ee.md",
+      "size": 34231,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ct-e/consulta-resumida/index-afa011c7ee.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ct-e/consultar-credenciamentos-ct-e/index-892ae3b9c2.md",
+      "size": 34244,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ct-e/consultar-credenciamentos-ct-e/index-892ae3b9c2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ct-e/gerar-xml-ct-e/index-bc5efc6323.md",
+      "size": 34228,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ct-e/gerar-xml-ct-e/index-bc5efc6323.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/emissor-de-cupom-fiscal-ecf/indicador-de-conformidade/index-0f3c558886.md",
+      "size": 34229,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/emissor-de-cupom-fiscal-ecf/indicador-de-conformidade/index-0f3c558886.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/guia-de-transporte-de-valores-gtv-e/consulta-completa-fis-1660/index-324bda3ba1.md",
+      "size": 34235,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/guia-de-transporte-de-valores-gtv-e/consulta-completa-fis-1660/index-324bda3ba1.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/guia-de-transporte-de-valores-gtv-e/consulta-generica-fis-1662/index-fdba07f633.md",
+      "size": 34236,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/guia-de-transporte-de-valores-gtv-e/consulta-generica-fis-1662/index-fdba07f633.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/manifesto-eletronico-de-documentos-fiscais-mdf-e/consulta-cobranca-mdf-e/index-5a7bd922b4.md",
+      "size": 34231,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/manifesto-eletronico-de-documentos-fiscais-mdf-e/consulta-cobranca-mdf-e/index-5a7bd922b4.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/manifesto-eletronico-de-documentos-fiscais-mdf-e/consulta-mdf-e/index-676a842e4c.md",
+      "size": 34221,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/manifesto-eletronico-de-documentos-fiscais-mdf-e/consulta-mdf-e/index-676a842e4c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-agricultura-familiar/cancelar-nf-de-produtor/index-0ed035ebdb.md",
+      "size": 34214,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-agricultura-familiar/cancelar-nf-de-produtor/index-0ed035ebdb.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-agricultura-familiar/consulta-completa-2/index-423f4e281d.md",
+      "size": 34208,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-agricultura-familiar/consulta-completa-2/index-423f4e281d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-agricultura-familiar/emitir-nf-produtor-eletronica/index-3438b63603.md",
+      "size": 34221,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-agricultura-familiar/emitir-nf-produtor-eletronica/index-3438b63603.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-agricultura-familiar/imprimir-danfe/index-e229993832.md",
+      "size": 34205,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-agricultura-familiar/imprimir-danfe/index-e229993832.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-com-nf-com/consulta-completa-nf-com/index-a248840820.md",
+      "size": 34221,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-com-nf-com/consulta-completa-nf-com/index-a248840820.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-com-nf-com/consulta-emit-dest-nf-com/index-8e5cfb0d46.md",
+      "size": 34239,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-com-nf-com/consulta-emit-dest-nf-com/index-8e5cfb0d46.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/compras-destinadas-ao-consumidor/index-463909865c.md",
+      "size": 34230,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/compras-destinadas-ao-consumidor/index-463909865c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/consulta-cancelamento-nf-e/index-4112bfe08a.md",
+      "size": 34224,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/consulta-cancelamento-nf-e/index-4112bfe08a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/consulta-completa-xslt/index-98ae7fff7d.md",
+      "size": 34220,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/consulta-completa-xslt/index-98ae7fff7d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/consulta-completa/index-d2793181f6.md",
+      "size": 34215,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/consulta-completa/index-d2793181f6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/consulta-emitentes-destinatarios/index-fb8941f653.md",
+      "size": 34237,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/consulta-emitentes-destinatarios/index-fb8941f653.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/consulta-resumida/index-2585d0b636.md",
+      "size": 34215,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/consulta-resumida/index-2585d0b636.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/consultar-credenciamento/index-1d932d4554.md",
+      "size": 34227,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/consultar-credenciamento/index-1d932d4554.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/imprimir-danfe/index-b49ccc8338.md",
+      "size": 34212,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/imprimir-danfe/index-b49ccc8338.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/inutilizacoes/index-4a3ecc12da.md",
+      "size": 34213,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/inutilizacoes/index-4a3ecc12da.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/nfe-xml/index-886c25332b.md",
+      "size": 34207,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nf-e/nfe-xml/index-886c25332b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfa-e/cancelar-nota-fiscal-avulsa-eletronica-nfa-e/index-d1b4d2cf42.md",
+      "size": 34214,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfa-e/cancelar-nota-fiscal-avulsa-eletronica-nfa-e/index-d1b4d2cf42.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfa-e/carta-correcao-nfa-e/index-24f4d27146.md",
+      "size": 34231,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfa-e/carta-correcao-nfa-e/index-24f4d27146.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfa-e/consulta-completa-2/index-dc5494a8ee.md",
+      "size": 34214,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfa-e/consulta-completa-2/index-dc5494a8ee.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfa-e/consultar-lancamentos/index-31f6ae72a4.md",
+      "size": 34228,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfa-e/consultar-lancamentos/index-31f6ae72a4.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfa-e/emitir-nota-fiscal-avulsa-eletronica-nfa-e/index-0af35d8ef4.md",
+      "size": 34212,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfa-e/emitir-nota-fiscal-avulsa-eletronica-nfa-e/index-0af35d8ef4.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfa-e/imprimir-danfe-2/index-0def31c940.md",
+      "size": 34220,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfa-e/imprimir-danfe-2/index-0def31c940.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/consulta-nfc-e-antiga/index-5e1287c0a2.md",
+      "size": 34236,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/consulta-nfc-e-antiga/index-5e1287c0a2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/consulta-por-cpf/index-d2c41a1eb9.md",
+      "size": 34229,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/consulta-por-cpf/index-d2c41a1eb9.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/consulta-por-emitente/index-362b4b3a00.md",
+      "size": 34234,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/consulta-por-emitente/index-362b4b3a00.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/consultar-credenciamento-nfc-e/index-bbfc4d9d06.md",
+      "size": 34243,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/consultar-credenciamento-nfc-e/index-bbfc4d9d06.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/consultar-csc/index-47535ca4f8.md",
+      "size": 34226,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/consultar-csc/index-47535ca4f8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/consultar-nfc-e/index-3aac3c3fa7.md",
+      "size": 34241,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/consultar-nfc-e/index-3aac3c3fa7.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/credenciamento-nfc-e/index-e6a60c9184.md",
+      "size": 34248,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/credenciamento-nfc-e/index-e6a60c9184.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/faturamento-diario-nfc-e/index-a3e870b23a.md",
+      "size": 34238,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/faturamento-diario-nfc-e/index-a3e870b23a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/gerar-csc/index-dac377c696.md",
+      "size": 34222,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/gerar-csc/index-dac377c696.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/inutilizacoes/index-561cda2a13.md",
+      "size": 34228,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/inutilizacoes/index-561cda2a13.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/portal-nfc-e/index-f5c87d46d8.md",
+      "size": 35845,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nfc-e/portal-nfc-e/index-f5c87d46d8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nota-fiscal-de-energia-nf3e/consulta-completa-nf3/index-840611c49e.md",
+      "size": 34214,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nota-fiscal-de-energia-nf3e/consulta-completa-nf3/index-840611c49e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nota-fiscal-de-energia-nf3e/consulta-nf3e-por-emitente-ou-destinatario-acessante/index-9246c43c6d.md",
+      "size": 34235,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/nota-fiscal-de-energia-nf3e/consulta-nf3e-por-emitente-ou-destinatario-acessante/index-9246c43c6d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ped-2/alterar-requerimento-de-pedido/index-88413a01fd.md",
+      "size": 34238,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ped-2/alterar-requerimento-de-pedido/index-88413a01fd.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ped-2/consultar-contribuintes-usuarios/index-9cc7124f69.md",
+      "size": 34241,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ped-2/consultar-contribuintes-usuarios/index-9cc7124f69.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ped-2/consultar-requerimento-de-pedido/index-1d52e19b99.md",
+      "size": 34240,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ped-2/consultar-requerimento-de-pedido/index-1d52e19b99.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ped-2/detalhar-imprimir-requerimento-de-pedido/index-10845d2bbe.md",
+      "size": 34246,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ped-2/detalhar-imprimir-requerimento-de-pedido/index-10845d2bbe.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ped-2/excluir-requerimento-de-pedido/index-57439c4907.md",
+      "size": 34238,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ped-2/excluir-requerimento-de-pedido/index-57439c4907.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ped-2/incluir/index-7101a34c02.md",
+      "size": 34238,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/ped-2/incluir/index-7101a34c02.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/taxa-df-e/relatorio-taxa-df-e/index-a377a7cf33.md",
+      "size": 34197,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos-fiscais/taxa-df-e/relatorio-taxa-df-e/index-a377a7cf33.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos/consulta-geral-de-processos-documentos/index-faf6d2c163.md",
+      "size": 34207,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos/consulta-geral-de-processos-documentos/index-faf6d2c163.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos/consultar-detalhamento-do-documento/index-d7d8d9b0b2.md",
+      "size": 34204,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos/consultar-detalhamento-do-documento/index-d7d8d9b0b2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos/consultar-historico-de-tramitacoes-de-documentos/index-382a544d6f.md",
+      "size": 34210,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos/consultar-historico-de-tramitacoes-de-documentos/index-382a544d6f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/documentos/consultar-historico-de-tramitacoes-de-processos/index-4846817886.md",
+      "size": 34210,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/documentos/consultar-historico-de-tramitacoes-de-processos/index-4846817886.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/escrituracao-fiscal/consulta-obrigatoriedade-de-efd/index-ffd55ffb68.md",
+      "size": 34199,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/escrituracao-fiscal/consulta-obrigatoriedade-de-efd/index-ffd55ffb68.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/escrituracao-fiscal/consultar-efd-processadas-contribuinte/index-51a4644cf5.md",
+      "size": 34206,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/escrituracao-fiscal/consultar-efd-processadas-contribuinte/index-51a4644cf5.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/escrituracao-fiscal/emitir-autorizacao-previa/index-a101be8489.md",
+      "size": 34208,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/escrituracao-fiscal/emitir-autorizacao-previa/index-a101be8489.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/escrituracao-fiscal/notas-fiscais-declaradas/index-4282b9b41d.md",
+      "size": 34192,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/escrituracao-fiscal/notas-fiscais-declaradas/index-4282b9b41d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/escrituracao-fiscal/ped-manual/consultar-livros-fiscais/index-9aa83b2a8f.md",
+      "size": 34201,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/escrituracao-fiscal/ped-manual/consultar-livros-fiscais/index-9aa83b2a8f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/fiscalizacao/consultar-bloqueio/index-3531bf0dc5.md",
+      "size": 34179,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/fiscalizacao/consultar-bloqueio/index-3531bf0dc5.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/fiscalizacao/consultar-ordem-de-servico-em-andamento/index-b9b93ee7e5.md",
+      "size": 34200,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/fiscalizacao/consultar-ordem-de-servico-em-andamento/index-b9b93ee7e5.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/fiscalizacao/consultar-pat/index-e70505a0c1.md",
+      "size": 34199,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/fiscalizacao/consultar-pat/index-e70505a0c1.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/fiscalizacao/relatorio-de-omissao-e-inadimplencia/index-e651f00e1d.md",
+      "size": 34202,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/fiscalizacao/relatorio-de-omissao-e-inadimplencia/index-e651f00e1d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/fiscalizacao/termo-de-encerramento-de-fiscalizacao-de-estabelecimento/index-a90e398d93.md",
+      "size": 34200,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/fiscalizacao/termo-de-encerramento-de-fiscalizacao-de-estabelecimento/index-a90e398d93.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/index-35b1cff361.md",
+      "size": 34614,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/index-35b1cff361.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/index-a092708b3a.md",
+      "size": 34614,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/index-a092708b3a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/ipva/consultar-debitos/index-112f0b9b98.md",
+      "size": 34169,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/ipva/consultar-debitos/index-112f0b9b98.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/ipva/emitir-dar-ipva-parcelamento/index-e3874e49eb.md",
+      "size": 34189,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/ipva/emitir-dar-ipva-parcelamento/index-e3874e49eb.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/ipva/emitir-dar-primeiro-emplacamento/index-b377991b34.md",
+      "size": 34183,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/ipva/emitir-dar-primeiro-emplacamento/index-b377991b34.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/ipva/emitir-dar/index-2d73c43cae.md",
+      "size": 34225,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/ipva/emitir-dar/index-2d73c43cae.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/municipios/consultar-declaracoes-do-municipio/index-ce7ee9108c.md",
+      "size": 34214,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/municipios/consultar-declaracoes-do-municipio/index-ce7ee9108c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/municipios/relatorio-de-fechamento-ano-base/index-9d1c3954de.md",
+      "size": 34210,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/municipios/relatorio-de-fechamento-ano-base/index-9d1c3954de.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/simples-nacional/consultar-regularidade/index-3b32f91894.md",
+      "size": 34185,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/simples-nacional/consultar-regularidade/index-3b32f91894.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/consultar-cobrancas-da-nota-fiscal/index-901492159a.md",
+      "size": 34190,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/consultar-cobrancas-da-nota-fiscal/index-901492159a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/consultar-emitir-fatura/index-287176972c.md",
+      "size": 34178,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/consultar-emitir-fatura/index-287176972c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/consultar-mercadoria-retida/index-039c0e4e16.md",
+      "size": 34182,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/consultar-mercadoria-retida/index-039c0e4e16.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/consultar-pauta-fiscal/index-408f1c939a.md",
+      "size": 34177,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/consultar-pauta-fiscal/index-408f1c939a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/consultar-pedido-de-revisao-de-fatura/index-4963f775d6.md",
+      "size": 34194,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/consultar-pedido-de-revisao-de-fatura/index-4963f775d6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/debitos/cadastrar-confissao-de-debito/index-de100af212.md",
+      "size": 34197,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/debitos/cadastrar-confissao-de-debito/index-de100af212.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/debitos/consultar-confissao-de-debito/index-4caf43bfc1.md",
+      "size": 34197,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/debitos/consultar-confissao-de-debito/index-4caf43bfc1.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/debitos/debitos-lancados-em-divida-ativa/index-2f6e65df60.md",
+      "size": 34207,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/debitos/debitos-lancados-em-divida-ativa/index-2f6e65df60.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/ferramenta-difal-nao-contribuinte/index-3071b7b97f.md",
+      "size": 34189,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/ferramenta-difal-nao-contribuinte/index-3071b7b97f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/gerar-pedido-de-revisao-de-fatura/index-e6ec3feb66.md",
+      "size": 34189,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/gerar-pedido-de-revisao-de-fatura/index-e6ec3feb66.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/conferir-autenticidade-da-guia/index-b58aa2fad3.md",
+      "size": 34192,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/conferir-autenticidade-da-guia/index-b58aa2fad3.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/consultar-processo-itcd/index-c2963ee73f.md",
+      "size": 34180,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/consultar-processo-itcd/index-c2963ee73f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/declaracao-de-bens-e-direitos-para-lancamento/index-6cf0bf1d91.md",
+      "size": 34202,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/declaracao-de-bens-e-direitos-para-lancamento/index-6cf0bf1d91.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/declaracao-negativa-propriedade-de-imovel-residencial/index-435998c12a.md",
+      "size": 34202,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/declaracao-negativa-propriedade-de-imovel-residencial/index-435998c12a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/pedido-de-reconhecimento-de-isencao-nao-incidencia/index-a97dc98d7f.md",
+      "size": 34202,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/pedido-de-reconhecimento-de-isencao-nao-incidencia/index-a97dc98d7f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/procuracao-para-lancamento-itcd/index-02ec2e661b.md",
+      "size": 34191,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/procuracao-para-lancamento-itcd/index-02ec2e661b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/relacao-de-doadores-para-lancamento/index-64cb75b159.md",
+      "size": 34200,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/relacao-de-doadores-para-lancamento/index-64cb75b159.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/relacao-de-donatarios-para-lancamento/index-dd7ac516af.md",
+      "size": 34204,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/relacao-de-donatarios-para-lancamento/index-dd7ac516af.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/relacao-de-herdeiros-e-legatarios-para-lancamento/index-c06ba4a3b4.md",
+      "size": 34203,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/relacao-de-herdeiros-e-legatarios-para-lancamento/index-c06ba4a3b4.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/relacao-diaria-contribuintes/index-78a86890a4.md",
+      "size": 34193,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/itcd/relacao-diaria-contribuintes/index-78a86890a4.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/lancamentos/consultar-lancamentos/index-6403bc4d0d.md",
+      "size": 34192,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/lancamentos/consultar-lancamentos/index-6403bc4d0d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/lancamentos/lancamentos-espontaneos/index-6751254d86.md",
+      "size": 34195,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/lancamentos/lancamentos-espontaneos/index-6751254d86.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/calculo-de-icms-frete/index-f92ec0678f.md",
+      "size": 34190,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/calculo-de-icms-frete/index-f92ec0678f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/consultar-extratos-de-pagamento-por-contribuinte/index-f221a6dc19.md",
+      "size": 34206,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/consultar-extratos-de-pagamento-por-contribuinte/index-f221a6dc19.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/consultar-ipva/index-574e2c0188.md",
+      "size": 34182,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/consultar-ipva/index-574e2c0188.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/consultar-pagamento-antecipado-do-icms/index-c562ba3bc5.md",
+      "size": 34206,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/consultar-pagamento-antecipado-do-icms/index-c562ba3bc5.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/dar-avulso/index-c807390eb6.md",
+      "size": 34178,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/dar-avulso/index-c807390eb6.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/emitir-dar-fc/index-60eaa4b0bd.md",
+      "size": 34181,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/emitir-dar-fc/index-60eaa4b0bd.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/pagamento-a-vista-de-autos-de-infracao-representacao-fiscal/index-633ab89a7d.md",
+      "size": 34207,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/pagamento-a-vista-de-autos-de-infracao-representacao-fiscal/index-633ab89a7d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/pagamento-a-vista-para-debitos-em-divida-ativa/index-00e7fb6bf1.md",
+      "size": 34208,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/pagamento-a-vista-para-debitos-em-divida-ativa/index-00e7fb6bf1.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/parcelamento-de-debitos-administrativos/index-540ea2b222.md",
+      "size": 34207,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/parcelamento-de-debitos-administrativos/index-540ea2b222.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/parcelamento-de-debitos-na-divida-ativa/index-6588d49431.md",
+      "size": 34208,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/parcelamento-de-debitos-na-divida-ativa/index-6588d49431.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/simulacao-de-atualizacao-de-debitos/index-6663084157.md",
+      "size": 34208,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/simulacao-de-atualizacao-de-debitos/index-6663084157.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/simulacao-do-parcelamento-pep-refis/index-78de809617.md",
+      "size": 34208,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/pagamentos/simulacao-do-parcelamento-pep-refis/index-78de809617.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/servirtual/tributos/relatorio-termos-pendentes/index-9cde6963b2.md",
+      "size": 34182,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/servirtual/tributos/relatorio-termos-pendentes/index-9cde6963b2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/sitemap/index-b044e1a36e.md",
+      "size": 51815,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/sitemap/index-b044e1a36e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pb.gov.br/termosuso/index-4ba4477585.md",
+      "size": 13167,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pb.gov.br/termosuso/index-4ba4477585.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/_layouts/15/fba_login-64ef51067c.md",
+      "size": 626,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/_layouts/15/fba_login-64ef51067c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/apresentacao-a67c3f3564.md",
+      "size": 23242,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/apresentacao-a67c3f3564.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/calendario-de-pagamento-a2907187a7.md",
+      "size": 22924,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/calendario-de-pagamento-a2907187a7.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/capacitacao-365564522b.md",
+      "size": 23024,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/capacitacao-365564522b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/estagios-na-sefaz-c462436a84.md",
+      "size": 23315,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/estagios-na-sefaz-c462436a84.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/etica-e-responsabilidade-social-c64e55b029.md",
+      "size": 28863,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/etica-e-responsabilidade-social-c64e55b029.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/gestao-por-competencias-79d7cf289e.md",
+      "size": 24093,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/gestao-por-competencias-79d7cf289e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/homologacao-da-progressao-2014-47afcfcc9b.md",
+      "size": 27702,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/homologacao-da-progressao-2014-47afcfcc9b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/qualidade-de-vida-preparacao-para-aposentadoria-44a755bb36.md",
+      "size": 28272,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/qualidade-de-vida-preparacao-para-aposentadoria-44a755bb36.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/requerimentos-cb4c0f7196.md",
+      "size": 29214,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/gestao-de-pessoas/paginas/requerimentos-cb4c0f7196.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/paginas/acessibilidade-135451a281.md",
+      "size": 17865,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/paginas/acessibilidade-135451a281.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/paginas/mapa-do-site-b029d8975a.md",
+      "size": 39581,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/paginas/mapa-do-site-b029d8975a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/programas/documents/projeto-de-cooperacao-tecnica-brasil-canada-2b41f0f338.md",
+      "size": 76057,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/programas/documents/projeto-de-cooperacao-tecnica-brasil-canada-2b41f0f338.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/programas/educacaofiscal/paginas/default-d53c55b59b.md",
+      "size": 30611,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/programas/educacaofiscal/paginas/default-d53c55b59b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/programas/paginas/a3p-3e4b10d4b8.md",
+      "size": 27874,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/programas/paginas/a3p-3e4b10d4b8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/programas/paginas/consulta-selo-agua-mineral-fdf2e3a656.md",
+      "size": 22214,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/programas/paginas/consulta-selo-agua-mineral-fdf2e3a656.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/programas/paginas/programa-educacao-fiscal-f947e6ee99.md",
+      "size": 25695,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/programas/paginas/programa-educacao-fiscal-f947e6ee99.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/programas/paginas/sefaz-integra-7f24a72d54.md",
+      "size": 23688,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/programas/paginas/sefaz-integra-7f24a72d54.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/programas/profisco/paginas/apresentacao-4fb8e535a4.md",
+      "size": 20152,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/programas/profisco/paginas/apresentacao-4fb8e535a4.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/governanca/paginas/estrutura-organizacional-109189a6fb.md",
+      "size": 23115,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/governanca/paginas/estrutura-organizacional-109189a6fb.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/infonegocio/paginas/default-ba9244430c.md",
+      "size": 23747,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/infonegocio/paginas/default-ba9244430c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/ouvidoria/paginas/ouvidoria-a23e861d2b.md",
+      "size": 23034,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/ouvidoria/paginas/ouvidoria-a23e861d2b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/apresentacao-21ba035120.md",
+      "size": 23807,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/apresentacao-21ba035120.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/apresentacao-6d10cb1be2.md",
+      "size": 23807,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/apresentacao-6d10cb1be2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/corregedoria-fazendaria-correfaz-65768268cc.md",
+      "size": 24327,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/corregedoria-fazendaria-correfaz-65768268cc.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/enderecos-sefaz-06a4e7a356.md",
+      "size": 31527,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/enderecos-sefaz-06a4e7a356.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/estrutura-organizacional-306e7da8a8.md",
+      "size": 23149,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/estrutura-organizacional-306e7da8a8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/galeria-de-secretarios-c7a36e2b4b.md",
+      "size": 26306,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/galeria-de-secretarios-c7a36e2b4b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/historia-da-sefaz-e6f16fe16a.md",
+      "size": 30451,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/historia-da-sefaz-e6f16fe16a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/identidade-organizacional-4541906280.md",
+      "size": 24186,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/identidade-organizacional-4541906280.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/informac-o-es_teletrabalho-442af460a5.md",
+      "size": 30119,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/informac-o-es_teletrabalho-442af460a5.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/perfil-do-secretario-fd2c38dfc1.md",
+      "size": 23546,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/perfil-do-secretario-fd2c38dfc1.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/quem-e-quem-e54f15c44e.md",
+      "size": 32015,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/paginas/quem-e-quem-e54f15c44e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/planejamento-estrategico/paginas/apresentacao-698d7aa5dc.md",
+      "size": 25200,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/planejamento-estrategico/paginas/apresentacao-698d7aa5dc.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/institucional/secretaria/sala-de-imprensa/paginas/contatos-9c1238446c.md",
+      "size": 22380,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/institucional/secretaria/sala-de-imprensa/paginas/contatos-9c1238446c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/financeira/documents/lei-no-8.666-de-21-de-junho-de-1993-78e7ffa4da.md",
+      "size": 222342,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/financeira/documents/lei-no-8.666-de-21-de-junho-de-1993-78e7ffa4da.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/financeira/paginas/default-34e170c215.md",
+      "size": 32150,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/financeira/paginas/default-34e170c215.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/tributaria/consolidada-por-assunto/paginas/ibs-9b51127d10.md",
+      "size": 25557,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/tributaria/consolidada-por-assunto/paginas/ibs-9b51127d10.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/tributaria/consolidada-por-assunto/paginas/icd-4ec74c76a1.md",
+      "size": 26116,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/tributaria/consolidada-por-assunto/paginas/icd-4ec74c76a1.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/tributaria/consolidada-por-assunto/paginas/icms-cc1095d0b2.md",
+      "size": 32572,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/tributaria/consolidada-por-assunto/paginas/icms-cc1095d0b2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/tributaria/consolidada-por-assunto/paginas/ipva-aac00307b2.md",
+      "size": 28147,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/tributaria/consolidada-por-assunto/paginas/ipva-aac00307b2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/tributaria/consolidada-por-assunto/paginas/pat-3b028aed48.md",
+      "size": 24616,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/tributaria/consolidada-por-assunto/paginas/pat-3b028aed48.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/tributaria/documents/legislacao/decretos/2008/dec31612_2008-2bda27bb13.md",
+      "size": 24810,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/tributaria/documents/legislacao/decretos/2008/dec31612_2008-2bda27bb13.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/tributaria/documents/legislacao/leis_tributarias/2015/lei15683_2015-ab581a0650.md",
+      "size": 18158,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/tributaria/documents/legislacao/leis_tributarias/2015/lei15683_2015-ab581a0650.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/tributaria/documents/legislacao/resoluc-o-es-de-consulta/resoluc-a-o-de-consultas-4d9c69290c.md",
+      "size": 555430,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/tributaria/documents/legislacao/resoluc-o-es-de-consulta/resoluc-a-o-de-consultas-4d9c69290c.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/tributaria/paginas/informativos-fiscais-c35c9e292a.md",
+      "size": 32188,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/tributaria/paginas/informativos-fiscais-c35c9e292a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/tributaria/paginas/legislacao-tributaria-estadual-4f7d835b17.md",
+      "size": 45914,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/tributaria/paginas/legislacao-tributaria-estadual-4f7d835b17.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/tributaria/paginas/links-uteis-eb4d3ee9a4.md",
+      "size": 23920,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/tributaria/paginas/links-uteis-eb4d3ee9a4.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/legislacao/tributaria/paginas/normas-e-tabelas-de-interesse-tributario-9090e38a3a.md",
+      "size": 26323,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/legislacao/tributaria/paginas/normas-e-tabelas-de-interesse-tributario-9090e38a3a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/paginas/pesquisa-avancada-3bdc2c927c.md",
+      "size": 22990,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/paginas/pesquisa-avancada-3bdc2c927c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/credenciados-na-sistematica-de-tecidos/paginas/default-6154749443.md",
+      "size": 34964,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/credenciados-na-sistematica-de-tecidos/paginas/default-6154749443.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/documents/plano_anual_de_fiscalizacao___160125-1--887be6c504.md",
+      "size": 32448,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/documents/plano_anual_de_fiscalizacao___160125-1--887be6c504.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/ciencia-icd/paginas/default-62652d94c8.md",
+      "size": 44298,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/ciencia-icd/paginas/default-62652d94c8.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/credito-de-exportacao/paginas/default-dc8bf04b8a.md",
+      "size": 27750,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/credito-de-exportacao/paginas/default-dc8bf04b8a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/documents/edital-no-06-2024-gpef-ps-interno-e-externo-f189271e55.md",
+      "size": 13175,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/documents/edital-no-06-2024-gpef-ps-interno-e-externo-f189271e55.pdf"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/intimacao-bloqueio-inscricao-estadual/paginas/avisos-comunicados-b7c07221bb.md",
+      "size": 22119,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/intimacao-bloqueio-inscricao-estadual/paginas/avisos-comunicados-b7c07221bb.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/paginas/autorizacao-de-uso-de-credito-exportacao-dbb803eb16.md",
+      "size": 30934,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/paginas/autorizacao-de-uso-de-credito-exportacao-dbb803eb16.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/paginas/ciencia-do-icd-1d9b2a26fb.md",
+      "size": 36535,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/paginas/ciencia-do-icd-1d9b2a26fb.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/paginas/devedores-contumazes-20152f8490.md",
+      "size": 29658,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/paginas/devedores-contumazes-20152f8490.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/paginas/gia-343374b643.md",
+      "size": 29571,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/paginas/gia-343374b643.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/paginas/ressarcimento-de-icms-3fe5f80311.md",
+      "size": 33171,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/paginas/ressarcimento-de-icms-3fe5f80311.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/paginas/restituicao-de-tributos-f3fa3fafb5.md",
+      "size": 44781,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/paginas/restituicao-de-tributos-f3fa3fafb5.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/sef/paginas/editais-de-justificativa-de-omissao-fa3d67ca3c.md",
+      "size": 43093,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/sef/paginas/editais-de-justificativa-de-omissao-fa3d67ca3c.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/simples-nacional/paginas/editais-de-exclusao-50b45f9cce.md",
+      "size": 43191,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/simples-nacional/paginas/editais-de-exclusao-50b45f9cce.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/editais/substituicao-tributaria/paginas/editais-de-regime-especial-14a77ebd73.md",
+      "size": 24250,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/editais/substituicao-tributaria/paginas/editais-de-regime-especial-14a77ebd73.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/licitacoes/paginas/atas-de-registro-de-precos-21131d4833.md",
+      "size": 30372,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/licitacoes/paginas/atas-de-registro-de-precos-21131d4833.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/licitacoes/paginas/instrucoes-a3c07d0e3d.md",
+      "size": 21716,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/licitacoes/paginas/instrucoes-a3c07d0e3d.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/licitacoes/paginas/licitantes-penalizados-8f5ce04d76.md",
+      "size": 27839,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/licitacoes/paginas/licitantes-penalizados-8f5ce04d76.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/notificacoes/paginas/icms-07002e47c2.md",
+      "size": 51564,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/notificacoes/paginas/icms-07002e47c2.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/paginas/contribuintes-incentivados-por-programas-estaduais-5b119495da.md",
+      "size": 27918,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/paginas/contribuintes-incentivados-por-programas-estaduais-5b119495da.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/paginas/credenciados-diferimento-gas-natural-polo-gesseiro-44ce0ae92f.md",
+      "size": 29946,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/paginas/credenciados-diferimento-gas-natural-polo-gesseiro-44ce0ae92f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/paginas/credenciamento-46b398846b.md",
+      "size": 37931,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/paginas/credenciamento-46b398846b.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/paginas/credenciamento-antecipacao-tributaria-b37b9fd5e0.md",
+      "size": 28813,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/paginas/credenciamento-antecipacao-tributaria-b37b9fd5e0.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/paginas/cronograma-descredenciamento-da-antecipacao-ff2703caf5.md",
+      "size": 23281,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/paginas/cronograma-descredenciamento-da-antecipacao-ff2703caf5.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/paginas/descredenciamento-2aaeb84eba.md",
+      "size": 25105,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/paginas/descredenciamento-2aaeb84eba.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/paginas/descredenciamento-antecipacao-tributaria-bd262d82fe.md",
+      "size": 46084,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/paginas/descredenciamento-antecipacao-tributaria-bd262d82fe.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/paginas/descredenciamento-bares-e-restaurantes-9dc12ffdff.md",
+      "size": 28263,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/paginas/descredenciamento-bares-e-restaurantes-9dc12ffdff.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/paginas/descredenciamento-refeicoes-coletivas-c1f1087a87.md",
+      "size": 27840,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/paginas/descredenciamento-refeicoes-coletivas-c1f1087a87.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/paginas/descredenciamento-transportes-19e07b2cd1.md",
+      "size": 30985,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/paginas/descredenciamento-transportes-19e07b2cd1.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/publicacoes/paginas/duvidas-tributarias-informativos-fiscais-a-partir-de-01-04-2017-cfbd9a5823.md",
+      "size": 22939,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/publicacoes/paginas/duvidas-tributarias-informativos-fiscais-a-partir-de-01-04-2017-cfbd9a5823.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/rpm/scripts/taxasrepassecons-f4c79aa400.md",
+      "size": 331,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/rpm/scripts/taxasrepassecons-f4c79aa400.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/rpm/scripts/taxasrepasseconsindices-5b865112e3.md",
+      "size": 331,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/rpm/scripts/taxasrepasseconsindices-5b865112e3.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/servicos/nota-fiscal-eletronica/paginas/apresentacao-f27d02b1fe.md",
+      "size": 24099,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/servicos/nota-fiscal-eletronica/paginas/apresentacao-f27d02b1fe.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.pe.gov.br/sitepages/home-64cacf72c5.md",
+      "size": 30825,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.pe.gov.br/sitepages/home-64cacf72c5.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.rr.gov.br/empresa/consultar-internamento-nf/index-74f6f307be.md",
+      "size": 10132,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.rr.gov.br/empresa/consultar-internamento-nf/index-74f6f307be.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefaz.rr.gov.br/index-2761b12036.md",
+      "size": 14568,
+      "sourceFilePath": "docs/_sources/official/www.sefaz.rr.gov.br/index-2761b12036.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefin.ro.gov.br/conteudo-eb93946c9f.md",
+      "size": 9696,
+      "sourceFilePath": "docs/_sources/official/www.sefin.ro.gov.br/conteudo-eb93946c9f.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.sefin.ro.gov.br/index-a4694ad447.md",
+      "size": 40696,
+      "sourceFilePath": "docs/_sources/official/www.sefin.ro.gov.br/index-a4694ad447.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www.to.gov.br/sefaz/index-117588e52e.md",
+      "size": 14326,
+      "sourceFilePath": "docs/_sources/official/www.to.gov.br/sefaz/index-117588e52e.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www1.sped.fazenda.gov.br/login/publico/bemvindo/index-0260835a40.md",
+      "size": 687,
+      "sourceFilePath": "docs/_sources/official/www1.sped.fazenda.gov.br/login/publico/bemvindo/index-0260835a40.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www4.fazenda.rj.gov.br/consultadfe/paginas/consultachaveacesso-aa8947549a.md",
+      "size": 1790,
+      "sourceFilePath": "docs/_sources/official/www4.fazenda.rj.gov.br/consultadfe/paginas/consultachaveacesso-aa8947549a.html"
+    },
+    {
+      "markdownFilePath": "docs/_sources/markdown/official/www5.sefaz.mt.gov.br/index-42c8ac467c.md",
+      "size": 21371,
+      "sourceFilePath": "docs/_sources/official/www5.sefaz.mt.gov.br/index-42c8ac467c.html"
+    }
+  ],
+  "failed": [
+    {
+      "error": "MarkItDown produced an empty Markdown file.",
+      "sourceFilePath": "docs/_sources/official/nfe.sefaz.ce.gov.br/index-733613fbbb.html"
+    },
+    {
+      "error": "MarkItDown produced an empty Markdown file.",
+      "sourceFilePath": "docs/_sources/official/nfe.sefaz.se.gov.br/index-1e479f1558.html"
+    },
+    {
+      "error": "MarkItDown produced an empty Markdown file.",
+      "sourceFilePath": "docs/_sources/official/www.fazenda.rj.gov.br/portal-fazenda/index-60535d484b.html"
+    },
+    {
+      "error": "MarkItDown produced an empty Markdown file.",
+      "sourceFilePath": "docs/_sources/official/www.sefaz.ap.gov.br/index-ffd138690a.html"
+    }
+  ],
+  "generatedAt": "2026-05-16T12:39:04.610Z",
+  "outputRoot": "docs/_sources/markdown/official",
+  "sourceRoot": "docs/_sources/official"
+}
