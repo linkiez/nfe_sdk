@@ -5,6 +5,8 @@ const DOCUMENTED_SURFACE = [
   'createNFe',
   'createEnviNFe',
   'createSigningContext',
+  'distributeRecipientDFe',
+  'manifestRecipientOperation',
   'queryNFeDocumentSituation',
   'queryNFeServiceStatus',
   'resolveNFeServiceEndpoint',
@@ -32,6 +34,7 @@ const COMPATIBILITY_NOTES = [
   'The digital-signing slice signs only NFe XML and keeps enviNFe as an unsigned transport envelope in this phase.',
   'The SOAP transport slice covers only homologation, shared SVAN endpoints, and the initial status-service and authorization operations in this phase.',
   'The first operational NFe slice currently exposes authorizeNFe, queryNFeServiceStatus, queryNFeDocumentSituation, submitNFeInutilization, cancelNFe, and submitNFeCorrectionLetter for homologation workflows on top of the canonical, signing, and transport layers.',
+  'The first recipient slice currently exposes distributeRecipientDFe and manifestRecipientOperation for homologation-only recipient workflows via distNSU and the four basic manifestation events, while keeping later document retrieval separate.',
   'The initial transport catalog is versioned as 2026-05-18-initial-draft and remains restricted to one SVAN entry per supported service in this phase.',
   'Future functional phases may expand the root contract, but they must not silently republish the generated tree.',
 ] as const;
@@ -45,6 +48,7 @@ const REPOSITORY_EVIDENCE = [
   'specs/005-add-digital-signing/contracts/public-signing-facade.md',
   'specs/006-add-soap-transport/contracts/public-soap-transport-facade.md',
   'specs/007-nfe-operational-mvp/contracts/public-nfe-operational-facade.md',
+  'specs/008-recipient-dfe-mvp/contracts/public-recipient-dfe-facade.md',
 ] as const;
 
 /**

@@ -79,6 +79,30 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
     },
     service: 'nfe-correction-letter',
   },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www1.nfe.fazenda.gov.br/NFeDistribuicaoDFe/NFeDistribuicaoDFe.asmx',
+    environment: 'homologation',
+    layoutVersion: '4.00',
+    provider: 'SVAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-recipient-distribution',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento4/RecepcaoEvento4.asmx',
+    environment: 'homologation',
+    layoutVersion: '4.00',
+    provider: 'SVAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-recipient-manifestation',
+  },
 ];
 
 const TRANSPORT_CATALOG_PLACEHOLDERS = getOperationalTransportCatalogPlaceholders();

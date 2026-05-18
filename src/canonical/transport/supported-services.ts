@@ -5,6 +5,8 @@ const SUPPORTED_NFE_SOAP_SERVICES = [
   'nfe-cancellation',
   'nfe-correction-letter',
   'nfe-document-situation',
+  'nfe-recipient-distribution',
+  'nfe-recipient-manifestation',
 ] as const;
 
 const PLANNED_OPERATIONAL_TRANSPORT_SERVICES = [] as const;
@@ -77,6 +79,22 @@ const SUPPORTED_SERVICE_DEFINITIONS: Readonly<
     responseElementName: 'retConsSitNFe',
     service: 'nfe-document-situation',
     successStatusCodes: ['100'],
+    unavailabilityStatusCodes: ['108', '109'],
+  },
+  'nfe-recipient-distribution': {
+    documentFamily: 'nfe',
+    requestElementName: 'distDFeInt',
+    responseElementName: 'retDistDFeInt',
+    service: 'nfe-recipient-distribution',
+    successStatusCodes: ['137', '138'],
+    unavailabilityStatusCodes: ['108', '109'],
+  },
+  'nfe-recipient-manifestation': {
+    documentFamily: 'nfe',
+    requestElementName: 'envEvento',
+    responseElementName: 'retEnvEvento',
+    service: 'nfe-recipient-manifestation',
+    successStatusCodes: ['128'],
     unavailabilityStatusCodes: ['108', '109'],
   },
   'nfe-inutilization': {

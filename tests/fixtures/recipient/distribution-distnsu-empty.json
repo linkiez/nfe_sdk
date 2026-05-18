@@ -1,0 +1,11 @@
+{
+  "input": {
+    "actor": {
+      "documentNumber": "12345678909",
+      "documentType": "cpf"
+    },
+    "environment": "homologation",
+    "ultNSU": "000000000000101"
+  },
+  "responseXml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope><soap:Body><retDistDFeInt><tpAmb>2</tpAmb><cStat>137</cStat><xMotivo>Nenhum documento localizado</xMotivo><ultNSU>000000000000101</ultNSU><maxNSU>000000000000101</maxNSU><loteDistDFeInt></loteDistDFeInt></retDistDFeInt></soap:Body></soap:Envelope>"
+}

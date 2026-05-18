@@ -44,6 +44,7 @@ sequenceDiagram
 - Os placeholders operacionais nao sao retornados por `findTransportServiceCatalogEntry`.
 - O primeiro incremento operacional de consultas adiciona a entrada homologada de `nfe-document-situation` ao catalogo publico.
 - O MVP operacional adiciona tambem `nfe-inutilization`, `nfe-cancellation` e `nfe-correction-letter` ao catalogo homologado publicado.
+- O slice recipient adiciona as entradas nacionais `nfe-recipient-distribution` e `nfe-recipient-manifestation` ao catalogo publico homologado.
 
 ## Exemplos
 

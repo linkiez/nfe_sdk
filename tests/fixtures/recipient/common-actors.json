@@ -1,0 +1,10 @@
+{
+  "cnpj": {
+    "documentNumber": "12345678000195",
+    "documentType": "cnpj"
+  },
+  "cpf": {
+    "documentNumber": "12345678909",
+    "documentType": "cpf"
+  }
+}

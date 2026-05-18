@@ -1,0 +1,13 @@
+{
+  "expectedEventCode": "210220",
+  "input": {
+    "accessKey": "35190500000000000000550010000000011000000010",
+    "actor": {
+      "documentNumber": "12345678909",
+      "documentType": "cpf"
+    },
+    "environment": "homologation",
+    "eventType": "desconhecimento-da-operacao"
+  },
+  "responseXml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope><soap:Body><retEnvEvento><cStat>128</cStat><xMotivo>Lote de evento processado</xMotivo><retEvento><infEvento><cStat>136</cStat><xMotivo>Evento registrado, mas nao vinculado</xMotivo><nProt>135260000000220</nProt></infEvento></retEvento></retEnvEvento></soap:Body></soap:Envelope>"
+}

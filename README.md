@@ -13,7 +13,9 @@ import {
   createEnviNFe,
   createNFe,
   createSigningContext,
+  distributeRecipientDFe,
   executeNFeSoapService,
+  manifestRecipientOperation,
   publicPackageContract,
   queryNFeDocumentSituation,
   queryNFeServiceStatus,
@@ -56,6 +58,10 @@ No slice inicial, `TransportOutcome.classification` distingue pelo menos `succes
 
 `submitNFeCorrectionLetter` executa a carta de correcao homologada com resultado estruturado e boundary explicita quando o ambiente solicitado fica fora do escopo publicado.
 
+`distributeRecipientDFe` executa a distribuicao DFe do lado do destinatario via `distNSU`, em homologacao, com cursor observavel e envelopes estruturados que distinguem resumo, documento completo e outros payloads retornados em `docZip`.
+
+`manifestRecipientOperation` registra um dos quatro eventos basicos de Manifestacao do Destinatario (`210200`, `210210`, `210220` e `210240`) e devolve classificacao operacional, protocolo quando houver e a marca contratual de que o download posterior permanece separado.
+
 ## Exemplo rapido da autorizacao operacional
 
 ```ts
@@ -92,6 +98,56 @@ O contrato normativo continua sendo `package.json`/exports. O README apenas expl
 `manifest.json` permanece interno e nao integra a superficie publica estavel.
 
 `enviNFe` permanece como envelope de transporte nao assinado do documento ja assinado nesta fase.
+
+## Exemplo rapido do slice recipient
+
+```ts
+import {
+  createSigningContext,
+  distributeRecipientDFe,
+  manifestRecipientOperation,
+} from 'nfe-sdk';
+
+const signingContext = await createSigningContext({
+  passphrase: '***',
+  source: {
+    contentBase64: 'BASE64_PFX',
+    type: 'in-memory-content',
+  },
+});
+
+const distribution = await distributeRecipientDFe({
+  actor: {
+    documentNumber: '12345678909',
+    documentType: 'cpf',
+  },
+  environment: 'homologation',
+  requestExecutor,
+  timeoutMs: 5000,
+  ultNSU: '000000000000000',
+});
+
+const manifestation = await manifestRecipientOperation({
+  accessKey: '35190500000000000000550010000000011000000010',
+  actor: {
+    documentNumber: '12345678909',
+    documentType: 'cpf',
+  },
+  environment: 'homologation',
+  eventType: 'ciencia-da-operacao',
+  requestExecutor,
+  signingContext,
+  timeoutMs: 5000,
+});
+
+console.log(distribution.classification, distribution.cursor.ultNSU);
+console.log(
+  manifestation.classification,
+  manifestation.downloadRemainsSeparate,
+);
+```
+
+O slice recipient permanece limitado a `homologation`, suporta apenas `distNSU`, aceita atores `cpf` e `cnpj`, e mantem `consNSU`, `consChNFe`, producao e download automatico apos a manifestacao fora do contrato publico atual.
 
 ## Exemplo rapido do slice SOAP
 

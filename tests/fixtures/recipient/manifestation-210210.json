@@ -1,0 +1,13 @@
+{
+  "expectedEventCode": "210210",
+  "input": {
+    "accessKey": "35190500000000000000550010000000011000000010",
+    "actor": {
+      "documentNumber": "12345678909",
+      "documentType": "cpf"
+    },
+    "environment": "homologation",
+    "eventType": "ciencia-da-operacao"
+  },
+  "responseXml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope><soap:Body><retEnvEvento><cStat>128</cStat><xMotivo>Lote de evento processado</xMotivo><retEvento><infEvento><cStat>135</cStat><xMotivo>Evento registrado e vinculado a NF-e</xMotivo><nProt>135260000000210</nProt></infEvento></retEvento></retEnvEvento></soap:Body></soap:Envelope>"
+}

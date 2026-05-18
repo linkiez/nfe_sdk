@@ -3,7 +3,9 @@ export { cancelNFe } from './facade/cancel-nfe.js';
 export { createEnviNFe } from './facade/create-envi-nfe.js';
 export { createNFe } from './facade/create-nfe.js';
 export { createSigningContext } from './facade/create-signing-context.js';
+export { distributeRecipientDFe } from './facade/distribute-recipient-dfe.js';
 export { executeNFeSoapService } from './facade/execute-nfe-soap-service.js';
+export { manifestRecipientOperation } from './facade/manifest-recipient-operation.js';
 export { queryNFeDocumentSituation } from './facade/query-nfe-document-situation.js';
 export { queryNFeServiceStatus } from './facade/query-nfe-service-status.js';
 export { resolveNFeServiceEndpoint } from './facade/resolve-nfe-service-endpoint.js';
@@ -34,6 +36,17 @@ export type {
   OperationalMaintenanceRequest,
   ServiceStatusSnapshot,
 } from './nfe/contracts.js';
+
+export type {
+  RecipientActor,
+  RecipientCoverageBoundary,
+  RecipientDistributionCursor,
+  RecipientDistributionOutcome,
+  RecipientDistributionQuery,
+  RecipientDocumentEnvelope,
+  RecipientManifestationOutcome,
+  RecipientManifestationRequest,
+} from './recipient/recipient-shared.js';
 
 export type {
   CreateSigningContextInput,

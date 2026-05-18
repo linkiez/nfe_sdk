@@ -12,24 +12,26 @@ Resumir o recorte de Manifestacao do Destinatario dentro da documentacao do SDK,
 
 ## Capacidades requeridas
 
-| ID | Capacidade | Estado no catalogo | Evidencia principal | Fontes | Habilitacao operacional | Lacuna explicita | Impacto e compatibilidade futura |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| MD-CAP-001 | Representar eventos de Manifestacao do Destinatario como conjunto funcional proprio | partial | docs/manifestacao-destinatario/visao-geral.md | SRC-MD-001, SRC-MD-002 | Certificado digital e acesso funcional oficial quando aplicavel | O mapeamento final por evento e por regra operacional ainda nao esta fechado | Requer contratos dedicados por evento e rastreabilidade normativa antes de qualquer leitura como contrato publico |
-| MD-CAP-002 | Relacionar uso do recurso a autenticacao e restricoes de acesso oficiais | externally-dependent | docs/manifestacao-destinatario/visao-geral.md | SRC-MD-003 | Certificado digital obrigatorio na superficie oficial observada | A dependencia operacional continua bloqueando verificacao publica completa do fluxo | Evita prometer fluxo publico inexistente ou nao verificado |
-| MD-CAP-003 | Diferenciar requisitos confirmados por FAQ publica de detalhes ainda bloqueados | externally-dependent | docs/_meta/source-registry.md | SRC-MD-002, SRC-MD-003 | Acesso publico insuficiente para fechar todos os detalhes operacionais | Ainda faltam fontes publicas complementares para fechar todos os eventos como cobertura sustentada | Exige tratamento de lacunas como backlog tecnico, nao como regra assumida |
+| ID         | Capacidade                                                                                                                     | Estado no catalogo   | Evidencia principal                                                  | Fontes                                         | Habilitacao operacional                                                                               | Lacuna explicita                                                                                                          | Impacto e compatibilidade futura                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------- | -------------------------------------------------------------------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| MD-CAP-001 | Expor o primeiro slice publico de Manifestacao do Destinatario com distribuicao via `distNSU` e os quatro eventos basicos      | partial              | specs/008-recipient-dfe-mvp/contracts/public-recipient-dfe-facade.md | SRC-MD-001, SRC-MD-002, SRC-MD-004, SRC-MD-005 | Certificado digital, habilitacao do ator e disponibilidade nacional continuam obrigatorios            | O recorte ainda nao cobre producao, `consNSU`, `consChNFe`, eventos genericos nem download automatico apos a manifestacao | Mantem a evolucao additive do contrato root sem promover cobertura total do dominio          |
+| MD-CAP-002 | Relacionar uso do recurso a autenticacao, habilitacao externa e restricoes oficiais                                            | externally-dependent | docs/manifestacao-destinatario/visao-geral.md                        | SRC-MD-003, SRC-MD-004                         | Certificado digital obrigatorio na superficie oficial observada e no fluxo operacional do web service | Credenciamento e disponibilidade do ambiente continuam fora do SDK                                                        | Evita prometer um fluxo publico irrestrito ou abstrair dependencias externas nao controladas |
+| MD-CAP-003 | Diferenciar requisitos normativos confirmados para distribuicao, eventos e limites operacionais do que ainda ficou fora do MVP | partial              | docs/\_meta/source-registry.md                                       | SRC-MD-002, SRC-MD-004, SRC-MD-005, SRC-MD-006 | Acesso publico suficiente para fechar o MVP homologado, mas nao o dominio completo                    | A matriz completa de expansao por ambiente e por modo de consulta permanece como backlog                                  | Permite ampliar o slice por semver additive com rastreabilidade normativa                    |
 
 ## Premissas operacionais
 
 - A funcionalidade especifica acessada diretamente no portal nacional exige certificado digital.
-- A pesquisa publica atual confirma a existencia da categoria de eventos, mas ainda nao fecha todos os detalhes operacionais pelo endpoint restrito.
+- O MVP publicado cobre `distNSU`, atores `cpf` e `cnpj`, e os eventos `210200`, `210210`, `210220` e `210240` em `homologation`.
+- O download posterior da NF-e continua separado da manifestacao, mesmo quando o resumo ja foi distribuido ao destinatario.
 
 ## Lacunas prioritarias
 
-- O detalhamento por evento ainda depende de fontes publicas complementares ou de documentacao oficial acessivel fora da superficie restrita.
-- Ainda nao foi consolidado um mapeamento final de pre-requisitos por tipo de evento.
+- Abertura de producao, `consNSU`, `consChNFe`, EPEC e eventos fora do quarteto basico continua fora do slice.
+- Credenciamento, disponibilidade nacional e politicas de retry continuam como dependencias operacionais externas ao SDK.
 
 ## Leituras relacionadas
 
 - [Visao geral](./visao-geral.md) concentra o panorama funcional publicamente verificavel do dominio.
+- [Contrato publico do slice recipient](../../specs/008-recipient-dfe-mvp/contracts/public-recipient-dfe-facade.md) descreve a superficie publicada no import raiz.
 - [Registro de fontes](../_meta/source-registry.md) centraliza a trilha de auditoria e as restricoes de acesso usadas neste recorte.
 - [Catalogo geral de capacidades](../capacidades-sdk.md) concentra a leitura de estado, impacto e compatibilidade usada em todos os dominios.

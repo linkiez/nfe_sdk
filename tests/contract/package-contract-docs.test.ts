@@ -21,7 +21,9 @@ describe('package contract documentation', () => {
       'createEnviNFe',
       'createNFe',
       'createSigningContext',
+      'distributeRecipientDFe',
       'executeNFeSoapService',
+      'manifestRecipientOperation',
       'publicPackageContract',
       'queryNFeDocumentSituation',
       'queryNFeServiceStatus',
@@ -38,7 +40,9 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`createNFe`');
     expect(readme).toContain('`createEnviNFe`');
     expect(readme).toContain('`createSigningContext`');
+    expect(readme).toContain('`distributeRecipientDFe`');
     expect(readme).toContain('`executeNFeSoapService`');
+    expect(readme).toContain('`manifestRecipientOperation`');
     expect(readme).toContain('`queryNFeDocumentSituation`');
     expect(readme).toContain('`queryNFeServiceStatus`');
     expect(readme).toContain('`serializeNFeXml`');

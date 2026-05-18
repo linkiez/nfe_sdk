@@ -10,6 +10,7 @@ Barrel da camada canonica manual publicada pelo root import.
 - Reexportar a facade publica inicial de autorizacao operacional.
 - Reexportar as facades publicas iniciais de consulta operacional.
 - Reexportar as facades publicas das tres manutencoes obrigatorias do MVP.
+- Reexportar as facades publicas do slice recipient para distribuicao e manifestacao.
 - Reexportar a facade publica de assinatura digital.
 - Reexportar a facade publica inicial de transporte SOAP.
 - Reexportar os tipos publicos usados pela facade.
@@ -17,7 +18,7 @@ Barrel da camada canonica manual publicada pelo root import.
 ## Entradas e saidas
 
 - Entradas: nenhuma.
-- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `createNFe`, `createEnviNFe`, `createSigningContext`, `resolveNFeServiceEndpoint`, `executeNFeSoapService`, `serializeNFeXml`, `serializeEnviNFeXml`, `signNFeXml` e tipos canonicos/de assinatura/transporte.
+- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `distributeRecipientDFe`, `manifestRecipientOperation`, `createNFe`, `createEnviNFe`, `createSigningContext`, `resolveNFeServiceEndpoint`, `executeNFeSoapService`, `serializeNFeXml`, `serializeEnviNFeXml`, `signNFeXml` e tipos canonicos/de assinatura/transporte/recipient.
 
 ## Fluxo principal
 
@@ -25,10 +26,11 @@ Barrel da camada canonica manual publicada pelo root import.
 flowchart TD
   A[src/index.ts] --> B[src/canonical/index.ts]
   B --> C[facade]
-  B --> D[signing facade]
-  B --> E[transport facade]
-  B --> F[serialization facade]
-  B --> G[shared contracts]
+  B --> D[recipient facade]
+  B --> E[signing facade]
+  B --> F[transport facade]
+  B --> G[serialization facade]
+  B --> H[shared contracts]
 ```
 
 ## Tratamento de erros e casos-limite
@@ -43,6 +45,8 @@ import {
   authorizeNFe,
   cancelNFe,
   createNFe,
+  distributeRecipientDFe,
+  manifestRecipientOperation,
   queryNFeDocumentSituation,
   queryNFeServiceStatus,
   submitNFeCorrectionLetter,
@@ -57,7 +61,9 @@ import {
 - `./facade/create-envi-nfe.js`
 - `./facade/create-nfe.js`
 - `./facade/create-signing-context.js`
+- `./facade/distribute-recipient-dfe.js`
 - `./facade/execute-nfe-soap-service.js`
+- `./facade/manifest-recipient-operation.js`
 - `./facade/query-nfe-document-situation.js`
 - `./facade/query-nfe-service-status.js`
 - `./facade/resolve-nfe-service-endpoint.js`

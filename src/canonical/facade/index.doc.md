@@ -8,6 +8,7 @@ Agrega as funcoes publicas da facade manual publicada pelo barrel canonico e con
 
 - Reexportar a autorizacao operacional de NFe publicada neste slice.
 - Reexportar as manutencoes operacionais homologadas publicadas neste slice.
+- Reexportar os wrappers publicos do slice recipient.
 - Reexportar as funcoes de criacao publica.
 - Reexportar as funcoes publicas de assinatura digital.
 - Reexportar os wrappers publicos do slice inicial de transporte SOAP.
@@ -18,7 +19,7 @@ Agrega as funcoes publicas da facade manual publicada pelo barrel canonico e con
 ## Entradas e saidas
 
 - Entradas: nenhuma.
-- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `createNFe`, `createEnviNFe`, `createSigningContext`, `signNFeXml`, `resolveNFeServiceEndpoint`, `executeNFeSoapService` e tipos operacionais compartilhados.
+- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `distributeRecipientDFe`, `manifestRecipientOperation`, `createNFe`, `createEnviNFe`, `createSigningContext`, `signNFeXml`, `resolveNFeServiceEndpoint`, `executeNFeSoapService` e tipos operacionais compartilhados.
 
 ## Fluxo principal
 
@@ -31,13 +32,15 @@ flowchart TD
   B --> F[queryNFeDocumentSituation]
   B --> G[submitNFeInutilization]
   B --> H[submitNFeCorrectionLetter]
-  B --> I[createNFe]
-  B --> J[createEnviNFe]
-  B --> K[createSigningContext]
-  B --> L[signNFeXml]
-  B --> M[resolveNFeServiceEndpoint]
-  B --> N[executeNFeSoapService]
-  B --> O[Operational shared types]
+  B --> H[distributeRecipientDFe]
+  B --> I[manifestRecipientOperation]
+  B --> J[createNFe]
+  B --> K[createEnviNFe]
+  B --> L[createSigningContext]
+  B --> M[signNFeXml]
+  B --> N[resolveNFeServiceEndpoint]
+  B --> O[executeNFeSoapService]
+  B --> P[Operational shared types]
 ```
 
 ## Tratamento de erros e casos-limite
@@ -54,7 +57,9 @@ import {
   createEnviNFe,
   createNFe,
   createSigningContext,
+  distributeRecipientDFe,
   executeNFeSoapService,
+  manifestRecipientOperation,
   queryNFeDocumentSituation,
   queryNFeServiceStatus,
   resolveNFeServiceEndpoint,
@@ -71,7 +76,9 @@ import {
 - `./create-envi-nfe.js`
 - `./create-nfe.js`
 - `./create-signing-context.js`
+- `./distribute-recipient-dfe.js`
 - `./execute-nfe-soap-service.js`
+- `./manifest-recipient-operation.js`
 - `./query-nfe-document-situation.js`
 - `./query-nfe-service-status.js`
 - `../nfe/index.js`

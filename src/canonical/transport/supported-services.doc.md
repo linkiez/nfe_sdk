@@ -8,7 +8,7 @@ Define os identificadores de servico SOAP suportados e o metadata estavel usado 
 
 - Declarar os servicos publicados no primeiro slice.
 - Associar nomes de elementos XML e codigos de status por servico.
-- Registrar a cobertura homologada de autorizacao, consultas e manutencoes sem duplicar regras por operacao.
+- Registrar a cobertura homologada de autorizacao, consultas, manutencoes e servicos do destinatario sem duplicar regras por operacao.
 - Centralizar o conhecimento para evitar duplicacao entre envelope, parser e classificacao.
 
 ## Entradas e saidas
@@ -50,6 +50,7 @@ flowchart TD
 - A consulta de situacao do documento trata `cStat` `100` como resposta bem-sucedida da troca SOAP.
 - A inutilizacao trata `cStat` `102` como sucesso homologado.
 - Cancelamento e carta de correcao tratam `cStat` `128` como sucesso do lote de evento no transporte.
+- Distribuicao do destinatario e manifestacao reutilizam os ids `nfe-recipient-distribution` e `nfe-recipient-manifestation` com semantica nacional compartilhada.
 
 ## Exemplos
 

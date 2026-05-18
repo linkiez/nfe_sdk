@@ -63,8 +63,9 @@ describe('authorizeNFe batch integration', () => {
           source: { contentBase64: string; type: 'in-memory-content' };
         }) => Promise<unknown>)
       | undefined;
-    const authorizeNFe = (publicApi as Record<string, unknown>)
-      .authorizeNFe as AuthorizeNFeBatch | undefined;
+    const authorizeNFe = (publicApi as Record<string, unknown>).authorizeNFe as
+      | AuthorizeNFeBatch
+      | undefined;
     const input = loadNFeOperationalJsonFixture<{
       environment: 'homologation';
       documents: {
