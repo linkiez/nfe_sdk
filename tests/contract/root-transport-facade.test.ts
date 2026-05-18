@@ -20,6 +20,7 @@ describe('root transport facade contract', () => {
       'serializeEnviNFeXml',
       'serializeNFeXml',
       'signNFeXml',
+      'submitGenericEvents',
       'submitNFeCorrectionLetter',
       'submitNFeInutilization',
     ]);

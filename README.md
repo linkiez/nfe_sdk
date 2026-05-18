@@ -23,6 +23,7 @@ import {
   serializeEnviNFeXml,
   serializeNFeXml,
   signNFeXml,
+  submitGenericEvents,
   submitNFeCorrectionLetter,
   submitNFeInutilization,
 } from 'nfe-sdk';
@@ -61,6 +62,10 @@ No slice inicial, `TransportOutcome.classification` distingue pelo menos `succes
 `distributeRecipientDFe` executa a distribuicao DFe do lado do destinatario via `distNSU`, em homologacao, com cursor observavel e envelopes estruturados que distinguem resumo, documento completo e outros payloads retornados em `docZip`.
 
 `manifestRecipientOperation` registra um dos quatro eventos basicos de Manifestacao do Destinatario (`210200`, `210210`, `210220` e `210240`) e devolve classificacao operacional, protocolo quando houver e a marca contratual de que o download posterior permanece separado.
+
+`submitGenericEvents` registra, por uma facade unica, os eventos genericos homologados suportados nesta fase (`110130`, `110150`, `110192` e `110750`) e devolve resultado estruturado de lote com rastreabilidade por item.
+
+No recorte atual, a facade generica rejeita o lote inteiro antes do transporte quando houver mais de 20 itens, qualquer familia fora do escopo publicado ou falha obrigatoria de validacao local, mantendo EPEC, producao e variantes ainda nao estabilizadas fora do contrato.
 
 ## Exemplo rapido da autorizacao operacional
 
@@ -106,6 +111,7 @@ import {
   createSigningContext,
   distributeRecipientDFe,
   manifestRecipientOperation,
+  submitGenericEvents,
 } from 'nfe-sdk';
 
 const signingContext = await createSigningContext({
@@ -144,6 +150,38 @@ console.log(distribution.classification, distribution.cursor.ultNSU);
 console.log(
   manifestation.classification,
   manifestation.downloadRemainsSeparate,
+);
+
+const genericEventBatch = await submitGenericEvents({
+  batchId: '000000000000001',
+  environment: 'homologation',
+  items: [
+    {
+      accessKey: '35190500000000000000550010000000011000000010',
+      author: {
+        documentNumber: '12345678000195',
+        documentType: 'cnpj',
+      },
+      eventCode: '110130',
+      family: 'delivery-confirmation',
+      occurredAt: '2026-05-18T10:00:00-03:00',
+      payload: {
+        deliveredAt: '2026-05-18T09:55:00-03:00',
+        deliveryHash: 'comprovante-hash',
+        recipientDocument: '12345678909',
+        recipientName: 'Jose da Silva',
+      },
+      sequenceNumber: 1,
+    },
+  ],
+  requestExecutor,
+  signingContext,
+  timeoutMs: 5000,
+});
+
+console.log(
+  genericEventBatch.classification,
+  genericEventBatch.itemOutcomes.length,
 );
 ```
 
@@ -207,6 +245,7 @@ npm run typecheck
 npm run lint
 npm run format:check
 npm test
+npm run validate:tarball
 ```
 
 ## Validação da fundação do pacote

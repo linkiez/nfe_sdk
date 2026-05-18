@@ -11,6 +11,7 @@ Agrega a superficie publica estavel do pacote no import raiz `nfe-sdk`.
 - Publicar as primeiras consultas operacionais com `queryNFeServiceStatus` e `queryNFeDocumentSituation`.
 - Publicar as manutencoes operacionais `submitNFeInutilization`, `cancelNFe` e `submitNFeCorrectionLetter`.
 - Publicar o slice recipient com `distributeRecipientDFe` e `manifestRecipientOperation`.
+- Publicar o slice generic-event com `submitGenericEvents`.
 - Publicar a facade funcional inicial para criacao canonica de `NFe` e `enviNFe`.
 - Publicar o slice inicial de assinatura digital com `createSigningContext` e `signNFeXml`.
 - Publicar o slice inicial de transporte SOAP com resolucao de endpoint e execucao suportada.
@@ -35,14 +36,15 @@ flowchart TD
   B --> I[submitNFeCorrectionLetter]
   B --> J[distributeRecipientDFe]
   B --> K[manifestRecipientOperation]
-  B --> L[createNFe]
-  B --> M[createEnviNFe]
-  B --> N[createSigningContext]
-  B --> O[resolveNFeServiceEndpoint]
-  B --> P[executeNFeSoapService]
-  B --> Q[serializeNFeXml]
-  B --> R[serializeEnviNFeXml]
-  B --> S[signNFeXml]
+  B --> L[submitGenericEvents]
+  B --> M[createNFe]
+  B --> N[createEnviNFe]
+  B --> O[createSigningContext]
+  B --> P[resolveNFeServiceEndpoint]
+  B --> Q[executeNFeSoapService]
+  B --> R[serializeNFeXml]
+  B --> S[serializeEnviNFeXml]
+  B --> T[signNFeXml]
 ```
 
 ## Tratamento de erros e casos-limite
@@ -69,6 +71,7 @@ import {
   serializeEnviNFeXml,
   serializeNFeXml,
   signNFeXml,
+  submitGenericEvents,
   submitNFeCorrectionLetter,
   submitNFeInutilization,
 } from 'nfe-sdk';

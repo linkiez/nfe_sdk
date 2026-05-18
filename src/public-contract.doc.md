@@ -12,6 +12,8 @@ Descreve o contrato publico estabilizado no import raiz do pacote.
 - Descrever a ampliacao additive do slice inicial de transporte SOAP.
 - Descrever a ampliacao additive da facade operacional de autorizacao, consultas e manutencoes homologadas.
 - Descrever a ampliacao additive do slice recipient homologado para distribuicao DFe e manifestacao.
+- Descrever a ampliacao additive do slice generic-event homologado para submissao de eventos suportados por uma facade unica.
+- Registrar que o slice generic-event mantem limites e exclusoes de escopo como boundary pre-transport explicita.
 - Servir como evidencia programatica do contrato publico.
 
 ## Entradas e saidas
@@ -35,6 +37,7 @@ flowchart TD
   B --> K[operational query boundary]
   B --> L[operational maintenance boundary]
   B --> M[recipient boundary]
+  B --> N[generic-event boundary]
 ```
 
 ## Tratamento de erros e casos-limite
@@ -58,3 +61,4 @@ import { publicPackageContract } from 'nfe-sdk';
 - `specs/006-add-soap-transport/contracts/public-soap-transport-facade.md`
 - `specs/007-nfe-operational-mvp/contracts/public-nfe-operational-facade.md`
 - `specs/008-recipient-dfe-mvp/contracts/public-recipient-dfe-facade.md`
+- `specs/009-generic-event-mvp/contracts/public-generic-event-facade.md`

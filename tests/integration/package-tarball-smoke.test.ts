@@ -21,6 +21,7 @@ describe('package tarball smoke validation', () => {
       'serializeEnviNFeXml',
       'serializeNFeXml',
       'signNFeXml',
+      'submitGenericEvents',
       'submitNFeCorrectionLetter',
       'submitNFeInutilization',
     ]);
@@ -40,6 +41,7 @@ describe('package tarball smoke validation', () => {
         'dist/canonical/facade/serialize-envi-nfe-xml.d.ts',
         'dist/canonical/facade/serialize-nfe-xml.d.ts',
         'dist/canonical/facade/sign-nfe-xml.d.ts',
+        'dist/canonical/facade/submit-generic-events.d.ts',
         'dist/canonical/facade/submit-nfe-correction-letter.d.ts',
         'dist/canonical/facade/submit-nfe-inutilization.d.ts',
         'dist/index.d.ts',

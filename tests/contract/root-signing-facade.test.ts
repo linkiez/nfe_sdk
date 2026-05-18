@@ -20,6 +20,7 @@ describe('root signing facade contract', () => {
       'serializeEnviNFeXml',
       'serializeNFeXml',
       'signNFeXml',
+      'submitGenericEvents',
       'submitNFeCorrectionLetter',
       'submitNFeInutilization',
     ]);

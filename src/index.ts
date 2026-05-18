@@ -14,6 +14,27 @@ export {
 	serializeEnviNFeXml,
 	serializeNFeXml,
 	signNFeXml,
+	submitGenericEvents,
 	submitNFeCorrectionLetter,
 	submitNFeInutilization,
+} from './canonical/index.js';
+
+export type {
+	DeliveryConfirmationPayload,
+	DeliveryFailurePayload,
+	EconfPaymentDetail,
+	EconfPayload,
+	GenericEventActor,
+	GenericEventActorDocumentType,
+	GenericEventBatchClassification,
+	GenericEventBatchOutcome,
+	GenericEventBatchRequest,
+	GenericEventCoverageBoundary,
+	GenericEventFamily,
+	GenericEventFamilyPayload,
+	GenericEventInputItem,
+	GenericEventItemClassification,
+	GenericEventItemOutcome,
+	GenericEventValidationFailure,
+	InterestedActorPayload,
 } from './canonical/index.js';

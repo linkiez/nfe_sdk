@@ -10,6 +10,7 @@ export { queryNFeDocumentSituation } from './query-nfe-document-situation.js';
 export { queryNFeServiceStatus } from './query-nfe-service-status.js';
 export { resolveNFeServiceEndpoint } from './resolve-nfe-service-endpoint.js';
 export { signNFeXml } from './sign-nfe-xml.js';
+export { submitGenericEvents } from './submit-generic-events.js';
 export { submitNFeCorrectionLetter } from './submit-nfe-correction-letter.js';
 export { submitNFeInutilization } from './submit-nfe-inutilization.js';
 
@@ -23,6 +24,26 @@ export type {
 	OperationalMaintenanceRequest,
 	ServiceStatusSnapshot,
 } from '../nfe/index.js';
+
+export type {
+	GenericEventBatchOutcome,
+	GenericEventBatchRequest,
+	GenericEventCoverageBoundary,
+	GenericEventFamily,
+	GenericEventInputItem,
+	GenericEventItemOutcome,
+	GenericEventValidationFailure,
+	GenericEventActor,
+	DeliveryConfirmationPayload,
+	InterestedActorPayload,
+	DeliveryFailurePayload,
+	EconfPayload,
+	EconfPaymentDetail,
+	GenericEventFamilyPayload,
+	GenericEventBatchClassification,
+	GenericEventItemClassification,
+	GenericEventActorDocumentType,
+} from '../generic-event/contracts.js';
 
 export type {
 	RecipientActor,

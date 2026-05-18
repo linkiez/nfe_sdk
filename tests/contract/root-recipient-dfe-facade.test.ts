@@ -20,6 +20,7 @@ describe('root recipient dfe facade contract', () => {
       'serializeEnviNFeXml',
       'serializeNFeXml',
       'signNFeXml',
+      'submitGenericEvents',
       'submitNFeCorrectionLetter',
       'submitNFeInutilization',
     ]);

@@ -31,6 +31,7 @@ describe('package contract documentation', () => {
       'serializeEnviNFeXml',
       'serializeNFeXml',
       'signNFeXml',
+      'submitGenericEvents',
       'submitNFeCorrectionLetter',
       'submitNFeInutilization',
     ]);
@@ -49,6 +50,7 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`serializeEnviNFeXml`');
     expect(readme).toContain('`resolveNFeServiceEndpoint`');
     expect(readme).toContain('`signNFeXml`');
+    expect(readme).toContain('`submitGenericEvents`');
     expect(readme).toContain('`submitNFeCorrectionLetter`');
     expect(readme).toContain('`submitNFeInutilization`');
     expect(readme).toContain('`manifest.json` permanece interno');

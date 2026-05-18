@@ -19,6 +19,7 @@ describe('root contract boundary', () => {
         'serializeNFeXml',
         'serializeEnviNFeXml',
         'signNFeXml',
+        'submitGenericEvents',
         'submitNFeCorrectionLetter',
         'submitNFeInutilization',
       ],
@@ -42,6 +43,7 @@ describe('root contract boundary', () => {
       'serializeNFeXml',
       'serializeEnviNFeXml',
       'signNFeXml',
+      'submitGenericEvents',
       'submitNFeCorrectionLetter',
       'submitNFeInutilization',
     ]);
@@ -56,6 +58,7 @@ describe('root contract boundary', () => {
         'The SOAP transport slice covers only homologation, shared SVAN endpoints, and the initial status-service and authorization operations in this phase.',
         'The first operational NFe slice currently exposes authorizeNFe, queryNFeServiceStatus, queryNFeDocumentSituation, submitNFeInutilization, cancelNFe, and submitNFeCorrectionLetter for homologation workflows on top of the canonical, signing, and transport layers.',
         'The first recipient slice currently exposes distributeRecipientDFe and manifestRecipientOperation for homologation-only recipient workflows via distNSU and the four basic manifestation events, while keeping later document retrieval separate.',
+        'The first generic-event slice currently exposes submitGenericEvents for homologation-only submission of the supported 110130, 110150, 110192, and 110750 families through one root facade.',
         'Future functional phases may expand the root contract, but they must not silently republish the generated tree.',
       ]),
     );

@@ -12,6 +12,7 @@ export { resolveNFeServiceEndpoint } from './facade/resolve-nfe-service-endpoint
 export { serializeEnviNFeXml } from './facade/serialize-envi-nfe-xml.js';
 export { serializeNFeXml } from './facade/serialize-nfe-xml.js';
 export { signNFeXml } from './facade/sign-nfe-xml.js';
+export { submitGenericEvents } from './facade/submit-generic-events.js';
 export { submitNFeCorrectionLetter } from './facade/submit-nfe-correction-letter.js';
 export { submitNFeInutilization } from './facade/submit-nfe-inutilization.js';
 
@@ -36,6 +37,26 @@ export type {
   OperationalMaintenanceRequest,
   ServiceStatusSnapshot,
 } from './nfe/contracts.js';
+
+export type {
+  DeliveryConfirmationPayload,
+  DeliveryFailurePayload,
+  EconfPaymentDetail,
+  EconfPayload,
+  GenericEventActor,
+  GenericEventActorDocumentType,
+  GenericEventBatchClassification,
+  GenericEventBatchOutcome,
+  GenericEventBatchRequest,
+  GenericEventCoverageBoundary,
+  GenericEventFamily,
+  GenericEventFamilyPayload,
+  GenericEventInputItem,
+  GenericEventItemClassification,
+  GenericEventItemOutcome,
+  GenericEventValidationFailure,
+  InterestedActorPayload,
+} from './generic-event/contracts.js';
 
 export type {
   RecipientActor,

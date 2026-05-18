@@ -1,0 +1,22 @@
+<retEnvEvento versao="1.00">
+  <cStat>128</cStat>
+  <xMotivo>Lote de evento processado</xMotivo>
+  <retEvento versao="1.00">
+    <infEvento>
+      <tpEvento>110130</tpEvento>
+      <cStat>135</cStat>
+      <xMotivo>Evento registrado e vinculado a NF-e</xMotivo>
+      <nProt>135260000001130</nProt>
+      <dhRegEvento>2026-05-18T10:01:00-03:00</dhRegEvento>
+    </infEvento>
+  </retEvento>
+  <retEvento versao="1.00">
+    <infEvento>
+      <tpEvento>110192</tpEvento>
+      <cStat>573</cStat>
+      <xMotivo>Rejeicao: Duplicidade de evento</xMotivo>
+      <nProt>135260000001192</nProt>
+      <dhRegEvento>2026-05-18T10:02:00-03:00</dhRegEvento>
+    </infEvento>
+  </retEvento>
+</retEnvEvento>

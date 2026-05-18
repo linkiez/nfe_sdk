@@ -20,6 +20,7 @@ describe('root entrypoint contract', () => {
       'serializeEnviNFeXml',
       'serializeNFeXml',
       'signNFeXml',
+      'submitGenericEvents',
       'submitNFeCorrectionLetter',
       'submitNFeInutilization',
     ]);
@@ -41,6 +42,7 @@ describe('root entrypoint contract', () => {
           'serializeNFeXml',
           'serializeEnviNFeXml',
           'signNFeXml',
+          'submitGenericEvents',
           'submitNFeCorrectionLetter',
           'submitNFeInutilization',
         ],
