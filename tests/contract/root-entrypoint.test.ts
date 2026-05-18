@@ -1,13 +1,25 @@
 import * as publicApi from '../../src/index';
 
 describe('root entrypoint contract', () => {
-  it('exposes only the minimum documented root contract', () => {
+  it('exposes the documented root facade for this phase', () => {
     expect(
       Object.keys(publicApi).sort((left, right) => left.localeCompare(right)),
-    ).toEqual(['publicPackageContract']);
+    ).toEqual([
+      'createEnviNFe',
+      'createNFe',
+      'publicPackageContract',
+      'serializeEnviNFeXml',
+      'serializeNFeXml',
+    ]);
     expect(publicApi.publicPackageContract).toEqual(
       expect.objectContaining({
-        documentedSurface: ['publicPackageContract'],
+        documentedSurface: [
+          'publicPackageContract',
+          'createNFe',
+          'createEnviNFe',
+          'serializeNFeXml',
+          'serializeEnviNFeXml',
+        ],
         normativeSource: 'package.json#exports["."]',
       }),
     );

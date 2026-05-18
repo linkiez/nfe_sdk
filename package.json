@@ -28,8 +28,8 @@
     "typecheck": "tsc -p tsconfig.json",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write README.md eslint.config.mjs jest.config.ts package.json tsconfig.json tsconfig.build.json tests/**/*.ts tests/**/*.json tools/**/*.ts specs/003-public-package-contract/**/*.md",
-    "format:check": "prettier --check README.md eslint.config.mjs jest.config.ts package.json tsconfig.json tsconfig.build.json tests/**/*.ts tests/**/*.json tools/**/*.ts specs/003-public-package-contract/**/*.md",
+    "format": "prettier --write README.md eslint.config.mjs jest.config.ts package.json tsconfig.json tsconfig.build.json src/**/*.doc.md tests/**/*.ts tests/**/*.json tools/**/*.ts specs/003-public-package-contract/**/*.md specs/004-iniciar-sdk/**/*.md",
+    "format:check": "prettier --check README.md eslint.config.mjs jest.config.ts package.json tsconfig.json tsconfig.build.json src/**/*.doc.md tests/**/*.ts tests/**/*.json tools/**/*.ts specs/003-public-package-contract/**/*.md specs/004-iniciar-sdk/**/*.md",
     "test": "jest --runInBand",
     "audit:public-contract": "tsx tools/audit-public-contract.ts",
     "validate:tarball": "tsx tools/validate-package-tarball.ts"

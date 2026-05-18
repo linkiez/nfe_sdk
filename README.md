@@ -4,13 +4,25 @@ SDK em TypeScript para evoluir de uma base gerada a partir de XSDs da NF-e, NFC-
 
 ## Contrato publico minimo desta fase
 
-Nesta fase, o pacote publica somente o import raiz e um unico export estavel:
+Nesta fase, o pacote publica somente o import raiz e uma superficie funcional enxuta para a primeira slice canonica:
 
 ```ts
-import { publicPackageContract } from 'nfe-sdk';
+import {
+  createEnviNFe,
+  createNFe,
+  publicPackageContract,
+  serializeEnviNFeXml,
+  serializeNFeXml,
+} from 'nfe-sdk';
 ```
 
-`publicPackageContract` descreve o contrato minimo publicado e serve como ancora estavel para as proximas fases funcionais.
+`publicPackageContract` descreve o contrato publicado e serve como ancora estavel para as proximas fases funcionais.
+
+`createNFe` monta o documento canonico inicial de `NFe` sem exigir importacao direta da arvore gerada.
+
+`createEnviNFe` monta o lote canonico inicial de `enviNFe` com base no mesmo recorte funcional.
+
+`serializeNFeXml` e `serializeEnviNFeXml` produzem XML deterministico para o mesmo recorte inicial.
 
 O contrato normativo continua sendo `package.json`/exports. O README apenas explica o que foi estabilizado.
 
@@ -61,10 +73,10 @@ npm run format:check
 npm run typecheck
 npm test
 npm run build
-npm pack
+npm run validate:tarball
 ```
 
-Depois do `npm pack`, um smoke validation deve consumir o tarball gerado e confirmar que o import raiz continua utilizável sem depender do workspace aberto.
+O smoke validation do tarball deve confirmar que o import raiz continua utilizavel sem depender do workspace aberto.
 
 ## Geração de schemas
 

@@ -1,0 +1,12 @@
+{
+  "batchId": "000000000000001",
+  "documents": [
+    {
+      "documentId": "NFe00000000000000000000000000000000000000000001",
+      "environment": "homologation",
+      "version": "4.00"
+    }
+  ],
+  "environment": "homologation",
+  "version": "4.00"
+}

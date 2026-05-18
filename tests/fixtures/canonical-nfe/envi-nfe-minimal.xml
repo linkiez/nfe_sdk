@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<enviNFe versao="4.00">
+  <metadata>
+    <batchId>000000000000001</batchId>
+    <environment>homologation</environment>
+    <schemaFamily>PL_010c_NT2022_002v1.30</schemaFamily>
+  </metadata>
+  <documents>
+    <NFe versao="4.00">
+      <metadata>
+        <documentId>NFe00000000000000000000000000000000000000000001</documentId>
+        <environment>homologation</environment>
+        <schemaFamily>PL_010c_NT2022_002v1.30</schemaFamily>
+      </metadata>
+    </NFe>
+  </documents>
+</enviNFe>
