@@ -1,5 +1,7 @@
 dist
 .xsd2ts-work
 node_modules
+.venv
+docs/_sources
 src
 xsd

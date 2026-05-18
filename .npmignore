@@ -1,0 +1,14 @@
+tests/
+tools/
+specs/
+docs/
+src/
+xsd/
+.specify/
+.xsd2ts-work/
+node_modules/
+count.txt
+output.txt
+typecheck_exit_status.txt
+typecheck_output.txt
+*.log

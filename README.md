@@ -1,57 +1,38 @@
 # nfe-sdk
 
-SDK e conversor de schemas XSD da NF-e, NFC-e e Manifestacao do Destinatario para TypeScript usando `xsd2ts` com uma camada própria de normalização, particionamento e renomeação dos artefatos gerados.
+SDK em TypeScript para evoluir de uma base gerada a partir de XSDs da NF-e, NFC-e e Manifestacao do Destinatario para um pacote npm ESM com contrato publico controlado.
 
-## Objetivo
+## Contrato publico minimo desta fase
 
-Este repositório transforma coleções de XSD em arquivos TypeScript utilizáveis, com foco em:
+Nesta fase, o pacote publica somente o import raiz e um unico export estavel:
 
-- geração em lote a partir dos schemas;
-- nomes hierárquicos e estáveis para evitar colisões;
-- saída separada por declaração, em vez de um arquivo monolítico;
-- compatibilidade com `tsc --strict`;
-- convenção de nomes consistente para classes, interfaces, types e enums.
+```ts
+import { publicPackageContract } from 'nfe-sdk';
+```
 
-## Convenção de nomes
+`publicPackageContract` descreve o contrato minimo publicado e serve como ancora estavel para as proximas fases funcionais.
 
-Os identificadores gerados são normalizados para `PascalCase` e recebem prefixos por tipo:
+O contrato normativo continua sendo `package.json`/exports. O README apenas explica o que foi estabilizado.
 
-- `C...` para classes;
-- `I...` para interfaces;
-- `T...` para type aliases;
-- `E...` para enums.
+`manifest.json` permanece interno e nao integra a superficie publica estavel.
 
-Exemplos:
+## O que fica fora do contrato publico
 
-- `CConSitNFeV201ConSitNFeLeiauteConsSitNFeV201InfEvento`
-- `IConSitNFeV201ConSitNFeLeiauteConsSitNFeV201InfEvento`
-- `TEventoEpecNfCePl100TiposBasicoV310Mod`
-- `EEventoEpecNfCePl100TiposBasicoV310Mod`
+Os seguintes itens continuam fora da promessa de compatibilidade desta fase:
 
-## Estrutura
+- arvore gerada em `src/classes/`
+- arvore gerada em `src/interfaces/`
+- arvore gerada em `src/types/`
+- arvore gerada em `src/enums/`
+- `src/manifest.json`
+- qualquer subpath ou importacao profunda
 
-- [tools/generate.ts](/home/linkiez/Projetos/nfe_schemas/tools/generate.ts): pipeline principal de conversão e pós-processamento.
-- [xsd](/home/linkiez/Projetos/nfe_schemas/xsd): diretório de entrada com os schemas.
-- [src](/home/linkiez/Projetos/nfe_schemas/src): saída TypeScript gerada diretamente pelo pipeline.
-- [package.json](/home/linkiez/Projetos/nfe_schemas/package.json): scripts e dependências do projeto.
-- [tsconfig.json](/home/linkiez/Projetos/nfe_schemas/tsconfig.json): configuração TypeScript do gerador.
+Esses artefatos seguem existindo como inventario tecnico e evidencia de cobertura, mas nao devem ser consumidos como API publica estavel.
 
 ## Requisitos
 
-- Node.js 18+ recomendado
+- Node.js `>=18.18`
 - npm
-
-## Diretrizes de desenvolvimento
-
-- O repositório deve evoluir como pacote npm em TypeScript com consumo ESM como alvo
-	principal.
-- Mudanças em contratos públicos, saída gerada ou regras de normalização devem incluir
-	validação automatizada com Jest e revisão de impacto de compatibilidade.
-- ESLint, Prettier e verificação de TypeScript compõem o baseline de qualidade esperado
-	para código mantido manualmente.
-- Pesquisas normativas, decisões de interoperabilidade e material documental devem registrar
-	fontes primárias e separar claramente referências secundárias confiáveis, sem tratar essas
-	fontes complementares como base normativa oficial.
 
 ## Instalação
 
@@ -63,74 +44,47 @@ npm install
 
 ```bash
 npm run generate
+npm run build
 npm run typecheck
 npm run lint
 npm run format:check
 npm test
 ```
 
-## Uso
+## Validação da fundação do pacote
 
-Gerar tudo:
-
-```bash
-npm run generate
-```
-
-Gerar apenas um subconjunto:
+O baseline desta fase exige validar o pacote publicado, não apenas o workspace:
 
 ```bash
-npm run generate -- ConSitNFe
+npm run lint
+npm run format:check
+npm run typecheck
+npm test
+npm run build
+npm pack
 ```
 
-Limpar artefatos temporários e saída gerada:
+Depois do `npm pack`, um smoke validation deve consumir o tarball gerado e confirmar que o import raiz continua utilizável sem depender do workspace aberto.
 
-```bash
-npm run clean
-```
+## Geração de schemas
 
-## Saída gerada
+O repositório mantém o pipeline de geração em [tools/generate.ts](/home/linkiez/Projetos/nfe_sdk/tools/generate.ts), usando os XSDs em [xsd](/home/linkiez/Projetos/nfe_sdk/xsd) para atualizar a árvore gerada em [src](/home/linkiez/Projetos/nfe_sdk/src).
 
-O gerador escreve a saída em `src/`, com as categorias como filhas diretas da raiz de saída. Dentro de cada categoria, a hierarquia relativa dos schemas processados é preservada:
+Os identificadores gerados seguem `PascalCase` com prefixos por categoria:
 
-- `classes/`
-- `interfaces/`
-- `types/`
-- `enums/`
+- `C...` para classes
+- `I...` para interfaces
+- `T...` para type aliases
+- `E...` para enums
 
-Cada declaração exportada vira um arquivo próprio, com `index.ts` por diretório para reexportar os módulos irmãos e permitir importações por pasta.
+## Documentação de apoio
 
-Exemplo simplificado:
+- [docs/capacidades-sdk.md](/home/linkiez/Projetos/nfe_sdk/docs/capacidades-sdk.md): catalogo documental de capacidades e lacunas.
+- [docs/index.md](/home/linkiez/Projetos/nfe_sdk/docs/index.md): indice documental consolidado.
+- [specs/003-public-package-contract/contracts/public-package-contract.md](/home/linkiez/Projetos/nfe_sdk/specs/003-public-package-contract/contracts/public-package-contract.md): contrato de referência desta fase.
 
-```text
-src/
-	classes/
-		ConSitNFe/
-	interfaces/
-		ConSitNFe/
-	types/
-		ConSitNFe/
-	enums/
-		ConSitNFe/
-```
+## Diretrizes de compatibilidade
 
-Durante o pós-processamento, o pipeline também:
-
-- reescreve referências cruzadas entre arquivos gerados, inclusive entre `classes`, `interfaces`, `types` e `enums`;
-- cria interfaces derivadas das classes geradas;
-- cria enums para unions literais finitas;
-- tenta contornar limitações do `xsd2ts` em schemas mais problemáticos.
-
-## Validação
-
-Para validar a saída gerada com TypeScript estrito:
-
-```bash
-find src -name "*.ts" ! -name "index.ts" -print0 | xargs -0 ./node_modules/.bin/tsc --noEmit --strict --skipLibCheck --ignoreConfig --pretty false
-```
-
-## Observações
-
-- O projeto usa uma pasta temporária `.xsd2ts-work/` durante a conversão.
-- Alguns XSDs com restrições complexas podem ser reprocessados com sanitização automática de padrões regex para contornar limitações do `xsd2ts`.
-- O foco deste repositório é geração e normalização de tipos, não modelagem manual dos documentos fiscais.
+- mudancas no import raiz exigem revisao explicita de compatibilidade
+- promocao de subpaths ou artefatos gerados depende de decisao contratual futura
+- evidencias do contrato devem permanecer rastreáveis em `package.json`, `src/index.ts`, README e nos artefatos da feature

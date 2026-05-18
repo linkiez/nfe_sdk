@@ -22,13 +22,17 @@
     "clean": "rm -rf dist .xsd2ts-work",
     "generate": "tsx tools/generate.ts",
     "download:official-docs": "tsx tools/download-official-docs.ts",
-    "build": "npm run generate && tsc -p tsconfig.build.json",
+    "download:official-page-assets": "tsx tools/download-official-page-assets.ts",
+    "convert:official-docs": "tsx tools/convert-official-docs.ts",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier . --write",
-    "format:check": "prettier . --check",
-    "test": "jest --passWithNoTests"
+    "format": "prettier --write README.md eslint.config.mjs jest.config.ts package.json tsconfig.json tsconfig.build.json tests/**/*.ts tests/**/*.json tools/**/*.ts specs/003-public-package-contract/**/*.md",
+    "format:check": "prettier --check README.md eslint.config.mjs jest.config.ts package.json tsconfig.json tsconfig.build.json tests/**/*.ts tests/**/*.json tools/**/*.ts specs/003-public-package-contract/**/*.md",
+    "test": "jest --runInBand",
+    "audit:public-contract": "tsx tools/audit-public-contract.ts",
+    "validate:tarball": "tsx tools/validate-package-tarball.ts"
   },
   "keywords": [
     "nfe",

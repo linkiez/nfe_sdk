@@ -1,0 +1,5 @@
+{
+  "name": "package-root-consumer-fixture",
+  "private": true,
+  "type": "module"
+}

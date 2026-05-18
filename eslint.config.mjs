@@ -4,7 +4,15 @@ import tseslint from 'typescript-eslint';
 
 export default [
   {
-    ignores: ['dist/**', '.xsd2ts-work/**', 'eslint.config.mjs', 'jest.config.ts', 'src/**', 'xsd/**'],
+    ignores: [
+      '.venv/**',
+      'dist/**',
+      '.xsd2ts-work/**',
+      'eslint.config.mjs',
+      'jest.config.ts',
+      'src/**',
+      'xsd/**',
+    ],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
