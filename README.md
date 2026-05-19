@@ -8,6 +8,7 @@ Nesta fase, o pacote publica somente o import raiz e uma superficie funcional en
 
 ```ts
 import {
+  authorizeNFCe,
   authorizeNFe,
   cancelNFe,
   createEnviNFe,
@@ -32,6 +33,8 @@ import {
 `publicPackageContract` descreve o contrato publicado e serve como ancora estavel para as proximas fases funcionais.
 
 `authorizeNFe` orquestra a autorizacao operacional inicial para uma NFe unica ou um lote suportado a partir de dados canonicos, devolvendo um resultado estruturado com classificacao, recibo ou protocolo e evidencia de transporte.
+
+`authorizeNFCe` inicia a facade root additive de NFC-e em homologacao para um unico documento, reaproveitando o pipeline operacional existente com um `SP pilot profile`, retornando `unsupported-state` para UFs fora do piloto e `unsupported-scope` quando a aplicacao explicita superficies deferidas por `requestedCapabilities`.
 
 `createNFe` monta o documento canonico inicial de `NFe` sem exigir importacao direta da arvore gerada.
 
@@ -67,6 +70,8 @@ No slice inicial, `TransportOutcome.classification` distingue pelo menos `succes
 
 No recorte atual, a facade generica rejeita o lote inteiro antes do transporte quando houver mais de 20 itens, qualquer familia fora do escopo publicado ou falha obrigatoria de validacao local, mantendo EPEC, producao e variantes ainda nao estabilizadas fora do contrato.
 
+No recorte atual de NFC-e, `requestedCapabilities` serve apenas para explicitar uma tentativa de uso sobre QR Code, DANFE NFC-e, administracao de CSC, credenciamento automatizado ou contingencia offline. Quando esse campo e informado, a facade responde com `unsupported-scope` antes do transporte.
+
 ## Exemplo rapido da autorizacao operacional
 
 ```ts
@@ -96,6 +101,47 @@ const authorization = await authorizeNFe({
 });
 
 console.log(authorization.classification, authorization.protocolNumber);
+```
+
+## Exemplo rapido do slice NFC-e
+
+```ts
+import { authorizeNFCe, createSigningContext } from 'nfe-sdk';
+
+const signingContext = await createSigningContext({
+  passphrase: '***',
+  source: {
+    contentBase64: 'BASE64_PFX',
+    type: 'in-memory-content',
+  },
+});
+
+const nfceAuthorization = await authorizeNFCe({
+  document: {
+    documentId: '35190500000000000000550010000000011000000010',
+    environment: 'homologation',
+    version: '4.00',
+  },
+  environment: 'homologation',
+  requestExecutor,
+  signingContext,
+  timeoutMs: 5000,
+});
+
+const deferredScope = await authorizeNFCe({
+  document: {
+    documentId: '35190500000000000000550010000000011000000010',
+    environment: 'homologation',
+    version: '4.00',
+  },
+  environment: 'homologation',
+  requestedCapabilities: ['qr-code'],
+  requestExecutor,
+  signingContext,
+});
+
+console.log(nfceAuthorization.classification, nfceAuthorization.protocolNumber);
+console.log(deferredScope.classification, deferredScope.coverageBoundary?.code);
 ```
 
 O contrato normativo continua sendo `package.json`/exports. O README apenas explica o que foi estabilizado.

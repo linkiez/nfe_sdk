@@ -7,6 +7,8 @@ Agrega a superficie publica estavel do pacote no import raiz `nfe-sdk`.
 ## Responsabilidades
 
 - Reexportar o contrato publico minimo herdado da fase 003.
+- Publicar a primeira facade operacional de NFC-e com `authorizeNFCe`.
+- Publicar a boundary taxonomy de NFC-e com `unsupported-state` e `unsupported-scope` sem expor subpaths adicionais.
 - Publicar a primeira facade operacional de NFe com `authorizeNFe`.
 - Publicar as primeiras consultas operacionais com `queryNFeServiceStatus` e `queryNFeDocumentSituation`.
 - Publicar as manutencoes operacionais `submitNFeInutilization`, `cancelNFe` e `submitNFeCorrectionLetter`.
@@ -28,34 +30,37 @@ Agrega a superficie publica estavel do pacote no import raiz `nfe-sdk`.
 flowchart TD
   A[Consumer importa nfe-sdk] --> B[src/index.ts]
   B --> C[publicPackageContract]
-  B --> D[authorizeNFe]
-  B --> E[cancelNFe]
-  B --> F[queryNFeServiceStatus]
-  B --> G[queryNFeDocumentSituation]
-  B --> H[submitNFeInutilization]
-  B --> I[submitNFeCorrectionLetter]
-  B --> J[distributeRecipientDFe]
-  B --> K[manifestRecipientOperation]
-  B --> L[submitGenericEvents]
-  B --> M[createNFe]
-  B --> N[createEnviNFe]
-  B --> O[createSigningContext]
-  B --> P[resolveNFeServiceEndpoint]
-  B --> Q[executeNFeSoapService]
-  B --> R[serializeNFeXml]
-  B --> S[serializeEnviNFeXml]
-  B --> T[signNFeXml]
+  B --> D[authorizeNFCe]
+  B --> E[authorizeNFe]
+  B --> F[cancelNFe]
+  B --> G[queryNFeServiceStatus]
+  B --> H[queryNFeDocumentSituation]
+  B --> I[submitNFeInutilization]
+  B --> J[submitNFeCorrectionLetter]
+  B --> K[distributeRecipientDFe]
+  B --> L[manifestRecipientOperation]
+  B --> M[submitGenericEvents]
+  B --> N[createNFe]
+  B --> O[createEnviNFe]
+  B --> P[createSigningContext]
+  B --> Q[resolveNFeServiceEndpoint]
+  B --> R[executeNFeSoapService]
+  B --> S[serializeNFeXml]
+  B --> T[serializeEnviNFeXml]
+  B --> U[signNFeXml]
 ```
 
 ## Tratamento de erros e casos-limite
 
 - O arquivo apenas reexporta simbolos.
 - Validacoes de entrada ficam nos modulos da facade canonica.
+- A facade NFC-e aplica bloqueios pre-transporte para UFs fora do piloto e para `requestedCapabilities` deferidas.
 
 ## Exemplos
 
 ```ts
 import {
+  authorizeNFCe,
   authorizeNFe,
   cancelNFe,
   createEnviNFe,

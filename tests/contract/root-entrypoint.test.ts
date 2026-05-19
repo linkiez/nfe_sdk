@@ -5,6 +5,7 @@ describe('root entrypoint contract', () => {
     expect(
       Object.keys(publicApi).sort((left, right) => left.localeCompare(right)),
     ).toEqual([
+      'authorizeNFCe',
       'authorizeNFe',
       'cancelNFe',
       'createEnviNFe',
@@ -26,8 +27,15 @@ describe('root entrypoint contract', () => {
     ]);
     expect(publicApi.publicPackageContract).toEqual(
       expect.objectContaining({
+        compatibilityNotes: expect.arrayContaining([
+          expect.stringContaining('unsupported-state'),
+          expect.stringContaining('unsupported-scope'),
+          expect.stringContaining('SP pilot'),
+          expect.stringContaining('requestedCapabilities'),
+        ]),
         documentedSurface: [
           'publicPackageContract',
+          'authorizeNFCe',
           'authorizeNFe',
           'cancelNFe',
           'createNFe',

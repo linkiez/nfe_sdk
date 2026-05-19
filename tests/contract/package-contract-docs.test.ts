@@ -16,6 +16,7 @@ describe('package contract documentation', () => {
       .sort((left, right) => left.localeCompare(right));
 
     expect(documentedExports).toEqual([
+      'authorizeNFCe',
       'authorizeNFe',
       'cancelNFe',
       'createEnviNFe',
@@ -36,6 +37,7 @@ describe('package contract documentation', () => {
       'submitNFeInutilization',
     ]);
     expect(readme).toContain('`authorizeNFe`');
+    expect(readme).toContain('`authorizeNFCe`');
     expect(readme).toContain('`cancelNFe`');
     expect(readme).toContain('`publicPackageContract`');
     expect(readme).toContain('`createNFe`');
@@ -53,6 +55,10 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`submitGenericEvents`');
     expect(readme).toContain('`submitNFeCorrectionLetter`');
     expect(readme).toContain('`submitNFeInutilization`');
+    expect(readme).toContain('`unsupported-state`');
+    expect(readme).toContain('`unsupported-scope`');
+    expect(readme).toContain('`requestedCapabilities`');
+    expect(readme).toContain('SP pilot profile');
     expect(readme).toContain('`manifest.json` permanece interno');
     expect(readme).toContain(
       '`enviNFe` permanece como envelope de transporte nao assinado',

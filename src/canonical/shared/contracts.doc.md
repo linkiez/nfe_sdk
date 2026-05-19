@@ -9,6 +9,7 @@ Define os contratos publicos e as regras basicas de normalizacao da camada canon
 - Declarar entradas e saidas canonicas de `NFe` e `enviNFe`.
 - Registrar a familia de schema usada como proveniencia.
 - Declarar o tipo de gap funcional rastreado pela facade.
+- Permitir gaps para superficies operacionais explicitamente deferidas.
 - Fornecer a normalizacao base de identificadores obrigatorios.
 
 ## Entradas e saidas

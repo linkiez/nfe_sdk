@@ -11,6 +11,8 @@ Descreve o contrato publico estabilizado no import raiz do pacote.
 - Descrever a ampliacao additive do slice inicial de assinatura digital.
 - Descrever a ampliacao additive do slice inicial de transporte SOAP.
 - Descrever a ampliacao additive da facade operacional de autorizacao, consultas e manutencoes homologadas.
+- Descrever a ampliacao additive da facade operacional inicial de NFC-e homologada.
+- Registrar que a facade NFC-e distingue `unsupported-state` e `unsupported-scope` antes do transporte.
 - Descrever a ampliacao additive do slice recipient homologado para distribuicao DFe e manifestacao.
 - Descrever a ampliacao additive do slice generic-event homologado para submissao de eventos suportados por uma facade unica.
 - Registrar que o slice generic-event mantem limites e exclusoes de escopo como boundary pre-transport explicita.
@@ -34,10 +36,13 @@ flowchart TD
   B --> H[signing slice boundary]
   B --> I[transport slice boundary]
   B --> J[operational authorization boundary]
-  B --> K[operational query boundary]
-  B --> L[operational maintenance boundary]
-  B --> M[recipient boundary]
-  B --> N[generic-event boundary]
+  B --> K[nfce operational boundary]
+  K --> K1[unsupported-state]
+  K --> K2[unsupported-scope via requestedCapabilities]
+  B --> L[operational query boundary]
+  B --> M[operational maintenance boundary]
+  B --> N[recipient boundary]
+  B --> O[generic-event boundary]
 ```
 
 ## Tratamento de erros e casos-limite
@@ -60,5 +65,6 @@ import { publicPackageContract } from 'nfe-sdk';
 - `specs/005-add-digital-signing/contracts/public-signing-facade.md`
 - `specs/006-add-soap-transport/contracts/public-soap-transport-facade.md`
 - `specs/007-nfe-operational-mvp/contracts/public-nfe-operational-facade.md`
+- `specs/010-nfce-national-core/contracts/public-nfce-operational-facade.md`
 - `specs/008-recipient-dfe-mvp/contracts/public-recipient-dfe-facade.md`
 - `specs/009-generic-event-mvp/contracts/public-generic-event-facade.md`

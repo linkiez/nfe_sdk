@@ -29,6 +29,12 @@ O proprio portal nacional remete a `Portais Estaduais da NF-e` e apresenta a rel
 - Acompanhar atualizacoes de leiaute, informes tecnicos e perguntas frequentes que alterem comportamento comum entre NF-e e NFC-e.
 - Manter uma matriz de rastreabilidade por UF para registrar cobertura, lacunas e fontes aplicaveis.
 
+## Recorte operacional atualmente publicado no SDK
+
+- O slice atual promove apenas autorizacao homologada de NFC-e para `SP` como piloto operacional.
+- UFs diferentes de `SP` permanecem fora do recorte atual e sao bloqueadas com `unsupported-state` antes do transporte.
+- QR Code, DANFE NFC-e, administracao de CSC, credenciamento automatizado e contingencia offline continuam como superficies deferidas; quando explicitadas por `requestedCapabilities`, o SDK responde com `unsupported-scope` antes do transporte.
+
 ## Relacao com a matriz por UF
 
 Ver [Matriz NFC-e por UF](./uf-matrix.md) para cobertura completa das 27 unidades federativas.

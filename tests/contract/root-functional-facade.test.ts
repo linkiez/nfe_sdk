@@ -5,6 +5,7 @@ describe('root functional facade contract', () => {
     expect(
       Object.keys(publicApi).sort((left, right) => left.localeCompare(right)),
     ).toEqual([
+      'authorizeNFCe',
       'authorizeNFe',
       'cancelNFe',
       'createEnviNFe',
@@ -24,6 +25,8 @@ describe('root functional facade contract', () => {
       'submitNFeCorrectionLetter',
       'submitNFeInutilization',
     ]);
+
+    expect(typeof publicApi.authorizeNFCe).toBe('function');
   });
 
   it('keeps generated trees and subpaths outside the root facade surface', () => {

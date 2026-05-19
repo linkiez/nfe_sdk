@@ -25,35 +25,35 @@ Mapear a cobertura documental das 27 UFs, destacando status, fontes consultadas,
 
 ## Matriz
 
-| UF | Status | Fontes primarias | Fontes secundarias | Deltas especificos | Lacunas | Ultima verificacao |
-| --- | --- | --- | --- | --- | --- | --- |
-| AC | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| AL | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| AM | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| AP | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| BA | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| CE | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| DF | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| ES | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| GO | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| MA | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| MG | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| MS | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| MT | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| PA | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| PB | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| PE | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| PI | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| PR | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| RJ | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| RN | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| RO | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| RR | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| RS | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| SC | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| SE | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
-| SP | partial | SRC-NFCE-001, SRC-NFCE-004, SRC-NFCE-005 | _Nenhuma_ | Evidencia estadual publica de servicos, avisos e pagina institucional | Ainda faltam consolidacao detalhada de legislacao e FAQs estaduais da UF | 2026-05-16 |
-| TO | partial | SRC-NFCE-001 | _Nenhuma_ | Base nacional confirmada | Portal estadual ainda nao revisado individualmente | 2026-05-16 |
+| UF  | Status  | Fontes primarias                         | Fontes secundarias | Deltas especificos                                                    | Lacunas                                                                  | Ultima verificacao |
+| --- | ------- | ---------------------------------------- | ------------------ | --------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------ |
+| AC  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| AL  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| AM  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| AP  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| BA  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| CE  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| DF  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| ES  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| GO  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| MA  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| MG  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| MS  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| MT  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| PA  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| PB  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| PE  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| PI  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| PR  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| RJ  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| RN  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| RO  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| RR  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| RS  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| SC  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| SE  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
+| SP  | partial | SRC-NFCE-001, SRC-NFCE-004, SRC-NFCE-005 | _Nenhuma_          | Evidencia estadual publica de servicos, avisos e pagina institucional | Ainda faltam consolidacao detalhada de legislacao e FAQs estaduais da UF | 2026-05-16         |
+| TO  | partial | SRC-NFCE-001                             | _Nenhuma_          | Base nacional confirmada                                              | Portal estadual ainda nao revisado individualmente                       | 2026-05-16         |
 
 ## Sintese da rodada
 
@@ -67,3 +67,9 @@ Mapear a cobertura documental das 27 UFs, destacando status, fontes consultadas,
 - Esta matriz e auxiliar e nao altera contratos publicos do pacote nesta fase.
 - O risco principal aqui e de interpretacao: promover cobertura estadual parcial a suporte fechado sem evidencia suficiente.
 - Qualquer futura mudanca que consolide UFs como suporte confirmado deve registrar impacto de compatibilidade e manter rastreabilidade por fonte.
+
+## Relacao com o runtime publicado
+
+- No runtime atual, apenas `SP` foi promovida a piloto operacional de NFC-e em homologacao.
+- Entradas de UFs fora de `SP` retornam `unsupported-state` antes do transporte, mesmo quando a base nacional compartilhada consegue montar o fluxo comum.
+- A matriz continua sendo a referencia editorial para expansao futura; ela nao implica suporte operacional automatico para as UFs marcadas como `partial`.

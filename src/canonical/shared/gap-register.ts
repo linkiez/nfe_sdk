@@ -37,6 +37,24 @@ export function createDerivedIdentifierDeferredGap(
 }
 
 /**
+ * Creates a deferred gap for operational surfaces intentionally kept outside the current slice.
+ *
+ * @param surfaceName - Operational surface deferred to a later scoped expansion.
+ * @returns Structured deferred operational surface gap.
+ */
+export function createDeferredOperationalSurfaceGap(
+  surfaceName: string,
+): FunctionalCoverageGap {
+  return {
+    description: `The current operational slice defers ${surfaceName} until a later scoped expansion.`,
+    followUpPhase: 'future-operational-expansion',
+    gapType: 'deferred-operational-surface',
+    impact:
+      'Keep the published contract explicit about deferred operational surfaces instead of implying support.',
+  };
+}
+
+/**
  * Lists the default deferred gaps for the first canonical slice.
  *
  * @returns Deferred gaps intentionally kept outside the initial slice.

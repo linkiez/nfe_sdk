@@ -4,6 +4,7 @@ import type {
 } from './contracts.js';
 import {
   getInitialTransportCatalogProvenance,
+  getNFCeSPPilotTransportCatalogProvenance,
   getOperationalTransportCatalogPlaceholders,
   getOperationalTransportCatalogSources,
 } from './catalog-provenance.js';
@@ -42,6 +43,16 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
     provider: 'SVAN',
     provenance: getInitialTransportCatalogProvenance(),
     service: 'nfe-authorization',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx',
+    environment: 'homologation',
+    layoutVersion: '4.00',
+    provider: 'SVAN',
+    provenance: getNFCeSPPilotTransportCatalogProvenance(),
+    service: 'nfce-authorization-sp',
   },
   {
     catalogVersion: TRANSPORT_CATALOG_VERSION,

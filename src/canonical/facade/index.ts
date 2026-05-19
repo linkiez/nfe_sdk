@@ -1,3 +1,4 @@
+export { authorizeNFCe } from './authorize-nfce.js';
 export { authorizeNFe } from './authorize-nfe.js';
 export { cancelNFe } from './cancel-nfe.js';
 export { createEnviNFe } from './create-envi-nfe.js';

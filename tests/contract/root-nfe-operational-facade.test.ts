@@ -5,6 +5,7 @@ describe('root nfe operational facade contract', () => {
     expect(
       Object.keys(publicApi).sort((left, right) => left.localeCompare(right)),
     ).toEqual([
+      'authorizeNFCe',
       'authorizeNFe',
       'cancelNFe',
       'createEnviNFe',

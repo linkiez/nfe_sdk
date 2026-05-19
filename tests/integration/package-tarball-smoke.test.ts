@@ -6,6 +6,7 @@ describe('package tarball smoke validation', () => {
 
     expect(result.rootImportConsumable).toBe(true);
     expect(result.exportedKeys).toEqual([
+      'authorizeNFCe',
       'authorizeNFe',
       'cancelNFe',
       'createEnviNFe',
@@ -28,6 +29,7 @@ describe('package tarball smoke validation', () => {
     expect(result.publishedFiles).toEqual(
       expect.arrayContaining([
         'README.md',
+        'dist/canonical/facade/authorize-nfce.d.ts',
         'dist/canonical/facade/cancel-nfe.d.ts',
         'dist/canonical/facade/create-envi-nfe.d.ts',
         'dist/canonical/facade/create-nfe.d.ts',

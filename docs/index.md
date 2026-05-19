@@ -9,7 +9,8 @@ Este conjunto documental consolida referencias oficiais e complementares necessa
 1. Comecar pelo [catalogo geral de capacidades](./capacidades-sdk.md) para entender cobertura, estado e lacunas sem entrar ainda em detalhe tematico.
 2. Entrar no [indice de NFe](./nfe/index.md), [indice de NFC-e](./nfce/index.md) ou [indice de Manifestacao do Destinatario](./manifestacao-destinatario/index.md) quando houver necessidade de aprofundamento por dominio.
 3. Consultar [mudancas recentes](./mudancas-recentes.md) e [roadmap de implantacao](ROADMAP.md) para conectar o estado documental ao backlog de evolucao.
-4. Descer para [registro de fontes](./_meta/source-registry.md) e [documentos oficiais convertidos](./documentos-oficiais-portal-nfe.md) quando for necessario auditar proveniencia, base normativa e cobertura consolidada.
+4. Usar a [matriz tematica do roadmap](./matriz-tematica-roadmap.md) quando for necessario transformar o mapa de temas em backlog operacional navegavel.
+5. Descer para [registro de fontes](./_meta/source-registry.md) e [documentos oficiais convertidos](./documentos-oficiais-portal-nfe.md) quando for necessario auditar proveniencia, base normativa e cobertura consolidada.
 
 ## Estrutura hierarquica
 
@@ -28,6 +29,7 @@ Este conjunto documental consolida referencias oficiais e complementares necessa
 
 - [Mudancas recentes](./mudancas-recentes.md)
 - [Roadmap de implantacao do SDK](ROADMAP.md)
+- [Matriz tematica do roadmap](./matriz-tematica-roadmap.md)
 
 ### Camada 4 - Fontes e acervo
 
@@ -53,16 +55,17 @@ Este conjunto documental consolida referencias oficiais e complementares necessa
 - Entrada de adocao: catalogo unico com estado, impacto e lacunas.
 - Dominio: dossies de NFe, NFC-e e Manifestacao do Destinatario com tabelas de capacidades e leituras relacionadas.
 - Planejamento: mudancas recentes e roadmap.
+- Planejamento detalhado: matriz tematica do roadmap para ligar topicos, destino e fase-alvo.
 - Auditoria: registro de fontes, workflow de conversao e acervo capturado.
 
 ## Mapa de leitura
 
-| Camada | Artefato principal | Funcao |
-| --- | --- | --- |
-| Adocao | [Capacidades do SDK](./capacidades-sdk.md) | Resumir cobertura, impacto e lacunas do projeto |
-| Dominio | [Cobertura oficial de notas fiscais](./notas-fiscais/index.md), [NFe](./nfe/index.md), [NFC-e](./nfce/index.md), [Manifestacao](./manifestacao-destinatario/index.md) | Aprofundar requisitos e recortes por fluxo fiscal |
-| Planejamento | [Mudancas recentes](./mudancas-recentes.md), [Roadmap](ROADMAP.md) | Organizar deltas e direcao de implantacao |
-| Auditoria | [Registro de fontes](./_meta/source-registry.md), [Documentos oficiais convertidos](./documentos-oficiais-portal-nfe.md) | Validar origem, consolidacao e rastreabilidade |
+| Camada       | Artefato principal                                                                                                                                                    | Funcao                                                      |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Adocao       | [Capacidades do SDK](./capacidades-sdk.md)                                                                                                                            | Resumir cobertura, impacto e lacunas do projeto             |
+| Dominio      | [Cobertura oficial de notas fiscais](./notas-fiscais/index.md), [NFe](./nfe/index.md), [NFC-e](./nfce/index.md), [Manifestacao](./manifestacao-destinatario/index.md) | Aprofundar requisitos e recortes por fluxo fiscal           |
+| Planejamento | [Mudancas recentes](./mudancas-recentes.md), [Roadmap](ROADMAP.md), [Matriz tematica do roadmap](./matriz-tematica-roadmap.md)                                        | Organizar deltas, direcao de implantacao e backlog por tema |
+| Auditoria    | [Registro de fontes](./_meta/source-registry.md), [Documentos oficiais convertidos](./documentos-oficiais-portal-nfe.md)                                              | Validar origem, consolidacao e rastreabilidade              |
 
 ## Pesquisa atual
 

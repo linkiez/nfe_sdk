@@ -1,5 +1,6 @@
 export { publicPackageContract } from './public-contract.js';
 export {
+	authorizeNFCe,
 	authorizeNFe,
 	cancelNFe,
 	createEnviNFe,
@@ -20,6 +21,13 @@ export {
 } from './canonical/index.js';
 
 export type {
+	NFCeAuthorizationClassification,
+	NFCeAuthorizationDocumentInput,
+	NFCeAuthorizationOutcome,
+	NFCeAuthorizationRequest,
+	NFCeCoverageBoundary,
+	NFCeValidationFailure,
+
 	DeliveryConfirmationPayload,
 	DeliveryFailurePayload,
 	EconfPaymentDetail,

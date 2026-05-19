@@ -1,3 +1,4 @@
+export { authorizeNFCe } from './facade/authorize-nfce.js';
 export { authorizeNFe } from './facade/authorize-nfe.js';
 export { cancelNFe } from './facade/cancel-nfe.js';
 export { createEnviNFe } from './facade/create-envi-nfe.js';
@@ -15,6 +16,15 @@ export { signNFeXml } from './facade/sign-nfe-xml.js';
 export { submitGenericEvents } from './facade/submit-generic-events.js';
 export { submitNFeCorrectionLetter } from './facade/submit-nfe-correction-letter.js';
 export { submitNFeInutilization } from './facade/submit-nfe-inutilization.js';
+
+export type {
+  NFCeAuthorizationClassification,
+  NFCeAuthorizationDocumentInput,
+  NFCeAuthorizationOutcome,
+  NFCeAuthorizationRequest,
+  NFCeCoverageBoundary,
+  NFCeValidationFailure,
+} from './nfce/contracts.js';
 
 export type {
   CanonicalEnviNFeDocument,

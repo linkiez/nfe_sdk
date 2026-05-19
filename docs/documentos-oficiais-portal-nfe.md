@@ -54,6 +54,12 @@ npm run convert:official-docs
 - A pagina [Notas tecnicas e informes](./notas-fiscais/notas-tecnicas-e-informes.md) absorve a camada de mudancas, tabelas auxiliares e impactos recorrentes.
 - A pagina [Cobertura estadual](./notas-fiscais/cobertura-estadual.md) absorve o complemento operacional por UF ja consolidado.
 
+## Uso atual no slice NFC-e
+
+- O slice 010 de NFC-e implementado no SDK reutiliza esta base nacional consolidada como fundamento do nucleo compartilhado de homologacao.
+- Os manuais e informes do portal nacional sustentam a decisao de manter QR Code, DANFE NFC-e, CSC e contingencia offline fora da entrega operacional inicial, mesmo com documentacao oficial internalizada.
+- A promocao de `SP` como piloto operacional continua dependendo de complemento estadual explicito; por isso a cobertura nacional absorvida aqui nao implica suporte automatico para as demais UFs.
+
 ## Falhas abertas de conversao
 
 As seguintes origens produziram Markdown vazio e seguem registradas como falha em `docs/_meta/official-conversion-manifest.json`:

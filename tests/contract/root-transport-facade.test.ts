@@ -5,6 +5,7 @@ describe('root transport facade contract', () => {
     expect(
       Object.keys(publicApi).sort((left, right) => left.localeCompare(right)),
     ).toEqual([
+      'authorizeNFCe',
       'authorizeNFe',
       'cancelNFe',
       'createEnviNFe',

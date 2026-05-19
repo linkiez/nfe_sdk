@@ -1,4 +1,5 @@
 import {
+  createDeferredOperationalSurfaceGap,
   createDerivedIdentifierDeferredGap,
   createUnsupportedDocumentGap,
   getInitialCanonicalDeferredGaps,
@@ -24,6 +25,17 @@ describe('gap register', () => {
       gapType: 'derived-identifier-deferred',
       impact:
         'Keep the initial facade focused on environment, version, and initial identifiers.',
+    });
+  });
+
+  it('creates a deferred gap for operational surfaces kept outside the current slice', () => {
+    expect(createDeferredOperationalSurfaceGap('QR Code')).toEqual({
+      description:
+        'The current operational slice defers QR Code until a later scoped expansion.',
+      followUpPhase: 'future-operational-expansion',
+      gapType: 'deferred-operational-surface',
+      impact:
+        'Keep the published contract explicit about deferred operational surfaces instead of implying support.',
     });
   });
 

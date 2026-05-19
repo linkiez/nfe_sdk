@@ -14,6 +14,7 @@ export type CanonicalVersion = '4.00';
  * Known gap types tracked by the initial canonical facade.
  */
 export type FunctionalCoverageGapType =
+  | 'deferred-operational-surface'
   | 'derived-identifier-deferred'
   | 'unsupported-document'
   | 'xsd-validation-deferred';

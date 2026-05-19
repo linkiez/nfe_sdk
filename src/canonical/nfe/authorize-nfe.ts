@@ -4,11 +4,16 @@ import { buildNFeAuthorizationBatch } from './authorization-batch.js';
 import { mapAuthorizationTransportOutcome } from './authorization-outcome.js';
 import { createAuthorizationPayloadXml } from './authorization-payload.js';
 import type { NFeAuthorizationOutcome, NFeAuthorizationRequest } from './contracts.js';
+import type { SupportedNFeSoapService } from '../transport/supported-services.js';
 import {
   createUnsupportedOperationalScopeMessage,
   NFeOperationalUnsupportedScopeError,
   NFeOperationalUsageError,
 } from './errors.js';
+
+interface NFeAuthorizationExecutionOptions {
+  readonly transportService?: SupportedNFeSoapService;
+}
 
 /**
  * Authorizes a supported canonical NFe submission through the operational slice.
@@ -20,6 +25,7 @@ import {
  */
 export async function authorizeNFe(
   input: NFeAuthorizationRequest,
+  options?: NFeAuthorizationExecutionOptions,
 ): Promise<NFeAuthorizationOutcome> {
   const normalizedEnvironment = input.environment.trim().toLowerCase();
 
@@ -45,7 +51,7 @@ export async function authorizeNFe(
     environment: normalizedEnvironment,
     payloadXml,
     requestExecutor: input.requestExecutor,
-    service: 'nfe-authorization',
+    service: options?.transportService ?? 'nfe-authorization',
     timeoutMs: input.timeoutMs,
   });
 

@@ -1,6 +1,7 @@
 const SUPPORTED_NFE_SOAP_SERVICES = [
   'nfe-status-service',
   'nfe-authorization',
+  'nfce-authorization-sp',
   'nfe-inutilization',
   'nfe-cancellation',
   'nfe-correction-letter',
@@ -22,7 +23,7 @@ export type SupportedNFeSoapService =
  * Metadata that drives envelope assembly and outcome classification per service.
  */
 export interface SupportedNFeSoapServiceDefinition {
-  readonly documentFamily: 'nfe';
+  readonly documentFamily: 'nfe' | 'nfce';
   readonly requestElementName: string;
   readonly responseElementName: string;
   readonly service: SupportedNFeSoapService;
@@ -35,7 +36,7 @@ export interface SupportedNFeSoapServiceDefinition {
  */
 export interface PlannedOperationalTransportServiceDefinition {
   /** Domain family served by the placeholder. */
-  readonly documentFamily: 'nfe';
+  readonly documentFamily: 'nfe' | 'nfce';
   /** XML element expected in the request body. */
   readonly requestElementName: string;
   /** XML element expected in the response body. */
@@ -55,6 +56,14 @@ const SUPPORTED_SERVICE_DEFINITIONS: Readonly<
     requestElementName: 'enviNFe',
     responseElementName: 'retEnviNFe',
     service: 'nfe-authorization',
+    successStatusCodes: ['100', '103', '104'],
+    unavailabilityStatusCodes: ['108', '109'],
+  },
+  'nfce-authorization-sp': {
+    documentFamily: 'nfce',
+    requestElementName: 'enviNFe',
+    responseElementName: 'retEnviNFe',
+    service: 'nfce-authorization-sp',
     successStatusCodes: ['100', '103', '104'],
     unavailabilityStatusCodes: ['108', '109'],
   },

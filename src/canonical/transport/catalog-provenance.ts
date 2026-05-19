@@ -4,6 +4,10 @@ const INITIAL_TRANSPORT_RESEARCH_SOURCE =
   'specs/006-add-soap-transport/research.md' as const;
 const OPERATIONAL_MVP_RESEARCH_SOURCE =
   'specs/007-nfe-operational-mvp/research.md' as const;
+const NFCE_NATIONAL_CORE_RESEARCH_SOURCE =
+  'specs/010-nfce-national-core/research.md' as const;
+const SP_NFCE_PORTAL_SOURCE =
+  'docs/_sources/markdown/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/servicos-9594adb2c3.md' as const;
 
 /**
  * Planned operational service identifier kept as internal catalog placeholder.
@@ -60,4 +64,24 @@ export function getOperationalTransportCatalogPlaceholders():
  */
 export function getOperationalTransportCatalogSources(): readonly string[] {
   return [OFFICIAL_SHARED_CATALOG_SOURCE, OPERATIONAL_MVP_RESEARCH_SOURCE];
+}
+
+/**
+ * Returns the provenance metadata for the first NFC-e SP pilot transport route.
+ *
+ * @returns Stable provenance metadata for the pilot catalog entry.
+ */
+export function getNFCeSPPilotTransportCatalogProvenance(): {
+  readonly notes: string;
+  readonly sources: readonly string[];
+} {
+  return {
+    notes:
+      'The first NFC-e slice publishes only the SP homologation pilot profile while broader per-UF routing remains deferred.',
+    sources: [
+      OFFICIAL_SHARED_CATALOG_SOURCE,
+      SP_NFCE_PORTAL_SOURCE,
+      NFCE_NATIONAL_CORE_RESEARCH_SOURCE,
+    ],
+  };
 }
