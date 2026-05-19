@@ -37,7 +37,14 @@ export interface FunctionalCoverageGap {
  * Canonical public input for creating an `NFe` document.
  */
 export interface CanonicalNFeInput {
-  /** Free-form payload reserved for future manual fields in the canonical layer. */
+  /**
+   * Free-form payload reserved for future manual fields in the canonical layer.
+   *
+   * Known opaque pass-through fields:
+   * - `cBenef`: UF-specific fiscal benefit code per NT 2015/003 and NT 2019/001.
+   *   Value must be obtained from the applicable state tax authority table at
+   *   call time. The SDK does not internalize per-UF benefit tables (GAP-013 / R11).
+   */
   readonly payload?: Readonly<Record<string, string>>;
   /** Raw document identifier provided by the integrator. */
   readonly documentId: string;

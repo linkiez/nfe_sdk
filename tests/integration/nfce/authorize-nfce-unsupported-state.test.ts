@@ -22,7 +22,8 @@ describe('authorizeNFCe unsupported-state integration', () => {
           source: { contentBase64: string; type: 'in-memory-content' };
         }) => Promise<unknown>)
       | undefined;
-    const authorizeNFCe = (publicApi as Record<string, unknown>).authorizeNFCe as
+    const authorizeNFCe = (publicApi as Record<string, unknown>)
+      .authorizeNFCe as
       | ((input: {
           document: {
             documentId: string;

@@ -19,6 +19,7 @@ describe('package contract documentation', () => {
       'authorizeNFCe',
       'authorizeNFe',
       'cancelNFe',
+      'changeManifestRecipientOperation',
       'createEnviNFe',
       'createNFe',
       'createSigningContext',
@@ -26,6 +27,9 @@ describe('package contract documentation', () => {
       'executeNFeSoapService',
       'manifestRecipientOperation',
       'publicPackageContract',
+      'queryContributorRegistration',
+      'queryNFeByAccessKey',
+      'queryNFeByNSU',
       'queryNFeDocumentSituation',
       'queryNFeServiceStatus',
       'resolveNFeServiceEndpoint',
@@ -33,8 +37,10 @@ describe('package contract documentation', () => {
       'serializeNFeXml',
       'signNFeXml',
       'submitGenericEvents',
+      'submitICMSDeferralEvent',
       'submitNFeCorrectionLetter',
       'submitNFeInutilization',
+      'validateNFeXsd',
     ]);
     expect(readme).toContain('`authorizeNFe`');
     expect(readme).toContain('`authorizeNFCe`');
@@ -55,6 +61,8 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`submitGenericEvents`');
     expect(readme).toContain('`submitNFeCorrectionLetter`');
     expect(readme).toContain('`submitNFeInutilization`');
+    expect(readme).toContain('`validateNFeXsd`');
+    expect(readme).toContain('`submitICMSDeferralEvent`');
     expect(readme).toContain('`unsupported-state`');
     expect(readme).toContain('`unsupported-scope`');
     expect(readme).toContain('`requestedCapabilities`');

@@ -57,5 +57,6 @@ export { mapGenericEventBatchOutcome } from './map-generic-event-batch-outcome.j
 export { mapDeliveryFailureEvent } from './map-delivery-failure-event.js';
 export { mapEconfEvent } from './map-econf-event.js';
 export { mapInterestedActorEvent } from './map-interested-actor-event.js';
+export { mapICMSDeferralEvent, type ICMSDeferralItem, type ICMSDeferralPayload } from './prorrogacao-icms-payload.js';
 export { submitGenericEvents } from './submit-generic-events.js';
 export { validateGenericEventBatchRequest } from './validate-generic-event-batch.js';

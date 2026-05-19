@@ -1,7 +1,7 @@
 import { resolveNFeServiceEndpoint } from '../../src/index';
 
 describe('service catalog resolution', () => {
-  it('resolves the supported SVAN entry after normalizing service and environment input', () => {
+  it('resolves the supported SVCAN entry after normalizing service and environment input', () => {
     const statusEntry = resolveNFeServiceEndpoint({
       environment: ' Homologation ',
       service: ' NFE-STATUS-SERVICE ',
@@ -17,7 +17,7 @@ describe('service catalog resolution', () => {
         'https://www.sefazvirtual.fazenda.gov.br/NFeStatusServico4/NFeStatusServico4.asmx',
       environment: 'homologation',
       layoutVersion: '4.00',
-      provider: 'SVAN',
+      provider: 'SVCAN',
       provenance: {
         sources: [
           'docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/webservices-9bfd6ee423.md',
@@ -29,6 +29,6 @@ describe('service catalog resolution', () => {
     expect(authorizationEntry.endpointUrl).toBe(
       'https://www.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx',
     );
-    expect(authorizationEntry.provider).toBe('SVAN');
+    expect(authorizationEntry.provider).toBe('SVCAN');
   });
 });

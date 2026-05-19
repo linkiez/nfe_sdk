@@ -39,8 +39,8 @@ validation) target <5ms per document; SOAP latency is network-bound and outside 
 additive — no existing export path renamed or removed. XSD validation (GAP-014) requires
 system `xmllint` as an optional external tool; documented as a soft dependency.
 
-**Scale/Scope**: Single-document fiscal SDK; this feature adds ~12 new facade functions and
-~15 new exported types to the existing ~20-function public contract
+**Scale/Scope**: Single-document fiscal SDK; this feature adds 11 new facade functions and
+23 new exported types to the existing ~20-function public contract
 
 **Knowledge Sources**: MOC NF-e 7.0 (primary, `docs/_sources/markdown/official/`); XSD
 schemas in `xsd/` (secondary implementation reference); gap audit artifacts in
@@ -96,7 +96,7 @@ specs/012-implement-audit-gaps/
 │   └── api-contract.md      ✅ Phase 1 output
 ├── checklists/
 │   └── requirements.md      ✅ spec quality checklist
-└── tasks.md                 ⏳ /speckit.tasks output (not created here)
+└── tasks.md                 ✅ implementation complete (188 tests passing)
 ```
 
 ### Source Code (repository root)

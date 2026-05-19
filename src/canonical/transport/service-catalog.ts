@@ -18,7 +18,7 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
       'https://www.sefazvirtual.fazenda.gov.br/NFeStatusServico4/NFeStatusServico4.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
-    provider: 'SVAN',
+    provider: 'SVCAN',
     provenance: getInitialTransportCatalogProvenance(),
     service: 'nfe-status-service',
   },
@@ -28,7 +28,7 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
       'https://www.sefazvirtual.fazenda.gov.br/NFeConsultaProtocolo4/NFeConsultaProtocolo4.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
-    provider: 'SVAN',
+    provider: 'SVCAN',
     provenance: {
       sources: getOperationalTransportCatalogSources(),
     },
@@ -40,9 +40,21 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
       'https://www.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
-    provider: 'SVAN',
+    provider: 'SVCAN',
     provenance: getInitialTransportCatalogProvenance(),
     service: 'nfe-authorization',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeRetAutorizacao4/NFeRetAutorizacao4.asmx',
+    environment: 'homologation',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-authorization-batch',
   },
   {
     catalogVersion: TRANSPORT_CATALOG_VERSION,
@@ -50,7 +62,7 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
       'https://www.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
-    provider: 'SVAN',
+    provider: 'SVCAN',
     provenance: getNFCeSPPilotTransportCatalogProvenance(),
     service: 'nfce-authorization-sp',
   },
@@ -60,7 +72,7 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
       'https://www.sefazvirtual.fazenda.gov.br/NFeInutilizacao4/NFeInutilizacao4.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
-    provider: 'SVAN',
+    provider: 'SVCAN',
     provenance: {
       sources: getOperationalTransportCatalogSources(),
     },
@@ -72,7 +84,7 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
       'https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento4/RecepcaoEvento4.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
-    provider: 'SVAN',
+    provider: 'SVCAN',
     provenance: {
       sources: getOperationalTransportCatalogSources(),
     },
@@ -84,7 +96,7 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
       'https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento4/RecepcaoEvento4.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
-    provider: 'SVAN',
+    provider: 'SVCAN',
     provenance: {
       sources: getOperationalTransportCatalogSources(),
     },
@@ -96,7 +108,7 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
       'https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento4/RecepcaoEvento4.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
-    provider: 'SVAN',
+    provider: 'SVCAN',
     provenance: {
       sources: getOperationalTransportCatalogSources(),
     },
@@ -108,7 +120,7 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
       'https://www1.nfe.fazenda.gov.br/NFeDistribuicaoDFe/NFeDistribuicaoDFe.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
-    provider: 'SVAN',
+    provider: 'SVCAN',
     provenance: {
       sources: getOperationalTransportCatalogSources(),
     },
@@ -120,11 +132,165 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
       'https://www.sefazvirtual.fazenda.gov.br/RecepcaoEvento4/RecepcaoEvento4.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
-    provider: 'SVAN',
+    provider: 'SVCAN',
     provenance: {
       sources: getOperationalTransportCatalogSources(),
     },
     service: 'nfe-recipient-manifestation',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/CadConsultaCadastro4/CadConsultaCadastro4.asmx',
+    environment: 'homologation',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-contributor-registration',
+  },
+
+  // Production entries (SVCAN — Sefaz Virtual Ambiente Nacional)
+  // Sources: docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/webservices-9bfd6ee423.md
+  //          specs/012-implement-audit-gaps/research.md R5
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeStatusServico4/NFeStatusServico4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: getInitialTransportCatalogProvenance(),
+    service: 'nfe-status-service',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeConsultaProtocolo4/NFeConsultaProtocolo4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-document-situation',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: getInitialTransportCatalogProvenance(),
+    service: 'nfe-authorization',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeRetAutorizacao4/NFeRetAutorizacao4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-authorization-batch',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: getNFCeSPPilotTransportCatalogProvenance(),
+    service: 'nfce-authorization-sp',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeInutilizacao4/NFeInutilizacao4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-inutilization',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-cancellation',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-correction-letter',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-generic-event',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www1.nfe.fazenda.gov.br/NFeDistribuicaoDFe/NFeDistribuicaoDFe.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-recipient-distribution',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-recipient-manifestation',
+  },
+  {
+    catalogVersion: TRANSPORT_CATALOG_VERSION,
+    endpointUrl:
+      'https://www.sefazvirtual.fazenda.gov.br/CadConsultaCadastro4/CadConsultaCadastro4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SVCAN',
+    provenance: {
+      sources: getOperationalTransportCatalogSources(),
+    },
+    service: 'nfe-contributor-registration',
   },
 ];
 

@@ -11,6 +11,7 @@ import { mapDeliveryConfirmationEvent } from './map-delivery-confirmation-event.
 import { mapDeliveryFailureEvent } from './map-delivery-failure-event.js';
 import { mapEconfEvent } from './map-econf-event.js';
 import { mapInterestedActorEvent } from './map-interested-actor-event.js';
+import { mapICMSDeferralEvent, type ICMSDeferralPayload } from './prorrogacao-icms-payload.js';
 
 /** One normalized item used to compose the generic `envEvento` XML payload. */
 export interface GenericEventEnvelopeBuildItem {
@@ -93,6 +94,8 @@ function buildDetailXml(item: GenericEventInputItem): string {
 			return mapDeliveryFailureEvent(item.payload as DeliveryFailurePayload);
 		case 'econf':
 			return mapEconfEvent(item.payload as EconfPayload);
+		case 'prorrogacao-icms':
+			return mapICMSDeferralEvent(item.payload as ICMSDeferralPayload);
 		default:
 			return '<detEvento versao="1.00"></detEvento>';
 	}

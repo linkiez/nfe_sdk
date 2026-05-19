@@ -122,3 +122,41 @@ Centralizar as fontes consultadas, datas de acesso, restricoes observadas e o vi
 `SRC-SEC-001` foi promovida como fonte secundaria compartilhada para apoio tecnico em NFe e NFC-e. As afirmacoes normativas continuam dependentes de fontes primarias, e qualquer uso de `node-dfe` deve permanecer claramente identificado como referencia complementar de implementacao.
 
 Para `manifestacao-destinatario`, o mesmo repositorio foi verificado em 2026-05-16 e nao apresentou evidencia local suficiente para ser promovido como fonte secundaria do dominio.
+
+## Rastreamento de Notas Tecnicas (NT)
+
+O processo completo de monitoramento e incorporacao de NTs esta documentado em [nt-tracking-process.md](./nt-tracking-process.md).
+
+### NTs monitoradas
+
+| Codigo NT   | Titulo resumido                    | Status       | Watchlist                             |
+| ----------- | ---------------------------------- | ------------ | ------------------------------------- |
+| NT-2022-002 | Ajustes tecnicos NF-e 4.0 v1.30    | incorporado  | —                                     |
+| gap-006     | NF-e ABI (acesso B2B intermediado) | monitorar    | watchlist/gap-006-nfe-abi.md          |
+| gap-009     | Cobertura de assinatura (e-CPF)    | em-progresso | watchlist/gap-009-signing-coverage.md |
+| gap-017     | Series rurais NF-e                 | monitorar    | watchlist/gap-017-rural-series.md     |
+
+### Criterio de incorporacao
+
+Uma NT e considerada incorporada quando:
+
+1. Todos os campos canonicos afetados estao presentes no SDK
+2. Os testes de regressao cobrem os novos comportamentos
+3. A entrada de proveniencia esta registrada neste arquivo
+
+## Entradas de proveniencia — specs/012 (implementacao de lacunas de auditoria)
+
+| Modulo                                                      | Tipo          | Origem                                              |
+|-------------------------------------------------------------|---------------|-----------------------------------------------------|
+| `src/canonical/validation/validate-nfe-xsd.ts`             | implementacao | specs/012-implement-audit-gaps, XSD local (xsd/)    |
+| `src/canonical/generic-event/prorrogacao-icms-payload.ts`  | implementacao | specs/012-implement-audit-gaps, MOC evento 110764   |
+| `src/canonical/facade/submit-icms-deferral-event.ts`       | implementacao | specs/012-implement-audit-gaps                      |
+| `src/canonical/facade/validate-nfe-xsd.ts`                 | re-export     | specs/012-implement-audit-gaps                      |
+| `tests/fixtures/signing/ecpf-a1-fixture.ts`                | fixture       | specs/012-implement-audit-gaps, PKI Brasil e-CPF    |
+| `tests/unit/canonical/validation/validate-nfe-xsd.test.ts` | teste         | specs/012-implement-audit-gaps                      |
+| `tests/unit/canonical/nfe/ecpf-signing.test.ts`            | teste         | specs/012-implement-audit-gaps                      |
+| `tests/unit/canonical/generic-event/prorrogacao-icms.test.ts` | teste      | specs/012-implement-audit-gaps                      |
+| `docs/_meta/watchlist/gap-006-nfe-abi.md`                  | watchlist     | specs/012-implement-audit-gaps analise de auditoria |
+| `docs/_meta/watchlist/gap-009-signing-coverage.md`         | watchlist     | specs/012-implement-audit-gaps analise de auditoria |
+| `docs/_meta/watchlist/gap-017-rural-series.md`             | watchlist     | specs/012-implement-audit-gaps analise de auditoria |
+| `docs/_meta/nt-tracking-process.md`                        | processo      | specs/012-implement-audit-gaps                      |

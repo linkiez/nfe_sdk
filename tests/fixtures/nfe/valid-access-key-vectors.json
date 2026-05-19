@@ -1,0 +1,87 @@
+[
+  {
+    "description": "SP manufacturer note, serie 001, tpEmis 1 (normal case, cDV=8)",
+    "input": {
+      "cUF": "35",
+      "AAMM": "2401",
+      "CNPJ": "11444777000161",
+      "mod": "55",
+      "serie": "001",
+      "nNF": "000000001",
+      "tpEmis": "1",
+      "cNF": "00000001"
+    },
+    "expected": {
+      "chNFe": "35240111444777000161550010000000011000000018",
+      "cDV": 8
+    }
+  },
+  {
+    "description": "BA note, serie 100, nNF 50, cDV=2",
+    "input": {
+      "cUF": "29",
+      "AAMM": "2503",
+      "CNPJ": "11222333000181",
+      "mod": "55",
+      "serie": "100",
+      "nNF": "000000050",
+      "tpEmis": "1",
+      "cNF": "00000001"
+    },
+    "expected": {
+      "chNFe": "29250311222333000181551000000000501000000012",
+      "cDV": 2
+    }
+  },
+  {
+    "description": "PR note, high cNF and nNF, edge case cDV=1 (remainder ≤ 1 rule)",
+    "input": {
+      "cUF": "41",
+      "AAMM": "2412",
+      "CNPJ": "99999999000191",
+      "mod": "55",
+      "serie": "001",
+      "nNF": "000000999",
+      "tpEmis": "1",
+      "cNF": "87654321"
+    },
+    "expected": {
+      "chNFe": "41241299999999000191550010000009991876543211",
+      "cDV": 1
+    }
+  },
+  {
+    "description": "AM note, serie 002, nNF 10000, cDV=8",
+    "input": {
+      "cUF": "13",
+      "AAMM": "2501",
+      "CNPJ": "12000000000172",
+      "mod": "55",
+      "serie": "002",
+      "nNF": "000010000",
+      "tpEmis": "1",
+      "cNF": "11111111"
+    },
+    "expected": {
+      "chNFe": "13250112000000000172550020000100001111111118",
+      "cDV": 8
+    }
+  },
+  {
+    "description": "SP contingency note tpEmis=4, cDV=1 (second edge case for remainder ≤ 1 rule)",
+    "input": {
+      "cUF": "35",
+      "AAMM": "2501",
+      "CNPJ": "11444777000161",
+      "mod": "55",
+      "serie": "001",
+      "nNF": "000000002",
+      "tpEmis": "4",
+      "cNF": "00000002"
+    },
+    "expected": {
+      "chNFe": "35250111444777000161550010000000024000000021",
+      "cDV": 1
+    }
+  }
+]

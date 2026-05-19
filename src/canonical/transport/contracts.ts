@@ -1,7 +1,7 @@
 import type { RequestExecutor } from './request-executor.js';
 import type { SupportedNFeSoapService } from './supported-services.js';
 
-const TRANSPORT_ENVIRONMENTS = ['homologation'] as const;
+const TRANSPORT_ENVIRONMENTS = ['homologation', 'production'] as const;
 const TRANSPORT_OUTCOME_CLASSIFICATIONS = [
   'success',
   'usage-error',
@@ -15,6 +15,28 @@ const TRANSPORT_OUTCOME_CLASSIFICATIONS = [
  * Supported environment identifiers for the initial transport slice.
  */
 export type TransportEnvironment = (typeof TRANSPORT_ENVIRONMENTS)[number];
+
+/**
+ * SEFAZ autorizador provider identifiers for the 14 NF-e autorizadores.
+ *
+ * 12 UFs operate their own autorizador; two virtual environments
+ * (SVCAN for SVC-AN, SVCRS for SVC-RS) serve the remaining 15 UFs.
+ */
+export type NFeSEFAZProvider =
+  | 'AM'
+  | 'BA'
+  | 'CE'
+  | 'GO'
+  | 'MG'
+  | 'MS'
+  | 'MT'
+  | 'PA'
+  | 'PE'
+  | 'PR'
+  | 'RS'
+  | 'SP'
+  | 'SVCAN'
+  | 'SVCRS';
 
 /**
  * Structured outcome classes returned by the transport facade.
@@ -38,7 +60,7 @@ export interface ServiceCatalogEntry {
   readonly endpointUrl: string;
   readonly environment: TransportEnvironment;
   readonly layoutVersion: '4.00';
-  readonly provider: 'SVAN';
+  readonly provider: NFeSEFAZProvider;
   readonly provenance: ServiceCatalogProvenance;
   readonly service: SupportedNFeSoapService;
 }
@@ -80,7 +102,7 @@ export interface SoapExchangeEvidence {
   readonly durationMs?: number;
   readonly endpointUrl: string;
   readonly httpStatus?: number;
-  readonly provider: 'SVAN';
+  readonly provider: NFeSEFAZProvider;
   readonly requestEnvelopeXml: string;
   readonly responseEnvelopeXml?: string;
 }

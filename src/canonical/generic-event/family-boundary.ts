@@ -11,12 +11,14 @@ const SUPPORTED_GENERIC_EVENT_FAMILIES = [
 	'interested-actor-transporter',
 	'delivery-failure',
 	'econf',
+	'prorrogacao-icms',
 ] as const satisfies readonly GenericEventFamily[];
 const GENERIC_EVENT_CODE_BY_FAMILY: Readonly<Record<GenericEventFamily, string>> = {
 	'delivery-confirmation': '110130',
 	'delivery-failure': '110192',
 	'econf': '110750',
 	'interested-actor-transporter': '110150',
+	'prorrogacao-icms': '110764',
 };
 const INCLUDED_SCOPE = [
 	'homologation',
@@ -103,7 +105,7 @@ export function createGenericEventBoundaryTransportOutcome(
 		environment: 'homologation',
 		evidence: {
 			endpointUrl: '',
-			provider: 'SVAN',
+			provider: 'SVCAN',
 			requestEnvelopeXml: '',
 		},
 		failureReason,

@@ -8,9 +8,9 @@ Este indice agrupa os artefatos de Manifestacao do Destinatario e destaca a dife
 
 1. Consultar [Cobertura oficial de notas fiscais](../notas-fiscais/index.md) para a visao transversal baseada na base oficial consolidada.
 1. Ler [Capacidades do SDK para Manifestacao do Destinatario](./capacidades-sdk.md) para entender os limites atuais de cobertura.
-2. Consultar [Visao geral](./visao-geral.md) para o panorama funcional publicamente verificavel.
-3. Voltar ao [catalogo geral de capacidades](../capacidades-sdk.md) para comparar este dominio com NFe e NFC-e.
-4. Consultar o [registro de fontes](../_meta/source-registry.md) quando for necessario auditar restricoes de acesso e evidencias.
+1. Consultar [Visao geral](./visao-geral.md) para o panorama funcional publicamente verificavel.
+1. Voltar ao [catalogo geral de capacidades](../capacidades-sdk.md) para comparar este dominio com NFe e NFC-e.
+1. Consultar o [registro de fontes](../_meta/source-registry.md) quando for necessario auditar restricoes de acesso e evidencias.
 
 ## Artefatos deste dominio
 

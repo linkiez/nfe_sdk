@@ -284,7 +284,7 @@ Esta pagina consolida o complemento estadual internalizado no repositorio para N
 
 - Algumas origens estaduais relevantes ainda produziram conversao vazia, como Sergipe, parte do acervo do Rio de Janeiro e Amapa.
 - Parte do material da Paraiba e de Pernambuco, por exemplo, aparece mais como mapa de servicos e sitemap do que como dossie limpo de NF-e e NFC-e.
- - Mesmo nos estados ja promovidos, como Rio de Janeiro, Mato Grosso, Mato Grosso do Sul, Santa Catarina, Minas Gerais, Ceara, Rondonia e Roraima, o sinal editorial atual ainda se concentra em superficies pontuais ou hubs iniciais e nao em cobertura integral por dominio.
+- Mesmo nos estados ja promovidos, como Rio de Janeiro, Mato Grosso, Mato Grosso do Sul, Santa Catarina, Minas Gerais, Ceara, Rondonia e Roraima, o sinal editorial atual ainda se concentra em superficies pontuais ou hubs iniciais e nao em cobertura integral por dominio.
 
 ## Leitura editorial dos estados
 

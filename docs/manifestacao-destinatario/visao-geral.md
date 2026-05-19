@@ -47,3 +47,14 @@ Nenhuma fonte secundaria registrada nesta etapa.
 
 - A principal superficie especifica da funcionalidade exige certificado digital, o que limita a consolidacao imediata do detalhamento operacional por acesso publico.
 - O acervo local ja cobre a existencia do servico, seu FAQ dedicado e a restricao de acesso, mas ainda faltam fontes publicas adicionais para fechar com o mesmo nivel de detalhe os eventos, pre-requisitos e excecoes de uso.
+
+## Prazos obrigatorios de manifestacao (MOC §3.2.3)
+
+| Evento de Manifestacao      | Codigo | Prazo maximo |
+| --------------------------- | ------ | ------------ |
+| Ciencia da Operacao         | 210210 | 90 dias      |
+| Confirmacao da Operacao     | 210200 | 180 dias     |
+| Desconhecimento da Operacao | 210220 | 180 dias     |
+| Operacao nao Realizada      | 210240 | 180 dias     |
+
+Os prazos sao contados a partir da data de emissao da NF-e. A Ciencia da Operacao nao encerra o ciclo: o destinatario deve complementar com um dos tres eventos definitivos (Confirmacao, Desconhecimento ou Operacao nao Realizada) dentro de 180 dias.

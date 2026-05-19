@@ -32,7 +32,10 @@ export interface FixtureNFCeAuthorizationRequest {
  * @returns Fixture text content.
  */
 export function loadNFCeTextFixture(relativePath: string): string {
-  return readFileSync(resolve(process.cwd(), 'tests/fixtures/nfce', relativePath), 'utf8');
+  return readFileSync(
+    resolve(process.cwd(), 'tests/fixtures/nfce', relativePath),
+    'utf8',
+  );
 }
 
 /**

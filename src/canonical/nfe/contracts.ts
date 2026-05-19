@@ -280,3 +280,51 @@ export function getNFeMaintenanceClassifications():
   readonly NFeMaintenanceClassification[] {
   return MAINTENANCE_CLASSIFICATIONS;
 }
+
+// ---------------------------------------------------------------------------
+// Async batch retrieval
+// ---------------------------------------------------------------------------
+
+/** Result status for a single NF-e document in an async batch. */
+export type AsyncBatchItemClassification =
+  | 'authorized'
+  | 'denied'
+  | 'cancelled'
+  | 'pending'
+  | 'processing-error';
+
+/** Authorization result for one NF-e within an async batch response. */
+export interface AsyncBatchItemResult {
+  readonly chNFe: string;
+  readonly classification: AsyncBatchItemClassification;
+  /** Authorization protocol number when authorized. */
+  readonly protocolNumber?: string;
+  readonly statusCode: string;
+  readonly statusDescription: string;
+}
+
+/** Input to retrieve an async NF-e authorization batch by receipt number. */
+export interface NFeAsyncBatchRetrievalInput {
+  readonly nRec: string;
+  readonly environment: import('../shared/contracts.js').CanonicalEnvironment;
+  readonly version: import('../shared/contracts.js').CanonicalVersion;
+  readonly issuerUF: string;
+  readonly requestExecutor: RequestExecutor;
+}
+
+/** Overall outcome classification of an async batch retrieval call. */
+export type NFeAsyncBatchClassification =
+  | 'complete'
+  | 'processing'
+  | 'not-found'
+  | 'timeout'
+  | 'unavailable'
+  | 'protocol-error'
+  | 'usage-error';
+
+/** Overall outcome of an async NF-e batch retrieval call. */
+export interface NFeAsyncBatchOutcome {
+  readonly classification: NFeAsyncBatchClassification;
+  readonly items: readonly AsyncBatchItemResult[];
+  readonly rawResponse?: string;
+}

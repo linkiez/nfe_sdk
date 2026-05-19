@@ -1,3 +1,5 @@
+export { computeNFeAccessKey } from './access-key.js';
+export { computeHashCSRT } from './hash-csrt.js';
 export {
   buildNFeAuthorizationBatch,
   isCanonicalEnviNFeDocument,
@@ -40,6 +42,8 @@ export {
   mapTransportOutcomeToQueryClassification,
 } from './transport-outcome-mapper.js';
 
+export type { AccessKeyFields, AccessKeyResult } from './access-key.js';
+export type { HashCSRTInput } from './hash-csrt.js';
 export type {
   DocumentSituationRequest,
   DocumentSituationResult,

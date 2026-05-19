@@ -57,13 +57,14 @@ describe('authorizeNFCe homologation integration', () => {
           source: { contentBase64: string; type: 'in-memory-content' };
         }) => Promise<unknown>)
       | undefined;
-    const authorizeNFCe = (publicApi as Record<string, unknown>).authorizeNFCe as
-      | AuthorizeNFCe
-      | undefined;
+    const authorizeNFCe = (publicApi as Record<string, unknown>)
+      .authorizeNFCe as AuthorizeNFCe | undefined;
     const input = loadNFCeJsonFixture<HomologationNFCeAuthorizationRequest>(
       'sp-homologation-input.json',
     );
-    const responseXml = loadNFCeTextFixture('sp-homologation-response-authorized.xml');
+    const responseXml = loadNFCeTextFixture(
+      'sp-homologation-response-authorized.xml',
+    );
     const signingContext = await createSigningContext?.({
       passphrase: fixtureSource.passphrase,
       source: {

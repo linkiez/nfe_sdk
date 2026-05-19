@@ -19,11 +19,7 @@ function normalizeRequestedEnvironment(
   environment: string,
 ): TransportEnvironment | undefined {
   try {
-    const normalizedEnvironment = normalizeEnvironment(environment);
-
-    return normalizedEnvironment === 'homologation'
-      ? normalizedEnvironment
-      : undefined;
+    return normalizeEnvironment(environment);
   } catch {
     return undefined;
   }

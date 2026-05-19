@@ -7,7 +7,7 @@ describe('nfe operational maintenance results', () => {
       environment: 'homologation';
       evidence: {
         endpointUrl: string;
-        provider: 'SVAN';
+        provider: 'SVCAN';
         requestEnvelopeXml: string;
         responseEnvelopeXml?: string;
       };
@@ -45,7 +45,7 @@ describe('nfe operational maintenance results', () => {
           evidence: {
             endpointUrl:
               'https://www.sefazvirtual.fazenda.gov.br/NFeInutilizacao4/NFeInutilizacao4.asmx',
-            provider: 'SVAN',
+            provider: 'SVCAN',
             requestEnvelopeXml: '<inutNFe versao="4.00"></inutNFe>',
             responseEnvelopeXml:
               '<retInutNFe><infInut><cStat>102</cStat><xMotivo>Inutilizacao homologada</xMotivo><nProt>135250000000001</nProt></infInut></retInutNFe>',

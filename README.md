@@ -11,6 +11,7 @@ import {
   authorizeNFCe,
   authorizeNFe,
   cancelNFe,
+  changeManifestRecipientOperation,
   createEnviNFe,
   createNFe,
   createSigningContext,
@@ -18,6 +19,9 @@ import {
   executeNFeSoapService,
   manifestRecipientOperation,
   publicPackageContract,
+  queryContributorRegistration,
+  queryNFeByAccessKey,
+  queryNFeByNSU,
   queryNFeDocumentSituation,
   queryNFeServiceStatus,
   resolveNFeServiceEndpoint,
@@ -27,6 +31,8 @@ import {
   submitGenericEvents,
   submitNFeCorrectionLetter,
   submitNFeInutilization,
+  validateNFeXsd,
+  submitICMSDeferralEvent,
 } from 'nfe-sdk';
 ```
 
@@ -67,6 +73,10 @@ No slice inicial, `TransportOutcome.classification` distingue pelo menos `succes
 `manifestRecipientOperation` registra um dos quatro eventos basicos de Manifestacao do Destinatario (`210200`, `210210`, `210220` e `210240`) e devolve classificacao operacional, protocolo quando houver e a marca contratual de que o download posterior permanece separado.
 
 `submitGenericEvents` registra, por uma facade unica, os eventos genericos homologados suportados nesta fase (`110130`, `110150`, `110192` e `110750`) e devolve resultado estruturado de lote com rastreabilidade por item.
+
+`validateNFeXsd` valida um XML de NF-e contra o XSD oficial (PL_010c NT2022.002 v1.30) usando `xmllint` quando disponivel no ambiente e devolve classificacao estruturada: `valid`, `invalid`, `xmllint-unavailable`, `schema-not-found` ou `execution-error`.
+
+`submitICMSDeferralEvent` submete um evento de pedido de prorrogacao de ICMS industrial (codigo `110764`, familia `prorrogacao-icms`) como lote unitario via `submitGenericEvents`, simplificando a integracao para o caso de uso mais comum.
 
 No recorte atual, a facade generica rejeita o lote inteiro antes do transporte quando houver mais de 20 itens, qualquer familia fora do escopo publicado ou falha obrigatoria de validacao local, mantendo EPEC, producao e variantes ainda nao estabilizadas fora do contrato.
 

@@ -7,7 +7,7 @@ describe('nfe operational query results', () => {
       environment: 'homologation';
       evidence: {
         endpointUrl: string;
-        provider: 'SVAN';
+        provider: 'SVCAN';
         requestEnvelopeXml: string;
         responseEnvelopeXml?: string;
       };
@@ -34,7 +34,7 @@ describe('nfe operational query results', () => {
       environment: 'homologation',
       evidence: {
         endpointUrl: 'https://example.invalid/status',
-        provider: 'SVAN',
+        provider: 'SVCAN',
         requestEnvelopeXml: '<soap:Envelope />',
         responseEnvelopeXml:
           '<retConsStatServ><cStat>107</cStat></retConsStatServ>',
@@ -55,7 +55,7 @@ describe('nfe operational query results', () => {
       environment: 'homologation';
       evidence: {
         endpointUrl: string;
-        provider: 'SVAN';
+        provider: 'SVCAN';
         requestEnvelopeXml: string;
         responseEnvelopeXml?: string;
       };
@@ -87,7 +87,7 @@ describe('nfe operational query results', () => {
         environment: 'homologation',
         evidence: {
           endpointUrl: 'https://example.invalid/document-situation',
-          provider: 'SVAN',
+          provider: 'SVCAN',
           requestEnvelopeXml: '<soap:Envelope />',
           responseEnvelopeXml:
             '<retConsSitNFe><cStat>100</cStat></retConsSitNFe>',

@@ -38,6 +38,21 @@ export class ExecuteNFeSoapServiceError extends TransportError {
 }
 
 /**
+ * Error raised when a UF code cannot be resolved to a known SEFAZ autorizador.
+ */
+export class UnknownUFError extends TransportError {
+  /**
+   * @param uf - The unrecognised UF code that triggered the error.
+   */
+  public constructor(uf: string) {
+    super(
+      `Unknown UF code: "${uf}". Must be one of the 27 Brazilian state codes.`,
+    );
+    this.name = 'UnknownUFError';
+  }
+}
+
+/**
  * Error raised when the caller provides unsupported transport input.
  */
 export class TransportUsageError extends TransportError {

@@ -1,6 +1,7 @@
 const SUPPORTED_NFE_SOAP_SERVICES = [
   'nfe-status-service',
   'nfe-authorization',
+  'nfe-authorization-batch',
   'nfce-authorization-sp',
   'nfe-inutilization',
   'nfe-cancellation',
@@ -9,6 +10,7 @@ const SUPPORTED_NFE_SOAP_SERVICES = [
   'nfe-document-situation',
   'nfe-recipient-distribution',
   'nfe-recipient-manifestation',
+  'nfe-contributor-registration',
 ] as const;
 
 const PLANNED_OPERATIONAL_TRANSPORT_SERVICES = [] as const;
@@ -57,6 +59,14 @@ const SUPPORTED_SERVICE_DEFINITIONS: Readonly<
     responseElementName: 'retEnviNFe',
     service: 'nfe-authorization',
     successStatusCodes: ['100', '103', '104'],
+    unavailabilityStatusCodes: ['108', '109'],
+  },
+  'nfe-authorization-batch': {
+    documentFamily: 'nfe',
+    requestElementName: 'consReciNFe',
+    responseElementName: 'retConsReciNFe',
+    service: 'nfe-authorization-batch',
+    successStatusCodes: ['104', '105'],
     unavailabilityStatusCodes: ['108', '109'],
   },
   'nfce-authorization-sp': {
@@ -113,6 +123,14 @@ const SUPPORTED_SERVICE_DEFINITIONS: Readonly<
     responseElementName: 'retEnvEvento',
     service: 'nfe-recipient-manifestation',
     successStatusCodes: ['128'],
+    unavailabilityStatusCodes: ['108', '109'],
+  },
+  'nfe-contributor-registration': {
+    documentFamily: 'nfe',
+    requestElementName: 'CadConsultaCadastro4',
+    responseElementName: 'retConsCad',
+    service: 'nfe-contributor-registration',
+    successStatusCodes: ['111', '112'],
     unavailabilityStatusCodes: ['108', '109'],
   },
   'nfe-inutilization': {

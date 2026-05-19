@@ -14,12 +14,12 @@ Este hub consolida a cobertura documental de NF-e, NFC-e e Manifestacao do Desti
 
 ## Estrutura editorial
 
-| Pagina | Conteudo absorvido | Papel |
-| --- | --- | --- |
-| [Cobertura nacional](./cobertura-nacional.md) | Portal nacional, servicos publicos, FAQ e divisao institucional do ecossistema | Porta de entrada funcional |
-| [Manuais e esquemas](./manuais-e-esquemas.md) | MOC, anexos, contingencia, QR Code, boas praticas e esquemas XML | Base normativa e estrutural |
-| [Notas tecnicas e informes](./notas-tecnicas-e-informes.md) | NTs, informes, tabelas auxiliares, series recorrentes e mapa de impactos | Base de compatibilidade e evolucao |
-| [Cobertura estadual](./cobertura-estadual.md) | Portais estaduais, credenciamento, contingencia local e servicos por UF | Base operacional complementar |
+| Pagina                                                      | Conteudo absorvido                                                             | Papel                              |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------- |
+| [Cobertura nacional](./cobertura-nacional.md)               | Portal nacional, servicos publicos, FAQ e divisao institucional do ecossistema | Porta de entrada funcional         |
+| [Manuais e esquemas](./manuais-e-esquemas.md)               | MOC, anexos, contingencia, QR Code, boas praticas e esquemas XML               | Base normativa e estrutural        |
+| [Notas tecnicas e informes](./notas-tecnicas-e-informes.md) | NTs, informes, tabelas auxiliares, series recorrentes e mapa de impactos       | Base de compatibilidade e evolucao |
+| [Cobertura estadual](./cobertura-estadual.md)               | Portais estaduais, credenciamento, contingencia local e servicos por UF        | Base operacional complementar      |
 
 ## Estado da consolidacao
 

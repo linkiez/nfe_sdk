@@ -116,7 +116,7 @@ export function createRecipientBoundaryTransportOutcome(
 		environment: 'homologation',
 		evidence: {
 			endpointUrl: '',
-			provider: 'SVAN',
+			provider: 'SVCAN',
 			requestEnvelopeXml: '',
 		},
 		failureReason,

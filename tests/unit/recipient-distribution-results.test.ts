@@ -18,7 +18,7 @@ describe('recipient distribution result mapping', () => {
         environment: 'homologation',
         evidence: {
           endpointUrl: 'https://example.invalid/distribution',
-          provider: 'SVAN',
+          provider: 'SVCAN',
           requestEnvelopeXml: '<soap:Envelope/>',
           responseEnvelopeXml:
             '<retDistDFeInt><cStat>138</cStat><xMotivo>Documentos localizados</xMotivo><ultNSU>000000000000101</ultNSU><maxNSU>000000000000105</maxNSU><loteDistDFeInt><docZip NSU="000000000000101" schema="resNFe_v1.01">PHJlc05GZT48Y2hORmU+MzUxOTA1MDAwMDAwMDAwMDAwMDA1NTAwMTAwMDAwMDAwMTEwMDAwMDAwMTA8L2NoTkZlPjxDTlBKPjEyMzQ1Njc4MDAwMTk1PC9DTlBKPjxDTlBKRGVzdD4xMjM0NTY3ODAwMDE5NTwvQ05QSkRlc3Q+PC9yZXNORmU+</docZip></loteDistDFeInt></retDistDFeInt>',
@@ -56,7 +56,7 @@ describe('recipient distribution result mapping', () => {
         environment: 'homologation',
         evidence: {
           endpointUrl: 'https://example.invalid/distribution',
-          provider: 'SVAN',
+          provider: 'SVCAN',
           requestEnvelopeXml: '<soap:Envelope/>',
           responseEnvelopeXml:
             '<retDistDFeInt><cStat>656</cStat><xMotivo>Consumo indevido</xMotivo><ultNSU>000000000000101</ultNSU><maxNSU>000000000000101</maxNSU></retDistDFeInt>',

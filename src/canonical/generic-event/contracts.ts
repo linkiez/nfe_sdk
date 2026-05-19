@@ -1,6 +1,7 @@
 import type { SigningContext } from '../signing/contracts.js';
 import type { TransportOutcome } from '../transport/contracts.js';
 import type { RequestExecutor } from '../transport/request-executor.js';
+import type { ICMSDeferralPayload } from './prorrogacao-icms-payload.js';
 
 const GENERIC_EVENT_ENVIRONMENTS = ['homologation'] as const;
 const GENERIC_EVENT_ACTOR_DOCUMENT_TYPES = ['cpf', 'cnpj'] as const;
@@ -9,6 +10,7 @@ const GENERIC_EVENT_FAMILIES = [
 	'interested-actor-transporter',
 	'delivery-failure',
 	'econf',
+	'prorrogacao-icms',
 ] as const;
 const GENERIC_EVENT_BATCH_CLASSIFICATIONS = [
 	'success',
@@ -116,7 +118,8 @@ export type GenericEventFamilyPayload =
 	| DeliveryConfirmationPayload
 	| InterestedActorPayload
 	| DeliveryFailurePayload
-	| EconfPayload;
+	| EconfPayload
+	| ICMSDeferralPayload;
 
 /** One event item accepted by the public batch request. */
 export interface GenericEventInputItem {

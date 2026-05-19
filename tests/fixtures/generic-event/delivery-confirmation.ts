@@ -2,5 +2,5 @@ import { buildFixtureGenericEventBatchRequest } from './build-generic-event-fixt
 
 /** Builds a fixture batch focused on the delivery-confirmation family. */
 export function buildDeliveryConfirmationFixture() {
-	return buildFixtureGenericEventBatchRequest();
+  return buildFixtureGenericEventBatchRequest();
 }

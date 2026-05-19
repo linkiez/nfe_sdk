@@ -8,10 +8,10 @@ import { resolve } from 'node:path';
  * @returns The fixture text content.
  */
 export function loadRecipientTextFixture(relativePath: string): string {
-	return readFileSync(
-		resolve(process.cwd(), 'tests/fixtures/recipient', relativePath),
-		'utf8',
-	);
+  return readFileSync(
+    resolve(process.cwd(), 'tests/fixtures/recipient', relativePath),
+    'utf8',
+  );
 }
 
 /**
@@ -21,5 +21,5 @@ export function loadRecipientTextFixture(relativePath: string): string {
  * @returns Parsed fixture payload.
  */
 export function loadRecipientJsonFixture<T>(relativePath: string): T {
-	return JSON.parse(loadRecipientTextFixture(relativePath)) as T;
+  return JSON.parse(loadRecipientTextFixture(relativePath)) as T;
 }

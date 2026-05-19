@@ -73,7 +73,7 @@ export function createUnsupportedScopeMaintenanceOutcome(
       environment: SUPPORTED_OPERATIONAL_ENVIRONMENT,
       evidence: {
         endpointUrl: '',
-        provider: 'SVAN',
+        provider: 'SVCAN',
         requestEnvelopeXml: '',
       },
       failureReason,
