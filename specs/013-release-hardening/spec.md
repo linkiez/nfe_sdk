@@ -166,7 +166,7 @@ ajustes no SDK.
 
 ### Knowledge Sources & Provenance
 
-- **KS-001**: Fase 8 do ROADMAP (`docs/ROADMAP.md`) — define as entregas de
+- **KS-001**: Fase 8 do ROADMAP (`docs/roadmap/ROADMAP.md`) — define as entregas de
   endurecimento para release e os critérios de saída desta fase.
 - **KS-002**: `src/public-contract.ts` — fonte canônica da superfície pública atual
   do SDK, base para a matriz de cobertura.

@@ -12,11 +12,11 @@ Estabelecer uma regra unica para decidir quando um tema do acervo oficial perman
 
 ## Gatilhos minimos por classe
 
-| Classe alvo | Gatilhos minimos exigidos |
-| --- | --- |
-| `Documentacao` | Fonte oficial identificada, impacto classificado em um `RTM-*`, e fronteira inicial explicitada |
-| `Tooling` | Necessidade recorrente do integrador, sem exigir contrato fiscal publico novo, e criterio de uso operacional verificavel |
-| `Runtime` | Regra oficial estavel, boundary funcional claro, entrada/saida modelaveis, risco estadual conhecido e comportamento testavel |
+| Classe alvo    | Gatilhos minimos exigidos                                                                                                    |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `Documentacao` | Fonte oficial identificada, impacto classificado em um `RTM-*`, e fronteira inicial explicitada                              |
+| `Tooling`      | Necessidade recorrente do integrador, sem exigir contrato fiscal publico novo, e criterio de uso operacional verificavel     |
+| `Runtime`      | Regra oficial estavel, boundary funcional claro, entrada/saida modelaveis, risco estadual conhecido e comportamento testavel |
 
 ## Quando promover de `documentacao` para `tooling`
 
@@ -64,14 +64,14 @@ Exemplos tipicos:
 
 ## Regra especifica por area
 
-| Area | Promocao preferencial |
-| --- | --- |
-| `RTM-003` assinatura e certificados | `runtime` apenas quando trust chain, transporte e calculos adiados estiverem explicitamente fechados |
-| `RTM-005` contingencia e deltas `NFC-e` | `documentacao` ou `tooling` enquanto a variacao por `UF` superar o nucleo comum |
-| `RTM-007` `DANFE`, `QR Code`, `CSC` | `exemplo` ou `tooling` antes de qualquer promocao para `runtime` |
-| `RTM-010` tabelas externas | `tooling` por padrao; promover para `runtime` apenas se algum contrato precisar consumir esses dados diretamente |
-| `RTM-011` complementos estaduais por `UF` | promover para `runtime` somente quando a `UF` tiver evidencia operacional consistente e boundary fechada |
-| `RTM-016` e `RTM-019` familias paralelas e emergentes | manter em `documentacao` ate existir justificativa arquitetural e slice minima testavel |
+| Area                                                  | Promocao preferencial                                                                                            |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `RTM-003` assinatura e certificados                   | `runtime` apenas quando trust chain, transporte e calculos adiados estiverem explicitamente fechados             |
+| `RTM-005` contingencia e deltas `NFC-e`               | `documentacao` ou `tooling` enquanto a variacao por `UF` superar o nucleo comum                                  |
+| `RTM-007` `DANFE`, `QR Code`, `CSC`                   | `exemplo` ou `tooling` antes de qualquer promocao para `runtime`                                                 |
+| `RTM-010` tabelas externas                            | `tooling` por padrao; promover para `runtime` apenas se algum contrato precisar consumir esses dados diretamente |
+| `RTM-011` complementos estaduais por `UF`             | promover para `runtime` somente quando a `UF` tiver evidencia operacional consistente e boundary fechada         |
+| `RTM-016` e `RTM-019` familias paralelas e emergentes | manter em `documentacao` ate existir justificativa arquitetural e slice minima testavel                          |
 
 ## Checklist rapido de decisao
 

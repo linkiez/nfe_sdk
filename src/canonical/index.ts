@@ -13,6 +13,7 @@ export { createSigningContext } from './facade/create-signing-context.js';
 export { distributeRecipientDFe } from './facade/distribute-recipient-dfe.js';
 export { executeNFeSoapService } from './facade/execute-nfe-soap-service.js';
 export { manifestRecipientOperation } from './facade/manifest-recipient-operation.js';
+export { prepareNFCeSigningPrerequisites } from './facade/prepare-nfce-signing-prerequisites.js';
 export { queryContributorRegistration } from './facade/query-contributor-registration.js';
 export { queryNFeByAccessKey } from './facade/query-nfe-by-key.js';
 export { queryNFeByNSU } from './facade/query-nfe-by-nsu.js';
@@ -21,6 +22,7 @@ export { queryNFeServiceStatus } from './facade/query-nfe-service-status.js';
 export { resolveNFeServiceEndpoint } from './facade/resolve-nfe-service-endpoint.js';
 export { serializeEnviNFeXml } from './facade/serialize-envi-nfe-xml.js';
 export { serializeNFeXml } from './facade/serialize-nfe-xml.js';
+export { signEventXml } from './facade/sign-event-xml.js';
 export { signNFeXml } from './facade/sign-nfe-xml.js';
 export { submitGenericEvents } from './facade/submit-generic-events.js';
 export { submitICMSDeferralEvent } from './facade/submit-icms-deferral-event.js';
@@ -41,7 +43,12 @@ export type {
   NFCeAuthorizationDocumentInput,
   NFCeAuthorizationOutcome,
   NFCeAuthorizationRequest,
+  NFCeCSCInput,
   NFCeCoverageBoundary,
+  NFCeSigningPrerequisiteDependency,
+  NFCeSigningPrerequisitesInput,
+  NFCeSigningPrerequisitesReceivedInputs,
+  NFCeSigningPrerequisitesResult,
   NFCeValidationFailure,
 } from './nfce/contracts.js';
 
@@ -118,6 +125,7 @@ export type {
   CreateSigningContextInput,
   FilePathSigningSourceInput,
   InMemorySigningSourceInput,
+  SignEventXmlInput,
   SignatureVerificationReport,
   SigningContext,
   SigningSourceInput,

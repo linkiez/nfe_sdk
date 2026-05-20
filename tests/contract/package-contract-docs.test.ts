@@ -20,12 +20,15 @@ describe('package contract documentation', () => {
       'authorizeNFe',
       'cancelNFe',
       'changeManifestRecipientOperation',
+      'computeHashCSRT',
+      'computeNFeAccessKey',
       'createEnviNFe',
       'createNFe',
       'createSigningContext',
       'distributeRecipientDFe',
       'executeNFeSoapService',
       'manifestRecipientOperation',
+      'prepareNFCeSigningPrerequisites',
       'publicPackageContract',
       'queryContributorRegistration',
       'queryNFeByAccessKey',
@@ -33,9 +36,13 @@ describe('package contract documentation', () => {
       'queryNFeDocumentSituation',
       'queryNFeServiceStatus',
       'resolveNFeServiceEndpoint',
+      'resolveUFAutorizador',
+      'retrieveNFeAuthorizationBatch',
       'serializeEnviNFeXml',
       'serializeNFeXml',
+      'signEventXml',
       'signNFeXml',
+      'submitEPECEvent',
       'submitGenericEvents',
       'submitICMSDeferralEvent',
       'submitNFeCorrectionLetter',
@@ -49,15 +56,22 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`createNFe`');
     expect(readme).toContain('`createEnviNFe`');
     expect(readme).toContain('`createSigningContext`');
+    expect(readme).toContain('`computeNFeAccessKey`');
+    expect(readme).toContain('`computeHashCSRT`');
     expect(readme).toContain('`distributeRecipientDFe`');
     expect(readme).toContain('`executeNFeSoapService`');
     expect(readme).toContain('`manifestRecipientOperation`');
+    expect(readme).toContain('`prepareNFCeSigningPrerequisites`');
     expect(readme).toContain('`queryNFeDocumentSituation`');
     expect(readme).toContain('`queryNFeServiceStatus`');
+    expect(readme).toContain('`resolveUFAutorizador`');
+    expect(readme).toContain('`retrieveNFeAuthorizationBatch`');
     expect(readme).toContain('`serializeNFeXml`');
     expect(readme).toContain('`serializeEnviNFeXml`');
     expect(readme).toContain('`resolveNFeServiceEndpoint`');
+    expect(readme).toContain('`signEventXml`');
     expect(readme).toContain('`signNFeXml`');
+    expect(readme).toContain('`submitEPECEvent`');
     expect(readme).toContain('`submitGenericEvents`');
     expect(readme).toContain('`submitNFeCorrectionLetter`');
     expect(readme).toContain('`submitNFeInutilization`');

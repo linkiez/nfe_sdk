@@ -8,6 +8,7 @@ export { createSigningContext } from './create-signing-context.js';
 export { distributeRecipientDFe } from './distribute-recipient-dfe.js';
 export { executeNFeSoapService } from './execute-nfe-soap-service.js';
 export { manifestRecipientOperation } from './manifest-recipient-operation.js';
+export { prepareNFCeSigningPrerequisites } from './prepare-nfce-signing-prerequisites.js';
 export { queryContributorRegistration } from './query-contributor-registration.js';
 export { queryNFeByAccessKey } from './query-nfe-by-key.js';
 export { queryNFeByNSU } from './query-nfe-by-nsu.js';
@@ -15,6 +16,7 @@ export { queryNFeDocumentSituation } from './query-nfe-document-situation.js';
 export { queryNFeServiceStatus } from './query-nfe-service-status.js';
 export { resolveNFeServiceEndpoint } from './resolve-nfe-service-endpoint.js';
 export { retrieveNFeAuthorizationBatch } from './retrieve-nfe-authorization-batch.js';
+export { signEventXml } from './sign-event-xml.js';
 export { signNFeXml } from './sign-nfe-xml.js';
 export { submitGenericEvents } from './submit-generic-events.js';
 export { submitICMSDeferralEvent } from './submit-icms-deferral-event.js';
@@ -34,6 +36,14 @@ export type {
 	OperationalMaintenanceRequest,
 	ServiceStatusSnapshot,
 } from '../nfe/index.js';
+
+export type {
+	NFCeCSCInput,
+	NFCeSigningPrerequisiteDependency,
+	NFCeSigningPrerequisitesInput,
+	NFCeSigningPrerequisitesReceivedInputs,
+	NFCeSigningPrerequisitesResult,
+} from '../nfce/contracts.js';
 
 export type {
 	GenericEventBatchOutcome,

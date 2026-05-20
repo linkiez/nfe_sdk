@@ -339,7 +339,7 @@ checklist.
 
 ### Implementation for User Story 8
 
-- [X] T047 [P] [US8] Update the recipient-coverage documentation, later converged into the canonical roadmap annexes — add
+- [X] T047 [P] [US8] Update the recipient-coverage documentation, now reflected in the canonical roadmap annexes — add
       mandatory manifestation deadline table per MOC §3.2.3: Ciência da Operação (90 days,
       optional but recommended), Confirmação/Desconhecimento/Operação Não Realizada (180 days
       mandatory when applicable)

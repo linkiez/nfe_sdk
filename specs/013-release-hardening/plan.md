@@ -48,7 +48,7 @@ external credentials are not executed in CI
 coverage matrix document, 1 continuity runbook, 3+ example scripts, targeted updates to
 `package.json`, `README.md`, and `docs/index.md`
 
-**Knowledge Sources**: `docs/ROADMAP.md` Phase 8 (primary roadmap scope),
+**Knowledge Sources**: `docs/roadmap/ROADMAP.md` Phase 8 (primary roadmap scope),
 `src/public-contract.ts` and `package.json` (public package surface),
 `docs/capacidades-sdk.md` and domain dossiers (documentation vocabulary),
 `docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/manual_emissor_nfe.md`

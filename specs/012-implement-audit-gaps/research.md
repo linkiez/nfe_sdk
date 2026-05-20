@@ -198,7 +198,7 @@ The function validates the proposed transition and submits the change event via
 
 ## R14 — GAP-016: Manifestation Deadlines Documentation
 
-**Decision**: Update the recipient-coverage documentation, later converged into the canonical roadmap annexes, with a deadline table
+**Decision**: Update the recipient-coverage documentation, now reflected in the canonical roadmap annexes, with a deadline table
 per event type per MOC §3.2.3. Editorial change only — no code.
 
 **Rationale**: MOC §3.2.3 deadlines: Ciência da Operação — 90 days from NF-e

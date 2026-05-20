@@ -2,6 +2,8 @@ import type {
   CanonicalNFeDocument,
   CanonicalNFeInput,
 } from '../shared/contracts.js';
+import type { AccessKeyFields } from '../nfe/access-key.js';
+import type { HashCSRTInput } from '../nfe/hash-csrt.js';
 import type { SigningContext } from '../signing/contracts.js';
 import type { TransportOutcome } from '../transport/contracts.js';
 import type { RequestExecutor } from '../transport/request-executor.js';
@@ -28,6 +30,12 @@ const NFCE_DEFERRED_CAPABILITIES = [
   'offline-contingency',
 ] as const;
 
+const NFCE_SIGNING_PREREQUISITE_DEPENDENCIES = [
+  'authorization',
+  'qr-code',
+  'uf-rollout',
+] as const;
+
 /**
  * Public single-document input accepted by the NFC-e authorization facade.
  */
@@ -48,6 +56,65 @@ export type NFCeAuthorizationClassification =
  * Explicit operational capabilities that remain outside the first NFC-e slice.
  */
 export type NFCeDeferredCapability = (typeof NFCE_DEFERRED_CAPABILITIES)[number];
+
+/**
+ * Deferred downstream dependencies that remain outside the signing-prerequisite slice.
+ */
+export type NFCeSigningPrerequisiteDependency =
+  (typeof NFCE_SIGNING_PREREQUISITE_DEPENDENCIES)[number];
+
+/**
+ * CSC fields accepted for NFC-e prerequisite preparation.
+ */
+export interface NFCeCSCInput {
+  /** Published CSC identifier associated with the token. */
+  readonly cscId: string;
+  /** Raw CSC token kept only as a validated prerequisite input. */
+  readonly cscToken: string;
+}
+
+/**
+ * Request accepted by the NFC-e signing-prerequisite helper.
+ */
+export interface NFCeSigningPrerequisitesInput {
+  /** Canonical fields used to derive chNFe and cDV. */
+  readonly accessKeyFields: AccessKeyFields;
+  /** CSC material required by later QR Code stages. */
+  readonly csc: NFCeCSCInput;
+  /** CSRT fields used to derive the hashCSRT prerequisite. */
+  readonly hashCsrtInput: HashCSRTInput;
+}
+
+/**
+ * Echoed metadata that confirms which prerequisite inputs were present.
+ */
+export interface NFCeSigningPrerequisitesReceivedInputs {
+  /** CSC identifier provided by the integrator. */
+  readonly cscId: string;
+  /** Indicates whether a non-empty CSC token was provided. */
+  readonly hasCscToken: boolean;
+  /** Indicates whether hashCSRT input was present in the request. */
+  readonly hasHashCsrtInput: boolean;
+  /** Document model associated with the prepared key. */
+  readonly model: string;
+}
+
+/**
+ * Structured prerequisite bundle returned by the NFC-e helper.
+ */
+export interface NFCeSigningPrerequisitesResult {
+  /** Full 44-digit NFC-e access key. */
+  readonly accessKey: string;
+  /** Access-key modulo-11 check digit. */
+  readonly checkDigit: number;
+  /** Derived hashCSRT value for later XML population. */
+  readonly hashCsrt: string;
+  /** Echoed metadata showing which prerequisite inputs were present. */
+  readonly receivedInputs: NFCeSigningPrerequisitesReceivedInputs;
+  /** Later stages that still remain outside this preparatory slice. */
+  readonly deferredOperationalDependencies:
+    readonly NFCeSigningPrerequisiteDependency[];
+}
 
 /**
  * Structured local validation failure emitted by the NFC-e facade.
@@ -136,4 +203,14 @@ export function getNFCeAuthorizationClassifications():
  */
 export function getNFCeDeferredCapabilities(): readonly NFCeDeferredCapability[] {
   return NFCE_DEFERRED_CAPABILITIES;
+}
+
+/**
+ * Returns the deferred downstream dependencies that remain outside the prerequisite helper.
+ *
+ * @returns Read-only dependency identifiers published by this slice.
+ */
+export function getNFCeSigningPrerequisiteDependencies():
+  readonly NFCeSigningPrerequisiteDependency[] {
+  return NFCE_SIGNING_PREREQUISITE_DEPENDENCIES;
 }

@@ -9,8 +9,8 @@ Este conjunto documental consolida referencias oficiais e complementares necessa
 1. Comecar pelo [catalogo geral de capacidades](./capacidades-sdk.md) para entender cobertura, estado e lacunas sem entrar ainda em detalhe tematico.
 2. Entrar em [topicos oficiais e destino no roadmap](./roadmap/topicos-oficiais.md), [registro de documentos vigentes](./roadmap/portal-documentos-vigentes.md) ou [matriz de UFs e ambientes](./roadmap/ufs-ambientes.md) quando houver necessidade de aprofundamento tematico.
 3. Consultar a [matriz de cobertura do SDK](./roadmap/coverage-matrix.md) para conferir o estado do contrato publicado e das lacunas operacionais visiveis.
-4. Consultar primeiro o [roadmap de implantacao](./ROADMAP.md), que agora concentra fases, temas, estados, ambientes e mudancas recentes em um unico artefato canonico.
-5. Tratar o [roadmap de implantacao](./ROADMAP.md) como fonte unica de planejamento, inclusive para UFs, ambientes e mudancas recentes.
+4. Consultar primeiro o [roadmap de implantacao](./roadmap/ROADMAP.md), que agora concentra fases, temas, estados, ambientes e mudancas recentes em um unico artefato canonico.
+5. Tratar o [roadmap de implantacao](./roadmap/ROADMAP.md) como fonte unica de planejamento, inclusive para UFs, ambientes e mudancas recentes.
 6. Descer para [proximas iteracoes recomendadas](./roadmap/proximas-iteracoes-recomendadas.md), [registro de fontes](./_meta/source-registry.md) e [documentos oficiais convertidos](./documentos-oficiais-portal-nfe.md) quando for necessario auditar proveniencia, base normativa e cobertura consolidada.
 
 ## Estrutura hierarquica
@@ -29,7 +29,7 @@ Este conjunto documental consolida referencias oficiais e complementares necessa
 
 ### Camada 3 - Planejamento e impacto
 
-- [Roadmap de implantacao do SDK](./ROADMAP.md)
+- [Roadmap de implantacao do SDK](./roadmap/ROADMAP.md)
 - [Proximas iteracoes recomendadas](./roadmap/proximas-iteracoes-recomendadas.md)
 
 ### Camada 4 - Fontes e acervo
@@ -68,7 +68,7 @@ Este conjunto documental consolida referencias oficiais e complementares necessa
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
 | Adocao       | [Capacidades do SDK](./capacidades-sdk.md), [Matriz de cobertura](./roadmap/coverage-matrix.md) | Resumir cobertura, impacto, evidencias e lacunas do projeto |
 | Dominio      | [Topicos oficiais](./roadmap/topicos-oficiais.md), [Documentos vigentes](./roadmap/portal-documentos-vigentes.md), [UFs e ambientes](./roadmap/ufs-ambientes.md) | Aprofundar requisitos e recortes por tema, documento e estado |
-| Planejamento | [Roadmap](./ROADMAP.md), [Proximas iteracoes](./roadmap/proximas-iteracoes-recomendadas.md) | Organizar backlog canonico, cobertura por UF, ambientes, deltas recentes e continuidade |
+| Planejamento | [Roadmap](./roadmap/ROADMAP.md), [Proximas iteracoes](./roadmap/proximas-iteracoes-recomendadas.md) | Organizar backlog canonico, cobertura por UF, ambientes, deltas recentes e continuidade |
 | Auditoria    | [Registro de fontes](./_meta/source-registry.md), [Documentos oficiais convertidos](./documentos-oficiais-portal-nfe.md)                                              | Validar origem, consolidacao e rastreabilidade              |
 
 ## Pesquisa atual
@@ -85,7 +85,7 @@ Este conjunto documental consolida referencias oficiais e complementares necessa
 - Para decidir adocao do pacote com a superficie publicada atual: abrir tambem a [Matriz de cobertura do SDK](./roadmap/coverage-matrix.md).
 - Para obter cobertura oficial transversal por fonte convertida: usar [Topicos oficiais e destino no roadmap](./roadmap/topicos-oficiais.md).
 - Para aprofundar documentos vigentes do portal nacional: usar [Registro de documentos vigentes](./roadmap/portal-documentos-vigentes.md).
-- Para variacoes por UF e ambientes: comecar pelo [Roadmap](./ROADMAP.md) e aprofundar em [UFs e ambientes observaveis](./roadmap/ufs-ambientes.md).
+- Para variacoes por UF e ambientes: comecar pelo [Roadmap](./roadmap/ROADMAP.md) e aprofundar em [UFs e ambientes observaveis](./roadmap/ufs-ambientes.md).
 - Para decidir sequencia de trabalho e fechamento documental: seguir para [Proximas iteracoes recomendadas](./roadmap/proximas-iteracoes-recomendadas.md).
 - Para validar evidencia e proveniencia: seguir para [Registro de fontes](./_meta/source-registry.md).
 

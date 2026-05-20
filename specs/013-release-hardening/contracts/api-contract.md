@@ -67,7 +67,7 @@ slice. It does not change the public runtime API of `nfe-sdk`.
 | `Surface`           | Exported root function/type or explicitly documented roadmap gap. |
 | `Kind`              | `function`, `type`, `documented-gap`, or `auxiliary-surface`.     |
 | `Status`            | `stable`, `beta`, `backlog`, or `fora-do-escopo`.                 |
-| `Roadmap Phase`     | Phase from `docs/ROADMAP.md`.                                     |
+| `Roadmap Phase`     | Phase from `docs/roadmap/ROADMAP.md`.                             |
 | `Primary Reference` | Main document or contract reference.                              |
 | `Evidence`          | Test or documentation evidence supporting the status.             |
 | `Notes`             | Short reasoning for boundary or limitation.                       |

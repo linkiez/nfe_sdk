@@ -38,6 +38,19 @@ export class SignNFeXmlError extends SigningError {
 }
 
 /**
+ * Error raised when the SDK cannot sign the provided event XML.
+ */
+export class SignEventXmlError extends SigningError {
+  /**
+   * @param message - Failure reason for the event XML signing step.
+   */
+  public constructor(message: string) {
+    super(message);
+    this.name = 'SignEventXmlError';
+  }
+}
+
+/**
  * Error raised when local verification of the produced signature fails.
  */
 export class SignatureVerificationError extends SigningError {

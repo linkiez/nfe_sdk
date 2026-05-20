@@ -65,6 +65,14 @@ export interface SignNFeXmlInput {
 }
 
 /**
+ * Input required to sign a supported unsigned event XML document.
+ */
+export interface SignEventXmlInput {
+  signingContext: SigningContext;
+  unsignedXml: string;
+}
+
+/**
  * Report produced by local signature verification before returning signed XML.
  */
 export interface SignatureVerificationReport {

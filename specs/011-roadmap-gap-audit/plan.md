@@ -12,7 +12,7 @@ Entregar uma auditoria documental rastreavel que compare formalmente as specs 00
 
 **Language/Version**: Markdown para artefatos de planejamento; contexto do repositorio em TypeScript 6.x sobre Node.js >= 18.18
 
-**Primary Dependencies**: Speckit templates e scripts locais, `package.json` do pacote ESM, corpus oficial internalizado sob `docs/_sources/markdown/official/`, registro de fontes em `docs/_meta/source-registry.md`, roteiro editorial em `docs/ROADMAP.md`
+**Primary Dependencies**: Speckit templates e scripts locais, `package.json` do pacote ESM, corpus oficial internalizado sob `docs/_sources/markdown/official/`, registro de fontes em `docs/_meta/source-registry.md`, roteiro editorial em `docs/roadmap/ROADMAP.md`
 
 **Storage**: N/A em runtime; artefatos versionados em `specs/011-roadmap-gap-audit/`, com leitura de apoio em `docs/` e specs anteriores
 
@@ -28,7 +28,7 @@ Entregar uma auditoria documental rastreavel que compare formalmente as specs 00
 
 **Scale/Scope**: Oito specs auditadas formalmente, duas specs usadas como contexto auxiliar, tres artefatos finais, um contrato documental interno, e cruzamento com o corpus oficial nacional e estadual ja internalizado
 
-**Knowledge Sources**: Fontes primarias: `specs/001-research-sefaz-docs/spec.md`, `specs/002-project-features/spec.md`, `specs/003-public-package-contract/spec.md`, `specs/004-iniciar-sdk/spec.md`, `specs/005-add-digital-signing/spec.md`, `specs/006-add-soap-transport/spec.md`, `specs/007-nfe-operational-mvp/spec.md`, `specs/008-recipient-dfe-mvp/spec.md`, `docs/ROADMAP.md`, `docs/_meta/source-registry.md`, `docs/documentos-oficiais-portal-nfe.md` e `docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/`; contexto auxiliar: `specs/009-generic-event-mvp/spec.md` e `specs/010-nfce-national-core/spec.md`; gaps de proveniencia remanescentes: conversoes oficiais com falha registradas para CE, SE, RJ e AP, alem de superfícies oficiais com acesso restrito ou cobertura estadual incompleta
+**Knowledge Sources**: Fontes primarias: `specs/001-research-sefaz-docs/spec.md`, `specs/002-project-features/spec.md`, `specs/003-public-package-contract/spec.md`, `specs/004-iniciar-sdk/spec.md`, `specs/005-add-digital-signing/spec.md`, `specs/006-add-soap-transport/spec.md`, `specs/007-nfe-operational-mvp/spec.md`, `specs/008-recipient-dfe-mvp/spec.md`, `docs/roadmap/ROADMAP.md`, `docs/_meta/source-registry.md`, `docs/documentos-oficiais-portal-nfe.md` e `docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/`; contexto auxiliar: `specs/009-generic-event-mvp/spec.md` e `specs/010-nfce-national-core/spec.md`; gaps de proveniencia remanescentes: conversoes oficiais com falha registradas para CE, SE, RJ e AP, alem de superfícies oficiais com acesso restrito ou cobertura estadual incompleta
 
 ## Constitution Check
 
@@ -84,12 +84,13 @@ specs/
 └── 011-roadmap-gap-audit/
 
 docs/
-├── ROADMAP.md
 ├── documentos-oficiais-portal-nfe.md
 ├── _meta/
 │   ├── source-registry.md
 │   ├── official-download-manifest.json
 │   └── official-conversion-manifest.json
+├── roadmap/
+│   └── ROADMAP.md
 └── _sources/
     └── markdown/
         └── official/

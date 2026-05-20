@@ -1,12 +1,14 @@
 export { createSigningContext } from './create-signing-context.js';
 export { getDeferredSigningGaps } from './deferred-signing-gaps.js';
 export { getSigningCoverageBoundary } from './coverage-boundary.js';
+export { signEventXml } from './sign-event-xml.js';
 export { signNFeXml } from './sign-nfe-xml.js';
 
 export type {
   CreateSigningContextInput,
   FilePathSigningSourceInput,
   InMemorySigningSourceInput,
+  SignEventXmlInput,
   SignatureVerificationReport,
   SigningContext,
   SigningSourceInput,

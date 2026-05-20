@@ -9,6 +9,7 @@ Descreve o contrato publico estabilizado no import raiz do pacote.
 - Registrar a superficie documentada do root import.
 - Explicitar exclusoes e notas de compatibilidade.
 - Descrever a ampliacao additive do slice inicial de assinatura digital.
+- Descrever a ampliacao additive do slice de expansao de assinatura para `evento` XML e precondicoes de `NFC-e`.
 - Descrever a ampliacao additive do slice inicial de transporte SOAP.
 - Descrever a ampliacao additive da facade operacional de autorizacao, consultas e manutencoes homologadas.
 - Descrever a ampliacao additive da facade operacional inicial de NFC-e homologada.
@@ -34,6 +35,8 @@ flowchart TD
   B --> F[rootEntrypoint]
   B --> G[documented functional facade]
   B --> H[signing slice boundary]
+  B --> H1[signEventXml]
+  B --> H2[prepareNFCeSigningPrerequisites]
   B --> I[transport slice boundary]
   B --> J[operational authorization boundary]
   B --> K[nfce operational boundary]
@@ -63,6 +66,7 @@ import { publicPackageContract } from 'nfe-sdk';
 - `specs/003-public-package-contract/contracts/public-package-contract.md`
 - `specs/004-iniciar-sdk/contracts/public-functional-facade.md`
 - `specs/005-add-digital-signing/contracts/public-signing-facade.md`
+- `specs/014-expand-signing-coverage/contracts/public-signing-expansion-facade.md`
 - `specs/006-add-soap-transport/contracts/public-soap-transport-facade.md`
 - `specs/007-nfe-operational-mvp/contracts/public-nfe-operational-facade.md`
 - `specs/010-nfce-national-core/contracts/public-nfce-operational-facade.md`

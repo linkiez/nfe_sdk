@@ -12,12 +12,15 @@ import {
   authorizeNFe,
   cancelNFe,
   changeManifestRecipientOperation,
+  computeHashCSRT,
+  computeNFeAccessKey,
   createEnviNFe,
   createNFe,
   createSigningContext,
   distributeRecipientDFe,
   executeNFeSoapService,
   manifestRecipientOperation,
+  prepareNFCeSigningPrerequisites,
   publicPackageContract,
   queryContributorRegistration,
   queryNFeByAccessKey,
@@ -25,9 +28,13 @@ import {
   queryNFeDocumentSituation,
   queryNFeServiceStatus,
   resolveNFeServiceEndpoint,
+  resolveUFAutorizador,
+  retrieveNFeAuthorizationBatch,
   serializeEnviNFeXml,
   serializeNFeXml,
+  signEventXml,
   signNFeXml,
+  submitEPECEvent,
   submitGenericEvents,
   submitNFeCorrectionLetter,
   submitNFeInutilization,
@@ -48,11 +55,23 @@ import {
 
 `createSigningContext` prepara um contexto reutilizavel de assinatura digital a partir de um certificado A1 em arquivo `.pfx` ou em memoria.
 
+`computeNFeAccessKey` calcula `chNFe` e `cDV` a partir dos campos canonicos ja normalizados do documento.
+
+`computeHashCSRT` calcula o `hashCSRT` com base em `CNPJ`, `idCSRT` e `CSRT`, preservando esse passo como helper deterministico de raiz.
+
 `serializeNFeXml` e `serializeEnviNFeXml` produzem XML deterministico para o mesmo recorte inicial.
+
+`signEventXml` assina um `evento` suportado com base no mesmo contexto reutilizavel de assinatura, valida localmente o XMLDSig e falha explicitamente quando o `infEvento Id` ou o payload saem do boundary publicado.
 
 `signNFeXml` recebe um XML nao assinado de `NFe`, aplica XMLDSig, valida localmente a assinatura antes do retorno e devolve o XML assinado correspondente.
 
+`prepareNFCeSigningPrerequisites` prepara `chNFe`, `cDV` e `hashCSRT` para `NFC-e` a partir de insumos estruturados, validando `CSC` e `CSRT` sem apresentar esse passo como autorizacao completa.
+
 `resolveNFeServiceEndpoint` resolve a entrada versionada do catalogo inicial de transporte para `homologation`, `nfe-status-service` e `nfe-authorization` usando os endpoints compartilhados da SVAN publicados no catalogo inicial `2026-05-18-initial-draft`.
+
+`resolveUFAutorizador` determina o autorizador SEFAZ publicado para a UF e o modelo fiscal dentro do recorte atual.
+
+`retrieveNFeAuthorizationBatch` consulta o lote de autorizacao ja enviado e devolve o estado estruturado do processamento assíncrono.
 
 `executeNFeSoapService` monta o envelope SOAP 1.2, escolhe o endpoint homologado suportado, executa a chamada com executor injetado ou default e devolve `TransportOutcome` com classificacao e evidencia minima da troca.
 
@@ -68,6 +87,8 @@ No slice inicial, `TransportOutcome.classification` distingue pelo menos `succes
 
 `submitNFeCorrectionLetter` executa a carta de correcao homologada com resultado estruturado e boundary explicita quando o ambiente solicitado fica fora do escopo publicado.
 
+`submitEPECEvent` publica o fluxo root minimo para emissao em contingencia EPEC dentro do boundary operacional atualmente estabilizado.
+
 `distributeRecipientDFe` executa a distribuicao DFe do lado do destinatario via `distNSU`, em homologacao, com cursor observavel e envelopes estruturados que distinguem resumo, documento completo e outros payloads retornados em `docZip`.
 
 `manifestRecipientOperation` registra um dos quatro eventos basicos de Manifestacao do Destinatario (`210200`, `210210`, `210220` e `210240`) e devolve classificacao operacional, protocolo quando houver e a marca contratual de que o download posterior permanece separado.
@@ -81,6 +102,8 @@ No slice inicial, `TransportOutcome.classification` distingue pelo menos `succes
 No recorte atual, a facade generica rejeita o lote inteiro antes do transporte quando houver mais de 20 itens, qualquer familia fora do escopo publicado ou falha obrigatoria de validacao local, mantendo EPEC, producao e variantes ainda nao estabilizadas fora do contrato.
 
 No recorte atual de NFC-e, `requestedCapabilities` serve apenas para explicitar uma tentativa de uso sobre QR Code, DANFE NFC-e, administracao de CSC, credenciamento automatizado ou contingencia offline. Quando esse campo e informado, a facade responde com `unsupported-scope` antes do transporte.
+
+No recorte atual de expansao de assinatura, trust chain automatizada, aquisicao de certificado, suporte a `A3`, `QR Code`, `DANFE NFC-e` e rollout operacional multi-UF permanecem explicitamente fora do contrato publicado.
 
 ## Exemplo rapido da autorizacao operacional
 
@@ -323,7 +346,7 @@ O smoke validation do tarball deve confirmar que o import raiz continua utilizav
 
 ## CI e onboarding de homologação
 
-O workflow de CI desta fase fica em [.github/workflows/ci.yml](/home/linkiez/Projetos/nfe_sdk/.github/workflows/ci.yml) e executa, em ordem, `build`, `lint`, `typecheck`, `test` e `docs:check` para `pull_request` e pushes na branch padrão do repositório.
+O workflow de CI desta fase fica em [.github/workflows/ci.yml](./.github/workflows/ci.yml) e executa, em ordem, `build`, `lint`, `typecheck`, `test` e `docs:check` para `pull_request` e pushes na branch padrão do repositório.
 
 O cenário manual de verificação continua sendo:
 
@@ -350,7 +373,7 @@ Variáveis esperadas:
 
 ## Geração de schemas
 
-O repositório mantém o pipeline de geração em [tools/generate.ts](/home/linkiez/Projetos/nfe_sdk/tools/generate.ts), usando os XSDs em [xsd](/home/linkiez/Projetos/nfe_sdk/xsd) para atualizar a árvore gerada em [src](/home/linkiez/Projetos/nfe_sdk/src).
+O repositório mantém o pipeline de geração em [tools/generate.ts](./tools/generate.ts), usando os XSDs em `xsd/` para atualizar a árvore gerada em `src/`.
 
 Os identificadores gerados seguem `PascalCase` com prefixos por categoria:
 
@@ -361,11 +384,11 @@ Os identificadores gerados seguem `PascalCase` com prefixos por categoria:
 
 ## Documentação de apoio
 
-- [docs/capacidades-sdk.md](/home/linkiez/Projetos/nfe_sdk/docs/capacidades-sdk.md): catalogo documental de capacidades e lacunas.
-- [docs/roadmap/coverage-matrix.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/coverage-matrix.md): matriz viva da superficie publicada, status atual e lacunas visiveis do roadmap.
-- [docs/index.md](/home/linkiez/Projetos/nfe_sdk/docs/index.md): indice documental consolidado.
-- [docs/roadmap/proximas-iteracoes-recomendadas.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/proximas-iteracoes-recomendadas.md): trilha atual de continuidade, fechamento e proximas iteracoes recomendadas.
-- [specs/003-public-package-contract/contracts/public-package-contract.md](/home/linkiez/Projetos/nfe_sdk/specs/003-public-package-contract/contracts/public-package-contract.md): contrato de referência desta fase.
+- [docs/capacidades-sdk.md](./docs/capacidades-sdk.md): catalogo documental de capacidades e lacunas.
+- [docs/roadmap/coverage-matrix.md](./docs/roadmap/coverage-matrix.md): matriz viva da superficie publicada, status atual e lacunas visiveis do roadmap.
+- [docs/index.md](./docs/index.md): indice documental consolidado.
+- [docs/roadmap/proximas-iteracoes-recomendadas.md](./docs/roadmap/proximas-iteracoes-recomendadas.md): trilha atual de continuidade, fechamento e proximas iteracoes recomendadas.
+- [specs/003-public-package-contract/contracts/public-package-contract.md](./specs/003-public-package-contract/contracts/public-package-contract.md): contrato de referência desta fase.
 
 ## Diretrizes de compatibilidade
 

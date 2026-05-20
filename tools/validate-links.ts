@@ -12,7 +12,7 @@ export const LINK_VALIDATION_TARGETS = {
   comprehensive: [
     'README.md',
     'docs/index.md',
-    'docs/ROADMAP.md',
+    'docs/roadmap/ROADMAP.md',
     'docs/capacidades-sdk.md',
     'docs/documentos-oficiais-portal-nfe.md',
     'docs/_meta/source-registry.md',
@@ -218,6 +218,10 @@ async function targetExists(targetPath: string): Promise<boolean> {
   const targetStat = await getPathStat(targetPath);
 
   if (targetStat) {
+    if (targetStat.isDirectory()) {
+      return pathExists(resolve(targetPath, MARKDOWN_INDEX_FILE));
+    }
+
     return true;
   }
 

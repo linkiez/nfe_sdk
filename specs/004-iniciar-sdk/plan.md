@@ -28,7 +28,7 @@ Inaugurar a primeira camada funcional do SDK acima da arvore gerada, mantendo o 
 
 **Scale/Scope**: Slice inicial restrito a `NFe` e `enviNFe` da familia `PL_010c_NT2022_002v1.30`, com normalizacao de `ambiente`, `versao` e identificadores iniciais de lote/documento, facade funcional no import raiz, serializacao XML deterministica e fixtures de regressao estrutural
 
-**Knowledge Sources**: Fontes primarias: `docs/ROADMAP.md`, `xsd/PL_010c_NT2022_002v1.30/nfe_v4.00.xsd`, `xsd/PL_010c_NT2022_002v1.30/leiauteNFe_v4.00.xsd`, `src/classes/PL_010c_NT2022_002v1.30/CPl010CNt2022002V130LeiauteNFeV400EnviNFe.ts`, `src/interfaces/PL_010c_NT2022_002v1.30/IPl010CNt2022002V130LeiauteNFeV400EnviNFe.ts`, `package.json`, `src/index.ts`, `src/public-contract.ts`, `specs/004-iniciar-sdk/spec.md`, `.specify/memory/constitution.md`; fontes secundarias: nenhuma necessaria nesta fase; lacunas de proveniencia: a validacao XSD automatizada completa e a chave de acesso completa ficam explicitamente adiadas para backlog posterior
+**Knowledge Sources**: Fontes primarias: `docs/roadmap/ROADMAP.md`, `xsd/PL_010c_NT2022_002v1.30/nfe_v4.00.xsd`, `xsd/PL_010c_NT2022_002v1.30/leiauteNFe_v4.00.xsd`, `src/classes/PL_010c_NT2022_002v1.30/CPl010CNt2022002V130LeiauteNFeV400EnviNFe.ts`, `src/interfaces/PL_010c_NT2022_002v1.30/IPl010CNt2022002V130LeiauteNFeV400EnviNFe.ts`, `package.json`, `src/index.ts`, `src/public-contract.ts`, `specs/004-iniciar-sdk/spec.md`, `.specify/memory/constitution.md`; fontes secundarias: nenhuma necessaria nesta fase; lacunas de proveniencia: a validacao XSD automatizada completa e a chave de acesso completa ficam explicitamente adiadas para backlog posterior
 
 ## Constitution Check
 

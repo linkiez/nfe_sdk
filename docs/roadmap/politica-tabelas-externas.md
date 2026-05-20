@@ -19,15 +19,15 @@ Traduzir `RTM-010` em uma politica operacional unica para ingestao, revisao, ver
 
 ## Fontes prioritarias
 
-| Grupo | Fonte oficial primaria | Cadence minima |
-| --- | --- | --- |
-| `CBS` e `IBS` | Informes tecnicos vigentes e tabelas publicadas em `Diversos` | Revisao a cada publicacao ou troca de versao |
-| Meios de pagamento | `IT 2026.001`, `IT 2024.002` e tabela vigente | Revisao a cada nova `IT` ou tabela republicada |
-| `NCM/uTrib` | `IT 2024.001` e tabela vigente no portal | Revisao por versao vigente e por data de entrada em vigor |
-| `FCP` por `UF` | Tabela `FCP` vigente | Revisao a cada atualizacao oficial |
-| Municipios por `UF` | `IT 2025.001` e tabela vigente | Revisao a cada nova tabela nacional |
-| `ANP` e dados setoriais | `IT 2023.001` e tabela vigente | Revisao a cada atualizacao setorial |
-| `CFOP` e tabelas correlatas | `IT 2023.002` e correlatas em `Diversos` | Revisao a cada correcao oficial |
+| Grupo                       | Fonte oficial primaria                                        | Cadence minima                                            |
+| --------------------------- | ------------------------------------------------------------- | --------------------------------------------------------- |
+| `CBS` e `IBS`               | Informes tecnicos vigentes e tabelas publicadas em `Diversos` | Revisao a cada publicacao ou troca de versao              |
+| Meios de pagamento          | `IT 2026.001`, `IT 2024.002` e tabela vigente                 | Revisao a cada nova `IT` ou tabela republicada            |
+| `NCM/uTrib`                 | `IT 2024.001` e tabela vigente no portal                      | Revisao por versao vigente e por data de entrada em vigor |
+| `FCP` por `UF`              | Tabela `FCP` vigente                                          | Revisao a cada atualizacao oficial                        |
+| Municipios por `UF`         | `IT 2025.001` e tabela vigente                                | Revisao a cada nova tabela nacional                       |
+| `ANP` e dados setoriais     | `IT 2023.001` e tabela vigente                                | Revisao a cada atualizacao setorial                       |
+| `CFOP` e tabelas correlatas | `IT 2023.002` e correlatas em `Diversos`                      | Revisao a cada correcao oficial                           |
 
 ## Ciclo operacional recomendado
 
@@ -39,12 +39,12 @@ Traduzir `RTM-010` em uma politica operacional unica para ingestao, revisao, ver
 
 ## Regras de versionamento
 
-| Situacao | Regra |
-| --- | --- |
+| Situacao                                       | Regra                                                                        |
+| ---------------------------------------------- | ---------------------------------------------------------------------------- |
 | Nova versao substitui integralmente a anterior | A nova versao vira baseline; a anterior permanece apenas em trilha historica |
-| Nova tabela sem revogar claramente a anterior | Manter ambas documentadas ate confirmacao de vigencia efetiva |
-| Tabela com data futura de entrada em vigor | Registrar publicacao e vigencia como campos distintos |
-| Delta estadual sem consolidacao nacional | Manter como documentacao ou `tooling`, nunca como `runtime` automatico |
+| Nova tabela sem revogar claramente a anterior  | Manter ambas documentadas ate confirmacao de vigencia efetiva                |
+| Tabela com data futura de entrada em vigor     | Registrar publicacao e vigencia como campos distintos                        |
+| Delta estadual sem consolidacao nacional       | Manter como documentacao ou `tooling`, nunca como `runtime` automatico       |
 
 ## Promocao para runtime
 

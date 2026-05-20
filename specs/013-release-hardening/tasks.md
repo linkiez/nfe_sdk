@@ -25,7 +25,7 @@
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
 - [x] T004 Inventory the documented root surface and evidence sources from /home/linkiez/Projetos/nfe_sdk/src/public-contract.ts, /home/linkiez/Projetos/nfe_sdk/tests/contract/, /home/linkiez/Projetos/nfe_sdk/tests/integration/, and /home/linkiez/Projetos/nfe_sdk/tests/unit/
-- [x] T005 [P] Define stable/beta/backlog/fora-do-escopo classification rules and roadmap-phase mapping for /home/linkiez/Projetos/nfe_sdk/docs/roadmap/coverage-matrix.md using /home/linkiez/Projetos/nfe_sdk/docs/ROADMAP.md and /home/linkiez/Projetos/nfe_sdk/docs/capacidades-sdk.md
+- [x] T005 [P] Define stable/beta/backlog/fora-do-escopo classification rules and roadmap-phase mapping for /home/linkiez/Projetos/nfe_sdk/docs/roadmap/coverage-matrix.md using /home/linkiez/Projetos/nfe_sdk/docs/roadmap/ROADMAP.md and /home/linkiez/Projetos/nfe_sdk/docs/capacidades-sdk.md
 - [x] T006 [P] Establish built-package onboarding conventions for /home/linkiez/Projetos/nfe_sdk/README.md and /home/linkiez/Projetos/nfe_sdk/docs/index.md so examples consume the compiled root import `nfe-sdk`
 
 **Checkpoint**: Foundation ready. User stories can now proceed independently.

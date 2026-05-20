@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<evento versao="1.00" xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infEvento Id="ID1101103516051234567800012355001000000001100000001101">
+    <cOrgao>91</cOrgao>
+    <tpAmb>2</tpAmb>
+    <CNPJ>12345678000123</CNPJ>
+    <chNFe>35160512345678000123550010000000011000000011</chNFe>
+    <dhEvento>2026-05-20T10:00:00-03:00</dhEvento>
+    <tpEvento>110110</tpEvento>
+    <nSeqEvento>1</nSeqEvento>
+    <verEvento>1.00</verEvento>
+    <detEvento versao="1.00">
+      <descEvento>Carta de Correcao</descEvento>
+      <xCorrecao>Correcao de teste para assinatura local.</xCorrecao>
+      <xCondUso>A Carta de Correcao e disciplinada pelo paragrafo primeiro-A do artigo 7 do Convenio S/N, de 15 de dezembro de 1970 e pode ser utilizada para regularizacao de erro ocorrido na emissao de documento fiscal, desde que o erro nao esteja relacionado com as variaveis que determinam o valor do imposto, nao altere a identidade do emitente ou do destinatario e nao implique mudanca da data de emissao ou de saida.</xCondUso>
+    </detEvento>
+  </infEvento>
+</evento>

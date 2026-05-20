@@ -52,9 +52,9 @@ description: "Task list for the project feature catalog"
 ### Implementation for User Story 1
 
 - [X] T008 [P] [US1] Populate the project-wide feature overview and shared package capabilities in docs/capacidades-sdk.md
-- [X] T009 [P] [US1] Align NFe capability descriptions and canonical-catalog terminology, later consolidated into docs/capacidades-sdk.md and docs/roadmap/coverage-matrix.md
-- [X] T010 [P] [US1] Align NFC-e capability descriptions and matrix-linkage wording, later consolidated into docs/capacidades-sdk.md and docs/roadmap/ufs-ambientes.md
-- [X] T011 [P] [US1] Align Manifestacao do Destinatario capability descriptions and restricted-access wording, later consolidated into docs/capacidades-sdk.md and docs/roadmap/rtm-cobertura-oficial.md
+- [X] T009 [P] [US1] Align NFe capability descriptions and canonical-catalog terminology, now reflected in docs/capacidades-sdk.md and docs/roadmap/coverage-matrix.md
+- [X] T010 [P] [US1] Align NFC-e capability descriptions and matrix-linkage wording, now reflected in docs/capacidades-sdk.md and docs/roadmap/ufs-ambientes.md
+- [X] T011 [P] [US1] Align Manifestacao do Destinatario capability descriptions and restricted-access wording, now reflected in docs/capacidades-sdk.md and docs/roadmap/rtm-cobertura-oficial.md
 - [X] T012 [US1] Publish the catalog link and adoption guidance in docs/index.md without regressing existing NFe, NFC-e, Manifestacao do Destinatario, and NFC-e UF links
 
 **Checkpoint**: User Story 1 should provide a readable, repository-level capability map for SDK consumers.
@@ -71,9 +71,9 @@ description: "Task list for the project feature catalog"
 
 - [X] T013 [P] [US2] Classify catalog entries with status, evidence, and explicit gap fields in docs/capacidades-sdk.md
 - [X] T014 [P] [US2] Add catalog cross-references and evidence-backlink coverage in docs/_meta/source-registry.md
-- [X] T015 [P] [US2] Normalize NFC-e per-UF status and unresolved-gap wording, later converged into docs/roadmap/ufs-ambientes.md
-- [X] T016 [P] [US2] Align NFe capability status and gap language with the catalog model, later consolidated into docs/capacidades-sdk.md and docs/roadmap/coverage-matrix.md
-- [X] T017 [P] [US2] Align Manifestacao do Destinatario operational-enablement and gap language with the catalog model, later consolidated into docs/capacidades-sdk.md and docs/roadmap/rtm-cobertura-oficial.md
+- [X] T015 [P] [US2] Normalize NFC-e per-UF status and unresolved-gap wording, now reflected in docs/roadmap/ufs-ambientes.md
+- [X] T016 [P] [US2] Align NFe capability status and gap language with the catalog model, now reflected in docs/capacidades-sdk.md and docs/roadmap/coverage-matrix.md
+- [X] T017 [P] [US2] Align Manifestacao do Destinatario operational-enablement and gap language with the catalog model, now reflected in docs/capacidades-sdk.md and docs/roadmap/rtm-cobertura-oficial.md
 - [X] T018 [US2] Add a consolidated evolution-priority and open-gap summary to docs/capacidades-sdk.md
 
 **Checkpoint**: User Story 2 should leave the catalog usable as prioritized backlog input without requiring a separate interpretation pass.
@@ -89,9 +89,9 @@ description: "Task list for the project feature catalog"
 ### Implementation for User Story 3
 
 - [X] T019 [P] [US3] Add impact-type and public-contract notes to the project-wide feature entries in docs/capacidades-sdk.md
-- [X] T020 [P] [US3] Align NFe future-impact and compatibility wording with the catalog impact model, later consolidated into docs/capacidades-sdk.md and docs/roadmap/coverage-matrix.md
-- [X] T021 [P] [US3] Align NFC-e future-impact and compatibility wording with the catalog impact model, later consolidated into docs/capacidades-sdk.md and docs/roadmap/nfce-operacional-promovivel.md
-- [X] T022 [P] [US3] Align Manifestacao do Destinatario future-impact and compatibility wording with the catalog impact model, later consolidated into docs/capacidades-sdk.md and docs/roadmap/rtm-cobertura-oficial.md
+- [X] T020 [P] [US3] Align NFe future-impact and compatibility wording with the catalog impact model, now reflected in docs/capacidades-sdk.md and docs/roadmap/coverage-matrix.md
+- [X] T021 [P] [US3] Align NFC-e future-impact and compatibility wording with the catalog impact model, now reflected in docs/capacidades-sdk.md and docs/roadmap/nfce-operacional-promovivel.md
+- [X] T022 [P] [US3] Align Manifestacao do Destinatario future-impact and compatibility wording with the catalog impact model, now reflected in docs/capacidades-sdk.md and docs/roadmap/rtm-cobertura-oficial.md
 - [X] T023 [US3] Link the canonical feature catalog from README.md and explain its role relative to public package contracts in README.md
 
 **Checkpoint**: User Story 3 should give reviewers a compatibility-oriented view of the project without changing package behavior.

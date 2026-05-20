@@ -61,32 +61,32 @@ Centralizar as fontes consultadas, datas de acesso, restricoes observadas e o vi
 
 ## Uso no catalogo geral de capacidades
 
-| Entrada do catalogo | Evidencia principal                               | Tipo de evidencia | Observacao                                                                                |
-| ------------------- | ------------------------------------------------- | ----------------- | ----------------------------------------------------------------------------------------- |
-| CAT-SHARED-001      | README.md                                         | readme            | Sustenta a geracao em lote de artefatos TypeScript a partir de XSD                        |
-| CAT-SHARED-002      | README.md                                         | readme            | Sustenta a normalizacao e particionamento da saida gerada                                 |
-| CAT-SHARED-003      | README.md                                         | readme            | Sustenta o alvo ESM e a compatibilidade com validacao TypeScript                          |
-| CAT-SHARED-004      | docs/index.md                                     | dossier           | Sustenta a organizacao documental versionada e navegavel                                  |
-| CAT-SHARED-005      | docs/roadmap/criterios-promocao.md                | dossier           | Sustenta a separacao entre capacidade do SDK e habilitacao operacional                    |
-| CAT-NFE-001         | docs/roadmap/coverage-matrix.md                   | dossier           | Resume capacidades e lacunas atuais do dominio NFe                                        |
-| CAT-NFCE-001        | docs/roadmap/nfce-operacional-promovivel.md       | dossier           | Resume capacidades compartilhadas e sensiveis a UF para NFC-e                             |
-| CAT-NFCE-002        | docs/roadmap/ufs-ambientes.md                     | dossier           | Mantem o detalhe por UF fora do catalogo principal                                        |
-| CAT-MD-001          | docs/roadmap/rtm-cobertura-oficial.md             | dossier           | Resume o MVP homologado do destinatario, suas restricoes publicas e dependencias externas |
+| Entrada do catalogo | Evidencia principal                         | Tipo de evidencia | Observacao                                                                                |
+| ------------------- | ------------------------------------------- | ----------------- | ----------------------------------------------------------------------------------------- |
+| CAT-SHARED-001      | README.md                                   | readme            | Sustenta a geracao em lote de artefatos TypeScript a partir de XSD                        |
+| CAT-SHARED-002      | README.md                                   | readme            | Sustenta a normalizacao e particionamento da saida gerada                                 |
+| CAT-SHARED-003      | README.md                                   | readme            | Sustenta o alvo ESM e a compatibilidade com validacao TypeScript                          |
+| CAT-SHARED-004      | docs/index.md                               | dossier           | Sustenta a organizacao documental versionada e navegavel                                  |
+| CAT-SHARED-005      | docs/roadmap/criterios-promocao.md          | dossier           | Sustenta a separacao entre capacidade do SDK e habilitacao operacional                    |
+| CAT-NFE-001         | docs/roadmap/coverage-matrix.md             | dossier           | Resume capacidades e lacunas atuais do dominio NFe                                        |
+| CAT-NFCE-001        | docs/roadmap/nfce-operacional-promovivel.md | dossier           | Resume capacidades compartilhadas e sensiveis a UF para NFC-e                             |
+| CAT-NFCE-002        | docs/roadmap/ufs-ambientes.md               | dossier           | Mantem o detalhe por UF fora do catalogo principal                                        |
+| CAT-MD-001          | docs/roadmap/rtm-cobertura-oficial.md       | dossier           | Resume o MVP homologado do destinatario, suas restricoes publicas e dependencias externas |
 
 ## Referencias cruzadas iniciais
 
-| Registro     | Requisitos/artefatos relacionados                                                                                                                   |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SRC-NFE-001  | NFE-CAP-001, NFE-CAP-002, NFE-CAP-003, docs/roadmap/topicos-oficiais.md                                                                             |
-| SRC-NFE-002  | NFE-CAP-004, docs/roadmap/topicos-oficiais.md                                                                                                       |
-| SRC-NFE-003  | NFE-CAP-001, NFE-CAP-005, CHANGE-005, CHANGE-006, docs/roadmap/topicos-oficiais.md                                                                  |
-| SRC-NFE-004  | NFE-CAP-002, NFE-CAP-003, NFE-CAP-005                                                                                                               |
-| SRC-NFE-005  | docs/roadmap/topicos-oficiais.md                                                                                                                    |
+| Registro     | Requisitos/artefatos relacionados                                                                                                                                            |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SRC-NFE-001  | NFE-CAP-001, NFE-CAP-002, NFE-CAP-003, docs/roadmap/topicos-oficiais.md                                                                                                      |
+| SRC-NFE-002  | NFE-CAP-004, docs/roadmap/topicos-oficiais.md                                                                                                                                |
+| SRC-NFE-003  | NFE-CAP-001, NFE-CAP-005, CHANGE-005, CHANGE-006, docs/roadmap/topicos-oficiais.md                                                                                           |
+| SRC-NFE-004  | NFE-CAP-002, NFE-CAP-003, NFE-CAP-005                                                                                                                                        |
+| SRC-NFE-005  | docs/roadmap/topicos-oficiais.md                                                                                                                                             |
 | SRC-NFCE-001 | NFCE-CAP-001, NFCE-CAP-003, NFCE-CAP-004, NFCE-CAP-005, docs/roadmap/nfce-operacional-promovivel.md, docs/roadmap/ufs-ambientes.md, specs/010-nfce-national-core/research.md |
-| SRC-NFCE-002 | NFCE-CAP-002, CHANGE-001, CHANGE-002, CHANGE-003, CHANGE-004                                                                                        |
-| SRC-NFCE-003 | NFCE-CAP-001, docs/roadmap/nfce-operacional-promovivel.md                                                                                            |
-| SRC-NFCE-004 | NFCE-CAP-003, docs/roadmap/nfce-operacional-promovivel.md, docs/roadmap/ufs-ambientes.md, specs/010-nfce-national-core/research.md                  |
-| SRC-NFCE-005 | NFCE-CAP-004, docs/roadmap/ufs-ambientes.md, specs/010-nfce-national-core/research.md                                                               |
+| SRC-NFCE-002 | NFCE-CAP-002, CHANGE-001, CHANGE-002, CHANGE-003, CHANGE-004                                                                                                                 |
+| SRC-NFCE-003 | NFCE-CAP-001, docs/roadmap/nfce-operacional-promovivel.md                                                                                                                    |
+| SRC-NFCE-004 | NFCE-CAP-003, docs/roadmap/nfce-operacional-promovivel.md, docs/roadmap/ufs-ambientes.md, specs/010-nfce-national-core/research.md                                           |
+| SRC-NFCE-005 | NFCE-CAP-004, docs/roadmap/ufs-ambientes.md, specs/010-nfce-national-core/research.md                                                                                        |
 
 ## Notas de proveniencia do slice 010
 
@@ -105,17 +105,17 @@ Centralizar as fontes consultadas, datas de acesso, restricoes observadas e o vi
 
 ## Referencias cruzadas do catalogo
 
-| Entrada        | Registros relacionados                                                                                                    |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| CAT-SHARED-001 | README.md                                                                                                                 |
-| CAT-SHARED-002 | README.md                                                                                                                 |
-| CAT-SHARED-003 | README.md                                                                                                                 |
-| CAT-SHARED-004 | docs/index.md, docs/\_meta/source-registry.md                                                                             |
-| CAT-SHARED-005 | SRC-MD-003, docs/roadmap/criterios-promocao.md                                                                             |
-| CAT-NFE-001    | SRC-NFE-001, SRC-NFE-003, SRC-NFE-004, docs/roadmap/coverage-matrix.md                                                    |
-| CAT-NFCE-001   | SRC-NFCE-001, SRC-NFCE-003, docs/roadmap/nfce-operacional-promovivel.md                                                   |
-| CAT-NFCE-002   | SRC-NFCE-001, SRC-NFCE-004, SRC-NFCE-005, docs/roadmap/ufs-ambientes.md                                                   |
-| CAT-MD-001     | SRC-MD-001, SRC-MD-002, SRC-MD-003, SRC-MD-004, SRC-MD-005, SRC-MD-006, docs/roadmap/rtm-cobertura-oficial.md            |
+| Entrada        | Registros relacionados                                                                                        |
+| -------------- | ------------------------------------------------------------------------------------------------------------- |
+| CAT-SHARED-001 | README.md                                                                                                     |
+| CAT-SHARED-002 | README.md                                                                                                     |
+| CAT-SHARED-003 | README.md                                                                                                     |
+| CAT-SHARED-004 | docs/index.md, docs/\_meta/source-registry.md                                                                 |
+| CAT-SHARED-005 | SRC-MD-003, docs/roadmap/criterios-promocao.md                                                                |
+| CAT-NFE-001    | SRC-NFE-001, SRC-NFE-003, SRC-NFE-004, docs/roadmap/coverage-matrix.md                                        |
+| CAT-NFCE-001   | SRC-NFCE-001, SRC-NFCE-003, docs/roadmap/nfce-operacional-promovivel.md                                       |
+| CAT-NFCE-002   | SRC-NFCE-001, SRC-NFCE-004, SRC-NFCE-005, docs/roadmap/ufs-ambientes.md                                       |
+| CAT-MD-001     | SRC-MD-001, SRC-MD-002, SRC-MD-003, SRC-MD-004, SRC-MD-005, SRC-MD-006, docs/roadmap/rtm-cobertura-oficial.md |
 
 ## Estado atual das fontes secundarias
 
@@ -171,15 +171,15 @@ Uma NT e considerada incorporada quando:
 
 ## Entradas de proveniencia — specs/013 (release hardening)
 
-| Modulo                                     | Tipo         | Origem                                                                                                                           |
-| ------------------------------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| `.github/workflows/ci.yml`                 | workflow     | specs/013-release-hardening, `package.json` scripts canonicos                                                                    |
-| `docs/roadmap/coverage-matrix.md`          | documentacao | specs/013-release-hardening, `src/public-contract.ts`, `docs/ROADMAP.md`, `tests/contract/`, `tests/integration/`, `tests/unit/` |
-| `docs/roadmap/proximas-iteracoes-recomendadas.md` | runbook-like  | specs/013-release-hardening, SRC-RH-001, SRC-RH-002, SRC-RH-003                                                                  |
-| `examples/shared/homologation-support.ts`  | helper       | specs/013-release-hardening, contrato publico `nfe-sdk`, mTLS homologado por certificado A1                                      |
-| `examples/nfe/authorize.ts`                | exemplo      | specs/013-release-hardening, `authorizeNFe`, `createSigningContext`                                                              |
-| `examples/recipient/manifest.ts`           | exemplo      | specs/013-release-hardening, `manifestRecipientOperation`, `createSigningContext`                                                |
-| `examples/validation/validate-xsd.ts`      | exemplo      | specs/013-release-hardening, `validateNFeXsd`                                                                                    |
-| `README.md`                                | navegacao    | specs/013-release-hardening, referencias de CI, exemplos e docs de adocao                                                        |
-| `docs/index.md`                            | navegacao    | specs/013-release-hardening, matriz de cobertura e runbook de continuidade                                                       |
-| `tools/validate-links-comprehensive.ts`    | verificacao  | specs/013-release-hardening, docs gate offline                                                                                   |
+| Modulo                                            | Tipo         | Origem                                                                                                                                   |
+| ------------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `.github/workflows/ci.yml`                        | workflow     | specs/013-release-hardening, `package.json` scripts canonicos                                                                            |
+| `docs/roadmap/coverage-matrix.md`                 | documentacao | specs/013-release-hardening, `src/public-contract.ts`, `docs/roadmap/ROADMAP.md`, `tests/contract/`, `tests/integration/`, `tests/unit/` |
+| `docs/roadmap/proximas-iteracoes-recomendadas.md` | runbook-like | specs/013-release-hardening, SRC-RH-001, SRC-RH-002, SRC-RH-003                                                                          |
+| `examples/shared/homologation-support.ts`         | helper       | specs/013-release-hardening, contrato publico `nfe-sdk`, mTLS homologado por certificado A1                                              |
+| `examples/nfe/authorize.ts`                       | exemplo      | specs/013-release-hardening, `authorizeNFe`, `createSigningContext`                                                                      |
+| `examples/recipient/manifest.ts`                  | exemplo      | specs/013-release-hardening, `manifestRecipientOperation`, `createSigningContext`                                                        |
+| `examples/validation/validate-xsd.ts`             | exemplo      | specs/013-release-hardening, `validateNFeXsd`                                                                                            |
+| `README.md`                                       | navegacao    | specs/013-release-hardening, referencias de CI, exemplos e docs de adocao                                                                |
+| `docs/index.md`                                   | navegacao    | specs/013-release-hardening, matriz de cobertura e runbook de continuidade                                                               |
+| `tools/validate-links-comprehensive.ts`           | verificacao  | specs/013-release-hardening, docs gate offline                                                                                           |

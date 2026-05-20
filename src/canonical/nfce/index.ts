@@ -19,6 +19,7 @@ export {
 } from './errors.js';
 export { normalizeNFCeInput } from './normalize-nfce-input.js';
 export { parseRetEnviNFCe } from './parse-ret-envi-nfce.js';
+export { prepareNFCeSigningPrerequisites } from './prepare-signing-prerequisites.js';
 export { resolveNFCeUF } from './resolve-nfce-uf.js';
 export { selectNFCeProfile } from './select-nfce-profile.js';
 export { getSPNFCePilotProfile } from './sp-pilot-profile.js';
@@ -30,6 +31,11 @@ export type {
   NFCeAuthorizationRequest,
   NFCeCoverageBoundary,
   NFCeDeferredCapability,
+  NFCeCSCInput,
+  NFCeSigningPrerequisiteDependency,
+  NFCeSigningPrerequisitesInput,
+  NFCeSigningPrerequisitesReceivedInputs,
+  NFCeSigningPrerequisitesResult,
   NFCeValidationFailure,
 } from './contracts.js';
 export type { UnsupportedNFCeOperationalScopeDetails } from './errors.js';

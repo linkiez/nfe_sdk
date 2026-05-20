@@ -23,7 +23,7 @@ Produce and review the three audit artifacts for feature 011:
   - `specs/009-generic-event-mvp/spec.md`
   - `specs/010-nfce-national-core/spec.md`
 - Normative baseline:
-  - `docs/ROADMAP.md`
+  - `docs/roadmap/ROADMAP.md`
   - `docs/_meta/source-registry.md`
   - `docs/documentos-oficiais-portal-nfe.md`
   - `docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/`

@@ -22,7 +22,7 @@ Define the minimum outputs for the project feature catalog so planning, implemen
 
 ### 3. Domain capability support sections
 
-- Existing capability dossiers, later converged into `docs/capacidades-sdk.md` and canonical roadmap annexes, must remain aligned with the final feature classification.
+- Existing capability dossiers, now reflected in `docs/capacidades-sdk.md` and canonical roadmap annexes, must remain aligned with the final feature classification.
 - They must continue to distinguish confirmed facts, gaps, and operational prerequisites.
 
 ### 4. NFC-e UF linkage

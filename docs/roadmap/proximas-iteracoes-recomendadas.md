@@ -14,20 +14,26 @@ Converter a leitura consolidada dos `RTM-*`, das specs abertas e do acervo ofici
 
 - [Checklist de fechamento das specs 007 e 010](./checklist-fechamento-007-010.md)
 - [Recorte promovivel de NFC-e](./nfce-operacional-promovivel.md)
+- [Recortes funcionais prioritarios](./recortes-funcionais-prioritarios.md)
 - [Criterios de promocao entre documentacao, tooling e runtime](./criterios-promocao.md)
 - [Politica executavel para tabelas externas](./politica-tabelas-externas.md)
 
 ## Sequencia recomendada
 
-| Ordem | Iteracao recomendada | Temas e specs puxados | Classificacao dominante | Entrada principal | Fechamento minimo |
-| --- | --- | --- | --- | --- | --- |
-| `1` | Encerrar pendencias formais de curto prazo | `RTM-006`, `RTM-011`, specs `007` e `010` | `tooling` + `documentacao` | [Checklist de fechamento das specs 007 e 010](./checklist-fechamento-007-010.md) | Rodar o gate final da `007` e fechar o scaffolding residual da `010` |
-| `2` | Planejar a proxima slice de assinatura | `RTM-003`, spec `005` | `runtime` + `documentacao` | `NT 2026.001`, `MOC 7.0`, cadeias `www`/`www1` | Transformar `T033` a `T037` em feature spec fechada para eventos, `NFC-e`, `DV` e `hashCSRT` |
-| `3` | Delimitar `NFC-e` operacional promovivel | `RTM-005`, `RTM-007`, `RTM-011`, `RTM-012` | `runtime` | [Recorte promovivel de NFC-e](./nfce-operacional-promovivel.md) | Decidir o que vira API, o que vira exemplo e o que permanece por `UF` no backlog |
-| `4` | Consolidar as `UFs` com sinal estadual mais forte | `RTM-011` e `RTM-012` | `documentacao` + `runtime` | [ufs-ambientes](./ufs-ambientes.md) | Fechar leitura operacional de `PR`, `MS`, `PB`, `CE`, `SC`, `RJ`, `AC` e `SP` com criterio de promocao claro |
-| `5` | Transformar tabelas externas em politica executavel | `RTM-010` | `tooling` | [Politica executavel para tabelas externas](./politica-tabelas-externas.md) | Definir cadence, proveniencia, versionamento e regra de atualizacao para dados externos |
-| `6` | Amarrar trust chain e artefatos auxiliares ao fluxo tecnico | `RTM-018` e parte de `RTM-003` | `tooling` + `documentacao` | Cadeias `www`/`www1`, assinador, visualizador `DF-e` | Declarar como esses artefatos participam do diagnostico, onboarding e interoperabilidade sem virarem dependencia de runtime |
-| `7` | Manter observacao de familias paralelas e emergentes | `RTM-016` e `RTM-019` | `documentacao` | `NFGas`, `NFAg`, `NF-e ABI`, tabelas emergentes | Preservar watchlist objetiva com criterio de promocao futura para runtime ou tooling |
+| Ordem | Iteracao recomendada                                        | Temas e specs puxados                      | Classificacao dominante    | Entrada principal                                                                | Fechamento minimo                                                                                                           |
+| ----- | ----------------------------------------------------------- | ------------------------------------------ | -------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `1`   | Encerrar pendencias formais de curto prazo                  | `RTM-006`, `RTM-011`, specs `007` e `010`  | `tooling` + `documentacao` | [Checklist de fechamento das specs 007 e 010](./checklist-fechamento-007-010.md) | Rodar o gate final da `007` e fechar o scaffolding residual da `010`                                                        |
+| `2`   | Executar a proxima slice de assinatura                      | `RTM-003`, specs `005` e `014`             | `runtime` + `documentacao` | `NT 2026.001`, `MOC 7.0`, cadeias `www`/`www1`                                   | Tirar a spec `014` do papel com eventos, precondicoes de `NFC-e`, `DV` e `hashCSRT` claramente fechados por boundary        |
+| `3`   | Delimitar `NFC-e` operacional promovivel                    | `RTM-005`, `RTM-007`, `RTM-011`, `RTM-012` | `runtime`                  | [Recorte promovivel de NFC-e](./nfce-operacional-promovivel.md)                  | Decidir o que vira API, o que vira exemplo e o que permanece por `UF` no backlog                                            |
+| `4`   | Consolidar as `UFs` com sinal estadual mais forte           | `RTM-011` e `RTM-012`                      | `documentacao` + `runtime` | [ufs-ambientes](./ufs-ambientes.md)                                              | Fechar leitura operacional de `PR`, `MS`, `PB`, `CE`, `SC`, `RJ`, `AC` e `SP` com criterio de promocao claro                |
+| `5`   | Transformar tabelas externas em politica executavel         | `RTM-010`                                  | `tooling`                  | [Politica executavel para tabelas externas](./politica-tabelas-externas.md)      | Definir cadence, proveniencia, versionamento e regra de atualizacao para dados externos                                     |
+| `6`   | Amarrar trust chain e artefatos auxiliares ao fluxo tecnico | `RTM-018` e parte de `RTM-003`             | `tooling` + `documentacao` | Cadeias `www`/`www1`, assinador, visualizador `DF-e`                             | Declarar como esses artefatos participam do diagnostico, onboarding e interoperabilidade sem virarem dependencia de runtime |
+| `7`   | Manter observacao de familias paralelas e emergentes        | `RTM-016` e `RTM-019`                      | `documentacao`             | `NFGas`, `NFAg`, `NF-e ABI`, tabelas emergentes                                  | Preservar watchlist objetiva com criterio de promocao futura para runtime ou tooling                                        |
+
+## Recortes funcionais transversais
+
+- Use [recortes-funcionais-prioritarios](./recortes-funcionais-prioritarios.md) quando a proxima iteracao precisar sair da classificacao ampla e virar uma slice funcional menor, additive e validavel.
+- Em especial, as iteracoes `2`, `3`, `4` e `6` ja tem desdobramento direto nesse anexo.
 
 ## Corte pratico por natureza
 

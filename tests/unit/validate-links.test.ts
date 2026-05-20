@@ -12,7 +12,10 @@ describe('validateMarkdownLinks', () => {
       await mkdir(join(fixtureRoot, 'docs', 'guide'), { recursive: true });
       await mkdir(join(fixtureRoot, 'docs', 'manual'), { recursive: true });
       await writeFile(join(fixtureRoot, 'docs', 'README.md'), '# README\n');
-      await writeFile(join(fixtureRoot, 'docs', 'manual', 'index.md'), '# Manual\n');
+      await writeFile(
+        join(fixtureRoot, 'docs', 'manual', 'index.md'),
+        '# Manual\n',
+      );
       await writeFile(
         join(fixtureRoot, 'docs', 'guide', 'index.md'),
         ['[README](../README)', '[Manual](../manual/)'].join('\n'),
@@ -41,12 +44,12 @@ describe('validateMarkdownLinks', () => {
         ['[Broken](./missing.md)'].join('\n'),
       );
 
-      const result = await validateMarkdownLinks([
-        'docs/index.md',
-        'docs/missing-source.md',
-      ], {
-        cwd: fixtureRoot,
-      });
+      const result = await validateMarkdownLinks(
+        ['docs/index.md', 'docs/missing-source.md'],
+        {
+          cwd: fixtureRoot,
+        },
+      );
 
       expect(result).toEqual({
         brokenLinksByFile: {
