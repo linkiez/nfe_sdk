@@ -6,6 +6,8 @@ const OPERATIONAL_MVP_RESEARCH_SOURCE =
   'specs/007-nfe-operational-mvp/research.md' as const;
 const NFCE_NATIONAL_CORE_RESEARCH_SOURCE =
   'specs/010-nfce-national-core/research.md' as const;
+const NFCE_UF_PROMOTION_RESEARCH_SOURCE =
+  'specs/015-nfce-uf-promotion/research.md' as const;
 const SP_NFCE_PORTAL_SOURCE =
   'docs/_sources/markdown/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/servicos-9594adb2c3.md' as const;
 
@@ -82,6 +84,26 @@ export function getNFCeSPPilotTransportCatalogProvenance(): {
       OFFICIAL_SHARED_CATALOG_SOURCE,
       SP_NFCE_PORTAL_SOURCE,
       NFCE_NATIONAL_CORE_RESEARCH_SOURCE,
+    ],
+  };
+}
+
+/**
+ * Returns the provenance metadata for the promoted PR NFC-e transport route.
+ *
+ * @returns Stable provenance metadata for the PR cohort catalog entry.
+ */
+export function getNFCePRPilotTransportCatalogProvenance(): {
+  readonly notes: string;
+  readonly sources: readonly string[];
+} {
+  return {
+    notes:
+      'The promoted PR cohort currently reuses the shared homologation NFC-e transport endpoint while broader state-specific routing remains deferred.',
+    sources: [
+      OFFICIAL_SHARED_CATALOG_SOURCE,
+      NFCE_NATIONAL_CORE_RESEARCH_SOURCE,
+      NFCE_UF_PROMOTION_RESEARCH_SOURCE,
     ],
   };
 }

@@ -50,7 +50,7 @@ describe('authorizeNFCe boundaries', () => {
       classification: 'unsupported-state',
       code: 'nfce-unsupported-state',
       message:
-        'authorizeNFCe currently supports only the SP pilot profile for homologation NFC-e operations.',
+        'authorizeNFCe currently supports only the SP and PR promoted cohort for homologation NFC-e operations.',
       retryable: false,
       uf: 'RJ',
     });

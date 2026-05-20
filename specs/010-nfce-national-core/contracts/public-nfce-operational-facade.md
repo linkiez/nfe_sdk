@@ -68,7 +68,7 @@ A API desta fase nao deve exigir:
 
 - O SDK deve inferir a UF operacional a partir do proprio documento.
 - O SDK deve falhar antes do transporte como erro local quando a UF nao puder ser inferida de forma deterministica.
-- O SDK deve falhar antes do transporte com boundary explicita quando a UF inferida estiver fora do piloto estadual promovido.
+- O SDK deve falhar antes do transporte com boundary explicita quando a UF inferida estiver fora do cohort estadual promovido.
 - O SDK deve falhar antes do transporte com `unsupported-scope` quando `requestedCapabilities` incluir QR Code, DANFE NFC-e, CSC, credenciamento automatizado ou contingencia offline.
 - O SDK deve aceitar apenas `homologation` nesta fase.
 - O SDK deve orquestrar internamente serializacao, assinatura e transporte sem exigir XML bruto como contrato principal.
@@ -83,7 +83,7 @@ O primeiro slice cobre apenas:
 - ambiente `homologation`
 - autorizacao operacional de NFC-e
 - inferencia automatica de UF a partir do documento
-- Sao Paulo como unica UF piloto promovida
+- cohort promovido limitado a `SP` e `PR`
 - reuso do pipeline existente de serializacao, assinatura e transporte
 
 ### 5. Internal boundaries that remain non-contractual
@@ -95,7 +95,7 @@ Os seguintes elementos permanecem internos ou fora de escopo nesta fase:
 - CSC e sua administracao
 - credenciamento automatizado
 - contingencia offline
-- cobertura operacional para outras UFs
+- cobertura operacional para outras UFs alem do cohort `SP` + `PR`
 - inventario gerado em `src/classes/`, `src/interfaces/`, `src/types/` e `src/enums/`
 
 ## Compatibility Notes
@@ -108,7 +108,7 @@ Os seguintes elementos permanecem internos ou fora de escopo nesta fase:
 
 - Testes de contrato devem verificar que o import raiz expoe a nova operacao declarada sem regressao nas facades existentes.
 - Testes de unidade devem verificar resolucao de UF, boundaries pre-transporte e taxonomia de outcome.
-- Testes de integracao devem verificar ao menos uma autorizacao homologada bem-sucedida para SP e um bloqueio deterministico para UF fora do piloto.
+- Testes de integracao devem verificar ao menos uma autorizacao homologada bem-sucedida para `SP`, uma para `PR` e um bloqueio deterministico para UF fora do cohort promovido.
 - O smoke do tarball deve continuar confirmando que o pacote publicado expoe a superficie root esperada sem depender do workspace aberto.
 
 Fluxo minimo esperado para boundary de cobertura:

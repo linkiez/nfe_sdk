@@ -1,0 +1,20 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Body>
+    <retEnviNFe xmlns="http://www.portalfiscal.inf.br/nfe">
+      <cStat>100</cStat>
+      <xMotivo>Autorizado o uso da NF-e</xMotivo>
+      <protNFe>
+        <infProt>
+          <tpAmb>2</tpAmb>
+          <verAplic>PR_NFCE_PL</verAplic>
+          <chNFe>41190500000000000000550010000000011000000010</chNFe>
+          <dhRecbto>2019-05-20T10:00:00-03:00</dhRecbto>
+          <nProt>141260000000001</nProt>
+          <digVal>abc123==</digVal>
+          <cStat>100</cStat>
+          <xMotivo>Autorizado o uso da NF-e</xMotivo>
+        </infProt>
+      </protNFe>
+    </retEnviNFe>
+  </soap:Body>
+</soap:Envelope>

@@ -30,3 +30,18 @@ export function expectNFCeAuthorizedOutcome(
   expect(outcome.protocolNumber).toBe(protocolNumber);
   expect(outcome.validationFailures).toEqual([]);
 }
+
+/**
+ * Asserts that an NFC-e outcome was blocked before transport for an unsupported UF.
+ *
+ * @param outcome - Structured NFC-e authorization outcome.
+ * @param uf - Expected unsupported UF echoed by the boundary.
+ */
+export function expectNFCeUnsupportedStateOutcome(
+  outcome: NFCeAuthorizationOutcome,
+  uf: string,
+): void {
+  expectNFCeOutcomeClassification(outcome, 'unsupported-state', false);
+  expect(outcome.coverageBoundary?.code).toBe('nfce-unsupported-state');
+  expect(outcome.coverageBoundary?.uf).toBe(uf);
+}

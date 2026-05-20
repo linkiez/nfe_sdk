@@ -80,7 +80,7 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`unsupported-state`');
     expect(readme).toContain('`unsupported-scope`');
     expect(readme).toContain('`requestedCapabilities`');
-    expect(readme).toContain('SP pilot profile');
+    expect(readme).toContain('SP + PR');
     expect(readme).toContain('`manifest.json` permanece interno');
     expect(readme).toContain(
       '`enviNFe` permanece como envelope de transporte nao assinado',

@@ -1,4 +1,9 @@
-import { getSPNFCePilotProfile, type NFCePilotProfile } from './sp-pilot-profile.js';
+import { getNFCePromotedUFCohort } from './contracts.js';
+import {
+  getPRNFCePilotProfile,
+  getSPNFCePilotProfile,
+  type NFCePilotProfile,
+} from './sp-pilot-profile.js';
 import type { NFCeUF } from './resolve-nfce-uf.js';
 
 /**
@@ -8,7 +13,10 @@ import type { NFCeUF } from './resolve-nfce-uf.js';
  * @returns The pilot profile for the UF or `undefined` when the UF stays outside the slice.
  */
 export function selectNFCeProfile(uf: NFCeUF): NFCePilotProfile | undefined {
-  const spPilotProfile = getSPNFCePilotProfile();
+  const supportedProfiles = [getSPNFCePilotProfile(), getPRNFCePilotProfile()] as const;
+  const promotedUfs = new Set<NFCeUF>(getNFCePromotedUFCohort());
 
-  return uf === spPilotProfile.uf ? spPilotProfile : undefined;
+  return supportedProfiles.find(
+    (profile) => profile.uf === uf && promotedUfs.has(profile.uf),
+  );
 }

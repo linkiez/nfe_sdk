@@ -51,6 +51,7 @@ flowchart TD
 - A inutilizacao trata `cStat` `102` como sucesso homologado.
 - Cancelamento e carta de correcao tratam `cStat` `128` como sucesso do lote de evento no transporte.
 - Distribuicao do destinatario e manifestacao reutilizam os ids `nfe-recipient-distribution` e `nfe-recipient-manifestation` com semantica nacional compartilhada.
+- O slice `015` adiciona `nfce-authorization-pr` como identificador dedicado para manter a promocao de `PR` explicita sem alterar a facade root de `NFC-e`.
 
 ## Exemplos
 

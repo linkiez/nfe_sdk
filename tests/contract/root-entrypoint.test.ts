@@ -43,7 +43,7 @@ describe('root entrypoint contract', () => {
         compatibilityNotes: expect.arrayContaining([
           expect.stringContaining('unsupported-state'),
           expect.stringContaining('unsupported-scope'),
-          expect.stringContaining('SP pilot'),
+          expect.stringContaining('SP and PR promoted cohort'),
           expect.stringContaining('requestedCapabilities'),
         ]),
         documentedSurface: [
