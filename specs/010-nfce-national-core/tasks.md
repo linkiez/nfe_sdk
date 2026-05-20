@@ -19,7 +19,7 @@
 **Purpose**: Establish the NFC-e module and regression scaffolding shared by all stories.
 
 - [x] T001 Create the NFC-e module barrel and documentation anchors in `src/canonical/nfce/index.ts` and `src/canonical/nfce/index.doc.md`
-- [ ] T002 [P] Create the NFC-e test and fixture scaffolding in `tests/unit/nfce/.gitkeep`, `tests/integration/nfce/.gitkeep`, and `tests/fixtures/nfce/.gitkeep`
+- [x] T002 [P] Create the NFC-e test and fixture scaffolding in `tests/unit/nfce/.gitkeep`, `tests/integration/nfce/.gitkeep`, and `tests/fixtures/nfce/.gitkeep`
 
 ---
 

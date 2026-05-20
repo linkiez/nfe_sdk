@@ -67,3 +67,19 @@ export function buildFixtureNFCeAuthorizationRequest(
     timeoutMs: overrides.timeoutMs ?? 5000,
   };
 }
+
+/**
+ * Builds a deterministic homologation NFC-e authorization request for the promoted PR cohort.
+ *
+ * @returns NFC-e authorization request fixture with a PR document identifier.
+ */
+export function buildPRFixtureNFCeAuthorizationRequest():
+  FixtureNFCeAuthorizationRequest {
+  return buildFixtureNFCeAuthorizationRequest({
+    document: {
+      documentId: '41190500000000000000550010000000011000000010',
+      environment: 'homologation',
+      version: '4.00',
+    },
+  });
+}

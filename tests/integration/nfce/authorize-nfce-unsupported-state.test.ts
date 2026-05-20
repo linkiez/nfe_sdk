@@ -78,7 +78,7 @@ describe('authorizeNFCe unsupported-state integration', () => {
     expect(outcome?.classification).toBe('unsupported-state');
     expect(outcome?.coverageBoundary?.code).toBe('nfce-unsupported-state');
     expect(outcome?.coverageBoundary?.uf).toBe('RJ');
-    expect(outcome?.coverageBoundary?.message).toContain('SP pilot profile');
+    expect(outcome?.coverageBoundary?.message).toContain('SP and PR promoted cohort');
     expect(outcome?.transportOutcome).toBeUndefined();
     expect(outcome?.validationFailures).toEqual([]);
     expect(transportWasCalled).toBe(false);

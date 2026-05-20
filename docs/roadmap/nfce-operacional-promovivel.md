@@ -15,7 +15,7 @@ Definir, para a iteracao `3`, qual parte do acervo oficial de `NFC-e` deve ser p
 | Assunto `NFC-e`                               | Base oficial principal                                                         | Destino recomendado                    | Justificativa curta                                                                |
 | --------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------- | ---------------------------------------------------------------------------------- |
 | Autorizacao homologada do nucleo comum        | `NT 2023.002`, `PL 010c`, slice atual da spec `010`                            | Promover para `runtime`                | Ja existe base tecnica e contrato inicial no pacote                                |
-| Selecao deterministica de perfil `SP` piloto  | Evidencia estadual `SP` e spec `010`                                           | Promover para `runtime`                | Ja esta no nucleo operacional atual e define o primeiro boundary por `UF`          |
+| Selecao deterministica do cohort `SP` + `PR`  | Evidencia estadual `SP` e `PR`, specs `010` e `015`                            | Promover para `runtime`                | Ja define o primeiro cohort multi-UF pequeno, additive e auditavel do runtime      |
 | Rejeicao explicita de `UF` nao suportada      | Matriz por `UF` e profile selection da spec `010`                              | Promover para `runtime`                | Evita transporte remoto em estado sem suporte fechado                              |
 | `CSC` e `QR Code`                             | Manual `DANFE NFC-e`, `NT 2018.001`, informe `GO 2025.003`, deltas `PR` e `PB` | Manter em backlog de `runtime`         | Exigem recorte claro entre emissao, pos-autorizacao e variacao por `UF`            |
 | Contingencia `offline`                        | Anexo IV do `MOC`, manual `offline NFC-e`                                      | Manter em backlog de `runtime`         | Depende de criterio estadual e boundary de operacao offline ainda nao estabilizado |
@@ -29,7 +29,7 @@ Definir, para a iteracao `3`, qual parte do acervo oficial de `NFC-e` deve ser p
 ### O que pode virar API na proxima promocao
 
 - Fluxo de autorizacao homologada do nucleo `NFC-e` ja suportado.
-- Selecao do perfil piloto `SP` e falha deterministica para `UF` fora do escopo.
+- Selecao do cohort promovido `SP` + `PR` e falha deterministica para `UF` fora do escopo.
 
 ### O que deve virar exemplo ou runbook primeiro
 
@@ -43,14 +43,14 @@ Definir, para a iteracao `3`, qual parte do acervo oficial de `NFC-e` deve ser p
 
 ## Leitura por `UF` mais relevante
 
-| `UF` | Sinal atual                                                             | Efeito no recorte promovivel                                              |
-| ---- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `SP` | Piloto operacional ja promovido no runtime atual                        | Permanece como ancora da promocao inicial                                 |
-| `PR` | `CSC`, `QR Code`, contingencia, `homologacao` e `producao` bem visiveis | Serve de prova de backlog rico, nao de promocao automatica integral       |
-| `PB` | Consulta publica e geracao de `CSC` observaveis                         | Reforca que `CSC` ainda exige boundary proprio                            |
-| `GO` | Delta especifico de `QR Code` por informe tecnico                       | Reforca risco de variacao por `UF`                                        |
-| `SC` | Politica forte de autenticacao e download                               | Mostra que acesso e consulta nao equivalem a suporte operacional uniforme |
-| `CE` | Entrada `NFC-e` em producao e catalogo tecnico parcial                  | Indica potencial de expansao futura, mas ainda com evidencia ruidosa      |
+| `UF` | Sinal atual                                                             | Efeito no recorte promovivel                                                   |
+| ---- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| `SP` | Piloto operacional ja promovido no runtime atual                        | Permanece como ancora da promocao inicial                                      |
+| `PR` | `CSC`, `QR Code`, contingencia, `homologacao` e `producao` bem visiveis | Primeira `UF` adicional promovida, mantendo o backlog auxiliar fora do runtime |
+| `PB` | Consulta publica e geracao de `CSC` observaveis                         | Reforca que `CSC` ainda exige boundary proprio                                 |
+| `GO` | Delta especifico de `QR Code` por informe tecnico                       | Reforca risco de variacao por `UF`                                             |
+| `SC` | Politica forte de autenticacao e download                               | Mostra que acesso e consulta nao equivalem a suporte operacional uniforme      |
+| `CE` | Entrada `NFC-e` em producao e catalogo tecnico parcial                  | Indica potencial de expansao futura, mas ainda com evidencia ruidosa           |
 
 ## Fechamento minimo da iteracao `3`
 

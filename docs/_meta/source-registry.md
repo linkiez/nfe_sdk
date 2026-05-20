@@ -93,6 +93,12 @@ Centralizar as fontes consultadas, datas de acesso, restricoes observadas e o vi
 - O slice operacional inicial de NFC-e implementado na feature 010 combina `SRC-NFCE-001` como base do nucleo nacional compartilhado e `SRC-NFCE-004`/`SRC-NFCE-005` como evidencia complementar para promover `SP` como unico piloto operacional.
 - A fronteira `unsupported-state` reflete a decisao de bloquear UFs fora de `SP` antes do transporte, sem transformar a cobertura nacional compartilhada em promessa multi-UF.
 - A fronteira `unsupported-scope` preserva QR Code, DANFE NFC-e, administracao de CSC, credenciamento automatizado e contingencia offline como superficies deferidas, mesmo quando explicitadas por `requestedCapabilities`.
+
+## Notas de proveniencia do slice 015
+
+- O slice operacional de NFC-e expandido na feature `015` promove `PR` como primeira `UF` adicional alem de `SP`, alinhando a implementacao ao corte `RFL-006` e aos temas `RTM-007`, `RTM-011` e `RTM-012`.
+- A promocao de `PR` reutiliza o nucleo nacional compartilhado e o catalogo homologado existente, mantendo `CSC`, `QR Code`, contingencia offline, consulta do consumidor e demais deltas auxiliares como surfaces explicitamente deferidas.
+- `PB`, `MS`, `GO`, `SC` e `CE` permanecem fora do cohort promovido porque ainda concentram, respectivamente, gaps dominantes de `CSC`/consulta do consumidor, consolidacao especifica do recorte `NFC-e`, delta estadual forte de `QR Code`, politica de autenticacao/download sem recorte operacional homogeneo e evidencia ruidosa apesar de sinais de producao.
   | SRC-MD-001 | MD-CAP-001, docs/roadmap/rtm-cobertura-oficial.md |
   | SRC-MD-002 | MD-CAP-001, MD-CAP-003, docs/roadmap/rtm-cobertura-oficial.md |
   | SRC-MD-003 | MD-CAP-002, MD-CAP-003, docs/roadmap/rtm-cobertura-oficial.md |

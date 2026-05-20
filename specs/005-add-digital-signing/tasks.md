@@ -127,12 +127,12 @@ description: "Task list for the initial digital signing slice"
 
 **Purpose**: Convert the explicitly deferred signing boundaries of the first slice into concrete follow-up work for future features.
 
-**Status**: These tasks are intentionally out of scope for the completed initial slice and remain open as roadmap candidates.
+**Status**: These follow-up tasks were later captured and completed through spec `014-expand-signing-coverage`, preserving the original roadmap traceability.
 
-- [ ] T033 [US3] Define the next signing slice for `evento` XML coverage in `specs/014-expand-signing-coverage/spec.md` and `specs/014-expand-signing-coverage/tasks.md`
-- [ ] T034 [P] [US3] Define the next signing slice for `NFC-e` signing coverage and QR Code interaction boundaries in `specs/014-expand-signing-coverage/spec.md` and `specs/014-expand-signing-coverage/tasks.md`
-- [ ] T035 [P] [US3] Define how authorization transport, SOAP packaging, and signed-document submission should layer above the current root signing facade in `specs/014-expand-signing-coverage/spec.md`, `specs/014-expand-signing-coverage/tasks.md`, and `README.md`
-- [ ] T036 [P] [US3] Define the deferred calculations for full access key coverage, `DV`, and `hashCSRT` in `specs/014-expand-signing-coverage/spec.md`, `specs/014-expand-signing-coverage/tasks.md`, and `docs/roadmap/ROADMAP.md`
+- [x] T033 [US3] Define the next signing slice for `evento` XML coverage in `specs/014-expand-signing-coverage/spec.md` and `specs/014-expand-signing-coverage/tasks.md`
+- [x] T034 [P] [US3] Define the next signing slice for `NFC-e` signing coverage and QR Code interaction boundaries in `specs/014-expand-signing-coverage/spec.md` and `specs/014-expand-signing-coverage/tasks.md`
+- [x] T035 [P] [US3] Define how authorization transport, SOAP packaging, and signed-document submission should layer above the current root signing facade in `specs/014-expand-signing-coverage/spec.md`, `specs/014-expand-signing-coverage/tasks.md`, and `README.md`
+- [x] T036 [P] [US3] Define the deferred calculations for full access key coverage, `DV`, and `hashCSRT` in `specs/014-expand-signing-coverage/spec.md`, `specs/014-expand-signing-coverage/tasks.md`, and `docs/roadmap/ROADMAP.md`
 - [x] T037 [US3] Create the next feature spec entry for the first deferred signing expansion after the `NFe`-only slice in `specs/`
 
 ---

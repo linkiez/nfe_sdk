@@ -47,7 +47,7 @@ import {
 
 `authorizeNFe` orquestra a autorizacao operacional inicial para uma NFe unica ou um lote suportado a partir de dados canonicos, devolvendo um resultado estruturado com classificacao, recibo ou protocolo e evidencia de transporte.
 
-`authorizeNFCe` inicia a facade root additive de NFC-e em homologacao para um unico documento, reaproveitando o pipeline operacional existente com um `SP pilot profile`, retornando `unsupported-state` para UFs fora do piloto e `unsupported-scope` quando a aplicacao explicita superficies deferidas por `requestedCapabilities`.
+`authorizeNFCe` inicia a facade root additive de NFC-e em homologacao para um unico documento, reaproveitando o pipeline operacional existente com o cohort promovido `SP + PR`, retornando `unsupported-state` para UFs fora desse cohort e `unsupported-scope` quando a aplicacao explicita superficies deferidas por `requestedCapabilities`.
 
 `createNFe` monta o documento canonico inicial de `NFe` sem exigir importacao direta da arvore gerada.
 
@@ -395,3 +395,7 @@ Os identificadores gerados seguem `PascalCase` com prefixos por categoria:
 - mudancas no import raiz exigem revisao explicita de compatibilidade
 - promocao de subpaths ou artefatos gerados depende de decisao contratual futura
 - evidencias do contrato devem permanecer rastreáveis em `package.json`, `src/index.ts`, README e nos artefatos da feature
+
+## Licença
+
+Este projeto está licenciado sob a Apache License 2.0. Veja [LICENSE](./LICENSE).

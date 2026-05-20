@@ -3,19 +3,33 @@ import { ResolveNFeServiceEndpointError } from '../../src/canonical/transport/er
 
 describe('resolveNFeServiceEndpoint errors', () => {
   it('fails with explicit unsupported-combination diagnostics before any transport attempt', () => {
-    expect(() =>
+    const resolveUnsupportedCombination = (): ReturnType<
+      typeof resolveNFeServiceEndpoint
+    > =>
       resolveNFeServiceEndpoint({
         environment: 'staging',
         service: 'nfe-status-service',
-      }),
-    ).toThrow(ResolveNFeServiceEndpointError);
-    expect(() =>
-      resolveNFeServiceEndpoint({
-        environment: 'staging',
-        service: 'nfe-status-service',
-      }),
-    ).toThrow(
-      'Unsupported transport combination: environment "staging", service "nfe-status-service". Supported environment: "homologation, production". Supported services: "nfe-status-service", "nfe-authorization", "nfe-authorization-batch", "nfce-authorization-sp", "nfe-inutilization", "nfe-cancellation", "nfe-correction-letter", "nfe-generic-event", "nfe-document-situation", "nfe-recipient-distribution", "nfe-recipient-manifestation", "nfe-contributor-registration".',
+      });
+
+    expect(resolveUnsupportedCombination).toThrow(
+      ResolveNFeServiceEndpointError,
     );
+
+    try {
+      resolveUnsupportedCombination();
+    } catch (error) {
+      expect(error).toBeInstanceOf(ResolveNFeServiceEndpointError);
+      expect((error as Error).message).toContain(
+        'Unsupported transport combination: environment "staging", service "nfe-status-service".',
+      );
+      expect((error as Error).message).toContain(
+        'Supported environment: "homologation, production".',
+      );
+      expect((error as Error).message).toContain('"nfce-authorization-sp"');
+      expect((error as Error).message).toContain('"nfce-authorization-pr"');
+      return;
+    }
+
+    throw new Error('Expected resolveNFeServiceEndpoint to throw');
   });
 });

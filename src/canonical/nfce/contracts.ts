@@ -30,6 +30,8 @@ const NFCE_DEFERRED_CAPABILITIES = [
   'offline-contingency',
 ] as const;
 
+const NFCE_PROMOTED_UF_COHORT = ['SP', 'PR'] as const;
+
 const NFCE_SIGNING_PREREQUISITE_DEPENDENCIES = [
   'authorization',
   'qr-code',
@@ -56,6 +58,11 @@ export type NFCeAuthorizationClassification =
  * Explicit operational capabilities that remain outside the first NFC-e slice.
  */
 export type NFCeDeferredCapability = (typeof NFCE_DEFERRED_CAPABILITIES)[number];
+
+/**
+ * UF values currently promoted by the additive NFC-e operational slice.
+ */
+export type NFCePromotedUF = (typeof NFCE_PROMOTED_UF_COHORT)[number];
 
 /**
  * Deferred downstream dependencies that remain outside the signing-prerequisite slice.
@@ -203,6 +210,15 @@ export function getNFCeAuthorizationClassifications():
  */
 export function getNFCeDeferredCapabilities(): readonly NFCeDeferredCapability[] {
   return NFCE_DEFERRED_CAPABILITIES;
+}
+
+/**
+ * Returns the currently promoted NFC-e UF cohort published by the operational slice.
+ *
+ * @returns Read-only list of promoted UFs.
+ */
+export function getNFCePromotedUFCohort(): readonly NFCePromotedUF[] {
+  return NFCE_PROMOTED_UF_COHORT;
 }
 
 /**

@@ -9,6 +9,7 @@ Prepara os identificadores de assinatura de `NFC-e` sem abrir transporte, `QR Co
 - Validar o boundary minimo de `NFC-e` (`mod` igual a `65`).
 - Exigir `CSC` e `CSRT` nao vazios antes do calculo.
 - Reaproveitar os helpers de `chNFe`, `cDV` e `hashCSRT` para montar um bundle preparatorio coerente.
+- Permanecer coerente com o cohort operacional `SP + PR` sem transformar precondicoes em promessa de autorizacao completa.
 
 ## Entradas e saidas
 
@@ -32,6 +33,7 @@ flowchart TD
 - Falha quando `cscId` ou `cscToken` chegam vazios.
 - Propaga a validacao do helper de `hashCSRT` quando `CSRT` ou `CNPJ` sao invalidos.
 - Nao sugere que o bundle retornado equivalha a autorizacao, `QR Code` ou `DANFE NFC-e` concluido.
+- Continua servindo tanto ao piloto `SP` quanto ao cohort promovido `PR`, sem alterar a lista de dependencias deferidas.
 
 ## Exemplos
 

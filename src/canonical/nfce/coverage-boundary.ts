@@ -3,9 +3,8 @@ import type {
   NFCeCoverageBoundary,
   NFCeDeferredCapability,
 } from './contracts.js';
+import { getNFCePromotedUFCohort } from './contracts.js';
 import type { NFCeUF } from './resolve-nfce-uf.js';
-
-const SP_PILOT_UF = 'SP' as const;
 
 const DEFERRED_CAPABILITY_LABELS: Readonly<Record<NFCeDeferredCapability, string>> = {
   'automatic-credentialing': 'automatic credentialing',
@@ -24,10 +23,12 @@ const DEFERRED_CAPABILITY_LABELS: Readonly<Record<NFCeDeferredCapability, string
 export function createUnsupportedStateNFCeCoverageBoundary(
   uf: NFCeUF,
 ): NFCeCoverageBoundary {
+  const describedCohort = getNFCePromotedUFCohort().join(' and ');
+
   return {
     classification: 'unsupported-state',
     code: 'nfce-unsupported-state',
-    message: `authorizeNFCe currently supports only the ${SP_PILOT_UF} pilot profile for homologation NFC-e operations.`,
+    message: `authorizeNFCe currently supports only the ${describedCohort} promoted cohort for homologation NFC-e operations.`,
     retryable: false,
     uf,
   };

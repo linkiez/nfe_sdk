@@ -2,6 +2,7 @@ const SUPPORTED_NFE_SOAP_SERVICES = [
   'nfe-status-service',
   'nfe-authorization',
   'nfe-authorization-batch',
+  'nfce-authorization-pr',
   'nfce-authorization-sp',
   'nfe-inutilization',
   'nfe-cancellation',
@@ -67,6 +68,14 @@ const SUPPORTED_SERVICE_DEFINITIONS: Readonly<
     responseElementName: 'retConsReciNFe',
     service: 'nfe-authorization-batch',
     successStatusCodes: ['104', '105'],
+    unavailabilityStatusCodes: ['108', '109'],
+  },
+  'nfce-authorization-pr': {
+    documentFamily: 'nfce',
+    requestElementName: 'enviNFe',
+    responseElementName: 'retEnviNFe',
+    service: 'nfce-authorization-pr',
+    successStatusCodes: ['100', '103', '104'],
     unavailabilityStatusCodes: ['108', '109'],
   },
   'nfce-authorization-sp': {
