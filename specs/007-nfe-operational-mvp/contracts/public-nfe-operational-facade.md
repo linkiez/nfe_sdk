@@ -29,6 +29,7 @@ import {
 ```
 
 - `authorizeNFe` executa o fluxo de autorizacao de uma NFe unica ou de um lote suportado a partir de dados canonicos.
+- `authorizeNFe` permanece additive e agora pode devolver `contingency-boundary` explicita quando um pedido em `production` cair no diagnostico observavel promovido para `SVC-AN` ou `SVC-RS`.
 - `queryNFeServiceStatus` devolve o estado operacional do servico de autorizacao em formato estruturado.
 - `queryNFeDocumentSituation` consulta a situacao do documento por chave de acesso.
 - `submitNFeInutilization`, `cancelNFe` e `submitNFeCorrectionLetter` executam as tres manutencoes obrigatorias do MVP.
@@ -148,6 +149,7 @@ As manutencoes desta fase devem aceitar:
 - O SDK nao deve exigir XML bruto previamente serializado ou assinado como contrato principal do MVP.
 - O SDK deve aceitar tanto uma NFe unica quanto um lote suportado no fluxo inicial de autorizacao.
 - `authorizeNFe` deve devolver `classification`, `documentStatuses`, `transportOutcome` e, quando disponivel, `protocolNumber` ou `receiptNumber`.
+- Quando a trilha observada depender de ambiente compartilhado de contingencia suportado nesta fase, `authorizeNFe` deve devolver `coverageBoundary` explicita sem simular autorizacao normal bem-sucedida.
 - O SDK deve devolver resultados orientados a aplicacao que preservem a evidencia subjacente do transporte.
 - O SDK deve distinguir pelo menos sucesso operacional, rejeicao funcional, indisponibilidade, erro de uso e erro protocolar nas operacoes de alto nivel.
 - O SDK deve tratar resultados intermediarios de autorizacao como estados validos observaveis, sem polling automatico inicial.
@@ -175,6 +177,7 @@ Os seguintes elementos permanecem internos ou fora de escopo nesta fase:
 - implementacao concreta do executor HTTP padrao
 - gerencia de mTLS e secrets operacionais pelo SDK
 - variacoes por UF, producao, contingencias especiais e multi-autorizador
+- fallback silencioso de contingencia em producao para `SVC-AN` ou `SVC-RS`
 - polling automatico de recibo ou politicas amplas de retry/backoff
 - inventario gerado em `src/classes/`, `src/interfaces/`, `src/types/` e `src/enums/`
 

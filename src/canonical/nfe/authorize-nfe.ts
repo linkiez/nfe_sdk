@@ -2,6 +2,7 @@ import { executeNFeSoapService } from '../transport/execute-nfe-soap-service.js'
 
 import { buildNFeAuthorizationBatch } from './authorization-batch.js';
 import { mapAuthorizationTransportOutcome } from './authorization-outcome.js';
+import { resolveNFeContingencyBoundary } from './coverage-boundary.js';
 import { createAuthorizationPayloadXml } from './authorization-payload.js';
 import type { NFeAuthorizationOutcome, NFeAuthorizationRequest } from './contracts.js';
 import type { SupportedNFeSoapService } from '../transport/supported-services.js';
@@ -33,6 +34,16 @@ export async function authorizeNFe(
     throw new NFeOperationalUsageError(
       'authorizeNFe requires a signingContext created by this SDK.',
     );
+  }
+
+  if (normalizedEnvironment === 'production') {
+    const contingencyBoundary = resolveNFeContingencyBoundary(
+      input.documents.payload,
+    );
+
+    if (contingencyBoundary) {
+      return contingencyBoundary;
+    }
   }
 
   if (normalizedEnvironment !== 'homologation') {

@@ -8,6 +8,11 @@ export {
 export { mapAuthorizationTransportOutcome } from './authorization-outcome.js';
 export { createAuthorizationPayloadXml } from './authorization-payload.js';
 export { authorizeNFe } from './authorize-nfe.js';
+export {
+  createNFeContingencyBoundary,
+  createNFeContingencyBoundaryOutcome,
+  resolveNFeContingencyBoundary,
+} from './coverage-boundary.js';
 export { cancelNFe } from './cancel-nfe.js';
 export {
   createUnsupportedScopeMaintenanceOutcome,
@@ -49,6 +54,8 @@ export type {
   DocumentSituationResult,
   NFeAuthorizationBatch,
   NFeAuthorizationClassification,
+  NFeContingencyBoundary,
+  NFeContingencyEnvironment,
   NFeAuthorizationDocumentStatus,
   NFeAuthorizationDocumentsInput,
   NFeAuthorizationOutcome,

@@ -6,10 +6,15 @@ import type {
 } from '../shared/contracts.js';
 import type { SigningContext } from '../signing/contracts.js';
 import type { RequestExecutor } from '../transport/request-executor.js';
-import type { TransportOutcome } from '../transport/contracts.js';
+import type {
+  ObservableContingencyBoundary,
+  ObservableContingencyEnvironment,
+  TransportOutcome,
+} from '../transport/contracts.js';
 
 const AUTHORIZATION_CLASSIFICATIONS = [
   'authorized',
+  'contingency-boundary',
   'received',
   'rejected',
   'timeout',
@@ -91,6 +96,10 @@ export interface NFeAuthorizationBatch {
 export type NFeAuthorizationClassification =
   (typeof AUTHORIZATION_CLASSIFICATIONS)[number];
 
+export type NFeContingencyEnvironment = ObservableContingencyEnvironment;
+
+export type NFeContingencyBoundary = ObservableContingencyBoundary;
+
 /**
  * Query result classifications exposed by the operational slice.
  */
@@ -120,6 +129,8 @@ export interface NFeAuthorizationDocumentStatus {
 export interface NFeAuthorizationOutcome {
   /** Operational authorization classification. */
   readonly classification: NFeAuthorizationClassification;
+  /** Explicit contingency boundary when the flow is diagnosed before transport. */
+  readonly coverageBoundary?: NFeContingencyBoundary;
   /** Per-document statuses observed in the response. */
   readonly documentStatuses: readonly NFeAuthorizationDocumentStatus[];
   /** Synthesized failure reason when the flow cannot complete. */

@@ -14,6 +14,18 @@ const DEFERRED_CAPABILITY_LABELS: Readonly<Record<NFCeDeferredCapability, string
   'qr-code': 'QR Code',
 };
 
+const DEFERRED_CONTINGENCY_CAPABILITIES = ['offline-contingency'] as const;
+
+export function hasDeferredContingencyCapability(
+  requestedCapabilities: readonly NFCeDeferredCapability[],
+): boolean {
+  return requestedCapabilities.some((capability) =>
+    DEFERRED_CONTINGENCY_CAPABILITIES.includes(
+      capability as (typeof DEFERRED_CONTINGENCY_CAPABILITIES)[number],
+    ),
+  );
+}
+
 /**
  * Builds the published unsupported-state boundary payload for the first NFC-e slice.
  *

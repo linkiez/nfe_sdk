@@ -9,14 +9,18 @@ import {
   loadNFeOperationalJsonFixture,
   loadNFeOperationalTextFixture,
 } from '../fixtures/nfe-operational/load-nfe-operational-fixture';
+import { buildAuthorizeNFeSingleInput } from '../fixtures/nfe/build-nfe-fixtures';
 
 type AuthorizeNFe = (input: {
-  environment: 'homologation';
+  environment: 'homologation' | 'production';
   documents: {
     kind: 'single-document';
     payload: {
       documentId: string;
-      environment: 'homologation';
+      environment: 'homologation' | 'production';
+      payload?: {
+        cUF?: string;
+      };
       version: '4.00';
     };
   };
@@ -35,6 +39,10 @@ type AuthorizeNFe = (input: {
   timeoutMs: number;
 }) => Promise<{
   classification: string;
+  coverageBoundary?: {
+    code: string;
+    contingencyEnvironment?: string;
+  };
   documentStatuses: readonly { documentId: string }[];
   protocolNumber?: string;
   transportOutcome: {
@@ -123,5 +131,44 @@ describe('authorizeNFe single integration', () => {
       outcome?.transportOutcome.evidence.responseEnvelopeXml ?? '',
       '100',
     );
+  });
+
+  it('returns a contingency boundary instead of transport when production routing falls into SVC-AN', async () => {
+    const fixtureSource = createTestA1FixtureSource();
+    const createSigningContext = (publicApi as Record<string, unknown>)
+      .createSigningContext as
+      | ((input: {
+          passphrase: string;
+          source: { contentBase64: string; type: 'in-memory-content' };
+        }) => Promise<unknown>)
+      | undefined;
+    const authorizeNFe = (publicApi as Record<string, unknown>).authorizeNFe as
+      | AuthorizeNFe
+      | undefined;
+    const signingContext = await createSigningContext?.({
+      passphrase: fixtureSource.passphrase,
+      source: {
+        contentBase64: fixtureSource.certificateBase64,
+        type: 'in-memory-content',
+      },
+    });
+
+    const requestExecutor = jest.fn();
+    const outcome = await authorizeNFe?.({
+      ...buildAuthorizeNFeSingleInput({ cUF: '33' }),
+      requestExecutor,
+      signingContext,
+      timeoutMs: 5000,
+    });
+
+    expect(requestExecutor).not.toHaveBeenCalled();
+    expect(outcome?.classification).toBe('contingency-boundary');
+    expect(outcome?.coverageBoundary).toEqual(
+      expect.objectContaining({
+        code: 'nfe-contingency-boundary',
+        contingencyEnvironment: 'SVC-AN',
+      }),
+    );
+    expect(outcome?.transportOutcome.classification).toBe('usage-error');
   });
 });

@@ -46,6 +46,7 @@ sequenceDiagram
 - O MVP operacional adiciona tambem `nfe-inutilization`, `nfe-cancellation` e `nfe-correction-letter` ao catalogo homologado publicado.
 - O slice recipient adiciona as entradas nacionais `nfe-recipient-distribution` e `nfe-recipient-manifestation` ao catalogo publico homologado.
 - O slice `015` publica entradas homologada e de producao para `nfce-authorization-pr`, mantendo a proveniencia especifica de `PR` mesmo com reuso do endpoint nacional compartilhado.
+- O slice `016` nao publica novo endpoint de contingencia; ele reaproveita o catalogo existente para tornar `SVC-AN` e `SVC-RS` observaveis como diagnostico em `authorizeNFe`.
 
 ## Exemplos
 

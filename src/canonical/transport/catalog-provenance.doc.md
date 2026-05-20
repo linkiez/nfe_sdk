@@ -29,6 +29,7 @@ flowchart TD
 - O modulo nao faz IO nem resolve endpoints.
 - Quando todos os servicos planejados de uma fase ja estao publicados, a lista de placeholders pode ficar vazia sem alterar a proveniencia das entradas reais.
 - O slice `015` adiciona proveniencia dedicada para `nfce-authorization-pr`, registrando que `PR` reaproveita o endpoint homologado compartilhado enquanto deltas auxiliares estaduais permanecem fora do runtime.
+- O slice `016` adiciona placeholders diagnosticos de contingencia para `SVC-AN` e `SVC-RS`, preservando `EPEC` e `offline` como trilhas normativas ainda deferidas.
 
 ## Exemplos
 

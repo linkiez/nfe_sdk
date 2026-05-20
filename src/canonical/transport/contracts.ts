@@ -44,6 +44,16 @@ export type NFeSEFAZProvider =
 export type TransportOutcomeClassification =
   (typeof TRANSPORT_OUTCOME_CLASSIFICATIONS)[number];
 
+export type ObservableContingencyEnvironment = 'SVC-AN' | 'SVC-RS';
+
+export interface ObservableContingencyBoundary {
+  readonly code: string;
+  readonly contingencyEnvironment: ObservableContingencyEnvironment;
+  readonly issuerUF: string;
+  readonly message: string;
+  readonly retryable: boolean;
+}
+
 /**
  * Source trace recorded for a catalog entry published by the SDK.
  */

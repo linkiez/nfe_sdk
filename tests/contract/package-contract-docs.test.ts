@@ -79,6 +79,9 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`submitICMSDeferralEvent`');
     expect(readme).toContain('`unsupported-state`');
     expect(readme).toContain('`unsupported-scope`');
+    expect(readme).toContain('`contingency-boundary`');
+    expect(readme).toContain('`SVC-AN`');
+    expect(readme).toContain('`SVC-RS`');
     expect(readme).toContain('`requestedCapabilities`');
     expect(readme).toContain('SP + PR');
     expect(readme).toContain('`manifest.json` permanece interno');

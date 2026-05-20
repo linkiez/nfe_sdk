@@ -6,6 +6,7 @@ import {
   getInitialTransportCatalogProvenance,
   getNFCePRPilotTransportCatalogProvenance,
   getNFCeSPPilotTransportCatalogProvenance,
+  getObservableContingencyDiagnosticPlaceholders,
   getOperationalTransportCatalogPlaceholders,
   getOperationalTransportCatalogSources,
 } from './catalog-provenance.js';
@@ -316,6 +317,8 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
 ];
 
 const TRANSPORT_CATALOG_PLACEHOLDERS = getOperationalTransportCatalogPlaceholders();
+const CONTINGENCY_DIAGNOSTIC_PLACEHOLDERS =
+  getObservableContingencyDiagnosticPlaceholders();
 
 /**
  * Published catalog version for the initial SOAP transport slice.
@@ -354,4 +357,9 @@ export function findTransportServiceCatalogEntry(
 export function getTransportCatalogPlaceholders():
   ReturnType<typeof getOperationalTransportCatalogPlaceholders> {
   return TRANSPORT_CATALOG_PLACEHOLDERS;
+}
+
+export function getObservableContingencyDiagnosticCatalogPlaceholders():
+  ReturnType<typeof getObservableContingencyDiagnosticPlaceholders> {
+  return CONTINGENCY_DIAGNOSTIC_PLACEHOLDERS;
 }

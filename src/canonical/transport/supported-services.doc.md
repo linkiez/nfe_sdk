@@ -52,6 +52,7 @@ flowchart TD
 - Cancelamento e carta de correcao tratam `cStat` `128` como sucesso do lote de evento no transporte.
 - Distribuicao do destinatario e manifestacao reutilizam os ids `nfe-recipient-distribution` e `nfe-recipient-manifestation` com semantica nacional compartilhada.
 - O slice `015` adiciona `nfce-authorization-pr` como identificador dedicado para manter a promocao de `PR` explicita sem alterar a facade root de `NFC-e`.
+- O slice `016` adiciona diagnosticos suportados de contingencia para `svc-an` e `svc-rs`, mantendo `EPEC` e `offline` fora da lista de servicos promovidos.
 
 ## Exemplos
 

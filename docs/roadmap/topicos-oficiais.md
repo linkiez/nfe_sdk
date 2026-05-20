@@ -29,16 +29,16 @@ Detalhar o recorte `100%` do acervo oficial sem inflar `docs/roadmap/ROADMAP.md`
 
 ## Servicos nacionais publicados
 
-| Topico oficial               | Cobertura oficial observada                           | Destino no roadmap | Fase-alvo inicial | Resultado minimo                                                       |
-| ---------------------------- | ----------------------------------------------------- | ------------------ | ----------------- | ---------------------------------------------------------------------- |
-| Consulta resumida de `NF-e`  | Consulta por chave com superficie publica             | `RTM-004`          | Fase 4            | Boundary clara para consulta publica por chave e seus limites de uso   |
-| Consulta de inutilizacao     | Consulta especifica do status de inutilizacao         | `RTM-006`          | Fase 5            | Backlog localizado para reconciliacao e consulta auxiliar              |
-| Consulta de duplicidade AN   | Superficie autenticada vinculada ao ambiente nacional | `RTM-017`          | Fase 3            | Explicitar dependencia de autenticacao e nao prometer execucao publica |
-| Consulta de disponibilidade  | Indicador publico de disponibilidade operacional      | `RTM-004`          | Fase 4            | Alimentar backlog de resiliencia e diagnostico operacional             |
-| Manifestacao do destinatario | Entrada nacional dedicada ao fluxo do destinatario    | `RTM-008`          | Fase 6            | Slice inicial e backlog de expansao documental/operacional separados   |
-| Relacao de servicos web      | Catalogo nacional de web services                     | `RTM-004`          | Fase 4            | Catalogo versionado por ambiente e autorizador                         |
-| Agendamento `SVC-AN`         | Superficie nacional de contingencia                   | `RTM-005`          | Fase 4            | Boundary de contingencia com criterio de uso e diagnostico             |
-| EPEC pendente de conciliacao | Consulta/liberacao de `EPEC`                          | `RTM-005`          | Fase 4            | Separar fluxo `EPEC` de autorizacao normal e reconciliacao pos-falha   |
+| Topico oficial               | Cobertura oficial observada                           | Destino no roadmap | Fase-alvo inicial | Resultado minimo                                                              |
+| ---------------------------- | ----------------------------------------------------- | ------------------ | ----------------- | ----------------------------------------------------------------------------- |
+| Consulta resumida de `NF-e`  | Consulta por chave com superficie publica             | `RTM-004`          | Fase 4            | Boundary clara para consulta publica por chave e seus limites de uso          |
+| Consulta de inutilizacao     | Consulta especifica do status de inutilizacao         | `RTM-006`          | Fase 5            | Backlog localizado para reconciliacao e consulta auxiliar                     |
+| Consulta de duplicidade AN   | Superficie autenticada vinculada ao ambiente nacional | `RTM-017`          | Fase 3            | Explicitar dependencia de autenticacao e nao prometer execucao publica        |
+| Consulta de disponibilidade  | Indicador publico de disponibilidade operacional      | `RTM-004`          | Fase 4            | Alimentar backlog de resiliencia e diagnostico operacional                    |
+| Manifestacao do destinatario | Entrada nacional dedicada ao fluxo do destinatario    | `RTM-008`          | Fase 6            | Slice inicial e backlog de expansao documental/operacional separados          |
+| Relacao de servicos web      | Catalogo nacional de web services                     | `RTM-004`          | Fase 4            | Catalogo versionado por ambiente e autorizador                                |
+| Agendamento `SVC-AN`         | Superficie nacional de contingencia                   | `RTM-005`          | Fase 4            | Boundary observavel em `authorizeNFe`, sem fallback automatico de autorizacao |
+| EPEC pendente de conciliacao | Consulta/liberacao de `EPEC`                          | `RTM-005`          | Fase 4            | Separar fluxo `EPEC` de autorizacao normal e mantelo como path deferido       |
 
 ## Legislacao e camada normativa
 
@@ -51,23 +51,23 @@ Detalhar o recorte `100%` do acervo oficial sem inflar `docs/roadmap/ROADMAP.md`
 
 ## Documentos oficiais: manuais
 
-| Topico oficial                              | Cobertura oficial observada                                    | Destino no roadmap | Fase-alvo inicial | Resultado minimo                                                           |
-| ------------------------------------------- | -------------------------------------------------------------- | ------------------ | ----------------- | -------------------------------------------------------------------------- |
-| `MOC 7.0`                                   | Fluxo principal de `NF-e` e `NFC-e` com regras base            | `RTM-002`          | Fase 2            | Camada canonica, serializacao e validacao estrutural rastreadas            |
-| Anexo I do `MOC`                            | Leiaute e regras de validacao                                  | `RTM-002`          | Fase 2            | Regras criticas classificadas entre runtime e watchlist                    |
-| Anexo II do `MOC`                           | `DANFE` e codigo de barras                                     | `RTM-007`          | Fase 5            | Delimitar o que vira apoio ao integrador e o que permanece fora do runtime |
-| Anexo III do `MOC`                          | Contingencia de `NF-e`                                         | `RTM-005`          | Fase 4            | Separar contingencia de emissao normal e registrar gatilhos de uso         |
-| Anexo IV do `MOC`                           | Contingencia de `NFC-e`                                        | `RTM-005`          | Fase 7            | Backlog especifico para `offline` e demais trilhas estaduais               |
-| Manual `DANFE NFC-e` e `QR Code`            | Documento auxiliar da `NFC-e` e QR Code                        | `RTM-007`          | Fase 5            | Boundary explicita entre apoio visual, integracao e runtime                |
-| Manual de contingencia `offline` da `NFC-e` | Operacao em falha de comunicacao                               | `RTM-005`          | Fase 7            | Fronteira funcional, dependencia estadual e criterio de promocao           |
-| Manual de boas praticas `NFC-e`             | Orientacao de solucao sistêmica do emissor                     | `RTM-013`          | Fase 8            | Converter para checklist de integrador sem reproduzir emissor desktop      |
-| Manual `SVAN`                               | Ambientes nacional e de homologacao/producao compartilhados    | `RTM-012`          | Fase 3            | Taxonomia de ambiente e interoperabilidade segura                          |
-| Manual `SVRS`                               | Credenciamento e operacao via Sefaz Virtual RS                 | `RTM-012`          | Fase 3            | Boundary por ambiente e dependencia externa declarada                      |
-| Manual do emissor de `NF-e`                 | Instalacao, uso, import/export e recuperacao do emissor legado | `RTM-013`          | Fase 8            | Runbooks e suporte ao integrador sem acoplar interface legada ao pacote    |
-| Manual de contingencia `NF-e` v1.01         | Tipos de emissao em contingencia                               | `RTM-005`          | Fase 4            | Taxonomia de contingencia por documento e ambiente                         |
-| Familias paralelas `NFGas`                  | Manual e anexos publicados em 2026                             | `RTM-016`          | Fase 2            | Trilha de observacao com impacto arquitetural declarado                    |
-| Familias paralelas `NFAg`                   | Manual, leiaute e `DANFAG`                                     | `RTM-016`          | Fase 2            | Observacao arquitetural e politica de promocao futura                      |
-| Familia `NF-e ABI`                          | Manual e anexos em minuta                                      | `RTM-019`          | Fase 8            | Manter sob observacao arquitetural sem promocao prematura                  |
+| Topico oficial                              | Cobertura oficial observada                                    | Destino no roadmap | Fase-alvo inicial | Resultado minimo                                                                              |
+| ------------------------------------------- | -------------------------------------------------------------- | ------------------ | ----------------- | --------------------------------------------------------------------------------------------- |
+| `MOC 7.0`                                   | Fluxo principal de `NF-e` e `NFC-e` com regras base            | `RTM-002`          | Fase 2            | Camada canonica, serializacao e validacao estrutural rastreadas                               |
+| Anexo I do `MOC`                            | Leiaute e regras de validacao                                  | `RTM-002`          | Fase 2            | Regras criticas classificadas entre runtime e watchlist                                       |
+| Anexo II do `MOC`                           | `DANFE` e codigo de barras                                     | `RTM-007`          | Fase 5            | Delimitar o que vira apoio ao integrador e o que permanece fora do runtime                    |
+| Anexo III do `MOC`                          | Contingencia de `NF-e`                                         | `RTM-005`          | Fase 4            | Registrar `SVC-AN` e `SVC-RS` como diagnostico observavel antes de promover fallback completo |
+| Anexo IV do `MOC`                           | Contingencia de `NFC-e`                                        | `RTM-005`          | Fase 7            | Backlog especifico para `offline` e demais trilhas estaduais                                  |
+| Manual `DANFE NFC-e` e `QR Code`            | Documento auxiliar da `NFC-e` e QR Code                        | `RTM-007`          | Fase 5            | Boundary explicita entre apoio visual, integracao e runtime                                   |
+| Manual de contingencia `offline` da `NFC-e` | Operacao em falha de comunicacao                               | `RTM-005`          | Fase 7            | Fronteira funcional explicitamente deferida, com dependencia estadual e criterio de promocao  |
+| Manual de boas praticas `NFC-e`             | Orientacao de solucao sistêmica do emissor                     | `RTM-013`          | Fase 8            | Converter para checklist de integrador sem reproduzir emissor desktop                         |
+| Manual `SVAN`                               | Ambientes nacional e de homologacao/producao compartilhados    | `RTM-012`          | Fase 3            | Taxonomia de ambiente e interoperabilidade segura                                             |
+| Manual `SVRS`                               | Credenciamento e operacao via Sefaz Virtual RS                 | `RTM-012`          | Fase 3            | Boundary por ambiente e dependencia externa declarada                                         |
+| Manual do emissor de `NF-e`                 | Instalacao, uso, import/export e recuperacao do emissor legado | `RTM-013`          | Fase 8            | Runbooks e suporte ao integrador sem acoplar interface legada ao pacote                       |
+| Manual de contingencia `NF-e` v1.01         | Tipos de emissao em contingencia                               | `RTM-005`          | Fase 4            | Taxonomia de contingencia por documento e ambiente                                            |
+| Familias paralelas `NFGas`                  | Manual e anexos publicados em 2026                             | `RTM-016`          | Fase 2            | Trilha de observacao com impacto arquitetural declarado                                       |
+| Familias paralelas `NFAg`                   | Manual, leiaute e `DANFAG`                                     | `RTM-016`          | Fase 2            | Observacao arquitetural e politica de promocao futura                                         |
+| Familia `NF-e ABI`                          | Manual e anexos em minuta                                      | `RTM-019`          | Fase 8            | Manter sob observacao arquitetural sem promocao prematura                                     |
 
 ## Documentos oficiais: esquemas XML
 

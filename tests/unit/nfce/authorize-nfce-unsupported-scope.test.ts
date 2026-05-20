@@ -44,4 +44,44 @@ describe('authorizeNFCe unsupported scope', () => {
     expect(outcome.validationFailures).toEqual([]);
     expect(transportWasCalled).toBe(false);
   });
+
+  it('keeps offline contingency explicit as a deferred boundary before transport', async () => {
+    const fixtureSource = createTestA1FixtureSource();
+    const signingContext = await createSigningContext({
+      passphrase: fixtureSource.passphrase,
+      source: {
+        contentBase64: fixtureSource.certificateBase64,
+        type: 'in-memory-content',
+      },
+    });
+
+    let transportWasCalled = false;
+
+    const outcome = await authorizeNFCe({
+      ...buildFixtureNFCeAuthorizationRequest(),
+      requestedCapabilities: ['offline-contingency'],
+      requestExecutor: async () => {
+        transportWasCalled = true;
+
+        return {
+          headers: { 'content-type': 'application/soap+xml; charset=utf-8' },
+          responseXml: '<unused />',
+          status: 200,
+        };
+      },
+      signingContext,
+    });
+
+    expect(outcome.acceptedForTransport).toBe(false);
+    expect(outcome.classification).toBe('unsupported-scope');
+    expect(outcome.coverageBoundary).toEqual({
+      classification: 'unsupported-scope',
+      code: 'nfce-unsupported-scope',
+      message:
+        'authorizeNFCe does not yet support the requested NFC-e capabilities in this slice: offline contingency.',
+      retryable: false,
+    });
+    expect(outcome.validationFailures).toEqual([]);
+    expect(transportWasCalled).toBe(false);
+  });
 });

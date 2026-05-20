@@ -75,6 +75,11 @@ export interface UnsupportedTransportCombinationDetails {
   readonly supportedServices: readonly string[];
 }
 
+export interface ObservableContingencyBoundaryDetails {
+  readonly contingencyEnvironment: 'SVC-AN' | 'SVC-RS';
+  readonly issuerUF: string;
+}
+
 /**
  * Builds the public error message for unsupported transport combinations.
  *
@@ -85,4 +90,10 @@ export function createUnsupportedTransportCombinationMessage(
   details: UnsupportedTransportCombinationDetails,
 ): string {
   return `Unsupported transport combination: environment "${details.requestedEnvironment}", service "${details.requestedService}". Supported environment: "${details.supportedEnvironments.join(', ')}". Supported services: "${details.supportedServices.join('", "')}".`;
+}
+
+export function createObservableContingencyBoundaryMessage(
+  details: ObservableContingencyBoundaryDetails,
+): string {
+  return `authorizeNFe currently exposes only an observable contingency boundary for ${details.contingencyEnvironment} in production when issuer UF "${details.issuerUF}" delegates to a shared SVC route.`;
 }

@@ -34,6 +34,7 @@ Registrar quais specs do repositorio ja foram implementadas, quais seguem aberta
 | `013` | Release Hardening       | `implementada` | `27`           | `0`           | Fase 8, `RTM-013`, `RTM-014`, `RTM-018`                           |
 | `014` | Expand Signing Coverage | `implementada` | `27`           | `0`           | Fase 3, `RTM-003`, com ponte implementada para Fase 4 e Fase 7    |
 | `015` | NFC-e UF Promotion      | `em execucao`  | `0`            | `27`          | Fase 7, `RFL-006`, `RTM-007`, `RTM-011` e `RTM-012`               |
+| `016` | Contingency Boundaries  | `em execucao`  | `14`           | `12`          | Fase 5/Fase 7, `RFL-005`, `RTM-005` e `RTM-012`                   |
 
 ## Leitura por fase do roadmap
 
@@ -53,5 +54,6 @@ Registrar quais specs do repositorio ja foram implementadas, quais seguem aberta
 - `005` continua aberta por `4` tasks de continuidade, mas a governanca da proxima slice deixou de ser abstrata com a abertura da `014`.
 - `014` esta fechada com assinatura de `evento`, preparacao de precondicoes de `NFC-e` e boundary documental explicitada entre assinatura, `SOAP`, trust chain, `QR Code` e rollout multi-UF.
 - `015` concretiza o corte `RFL-006` com a promocao controlada de `PR` alem de `SP`, amarrando a trilha editorial a `RTM-007`, `RTM-011` e `RTM-012` sem promover `CSC`, `QR Code` ou contingencia para runtime.
+- `016` inaugura o recorte `RFL-005` com `authorizeNFe` como primeira facade a devolver `contingency-boundary` observavel para `SVC-AN` e `SVC-RS`, mantendo `EPEC` e `offline` como boundaries explicitamente deferidas.
 - `007` e `010` estao tecnicamente muito avancadas, mas ainda nao devem ser tratadas como specs fechadas sem resolver as tasks remanescentes.
 - `012` fecha boa parte das gaps transversais, mas nao substitui a necessidade de concluir formalmente as specs dedicadas ainda abertas.

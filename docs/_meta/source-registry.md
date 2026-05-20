@@ -99,6 +99,12 @@ Centralizar as fontes consultadas, datas de acesso, restricoes observadas e o vi
 - O slice operacional de NFC-e expandido na feature `015` promove `PR` como primeira `UF` adicional alem de `SP`, alinhando a implementacao ao corte `RFL-006` e aos temas `RTM-007`, `RTM-011` e `RTM-012`.
 - A promocao de `PR` reutiliza o nucleo nacional compartilhado e o catalogo homologado existente, mantendo `CSC`, `QR Code`, contingencia offline, consulta do consumidor e demais deltas auxiliares como surfaces explicitamente deferidas.
 - `PB`, `MS`, `GO`, `SC` e `CE` permanecem fora do cohort promovido porque ainda concentram, respectivamente, gaps dominantes de `CSC`/consulta do consumidor, consolidacao especifica do recorte `NFC-e`, delta estadual forte de `QR Code`, politica de autenticacao/download sem recorte operacional homogeneo e evidencia ruidosa apesar de sinais de producao.
+
+## Notas de proveniencia do slice 016
+
+- O slice `016` promove apenas o diagnostico observavel de contingencia em `authorizeNFe`, sustentado por `RTM-005`, `RTM-012`, `AgendamentoSVC`, manual de contingencia `NF-e` e a tabela oficial de autorizadores por `UF`.
+- `SVC-AN` e `SVC-RS` passam a ser visiveis como `contingency-boundary` additive em producao quando a `UF` emissora delega para ambiente compartilhado, sem transformar essa observabilidade em fallback automatico de autorizacao.
+- `EPEC` e contingencia `offline` de `NFC-e` permanecem nomeadas como trilhas deferidas; o slice continua registrando essas capacidades no backlog e na documentacao sem prometer runtime completo.
   | SRC-MD-001 | MD-CAP-001, docs/roadmap/rtm-cobertura-oficial.md |
   | SRC-MD-002 | MD-CAP-001, MD-CAP-003, docs/roadmap/rtm-cobertura-oficial.md |
   | SRC-MD-003 | MD-CAP-002, MD-CAP-003, docs/roadmap/rtm-cobertura-oficial.md |

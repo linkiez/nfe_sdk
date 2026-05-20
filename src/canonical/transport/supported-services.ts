@@ -16,6 +16,8 @@ const SUPPORTED_NFE_SOAP_SERVICES = [
 
 const PLANNED_OPERATIONAL_TRANSPORT_SERVICES = [] as const;
 
+const SUPPORTED_CONTINGENCY_DIAGNOSTICS = ['svc-an', 'svc-rs'] as const;
+
 /**
  * Supported SOAP service identifiers for the initial transport slice.
  */
@@ -50,6 +52,9 @@ export interface PlannedOperationalTransportServiceDefinition {
     | 'nfe-correction-letter'
     | 'nfe-inutilization';
 }
+
+export type SupportedContingencyDiagnostic =
+  (typeof SUPPORTED_CONTINGENCY_DIAGNOSTICS)[number];
 
 const SUPPORTED_SERVICE_DEFINITIONS: Readonly<
   Record<SupportedNFeSoapService, SupportedNFeSoapServiceDefinition>
@@ -200,4 +205,9 @@ export function getSupportedTransportServiceDefinition(
  */
 export function getPlannedOperationalTransportServiceDefinitions(): readonly PlannedOperationalTransportServiceDefinition[] {
   return PLANNED_OPERATIONAL_TRANSPORT_SERVICES;
+}
+
+export function getSupportedContingencyDiagnostics():
+  readonly SupportedContingencyDiagnostic[] {
+  return SUPPORTED_CONTINGENCY_DIAGNOSTICS;
 }

@@ -8,6 +8,7 @@ import { createNFCeAuthorizationPayload } from './authorization-payload.js';
 import {
   createUnsupportedScopeNFCeOutcome,
   createUnsupportedStateNFCeOutcome,
+  hasDeferredContingencyCapability,
 } from './coverage-boundary.js';
 import {
   createUnsupportedNFCeOperationalScopeMessage,
@@ -49,8 +50,14 @@ export async function authorizeNFCe(
     );
   }
 
-  if ((input.requestedCapabilities?.length ?? 0) > 0) {
-    return createUnsupportedScopeNFCeOutcome(input.requestedCapabilities ?? []);
+  const requestedCapabilities = input.requestedCapabilities ?? [];
+
+  if (hasDeferredContingencyCapability(requestedCapabilities)) {
+    return createUnsupportedScopeNFCeOutcome(requestedCapabilities);
+  }
+
+  if (requestedCapabilities.length > 0) {
+    return createUnsupportedScopeNFCeOutcome(requestedCapabilities);
   }
 
   const resolvedUF = resolveNFCeUF(input.document);

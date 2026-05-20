@@ -29,6 +29,7 @@ flowchart TD
 - O modulo nao faz IO.
 - A mensagem de `unsupported-state` deriva do cohort promovido centralizado em `contracts.ts`.
 - A classificacao de scope deferido continua separando runtime de backlog auxiliar.
+- `offline-contingency` permanece nomeada explicitamente como capability deferida, mesmo depois da promocao observavel de `SVC` em `NF-e`.
 
 ## Exemplos
 

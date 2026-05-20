@@ -11,6 +11,9 @@ const NFCE_UF_PROMOTION_RESEARCH_SOURCE =
 const SP_NFCE_PORTAL_SOURCE =
   'docs/_sources/markdown/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/servicos-9594adb2c3.md' as const;
 
+const CONTINGENCY_BOUNDARIES_RESEARCH_SOURCE =
+  'specs/016-contingency-boundaries/research.md' as const;
+
 /**
  * Planned operational service identifier kept as internal catalog placeholder.
  */
@@ -33,8 +36,38 @@ export interface OperationalTransportCatalogPlaceholder {
   readonly service: PlannedOperationalTransportService;
 }
 
+export interface ObservableContingencyDiagnosticPlaceholder {
+  readonly contingencyEnvironment: 'SVC-AN' | 'SVC-RS';
+  readonly notes: string;
+  readonly sources: readonly string[];
+}
+
 const OPERATIONAL_TRANSPORT_CATALOG_PLACEHOLDERS: readonly OperationalTransportCatalogPlaceholder[] =
   [];
+
+const OBSERVABLE_CONTINGENCY_DIAGNOSTIC_PLACEHOLDERS: readonly ObservableContingencyDiagnosticPlaceholder[] =
+  [
+    {
+      contingencyEnvironment: 'SVC-AN',
+      notes:
+        'Observable production-only contingency boundary for issuer UFs that delegate to SVC-AN, without promoting full degraded authorization runtime.',
+      sources: [
+        OFFICIAL_SHARED_CATALOG_SOURCE,
+        OPERATIONAL_MVP_RESEARCH_SOURCE,
+        CONTINGENCY_BOUNDARIES_RESEARCH_SOURCE,
+      ],
+    },
+    {
+      contingencyEnvironment: 'SVC-RS',
+      notes:
+        'Observable production-only contingency boundary for issuer UFs that delegate to SVC-RS, without promoting full degraded authorization runtime.',
+      sources: [
+        OFFICIAL_SHARED_CATALOG_SOURCE,
+        OPERATIONAL_MVP_RESEARCH_SOURCE,
+        CONTINGENCY_BOUNDARIES_RESEARCH_SOURCE,
+      ],
+    },
+  ];
 
 /**
  * Returns the normative sources for the currently published transport catalog.
@@ -57,6 +90,11 @@ export function getInitialTransportCatalogProvenance(): {
 export function getOperationalTransportCatalogPlaceholders():
   readonly OperationalTransportCatalogPlaceholder[] {
   return OPERATIONAL_TRANSPORT_CATALOG_PLACEHOLDERS;
+}
+
+export function getObservableContingencyDiagnosticPlaceholders():
+  readonly ObservableContingencyDiagnosticPlaceholder[] {
+  return OBSERVABLE_CONTINGENCY_DIAGNOSTIC_PLACEHOLDERS;
 }
 
 /**

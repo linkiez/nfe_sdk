@@ -12,6 +12,7 @@ Descreve o contrato publico estabilizado no import raiz do pacote.
 - Descrever a ampliacao additive do slice de expansao de assinatura para `evento` XML e precondicoes de `NFC-e`.
 - Descrever a ampliacao additive do slice inicial de transporte SOAP.
 - Descrever a ampliacao additive da facade operacional de autorizacao, consultas e manutencoes homologadas.
+- Registrar que `authorizeNFe` agora devolve `contingency-boundary` explicita para `SVC-AN` e `SVC-RS` quando o pedido de producao cai na trilha observavel promovida.
 - Descrever a ampliacao additive da facade operacional inicial de NFC-e homologada para o cohort promovido `SP + PR`.
 - Registrar que a facade NFC-e distingue `unsupported-state` e `unsupported-scope` antes do transporte, preservando `CSC`, `QR Code` e contingencia fora do runtime.
 - Descrever a ampliacao additive do slice recipient homologado para distribuicao DFe e manifestacao.
@@ -39,6 +40,7 @@ flowchart TD
   B --> H2[prepareNFCeSigningPrerequisites]
   B --> I[transport slice boundary]
   B --> J[operational authorization boundary]
+  J --> J1[contingency-boundary via SVC-AN or SVC-RS]
   B --> K[nfce operational boundary]
   B --> K0[promoted cohort SP + PR]
   K --> K1[unsupported-state]

@@ -47,6 +47,8 @@ import {
 
 `authorizeNFe` orquestra a autorizacao operacional inicial para uma NFe unica ou um lote suportado a partir de dados canonicos, devolvendo um resultado estruturado com classificacao, recibo ou protocolo e evidencia de transporte.
 
+No recorte atual, `authorizeNFe` tambem devolve `contingency-boundary` explicita quando um pedido em `production` informa uma `UF` emissora que delega para `SVC-AN` ou `SVC-RS`. Esse diagnostico continua additive, nao executa fallback silencioso e mantem `EPEC` e contingencias mais amplas fora do runtime promovido.
+
 `authorizeNFCe` inicia a facade root additive de NFC-e em homologacao para um unico documento, reaproveitando o pipeline operacional existente com o cohort promovido `SP + PR`, retornando `unsupported-state` para UFs fora desse cohort e `unsupported-scope` quando a aplicacao explicita superficies deferidas por `requestedCapabilities`.
 
 `createNFe` monta o documento canonico inicial de `NFe` sem exigir importacao direta da arvore gerada.
@@ -78,6 +80,8 @@ import {
 No slice inicial, `TransportOutcome.classification` distingue pelo menos `success`, `timeout`, `usage-error`, `unavailable`, `functional-rejection` e `protocol-error`, sem misturar transporte com orquestracao de dominio fiscal.
 
 `queryNFeServiceStatus` devolve um retrato estruturado do status operacional do servico em homologacao sem exigir leitura manual do XML de retorno.
+
+Quando a resposta do status service indicar indisponibilidade operacional (`108` ou `109`), o slice atual preserva a classificacao `unavailable` no `transportOutcome` sem esconder que a trilha observada depende de ambiente compartilhado de contingencia.
 
 `queryNFeDocumentSituation` consulta a situacao do documento por chave de acesso e devolve um resultado estruturado, inclusive quando a resposta ainda e inconclusiva do ponto de vista operacional.
 
@@ -134,6 +138,29 @@ const authorization = await authorizeNFe({
 });
 
 console.log(authorization.classification, authorization.protocolNumber);
+
+const contingencyBoundary = await authorizeNFe({
+  documents: {
+    kind: 'single-document',
+    payload: {
+      documentId: 'NFE-CONTINGENCY-001',
+      environment: 'production',
+      payload: {
+        cUF: '33',
+      },
+      version: '4.00',
+    },
+  },
+  environment: 'production',
+  requestExecutor,
+  signingContext,
+  timeoutMs: 5000,
+});
+
+console.log(
+  contingencyBoundary.classification,
+  contingencyBoundary.coverageBoundary?.contingencyEnvironment,
+);
 ```
 
 ## Exemplo rapido do slice NFC-e
