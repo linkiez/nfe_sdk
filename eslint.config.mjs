@@ -35,6 +35,19 @@ export default [
     },
   },
   {
+    files: ['examples/**/*.ts'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.node,
+      },
+    },
+    rules: {
+      'no-console': 'off',
+    },
+  },
+  {
     files: ['tools/**/*.ts'],
     rules: {
       'no-console': 'off',
