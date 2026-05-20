@@ -98,3 +98,12 @@ Registrar os documentos vigentes mais relevantes do portal nacional com versao, 
 
 - Quando uma nova versao vigente substituir um item desta lista, o registro deve apontar a nova versao como baseline e manter a anterior apenas no acervo editorial historico.
 - Este anexo nao substitui a proveniencia completa em `docs/_meta/source-registry.md`; ele apenas destaca os documentos vigentes com maior impacto no roadmap.
+
+## Mapa de apoio para `RTM-010`
+
+- O artefato canonico de baseline, cadence, classificacao e promocao para `RTM-010` continua sendo [politica-tabelas-externas](./politica-tabelas-externas.md).
+- Este anexo sustenta `cbs-ibs` com as linhas de `IT 2026.002 v1.00`, `IT 2025.002 v1.50`, tabela de aliquotas `CBS`, indice de biocombustivel `IBS/CBS` e classificacao tributaria `IBS/CBS`.
+- Este anexo sustenta `payment-methods` com `IT 2026.001 v1.00`, `IT 2024.002 v1.11` e a tabela vigente de meios de pagamento.
+- Este anexo sustenta `ncm-utrib` com `IT 2024.001 v2.30` e a linha de vigencia `01/02/2026` da tabela `NCM/uTrib`.
+- Este anexo sustenta `fcp`, `municipios`, `anp` e `cfop` com suas respectivas linhas vigentes, mantendo `fcp` e `municipios` explicitamente como grupos com delta forte por `UF`.
+- Nenhuma linha deste anexo deve ser lida como registro canonico paralelo da politica; ele funciona apenas como apoio de proveniencia e datas observadas.

@@ -73,6 +73,12 @@ Exemplos tipicos:
 | `RTM-011` complementos estaduais por `UF`             | promover para `runtime` somente quando a `UF` tiver evidencia operacional consistente e boundary fechada         |
 | `RTM-016` e `RTM-019` familias paralelas e emergentes | manter em `documentacao` ate existir justificativa arquitetural e slice minima testavel                          |
 
+### Nota aplicada a `RTM-010`
+
+- `cbs-ibs`, `payment-methods`, `ncm-utrib`, `anp` e `cfop` devem permanecer em `tooling` por padrao nesta fase.
+- `fcp` e `municipios` devem permanecer em `documentacao` + `tooling` enquanto o delta por `UF` continuar mais forte que a consolidacao nacional disponivel.
+- Nenhum desses grupos deve ser promovido por conveniencia editorial; a promocao continua exigindo slice propria, criterio de fallback e dependencia real do contrato publico.
+
 ## Checklist rapido de decisao
 
 Antes de promover qualquer tema, responder `sim` para estas perguntas:
