@@ -34,11 +34,11 @@ description: "Task list for SEFAZ documentation research and Markdown deliverabl
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [X] T004 Create the NFe dossier scaffold with required sections in docs/nfe/emissao-nfe.md
-- [X] T005 [P] Create the NFC-e national dossier scaffold with required sections in docs/nfce/emissao-nfce.md
-- [X] T006 [P] Create the Manifestacao do Destinatario dossier scaffold with required sections in docs/manifestacao-destinatario/visao-geral.md
-- [X] T007 Create the NFC-e UF matrix scaffold covering all 27 UFs in docs/nfce/uf-matrix.md
-- [X] T008 Create the recent normative changes dossier in docs/mudancas-recentes.md
+- [X] T004 Create the NFe dossier scaffold, later converged into docs/roadmap/topicos-oficiais.md
+- [X] T005 [P] Create the NFC-e national dossier scaffold, later converged into docs/roadmap/topicos-oficiais.md
+- [X] T006 [P] Create the Manifestacao do Destinatario dossier scaffold, later converged into docs/roadmap/rtm-cobertura-oficial.md
+- [X] T007 Create the NFC-e UF matrix scaffold covering all 27 UFs, later converged into docs/roadmap/ufs-ambientes.md
+- [X] T008 Create the recent normative changes dossier, later converged into docs/ROADMAP.md
 - [X] T009 Create the documentation navigation and coverage summary structure in docs/index.md
 
 **Checkpoint**: Foundation ready - user story implementation can now begin.
@@ -49,13 +49,13 @@ description: "Task list for SEFAZ documentation research and Markdown deliverabl
 
 **Goal**: Deliver current-state dossiers for NFe, NFC-e, and Manifestacao do Destinatario with traceable official sources.
 
-**Independent Test**: Open docs/index.md, docs/nfe/emissao-nfe.md, docs/nfce/emissao-nfce.md, and docs/manifestacao-destinatario/visao-geral.md and verify each dossier contains current effective-state content, primary sources, access dates, and documented gaps.
+**Independent Test**: Open docs/index.md, docs/roadmap/topicos-oficiais.md, docs/roadmap/portal-documentos-vigentes.md, and docs/roadmap/rtm-cobertura-oficial.md and verify the canonical annexes contain current effective-state content, primary sources, access dates, and documented gaps.
 
 ### Implementation for User Story 1
 
-- [X] T010 [P] [US1] Populate the current effective NFe emission flow and primary sources in docs/nfe/emissao-nfe.md
-- [X] T011 [P] [US1] Populate the current effective NFC-e national flow and primary sources in docs/nfce/emissao-nfce.md
-- [X] T012 [P] [US1] Populate the current effective Manifestacao do Destinatario flow and primary sources in docs/manifestacao-destinatario/visao-geral.md
+- [X] T010 [P] [US1] Populate the current effective NFe emission flow and primary sources, later converged into docs/roadmap/topicos-oficiais.md
+- [X] T011 [P] [US1] Populate the current effective NFC-e national flow and primary sources, later converged into docs/roadmap/topicos-oficiais.md
+- [X] T012 [P] [US1] Populate the current effective Manifestacao do Destinatario flow and primary sources, later converged into docs/roadmap/rtm-cobertura-oficial.md
 - [X] T013 [US1] Register consulted primary sources, access dates, and access restrictions in docs/_meta/source-registry.md
 - [X] T014 [US1] Update the central coverage summary and dossier links in docs/index.md
 
@@ -71,10 +71,10 @@ description: "Task list for SEFAZ documentation research and Markdown deliverabl
 
 ### Implementation for User Story 2
 
-- [X] T015 [P] [US2] Document required SDK capabilities and validations for NFe in docs/nfe/capacidades-sdk.md
-- [X] T016 [P] [US2] Document required SDK capabilities and shared versus state-sensitive rules for NFC-e in docs/nfce/capacidades-sdk.md
-- [X] T017 [P] [US2] Document required SDK capabilities and event prerequisites for Manifestacao do Destinatario in docs/manifestacao-destinatario/capacidades-sdk.md
-- [X] T018 [US2] Summarize recent relevant notas tecnicas and replaced-version deltas in docs/mudancas-recentes.md
+- [X] T015 [P] [US2] Document required SDK capabilities and validations for NFe, later consolidated into docs/capacidades-sdk.md and docs/roadmap/coverage-matrix.md
+- [X] T016 [P] [US2] Document required SDK capabilities and shared versus state-sensitive rules for NFC-e, later consolidated into docs/capacidades-sdk.md and docs/roadmap/nfce-operacional-promovivel.md
+- [X] T017 [P] [US2] Document required SDK capabilities and event prerequisites for Manifestacao do Destinatario, later consolidated into docs/capacidades-sdk.md and docs/roadmap/rtm-cobertura-oficial.md
+- [X] T018 [US2] Summarize recent relevant notas tecnicas and replaced-version deltas, later converged into docs/ROADMAP.md
 - [X] T019 [US2] Cross-reference capability records, source entries, and future SDK impacts in docs/_meta/source-registry.md
 
 **Checkpoint**: User Story 2 should provide a requirement-oriented backlog input set without depending on later repository-polish work.
@@ -85,16 +85,16 @@ description: "Task list for SEFAZ documentation research and Markdown deliverabl
 
 **Goal**: Make the documentation set reviewable, complete by UF for NFC-e, and easy to navigate in the repository.
 
-**Independent Test**: Starting from docs/index.md, navigate to the thematic dossiers and docs/nfce/uf-matrix.md, then confirm all 27 UFs are represented and primary versus secondary source status is visible.
+**Independent Test**: Starting from docs/index.md, navigate to the canonical roadmap annexes and docs/roadmap/ufs-ambientes.md, then confirm all 27 UFs are represented and primary versus secondary source status is visible.
 
 ### Implementation for User Story 3
 
-- [X] T020 [P] [US3] Populate all 27 UF entries with status, sources, and unresolved gaps in docs/nfce/uf-matrix.md
+- [X] T020 [P] [US3] Populate all 27 UF entries with status, sources, and unresolved gaps, later converged into docs/roadmap/ufs-ambientes.md
 - [X] T021 [P] [US3] Document primary-versus-secondary source handling and conversion constraints in docs/markitdown-workflow.md
 - [X] T022 [US3] Add final navigation, deliverable inventory, and review guidance to docs/index.md
-- [X] T023 [US3] Normalize final dossier structure and source sections in docs/nfe/emissao-nfe.md
-- [X] T024 [US3] Normalize final dossier structure and source sections in docs/nfce/emissao-nfce.md
-- [X] T025 [US3] Normalize final dossier structure and source sections in docs/manifestacao-destinatario/visao-geral.md
+- [X] T023 [US3] Normalize final dossier structure and source sections for the NFe slice, later converged into docs/roadmap/topicos-oficiais.md
+- [X] T024 [US3] Normalize final dossier structure and source sections for the NFC-e slice, later converged into docs/roadmap/topicos-oficiais.md and docs/roadmap/ufs-ambientes.md
+- [X] T025 [US3] Normalize final dossier structure and source sections for Manifestacao do Destinatario, later converged into docs/roadmap/rtm-cobertura-oficial.md
 
 **Checkpoint**: User Story 3 should leave the documentation set repository-ready and independently reviewable.
 

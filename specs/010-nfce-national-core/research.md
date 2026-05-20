@@ -61,7 +61,7 @@
 - O pacote `nfe-sdk` e ESM-only, publicado pelo import raiz conforme `package.json#exports["."]`.
 - `src/index.ts` e `src/public-contract.ts` mostram que o contrato publico ja e expandido por slices additive e auditado por evidencia do repositório.
 - `src/canonical/` ja possui modulos manuais separados por responsabilidade, o que suporta a introducao de `src/canonical/nfce/` sem reabrir a arvore gerada como API.
-- `docs/nfce/emissao-nfce.md` consolida a leitura nacional compartilhada e a necessidade de separar regras nacionais de deltas por UF.
+- `docs/roadmap/nfce-operacional-promovivel.md` consolida a leitura nacional compartilhada e a necessidade de separar regras nacionais de deltas por UF.
 
 ## Provenance notes after planning
 

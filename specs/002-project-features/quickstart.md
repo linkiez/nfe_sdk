@@ -38,7 +38,7 @@ The intended implementation should produce or update:
 - a canonical project-level feature catalog in `docs/capacidades-sdk.md`
 - links from the existing documentation index
 - evidence-backed domain feature summaries for NFe, NFC-e, and Manifestacao do Destinatario
-- an explicit linkage to `docs/nfce/uf-matrix.md`
+- an explicit linkage to `docs/roadmap/ufs-ambientes.md`
 
 ## 4. Validate catalog consistency
 

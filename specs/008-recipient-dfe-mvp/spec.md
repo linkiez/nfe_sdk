@@ -97,7 +97,7 @@ Como mantenedor do integrador, quero que o SDK deixe explicitos os limites entre
 
 ### Knowledge Sources & Provenance
 
-- **KS-001**: As fontes primarias desta feature sao o roadmap em `docs/ROADMAP.md`, o dossie de manifestacao em `docs/manifestacao-destinatario/visao-geral.md`, o catalogo de capacidades em `docs/manifestacao-destinatario/capacidades-sdk.md` e o registro de fontes em `docs/_meta/source-registry.md`, especialmente `SRC-MD-001`, `SRC-MD-002` e `SRC-MD-003`.
+- **KS-001**: As fontes primarias desta feature sao o roadmap em `docs/ROADMAP.md`, a matriz consolidada em `docs/roadmap/rtm-cobertura-oficial.md`, os topicos oficiais em `docs/roadmap/topicos-oficiais.md` e o registro de fontes em `docs/_meta/source-registry.md`, especialmente `SRC-MD-001`, `SRC-MD-002` e `SRC-MD-003`.
 - **KS-002**: Referencias secundarias so podem complementar exemplos operacionais, nomenclaturas auxiliares ou fixtures editoriais, e MUST permanecer explicitamente nao normativas.
 - **KS-003**: Sempre que a fonte oficial publica nao permitir fechar detalhes operacionais por causa de acesso restrito, certificado ou outra limitacao, a lacuna MUST permanecer registrada como fronteira de escopo e nao como comportamento assumido do SDK.
 

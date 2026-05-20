@@ -22,12 +22,12 @@ Define the minimum outputs for the project feature catalog so planning, implemen
 
 ### 3. Domain capability support sections
 
-- Existing capability dossiers in `docs/nfe/capacidades-sdk.md`, `docs/nfce/capacidades-sdk.md`, and `docs/manifestacao-destinatario/capacidades-sdk.md` must either remain the evidence base for the catalog or be updated so they align with the final feature classification.
+- Existing capability dossiers, later converged into `docs/capacidades-sdk.md` and canonical roadmap annexes, must remain aligned with the final feature classification.
 - They must continue to distinguish confirmed facts, gaps, and operational prerequisites.
 
 ### 4. NFC-e UF linkage
 
-- The main catalog must link to `docs/nfce/uf-matrix.md` instead of duplicating per-UF detail inline.
+- The main catalog must link to `docs/roadmap/ufs-ambientes.md` instead of duplicating per-UF detail inline.
 - The linked matrix remains the authoritative place for state-specific deltas, coverage gaps, and operational notes.
 
 ## Required Sections Per Feature Entry

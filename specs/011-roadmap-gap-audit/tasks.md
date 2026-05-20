@@ -104,7 +104,7 @@
 
 - [x] T026 Verify internal consistency across all three artifacts: every GAP ID in `prioritized-backlog.md` exists in `gap-report.md`; every deferred row in `coverage-matrix.md` has a corresponding GAP entry; all Status values match the contract vocabulary
 - [x] T027 [P] Run full Prettier check: `npx prettier --check specs/011-roadmap-gap-audit/*.md specs/011-roadmap-gap-audit/contracts/*.md .github/copilot-instructions.md` — fix any failures before proceeding
-- [x] T028 [P] Verify `docs/ROADMAP.md` and `docs/matriz-tematica-roadmap.md` do not need immediate updates to reflect the audit findings (note: promotion to `docs/` is deferred per CC-002A; record decision in research.md if relevant)
+- [x] T028 [P] Verify `docs/ROADMAP.md` reflects the audit findings adequately (note: later convergence removed the parallel roadmap matrix from `docs/`; record decision in research.md if relevant)
 - [x] T029 Confirm SC-003 manually: a reviewer unfamiliar with the previous sessions can identify the five most important gaps and their rationale in under 10 minutes using only the three artifacts in `specs/011-roadmap-gap-audit/`
 
 ---

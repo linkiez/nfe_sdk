@@ -63,10 +63,10 @@ For HTML or other formats, keep the original artifact and the converted Markdown
 Create or update:
 
 - `docs/index.md`
-- thematic NFe dossier files
-- thematic NFC-e dossier files
-- thematic manifestacao do destinatario dossier files
-- `docs/nfce/uf-matrix.md`
+- `docs/roadmap/topicos-oficiais.md`
+- `docs/roadmap/portal-documentos-vigentes.md`
+- `docs/roadmap/rtm-cobertura-oficial.md`
+- `docs/roadmap/ufs-ambientes.md`
 
 ## 6. Validate the output set
 

@@ -132,7 +132,7 @@ description: "Task list for the initial digital signing slice"
 - [ ] T033 [US3] Define the next signing slice for `evento` XML coverage in `specs/005-add-digital-signing/spec.md`, `specs/005-add-digital-signing/plan.md`, and `specs/005-add-digital-signing/research.md`
 - [ ] T034 [P] [US3] Define the next signing slice for `NFC-e` signing coverage and QR Code interaction boundaries in `specs/005-add-digital-signing/spec.md`, `specs/005-add-digital-signing/data-model.md`, and `specs/005-add-digital-signing/quickstart.md`
 - [ ] T035 [P] [US3] Define how authorization transport, SOAP packaging, and signed-document submission should layer above the current root signing facade in `specs/005-add-digital-signing/plan.md`, `specs/005-add-digital-signing/contracts/public-signing-facade.md`, and `README.md`
-- [ ] T036 [P] [US3] Define the deferred calculations for full access key coverage, `DV`, and `hashCSRT` in `specs/005-add-digital-signing/research.md`, `specs/005-add-digital-signing/data-model.md`, and `docs/roadmap-implantacao.md`
+- [ ] T036 [P] [US3] Define the deferred calculations for full access key coverage, `DV`, and `hashCSRT` in `specs/005-add-digital-signing/research.md`, `specs/005-add-digital-signing/data-model.md`, and `docs/ROADMAP.md`
 - [ ] T037 [US3] Create the next feature spec entry for the first deferred signing expansion after the `NFe`-only slice in `specs/`
 
 ---

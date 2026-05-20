@@ -67,41 +67,41 @@ Centralizar as fontes consultadas, datas de acesso, restricoes observadas e o vi
 | CAT-SHARED-002      | README.md                                         | readme            | Sustenta a normalizacao e particionamento da saida gerada                                 |
 | CAT-SHARED-003      | README.md                                         | readme            | Sustenta o alvo ESM e a compatibilidade com validacao TypeScript                          |
 | CAT-SHARED-004      | docs/index.md                                     | dossier           | Sustenta a organizacao documental versionada e navegavel                                  |
-| CAT-SHARED-005      | docs/manifestacao-destinatario/capacidades-sdk.md | dossier           | Sustenta a separacao entre capacidade do SDK e habilitacao operacional                    |
-| CAT-NFE-001         | docs/nfe/capacidades-sdk.md                       | dossier           | Resume capacidades e lacunas atuais do dominio NFe                                        |
-| CAT-NFCE-001        | docs/nfce/capacidades-sdk.md                      | dossier           | Resume capacidades compartilhadas e sensiveis a UF para NFC-e                             |
-| CAT-NFCE-002        | docs/nfce/uf-matrix.md                            | dossier           | Mantem o detalhe por UF fora do catalogo principal                                        |
-| CAT-MD-001          | docs/manifestacao-destinatario/capacidades-sdk.md | dossier           | Resume o MVP homologado do destinatario, suas restricoes publicas e dependencias externas |
+| CAT-SHARED-005      | docs/roadmap/criterios-promocao.md                | dossier           | Sustenta a separacao entre capacidade do SDK e habilitacao operacional                    |
+| CAT-NFE-001         | docs/roadmap/coverage-matrix.md                   | dossier           | Resume capacidades e lacunas atuais do dominio NFe                                        |
+| CAT-NFCE-001        | docs/roadmap/nfce-operacional-promovivel.md       | dossier           | Resume capacidades compartilhadas e sensiveis a UF para NFC-e                             |
+| CAT-NFCE-002        | docs/roadmap/ufs-ambientes.md                     | dossier           | Mantem o detalhe por UF fora do catalogo principal                                        |
+| CAT-MD-001          | docs/roadmap/rtm-cobertura-oficial.md             | dossier           | Resume o MVP homologado do destinatario, suas restricoes publicas e dependencias externas |
 
 ## Referencias cruzadas iniciais
 
 | Registro     | Requisitos/artefatos relacionados                                                                                                                   |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SRC-NFE-001  | NFE-CAP-001, NFE-CAP-002, NFE-CAP-003, docs/nfe/emissao-nfe.md                                                                                      |
-| SRC-NFE-002  | NFE-CAP-004, docs/nfe/emissao-nfe.md                                                                                                                |
-| SRC-NFE-003  | NFE-CAP-001, NFE-CAP-005, CHANGE-005, CHANGE-006, docs/nfe/emissao-nfe.md                                                                           |
+| SRC-NFE-001  | NFE-CAP-001, NFE-CAP-002, NFE-CAP-003, docs/roadmap/topicos-oficiais.md                                                                             |
+| SRC-NFE-002  | NFE-CAP-004, docs/roadmap/topicos-oficiais.md                                                                                                       |
+| SRC-NFE-003  | NFE-CAP-001, NFE-CAP-005, CHANGE-005, CHANGE-006, docs/roadmap/topicos-oficiais.md                                                                  |
 | SRC-NFE-004  | NFE-CAP-002, NFE-CAP-003, NFE-CAP-005                                                                                                               |
-| SRC-NFE-005  | docs/nfe/emissao-nfe.md                                                                                                                             |
-| SRC-NFCE-001 | NFCE-CAP-001, NFCE-CAP-003, NFCE-CAP-004, NFCE-CAP-005, docs/nfce/emissao-nfce.md, docs/nfce/uf-matrix.md, specs/010-nfce-national-core/research.md |
+| SRC-NFE-005  | docs/roadmap/topicos-oficiais.md                                                                                                                    |
+| SRC-NFCE-001 | NFCE-CAP-001, NFCE-CAP-003, NFCE-CAP-004, NFCE-CAP-005, docs/roadmap/nfce-operacional-promovivel.md, docs/roadmap/ufs-ambientes.md, specs/010-nfce-national-core/research.md |
 | SRC-NFCE-002 | NFCE-CAP-002, CHANGE-001, CHANGE-002, CHANGE-003, CHANGE-004                                                                                        |
-| SRC-NFCE-003 | NFCE-CAP-001, docs/nfce/emissao-nfce.md                                                                                                             |
-| SRC-NFCE-004 | NFCE-CAP-003, docs/nfce/emissao-nfce.md, docs/nfce/uf-matrix.md, specs/010-nfce-national-core/research.md                                           |
-| SRC-NFCE-005 | NFCE-CAP-004, docs/nfce/uf-matrix.md, specs/010-nfce-national-core/research.md                                                                      |
+| SRC-NFCE-003 | NFCE-CAP-001, docs/roadmap/nfce-operacional-promovivel.md                                                                                            |
+| SRC-NFCE-004 | NFCE-CAP-003, docs/roadmap/nfce-operacional-promovivel.md, docs/roadmap/ufs-ambientes.md, specs/010-nfce-national-core/research.md                  |
+| SRC-NFCE-005 | NFCE-CAP-004, docs/roadmap/ufs-ambientes.md, specs/010-nfce-national-core/research.md                                                               |
 
 ## Notas de proveniencia do slice 010
 
 - O slice operacional inicial de NFC-e implementado na feature 010 combina `SRC-NFCE-001` como base do nucleo nacional compartilhado e `SRC-NFCE-004`/`SRC-NFCE-005` como evidencia complementar para promover `SP` como unico piloto operacional.
 - A fronteira `unsupported-state` reflete a decisao de bloquear UFs fora de `SP` antes do transporte, sem transformar a cobertura nacional compartilhada em promessa multi-UF.
 - A fronteira `unsupported-scope` preserva QR Code, DANFE NFC-e, administracao de CSC, credenciamento automatizado e contingencia offline como superficies deferidas, mesmo quando explicitadas por `requestedCapabilities`.
-  | SRC-MD-001 | MD-CAP-001, docs/manifestacao-destinatario/visao-geral.md |
-  | SRC-MD-002 | MD-CAP-001, MD-CAP-003, docs/manifestacao-destinatario/visao-geral.md |
-  | SRC-MD-003 | MD-CAP-002, MD-CAP-003, docs/manifestacao-destinatario/visao-geral.md |
+  | SRC-MD-001 | MD-CAP-001, docs/roadmap/rtm-cobertura-oficial.md |
+  | SRC-MD-002 | MD-CAP-001, MD-CAP-003, docs/roadmap/rtm-cobertura-oficial.md |
+  | SRC-MD-003 | MD-CAP-002, MD-CAP-003, docs/roadmap/rtm-cobertura-oficial.md |
   | SRC-MD-004 | MD-CAP-001, MD-CAP-002, MD-CAP-003, specs/008-recipient-dfe-mvp/research.md |
   | SRC-MD-005 | MD-CAP-001, MD-CAP-003, specs/008-recipient-dfe-mvp/research.md |
   | SRC-MD-006 | MD-CAP-002, MD-CAP-003, specs/008-recipient-dfe-mvp/research.md |
   | SRC-GE-001 | specs/009-generic-event-mvp/research.md, specs/009-generic-event-mvp/contracts/public-generic-event-facade.md |
   | SRC-GE-002 | specs/009-generic-event-mvp/research.md, specs/009-generic-event-mvp/quickstart.md |
-  | SRC-SEC-001 | docs/nfe/emissao-nfe.md, docs/nfce/emissao-nfce.md, docs/nfe/capacidades-sdk.md, docs/nfce/capacidades-sdk.md |
+  | SRC-SEC-001 | docs/roadmap/topicos-oficiais.md, docs/roadmap/nfce-operacional-promovivel.md, docs/roadmap/coverage-matrix.md, docs/roadmap/ufs-ambientes.md |
 
 ## Referencias cruzadas do catalogo
 
@@ -111,11 +111,11 @@ Centralizar as fontes consultadas, datas de acesso, restricoes observadas e o vi
 | CAT-SHARED-002 | README.md                                                                                                                 |
 | CAT-SHARED-003 | README.md                                                                                                                 |
 | CAT-SHARED-004 | docs/index.md, docs/\_meta/source-registry.md                                                                             |
-| CAT-SHARED-005 | SRC-MD-003, docs/manifestacao-destinatario/capacidades-sdk.md                                                             |
-| CAT-NFE-001    | SRC-NFE-001, SRC-NFE-003, SRC-NFE-004, docs/nfe/capacidades-sdk.md                                                        |
-| CAT-NFCE-001   | SRC-NFCE-001, SRC-NFCE-003, docs/nfce/capacidades-sdk.md                                                                  |
-| CAT-NFCE-002   | SRC-NFCE-001, SRC-NFCE-004, SRC-NFCE-005, docs/nfce/uf-matrix.md                                                          |
-| CAT-MD-001     | SRC-MD-001, SRC-MD-002, SRC-MD-003, SRC-MD-004, SRC-MD-005, SRC-MD-006, docs/manifestacao-destinatario/capacidades-sdk.md |
+| CAT-SHARED-005 | SRC-MD-003, docs/roadmap/criterios-promocao.md                                                                             |
+| CAT-NFE-001    | SRC-NFE-001, SRC-NFE-003, SRC-NFE-004, docs/roadmap/coverage-matrix.md                                                    |
+| CAT-NFCE-001   | SRC-NFCE-001, SRC-NFCE-003, docs/roadmap/nfce-operacional-promovivel.md                                                   |
+| CAT-NFCE-002   | SRC-NFCE-001, SRC-NFCE-004, SRC-NFCE-005, docs/roadmap/ufs-ambientes.md                                                   |
+| CAT-MD-001     | SRC-MD-001, SRC-MD-002, SRC-MD-003, SRC-MD-004, SRC-MD-005, SRC-MD-006, docs/roadmap/rtm-cobertura-oficial.md            |
 
 ## Estado atual das fontes secundarias
 
@@ -146,17 +146,40 @@ Uma NT e considerada incorporada quando:
 
 ## Entradas de proveniencia — specs/012 (implementacao de lacunas de auditoria)
 
-| Modulo                                                      | Tipo          | Origem                                              |
-|-------------------------------------------------------------|---------------|-----------------------------------------------------|
-| `src/canonical/validation/validate-nfe-xsd.ts`             | implementacao | specs/012-implement-audit-gaps, XSD local (xsd/)    |
-| `src/canonical/generic-event/prorrogacao-icms-payload.ts`  | implementacao | specs/012-implement-audit-gaps, MOC evento 110764   |
-| `src/canonical/facade/submit-icms-deferral-event.ts`       | implementacao | specs/012-implement-audit-gaps                      |
-| `src/canonical/facade/validate-nfe-xsd.ts`                 | re-export     | specs/012-implement-audit-gaps                      |
-| `tests/fixtures/signing/ecpf-a1-fixture.ts`                | fixture       | specs/012-implement-audit-gaps, PKI Brasil e-CPF    |
-| `tests/unit/canonical/validation/validate-nfe-xsd.test.ts` | teste         | specs/012-implement-audit-gaps                      |
-| `tests/unit/canonical/nfe/ecpf-signing.test.ts`            | teste         | specs/012-implement-audit-gaps                      |
-| `tests/unit/canonical/generic-event/prorrogacao-icms.test.ts` | teste      | specs/012-implement-audit-gaps                      |
-| `docs/_meta/watchlist/gap-006-nfe-abi.md`                  | watchlist     | specs/012-implement-audit-gaps analise de auditoria |
-| `docs/_meta/watchlist/gap-009-signing-coverage.md`         | watchlist     | specs/012-implement-audit-gaps analise de auditoria |
-| `docs/_meta/watchlist/gap-017-rural-series.md`             | watchlist     | specs/012-implement-audit-gaps analise de auditoria |
-| `docs/_meta/nt-tracking-process.md`                        | processo      | specs/012-implement-audit-gaps                      |
+| Modulo                                                        | Tipo          | Origem                                              |
+| ------------------------------------------------------------- | ------------- | --------------------------------------------------- |
+| `src/canonical/validation/validate-nfe-xsd.ts`                | implementacao | specs/012-implement-audit-gaps, XSD local (xsd/)    |
+| `src/canonical/generic-event/prorrogacao-icms-payload.ts`     | implementacao | specs/012-implement-audit-gaps, MOC evento 110764   |
+| `src/canonical/facade/submit-icms-deferral-event.ts`          | implementacao | specs/012-implement-audit-gaps                      |
+| `src/canonical/facade/validate-nfe-xsd.ts`                    | re-export     | specs/012-implement-audit-gaps                      |
+| `tests/fixtures/signing/ecpf-a1-fixture.ts`                   | fixture       | specs/012-implement-audit-gaps, PKI Brasil e-CPF    |
+| `tests/unit/canonical/validation/validate-nfe-xsd.test.ts`    | teste         | specs/012-implement-audit-gaps                      |
+| `tests/unit/canonical/nfe/ecpf-signing.test.ts`               | teste         | specs/012-implement-audit-gaps                      |
+| `tests/unit/canonical/generic-event/prorrogacao-icms.test.ts` | teste         | specs/012-implement-audit-gaps                      |
+| `docs/_meta/watchlist/gap-006-nfe-abi.md`                     | watchlist     | specs/012-implement-audit-gaps analise de auditoria |
+| `docs/_meta/watchlist/gap-009-signing-coverage.md`            | watchlist     | specs/012-implement-audit-gaps analise de auditoria |
+| `docs/_meta/watchlist/gap-017-rural-series.md`                | watchlist     | specs/012-implement-audit-gaps analise de auditoria |
+| `docs/_meta/nt-tracking-process.md`                           | processo      | specs/012-implement-audit-gaps                      |
+
+## Fontes adicionais — release hardening (spec 013)
+
+| ID         | Titulo                                                                  | URL ou caminho local                                                                                                                     | Tipo    | Dominio | Jurisdicao | Publicacao/Revisao | Acesso     | Notas de acesso                                                                                         | Impacto futuro no SDK                                                                                    |
+| ---------- | ----------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------- | ---------- | ------------------ | ---------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| SRC-RH-001 | Manual do Emissor de NF-e - importacao, exportacao e continuidade local | docs/\_sources/markdown/official/www.nfe.fazenda.gov.br/portal/manual_emissor_nfe.md                                                     | primary | shared  | national   | Nao identificado   | 2026-05-19 | Fonte internalizada usada para justificar continuidade documental sem adicionar tooling executavel novo | Sustenta o runbook de homologacao e a separacao entre suporte operacional e API runtime                  |
+| SRC-RH-002 | MOC 7.0 internalizado - recibo, consulta, DANFE e ciclo operacional     | docs/\_sources/markdown/official/www.nfe.fazenda.gov.br/portal/Manual de Orientação ao Contribuinte - MOC - versão 7.0 - NF-e e NFC-e.md | primary | shared  | national   | Versao 7.0         | 2026-05-19 | Fonte internalizada usada para explicitar polling, consulta de protocolo e superficies auxiliares       | Sustenta a matriz de cobertura para gaps de pos-transmissao, consulta auxiliar e representacao auxiliar  |
+| SRC-RH-003 | Manual de Especificações Técnicas do DANFE NFC-e e QR Code              | docs/\_sources/markdown/official/www.nfe.fazenda.gov.br/portal/20250324 - Manual_de_Especificações_Técnicas_do_DANFE_NFC-e_QR_Code.md    | primary | nfce    | national   | 2025-03-24         | 2026-05-19 | Fonte internalizada usada para manter QR Code e DANFE NFC-e como lacunas visiveis do roadmap            | Sustenta a classificacao de backlog para QR Code e DANFE NFC-e enquanto a superficie NFC-e segue parcial |
+
+## Entradas de proveniencia — specs/013 (release hardening)
+
+| Modulo                                     | Tipo         | Origem                                                                                                                           |
+| ------------------------------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| `.github/workflows/ci.yml`                 | workflow     | specs/013-release-hardening, `package.json` scripts canonicos                                                                    |
+| `docs/roadmap/coverage-matrix.md`          | documentacao | specs/013-release-hardening, `src/public-contract.ts`, `docs/ROADMAP.md`, `tests/contract/`, `tests/integration/`, `tests/unit/` |
+| `docs/roadmap/proximas-iteracoes-recomendadas.md` | runbook-like  | specs/013-release-hardening, SRC-RH-001, SRC-RH-002, SRC-RH-003                                                                  |
+| `examples/shared/homologation-support.ts`  | helper       | specs/013-release-hardening, contrato publico `nfe-sdk`, mTLS homologado por certificado A1                                      |
+| `examples/nfe/authorize.ts`                | exemplo      | specs/013-release-hardening, `authorizeNFe`, `createSigningContext`                                                              |
+| `examples/recipient/manifest.ts`           | exemplo      | specs/013-release-hardening, `manifestRecipientOperation`, `createSigningContext`                                                |
+| `examples/validation/validate-xsd.ts`      | exemplo      | specs/013-release-hardening, `validateNFeXsd`                                                                                    |
+| `README.md`                                | navegacao    | specs/013-release-hardening, referencias de CI, exemplos e docs de adocao                                                        |
+| `docs/index.md`                            | navegacao    | specs/013-release-hardening, matriz de cobertura e runbook de continuidade                                                       |
+| `tools/validate-links-comprehensive.ts`    | verificacao  | specs/013-release-hardening, docs gate offline                                                                                   |

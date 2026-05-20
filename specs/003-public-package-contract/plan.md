@@ -28,7 +28,7 @@ Redesenhar e estabilizar o import raiz publicado do pacote, alinhando `src/index
 
 **Scale/Scope**: Redesenho do import raiz, contrato minimo do pacote, build e empacotamento repetiveis, smoke validation por tarball, documentacao e auditoria de lacunas do manifesto
 
-**Knowledge Sources**: Fontes primarias: `docs/roadmap-implantacao.md`, `package.json`, `src/index.ts`, `src/manifest.json`, `README.md`, constituicao em `.specify/memory/constitution.md`; fontes secundarias: nenhuma necessaria nesta fase; lacuna atual: o manifesto ajuda auditoria, mas nao define sozinho o limite do contrato publicado
+**Knowledge Sources**: Fontes primarias: `docs/ROADMAP.md`, `package.json`, `src/index.ts`, `src/manifest.json`, `README.md`, constituicao em `.specify/memory/constitution.md`; fontes secundarias: nenhuma necessaria nesta fase; lacuna atual: o manifesto ajuda auditoria, mas nao define sozinho o limite do contrato publicado
 
 ## Constitution Check
 

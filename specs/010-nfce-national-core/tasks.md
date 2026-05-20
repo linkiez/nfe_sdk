@@ -102,7 +102,7 @@
 ### Implementation for User Story 3
 
 - [x] T027 [P] [US3] Update the published package contract and compatibility notes in `src/public-contract.ts`, `src/public-contract.doc.md`, `src/index.doc.md`, and `README.md`
-- [x] T028 [P] [US3] Update the NFC-e coverage documentation and compatibility matrix in `docs/nfce/index.md`, `docs/nfce/emissao-nfce.md`, `docs/nfce/capacidades-sdk.md`, and `docs/nfce/uf-matrix.md`
+- [x] T028 [P] [US3] Update the NFC-e coverage documentation and compatibility matrix, later converged into `docs/roadmap/nfce-operacional-promovivel.md`, `docs/roadmap/coverage-matrix.md`, and `docs/roadmap/ufs-ambientes.md`
 - [x] T029 [US3] Align feature artifacts with the final boundary language in `specs/010-nfce-national-core/spec.md`, `specs/010-nfce-national-core/data-model.md`, `specs/010-nfce-national-core/contracts/public-nfce-operational-facade.md`, and `specs/010-nfce-national-core/quickstart.md`
 
 **Checkpoint**: All user stories should now be independently functional and the supported-versus-deferred NFC-e boundaries should be explicit across code and docs.

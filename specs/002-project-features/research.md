@@ -19,7 +19,7 @@
 ## Decision 3: Model NFC-e as one primary feature with per-UF variation in an auxiliary matrix
 
 - **Decision**: Keep NFC-e coverage as a single primary catalog feature and reference a linked per-UF matrix for state-specific deltas, gaps, and operational dependencies.
-- **Rationale**: This preserves a readable top-level catalog while respecting the real complexity of state-level variation. It also aligns with the existing dossier structure, where `docs/nfce/uf-matrix.md` already acts as the scalable place for UF detail.
+- **Rationale**: This preserves a readable top-level catalog while respecting the real complexity of state-level variation. It also aligns with the canonical roadmap structure, where `docs/roadmap/ufs-ambientes.md` acts as the scalable place for UF detail.
 - **Alternatives considered**:
   - One feature per UF: rejected because the main catalog would become too large and repetitive.
   - No per-UF representation in the specification: rejected because it would hide a material adoption risk.

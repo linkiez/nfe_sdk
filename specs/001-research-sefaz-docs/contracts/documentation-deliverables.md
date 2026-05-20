@@ -12,24 +12,24 @@ Define the minimum documentation outputs that this feature must produce in `docs
 - Must link to all thematic dossiers and to the NFC-e UF matrix.
 - Must summarize scope, research date, source policy, and known coverage gaps.
 
-### 2. `docs/nfe/*.md`
+### 2. `docs/roadmap/topicos-oficiais.md`
 
-- Must capture the current effective NFe emission flow.
+- Must capture the current effective NFe and NFC-e national flows in canonical consolidated form.
 - Must list primary sources and any secondary supplements separately.
 - Must include required SDK capabilities, recent relevant changes, and known gaps.
 
-### 3. `docs/nfce/*.md`
+### 3. `docs/roadmap/portal-documentos-vigentes.md`
 
-- Must capture the current effective NFC-e flow at the national level.
-- Must reference the dedicated UF matrix.
-- Must distinguish nationally shared rules from UF-specific deviations.
+- Must register the current official-document inventory that sustains the canonical roadmap.
+- Must reference the dedicated UF matrix and other roadmap annexes when applicable.
+- Must distinguish nationally shared rules from state-sensitive or family-specific deviations.
 
-### 4. `docs/manifestacao-destinatario/*.md`
+### 4. `docs/roadmap/rtm-cobertura-oficial.md`
 
-- Must capture recipient-manifestation flows, event types, prerequisites, and traceable sources.
+- Must capture recipient-manifestation coverage, event types, prerequisites, and traceable sources.
 - Must identify certificate-gated or otherwise restricted official surfaces when encountered.
 
-### 5. `docs/nfce/uf-matrix.md`
+### 5. `docs/roadmap/ufs-ambientes.md`
 
 - Must contain one entry per UF.
 - Each UF entry must state coverage status, sources consulted, state-specific deltas if any, and unresolved gaps.

@@ -18,7 +18,7 @@ npm run convert:official-docs
 
 ## Integracao local
 
-- [Cobertura oficial de notas fiscais](./notas-fiscais/index.md)
+- [Topicos oficiais e destino no roadmap](./roadmap/topicos-oficiais.md)
 - [Registro de fontes](./_meta/source-registry.md)
 - [Manifesto de download oficial](./_meta/official-download-manifest.json)
 - [Manifesto de conversao Markdown](./_meta/official-conversion-manifest.json)
@@ -48,11 +48,11 @@ npm run convert:official-docs
 
 ## Sintese editorial absorvida
 
-- A pagina [Cobertura nacional](./notas-fiscais/cobertura-nacional.md) absorve a estrutura publica de servicos, FAQ e divisao institucional do portal.
-- A pagina [Manuais e esquemas](./notas-fiscais/manuais-e-esquemas.md) absorve o MOC, anexos, contingencia, QR Code, boas praticas e esquemas.
-- A mesma pagina tambem organiza familias documentais paralelas, como `NFGas`, `NF-e ABI` e `NFAg`, alem de agrupar os esquemas por trilha funcional.
-- A pagina [Notas tecnicas e informes](./notas-fiscais/notas-tecnicas-e-informes.md) absorve a camada de mudancas, tabelas auxiliares e impactos recorrentes.
-- A pagina [Cobertura estadual](./notas-fiscais/cobertura-estadual.md) absorve o complemento operacional por UF ja consolidado.
+- O anexo [Inventario do portal nacional](./roadmap/portal-nacional-inventario.md) absorve a estrutura publica de servicos, FAQ e divisao institucional do portal.
+- O anexo [Registro de documentos vigentes](./roadmap/portal-documentos-vigentes.md) absorve o MOC, anexos, contingencia, QR Code, boas praticas, esquemas e vigencias.
+- O anexo [Topicos oficiais e destino no roadmap](./roadmap/topicos-oficiais.md) organiza familias documentais paralelas, como `NFGas`, `NF-e ABI` e `NFAg`, alem de agrupar os temas por trilha funcional.
+- O anexo [Politica executavel para tabelas externas](./roadmap/politica-tabelas-externas.md) absorve a camada de tabelas auxiliares, cadence e impactos recorrentes.
+- O anexo [UFs e ambientes observaveis](./roadmap/ufs-ambientes.md) absorve o complemento operacional por UF ja consolidado.
 
 ## Uso atual no slice NFC-e
 

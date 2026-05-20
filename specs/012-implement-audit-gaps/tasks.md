@@ -332,14 +332,14 @@ passes. `submitICMSDeferralEvent` importable from `nfe-sdk`.
 tracking process (GAP-011) so users have compliance guidance and maintainers have a
 repeatable update workflow.
 
-**Independent Test**: `docs/manifestacao-destinatario/visao-geral.md` contains a table
+**Independent Test**: the canonical recipient-coverage annexes contain a table
 with Ciência (90 days), Confirmação/Desconhecimento/NãoRealizada (180 days) deadlines per
 MOC §3.2.3; `docs/_meta/nt-tracking-process.md` exists with a step-by-step update
 checklist.
 
 ### Implementation for User Story 8
 
-- [X] T047 [P] [US8] Update `docs/manifestacao-destinatario/visao-geral.md` — add
+- [X] T047 [P] [US8] Update the recipient-coverage documentation, later converged into the canonical roadmap annexes — add
       mandatory manifestation deadline table per MOC §3.2.3: Ciência da Operação (90 days,
       optional but recommended), Confirmação/Desconhecimento/Operação Não Realizada (180 days
       mandatory when applicable)

@@ -299,6 +299,7 @@ npm run generate
 npm run build
 npm run typecheck
 npm run lint
+npm run docs:check
 npm run format:check
 npm test
 npm run validate:tarball
@@ -310,6 +311,7 @@ O baseline desta fase exige validar o pacote publicado, não apenas o workspace:
 
 ```bash
 npm run lint
+npm run docs:check
 npm run format:check
 npm run typecheck
 npm test
@@ -318,6 +320,33 @@ npm run validate:tarball
 ```
 
 O smoke validation do tarball deve confirmar que o import raiz continua utilizavel sem depender do workspace aberto.
+
+## CI e onboarding de homologação
+
+O workflow de CI desta fase fica em [.github/workflows/ci.yml](/home/linkiez/Projetos/nfe_sdk/.github/workflows/ci.yml) e executa, em ordem, `build`, `lint`, `typecheck`, `test` e `docs:check` para `pull_request` e pushes na branch padrão do repositório.
+
+O cenário manual de verificação continua sendo:
+
+1. introduzir um erro proposital de typecheck em uma branch de PR;
+2. confirmar que o workflow falha na etapa `Typecheck gate`;
+3. remover o erro e confirmar que o mesmo PR volta a ficar verde sem publicar artefatos.
+
+## Exemplos de homologação
+
+Os exemplos desta fase consomem o pacote compilado via import raiz `nfe-sdk`. Execute primeiro o build local e depois o exemplo do fluxo desejado:
+
+```bash
+npm run build
+npx tsx examples/validation/validate-xsd.ts
+npx tsx examples/nfe/authorize.ts
+npx tsx examples/recipient/manifest.ts
+```
+
+Variáveis esperadas:
+
+- `examples/nfe/authorize.ts`: `NFE_CERT_PFX_PATH`, `NFE_CERT_PASSPHRASE`, `NFE_DOCUMENT_ID`
+- `examples/recipient/manifest.ts`: `NFE_CERT_PFX_PATH`, `NFE_CERT_PASSPHRASE`, `NFE_ACCESS_KEY`, `NFE_ACTOR_DOCUMENT_NUMBER`
+- `examples/validation/validate-xsd.ts`: `NFE_XML_PATH` e `NFE_XSD_DIR` são opcionais
 
 ## Geração de schemas
 
@@ -333,7 +362,9 @@ Os identificadores gerados seguem `PascalCase` com prefixos por categoria:
 ## Documentação de apoio
 
 - [docs/capacidades-sdk.md](/home/linkiez/Projetos/nfe_sdk/docs/capacidades-sdk.md): catalogo documental de capacidades e lacunas.
+- [docs/roadmap/coverage-matrix.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/coverage-matrix.md): matriz viva da superficie publicada, status atual e lacunas visiveis do roadmap.
 - [docs/index.md](/home/linkiez/Projetos/nfe_sdk/docs/index.md): indice documental consolidado.
+- [docs/roadmap/proximas-iteracoes-recomendadas.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/proximas-iteracoes-recomendadas.md): trilha atual de continuidade, fechamento e proximas iteracoes recomendadas.
 - [specs/003-public-package-contract/contracts/public-package-contract.md](/home/linkiez/Projetos/nfe_sdk/specs/003-public-package-contract/contracts/public-package-contract.md): contrato de referência desta fase.
 
 ## Diretrizes de compatibilidade

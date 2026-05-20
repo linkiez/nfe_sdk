@@ -101,7 +101,7 @@
 - [X] T030 [P] [US3] Implement recipient coverage boundary helpers in `src/canonical/recipient/recipient-coverage-boundary.ts`
 - [X] T031 [P] [US3] Implement no-new-documents, backoff, consumption-limit, and service-unavailable mapping in `src/canonical/recipient/distribute-recipient-dfe.ts`
 - [X] T032 [US3] Surface explicit unsupported-scope, dependency, and usage-error outcomes in `src/canonical/recipient/manifest-recipient-operation.ts` and `src/canonical/recipient/recipient-distribution-outcome.ts`
-- [X] T033 [US3] Update boundary documentation in `src/public-contract.ts`, `docs/manifestacao-destinatario/capacidades-sdk.md`, and `specs/008-recipient-dfe-mvp/quickstart.md`
+- [X] T033 [US3] Update boundary documentation in `src/public-contract.ts`, canonical roadmap annexes for recipient coverage, and `specs/008-recipient-dfe-mvp/quickstart.md`
 - [X] T034 [US3] Update tarball and package-boundary regression coverage in `tests/integration/package-tarball-smoke.test.ts` and `tests/contract/package-contract-docs.test.ts`
 
 **Checkpoint**: All user stories should now be independently functional.

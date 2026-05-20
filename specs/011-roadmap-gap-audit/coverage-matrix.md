@@ -16,7 +16,7 @@ Status legend: `covered` | `partial` | `deferred` | `missing` | `resolved-downst
 | Identificar e consultar fontes oficiais (NF-e, NFC-e, Manifestação) | covered | MOC 7.0 Visão Geral; DANFE NFC-e v6.0; Contingência NF-e; Portal webservices | —                  | Documentos presentes em `docs/`                                                                                            |
 | Registrar fontes, tema coberto e data por documento                 | covered | `docs/documentos-oficiais-portal-nfe.md`; `docs/_meta/source-registry.md`    | —                  | —                                                                                                                          |
 | Consolidar em Markdown no diretório `docs/`                         | covered | `docs/_sources/markdown/official/`                                           | —                  | —                                                                                                                          |
-| Matriz de cobertura NFC-e por UF                                    | covered | `webservices-24c8f3a1fb.md`; `docs/nfce/uf-matrix.md`                        | —                  | CE, SE, RJ, AP com falha de conversão no corpus                                                                            |
+| Matriz de cobertura NFC-e por UF                                    | covered | `webservices-24c8f3a1fb.md`; `docs/roadmap/ufs-ambientes.md`                 | —                  | CE, SE, RJ, AP com falha de conversão no corpus                                                                            |
 | Documentar estado vigente e mudanças recentes (Notas Técnicas)      | partial | `informe-04c66e64b8.md`; portal informes                                     | —                  | GAP-011; informes 2026.002 (CBS), 2026.004 (CNPJ Alfanumérico), 2024.003 v1.10 (Agro) publicados após consolidação inicial |
 
 ---
@@ -27,7 +27,7 @@ Status legend: `covered` | `partial` | `deferred` | `missing` | `resolved-downst
 | ------------------------------------------------------------------------------- | ------- | --------------------------------------- | ------------------ | ----- |
 | Catálogo canônico de capacidades em `docs/capacidades-sdk.md`                   | covered | `docs/capacidades-sdk.md`               | —                  | —     |
 | Classificar features: confirmada / parcial / futura / dependente de habilitação | covered | spec própria; `docs/capacidades-sdk.md` | —                  | —     |
-| Cobertura NFC-e por UF como feature principal com seção auxiliar                | covered | `docs/nfce/uf-matrix.md`                | —                  | —     |
+| Cobertura NFC-e por UF como feature principal com seção auxiliar                | covered | `docs/roadmap/ufs-ambientes.md`         | —                  | —     |
 | Evidência principal por feature ou lacuna declarada                             | covered | spec própria                            | —                  | —     |
 
 ---

@@ -96,7 +96,7 @@ Como integrador responsavel pelo ciclo de vida da NF-e, quero usar operacoes obr
 
 ### Knowledge Sources & Provenance
 
-- **KS-001**: As fontes primarias desta feature sao [docs/roadmap-implantacao.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap-implantacao.md), [docs/nfe/emissao-nfe.md](/home/linkiez/Projetos/nfe_sdk/docs/nfe/emissao-nfe.md), o MOC 7.0 e os schemas oficiais de NF-e ja internalizados pelo repositorio, alem dos contratos e limites ja estabelecidos nas features 004, 005 e 006.
+- **KS-001**: As fontes primarias desta feature sao [docs/ROADMAP.md](/home/linkiez/Projetos/nfe_sdk/docs/ROADMAP.md), [docs/roadmap/topicos-oficiais.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/topicos-oficiais.md), [docs/roadmap/portal-documentos-vigentes.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/portal-documentos-vigentes.md), o MOC 7.0 e os schemas oficiais de NF-e ja internalizados pelo repositorio, alem dos contratos e limites ja estabelecidos nas features 004, 005 e 006.
 - **KS-002**: Referencias secundarias podem complementar exemplos operacionais, tabelas editoriais internas e consolidacoes documentais do repositorio, desde que permaneçam explicitamente nao normativas e nao substituam as fontes oficiais.
 - **KS-003**: Lacunas de proveniencia, dependencias de credenciamento, exigencias por UF e qualquer divergencia entre cobertura nacional compartilhada e comportamento estadual MUST permanecer registradas como limites de escopo ou backlog, e nao como promessa implicita do MVP.
 

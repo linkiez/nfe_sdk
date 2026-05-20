@@ -87,7 +87,7 @@ tools/
 xsd/
 ```
 
-**Structure Decision**: Manter a estrutura atual de pacote unico. Esta feature atua somente sobre artefatos documentais, com `docs/capacidades-sdk.md` como catalogo canonico, `docs/index.md` como navegacao, dossies tematicos como evidencia e `docs/nfce/uf-matrix.md` como detalhamento auxiliar por UF.
+**Structure Decision**: Manter a estrutura atual de pacote unico. Esta feature atua somente sobre artefatos documentais, com `docs/capacidades-sdk.md` como catalogo canonico, `docs/index.md` como navegacao, anexos do roadmap como evidencia e `docs/roadmap/ufs-ambientes.md` como detalhamento auxiliar por UF.
 
 ## Complexity Tracking
 
