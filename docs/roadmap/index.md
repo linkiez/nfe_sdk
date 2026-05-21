@@ -21,6 +21,7 @@
 ### Cobertura e promocao
 
 - [coverage-matrix](./coverage-matrix.md): relacao entre superficie publicada, evidencias e status de cobertura.
+- [runtimes-sdk](./runtimes-sdk.md): leitura consolidada dos runtimes publicados, promoviveis e explicitamente deferidos.
 - [rtm-cobertura-oficial](./rtm-cobertura-oficial.md): cobertura oficial por tema consolidado `RTM-*`.
 - [criterios-promocao](./criterios-promocao.md): regras para subir algo de documentacao/tooling para runtime.
 - [nfce-operacional-promovivel](./nfce-operacional-promovivel.md): criterio especifico para promocao operacional de NFC-e.

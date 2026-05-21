@@ -13,6 +13,7 @@ Converter a leitura consolidada dos `RTM-*`, das specs abertas e do acervo ofici
 ## Anexo complementar
 
 - [Checklist de fechamento das specs 007 e 010](./checklist-fechamento-007-010.md)
+- [Inventario de runtimes publicados e promoviveis](./runtimes-sdk.md)
 - [Recorte promovivel de NFC-e](./nfce-operacional-promovivel.md)
 - [Recortes funcionais prioritarios](./recortes-funcionais-prioritarios.md)
 - [Criterios de promocao entre documentacao, tooling e runtime](./criterios-promocao.md)
