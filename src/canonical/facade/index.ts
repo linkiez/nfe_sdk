@@ -28,11 +28,17 @@ export type { XsdValidationClassification, XsdValidationOptions, XsdValidationRe
 
 export type {
 	DocumentSituationRequest,
+	DocumentSituationResult,
+	NFeOperationalPrimaryState,
+	NFeOperationalState,
 	NFeAuthorizationBatch,
 	NFeAuthorizationDocumentsInput,
 	NFeAuthorizationOutcome,
 	NFeAuthorizationRequest,
+	NFeStateEvidence,
+	NFeStateEvidenceSourceKind,
 	OperationalMaintenanceOutcome,
+	OperationalBoundary,
 	OperationalMaintenanceRequest,
 	ServiceStatusSnapshot,
 } from '../nfe/index.js';

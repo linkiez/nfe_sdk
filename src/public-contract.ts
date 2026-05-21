@@ -1,3 +1,5 @@
+import { getOperationalBoundaries } from './canonical/nfe/contracts.js';
+
 const DOCUMENTED_SURFACE = [
   'publicPackageContract',
   'authorizeNFCe',
@@ -51,6 +53,7 @@ const COMPATIBILITY_NOTES = [
   'The signing-expansion slice keeps trust chain automation, certificate acquisition workflows, and A3 support outside this phase.',
   'The SOAP transport slice covers only homologation, shared SVAN endpoints, and the initial status-service and authorization operations in this phase.',
   'The first operational NFe slice currently exposes authorizeNFe, queryNFeServiceStatus, queryNFeDocumentSituation, submitNFeInutilization, cancelNFe, and submitNFeCorrectionLetter on top of the canonical, signing, and transport layers.',
+  'The NFe state-operations slice now returns additive operational state and evidence projections for queryNFeDocumentSituation and supported post-authorization maintenance flows while keeping nRec, generic polling, multi-document reconciliation, local persistence, and dominant UF variance outside the root contract.',
   'The first contingency-boundary slice for NFe is anchored in authorizeNFe and now returns an explicit contingency-boundary diagnostic for production requests whose issuer UF delegates to SVC-AN or SVC-RS, instead of silently falling back to normal authorization semantics.',
   'The first NFC-e slice currently exposes authorizeNFCe as an additive root facade for homologation-only single-document authorization through the promoted SP and PR cohort while broader state coverage remains deferred.',
   'The signing-expansion slice now adds prepareNFCeSigningPrerequisites as an additive root facade that derives chNFe, cDV, and hashCSRT while keeping authorization, QR Code, and broader NFC-e rollout explicitly deferred.',
@@ -77,6 +80,7 @@ const REPOSITORY_EVIDENCE = [
   'specs/010-nfce-national-core/contracts/public-nfce-operational-facade.md',
   'specs/008-recipient-dfe-mvp/contracts/public-recipient-dfe-facade.md',
   'specs/009-generic-event-mvp/contracts/public-generic-event-facade.md',
+  'specs/020-nfe-state-operations/contracts/public-nfe-state-operations-facade.md',
 ] as const;
 
 /**
@@ -87,6 +91,7 @@ export const publicPackageContract = {
   documentedSurface: DOCUMENTED_SURFACE,
   excludedSurface: EXCLUDED_SURFACE,
   normativeSource: 'package.json#exports["."]',
+  operationalBoundaries: getOperationalBoundaries(),
   repositoryEvidence: REPOSITORY_EVIDENCE,
   rootEntrypoint: {
     exportedNames: DOCUMENTED_SURFACE,

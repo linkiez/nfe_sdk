@@ -331,13 +331,13 @@ function extractDownloadFileName(
     return undefined;
   }
 
-  const utf8Match = contentDisposition.match(/filename\*=UTF-8''([^;]+)/i);
+  const utf8Match = /filename\*=UTF-8''([^;]+)/i.exec(contentDisposition);
 
   if (utf8Match?.[1]) {
     return decodeURIComponent(utf8Match[1]);
   }
 
-  const basicMatch = contentDisposition.match(/filename="?([^";]+)"?/i);
+  const basicMatch = /filename="?([^";]+)"?/i.exec(contentDisposition);
   return basicMatch?.[1]?.trim();
 }
 

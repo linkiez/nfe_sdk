@@ -25,6 +25,9 @@ type CancelNFe = (input: {
   applicationStatusCode?: string;
   classification: string;
   protocolNumber?: string;
+  updatedState?: {
+    primaryState: string;
+  };
   transportOutcome: {
     classification: string;
   };
@@ -59,6 +62,7 @@ describe('cancelNFe integration', () => {
     expect(outcome?.classification).toBe('success');
     expect(outcome?.applicationStatusCode).toBe('128');
     expect(outcome?.protocolNumber).toBe('135250000000002');
+    expect(outcome?.updatedState?.primaryState).toBe('canceled');
     expect(outcome?.transportOutcome.classification).toBe('success');
   });
 });

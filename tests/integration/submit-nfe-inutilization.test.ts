@@ -24,6 +24,9 @@ type SubmitNFeInutilization = (input: {
   applicationStatusCode?: string;
   classification: string;
   protocolNumber?: string;
+  updatedState?: {
+    primaryState: string;
+  };
   transportOutcome: {
     classification: string;
   };
@@ -56,6 +59,7 @@ describe('submitNFeInutilization integration', () => {
     expect(outcome?.classification).toBe('success');
     expect(outcome?.applicationStatusCode).toBe('102');
     expect(outcome?.protocolNumber).toBe('135250000000001');
+    expect(outcome?.updatedState?.primaryState).toBe('inutilized');
     expect(outcome?.transportOutcome.classification).toBe('success');
   });
 });

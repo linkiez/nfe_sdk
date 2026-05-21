@@ -1,0 +1,13 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Body>
+    <retConsSitNFe>
+      <cStat>102</cStat>
+      <xMotivo>Inutilizacao de numero homologada</xMotivo>
+      <protNFe>
+        <infProt>
+          <nProt>135190000000003</nProt>
+        </infProt>
+      </protNFe>
+    </retConsSitNFe>
+  </soap:Body>
+</soap:Envelope>

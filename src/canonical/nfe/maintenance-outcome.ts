@@ -7,6 +7,7 @@ import type {
   OperationalMaintenanceOutcome,
   OperationalMaintenanceRequest,
 } from './contracts.js';
+import { mapMaintenanceToOperationalState } from './operational-state.js';
 import { mapTransportOutcomeToMaintenanceClassification } from './transport-outcome-mapper.js';
 
 const SUPPORTED_OPERATIONAL_ENVIRONMENT = 'homologation' as const;
@@ -32,6 +33,10 @@ export function mapOperationalMaintenanceTransportOutcome(
 ): OperationalMaintenanceOutcome {
   const mappedTransport =
     mapTransportOutcomeToMaintenanceClassification(transportOutcome);
+  const updatedState = mapMaintenanceToOperationalState({
+    operation,
+    transportOutcome,
+  });
 
   return {
     applicationStatusCode: transportOutcome.applicationStatusCode,
@@ -44,6 +49,7 @@ export function mapOperationalMaintenanceTransportOutcome(
       'nProt',
     ),
     transportOutcome,
+    updatedState,
   };
 }
 

@@ -20,6 +20,13 @@ export {
   mapOperationalMaintenanceTransportOutcome,
 } from './maintenance-outcome.js';
 export {
+  createOperationalState,
+  createOperationalStateEvidence,
+  mapDocumentSituationToOperationalState,
+  mapMaintenanceToOperationalState,
+  resolveDocumentSituationClassification,
+} from './operational-state.js';
+export {
   mapDocumentSituationTransportOutcome,
   queryNFeDocumentSituation,
 } from './query-nfe-document-situation.js';
@@ -30,6 +37,7 @@ export {
 export { submitNFeCorrectionLetter } from './submit-nfe-correction-letter.js';
 export { submitNFeInutilization } from './submit-nfe-inutilization.js';
 export {
+  getOperationalBoundaries,
   getNFeAuthorizationClassifications,
   getNFeMaintenanceClassifications,
   getNFeQueryClassifications,
@@ -62,13 +70,23 @@ export type {
   NFeAuthorizationRequest,
   NFeMaintenanceClassification,
   NFeMaintenanceOperation,
+  NFeOperationalPrimaryState,
+  NFeOperationalState,
   NFeQueryClassification,
   NFeServiceStatusRequest,
+  NFeStateEvidence,
+  NFeStateEvidenceSourceKind,
+  OperationalBoundary,
   OperationalCoverageBoundary,
   OperationalMaintenanceOutcome,
   OperationalMaintenanceRequest,
   ServiceStatusSnapshot,
 } from './contracts.js';
 export type { OperationalMaintenanceFacadeInput } from './maintenance-outcome.js';
+export type {
+  MaintenanceOperationalStateInput,
+  NFeOperationalEvidenceInput,
+  QueryOperationalStateInput,
+} from './operational-state.js';
 export type { UnsupportedOperationalScopeDetails } from './errors.js';
 export type { OperationalTransportProjection } from './transport-outcome-mapper.js';

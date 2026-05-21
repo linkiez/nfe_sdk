@@ -58,7 +58,11 @@ export function classifyGenericEventBatchTransportOutcome(input: {
 		return 'success';
 	}
 
-	if (input.itemClassifications.some((classification) => classification === 'success')) {
+	const successfulItemCount = input.itemClassifications.filter(
+		(classification) => classification === 'success',
+	).length;
+
+	if (successfulItemCount > 0) {
 		return 'partial-success';
 	}
 

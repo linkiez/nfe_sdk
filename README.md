@@ -1,10 +1,60 @@
 # nfe-sdk
 
-SDK em TypeScript para evoluir de uma base gerada a partir de XSDs da NF-e, NFC-e e Manifestacao do Destinatario para um pacote npm ESM com contrato publico controlado.
+SDK em TypeScript para integracoes com NF-e, NFC-e e Manifestacao do Destinatario, publicado como pacote ESM com contrato publico controlado no import raiz.
 
-## Contrato publico minimo desta fase
+O foco desta fase e oferecer uma base utilizavel para fluxos operacionais homologados, assinatura digital, transporte SOAP e validacao estrutural de XML sem expor a arvore gerada por XSD como API estavel.
 
-Nesta fase, o pacote publica somente o import raiz e uma superficie funcional enxuta para a slice canonica inicial, o primeiro slice aditivo de assinatura digital e o primeiro slice aditivo de transporte SOAP:
+> Para quem precisa integrar documentos fiscais eletrônicos com uma API mais previsivel, tipada e orientada a fluxos reais de SEFAZ, sem depender diretamente da arvore gerada por XSD.
+
+## Por que usar
+
+- pacote ESM com import raiz unico e contrato publico controlado
+- superficie tipada para os fluxos promovidos do roadmap atual
+- helpers de assinatura, serializacao e transporte sem misturar detalhes internos gerados
+- boundaries explicitas quando um fluxo ainda nao faz parte do contrato estabilizado
+
+## Onde ele ajuda
+
+| Cenario               | O que o SDK oferece                                                                               |
+| --------------------- | ------------------------------------------------------------------------------------------------- |
+| Emissao e autorizacao | Montagem canonica, serializacao, assinatura e envio inicial de NF-e e NFC-e no recorte promovido  |
+| Consultas SEFAZ       | Status de servico, situacao do documento, lote assíncrono, consultas por chave e NSU              |
+| Eventos fiscais       | Cancelamento, carta de correcao, inutilizacao, EPEC, manifestacao e eventos genericos homologados |
+| Integracao recipient  | Distribuicao DFe e manifestacao com cursor observavel e retorno estruturado                       |
+| Validacao local       | Cálculo de chave, hash CSRT, XMLDSig e validacao XSD com classificacao consistente                |
+
+## O que este pacote entrega hoje
+
+- autorizacao inicial de NF-e em homologacao, com diagnostico explicito de boundary para contingencia promovida em producao
+- facade inicial de NFC-e em homologacao para o cohort publicado de UFs
+- assinatura digital de NF-e e eventos com validacao local de XMLDSig
+- transporte SOAP 1.2 com classificacao estruturada de resultado
+- consulta de status, situacao do documento, lote assíncrono e inscricao de contribuinte
+- distribuicao DFe e Manifestacao do Destinatario no recorte homologado atual
+- submissao de eventos suportados, incluindo EPEC, carta de correcao, inutilizacao e pedido de prorrogacao de ICMS
+- validacao XSD local com classificacao estruturada
+
+## Requisitos
+
+- Node.js `>=18.18`
+- npm
+
+## Instalacao
+
+```bash
+npm install nfe-sdk
+```
+
+## Comece por aqui
+
+1. crie um `signingContext` com seu certificado A1
+2. escolha o fluxo principal: autorizacao, consulta, evento ou distribuicao
+3. injete um `requestExecutor` para controlar HTTP, timeout e observabilidade
+4. trate `classification` e `coverageBoundary` como parte do contrato de integracao
+
+## Uso rapido
+
+O pacote publica apenas o import raiz:
 
 ```ts
 import {
@@ -36,88 +86,40 @@ import {
   signNFeXml,
   submitEPECEvent,
   submitGenericEvents,
+  submitICMSDeferralEvent,
   submitNFeCorrectionLetter,
   submitNFeInutilization,
   validateNFeXsd,
-  submitICMSDeferralEvent,
 } from 'nfe-sdk';
 ```
 
-`publicPackageContract` descreve o contrato publicado e serve como ancora estavel para as proximas fases funcionais.
+`publicPackageContract` continua sendo a ancora estavel para inspecionar o contrato publicado nesta fase.
 
-`authorizeNFe` orquestra a autorizacao operacional inicial para uma NFe unica ou um lote suportado a partir de dados canonicos, devolvendo um resultado estruturado com classificacao, recibo ou protocolo e evidencia de transporte.
+## Primeiros passos
 
-No recorte atual, `authorizeNFe` tambem devolve `contingency-boundary` explicita quando um pedido em `production` informa uma `UF` emissora que delega para `SVC-AN` ou `SVC-RS`. Esse diagnostico continua additive, nao executa fallback silencioso e mantem `EPEC` e contingencias mais amplas fora do runtime promovido.
+### 1. Criar o contexto de assinatura
 
-`authorizeNFCe` inicia a facade root additive de NFC-e em homologacao para um unico documento, reaproveitando o pipeline operacional existente com o cohort promovido `SP + PR`, retornando `unsupported-state` para UFs fora desse cohort e `unsupported-scope` quando a aplicacao explicita superficies deferidas por `requestedCapabilities`.
+```ts
+import { createSigningContext } from 'nfe-sdk';
 
-`createNFe` monta o documento canonico inicial de `NFe` sem exigir importacao direta da arvore gerada.
+const signingContext = await createSigningContext({
+  passphrase: process.env.NFE_CERT_PASSPHRASE ?? '',
+  source: {
+    contentBase64: process.env.NFE_CERT_PFX_BASE64 ?? '',
+    type: 'in-memory-content',
+  },
+});
+```
 
-`createEnviNFe` monta o lote canonico inicial de `enviNFe` com base no mesmo recorte funcional.
-
-`createSigningContext` prepara um contexto reutilizavel de assinatura digital a partir de um certificado A1 em arquivo `.pfx` ou em memoria.
-
-`computeNFeAccessKey` calcula `chNFe` e `cDV` a partir dos campos canonicos ja normalizados do documento.
-
-`computeHashCSRT` calcula o `hashCSRT` com base em `CNPJ`, `idCSRT` e `CSRT`, preservando esse passo como helper deterministico de raiz.
-
-`serializeNFeXml` e `serializeEnviNFeXml` produzem XML deterministico para o mesmo recorte inicial.
-
-`signEventXml` assina um `evento` suportado com base no mesmo contexto reutilizavel de assinatura, valida localmente o XMLDSig e falha explicitamente quando o `infEvento Id` ou o payload saem do boundary publicado.
-
-`signNFeXml` recebe um XML nao assinado de `NFe`, aplica XMLDSig, valida localmente a assinatura antes do retorno e devolve o XML assinado correspondente.
-
-`prepareNFCeSigningPrerequisites` prepara `chNFe`, `cDV` e `hashCSRT` para `NFC-e` a partir de insumos estruturados, validando `CSC` e `CSRT` sem apresentar esse passo como autorizacao completa.
-
-`resolveNFeServiceEndpoint` resolve a entrada versionada do catalogo inicial de transporte para `homologation`, `nfe-status-service` e `nfe-authorization` usando os endpoints compartilhados da SVAN publicados no catalogo inicial `2026-05-18-initial-draft`.
-
-`resolveUFAutorizador` determina o autorizador SEFAZ publicado para a UF e o modelo fiscal dentro do recorte atual.
-
-`retrieveNFeAuthorizationBatch` consulta o lote de autorizacao ja enviado e devolve o estado estruturado do processamento assíncrono.
-
-`executeNFeSoapService` monta o envelope SOAP 1.2, escolhe o endpoint homologado suportado, executa a chamada com executor injetado ou default e devolve `TransportOutcome` com classificacao e evidencia minima da troca.
-
-No slice inicial, `TransportOutcome.classification` distingue pelo menos `success`, `timeout`, `usage-error`, `unavailable`, `functional-rejection` e `protocol-error`, sem misturar transporte com orquestracao de dominio fiscal.
-
-`queryNFeServiceStatus` devolve um retrato estruturado do status operacional do servico em homologacao sem exigir leitura manual do XML de retorno.
-
-Quando a resposta do status service indicar indisponibilidade operacional (`108` ou `109`), o slice atual preserva a classificacao `unavailable` no `transportOutcome` sem esconder que a trilha observada depende de ambiente compartilhado de contingencia.
-
-`queryNFeDocumentSituation` consulta a situacao do documento por chave de acesso e devolve um resultado estruturado, inclusive quando a resposta ainda e inconclusiva do ponto de vista operacional.
-
-`submitNFeInutilization` executa a manutencao de inutilizacao em homologacao e devolve um resultado estruturado com classificacao operacional, protocolo quando disponivel e evidencia de transporte.
-
-`cancelNFe` executa o fluxo homologado de cancelamento sobre a chave de acesso informada e preserva a evidencia do transporte no resultado operacional.
-
-`submitNFeCorrectionLetter` executa a carta de correcao homologada com resultado estruturado e boundary explicita quando o ambiente solicitado fica fora do escopo publicado.
-
-`submitEPECEvent` publica o fluxo root minimo para emissao em contingencia EPEC dentro do boundary operacional atualmente estabilizado.
-
-`distributeRecipientDFe` executa a distribuicao DFe do lado do destinatario via `distNSU`, em homologacao, com cursor observavel e envelopes estruturados que distinguem resumo, documento completo e outros payloads retornados em `docZip`.
-
-`manifestRecipientOperation` registra um dos quatro eventos basicos de Manifestacao do Destinatario (`210200`, `210210`, `210220` e `210240`) e devolve classificacao operacional, protocolo quando houver e a marca contratual de que o download posterior permanece separado.
-
-`submitGenericEvents` registra, por uma facade unica, os eventos genericos homologados suportados nesta fase (`110130`, `110150`, `110192` e `110750`) e devolve resultado estruturado de lote com rastreabilidade por item.
-
-`validateNFeXsd` valida um XML de NF-e contra o XSD oficial (PL_010c NT2022.002 v1.30) usando `xmllint` quando disponivel no ambiente e devolve classificacao estruturada: `valid`, `invalid`, `xmllint-unavailable`, `schema-not-found` ou `execution-error`.
-
-`submitICMSDeferralEvent` submete um evento de pedido de prorrogacao de ICMS industrial (codigo `110764`, familia `prorrogacao-icms`) como lote unitario via `submitGenericEvents`, simplificando a integracao para o caso de uso mais comum.
-
-No recorte atual, a facade generica rejeita o lote inteiro antes do transporte quando houver mais de 20 itens, qualquer familia fora do escopo publicado ou falha obrigatoria de validacao local, mantendo EPEC, producao e variantes ainda nao estabilizadas fora do contrato.
-
-No recorte atual de NFC-e, `requestedCapabilities` serve apenas para explicitar uma tentativa de uso sobre QR Code, DANFE NFC-e, administracao de CSC, credenciamento automatizado ou contingencia offline. Quando esse campo e informado, a facade responde com `unsupported-scope` antes do transporte.
-
-No recorte atual de expansao de assinatura, trust chain automatizada, aquisicao de certificado, suporte a `A3`, `QR Code`, `DANFE NFC-e` e rollout operacional multi-UF permanecem explicitamente fora do contrato publicado.
-
-## Exemplo rapido da autorizacao operacional
+### 2. Autorizar uma NF-e
 
 ```ts
 import { authorizeNFe, createSigningContext } from 'nfe-sdk';
 
 const signingContext = await createSigningContext({
-  passphrase: '***',
+  passphrase: process.env.NFE_CERT_PASSPHRASE ?? '',
   source: {
-    contentBase64: 'BASE64_PFX',
+    contentBase64: process.env.NFE_CERT_PFX_BASE64 ?? '',
     type: 'in-memory-content',
   },
 });
@@ -138,162 +140,11 @@ const authorization = await authorizeNFe({
 });
 
 console.log(authorization.classification, authorization.protocolNumber);
-
-const contingencyBoundary = await authorizeNFe({
-  documents: {
-    kind: 'single-document',
-    payload: {
-      documentId: 'NFE-CONTINGENCY-001',
-      environment: 'production',
-      payload: {
-        cUF: '33',
-      },
-      version: '4.00',
-    },
-  },
-  environment: 'production',
-  requestExecutor,
-  signingContext,
-  timeoutMs: 5000,
-});
-
-console.log(
-  contingencyBoundary.classification,
-  contingencyBoundary.coverageBoundary?.contingencyEnvironment,
-);
 ```
 
-## Exemplo rapido do slice NFC-e
+Quando a chamada em `production` informar uma UF emissora que delega para `SVC-AN` ou `SVC-RS`, `authorizeNFe` devolve `contingency-boundary` explicita em vez de executar fallback silencioso.
 
-```ts
-import { authorizeNFCe, createSigningContext } from 'nfe-sdk';
-
-const signingContext = await createSigningContext({
-  passphrase: '***',
-  source: {
-    contentBase64: 'BASE64_PFX',
-    type: 'in-memory-content',
-  },
-});
-
-const nfceAuthorization = await authorizeNFCe({
-  document: {
-    documentId: '35190500000000000000550010000000011000000010',
-    environment: 'homologation',
-    version: '4.00',
-  },
-  environment: 'homologation',
-  requestExecutor,
-  signingContext,
-  timeoutMs: 5000,
-});
-
-const deferredScope = await authorizeNFCe({
-  document: {
-    documentId: '35190500000000000000550010000000011000000010',
-    environment: 'homologation',
-    version: '4.00',
-  },
-  environment: 'homologation',
-  requestedCapabilities: ['qr-code'],
-  requestExecutor,
-  signingContext,
-});
-
-console.log(nfceAuthorization.classification, nfceAuthorization.protocolNumber);
-console.log(deferredScope.classification, deferredScope.coverageBoundary?.code);
-```
-
-O contrato normativo continua sendo `package.json`/exports. O README apenas explica o que foi estabilizado.
-
-`manifest.json` permanece interno e nao integra a superficie publica estavel.
-
-`enviNFe` permanece como envelope de transporte nao assinado do documento ja assinado nesta fase.
-
-## Exemplo rapido do slice recipient
-
-```ts
-import {
-  createSigningContext,
-  distributeRecipientDFe,
-  manifestRecipientOperation,
-  submitGenericEvents,
-} from 'nfe-sdk';
-
-const signingContext = await createSigningContext({
-  passphrase: '***',
-  source: {
-    contentBase64: 'BASE64_PFX',
-    type: 'in-memory-content',
-  },
-});
-
-const distribution = await distributeRecipientDFe({
-  actor: {
-    documentNumber: '12345678909',
-    documentType: 'cpf',
-  },
-  environment: 'homologation',
-  requestExecutor,
-  timeoutMs: 5000,
-  ultNSU: '000000000000000',
-});
-
-const manifestation = await manifestRecipientOperation({
-  accessKey: '35190500000000000000550010000000011000000010',
-  actor: {
-    documentNumber: '12345678909',
-    documentType: 'cpf',
-  },
-  environment: 'homologation',
-  eventType: 'ciencia-da-operacao',
-  requestExecutor,
-  signingContext,
-  timeoutMs: 5000,
-});
-
-console.log(distribution.classification, distribution.cursor.ultNSU);
-console.log(
-  manifestation.classification,
-  manifestation.downloadRemainsSeparate,
-);
-
-const genericEventBatch = await submitGenericEvents({
-  batchId: '000000000000001',
-  environment: 'homologation',
-  items: [
-    {
-      accessKey: '35190500000000000000550010000000011000000010',
-      author: {
-        documentNumber: '12345678000195',
-        documentType: 'cnpj',
-      },
-      eventCode: '110130',
-      family: 'delivery-confirmation',
-      occurredAt: '2026-05-18T10:00:00-03:00',
-      payload: {
-        deliveredAt: '2026-05-18T09:55:00-03:00',
-        deliveryHash: 'comprovante-hash',
-        recipientDocument: '12345678909',
-        recipientName: 'Jose da Silva',
-      },
-      sequenceNumber: 1,
-    },
-  ],
-  requestExecutor,
-  signingContext,
-  timeoutMs: 5000,
-});
-
-console.log(
-  genericEventBatch.classification,
-  genericEventBatch.itemOutcomes.length,
-);
-```
-
-O slice recipient permanece limitado a `homologation`, suporta apenas `distNSU`, aceita atores `cpf` e `cnpj`, e mantem `consNSU`, `consChNFe`, producao e download automatico apos a manifestacao fora do contrato publico atual.
-
-## Exemplo rapido do slice SOAP
+### 3. Executar uma consulta SOAP direta
 
 ```ts
 import { executeNFeSoapService, resolveNFeServiceEndpoint } from 'nfe-sdk';
@@ -318,31 +169,89 @@ const outcome = await executeNFeSoapService({
 console.log(endpoint.endpointUrl, outcome.classification);
 ```
 
-## O que fica fora do contrato publico
+## Guias por fluxo
 
-Os seguintes itens continuam fora da promessa de compatibilidade desta fase:
+### NF-e
 
-- arvore gerada em `src/classes/`
-- arvore gerada em `src/interfaces/`
-- arvore gerada em `src/types/`
-- arvore gerada em `src/enums/`
+- `createNFe` monta o documento canonico inicial sem exigir consumo direto da arvore gerada
+- `createEnviNFe` monta o lote canonico inicial para transporte
+- `serializeNFeXml` e `serializeEnviNFeXml` produzem XML deterministico
+- `signNFeXml` aplica XMLDSig e valida localmente antes de retornar
+- `authorizeNFe` orquestra a autorizacao operacional inicial para documento unico ou lote suportado
+- `retrieveNFeAuthorizationBatch` consulta o processamento assíncrono do lote enviado
+- `queryNFeServiceStatus` e `queryNFeDocumentSituation` devolvem resultados estruturados de consulta; `queryNFeDocumentSituation` agora publica `state.primaryState`, `state.evidence` e `pendingReason` quando aplicavel
+- `submitNFeInutilization`, `cancelNFe` e `submitNFeCorrectionLetter` cobrem manutencoes homologadas do recorte atual e agora devolvem `updatedState` coerente com a leitura operacional do documento
+- `publicPackageContract.operationalBoundaries` explicita que `nRec`, polling generico, reconciliacao multi-documento, persistencia local e variacoes dominantes por `UF` continuam fora do recorte atual
+
+### NFC-e
+
+- `authorizeNFCe` publica a facade inicial de NFC-e em homologacao para o cohort promovido `SP + PR`
+- `prepareNFCeSigningPrerequisites` prepara `chNFe`, `cDV` e `hashCSRT` a partir de insumos estruturados
+- quando `requestedCapabilities` informa QR Code, DANFE NFC-e, administracao de CSC, credenciamento automatizado ou contingencia offline, a facade responde com `unsupported-scope` antes do transporte
+- UFs fora do cohort publicado retornam `unsupported-state`
+
+### Assinatura digital
+
+- `createSigningContext` suporta certificado A1 em arquivo `.pfx` ou em memoria
+- `signEventXml` assina eventos suportados e falha explicitamente quando o payload sai do boundary publicado
+- `computeNFeAccessKey` e `computeHashCSRT` permanecem helpers determinísticos de raiz
+
+### Transporte e consultas
+
+- `resolveUFAutorizador` ajuda a inspecionar o autorizador inferido antes de subir uma chamada operacional mais sensivel
+- `resolveNFeServiceEndpoint` resolve endpoints publicados para o catalogo inicial de transporte
+- `executeNFeSoapService` devolve `TransportOutcome` com classificacoes como `success`, `timeout`, `usage-error`, `unavailable`, `functional-rejection` e `protocol-error`
+- `queryContributorRegistration`, `queryNFeByAccessKey` e `queryNFeByNSU` expõem consultas adicionais do recorte atual
+
+### Recipient e eventos
+
+- `distributeRecipientDFe` executa distribuicao DFe via `distNSU` com cursor observavel
+- `manifestRecipientOperation` registra os quatro eventos basicos de Manifestacao do Destinatario
+- `changeManifestRecipientOperation` ajusta a operacao da facade de manifestacao conforme o boundary publicado
+- `submitGenericEvents` cobre os eventos homologados suportados nesta fase
+- `submitEPECEvent` publica o fluxo root minimo para contingencia EPEC
+- `submitICMSDeferralEvent` simplifica o lote unitario do evento `110764`
+
+### Validacao estrutural
+
+- `validateNFeXsd` valida XML de NF-e contra o XSD oficial com classificacao `valid`, `invalid`, `xmllint-unavailable`, `schema-not-found` ou `execution-error`
+
+## Limites do contrato publico
+
+O contrato normativo desta fase continua sendo `package.json`/`exports`. O README explica a superficie publicada, mas nao substitui o metadata do pacote.
+
+Ficam fora da promessa de compatibilidade desta fase:
+
+- `manifest.json` permanece interno e nao faz parte da superficie root estavel
+- `enviNFe` permanece como envelope de transporte nao assinado nesta fase
+- a arvore gerada em `src/classes/`
+- a arvore gerada em `src/interfaces/`
+- a arvore gerada em `src/types/`
+- a arvore gerada em `src/enums/`
 - `src/manifest.json`
 - qualquer subpath ou importacao profunda
+- trust chain automatizada, aquisicao de certificado, suporte a `A3`, QR Code, DANFE NFC-e e rollout operacional multi-UF
 
-Esses artefatos seguem existindo como inventario tecnico e evidencia de cobertura, mas nao devem ser consumidos como API publica estavel.
+## Exemplos do repositório
 
-## Requisitos
-
-- Node.js `>=18.18`
-- npm
-
-## Instalação
+Os exemplos abaixo consomem o pacote compilado via import raiz `nfe-sdk`:
 
 ```bash
-npm install
+npm run build
+npx tsx examples/validation/validate-xsd.ts
+npx tsx examples/nfe/authorize.ts
+npx tsx examples/recipient/manifest.ts
 ```
 
-## Scripts principais
+Variaveis esperadas:
+
+- `examples/nfe/authorize.ts`: `NFE_CERT_PFX_PATH`, `NFE_CERT_PASSPHRASE`, `NFE_DOCUMENT_ID`
+- `examples/recipient/manifest.ts`: `NFE_CERT_PFX_PATH`, `NFE_CERT_PASSPHRASE`, `NFE_ACCESS_KEY`, `NFE_ACTOR_DOCUMENT_NUMBER`
+- `examples/validation/validate-xsd.ts`: `NFE_XML_PATH` e `NFE_XSD_DIR` sao opcionais
+
+## Desenvolvimento local
+
+Scripts principais:
 
 ```bash
 npm run generate
@@ -355,9 +264,7 @@ npm test
 npm run validate:tarball
 ```
 
-## Validação da fundação do pacote
-
-O baseline desta fase exige validar o pacote publicado, não apenas o workspace:
+Baseline recomendado para validar o pacote publicado:
 
 ```bash
 npm run lint
@@ -369,60 +276,20 @@ npm run build
 npm run validate:tarball
 ```
 
-O smoke validation do tarball deve confirmar que o import raiz continua utilizavel sem depender do workspace aberto.
+## Documentacao adicional
 
-## CI e onboarding de homologação
+- [docs/capacidades-sdk.md](./docs/capacidades-sdk.md): catalogo documental de capacidades e lacunas
+- [docs/index.md](./docs/index.md): indice documental consolidado
+- [docs/roadmap/coverage-matrix.md](./docs/roadmap/coverage-matrix.md): matriz viva da superficie publicada e lacunas visiveis do roadmap
+- [docs/roadmap/proximas-iteracoes-recomendadas.md](./docs/roadmap/proximas-iteracoes-recomendadas.md): trilha atual de continuidade do produto
+- [specs/003-public-package-contract/contracts/public-package-contract.md](./specs/003-public-package-contract/contracts/public-package-contract.md): contrato de referencia desta fase
 
-O workflow de CI desta fase fica em [.github/workflows/ci.yml](./.github/workflows/ci.yml) e executa, em ordem, `build`, `lint`, `typecheck`, `test` e `docs:check` para `pull_request` e pushes na branch padrão do repositório.
-
-O cenário manual de verificação continua sendo:
-
-1. introduzir um erro proposital de typecheck em uma branch de PR;
-2. confirmar que o workflow falha na etapa `Typecheck gate`;
-3. remover o erro e confirmar que o mesmo PR volta a ficar verde sem publicar artefatos.
-
-## Exemplos de homologação
-
-Os exemplos desta fase consomem o pacote compilado via import raiz `nfe-sdk`. Execute primeiro o build local e depois o exemplo do fluxo desejado:
-
-```bash
-npm run build
-npx tsx examples/validation/validate-xsd.ts
-npx tsx examples/nfe/authorize.ts
-npx tsx examples/recipient/manifest.ts
-```
-
-Variáveis esperadas:
-
-- `examples/nfe/authorize.ts`: `NFE_CERT_PFX_PATH`, `NFE_CERT_PASSPHRASE`, `NFE_DOCUMENT_ID`
-- `examples/recipient/manifest.ts`: `NFE_CERT_PFX_PATH`, `NFE_CERT_PASSPHRASE`, `NFE_ACCESS_KEY`, `NFE_ACTOR_DOCUMENT_NUMBER`
-- `examples/validation/validate-xsd.ts`: `NFE_XML_PATH` e `NFE_XSD_DIR` são opcionais
-
-## Geração de schemas
-
-O repositório mantém o pipeline de geração em [tools/generate.ts](./tools/generate.ts), usando os XSDs em `xsd/` para atualizar a árvore gerada em `src/`.
-
-Os identificadores gerados seguem `PascalCase` com prefixos por categoria:
-
-- `C...` para classes
-- `I...` para interfaces
-- `T...` para type aliases
-- `E...` para enums
-
-## Documentação de apoio
-
-- [docs/capacidades-sdk.md](./docs/capacidades-sdk.md): catalogo documental de capacidades e lacunas.
-- [docs/roadmap/coverage-matrix.md](./docs/roadmap/coverage-matrix.md): matriz viva da superficie publicada, status atual e lacunas visiveis do roadmap.
-- [docs/index.md](./docs/index.md): indice documental consolidado.
-- [docs/roadmap/proximas-iteracoes-recomendadas.md](./docs/roadmap/proximas-iteracoes-recomendadas.md): trilha atual de continuidade, fechamento e proximas iteracoes recomendadas.
-- [specs/003-public-package-contract/contracts/public-package-contract.md](./specs/003-public-package-contract/contracts/public-package-contract.md): contrato de referência desta fase.
-
-## Diretrizes de compatibilidade
+## Compatibilidade
 
 - mudancas no import raiz exigem revisao explicita de compatibilidade
 - promocao de subpaths ou artefatos gerados depende de decisao contratual futura
-- evidencias do contrato devem permanecer rastreáveis em `package.json`, `src/index.ts`, README e nos artefatos da feature
+- evidencias do contrato devem permanecer rastreaveis em `package.json`, `src/index.ts`, README e nos artefatos da feature
 
-## Licença
+## Licenca
 
-Este projeto está licenciado sob a Apache License 2.0. Veja [LICENSE](./LICENSE).
+Este projeto esta licenciado sob a Apache License 2.0. Veja [LICENSE](./LICENSE).

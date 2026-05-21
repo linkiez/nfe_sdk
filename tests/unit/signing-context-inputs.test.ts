@@ -1,4 +1,5 @@
 import * as publicApi from '../../src/index';
+import { resolve } from 'node:path';
 
 import { createInvalidA1FixtureSource } from '../fixtures/signing/invalid-a1-fixture';
 
@@ -37,7 +38,10 @@ describe('signing context inputs', () => {
       createSigningContext?.({
         passphrase: 'fixture-passphrase',
         source: {
-          filePath: '/tmp/does-not-exist-signing-fixture.pfx',
+          filePath: resolve(
+            process.cwd(),
+            'tests/fixtures/signing/does-not-exist-signing-fixture.pfx',
+          ),
           type: 'file-path',
         },
       }),

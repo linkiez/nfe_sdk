@@ -79,6 +79,13 @@ export type {
 	GenericEventItemOutcome,
 	GenericEventValidationFailure,
 	InterestedActorPayload,
+	DocumentSituationResult,
+	NFeOperationalPrimaryState,
+	NFeOperationalState,
+	NFeStateEvidence,
+	NFeStateEvidenceSourceKind,
+	OperationalBoundary,
+	OperationalMaintenanceOutcome,
 } from './canonical/index.js';
 
 export type {

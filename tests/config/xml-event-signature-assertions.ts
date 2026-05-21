@@ -1,14 +1,5 @@
-import {
+export {
   expectXmlToContainSignature,
   expectXmlToMatchSignedStructure,
-  expectXmlToReferenceDocumentId,
+  expectXmlToReferenceDocumentId as expectXmlToReferenceEventId,
 } from './xml-signature-assertions';
-
-export function expectXmlToReferenceEventId(
-  xml: string,
-  documentId: string,
-): void {
-  expectXmlToReferenceDocumentId(xml, documentId);
-}
-
-export { expectXmlToContainSignature, expectXmlToMatchSignedStructure };

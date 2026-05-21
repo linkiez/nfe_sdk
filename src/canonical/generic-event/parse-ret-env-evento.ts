@@ -45,6 +45,6 @@ function extractFirstTagValue(
 	responseXml: string,
 	tagName: string,
 ): string | undefined {
-	const match = responseXml.match(new RegExp(`<${tagName}>([^<]+)</${tagName}>`, 'u'));
+	const match = new RegExp(`<${tagName}>([^<]+)</${tagName}>`, 'u').exec(responseXml);
 	return match?.[1];
 }

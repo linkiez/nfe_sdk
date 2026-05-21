@@ -25,6 +25,9 @@ type SubmitNFeCorrectionLetter = (input: {
   applicationStatusCode?: string;
   classification: string;
   protocolNumber?: string;
+  updatedState?: {
+    primaryState: string;
+  };
   transportOutcome: {
     classification: string;
   };
@@ -58,6 +61,7 @@ describe('submitNFeCorrectionLetter integration', () => {
     expect(outcome?.classification).toBe('success');
     expect(outcome?.applicationStatusCode).toBe('128');
     expect(outcome?.protocolNumber).toBe('135250000000003');
+    expect(outcome?.updatedState?.primaryState).toBe('authorized');
     expect(outcome?.transportOutcome.classification).toBe('success');
   });
 });

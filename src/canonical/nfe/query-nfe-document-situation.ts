@@ -2,7 +2,10 @@ import { executeNFeSoapService } from '../transport/execute-nfe-soap-service.js'
 import type { TransportOutcome } from '../transport/contracts.js';
 
 import type { DocumentSituationRequest, DocumentSituationResult } from './contracts.js';
-import { mapTransportOutcomeToQueryClassification } from './transport-outcome-mapper.js';
+import {
+  mapDocumentSituationToOperationalState,
+  resolveDocumentSituationClassification,
+} from './operational-state.js';
 
 /**
  * Maps a transport outcome into the structured document-situation result.
@@ -15,19 +18,18 @@ export function mapDocumentSituationTransportOutcome(
   accessKey: string,
   transportOutcome: TransportOutcome,
 ): DocumentSituationResult {
-  const mappedTransport = mapTransportOutcomeToQueryClassification(transportOutcome);
-  const responseXml = transportOutcome.evidence.responseEnvelopeXml ?? '';
-  const protocolNumber = extractFirstTagText(responseXml, 'nProt');
+  const state = mapDocumentSituationToOperationalState({
+    accessKey,
+    transportOutcome,
+  });
 
   return {
     accessKey,
-    classification:
-      mappedTransport.classification === 'success' && protocolNumber === undefined
-        ? 'inconclusive'
-        : mappedTransport.classification,
+    classification: resolveDocumentSituationClassification(state, transportOutcome),
     documentStatusCode: transportOutcome.applicationStatusCode,
     documentStatusMessage: transportOutcome.applicationStatusMessage,
-    protocolNumber,
+    protocolNumber: state.protocolNumber,
+    state,
     transportOutcome,
   };
 }
@@ -62,10 +64,4 @@ function escapeXml(value: string): string {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&apos;');
-}
-
-function extractFirstTagText(xml: string, tagName: string): string | undefined {
-  const match = new RegExp(`<${tagName}>([^<]+)</${tagName}>`, 'u').exec(xml);
-
-  return match?.[1];
 }

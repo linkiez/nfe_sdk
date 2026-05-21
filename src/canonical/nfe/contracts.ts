@@ -111,6 +111,83 @@ export type NFeQueryClassification = (typeof QUERY_CLASSIFICATIONS)[number];
 export type NFeMaintenanceClassification =
   (typeof MAINTENANCE_CLASSIFICATIONS)[number];
 
+export type NFeOperationalPrimaryState =
+  | 'authorized'
+  | 'rejected'
+  | 'canceled'
+  | 'inutilized'
+  | 'pending'
+  | 'unavailable'
+  | 'inconclusive';
+
+export type NFeStateEvidenceSourceKind =
+  | 'document-situation'
+  | 'maintenance-response'
+  | 'transport'
+  | 'protocol'
+  | 'event';
+
+export interface NFeStateEvidence {
+  readonly observedAt: string;
+  readonly protocolNumber?: string;
+  readonly sourceKind: NFeStateEvidenceSourceKind;
+  readonly statusCode?: string;
+  readonly statusMessage?: string;
+  readonly transportClassification: TransportOutcome['classification'];
+}
+
+export interface NFeOperationalState {
+  readonly accessKey?: string;
+  readonly evidence: readonly NFeStateEvidence[];
+  readonly pendingReason?: string;
+  readonly primaryState: NFeOperationalPrimaryState;
+  readonly protocolNumber?: string;
+  readonly stateCode?: string;
+  readonly stateMessage?: string;
+}
+
+export interface OperationalBoundary {
+  readonly boundaryId:
+    | 'local-persistence'
+    | 'multi-document-reconciliation'
+    | 'receipt-polling'
+    | 'uf-variance';
+  readonly followUpHint: string;
+  readonly reason: string;
+  readonly relatedTheme: 'RFL-001' | 'RTM-004' | 'RTM-006' | 'RTM-011' | 'RTM-012';
+}
+
+const OPERATIONAL_BOUNDARIES = [
+  {
+    boundaryId: 'receipt-polling',
+    followUpHint: 'Promote a dedicated async batch reconciliation slice before exposing nRec.',
+    reason:
+      'Document-state queries in this phase stay access-key-only and do not open generic polling.',
+    relatedTheme: 'RFL-001',
+  },
+  {
+    boundaryId: 'multi-document-reconciliation',
+    followUpHint: 'Promote a later orchestration slice for batch or portfolio reconciliation.',
+    reason:
+      'This slice only reconciles one target document or one maintenance operation at a time.',
+    relatedTheme: 'RTM-006',
+  },
+  {
+    boundaryId: 'local-persistence',
+    followUpHint: 'Promote a persistence-aware integration layer outside the SDK root contract.',
+    reason:
+      'The runtime slice does not persist state snapshots, queues, or reconciliation history locally.',
+    relatedTheme: 'RTM-004',
+  },
+  {
+    boundaryId: 'uf-variance',
+    followUpHint: 'Promote a later coverage slice when state-specific operational differences are stabilized.',
+    reason:
+      'Dominant UF-specific operational differences remain explicit boundaries in this phase.',
+    relatedTheme: 'RTM-011',
+  },
+] as const satisfies readonly OperationalBoundary[];
+
 /**
  * Minimal per-document authorization status placeholder.
  */
@@ -199,6 +276,8 @@ export interface DocumentSituationResult {
   readonly documentStatusMessage?: string;
   /** Protocol number when available. */
   readonly protocolNumber?: string;
+  /** Shared operational-state projection for the queried document. */
+  readonly state: NFeOperationalState;
   /** Underlying transport evidence reused by the operational slice. */
   readonly transportOutcome: TransportOutcome;
 }
@@ -247,6 +326,8 @@ export interface OperationalMaintenanceOutcome {
   readonly failureReason?: string;
   /** Protocol number when available. */
   readonly protocolNumber?: string;
+  /** Shared operational-state projection when the maintenance succeeds. */
+  readonly updatedState?: NFeOperationalState;
   /** Underlying transport evidence reused by the operational slice. */
   readonly transportOutcome: TransportOutcome;
 }
@@ -290,6 +371,15 @@ export function getNFeQueryClassifications(): readonly NFeQueryClassification[] 
 export function getNFeMaintenanceClassifications():
   readonly NFeMaintenanceClassification[] {
   return MAINTENANCE_CLASSIFICATIONS;
+}
+
+/**
+ * Returns the explicit operational boundaries published by the state-operations slice.
+ *
+ * @returns Read-only deferred operational boundaries.
+ */
+export function getOperationalBoundaries(): readonly OperationalBoundary[] {
+  return OPERATIONAL_BOUNDARIES;
 }
 
 // ---------------------------------------------------------------------------

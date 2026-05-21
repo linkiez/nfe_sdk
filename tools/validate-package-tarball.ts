@@ -124,7 +124,7 @@ async function runCommand(
  *
  * @returns A promise that resolves when the CLI output has been written.
  */
-async function runTarballValidationCli(): Promise<void> {
+export async function runTarballValidationCli(): Promise<void> {
   try {
     const result = await validatePackageTarball();
     process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
@@ -134,8 +134,4 @@ async function runTarballValidationCli(): Promise<void> {
     process.stderr.write(`${message}\n`);
     process.exitCode = 1;
   }
-}
-
-if (process.argv[1]?.endsWith('validate-package-tarball.ts')) {
-  runTarballValidationCli();
 }

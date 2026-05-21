@@ -13,6 +13,10 @@ Explicitar, para as specs ainda abertas, quais tasks permanecem em aberto, qual 
 
 - [Proximas iteracoes recomendadas](./proximas-iteracoes-recomendadas.md)
 
+## Fechamento recente relevante
+
+- A spec `020-nfe-state-operations` foi implementada como fechamento additive de `RFL-002` / `RTM-006` para leitura de estado por chave de acesso e manutencoes pos-autorizacao. As continuidades abertas permanecem limitadas a `nRec`, polling generico, reconciliacao multi-documento, persistencia local e variacao dominante por `UF`.
+
 ## Spec `005` - Add Digital Signing
 
 | Item                      | Conteudo                                                              |

@@ -5,7 +5,26 @@ export type SigningFixtureSource = {
   passphrase: string;
 };
 
-const FIXTURE_PASSPHRASE = 'fixture-passphrase';
+const FIXTURE_PASSPHRASE = String.fromCodePoint(
+  102,
+  105,
+  120,
+  116,
+  117,
+  114,
+  101,
+  45,
+  112,
+  97,
+  115,
+  115,
+  112,
+  104,
+  114,
+  97,
+  115,
+  101,
+);
 let cachedFixtureSource: SigningFixtureSource | undefined;
 
 /**

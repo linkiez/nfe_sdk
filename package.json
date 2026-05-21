@@ -37,7 +37,7 @@
     "docs:check": "npm run format:check && npm run docs:links",
     "test": "jest --runInBand",
     "audit:public-contract": "tsx tools/audit-public-contract.ts",
-    "validate:tarball": "tsx tools/validate-package-tarball.ts"
+    "validate:tarball": "tsx tools/validate-package-tarball-cli.ts"
   },
   "keywords": [
     "nfe",
