@@ -36,6 +36,11 @@ export async function distributeRecipientDFe(
 		return {
 			actor: input.actor,
 			classification: 'unsupported-scope',
+			continuation: {
+				cursorAdvanced: false,
+				nextAction: 'resolve-boundary',
+				reason: 'unsupported-scope',
+			},
 			cursor: {
 				hasMoreDocumentsNow: false,
 				maxNSU: input.ultNSU,
@@ -106,6 +111,11 @@ function createUsageErrorDistributionOutcome(
 	return {
 		actor: input.actor,
 		classification: 'usage-error',
+		continuation: {
+			cursorAdvanced: false,
+			nextAction: 'resolve-boundary',
+			reason: 'usage-error',
+		},
 		cursor: {
 			hasMoreDocumentsNow: false,
 			maxNSU: input.ultNSU,
@@ -118,4 +128,4 @@ function createUsageErrorDistributionOutcome(
 			failureReason,
 		),
 	};
-	}
+}

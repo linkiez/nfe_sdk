@@ -8,6 +8,7 @@ export { createSigningContext } from './create-signing-context.js';
 export { distributeRecipientDFe } from './distribute-recipient-dfe.js';
 export { executeNFeSoapService } from './execute-nfe-soap-service.js';
 export { manifestRecipientOperation } from './manifest-recipient-operation.js';
+export { retrieveRecipientDocument } from './retrieve-recipient-document.js';
 export { prepareNFCeSigningPrerequisites } from './prepare-nfce-signing-prerequisites.js';
 export { queryContributorRegistration } from './query-contributor-registration.js';
 export { queryNFeByAccessKey } from './query-nfe-by-key.js';

@@ -28,6 +28,7 @@ describe('root signing facade contract', () => {
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',
       'retrieveNFeAuthorizationBatch',
+      'retrieveRecipientDocument',
       'serializeEnviNFeXml',
       'serializeNFeXml',
       'signEventXml',

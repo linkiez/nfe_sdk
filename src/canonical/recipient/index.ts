@@ -1,5 +1,6 @@
 export { distributeRecipientDFe } from './distribute-recipient-dfe.js';
 export { manifestRecipientOperation } from './manifest-recipient-operation.js';
+export { retrieveRecipientDocument } from './retrieve-recipient-document.js';
 
 export type {
 	RecipientActor,

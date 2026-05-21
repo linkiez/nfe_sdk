@@ -13,6 +13,7 @@ const DOCUMENTED_SURFACE = [
   'createSigningContext',
   'distributeRecipientDFe',
   'manifestRecipientOperation',
+  'retrieveRecipientDocument',
   'prepareNFCeSigningPrerequisites',
   'queryContributorRegistration',
   'queryNFeByAccessKey',
@@ -61,7 +62,8 @@ const COMPATIBILITY_NOTES = [
   'The signing-expansion slice keeps QR Code, DANFE NFC-e, and multi-UF NFC-e operational rollout outside this phase.',
   'The first NFC-e slice returns unsupported-state before transport when the inferred UF stays outside the published SP and PR promoted cohort.',
   'The first NFC-e slice accepts requestedCapabilities only as an explicit marker for deferred operational surfaces and returns unsupported-scope before transport for QR Code, DANFE NFC-e, CSC administration, automatic credentialing, or offline contingency.',
-  'The first recipient slice currently exposes distributeRecipientDFe and manifestRecipientOperation for homologation-only recipient workflows via distNSU and the four basic manifestation events, while keeping later document retrieval separate.',
+  'The recipient continuity slice now exposes distributeRecipientDFe, manifestRecipientOperation, and retrieveRecipientDocument for homologation-only recipient workflows via distNSU, while keeping manifestation registration and later document retrieval as explicit separate steps.',
+  'The recipient continuity slice keeps consNSU, consChNFe, production, aggressive polling, and assisted backoffice automation outside the root contract in this phase.',
   'The first generic-event slice currently exposes submitGenericEvents for homologation-only submission of the supported 110130, 110150, 110192, and 110750 families through one root facade.',
   'The generic-event slice keeps over-limit batches, unsupported families, EPEC, production flows, and other deferred event variants outside the transport path through explicit pre-transport boundaries.',
   'The initial transport catalog is versioned as 2026-05-18-initial-draft and remains restricted to one SVAN entry per supported service in this phase.',
@@ -83,6 +85,7 @@ const REPOSITORY_EVIDENCE = [
   'specs/009-generic-event-mvp/contracts/public-generic-event-facade.md',
   'specs/020-nfe-state-operations/contracts/public-nfe-state-operations-facade.md',
   'specs/021-nfe-receipt-protocol/contracts/public-nfe-receipt-protocol-facade.md',
+  'specs/022-recipient-continuity/contracts/public-recipient-continuity-facade.md',
 ] as const;
 
 /**

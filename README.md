@@ -31,6 +31,7 @@ O foco desta fase e oferecer uma base utilizavel para fluxos operacionais homolo
 - transporte SOAP 1.2 com classificacao estruturada de resultado
 - consulta de status, situacao do documento, lote assíncrono e inscricao de contribuinte
 - distribuicao DFe e Manifestacao do Destinatario no recorte homologado atual
+- recuperacao posterior de documento do destinatario via continuidade observavel de `distNSU`
 - submissao de eventos suportados, incluindo EPEC, carta de correcao, inutilizacao e pedido de prorrogacao de ICMS
 - validacao XSD local com classificacao estruturada
 
@@ -81,6 +82,7 @@ import {
   resolveNFeServiceEndpoint,
   resolveUFAutorizador,
   retrieveNFeAuthorizationBatch,
+  retrieveRecipientDocument,
   serializeEnviNFeXml,
   serializeNFeXml,
   signEventXml,
@@ -209,6 +211,7 @@ console.log(endpoint.endpointUrl, outcome.classification);
 
 - `distributeRecipientDFe` executa distribuicao DFe via `distNSU` com cursor observavel
 - `manifestRecipientOperation` registra os quatro eventos basicos de Manifestacao do Destinatario
+- `retrieveRecipientDocument` executa a recuperacao posterior do documento esperado sem acoplar o download ao registro do evento
 - `changeManifestRecipientOperation` ajusta a operacao da facade de manifestacao conforme o boundary publicado
 - `submitGenericEvents` cobre os eventos homologados suportados nesta fase
 - `submitEPECEvent` publica o fluxo root minimo para contingencia EPEC
@@ -233,6 +236,7 @@ Ficam fora da promessa de compatibilidade desta fase:
 - `src/manifest.json`
 - qualquer subpath ou importacao profunda
 - trust chain automatizada, aquisicao de certificado, suporte a `A3`, QR Code, DANFE NFC-e e rollout operacional multi-UF
+- `consNSU`, `consChNFe`, producao, polling agressivo e automacao assistida de backoffice para continuidade do destinatario
 
 ## Exemplos do repositório
 

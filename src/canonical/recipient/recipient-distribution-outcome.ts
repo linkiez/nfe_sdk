@@ -7,6 +7,7 @@ import {
 } from './recipient-coverage-boundary.js';
 import { parseRecipientDocumentEnvelopes } from './recipient-document-envelope.js';
 import type {
+	RecipientContinuationState,
 	RecipientDistributionCursor,
 	RecipientDistributionOutcome,
 	RecipientDistributionQuery,
@@ -185,10 +186,59 @@ function createRecipientDistributionOutcome(input: {
 		applicationStatusCode: input.applicationStatusCode,
 		applicationStatusMessage: input.applicationStatusMessage,
 		classification: input.classification,
+		continuation: createRecipientContinuationState(
+			input.input.ultNSU,
+			input.cursor,
+			input.classification,
+		),
 		cursor: input.cursor,
 		documents: input.documents,
 		failureReason: input.failureReason,
 		transportOutcome: input.transportOutcome,
+	};
+}
+
+function createRecipientContinuationState(
+	inputUltNSU: string,
+	cursor: RecipientDistributionCursor,
+	classification: RecipientDistributionOutcome['classification'],
+): RecipientContinuationState {
+	const cursorAdvanced = BigInt(cursor.ultNSU) > BigInt(inputUltNSU);
+
+	if (classification === 'documents-available') {
+		return {
+			cursorAdvanced,
+			nextAction: 'consume-documents',
+			reason: classification,
+		};
+	}
+
+	if (classification === 'no-new-documents') {
+		return {
+			cursorAdvanced,
+			nextAction: 'await-backoff',
+			reason: classification,
+			recommendedBackoffMs: cursor.recommendedBackoffMs,
+		};
+	}
+
+	if (
+		classification === 'dependency-limited' ||
+		classification === 'unavailable' ||
+		classification === 'timeout'
+	) {
+		return {
+			cursorAdvanced,
+			nextAction: 'retry-later',
+			reason: classification,
+			recommendedBackoffMs: cursor.recommendedBackoffMs,
+		};
+	}
+
+	return {
+		cursorAdvanced,
+		nextAction: 'resolve-boundary',
+		reason: classification,
 	};
 }
 

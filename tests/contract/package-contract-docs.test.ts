@@ -39,6 +39,7 @@ describe('package contract documentation', () => {
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',
       'retrieveNFeAuthorizationBatch',
+      'retrieveRecipientDocument',
       'serializeEnviNFeXml',
       'serializeNFeXml',
       'signEventXml',
@@ -62,6 +63,7 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`distributeRecipientDFe`');
     expect(readme).toContain('`executeNFeSoapService`');
     expect(readme).toContain('`manifestRecipientOperation`');
+    expect(readme).toContain('`retrieveRecipientDocument`');
     expect(readme).toContain('`prepareNFCeSigningPrerequisites`');
     expect(readme).toContain('`queryNFeDocumentSituation`');
     expect(readme).toContain('`reconcileNFeReceipt`');
@@ -85,6 +87,8 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`SVC-AN`');
     expect(readme).toContain('`SVC-RS`');
     expect(readme).toContain('`requestedCapabilities`');
+    expect(readme).toContain('`consNSU`');
+    expect(readme).toContain('`consChNFe`');
     expect(readme).toContain('SP + PR');
     expect(readme).toContain('`manifest.json` permanece interno');
     expect(readme).toContain(

@@ -28,6 +28,7 @@ describe('root recipient dfe facade contract', () => {
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',
       'retrieveNFeAuthorizationBatch',
+      'retrieveRecipientDocument',
       'serializeEnviNFeXml',
       'serializeNFeXml',
       'signEventXml',

@@ -19,6 +19,12 @@ const RECIPIENT_DISTRIBUTION_CLASSIFICATIONS = [
 	'unsupported-scope',
 	'dependency-limited',
 ] as const;
+const RECIPIENT_CONTINUATION_ACTIONS = [
+	'consume-documents',
+	'await-backoff',
+	'retry-later',
+	'resolve-boundary',
+] as const;
 const RECIPIENT_MANIFESTATION_CLASSIFICATIONS = [
 	'success',
 	'rejected',
@@ -28,6 +34,17 @@ const RECIPIENT_MANIFESTATION_CLASSIFICATIONS = [
 	'usage-error',
 	'unsupported-scope',
 	'dependency-limited',
+] as const;
+const RECIPIENT_DOCUMENT_RETRIEVAL_CLASSIFICATIONS = [
+	'document-available',
+	'document-pending',
+	'no-new-documents',
+	'dependency-limited',
+	'timeout',
+	'unavailable',
+	'protocol-error',
+	'usage-error',
+	'unsupported-scope',
 ] as const;
 const RECIPIENT_MANIFESTATION_EVENT_TYPES = [
 	'confirmacao-da-operacao',
@@ -57,6 +74,26 @@ export interface RecipientActor {
  */
 export type RecipientDistributionClassification =
 	(typeof RECIPIENT_DISTRIBUTION_CLASSIFICATIONS)[number];
+
+/**
+ * Next-step actions exposed by the recipient continuity slice.
+ */
+export type RecipientContinuationAction =
+	(typeof RECIPIENT_CONTINUATION_ACTIONS)[number];
+
+/**
+ * Additive continuation guidance derived from one recipient distribution call.
+ */
+export interface RecipientContinuationState {
+	/** Whether the distribution cursor advanced compared with the input cursor. */
+	readonly cursorAdvanced: boolean;
+	/** Recommended next action for the integrator after this result. */
+	readonly nextAction: RecipientContinuationAction;
+	/** Stable reason key that explains the guidance outcome. */
+	readonly reason: RecipientDistributionClassification;
+	/** Suggested wait time before another continuation attempt when applicable. */
+	readonly recommendedBackoffMs?: number;
+}
 
 /**
  * Observable continuity data returned by recipient distribution.
@@ -102,6 +139,24 @@ export interface RecipientDocumentEnvelope {
 }
 
 /**
+ * Public retrieval result classes exposed by the recipient continuity slice.
+ */
+export type RecipientDocumentRetrievalClassification =
+	(typeof RECIPIENT_DOCUMENT_RETRIEVAL_CLASSIFICATIONS)[number];
+
+/**
+ * Functional target used to locate a later recipient document.
+ */
+export interface RecipientFollowUpTarget {
+	/** Access key expected for the follow-up document. */
+	readonly accessKey: string;
+	/** Envelope kinds accepted as a valid retrieval result. */
+	readonly documentKinds: readonly RecipientDocumentEnvelopeKind[];
+	/** Related manifestation event when the caller wants to preserve provenance. */
+	readonly sourceEventType?: RecipientManifestationEventType;
+}
+
+/**
  * Structured query accepted by the recipient distribution facade.
  */
 export interface RecipientDistributionQuery {
@@ -123,6 +178,8 @@ export interface RecipientDistributionQuery {
 export interface RecipientDistributionOutcome {
 	/** Application-facing distribution classification. */
 	readonly classification: RecipientDistributionClassification;
+	/** Additive guidance for the next continuity step. */
+	readonly continuation: RecipientContinuationState;
 	/** Recipient actor observed by the operation. */
 	readonly actor: RecipientActor;
 	/** Observable continuity data for the next call. */
@@ -137,6 +194,38 @@ export interface RecipientDistributionOutcome {
 	readonly applicationStatusCode?: string;
 	/** SEFAZ status message projected by the distribution flow when available. */
 	readonly applicationStatusMessage?: string;
+}
+
+/**
+ * Structured input accepted by the follow-up document retrieval facade.
+ */
+export interface RecipientDocumentRetrievalRequest {
+	/** Requested execution environment. */
+	readonly environment: string;
+	/** Recipient actor interested in the document. */
+	readonly actor: RecipientActor;
+	/** Known cursor used to resume distribution for the follow-up step. */
+	readonly startingCursor: string;
+	/** Expected document target for this retrieval attempt. */
+	readonly target: RecipientFollowUpTarget;
+	/** Optional network executor override. */
+	readonly requestExecutor?: RequestExecutor;
+	/** Optional timeout in milliseconds. */
+	readonly timeoutMs?: number;
+}
+
+/**
+ * Structured result produced by follow-up document retrieval.
+ */
+export interface RecipientDocumentRetrievalOutcome {
+	/** Application-facing retrieval classification. */
+	readonly classification: RecipientDocumentRetrievalClassification;
+	/** Underlying continuity evidence used for the retrieval attempt. */
+	readonly distributionOutcome: RecipientDistributionOutcome;
+	/** Matched document when the retrieval succeeds. */
+	readonly matchedDocument?: RecipientDocumentEnvelope;
+	/** Synthesized failure reason when the flow does not complete successfully. */
+	readonly failureReason?: string;
 }
 
 /**

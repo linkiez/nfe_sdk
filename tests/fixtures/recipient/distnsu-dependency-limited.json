@@ -1,0 +1,15 @@
+{
+  "input": {
+    "actor": {
+      "documentNumber": "12345678909",
+      "documentType": "cpf"
+    },
+    "environment": "homologation",
+    "startingCursor": "000000000000100",
+    "target": {
+      "accessKey": "35190500000000000000550010000000011000000011",
+      "documentKinds": ["full-document"]
+    }
+  },
+  "responseXml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope><soap:Body><retDistDFeInt><tpAmb>2</tpAmb><cStat>280</cStat><xMotivo>Solicitante nao habilitado</xMotivo><ultNSU>000000000000100</ultNSU><maxNSU>000000000000100</maxNSU><loteDistDFeInt></loteDistDFeInt></retDistDFeInt></soap:Body></soap:Envelope>"
+}

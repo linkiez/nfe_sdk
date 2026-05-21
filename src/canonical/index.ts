@@ -14,6 +14,7 @@ export { createSigningContext } from './facade/create-signing-context.js';
 export { distributeRecipientDFe } from './facade/distribute-recipient-dfe.js';
 export { executeNFeSoapService } from './facade/execute-nfe-soap-service.js';
 export { manifestRecipientOperation } from './facade/manifest-recipient-operation.js';
+export { retrieveRecipientDocument } from './facade/retrieve-recipient-document.js';
 export { prepareNFCeSigningPrerequisites } from './facade/prepare-nfce-signing-prerequisites.js';
 export { queryContributorRegistration } from './facade/query-contributor-registration.js';
 export { queryNFeByAccessKey } from './facade/query-nfe-by-key.js';
@@ -109,11 +110,15 @@ export type {
 export type { ICMSDeferralItem, ICMSDeferralPayload } from './generic-event/prorrogacao-icms-payload.js';
 
 export type { RecipientActor,
+  RecipientDocumentRetrievalClassification,
+  RecipientDocumentRetrievalOutcome,
+  RecipientDocumentRetrievalRequest,
   RecipientCoverageBoundary,
   RecipientDistributionCursor,
   RecipientDistributionOutcome,
   RecipientDistributionQuery,
   RecipientDocumentEnvelope,
+  RecipientFollowUpTarget,
   RecipientManifestationOutcome,
   RecipientManifestationRequest,
 } from './recipient/recipient-shared.js';

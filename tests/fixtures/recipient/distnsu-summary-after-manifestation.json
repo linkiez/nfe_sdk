@@ -1,0 +1,11 @@
+{
+  "input": {
+    "actor": {
+      "documentNumber": "12345678909",
+      "documentType": "cpf"
+    },
+    "environment": "homologation",
+    "ultNSU": "000000000000099"
+  },
+  "responseXml": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope><soap:Body><retDistDFeInt><tpAmb>2</tpAmb><cStat>138</cStat><xMotivo>Documentos localizados</xMotivo><ultNSU>000000000000101</ultNSU><maxNSU>000000000000101</maxNSU><loteDistDFeInt><docZip NSU=\"000000000000100\" schema=\"resNFe_v1.01\">PHJlc05GZT48Y2hORmU+MzUxOTA1MDAwMDAwMDAwMDAwMDA1NTAwMTAwMDAwMDAwMTEwMDAwMDAwMTA8L2NoTkZlPjxDTlBKPjEyMzQ1Njc4MDAwMTk1PC9DTlBKPjxDTlBKRGVzdD4xMjM0NTY3ODAwMDE5NTwvQ05QSkRlc3Q+PC9yZXNORmU+</docZip><docZip NSU=\"000000000000101\" schema=\"procNFe_v4.00\">PHByb2NORmU+PE5GZT48aW5mTkZlPjxpZGU+PGNORj4xMDAwMDAwMDE8L2NORj48L2lkZT48L2luZk5GZT48L05GZT48cHJvdE5GZT48aW5mUHJvdD48Y2hORmU+MzUxOTA1MDAwMDAwMDAwMDAwMDA1NTAwMTAwMDAwMDAwMTEwMDAwMDAwMTE8L2NoTkZlPjwvaW5mUHJvdD48L3Byb3RORmU+PC9wcm9jTkZlPg==</docZip></loteDistDFeInt></retDistDFeInt></soap:Body></soap:Envelope>"
+}
