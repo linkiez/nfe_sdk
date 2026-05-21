@@ -18,8 +18,10 @@ const AUTHORIZED_ITEM_STATS = new Set(['100']);
 const CANCELLED_ITEM_STATS = new Set(['101', '102', '103', '135', '151', '152']);
 /** Item-level status codes that correspond to pending processing. */
 const PENDING_ITEM_STATS = new Set(['105']);
+/** Item-level status codes that correspond to rejection. */
+const REJECTED_ITEM_STATS = new Set(['204', '205']);
 /** Item-level status codes that correspond to denial (uso denegado). */
-const DENIED_ITEM_STATS = new Set(['204', '205', '301', '302']);
+const DENIED_ITEM_STATS = new Set(['301', '302']);
 
 /**
  * Classifies a single NF-e item in an async batch by its SEFAZ status code.
@@ -33,6 +35,7 @@ export function classifyAsyncBatchItem(
   if (AUTHORIZED_ITEM_STATS.has(statusCode)) return 'authorized';
   if (CANCELLED_ITEM_STATS.has(statusCode)) return 'cancelled';
   if (PENDING_ITEM_STATS.has(statusCode)) return 'pending';
+  if (REJECTED_ITEM_STATS.has(statusCode)) return 'rejected';
   if (DENIED_ITEM_STATS.has(statusCode)) return 'denied';
   return 'processing-error';
 }

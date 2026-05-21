@@ -13,6 +13,7 @@ export { queryContributorRegistration } from './query-contributor-registration.j
 export { queryNFeByAccessKey } from './query-nfe-by-key.js';
 export { queryNFeByNSU } from './query-nfe-by-nsu.js';
 export { queryNFeDocumentSituation } from './query-nfe-document-situation.js';
+export { reconcileNFeReceipt } from './reconcile-nfe-receipt.js';
 export { queryNFeServiceStatus } from './query-nfe-service-status.js';
 export { resolveNFeServiceEndpoint } from './resolve-nfe-service-endpoint.js';
 export { retrieveNFeAuthorizationBatch } from './retrieve-nfe-authorization-batch.js';
@@ -35,6 +36,10 @@ export type {
 	NFeAuthorizationDocumentsInput,
 	NFeAuthorizationOutcome,
 	NFeAuthorizationRequest,
+	NFeReceiptReconciliationClassification,
+	NFeReceiptReconciliationRequest,
+	NFeReceiptReconciliationResult,
+	NFeReceiptRoutingContext,
 	NFeStateEvidence,
 	NFeStateEvidenceSourceKind,
 	OperationalMaintenanceOutcome,

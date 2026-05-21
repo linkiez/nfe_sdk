@@ -20,6 +20,7 @@ export {
 	queryNFeByAccessKey,
 	queryNFeByNSU,
 	queryNFeDocumentSituation,
+	reconcileNFeReceipt,
 	queryNFeServiceStatus,
 	resolveNFeServiceEndpoint,
 	serializeEnviNFeXml,
@@ -47,6 +48,10 @@ export type {
 	NFeAsyncBatchClassification,
 	NFeAsyncBatchOutcome,
 	NFeAsyncBatchRetrievalInput,
+	NFeReceiptReconciliationClassification,
+	NFeReceiptReconciliationRequest,
+	NFeReceiptReconciliationResult,
+	NFeReceiptRoutingContext,
 	NFeSEFAZAutorizador,
 	UFRoutingResult,
 

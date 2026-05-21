@@ -8,6 +8,7 @@ export {
 export { mapAuthorizationTransportOutcome } from './authorization-outcome.js';
 export { createAuthorizationPayloadXml } from './authorization-payload.js';
 export { authorizeNFe } from './authorize-nfe.js';
+export { reconcileNFeReceipt } from './reconcile-nfe-receipt.js';
 export {
   createNFeContingencyBoundary,
   createNFeContingencyBoundaryOutcome,
@@ -40,6 +41,7 @@ export {
   getOperationalBoundaries,
   getNFeAuthorizationClassifications,
   getNFeMaintenanceClassifications,
+  getNFeReceiptReconciliationClassifications,
   getNFeQueryClassifications,
 } from './contracts.js';
 export {
@@ -73,6 +75,10 @@ export type {
   NFeOperationalPrimaryState,
   NFeOperationalState,
   NFeQueryClassification,
+  NFeReceiptReconciliationClassification,
+  NFeReceiptReconciliationRequest,
+  NFeReceiptReconciliationResult,
+  NFeReceiptRoutingContext,
   NFeServiceStatusRequest,
   NFeStateEvidence,
   NFeStateEvidenceSourceKind,

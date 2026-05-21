@@ -24,6 +24,7 @@ describe('root recipient dfe facade contract', () => {
       'queryNFeByNSU',
       'queryNFeDocumentSituation',
       'queryNFeServiceStatus',
+      'reconcileNFeReceipt',
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',
       'retrieveNFeAuthorizationBatch',

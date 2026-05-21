@@ -1,0 +1,13 @@
+<retConsReciNFe xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">
+  <tpAmb>2</tpAmb>
+  <nRec>135190000000006</nRec>
+  <cStat>104</cStat>
+  <xMotivo>Lote processado</xMotivo>
+  <retProt>
+    <infProt>
+      <chNFe>35240100000000000000550010000000041000000049</chNFe>
+      <cStat>999</cStat>
+      <xMotivo>Resposta oficial sem evidencia terminal suficiente</xMotivo>
+    </infProt>
+  </retProt>
+</retConsReciNFe>

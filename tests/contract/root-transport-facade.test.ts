@@ -24,6 +24,7 @@ describe('root transport facade contract', () => {
       'queryNFeByNSU',
       'queryNFeDocumentSituation',
       'queryNFeServiceStatus',
+      'reconcileNFeReceipt',
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',
       'retrieveNFeAuthorizationBatch',

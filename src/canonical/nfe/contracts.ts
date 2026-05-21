@@ -105,11 +105,29 @@ export type NFeContingencyBoundary = ObservableContingencyBoundary;
  */
 export type NFeQueryClassification = (typeof QUERY_CLASSIFICATIONS)[number];
 
+const RECEIPT_RECONCILIATION_CLASSIFICATIONS = [
+  'authorized',
+  'rejected',
+  'denied',
+  'unavailable',
+  'inconclusive',
+  'pending',
+  'not-found',
+  'protocol-error',
+  'usage-error',
+] as const;
+
 /**
  * Maintenance result classifications exposed by the operational slice.
  */
 export type NFeMaintenanceClassification =
   (typeof MAINTENANCE_CLASSIFICATIONS)[number];
+
+/**
+ * Receipt reconciliation classifications exposed by the operational slice.
+ */
+export type NFeReceiptReconciliationClassification =
+  (typeof RECEIPT_RECONCILIATION_CLASSIFICATIONS)[number];
 
 export type NFeOperationalPrimaryState =
   | 'authorized'
@@ -160,9 +178,10 @@ export interface OperationalBoundary {
 const OPERATIONAL_BOUNDARIES = [
   {
     boundaryId: 'receipt-polling',
-    followUpHint: 'Promote a dedicated async batch reconciliation slice before exposing nRec.',
+    followUpHint:
+      'Keep generic polling, repeated retry loops, and portfolio receipt orchestration outside the root contract.',
     reason:
-      'Document-state queries in this phase stay access-key-only and do not open generic polling.',
+      'The root contract now promotes one-shot receipt reconciliation by known nRec, but does not open generic polling loops or unattended receipt orchestration.',
     relatedTheme: 'RFL-001',
   },
   {
@@ -216,6 +235,56 @@ export interface NFeAuthorizationOutcome {
   readonly protocolNumber?: string;
   /** Receipt number when the exchange remains intermediate. */
   readonly receiptNumber?: string;
+  /** Underlying transport evidence reused by the operational slice. */
+  readonly transportOutcome: TransportOutcome;
+}
+
+/**
+ * Explicit routing context required to reconcile a known `nRec`.
+ */
+export interface NFeReceiptRoutingContext {
+  /** Authorizer declared by the integrator for the receipt lookup. */
+  readonly authorizer: import('../transport/uf-routing.js').NFeSEFAZAutorizador;
+  /** Execution environment used for the receipt lookup. */
+  readonly environment: import('../shared/contracts.js').CanonicalEnvironment;
+}
+
+/**
+ * Structured receipt reconciliation request accepted by the operational layer.
+ */
+export interface NFeReceiptReconciliationRequest {
+  /** Known receipt number returned by a previous authorization submission. */
+  readonly receiptNumber: string;
+  /** Explicit routing context for the lookup. */
+  readonly routingContext: NFeReceiptRoutingContext;
+  /** Optional network executor override. */
+  readonly requestExecutor?: RequestExecutor;
+  /** Optional operation timeout in milliseconds. */
+  readonly timeoutMs?: number;
+}
+
+/**
+ * Structured receipt reconciliation result returned by the operational layer.
+ */
+export interface NFeReceiptReconciliationResult {
+  /** Receipt reconciliation classification. */
+  readonly classification: NFeReceiptReconciliationClassification;
+  /** Access key resolved from the reconciled protocol item when available. */
+  readonly documentKey?: string;
+  /** Batch items observed in the official response. */
+  readonly items: readonly AsyncBatchItemResult[];
+  /** Final protocol number when available. */
+  readonly protocolNumber?: string;
+  /** Queried receipt number. */
+  readonly receiptNumber: string;
+  /** Raw official response when available. */
+  readonly rawResponse?: string;
+  /** Relevant SEFAZ status code for the batch or item. */
+  readonly statusCode?: string;
+  /** Relevant SEFAZ status message for the batch or item. */
+  readonly statusMessage?: string;
+  /** Optional operational-state projection aligned with spec 020. */
+  readonly state?: NFeOperationalState;
   /** Underlying transport evidence reused by the operational slice. */
   readonly transportOutcome: TransportOutcome;
 }
@@ -374,6 +443,16 @@ export function getNFeMaintenanceClassifications():
 }
 
 /**
+ * Returns the supported receipt reconciliation classifications.
+ *
+ * @returns Read-only receipt reconciliation classifications.
+ */
+export function getNFeReceiptReconciliationClassifications():
+  readonly NFeReceiptReconciliationClassification[] {
+  return RECEIPT_RECONCILIATION_CLASSIFICATIONS;
+}
+
+/**
  * Returns the explicit operational boundaries published by the state-operations slice.
  *
  * @returns Read-only deferred operational boundaries.
@@ -381,7 +460,6 @@ export function getNFeMaintenanceClassifications():
 export function getOperationalBoundaries(): readonly OperationalBoundary[] {
   return OPERATIONAL_BOUNDARIES;
 }
-
 // ---------------------------------------------------------------------------
 // Async batch retrieval
 // ---------------------------------------------------------------------------
@@ -389,6 +467,7 @@ export function getOperationalBoundaries(): readonly OperationalBoundary[] {
 /** Result status for a single NF-e document in an async batch. */
 export type AsyncBatchItemClassification =
   | 'authorized'
+  | 'rejected'
   | 'denied'
   | 'cancelled'
   | 'pending'

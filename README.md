@@ -77,6 +77,7 @@ import {
   queryNFeByNSU,
   queryNFeDocumentSituation,
   queryNFeServiceStatus,
+  reconcileNFeReceipt,
   resolveNFeServiceEndpoint,
   resolveUFAutorizador,
   retrieveNFeAuthorizationBatch,
@@ -178,10 +179,11 @@ console.log(endpoint.endpointUrl, outcome.classification);
 - `serializeNFeXml` e `serializeEnviNFeXml` produzem XML deterministico
 - `signNFeXml` aplica XMLDSig e valida localmente antes de retornar
 - `authorizeNFe` orquestra a autorizacao operacional inicial para documento unico ou lote suportado
+- `reconcileNFeReceipt` promove a reconciliacao dedicada de `nRec` conhecido com classificacoes operacionais como `authorized`, `rejected`, `denied`, `pending`, `unavailable` e `inconclusive`
 - `retrieveNFeAuthorizationBatch` consulta o processamento assíncrono do lote enviado
 - `queryNFeServiceStatus` e `queryNFeDocumentSituation` devolvem resultados estruturados de consulta; `queryNFeDocumentSituation` agora publica `state.primaryState`, `state.evidence` e `pendingReason` quando aplicavel
 - `submitNFeInutilization`, `cancelNFe` e `submitNFeCorrectionLetter` cobrem manutencoes homologadas do recorte atual e agora devolvem `updatedState` coerente com a leitura operacional do documento
-- `publicPackageContract.operationalBoundaries` explicita que `nRec`, polling generico, reconciliacao multi-documento, persistencia local e variacoes dominantes por `UF` continuam fora do recorte atual
+- `publicPackageContract.operationalBoundaries` explicita que polling generico, reconciliacao multi-documento, persistencia local e variacoes dominantes por `UF` continuam fora do recorte atual, mesmo apos a promocao de `nRec` conhecido
 
 ### NFC-e
 

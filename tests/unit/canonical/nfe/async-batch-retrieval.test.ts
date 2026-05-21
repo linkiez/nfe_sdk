@@ -53,7 +53,7 @@ describe('async batch retrieval parsing', () => {
         (item) => item.chNFe === '35240100000000000000550010000000021000000025',
       );
       expect(rejected).toBeDefined();
-      expect(rejected?.classification).toBe('denied');
+      expect(rejected?.classification).toBe('rejected');
       expect(rejected?.protocolNumber).toBeUndefined();
       expect(rejected?.statusCode).toBe('204');
     });
@@ -139,6 +139,14 @@ describe('async batch retrieval parsing', () => {
 
     it('classifies cStat 105 as pending', () => {
       expect(classifyAsyncBatchItem('105')).toBe('pending');
+    });
+
+    it('classifies cStat 204 as rejected', () => {
+      expect(classifyAsyncBatchItem('204')).toBe('rejected');
+    });
+
+    it('classifies cStat 205 as rejected', () => {
+      expect(classifyAsyncBatchItem('205')).toBe('rejected');
     });
 
     it('classifies cStat 301 as denied', () => {

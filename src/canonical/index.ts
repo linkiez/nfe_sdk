@@ -2,6 +2,7 @@ export { computeNFeAccessKey } from './facade/compute-nfe-access-key.js';
 export { computeHashCSRT } from './facade/compute-hash-csrt.js';
 export { resolveUFAutorizador } from './facade/resolve-uf-autorizador.js';
 export { retrieveNFeAuthorizationBatch } from './facade/retrieve-nfe-authorization-batch.js';
+export { reconcileNFeReceipt } from './facade/reconcile-nfe-receipt.js';
 export { submitEPECEvent } from './facade/submit-epec-event.js';
 export { authorizeNFCe } from './facade/authorize-nfce.js';
 export { authorizeNFe } from './facade/authorize-nfe.js';
@@ -37,6 +38,12 @@ export type { HashCSRTInput } from './facade/compute-hash-csrt.js';
 export type { NFeSEFAZAutorizador, UFRoutingResult } from './facade/resolve-uf-autorizador.js';
 export type { EPECEventClassification, EPECEventInput, EPECEventOutcome, EPECSVCTarget } from './facade/submit-epec-event.js';
 export type { AsyncBatchItemClassification, AsyncBatchItemResult, NFeAsyncBatchClassification, NFeAsyncBatchOutcome, NFeAsyncBatchRetrievalInput } from './facade/retrieve-nfe-authorization-batch.js';
+export type {
+  NFeReceiptReconciliationClassification,
+  NFeReceiptReconciliationRequest,
+  NFeReceiptReconciliationResult,
+  NFeReceiptRoutingContext,
+} from './nfe/contracts.js';
 
 export type {
   NFCeAuthorizationClassification,

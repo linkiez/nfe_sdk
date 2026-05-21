@@ -35,6 +35,7 @@ describe('package contract documentation', () => {
       'queryNFeByNSU',
       'queryNFeDocumentSituation',
       'queryNFeServiceStatus',
+      'reconcileNFeReceipt',
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',
       'retrieveNFeAuthorizationBatch',
@@ -63,6 +64,7 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`manifestRecipientOperation`');
     expect(readme).toContain('`prepareNFCeSigningPrerequisites`');
     expect(readme).toContain('`queryNFeDocumentSituation`');
+    expect(readme).toContain('`reconcileNFeReceipt`');
     expect(readme).toContain('`queryNFeServiceStatus`');
     expect(readme).toContain('`resolveUFAutorizador`');
     expect(readme).toContain('`retrieveNFeAuthorizationBatch`');

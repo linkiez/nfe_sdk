@@ -24,6 +24,7 @@ describe('public nfce operational facade contract', () => {
       'queryNFeByNSU',
       'queryNFeDocumentSituation',
       'queryNFeServiceStatus',
+      'reconcileNFeReceipt',
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',
       'retrieveNFeAuthorizationBatch',

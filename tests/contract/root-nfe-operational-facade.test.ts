@@ -24,6 +24,7 @@ describe('root nfe operational facade contract', () => {
       'queryNFeByNSU',
       'queryNFeDocumentSituation',
       'queryNFeServiceStatus',
+      'reconcileNFeReceipt',
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',
       'retrieveNFeAuthorizationBatch',
@@ -52,10 +53,10 @@ describe('root nfe operational facade contract', () => {
 
   it('documents explicit state-operation boundaries in the public package contract', () => {
     expect(publicApi.publicPackageContract.compatibilityNotes).toContain(
-      'The NFe state-operations slice now returns additive operational state and evidence projections for queryNFeDocumentSituation and supported post-authorization maintenance flows while keeping nRec, generic polling, multi-document reconciliation, local persistence, and dominant UF variance outside the root contract.',
+      'The NFe receipt-protocol slice now adds reconcileNFeReceipt as a dedicated root facade for one-shot reconciliation of known nRec values while keeping generic polling, multi-document reconciliation, local persistence, and dominant UF variance outside the root contract.',
     );
     expect(publicApi.publicPackageContract.repositoryEvidence).toContain(
-      'specs/020-nfe-state-operations/contracts/public-nfe-state-operations-facade.md',
+      'specs/021-nfe-receipt-protocol/contracts/public-nfe-receipt-protocol-facade.md',
     );
     expect(publicApi.publicPackageContract.operationalBoundaries).toEqual([
       expect.objectContaining({ boundaryId: 'receipt-polling' }),
