@@ -90,3 +90,10 @@ Detalhar o hub `www.nfe.fazenda.gov.br` em nivel mais operacional do que o anexo
 - Cada superficie do portal deve cair em um `RTM-*` existente ou justificar um novo tema consolidado.
 - Cada documento vigente sensivel precisa ter pelo menos uma classificacao entre `runtime`, `tooling`, `documentacao`, `exemplo` ou `trilha de observacao`.
 - Historicos e versoes substituidas permanecem como evidencia de proveniencia no acervo, mas nao devem substituir o baseline vigente do roadmap.
+
+## Mapa de apoio para `RTM-018`
+
+- O artefato canonico do slice passa a ser [diagnostico-trust-chain](./diagnostico-trust-chain.md).
+- `download.aspx` sustenta o item canonico `download-surface` e aponta para `assinador` e `visualizador-dfe` como apoio operacional ao integrador.
+- `webServices.aspx` ajuda a localizar `WSDL` e catalogo de servicos apenas como evidencias de apoio e boundary de interoperabilidade.
+- `arearestrita` permanece como boundary externa: ela nao vira parte do inventario canonico nem promessa de automacao publica.

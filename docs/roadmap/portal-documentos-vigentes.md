@@ -107,3 +107,10 @@ Registrar os documentos vigentes mais relevantes do portal nacional com versao, 
 - Este anexo sustenta `ncm-utrib` com `IT 2024.001 v2.30` e a linha de vigencia `01/02/2026` da tabela `NCM/uTrib`.
 - Este anexo sustenta `fcp`, `municipios`, `anp` e `cfop` com suas respectivas linhas vigentes, mantendo `fcp` e `municipios` explicitamente como grupos com delta forte por `UF`.
 - Nenhuma linha deste anexo deve ser lida como registro canonico paralelo da politica; ele funciona apenas como apoio de proveniencia e datas observadas.
+
+## Mapa de apoio para `RTM-018`
+
+- O artefato canonico da trilha diagnostica de trust chain passa a ser [diagnostico-trust-chain](./diagnostico-trust-chain.md).
+- Este anexo sustenta `www-chain`, `www1-chain`, `visualizador-dfe` e `assinador` com proveniencia e datas observadas.
+- A superficie oficial de downloads continua detalhada em [portal-nacional-inventario](./portal-nacional-inventario.md), enquanto `WSDL`, `SSL`, `SVAN` e `SVRS` permanecem como evidencias de apoio e boundary de interoperabilidade.
+- Nenhuma linha deste anexo deve ser lida como trilha diagnostica canonica paralela; ele continua restrito a proveniencia e datas observadas.

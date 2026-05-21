@@ -1,6 +1,6 @@
 <!-- SPECKIT START -->
 
 For additional context about technologies to be used, project structure,
-shell commands, and other important information, read specs/018-external-table-policy/plan.md
+shell commands, and other important information, read specs/019-trust-chain-diagnostics/plan.md
 
 <!-- SPECKIT END -->

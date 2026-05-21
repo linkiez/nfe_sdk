@@ -73,6 +73,13 @@ Exemplos tipicos:
 | `RTM-011` complementos estaduais por `UF`             | promover para `runtime` somente quando a `UF` tiver evidencia operacional consistente e boundary fechada         |
 | `RTM-016` e `RTM-019` familias paralelas e emergentes | manter em `documentacao` ate existir justificativa arquitetural e slice minima testavel                          |
 
+### Nota aplicada a `RTM-018`
+
+- O artefato canonico [diagnostico-trust-chain](./diagnostico-trust-chain.md) fixa `RTM-018` como `tooling` + `documentacao` nesta fase.
+- Cadeias `www`/`www1`, superficie de downloads, assinador e visualizador `DF-e` permanecem como inventario principal de apoio ao integrador.
+- `WSDL`, `SSL`, `SVAN`, `SVRS` e superficies autenticadas permanecem como evidencias de apoio e boundary de interoperabilidade.
+- Qualquer promocao futura para `runtime` continua exigindo slice propria com fallback, contrato observavel e fechamento das fronteiras com assinatura e transporte.
+
 ### Nota aplicada a `RTM-010`
 
 - `cbs-ibs`, `payment-methods`, `ncm-utrib`, `anp` e `cfop` devem permanecer em `tooling` por padrao nesta fase.
