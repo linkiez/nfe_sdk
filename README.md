@@ -193,6 +193,8 @@ console.log(endpoint.endpointUrl, outcome.classification);
 - `prepareNFCeSigningPrerequisites` prepara `chNFe`, `cDV` e `hashCSRT` a partir de insumos estruturados
 - quando `requestedCapabilities` informa QR Code, DANFE NFC-e, administracao de CSC, credenciamento automatizado ou contingencia offline, a facade responde com `unsupported-scope` antes do transporte
 - UFs fora do cohort publicado retornam `unsupported-state`
+- a promocao atual segue a trilha editorial `RFL-006`, `RTM-007`, `RTM-011` e `RTM-012` sem abrir novo entrypoint ou importar superfices profundas
+- `PB`, `GO`, `SC`, `CE` e `MS` continuam fora deste corte porque ainda concentram gaps estaduais dominantes em `CSC`, `QR Code`, politicas de acesso, fechamento de captura ou consolidacao especifica de `NFC-e`
 
 ### Assinatura digital
 

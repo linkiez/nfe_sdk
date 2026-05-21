@@ -90,6 +90,15 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`consNSU`');
     expect(readme).toContain('`consChNFe`');
     expect(readme).toContain('SP + PR');
+    expect(readme).toContain('`RFL-006`');
+    expect(readme).toContain('`RTM-007`');
+    expect(readme).toContain('`RTM-011`');
+    expect(readme).toContain('`RTM-012`');
+    expect(readme).toContain('`PB`');
+    expect(readme).toContain('`GO`');
+    expect(readme).toContain('`SC`');
+    expect(readme).toContain('`CE`');
+    expect(readme).toContain('`MS`');
     expect(readme).toContain('`manifest.json` permanece interno');
     expect(readme).toContain(
       '`enviNFe` permanece como envelope de transporte nao assinado',

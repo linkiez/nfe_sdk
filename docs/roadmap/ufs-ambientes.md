@@ -48,3 +48,12 @@ Consolidar, por `UF`, as superficies estaduais e os ambientes operacionais ja ob
 - `SP` e `PR` formam o cohort inicial promovido a runtime, enquanto `MS`, `PB`, `AC`, `CE`, `MG`, `RJ`, `SC`, `RO` e `RR` seguem como sinais estaduais fortes para cortes futuros.
 - `AL`, `ES`, `MA`, `RN` e `RS` continuam como lacunas reais de evidencia estadual direta no acervo atual.
 - `AP` e `SE` permanecem bloqueadas por falha de conversao, enquanto `BA`, `PA`, `PI` e `TO` ja possuem host capturado mas ainda dependem de curadoria operacional fina.
+
+## Rationale do cohort promovido
+
+- O corte additive `023-nfce-pr-promotion` fecha o primeiro trecho operacional de `RFL-006` e permanece rastreavel a `RTM-007`, `RTM-011` e `RTM-012` sem ampliar o import raiz alem da facade `authorizeNFCe`.
+- `PB` continua fora do cohort porque `CSC` e consulta do consumidor ainda dominam o delta estadual observavel.
+- `GO` continua fora do cohort porque o sinal mais forte segue concentrado em `QR Code`, sem fechamento operacional homologado equivalente a `SP + PR`.
+- `SC` continua fora do cohort porque politica de acesso, autenticacao e download ainda pesam mais do que um recorte operacional de NFC-e fechado.
+- `CE` continua fora do cohort porque ha sinal de producao e catalogo tecnico, mas a leitura estadual consolidada ainda nao fechou o suficiente para promocao runtime.
+- `MS` continua fora do cohort porque a evidencia estadual mais forte ainda esta ancorada em `NF-e`, nao em um recorte `NFC-e` ja fechado.

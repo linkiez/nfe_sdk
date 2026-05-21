@@ -95,10 +95,17 @@ describe('root contract boundary', () => {
         'The signing-expansion slice now adds prepareNFCeSigningPrerequisites as an additive root facade that derives chNFe, cDV, and hashCSRT while keeping authorization, QR Code, and broader NFC-e rollout explicitly deferred.',
         'The first NFC-e slice returns unsupported-state before transport when the inferred UF stays outside the published SP and PR promoted cohort.',
         'The first NFC-e slice accepts requestedCapabilities only as an explicit marker for deferred operational surfaces and returns unsupported-scope before transport for QR Code, DANFE NFC-e, CSC administration, automatic credentialing, or offline contingency.',
+        'The PR promotion slice traces RFL-006, RTM-007, RTM-011, and RTM-012 through the published SP and PR cohort while keeping PB, GO, SC, CE, and MS outside the runtime slice until their state-specific evidence closes.',
         'The recipient continuity slice now exposes distributeRecipientDFe, manifestRecipientOperation, and retrieveRecipientDocument for homologation-only recipient workflows via distNSU, while keeping manifestation registration and later document retrieval as explicit separate steps.',
         'The recipient continuity slice keeps consNSU, consChNFe, production, aggressive polling, and assisted backoffice automation outside the root contract in this phase.',
         'The first generic-event slice currently exposes submitGenericEvents for homologation-only submission of the supported 110130, 110150, 110192, and 110750 families through one root facade.',
         'Future functional phases may expand the root contract, but they must not silently republish the generated tree.',
+      ]),
+    );
+
+    expect(publicPackageContract.repositoryEvidence).toEqual(
+      expect.arrayContaining([
+        'specs/023-nfce-pr-promotion/contracts/public-nfce-pr-promotion-facade.md',
       ]),
     );
   });
