@@ -2,15 +2,16 @@
 
 ## Objetivo
 
-Definir uma sequencia unica de implantacao para evoluir o repositorio de um gerador de artefatos TypeScript baseado em XSD para um SDK utilizavel de `NFe`, `NFC-e` e Manifestacao do Destinatario, cobrindo `100%` do acervo em `docs/_sources/markdown/official/`, com prioridade imediata para todo o hub nacional em `docs/_sources/markdown/official/www.nfe.fazenda.gov.br/` e fechamento explicito de todos os estados, ambientes e complementos operacionais observados no restante do acervo oficial.
+Definir uma sequencia unica de implantacao para evoluir o repositorio de um gerador de artefatos TypeScript baseado em XSD para um SDK que implemente codigo para `100%` das features fiscais priorizadas de `NF-e` e `NFC-e`, usando `SP` como baseline obrigatoria de `homologacao` ate `producao`, e tratando o restante do acervo oficial como trilha de expansao depois que esse caminho paulista estiver fechado com runtime, tooling executavel e boundaries operacionais verificaveis.
 
 ## Papel deste documento
 
 - Este arquivo passa a ser a fonte canonica de planejamento do repositorio.
 - As fases `1` a `8` foram preservadas para manter compatibilidade com os demais artefatos documentais que ja referenciam a numeracao atual.
-- O conceito de `100%` neste roadmap significa cobertura planejada, rastreada e classificada para cada fonte oficial, estado, ambiente e familia documental relevante, e nao promessa de `100%` de suporte runtime na mesma fase.
+- O conceito de `100%` neste roadmap passa a significar feature oficial com destino executavel em codigo: `runtime`, `tooling` executavel ou `exemplo` shipped, sempre com prioridade para fechar `SP` em `homologacao` e `producao` antes de expandir cohort multi-`UF`.
 - Este arquivo substitui qualquer artefato paralelo de roadmap, matriz tematica ou watchlist de mudancas como fonte canonica de planejamento.
 - `docs/documentos-oficiais-portal-nfe.md`, `docs/roadmap/` e `docs/_sources/markdown/official/` continuam como base de evidencia e curadoria, nao como fontes concorrentes de backlog.
+- O foco imediato do roadmap deixa de ser apenas cobertura editorial do acervo e passa a ser fechamento de codigo operacional para `SP`, incluindo `tpAmb`, `homologacao`, `producao`, contingencia observavel, `CSC`, `QR Code` e `DANFE NFC-e` no limite correto entre `runtime` e `tooling` executavel.
 
 ## Estado atual do projeto
 
@@ -21,10 +22,10 @@ Definir uma sequencia unica de implantacao para evoluir o repositorio de um gera
 
 ## Principios de implantacao
 
-- Priorizar primeiro o contrato publico do pacote antes de ampliar cobertura funcional.
+- Priorizar primeiro o caminho de codigo de `SP` ate `producao`, e so depois ampliar a cobertura editorial e operacional das demais `UFs`.
 - Separar com clareza o que e capacidade do SDK do que depende de certificado, credenciamento, autorizador, acesso autenticado e regras por UF.
 - Tratar o acervo oficial em tres camadas: evidencia primaria, consolidacao editorial e destinacao de backlog no proprio roadmap.
-- Nao considerar um tema coberto enquanto ele nao tiver destino explicito em uma destas classes: `runtime`, `tooling`, `exemplo`, `documentacao`, `backlog` ou `trilha de observacao`.
+- Nao considerar um tema fiscal prioritario coberto enquanto ele nao tiver um artefato executavel correspondente em `runtime`, `tooling` ou `exemplo`, ou uma boundary operacional explicitamente codificada.
 - Nao considerar uma UF coberta enquanto suas evidencias estaduais e seus ambientes observaveis nao tiverem sido classificados, mesmo quando a base nacional ja cobrir parte do comportamento comum.
 - Manter compatibilidade com `ESM`, TypeScript estrito e geracao derivada dos XSD como fundamento do pacote.
 - Explicitar desde cedo a fronteira entre API runtime, utilitarios de apoio ao integrador e artefatos operacionais de exemplo, para nao reproduzir no SDK uma interface de emissor desktop.
@@ -32,7 +33,7 @@ Definir uma sequencia unica de implantacao para evoluir o repositorio de um gera
 ## Fora do escopo inicial
 
 - Automacao de credenciamento, emissao real em producao ou operacao fiscal sem habilitacao externa.
-- Prometer suporte runtime para todas as `27` UFs de `NFC-e` na mesma fase em que a cobertura documental for fechada.
+- Prometer suporte runtime simultaneo para todas as `27` UFs antes de fechar `SP` com trilha completa de `homologacao`, `producao` e contingencia observavel.
 - Reescrita do pipeline de geracao antes de estabilizar o contrato publico minimo.
 - Replicar no pacote uma aplicacao emissora completa com cadastro local, interface grafica, banco embarcado e operacao assistida no estilo do emissor legado.
 
@@ -64,16 +65,23 @@ Para que o roadmap fique utilizavel como plano de execucao, cada unidade de cobe
 
 ## Definicao pratica de `100%`
 
-`100%` neste roadmap nao significa implementacao total do dominio; significa que nenhuma unidade de cobertura permanece sem leitura, sem dono ou sem destino.
+`100%` neste roadmap deixa de ser apenas cobertura planejada e passa a significar fechamento de codigo para as features fiscais priorizadas, com `SP` como baseline obrigatoria de `homologacao` ate `producao`.
 
-| Unidade            | Condicao minima para contar no `100%` do roadmap                                                                    |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| Tema               | ter `destino primario`, `fase-alvo inicial`, desfecho minimo e backlog associado                                    |
-| Host oficial       | estar classificado como `consolidado`, `bloqueado` ou `pendente` com acao de fechamento definida                    |
-| UF                 | ter leitura nacional e estadual reconciliadas, com ambientes e deltas locais classificados                          |
-| Ambiente           | ter fronteira funcional, dependencia externa, fase-alvo e criterio de promocao para runtime ou documentacao         |
-| Familia documental | ter decisao explicita entre `fluxo priorizado`, `backlog`, `tooling`, `exemplo` ou `trilha de observacao`           |
-| Mudanca recorrente | ter impacto classificado em `schema`, `validacao`, `evento`, `consulta`, `ambiente`, `dados externos` ou `contrato` |
+| Unidade            | Condicao minima para contar no `100%` do roadmap                                                                     |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| Tema               | ter feature codificada em `runtime`, `tooling` executavel ou `exemplo`, com testes e boundary operacional            |
+| Host oficial       | estar classificado e conectado a uma entrega tecnica concreta, nao apenas a uma nota editorial                       |
+| UF                 | ter caminho operacional reconciliado por ambiente; para `SP`, isso inclui `homologacao` e `producao`                 |
+| Ambiente           | ter `tpAmb`, endpoint, dependencia externa, fallback e gate de validacao localizados em codigo ou runbook executavel |
+| Familia documental | ter decisao explicita entre `runtime`, `tooling` executavel, `exemplo` shipped ou backlog adiado apos `SP`           |
+| Mudanca recorrente | ter impacto traduzido em implementacao, teste, fixture, dado externo versionado ou backlog tecnico localizado        |
+
+## Sinais oficiais que puxam este redirecionamento
+
+- O material oficial de `SP` registra indisponibilidade do autorizador e ativacao de `SVC-AN` como medida de continuidade operacional, o que desloca contingencia de nota editorial para backlog imediato de codigo por ambiente.
+- A documentacao oficial sobre `NF-e` diferencia explicitamente `homologacao` e `producao`, deixando claro que o caminho de `producao` tem validade juridica propria e nao pode continuar fora da trilha principal do SDK.
+- O leiaute oficial da `NF-e` exige `tpAmb` com rejeicao quando ambiente e mensagem divergem, entao ambiente deixou de ser classificacao documental e passa a ser requisito obrigatorio de implementacao.
+- O portal estadual paulista concentra sinais suficientes de suporte operacional, autenticacao, manutencao e canais auxiliares para servir de baseline tecnica antes de qualquer nova expansao multi-`UF`.
 
 ## Modelo de promocao para runtime
 
@@ -216,9 +224,9 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 
 ## Registro de implementacao via specs
 
-- Specs com `tasks.md` totalmente fechada: `001`, `002`, `003`, `004`, `006`, `008`, `009`, `011`, `012` e `013`.
-- Specs com implementacao iniciada e ainda aberta: `005` (`32/37` tasks), `007` (`36/37`) e `010` (`31/32`).
-- Leitura por fase: Fase 1=`001`,`002`,`003`,`011`; Fase 2=`004` com fechamento transversal de `012`; Fase 3=`005` com `012`; Fase 4=`006` com `012`; Fase 5=`007` com `012`; Fase 6=`008`,`009` com `012`; Fase 7=`010` com `012`; Fase 8=`013`.
+- Specs com `tasks.md` totalmente fechada: `001`, `002`, `003`, `004`, `005`, `006`, `007`, `008`, `009`, `010`, `011`, `012`, `013`, `014`, `016`, `017`, `018`, `019`, `020`, `022`, `023` e `024`.
+- Specs com implementacao iniciada e ainda aberta: `015` (`26/27` tasks) e `021` (`16/30` tasks).
+- Leitura por fase: Fase 1=`001`,`002`,`003`,`011`; Fase 2=`004` com fechamento transversal de `012`; Fase 3=`005`,`012`,`014`,`019`; Fase 4=`006`,`012`; Fase 5=`007`,`012`,`016`,`017`,`020`, com `021` aberta; Fase 6=`008`,`009`,`012`,`022`; Fase 7=`010`,`012`,`014`,`023`,`024`, com `015` aberta; Fase 8=`013`,`018`.
 
 ## Fases do roadmap
 
@@ -281,7 +289,7 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 
 ### Fase 3 - Assinatura digital, seguranca operacional e taxonomia de ambientes
 
-**Meta**: habilitar os fluxos que dependem de validade juridica e autenticidade tecnica, fechando tambem a taxonomia de ambientes compartilhados e virtuais.
+**Meta**: habilitar os fluxos que dependem de validade juridica e autenticidade tecnica, fechando a taxonomia de ambientes de forma executavel para `SP`, `homologacao` e `producao`.
 
 **Entregas**:
 
@@ -289,6 +297,7 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 - implementacao de assinatura `XMLDSig` para `NF-e`, `NFC-e` e eventos;
 - suporte a calculos auxiliares obrigatorios, incluindo `DV` da chave de acesso e `hashCSRT` quando aplicavel;
 - validacao de cadeia de certificados e precondicoes de conexao segura exigidas pelos autorizadores;
+- suporte explicito a `tpAmb` e validacao cruzada entre payload e endpoint para impedir mistura entre `homologacao` e `producao`;
 - cobertura de requisitos de interoperabilidade observados nos manuais de `SVRS`, `SVAN` e materiais correlatos, incluindo `SSL`, autenticacao mutua e compatibilidade de consumo `WSDL`;
 - classificar `homologacao`, `producao`, `ambiente nacional`, `SVAN`, `SVRS`, consultas abertas e consultas autenticadas como superfices distintas de backlog.
 
@@ -304,11 +313,11 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 - cada ambiente obrigatorio precisa ter dependencia externa declarada;
 - nenhuma superficie de assinatura pode depender de comportamento implcito do portal.
 
-**Criterio de saida**: o SDK consegue produzir XML assinado e o roadmap fecha a primeira leitura coerente de ambientes e precondicoes tecnicas.
+**Criterio de saida**: o SDK consegue produzir XML assinado, distinguir `tpAmb` corretamente e fechar a primeira leitura coerente e executavel de ambientes e precondicoes tecnicas para `SP`.
 
 ### Fase 4 - Transporte, `SOAP`, catalogo de servicos e resiliencia multi-ambiente
 
-**Meta**: criar a infraestrutura de comunicacao com autorizadores e ambientes nacionais e contingenciais.
+**Meta**: criar a infraestrutura de comunicacao com autorizadores e ambientes nacionais e contingenciais, fechando o caminho tecnico de `SP` ate `producao`.
 
 **Entregas**:
 
@@ -317,6 +326,7 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 - tratamento estruturado de retorno, rejeicao, indisponibilidade e uso indevido;
 - separacao entre camada de transporte, mapeamento de mensagens e regras de dominio;
 - suporte a consulta de recibo, consulta de protocolo e agendamento de polling de retorno quando o processamento for assincrono;
+- suporte a resolucao de endpoints de `homologacao` e `producao` com `tpAmb` coerente e diagnostico explicito quando o ambiente configurado divergir do payload;
 - catalogo observavel de autorizadores virtuais, contingenciais e endpoints por ambiente, com fronteiras claras entre regra nacional e complemento estadual;
 - backlog operacional para `SVC-AN`, `SVC-RS`, indisponibilidade publica e diagnostico antes da camada multi-UF;
 - pontos de acoplamento controlado para servicos auxiliares, como consultas especificas, distribuicao e servicos administrativos ligados a `CSC`.
@@ -333,17 +343,18 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 - cada servico suportado precisa mapear ambiente, autorizador e classe de erro;
 - contingencia nao pode ficar descrita apenas como nota editorial.
 
-**Criterio de saida**: o SDK consegue chamar servicos homologados com telemetria e erros compreensiveis, e o roadmap fecha a leitura de contingencia e resiliencia por ambiente.
+**Criterio de saida**: o SDK consegue chamar servicos de `homologacao` e `producao` com telemetria, `tpAmb` coerente e erros compreensiveis, e o roadmap fecha a leitura de contingencia e resiliencia por ambiente.
 
 ### Fase 5 - MVP operacional de `NFe` e ciclo pos-transmissao
 
-**Meta**: fechar o primeiro fluxo fim a fim com maior valor transversal.
+**Meta**: fechar o primeiro fluxo fim a fim com maior valor transversal, ja preparado para `SP` em `homologacao` e `producao`.
 
 **Entregas**:
 
 - API de alto nivel para emissao e acompanhamento de `NFe`;
 - modelos de resposta orientados a uso de aplicacao, sem expor apenas XML cru;
 - exemplos executaveis em homologacao;
+- runbooks e fixtures equivalentes para `producao`, sem esconder as dependencias externas de credenciamento e certificado;
 - testes de regressao baseados em fixtures XML reais;
 - facades que cubram validacao, assinatura, transmissao, consulta, cancelamento, inutilizacao e carta de correcao;
 - exportacao previsivel de XML autorizado, cancelado e denegado para testes, auditoria e interoperabilidade;
@@ -362,7 +373,7 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 - o fluxo minimo precisa cobrir transmissao e retorno, nao apenas envio inicial;
 - cada lacuna de `DANFE` ou consulta auxiliar precisa continuar visivel como backlog.
 
-**Criterio de saida**: um integrador consegue emitir e acompanhar `NFe` em homologacao com a API do SDK e o backlog de pos-transmissao deixa de ser implicito.
+**Criterio de saida**: um integrador consegue emitir e acompanhar `NFe` em `homologacao` e preparar a ida a `producao` em `SP` com a API do SDK, e o backlog de pos-transmissao deixa de ser implicito.
 
 ### Fase 6 - Eventos, distribuicao `DFe` e Manifestacao do Destinatario
 
@@ -393,16 +404,17 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 
 ### Fase 7 - `NFC-e` nacional, `27` UFs e extensoes por ambiente estadual
 
-**Meta**: adicionar `NFC-e` de forma sustentavel, sem acoplar todas as variacoes estaduais ao nucleo comum, mas sem deixar nenhuma UF fora do planejamento.
+**Meta**: fechar `NFC-e` de forma sustentavel com foco imediato em `SP` ate `producao`, e so depois abrir ondas adicionais de `UF`.
 
 **Entregas**:
 
 - camada nacional compartilhada para `NFC-e`;
 - arquitetura de extensoes por UF;
-- primeira UF piloto com documentacao publica mais consolidada;
+- baseline paulista com `homologacao`, `producao`, `CSC`, `QR Code`, `DANFE NFC-e` e contingencia classificados como implementacao ou boundary codificada;
 - matriz de compatibilidade por UF conectada ao comportamento real do SDK;
-- fechamento da trilha operacional propria de `NFC-e`, incluindo `DANFE NFC-e`, `QR Code`, `CSC`, contingencia `offline` e delimitacao do que e exigencia nacional versus provisao estadual;
+- fechamento da trilha operacional propria de `NFC-e`, incluindo `DANFE NFC-e`, `QR Code`, `CSC`, contingencia `offline` e delimitacao do que e API, tooling executavel ou boundary por `UF`;
 - estrategia de promocao gradual de UFs ancorada em evidencias publicas de credenciamento, web services, contingencia e politicas de consulta;
+- incorporacao dos avisos de indisponibilidade, `SVC-AN`, produtor rural e `NFF` de `SP` como parte do baseline de producao, e nao apenas como notas de acervo;
 - reconciliacao de todas as `27` UFs com um dos status validos do roadmap: `capturada`, `capturada-com-falha`, `pendente com dono`, `somente nacional sem delta` ou `promovida para suporte runtime`;
 - compatibilizacao explicita com `NTs` de `NFC-e` que alteram chave natural, cancelamento por substituicao, eliminacao de denegacao e lote, produtor rural, `CRT=4` e evolucoes de `QR Code` por UF.
 
@@ -418,7 +430,7 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 - nenhuma UF pode permanecer sem classificacao estadual minima;
 - nenhuma promocao runtime deve acontecer sem passagem pelos estagios `R1` a `R3`.
 
-**Criterio de saida**: o SDK oferece `NFC-e` nacional com modelo claro de extensao estadual e o roadmap fecha a cobertura editorial das `27` UFs e de seus ambientes associados.
+**Criterio de saida**: o SDK oferece `NFC-e` de `SP` pronto para `homologacao` e `producao`, com `CSC`, `QR Code`, `DANFE NFC-e` e contingencia posicionados corretamente em codigo, e o roadmap fecha a ordem de expansao das demais `UFs`.
 
 ### Fase 8 - Endurecimento para release, adocao e manutencao continua do acervo
 
@@ -450,18 +462,46 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 
 **Criterio de saida**: pacote pronto para publicacao recorrente, consumo controlado por integradores externos e manutencao continua do acervo oficial sem fragmentacao de backlog.
 
+## Levantamento de lacunas para producao: `NF-e`, `NFC-e` e `MDF-e`
+
+**Data de referencia**: `2026-10-10`. Este levantamento descreve a prontidao observavel no repositorio, nao uma autorizacao para transmitir documentos fiscais reais. Uma spec com todas as tasks fechadas prova a entrega daquele recorte; nao prova operacao ponta a ponta em producao.
+
+### `NF-e`
+
+- **Base presente**: facades para criacao, serializacao, assinatura, transporte SOAP, autorizacao em homologacao, consulta/manutencao, cancelamento, carta de correcao, inutilizacao e algumas operacoes de recibo e destinatario.
+- **Bloqueios para producao**: `authorizeNFe` aceita autorizacao normal somente em `homologation`; em `production`, devolve apenas `contingency-boundary` para UFs roteadas a `SVC-AN`/`SVC-RS` e rejeita o restante. A boundary nao executa failover. A spec `021` segue aberta (`16/30`) para fechar o ciclo assincrono de recibo/protocolo. O transporte e as operacoes ainda precisam de um caminho normal de producao comprovado por servico, autorizador e UF.
+- **Gate de saida**: provar `tpAmb=1` coerente com endpoint de producao; fechar submissao e retorno terminal/recibo/protocolo para `SP`; validar assinatura, TLS/certificado, rejeicoes e timeouts; executar homologacao ponta a ponta antes de um canario real aprovado pelo responsavel fiscal. A trilha de contingencia so conta como fechada quando houver comportamento operacional testado, nao apenas diagnostico.
+
+### `NFC-e`
+
+- **Base presente**: `authorizeNFCe` atende homologacao no cohort `SP + PR`; `generateNFCeSPQRCode` monta localmente URL de QR Code v3 para `SP` em homologacao e producao.
+- **Bloqueios para producao**: `authorizeNFCe` rejeita `production`; a URL de QR Code de producao nao autoriza a NFC-e nem prova consulta publica funcional. `DANFE NFC-e`, contingencia `offline` e administracao/credenciamento de `CSC` continuam fora do runtime. A spec `015` ainda possui uma validacao aberta (`26/27`). O helper exigir `CSC` e uma decisao local do SDK; o manual oficial v3 nao exige CSC para compor a URL.
+- **Gate de saida**: fechar autorizacao normal de `SP` em producao com `tpAmb=1`, assinatura e retorno verificaveis; validar a URL de QR Code contra a evidencia oficial/estadual e a consulta publica; decidir e testar a representacao `DANFE NFC-e` e a boundary operacional de `offline`; registrar credenciamento e credenciais como precondicoes externas. Promocao de outras UFs continua sendo gate separado.
+
+### `MDF-e`
+
+- **Base presente**: nao ha API operacional de MDF-e no root, nem familia dedicada de XSD em `xsd/`. As ocorrencias de `chMDFe` encontradas sao propriedades em dois eventos SUFRAMA e nao constituem suporte ao manifesto.
+- **Bloqueios para producao**: o acervo ja contem referencias estaduais do [PR](../_sources/markdown/official/sped.fazenda.pr.gov.br/index-704e8b126d.md) e da [PB](../_sources/markdown/official/www.sefaz.pb.gov.br/info/documentos-fiscais/mdf-e/index-72e0d57492.md), mas ainda falta consolidar a curadoria normativa e a baseline de XSD/versoes aplicaveis em uma spec propria. Tambem faltam modelo canonico, serializacao e validacao XSD, assinatura, catalogo de servicos por UF/ambiente, transporte, parsing de retornos e ciclo operacional. Autorizacao, consulta, encerramento, cancelamento, eventos e contingencia ainda precisam ter escopo e cobertura definidos.
+- **Gate de saida**: abrir uma trilha/spec separada que escolha versoes, UFs e operacoes suportadas; internalizar fontes oficiais; implementar e testar o fluxo homologado completo; depois validar producao com autorizacao e credenciais externas aprovadas. MDF-e nao deve ser contado como cobertura por causa de tipos de eventos que apenas referenciam sua chave.
+
+### Ordem de fechamento
+
+1. Fechar `NF-e` de `SP` em producao, incluindo recibo/protocolo e contingencia executavel.
+2. Fechar `NFC-e` de `SP` em producao, separando autorizacao, QR Code, `DANFE NFC-e` e contingencia `offline`.
+3. Iniciar a trilha de descoberta e especificacao de `MDF-e`; nao existe baseline runtime para promover.
+
 ## Backlog imediato recomendado
 
-- fechar a convergencia documental e manter este arquivo como unico backlog canonico;
-- transformar hosts e UFs ainda abertos em trilhas objetivas de fechamento, incluindo `AL`, `ES`, `MA`, `RN`, `RS`, `AP`, `CE`, `RJ` e `SE`;
-- consolidar num unico inventario tecnico as `NTs`, informes, FAQ, estatisticas, cadeia de certificados, tabelas externas e demais artefatos auxiliares do portal;
-- priorizar classificacao por ambiente em cada futura promocao de UF, distinguindo `homologacao`, `producao`, consulta publica, consulta autenticada, credenciamento e contingencia;
-- manter manuais operacionais e familias paralelas como `NFGas`, `NFAg` e `NF-e ABI` como backlog vivo de polling, pos-transmissao, `DANFE`, `QR Code`, import/export e recuperacao.
+- fechar assinatura expandida, `tpAmb`, recibo/protocolo e gates de `homologacao`/`producao` como precondicoes tecnicas para o baseline paulista;
+- transformar `SP` no primeiro eixo de fechamento de `100%` em codigo para `NF-e` e `NFC-e`, incluindo `CSC`, `QR Code`, `DANFE NFC-e`, contingencia e deltas operacionais locais;
+- consolidar num unico inventario tecnico as `NTs`, informes, FAQ, cadeia de certificados, tabelas externas e demais artefatos auxiliares que afetam diretamente o caminho paulista ate `producao`;
+- tratar `PR`, `MS`, `PB`, `CE`, `SC` e `RJ` como segunda onda de expansao, depois que `SP` estiver tecnicamente fechado;
+- manter familias paralelas como `NFGas`, `NFAg` e `NF-e ABI` em observacao arquitetural sem disputar o backlog imediato de `SP`.
 - desdobrar as proximas expansoes tecnicas em slices menores e additive, usando o anexo de recortes funcionais prioritarios como ponte entre `RTM-*` e novas specs.
 
 ## Riscos principais
 
-- tratar `100%` de cobertura oficial como promessa de `100%` de suporte runtime;
+- tratar `100%` apenas como leitura do acervo e nao como fechamento real de codigo para `SP` ate `producao`;
 - deixar UFs sem host estadual dedicado invisiveis no backlog por depender apenas da camada nacional;
 - misturar regra normativa com comportamento de transporte e degradar manutencao;
 - depender de validacao apenas documental sem fixtures XML e testes de interoperabilidade;
@@ -473,7 +513,9 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 
 ## Indicadores de progresso
 
-- percentual de temas do portal nacional com destino explicito neste roadmap;
+- percentual das features oficiais de `SP` com artefato executavel em codigo e gate automatizado correspondente;
+- percentual do caminho `homologacao` -> `producao` coberto por `tpAmb`, endpoint, contrato, fixture e runbook;
+- quantidade de features oficiais de `NFC-e` paulista ainda mantidas apenas como boundary documental;
 - percentual de hosts sob `docs/_sources/markdown/official/` com status de cobertura definido;
 - percentual de UFs com evidencia estadual capturada, revisada e reconciliada por ambiente;
 - percentual de ambientes com boundary explicita, dependencia externa declarada e fase de implantacao definida;

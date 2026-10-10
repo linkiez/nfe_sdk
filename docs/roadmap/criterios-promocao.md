@@ -10,6 +10,12 @@ Estabelecer uma regra unica para decidir quando um tema do acervo oficial perman
 - `Tooling` cobre artefatos auxiliares, diagnosticos, runbooks, validacoes, ingestao de dados externos e apoio operacional ao integrador.
 - `Runtime` cobre comportamento elegivel para contrato publico do SDK, com boundary claro, insumo definido e observabilidade verificavel.
 
+## Direcionamento atual do roadmap
+
+- Para fechar `SP` ate `producao`, a classificacao padrao das features fiscais prioritarias deixa de ser apenas editorial: toda feature oficial dominante deve nascer em codigo como `runtime`, `tooling` executavel ou `exemplo` shipped.
+- `Documentacao` sozinha continua valida para curadoria, watchlist e governanca, mas ja nao encerra uma feature critica de `NF-e` ou `NFC-e` paulista.
+- Quando houver duvida entre `runtime` e `tooling`, o default continua conservador no contrato publico, mas nao no codigo: se a feature for necessaria para `SP` em `producao`, ela entra na fila de implementacao como `tooling` executavel no minimo.
+
 ## Gatilhos minimos por classe
 
 | Classe alvo    | Gatilhos minimos exigidos                                                                                                    |
@@ -59,7 +65,7 @@ Nao promover quando qualquer um dos pontos abaixo ainda for dominante:
 Exemplos tipicos:
 
 - `DANFE`, `DANFE NFC-e` visual e consulta do consumidor
-- `CSC`, `QR Code` e contingencia `offline` enquanto o delta estadual continuar dominante
+- promocao nacional irrestrita de `CSC`, `QR Code` e contingencia `offline` antes de fechar o baseline paulista e sua boundary por ambiente
 - familias emergentes como `NF-e ABI` sem criterio tecnico de promocao fechado
 
 ## Regra especifica por area
@@ -67,10 +73,10 @@ Exemplos tipicos:
 | Area                                                  | Promocao preferencial                                                                                            |
 | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `RTM-003` assinatura e certificados                   | `runtime` apenas quando trust chain, transporte e calculos adiados estiverem explicitamente fechados             |
-| `RTM-005` contingencia e deltas `NFC-e`               | `documentacao` ou `tooling` enquanto a variacao por `UF` superar o nucleo comum                                  |
-| `RTM-007` `DANFE`, `QR Code`, `CSC`                   | `exemplo` ou `tooling` antes de qualquer promocao para `runtime`                                                 |
+| `RTM-005` contingencia e deltas `NFC-e`               | `runtime` para o baseline de `SP`; `tooling` ou `documentacao` para o que ainda exceder a slice paulista         |
+| `RTM-007` `DANFE`, `QR Code`, `CSC`                   | `runtime` + `tooling` para fechar `SP` ate `producao`; evitar apenas promocao nacional irrestrita prematura      |
 | `RTM-010` tabelas externas                            | `tooling` por padrao; promover para `runtime` apenas se algum contrato precisar consumir esses dados diretamente |
-| `RTM-011` complementos estaduais por `UF`             | promover para `runtime` somente quando a `UF` tiver evidencia operacional consistente e boundary fechada         |
+| `RTM-011` complementos estaduais por `UF`             | promover primeiro `SP` ate `producao`; depois repetir o criterio para as demais `UFs`                            |
 | `RTM-016` e `RTM-019` familias paralelas e emergentes | manter em `documentacao` ate existir justificativa arquitetural e slice minima testavel                          |
 
 ### Nota aplicada a `RTM-018`
