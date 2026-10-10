@@ -7,6 +7,41 @@ import { normalizeTransportTimeout } from './request-executor.js';
 import { buildSoapEnvelope } from './soap-envelope.js';
 import { resolveNFeServiceEndpoint } from './resolve-nfe-service-endpoint.js';
 
+const SENSITIVE_XML_ELEMENT_NAMES = [
+  'password',
+  'passwd',
+  'username',
+  'clientsecret',
+  'client_secret',
+  'secret',
+  'securitytoken',
+  'security_token',
+  'access_token',
+  'refresh_token',
+  'privatekey',
+  'private_key',
+  'certificate',
+  'x509certificate',
+] as const;
+const PEM_PRIVATE_KEY_PATTERN =
+  /-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----[\s\S]*?-----END (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----/gi;
+
+function redactSensitiveEnvelopeValues(xml: string): string {
+  const sanitizedXml = SENSITIVE_XML_ELEMENT_NAMES.reduce(
+    (currentXml, elementName) => {
+      const elementPattern = new RegExp(
+        String.raw`(<(?:[\w.-]+:)?${elementName}\b[^>]*>)[\s\S]*?(</(?:[\w.-]+:)?${elementName}\s*>)`,
+        'gi',
+      );
+
+      return currentXml.replace(elementPattern, '$1[REDACTED]$2');
+    },
+    xml,
+  );
+
+  return sanitizedXml.replace(PEM_PRIVATE_KEY_PATTERN, '[REDACTED]');
+}
+
 /**
  * Executes a supported SOAP service through the transport slice.
  *
@@ -18,6 +53,7 @@ export async function executeNFeSoapService(
   input: ExecuteNFeSoapServiceInput,
 ): Promise<TransportOutcome> {
   const catalogEntry = resolveNFeServiceEndpoint({
+    authorizer: input.authorizer,
     environment: input.environment,
     service: input.service,
   });
@@ -26,6 +62,8 @@ export async function executeNFeSoapService(
     payloadXml.length === 0
       ? ''
       : buildSoapEnvelope(catalogEntry.service, payloadXml);
+  const requestEnvelopeEvidenceXml =
+    redactSensitiveEnvelopeValues(requestEnvelopeXml);
   const requestExecutor = input.requestExecutor ?? fetchRequestExecutor;
   const timeoutMs = normalizeTransportTimeout(input.timeoutMs);
 
@@ -39,7 +77,7 @@ export async function executeNFeSoapService(
       evidence: {
         endpointUrl: catalogEntry.endpointUrl,
         provider: catalogEntry.provider,
-        requestEnvelopeXml,
+        requestEnvelopeXml: requestEnvelopeEvidenceXml,
       },
       failureReason: 'payloadXml is required for transport.',
       service: catalogEntry.service,
@@ -58,6 +96,9 @@ export async function executeNFeSoapService(
       timeoutMs,
     });
     const durationMs = Date.now() - startedAt;
+    const responseEnvelopeEvidenceXml = redactSensitiveEnvelopeValues(
+      executionResponse.responseXml,
+    );
 
     if (executionResponse.responseXml.trim().length === 0) {
       return {
@@ -71,8 +112,8 @@ export async function executeNFeSoapService(
           endpointUrl: catalogEntry.endpointUrl,
           httpStatus: executionResponse.status,
           provider: catalogEntry.provider,
-          requestEnvelopeXml,
-          responseEnvelopeXml: executionResponse.responseXml,
+          requestEnvelopeXml: requestEnvelopeEvidenceXml,
+          responseEnvelopeXml: responseEnvelopeEvidenceXml,
         },
         failureReason:
           'SOAP transport response XML is empty and cannot be classified.',
@@ -95,8 +136,8 @@ export async function executeNFeSoapService(
           endpointUrl: catalogEntry.endpointUrl,
           httpStatus: executionResponse.status,
           provider: catalogEntry.provider,
-          requestEnvelopeXml,
-          responseEnvelopeXml: executionResponse.responseXml,
+          requestEnvelopeXml: requestEnvelopeEvidenceXml,
+          responseEnvelopeXml: responseEnvelopeEvidenceXml,
         },
         failureReason:
           'SOAP transport response did not expose an application status code.',
@@ -118,8 +159,8 @@ export async function executeNFeSoapService(
         endpointUrl: catalogEntry.endpointUrl,
         httpStatus: executionResponse.status,
         provider: catalogEntry.provider,
-        requestEnvelopeXml,
-        responseEnvelopeXml: executionResponse.responseXml,
+          requestEnvelopeXml: requestEnvelopeEvidenceXml,
+          responseEnvelopeXml: responseEnvelopeEvidenceXml,
       },
       service: catalogEntry.service,
     };
@@ -135,7 +176,7 @@ export async function executeNFeSoapService(
           durationMs: Date.now() - startedAt,
           endpointUrl: catalogEntry.endpointUrl,
           provider: catalogEntry.provider,
-          requestEnvelopeXml,
+          requestEnvelopeXml: requestEnvelopeEvidenceXml,
         },
         failureReason: error.message,
         service: catalogEntry.service,

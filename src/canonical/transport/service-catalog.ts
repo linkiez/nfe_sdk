@@ -4,6 +4,7 @@ import type {
 } from './contracts.js';
 import {
   getInitialTransportCatalogProvenance,
+  getNFeSPProductionTransportCatalogProvenance,
   getNFCePRPilotTransportCatalogProvenance,
   getNFCeSPPilotTransportCatalogProvenance,
   getObservableContingencyDiagnosticPlaceholders,
@@ -12,6 +13,7 @@ import {
 } from './catalog-provenance.js';
 
 const TRANSPORT_CATALOG_VERSION = '2026-05-18-initial-draft' as const;
+const SP_NFE_PRODUCTION_CATALOG_VERSION = '2026-10-10-sp-production' as const;
 
 const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
   {
@@ -56,6 +58,24 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
     provenance: {
       sources: getOperationalTransportCatalogSources(),
     },
+    service: 'nfe-authorization-batch',
+  },
+  {
+    catalogVersion: SP_NFE_PRODUCTION_CATALOG_VERSION,
+    endpointUrl: 'https://nfe.fazenda.sp.gov.br/ws/nfeautorizacao4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SP',
+    provenance: getNFeSPProductionTransportCatalogProvenance(),
+    service: 'nfe-authorization',
+  },
+  {
+    catalogVersion: SP_NFE_PRODUCTION_CATALOG_VERSION,
+    endpointUrl: 'https://nfe.fazenda.sp.gov.br/ws/nferetautorizacao4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SP',
+    provenance: getNFeSPProductionTransportCatalogProvenance(),
     service: 'nfe-authorization-batch',
   },
   {
@@ -343,10 +363,14 @@ export function getTransportServiceCatalog(): readonly ServiceCatalogEntry[] {
 export function findTransportServiceCatalogEntry(
   input: ResolveNFeServiceEndpointInput,
 ): ServiceCatalogEntry | undefined {
-  return SERVICE_CATALOG_ENTRIES.find(
+  const matchingEntries = SERVICE_CATALOG_ENTRIES.filter(
     (entry) =>
-      entry.environment === input.environment && entry.service === input.service,
+      entry.environment === input.environment &&
+      entry.service === input.service &&
+      (input.authorizer === undefined || entry.provider === input.authorizer),
   );
+
+  return matchingEntries.length === 1 ? matchingEntries[0] : undefined;
 }
 
 /**

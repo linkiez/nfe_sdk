@@ -2,11 +2,12 @@
 
 ## Visao geral
 
-Resolve uma entrada unica do catalogo de transporte para uma combinacao de servico e ambiente.
+Resolve uma entrada unica do catalogo de transporte para uma combinacao de servico, ambiente e authorizer opcional.
 
 ## Responsabilidades
 
 - Consultar o catalogo em memoria.
+- Usar o authorizer para desambiguar provedores quando informado.
 - Normalizar ambiente e servico antes da busca.
 - Garantir que a combinacao esteja dentro da cobertura inicial.
 - Traduzir ausencia de entrada em erro contratual claro.
@@ -35,7 +36,7 @@ flowchart TD
 
 ## Tratamento de erros e casos-limite
 
-- Lanca erro quando a combinacao nao existe no catalogo atual.
+- Lanca erro quando a combinacao nao existe no catalogo atual ou corresponde a mais de uma rota.
 - O diagnostico de erro explicita ambiente e servico solicitados, alem dos limites suportados.
 - Nao executa nenhuma operacao de rede.
 

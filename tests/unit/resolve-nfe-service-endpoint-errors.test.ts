@@ -32,4 +32,20 @@ describe('resolveNFeServiceEndpoint errors', () => {
 
     throw new Error('Expected resolveNFeServiceEndpoint to throw');
   });
+
+  it('fails closed when the requested production authorizer has no catalog route', () => {
+    const resolveWithAuthorizer = (
+      input: Parameters<typeof resolveNFeServiceEndpoint>[0] & {
+        authorizer: string;
+      },
+    ) => resolveNFeServiceEndpoint(input);
+
+    expect(() =>
+      resolveWithAuthorizer({
+        authorizer: 'SVCRS',
+        environment: 'production',
+        service: 'nfe-authorization',
+      }),
+    ).toThrow(ResolveNFeServiceEndpointError);
+  });
 });

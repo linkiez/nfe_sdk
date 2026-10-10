@@ -79,6 +79,7 @@ export interface ServiceCatalogEntry {
  * Public input accepted by the endpoint-resolution facade.
  */
 export interface ResolveNFeServiceEndpointInput {
+  readonly authorizer?: NFeSEFAZProvider;
   readonly environment: string;
   readonly service: string;
 }
@@ -87,6 +88,7 @@ export interface ResolveNFeServiceEndpointInput {
  * Public input accepted by the SOAP execution facade.
  */
 export interface ExecuteNFeSoapServiceInput {
+  readonly authorizer?: NFeSEFAZProvider;
   readonly environment: string;
   readonly payloadXml: string;
   readonly requestExecutor?: RequestExecutor;

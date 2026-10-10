@@ -6,7 +6,8 @@ import {
 import { loadTransportTextFixture } from '../fixtures/transport/load-transport-fixture';
 
 type ExecuteNFeSoapService = (input: {
-  environment: 'homologation';
+  authorizer?: 'SP';
+  environment: 'homologation' | 'production';
   payloadXml: string;
   requestExecutor: (input: {
     endpointUrl: string;
@@ -76,5 +77,39 @@ describe('executeNFeSoapService authorization integration', () => {
       outcome?.evidence.responseEnvelopeXml ?? '',
       '103',
     );
+  });
+
+  it('routes an explicit SP production authorization to the SP executor endpoint', async () => {
+    const executeNFeSoapService = (publicApi as Record<string, unknown>)
+      .executeNFeSoapService as ExecuteNFeSoapService | undefined;
+    const payloadXml = loadTransportTextFixture(
+      'nfe-authorization/request.xml',
+    );
+    const responseXml = loadTransportTextFixture(
+      'nfe-authorization/response-success.xml',
+    );
+    let capturedEndpointUrl = '';
+
+    const outcome = await executeNFeSoapService?.({
+      authorizer: 'SP',
+      environment: 'production',
+      payloadXml,
+      requestExecutor: async ({ endpointUrl }) => {
+        capturedEndpointUrl = endpointUrl;
+
+        return {
+          headers: { 'content-type': 'application/soap+xml; charset=utf-8' },
+          responseXml,
+          status: 200,
+        };
+      },
+      service: 'nfe-authorization',
+      timeoutMs: 5000,
+    });
+
+    expect(capturedEndpointUrl).toBe(
+      'https://nfe.fazenda.sp.gov.br/ws/nfeautorizacao4.asmx',
+    );
+    expect(outcome?.evidence.endpointUrl).toBe(capturedEndpointUrl);
   });
 });

@@ -8,7 +8,7 @@ Mantem o catalogo versionado em memoria para o slice inicial de transporte SOAP 
 
 - Publicar a versao atual do catalogo.
 - Expor a lista de entradas suportadas.
-- Fornecer a busca exata por ambiente e servico.
+- Fornecer a busca exata por ambiente, servico e authorizer opcional.
 - Reusar a proveniencia oficial sem duplicar fontes nas entradas atuais.
 - Preservar a distincao entre entradas publicadas e placeholders ainda inexistentes.
 
@@ -41,6 +41,8 @@ sequenceDiagram
 
 - O arquivo nao lanca erros diretamente.
 - Quando a combinacao nao existe no catalogo inicial, a busca retorna `undefined`.
+- Quando mais de uma entrada corresponde sem authorizer, a busca retorna `undefined` em vez de escolher uma rota arbitrariamente.
+- SP production publica `nfe-authorization` e `nfe-authorization-batch` em endpoints normais da SEFAZ/SP; contingencia SVC-AN continua sendo rota distinta.
 - Os placeholders operacionais nao sao retornados por `findTransportServiceCatalogEntry`.
 - O primeiro incremento operacional de consultas adiciona a entrada homologada de `nfe-document-situation` ao catalogo publico.
 - O MVP operacional adiciona tambem `nfe-inutilization`, `nfe-cancellation` e `nfe-correction-letter` ao catalogo homologado publicado.

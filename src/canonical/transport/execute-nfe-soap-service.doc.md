@@ -6,7 +6,7 @@ Define o ponto de execucao do slice inicial de transporte SOAP.
 
 ## Responsabilidades
 
-- Resolver o endpoint suportado no catalogo inicial.
+- Resolver o endpoint suportado pelo ambiente, servico e authorizer opcional.
 - Montar o envelope SOAP 1.2 para o payload informado.
 - Executar a chamada via executor injetado ou default.
 - Classificar o retorno inicial em sucesso, timeout, erro de uso, indisponibilidade, rejeicao funcional ou erro protocolar.
@@ -37,6 +37,8 @@ flowchart TD
 - Retorna `usage-error` quando `payloadXml` vem vazio.
 - Retorna `timeout` quando o executor aborta a tentativa.
 - Retorna `protocol-error` quando a resposta SOAP nao expõe `cStat` confiavel.
+- Encaminha o authorizer ao resolvedor; chamadas sem authorizer continuam validas quando a rota e unica.
+- Redige valores de credenciais, certificados e chaves privadas nos envelopes de request/response retornados como evidencia, sem alterar a resposta usada para classificacao nem os metadados de transporte.
 - Converte falhas inesperadas em `ExecuteNFeSoapServiceError`.
 
 ## Exemplos

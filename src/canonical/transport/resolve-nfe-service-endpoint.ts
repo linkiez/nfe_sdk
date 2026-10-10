@@ -44,6 +44,7 @@ export function resolveNFeServiceEndpoint(
     normalizedEnvironment === undefined || normalizedService === undefined
       ? undefined
       : findTransportServiceCatalogEntry({
+            authorizer: input.authorizer,
           environment: normalizedEnvironment,
           service: normalizedService,
         });

@@ -6,7 +6,7 @@ Define os tipos publicos e internos compartilhados pelo slice inicial de transpo
 
 ## Responsabilidades
 
-- Declarar entradas publicas de resolucao e execucao.
+- Declarar entradas publicas de resolucao e execucao, incluindo selecao opcional de authorizer.
 - Representar catalogo, evidencias e resultado estruturado.
 - Centralizar os tipos do ambiente e das classificacoes de resultado.
 
@@ -36,6 +36,7 @@ flowchart TD
 
 - O arquivo nao lanca erros diretamente.
 - Ambientes e classificacoes suportados ficam restritos aos valores publicados pelo slice.
+- `authorizer` e opcional para manter compatibilidade com rotas unicas; deve ser informado quando a combinacao de servico e ambiente possuir mais de uma rota.
 
 ## Exemplos
 

@@ -30,6 +30,7 @@ flowchart TD
 - Quando todos os servicos planejados de uma fase ja estao publicados, a lista de placeholders pode ficar vazia sem alterar a proveniencia das entradas reais.
 - O slice `015` adiciona proveniencia dedicada para `nfce-authorization-pr`, registrando que `PR` reaproveita o endpoint homologado compartilhado enquanto deltas auxiliares estaduais permanecem fora do runtime.
 - O slice `016` adiciona placeholders diagnosticos de contingencia para `SVC-AN` e `SVC-RS`, preservando `EPEC` e `offline` como trilhas normativas ainda deferidas.
+- O slice `025` registra a fonte oficial e a pesquisa da feature para as rotas normais de producao SP, sem promover a contingencia SVC-AN como authorizer padrao.
 
 ## Exemplos
 
@@ -44,3 +45,4 @@ import { getOperationalTransportCatalogPlaceholders } from './catalog-provenance
 - `specs/006-add-soap-transport/research.md`
 - `specs/007-nfe-operational-mvp/research.md`
 - `specs/015-nfce-uf-promotion/research.md`
+- `specs/025-nfe-sp-producao/research.md`

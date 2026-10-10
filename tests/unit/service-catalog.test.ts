@@ -30,5 +30,54 @@ describe('service catalog resolution', () => {
       'https://www.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx',
     );
     expect(authorizationEntry.provider).toBe('SVCAN');
+
+    const productionStatusEntry = resolveNFeServiceEndpoint({
+      environment: 'production',
+      service: 'nfe-status-service',
+    });
+
+    expect(productionStatusEntry.provider).toBe('SVCAN');
+  });
+
+  it.each([
+    {
+      service: 'nfe-authorization',
+      endpointUrl: 'https://nfe.fazenda.sp.gov.br/ws/nfeautorizacao4.asmx',
+    },
+    {
+      service: 'nfe-authorization-batch',
+      endpointUrl: 'https://nfe.fazenda.sp.gov.br/ws/nferetautorizacao4.asmx',
+    },
+  ])(
+    'resolves the SP production $service entry when authorizer SP is explicit',
+    ({ service, endpointUrl }) => {
+      const resolveWithAuthorizer = (
+        input: Parameters<typeof resolveNFeServiceEndpoint>[0] & {
+          authorizer: string;
+        },
+      ) => resolveNFeServiceEndpoint(input);
+
+      const entry = resolveWithAuthorizer({
+        authorizer: 'SP',
+        environment: 'production',
+        service,
+      });
+
+      expect(entry).toMatchObject({
+        endpointUrl,
+        environment: 'production',
+        provider: 'SP',
+        service,
+      });
+    },
+  );
+
+  it('fails closed for an unqualified production service with multiple providers', () => {
+    expect(() =>
+      resolveNFeServiceEndpoint({
+        environment: 'production',
+        service: 'nfe-authorization',
+      }),
+    ).toThrow();
   });
 });
