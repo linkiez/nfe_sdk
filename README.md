@@ -25,7 +25,7 @@ O foco desta fase e oferecer uma base utilizavel para fluxos operacionais homolo
 
 ## O que este pacote entrega hoje
 
-- autorizacao inicial de NF-e em homologacao, com diagnostico explicito de boundary para contingencia promovida em producao
+- autorizacao inicial de NF-e em homologacao e autorizacao normal de producao para emissores SP identificados, com boundary explicita para outras rotas de contingencia
 - facade inicial de NFC-e em homologacao para o cohort publicado de UFs
 - assinatura digital de NF-e e eventos com validacao local de XMLDSig
 - transporte SOAP 1.2 com classificacao estruturada de resultado
@@ -147,6 +147,10 @@ console.log(authorization.classification, authorization.protocolNumber);
 ```
 
 Quando a chamada em `production` informar uma UF emissora que delega para `SVC-AN` ou `SVC-RS`, `authorizeNFe` devolve `contingency-boundary` explicita em vez de executar fallback silencioso.
+
+Para autorizar uma NF-e SP em producao, informe `environment: 'production'`, identifique cada documento por `payload.cUF: '35'` e/ou chave de acesso de 44 digitos, e injete um `requestExecutor` configurado com certificado cliente para mTLS. O executor `fetch` padrao nao configura certificado cliente. Identidades ausentes, inconsistentes, mistas ou de outra UF sao recusadas antes do transporte. Respostas com `tpAmb` inesperado ou sem `nProt`/`nRec` obrigatorio retornam `protocol-error`; a evidencia de envelopes remove valores de credenciais e material de certificado/chave, preservando metadados de diagnostico.
+
+Uma autorizacao que retorna `nRec` continua pelo fluxo existente `reconcileNFeReceipt` com `routingContext: { authorizer: 'SP', environment: 'production' }`. A reconciliacao faz uma unica consulta do recibo conhecido: nao reenvia a NF-e nem inicia polling automatico. Homologacao mantem seu comportamento anterior.
 
 ### 3. Executar uma consulta SOAP direta
 

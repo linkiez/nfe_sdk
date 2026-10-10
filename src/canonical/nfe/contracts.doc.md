@@ -7,6 +7,7 @@ Centraliza os contratos tipados que descrevem entradas, resultados e limites do 
 ## Responsabilidades
 
 - Definir o formato da autorizacao operacional.
+- Tipar `nextAction` como a facade de reconciliacao do recibo quando uma autorizacao retorna um recibo conhecido.
 - Definir os resultados de consulta e manutencao.
 - Publicar as classificacoes operacionais aceitas pelo slice.
 
@@ -29,6 +30,8 @@ flowchart TD
 
 - O arquivo nao executa validacao de runtime.
 - As classificacoes ficam centralizadas para evitar duplicacao entre autorizacao, consulta e manutencao.
+- `NFeAuthorizationRequest` aceita producao apenas para documentos identificados como SP e requer executor externo para mTLS.
+- `NFeAuthorizationOutcome.nextAction` e opcional e usa o literal `reconcileNFeReceipt`; resultados sem recibo nao anunciam essa continuacao.
 
 ## Exemplos
 

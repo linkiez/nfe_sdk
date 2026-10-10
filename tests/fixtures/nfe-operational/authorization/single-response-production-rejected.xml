@@ -1,0 +1,9 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Body>
+    <retEnviNFe xmlns="http://www.portalfiscal.inf.br/nfe">
+      <tpAmb>1</tpAmb>
+      <cStat>204</cStat>
+      <xMotivo>Duplicidade de NF-e</xMotivo>
+    </retEnviNFe>
+  </soap:Body>
+</soap:Envelope>

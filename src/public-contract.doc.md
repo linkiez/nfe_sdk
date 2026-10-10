@@ -13,6 +13,8 @@ Descreve o contrato publico estabilizado no import raiz do pacote.
 - Descrever a ampliacao additive do slice inicial de transporte SOAP.
 - Descrever a ampliacao additive da facade operacional de autorizacao, consultas e manutencoes homologadas.
 - Registrar que `authorizeNFe` agora devolve `contingency-boundary` explicita para `SVC-AN` e `SVC-RS` quando o pedido de producao cai na trilha observavel promovida.
+- Registrar a autorizacao de producao limitada a identidade SP, com executor mTLS injetado e sem fallback automatico para contingencia.
+- Descrever a preservacao de metadados diagnosticos sem expor valores sensiveis e os erros de protocolo por `tpAmb`, `nProt` ou `nRec` inconsistentes.
 - Descrever a ampliacao additive da facade operacional inicial de NFC-e homologada para o cohort promovido `SP + PR`.
 - Descrever a ampliacao additive do helper paulista `generateNFCeSPQRCode` como recorte menor que o cohort `SP + PR`.
 - Registrar que a facade NFC-e distingue `unsupported-state` e `unsupported-scope` antes do transporte, preservando `CSC`, `QR Code` e contingencia fora do runtime.
@@ -42,6 +44,8 @@ flowchart TD
   B --> I[transport slice boundary]
   B --> J[operational authorization boundary]
   J --> J1[contingency-boundary via SVC-AN or SVC-RS]
+  J --> J2[SP production authorizer with injected mTLS executor]
+  J2 --> J3[redacted evidence and protocol validation]
   B --> K[nfce operational boundary]
   B --> K0[promoted cohort SP + PR]
   K --> K1[unsupported-state]
@@ -60,6 +64,7 @@ flowchart TD
 - O arquivo apenas materializa metadados do contrato.
 - Nao realiza validacoes de entrada em runtime.
 - O helper paulista de `QR Code` precisa aparecer como additive e explicitamente menor que o recorte `SP + PR`.
+- A autorizacao NF-e em producao permanece limitada a SP e exige executor configurado pelo integrador para mTLS.
 
 ## Exemplos
 
@@ -81,3 +86,4 @@ import { publicPackageContract } from 'nfe-sdk';
 - `specs/024-nfce-sp-qrcode/contracts/public-nfce-sp-qrcode-facade.md`
 - `specs/008-recipient-dfe-mvp/contracts/public-recipient-dfe-facade.md`
 - `specs/009-generic-event-mvp/contracts/public-generic-event-facade.md`
+- `specs/025-nfe-sp-producao/contracts/public-nfe-sp-production-authorization.md`

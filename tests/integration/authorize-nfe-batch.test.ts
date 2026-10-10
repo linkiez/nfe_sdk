@@ -11,17 +11,18 @@ import {
 } from '../fixtures/nfe-operational/load-nfe-operational-fixture';
 
 type AuthorizeNFeBatch = (input: {
-  environment: 'homologation';
+  environment: 'homologation' | 'production';
   documents: {
     kind: 'batch';
     payload: {
       batchId: string;
       documents: readonly {
         documentId: string;
-        environment: 'homologation';
+        environment: 'homologation' | 'production';
+        payload?: { cUF: string };
         version: '4.00';
       }[];
-      environment: 'homologation';
+      environment: 'homologation' | 'production';
       version: '4.00';
     };
   };
@@ -47,6 +48,7 @@ type AuthorizeNFeBatch = (input: {
     classification: string;
     evidence: {
       endpointUrl: string;
+      provider?: string;
       requestEnvelopeXml: string;
       responseEnvelopeXml?: string;
     };
@@ -67,7 +69,7 @@ describe('authorizeNFe batch integration', () => {
       | AuthorizeNFeBatch
       | undefined;
     const input = loadNFeOperationalJsonFixture<{
-      environment: 'homologation';
+      environment: 'homologation' | 'production';
       documents: {
         kind: 'batch';
         payload: {
@@ -136,5 +138,76 @@ describe('authorizeNFe batch integration', () => {
       outcome?.transportOutcome.evidence.responseEnvelopeXml ?? '',
       '103',
     );
+  });
+
+  it('routes an SP production batch to the normal SP authorizer and returns its receipt', async () => {
+    const fixtureSource = createTestA1FixtureSource();
+    const createSigningContext = (publicApi as Record<string, unknown>)
+      .createSigningContext as
+      | ((input: {
+          passphrase: string;
+          source: { contentBase64: string; type: 'in-memory-content' };
+        }) => Promise<unknown>)
+      | undefined;
+    const authorizeNFe = (publicApi as Record<string, unknown>).authorizeNFe as
+      | AuthorizeNFeBatch
+      | undefined;
+    const responseXml = loadNFeOperationalTextFixture(
+      'authorization/batch-response-production-received.xml',
+    );
+    const signingContext = await createSigningContext?.({
+      passphrase: fixtureSource.passphrase,
+      source: {
+        contentBase64: fixtureSource.certificateBase64,
+        type: 'in-memory-content',
+      },
+    });
+    let capturedEndpointUrl = '';
+
+    const outcome = await authorizeNFe?.({
+      environment: 'production',
+      documents: {
+        kind: 'batch',
+        payload: {
+          batchId: 'BATCH-SP-PRODUCTION',
+          documents: [
+            {
+              documentId: `35${'0'.repeat(42)}`,
+              environment: 'production',
+              version: '4.00',
+            },
+            {
+              documentId: `35${'1'.repeat(42)}`,
+              environment: 'production',
+              version: '4.00',
+            },
+          ],
+          environment: 'production',
+          version: '4.00',
+        },
+      },
+      requestExecutor: async ({ endpointUrl }) => {
+        capturedEndpointUrl = endpointUrl;
+
+        return {
+          headers: { 'content-type': 'application/soap+xml; charset=utf-8' },
+          responseXml,
+          status: 200,
+        };
+      },
+      signingContext,
+      timeoutMs: 5000,
+    });
+
+    expect(outcome?.classification).toBe('received');
+    expect(outcome?.receiptNumber).toBe('135260000000002');
+    expect(outcome?.documentStatuses).toHaveLength(2);
+    expect(capturedEndpointUrl).toBe(
+      'https://nfe.fazenda.sp.gov.br/ws/nfeautorizacao4.asmx',
+    );
+    expect(outcome?.transportOutcome).toMatchObject({
+      environment: 'production',
+      evidence: { endpointUrl: capturedEndpointUrl, provider: 'SP' },
+    });
   });
 });

@@ -6,7 +6,8 @@ Orquestra a autorizacao operacional de NFe sobre as camadas canonica e de transp
 
 ## Responsabilidades
 
-- Validar o recorte de ambiente suportado pelo MVP.
+- Validar ambiente e identidade emissora antes da autorizacao.
+- Exigir executor injetado para producao SP.
 - Normalizar o envio como lote operacional.
 - Gerar o payload XML e acionar a autorizacao SOAP.
 - Traduzir o resultado do transporte para um outcome operacional.
@@ -30,7 +31,9 @@ flowchart TD
 ## Tratamento de erros e casos-limite
 
 - Sem `signingContext`, a operacao falha com `NFeOperationalUsageError`.
-- Ambientes fora de homologacao falham com `NFeOperationalUnsupportedScopeError`.
+- Em producao, todos os documentos precisam resolver consistentemente para SP por `cUF` e/ou chave de acesso de 44 digitos.
+- Producao exige `requestExecutor` configurado pelo integrador para mTLS; outras UFs suportadas pela contingencia continuam retornando boundary explicita.
+- Homologacao preserva o executor default e o comportamento anterior.
 - Falhas de transporte seguem no resultado estruturado quando a camada SOAP consegue classifica-las.
 
 ## Exemplos

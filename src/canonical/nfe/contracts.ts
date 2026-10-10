@@ -231,6 +231,8 @@ export interface NFeAuthorizationOutcome {
   readonly documentStatuses: readonly NFeAuthorizationDocumentStatus[];
   /** Synthesized failure reason when the flow cannot complete. */
   readonly failureReason?: string;
+  /** Existing facade to call when authorization returns a known receipt. */
+  readonly nextAction?: 'reconcileNFeReceipt';
   /** Protocol number when immediately available. */
   readonly protocolNumber?: string;
   /** Receipt number when the exchange remains intermediate. */

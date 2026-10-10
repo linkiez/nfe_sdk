@@ -58,6 +58,8 @@ const COMPATIBILITY_NOTES = [
   'The first operational NFe slice currently exposes authorizeNFe, queryNFeServiceStatus, queryNFeDocumentSituation, submitNFeInutilization, cancelNFe, and submitNFeCorrectionLetter on top of the canonical, signing, and transport layers.',
   'The NFe receipt-protocol slice now adds reconcileNFeReceipt as a dedicated root facade for one-shot reconciliation of known nRec values while keeping generic polling, multi-document reconciliation, local persistence, and dominant UF variance outside the root contract.',
   'The first contingency-boundary slice for NFe is anchored in authorizeNFe and now returns an explicit contingency-boundary diagnostic for production requests whose issuer UF delegates to SVC-AN or SVC-RS, instead of silently falling back to normal authorization semantics.',
+  'NF-e production authorization is additive for consistently identified SP issuers only; it requires an integrator-provided mTLS-capable requestExecutor, retains homologation behavior, and never selects SVC-AN as an implicit fallback.',
+  'SP production authorization and receipt reconciliation preserve non-secret transport metadata, redact sensitive envelope values, and classify mismatched tpAmb or missing required nProt/nRec as protocol-error.',
   'The first NFC-e slice currently exposes authorizeNFCe as an additive root facade for homologation-only single-document authorization through the promoted SP and PR cohort while broader state coverage remains deferred.',
   'The signing-expansion slice now adds prepareNFCeSigningPrerequisites as an additive root facade that derives chNFe, cDV, and hashCSRT while keeping authorization, QR Code, and broader NFC-e rollout explicitly deferred.',
   'The signing-expansion slice keeps QR Code, DANFE NFC-e, and multi-UF NFC-e operational rollout outside this phase.',
@@ -91,6 +93,7 @@ const REPOSITORY_EVIDENCE = [
   'specs/020-nfe-state-operations/contracts/public-nfe-state-operations-facade.md',
   'specs/021-nfe-receipt-protocol/contracts/public-nfe-receipt-protocol-facade.md',
   'specs/022-recipient-continuity/contracts/public-recipient-continuity-facade.md',
+  'specs/025-nfe-sp-producao/contracts/public-nfe-sp-production-authorization.md',
 ] as const;
 
 /**

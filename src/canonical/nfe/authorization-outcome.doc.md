@@ -8,7 +8,9 @@ Traduz a resposta do transporte de autorizacao para um resultado operacional vol
 
 - Reaproveitar a classificacao do transporte.
 - Extrair protocolo e recibo do XML observado.
+- Confirmar `tpAmb` e os identificadores exigidos antes de mapear sucesso em producao.
 - Produzir um resultado uniforme para documento unico ou lote.
+- Indicar `reconcileNFeReceipt` como proxima acao quando houver recebimento confirmado e `nRec`.
 
 ## Entradas e saidas
 
@@ -31,12 +33,20 @@ sequenceDiagram
 
 - `cStat` `100` e `104` com protocolo sao tratados como autorizacao concluida.
 - `cStat` `103` com recibo e tratado como estado intermediario recebido.
+- Em producao, `tpAmb` diferente de `1`, `nProt` ausente em `100`/`104` ou `nRec` ausente em `103` resulta em `protocol-error`.
+- Para a classificacao `received` com `receiptNumber`, `nextAction` identifica a facade de continuacao; nao inicia consulta automaticamente.
 - Outros cenarios reaproveitam a classificacao herdada do transporte.
 
 ## Exemplos
 
 ```ts
 import { mapAuthorizationTransportOutcome } from './authorization-outcome.js';
+
+const continuation = {
+  classification: 'received',
+  receiptNumber: '135260000000002',
+  nextAction: 'reconcileNFeReceipt',
+};
 ```
 
 ## Dependencias e integracoes

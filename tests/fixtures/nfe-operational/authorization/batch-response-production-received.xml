@@ -1,0 +1,12 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Body>
+    <retEnviNFe xmlns="http://www.portalfiscal.inf.br/nfe">
+      <tpAmb>1</tpAmb>
+      <cStat>103</cStat>
+      <xMotivo>Lote recebido com sucesso</xMotivo>
+      <infRec>
+        <nRec>135260000000002</nRec>
+      </infRec>
+    </retEnviNFe>
+  </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,3 @@
+<notASeFazResponse xmlns="urn:nfe:test">
+	<status>unexpected-response</status>
+</notASeFazResponse>
