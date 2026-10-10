@@ -205,3 +205,8 @@ Task: "Expose the additive root facade for generateNFCeSPQRCode in src/canonical
 - The helper remains intentionally narrower than full `SP` production authorization closure.
 - The primary normative sources for this slice are already captured in `spec.md`, `plan.md`, and `research.md`; implementation should only update provenance artifacts when new gaps are discovered.
 - Renderer, consumer consultation, `CSC` administration, onboarding, `offline`, and multi-`UF` rollout remain deferred beyond this task list.
+
+## Phase 7: Convergence
+
+- [x] T031 CRITICAL: Record the exact official source identity and consultation date, and distinguish normative QR Code guidance from implementation interpretation in `specs/024-nfce-sp-qrcode/spec.md`, `specs/024-nfce-sp-qrcode/research.md`, and `specs/024-nfce-sp-qrcode/contracts/public-nfce-sp-qrcode-facade.md` per Constitution: Knowledge Sources & Provenance (partial)
+- [x] T032 Add unit regressions for blank required CSC values and a `uf` inconsistent with the access key in `tests/unit/nfce/generate-nfce-sp-qr-code.test.ts` per FR-006 and FR-009 (partial)

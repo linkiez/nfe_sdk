@@ -81,4 +81,43 @@ describe('generateNFCeSPQRCode', () => {
       }),
     ).toThrow('model "65"');
   });
+
+  it('rejects a blank CSC identifier', () => {
+    const input = loadNFCeJsonFixture<NFCeSPQRCodeFixtureRequest>(
+      'sp-qrcode-homologation-input.json',
+    );
+
+    expect(() =>
+      generateNFCeSPQRCode({
+        ...input,
+        csc: { ...input.csc, cscId: ' ' },
+      }),
+    ).toThrow('CSC id must not be empty.');
+  });
+
+  it('rejects a blank CSC token', () => {
+    const input = loadNFCeJsonFixture<NFCeSPQRCodeFixtureRequest>(
+      'sp-qrcode-homologation-input.json',
+    );
+
+    expect(() =>
+      generateNFCeSPQRCode({
+        ...input,
+        csc: { ...input.csc, cscToken: ' ' },
+      }),
+    ).toThrow('CSC token must not be empty.');
+  });
+
+  it('rejects a UF that does not match the access key', () => {
+    const input = loadNFCeJsonFixture<NFCeSPQRCodeFixtureRequest>(
+      'sp-qrcode-homologation-input.json',
+    );
+
+    expect(() =>
+      generateNFCeSPQRCode({
+        ...input,
+        uf: 'PR',
+      }),
+    ).toThrow('accessKey resolves to "SP"');
+  });
 });

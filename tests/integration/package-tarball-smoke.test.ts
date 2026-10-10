@@ -17,6 +17,7 @@ describe('package tarball smoke validation', () => {
       'createSigningContext',
       'distributeRecipientDFe',
       'executeNFeSoapService',
+      'generateNFCeSPQRCode',
       'manifestRecipientOperation',
       'prepareNFCeSigningPrerequisites',
       'publicPackageContract',

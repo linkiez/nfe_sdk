@@ -16,6 +16,7 @@ describe('root nfe operational facade contract', () => {
       'createSigningContext',
       'distributeRecipientDFe',
       'executeNFeSoapService',
+      'generateNFCeSPQRCode',
       'manifestRecipientOperation',
       'prepareNFCeSigningPrerequisites',
       'publicPackageContract',

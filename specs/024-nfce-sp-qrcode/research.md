@@ -35,7 +35,9 @@
 ## Decision 5: Return the final URL with minimal auditable composition metadata and never echo the raw `CSC` token
 
 - **Decision**: The public result returns the final `QR Code` URL together with a minimal auditable subset of composition metadata, such as environment, selected base URL, access key, and `CSC` identifier, while never returning the raw `CSC` token. The online URL follows version `3`, in the shape `.../ConsultaQRCode.aspx?p=<accessKey>|3|<tpAmb>`.
-- **Rationale**: This matches the clarification added to the spec, reflects the official paulista online format actually implemented, gives the integrator a usable artifact immediately, and still preserves auditability without drifting into renderer or secret-management behavior.
+- **Normative source**: `SRC-RH-003`, _Manual de Especificações Técnicas do DANFE NFC-e e QR Code_ (published `2025-03-24`, consulted `2026-05-19`), section `4.4.1`, defines the online version 3 parameters as access key, version `3`, and `tpAmb` (`1` production, `2` homologation). Section `4.4` states that this version does not require CSC.
+- **Implementation interpretation**: This SDK contract nevertheless requires explicit `CSC` input as a local prerequisite and returns only its identifier for auditability. That is a package-level validation choice, not a normative QR Code v3 requirement; the token is neither embedded in the URL nor returned.
+- **Rationale**: The final URL gives the integrator a usable artifact immediately, while this distinction preserves source fidelity and auditability without drifting into renderer or secret-management behavior.
 - **Alternatives considered**:
   - Return only intermediate fields: rejected because it would force manual URL assembly outside the SDK.
   - Return visual or rendering artifacts: rejected because the spec and roadmap keep `DANFE NFC-e` visual concerns outside this slice.

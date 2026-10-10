@@ -94,8 +94,9 @@ Como mantenedor do roadmap e do contrato root, quero publicar a ligacao deste sl
 
 - **KS-001**: [docs/roadmap/ROADMAP.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/ROADMAP.md), [docs/roadmap/runtimes-sdk.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/runtimes-sdk.md) e [docs/roadmap/recortes-funcionais-prioritarios.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/recortes-funcionais-prioritarios.md) definem que `SP` deve fechar primeiro ate `producao` e que `CSC` com `QR Code` continuam como principal gap operacional da trilha `NFC-e`.
 - **KS-002**: [docs/roadmap/nfce-operacional-promovivel.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/nfce-operacional-promovivel.md) e [docs/roadmap/criterios-promocao.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/criterios-promocao.md) sustentam a decisao de promover primeiro um slice paulista pequeno e additive, em vez de uma promocao nacional irrestrita do backlog auxiliar.
-- **KS-003**: O manual vigente de `DANFE NFC-e` e `QR Code`, a `NT 2018.001` e a evidencia estadual paulista de ambiente sustentam a semantica oficial do `QR Code`, de `CSC` e da separacao entre `homologacao` e `producao`.
+- **KS-003**: `SRC-RH-003`, _Manual de Especificações Técnicas do DANFE NFC-e e QR Code_, publicado em `2025-03-24` e consultado em `2026-05-19`, internalizado em `docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/20250324 - Manual_de_Especificações_Técnicas_do_DANFE_NFC-e_QR_Code.md`, itens `4.4` e `4.4.1`, é a fonte normativa para a URL online v3 e os valores de `tpAmb` (`1` produção, `2` homologação). O item `4.4` também esclarece que v3 não exige CSC.
 - **KS-004**: `PR`, `PB`, `GO`, renderer visual, consulta do consumidor, contingencia `offline` e demais deltas estaduais permanecem como backlog ou boundary explicita ate ganharem slice propria.
+- **Implementation interpretation**: A exigencia de `CSC` explícito neste helper é uma precondição local do contrato do SDK e atende ao requisito de entrada auditável; não é apresentada como exigência normativa do QR Code online v3. O token é validado, mas não compõe a URL nem é devolvido.
 
 ### Key Entities _(include if feature involves data)_
 

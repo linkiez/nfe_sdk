@@ -28,7 +28,8 @@ import { generateNFCeSPQRCode } from 'nfe-sdk';
 - A valid request for `SP` in `producao` must also produce a structured result, with explicit environment-specific semantics rather than silently reusing homologation metadata.
 - The published online URL format follows QR Code version `3`, yielding `.../ConsultaQRCode.aspx?p=<accessKey>|3|<tpAmb>` for the paulista base URL selected by environment.
 - The result must never include the raw `CSC` token.
-- The helper still requires explicit `CSC` input as a validated local prerequisite owned by the integrator, even though the online version `3` URL does not echo the token.
+- The helper requires explicit `CSC` input as a validated SDK-local prerequisite owned by the integrator. This is not a normative QR Code v3 requirement: `SRC-RH-003`, _Manual de Especificações Técnicas do DANFE NFC-e e QR Code_ (published `2025-03-24`, consulted `2026-05-19`), section `4.4`, says CSC is not required for version `3`; section `4.4.1` defines the online URL parameters as access key, version `3`, and `tpAmb`.
+- The SDK validates the supplied token but neither embeds it in the URL nor returns it; only the CSC identifier is returned for local auditability.
 
 ### 2. Excluded UF behavior
 
