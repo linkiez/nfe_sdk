@@ -21,7 +21,7 @@ An authorized issuer submits a valid, signed NF-e for an SP establishment in pro
 **Acceptance Scenarios**:
 
 1. **Given** a valid signed SP NF-e, a production environment, and externally provisioned credentials, **When** the issuer submits it, **Then** the result reports the official terminal authorization outcome.
-2. **Given** an invalid request or an environment/endpoint mismatch, **When** the issuer attempts submission, **Then** the request is blocked or classified without being reported as authorized.
+2. **Given** an invalid request, malformed or contradictory response, or an environment/endpoint mismatch, **When** the issuer submits or continues the request, **Then** it is blocked or classified as a protocol error without being reported as authorized.
 
 ### User Story 2 - Continue an asynchronous authorization (Priority: P2)
 
@@ -49,9 +49,9 @@ An issuer receives a processing receipt and can continue through the established
 - **FR-001**: The system MUST distinguish production from homologation in every NF-e authorization request and result.
 - **FR-002**: This slice MUST support normal production authorization for SP issuers only; other UFs MUST remain explicit unsupported boundaries.
 - **FR-003**: The system MUST use production authorization only when document identity, issuer UF, environment, endpoint, and externally supplied credentials are consistent.
-- **FR-004**: The system MUST distinguish authorization, rejection, pending receipt, service unavailability, timeout, and protocol-error outcomes.
+- **FR-004**: The system MUST distinguish authorization, rejection, pending receipt, service unavailability, timeout, and protocol-error outcomes. Malformed authorization or receipt XML MUST be classified as a protocol error. An authorization response with status `100` or `104` but no required `nProt`, status `103` but no required `nRec`, or a receipt response claiming terminal authorization without required `nProt` MUST be a protocol error rather than authorization or receipt issuance.
 - **FR-005**: A pending receipt MUST expose the established continuation action and MUST NOT be presented as final authorization.
-- **FR-006**: The system MUST preserve enough request/response evidence for the integrator to diagnose an outcome without exposing private-key material or credentials.
+- **FR-006**: The system MUST preserve the existing diagnostic metadata for service, environment, provider, endpoint, transport/application classification, and available HTTP/application status, duration, and failure reason. It MUST identify the document and next action where the existing outcome contract provides them. Request/response envelope evidence MUST redact credentials and certificate/private-key bytes before it is returned; it may not expose those values in outcomes or logs.
 - **FR-007**: The system MUST NOT silently send a production request to a homologation endpoint or silently switch to contingency.
 - **FR-008**: The system MUST keep external issuer credentialing and certificate acquisition as explicit integrator prerequisites.
 
@@ -81,7 +81,7 @@ An issuer receives a processing receipt and can continue through the established
 - **SC-001**: All defined SP production scenarios return one unambiguous outcome from the supported authorization classifications.
 - **SC-002**: 100% of environment or issuer-scope mismatches are prevented from being reported as successful authorization.
 - **SC-003**: Every pending receipt exposes a continuation action and remains distinct from an authorized result.
-- **SC-004**: An integrator can identify the document, service outcome, and next action from the returned result without inspecting private credential material.
+- **SC-004**: An integrator can identify the document, service, environment, provider, endpoint, outcome, and next action from the returned result; diagnostic metadata remains available while credential and certificate/private-key values are absent from returned evidence.
 
 ## Assumptions
 
