@@ -1,3 +1,5 @@
+import { DOMParser } from '@xmldom/xmldom';
+
 import type {
   AsyncBatchItemClassification,
   AsyncBatchItemResult,
@@ -117,8 +119,22 @@ function classifyBatch(outerStat: string): NFeAsyncBatchClassification {
  * @returns Structured batch outcome.
  */
 export function parseRetConsReciNFe(xml: string): NFeAsyncBatchOutcome {
-  if (!xml?.includes('retConsReciNFe')) {
+  let document: ReturnType<DOMParser['parseFromString']>;
+
+  try {
+    document = new DOMParser({
+      onError: (level, message) => {
+        if (level !== 'warning') {
+          throw new Error(message);
+        }
+      },
+    }).parseFromString(xml, 'text/xml');
+  } catch {
     return { classification: 'protocol-error', items: [], rawResponse: xml || undefined };
+  }
+
+  if (document.documentElement?.localName !== 'retConsReciNFe') {
+    return { classification: 'protocol-error', items: [], rawResponse: xml };
   }
 
   const outerStat = extractTagText(xml, 'cStat');

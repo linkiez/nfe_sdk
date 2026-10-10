@@ -95,6 +95,15 @@ describe('async batch retrieval parsing', () => {
       expect(result.items).toHaveLength(0);
     });
 
+    it('returns protocol-error when a processing response is not well-formed XML', () => {
+      const result = parseRetConsReciNFe(
+        '<retConsReciNFe><tpAmb>1</tpAmb><cStat>105</cStat>',
+      );
+
+      expect(result.classification).toBe('protocol-error');
+      expect(result.items).toHaveLength(0);
+    });
+
     it('returns protocol-error classification when XML is empty', () => {
       const result = parseRetConsReciNFe('');
 

@@ -16,8 +16,8 @@ type ReconcileNFeReceipt = (input: {
     status: number;
   }>;
   routingContext: {
-    authorizer: 'SVCAN';
-    environment: 'homologation';
+    authorizer: 'SVCAN' | 'SP';
+    environment: 'homologation' | 'production';
   };
   timeoutMs: number;
 }) => Promise<{
@@ -32,7 +32,45 @@ type ReconcileNFeReceipt = (input: {
   statusMessage?: string;
   transportOutcome: {
     classification: string;
+    environment?: string;
+    evidence?: {
+      endpointUrl: string;
+      provider: string;
+      requestEnvelopeXml: string;
+    };
   };
+}>;
+
+type ExecuteNFeSoapService = (input: {
+  authorizer: 'SP';
+  environment: 'production';
+  payloadXml: string;
+  requestExecutor: (input: {
+    endpointUrl: string;
+    headers: Readonly<Record<string, string>>;
+    requestXml: string;
+    service: 'nfe-authorization-batch';
+    timeoutMs: number;
+  }) => Promise<{
+    headers: Readonly<Record<string, string>>;
+    responseXml: string;
+    status: number;
+  }>;
+  service: 'nfe-authorization-batch';
+  timeoutMs: number;
+}) => Promise<{
+  applicationStatusCode?: string;
+  classification: string;
+  environment: string;
+  evidence: {
+    durationMs?: number;
+    endpointUrl: string;
+    httpStatus?: number;
+    provider: string;
+    requestEnvelopeXml: string;
+    responseEnvelopeXml?: string;
+  };
+  service: string;
 }>;
 
 describe('reconcileNFeReceipt integration', () => {
@@ -185,4 +223,145 @@ describe('reconcileNFeReceipt integration', () => {
 
     expect(outcome?.classification).toBe('protocol-error');
   });
+
+  it('redacts production receipt secrets from envelope evidence and preserves transport metadata', async () => {
+    const executeNFeSoapService = (publicApi as Record<string, unknown>)
+      .executeNFeSoapService as ExecuteNFeSoapService | undefined;
+    const sensitiveValues = [
+      'RECEIPT_CREDENTIAL_MARKER',
+      'RECEIPT_CERTIFICATE_MARKER',
+      'RECEIPT_PRIVATE_KEY_MARKER',
+      'RESPONSE_CREDENTIAL_MARKER',
+      'RESPONSE_CERTIFICATE_MARKER',
+      'RESPONSE_PRIVATE_KEY_MARKER',
+    ];
+    const responseXml =
+      '<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><retConsReciNFe><tpAmb>1</tpAmb><nRec>135190000000002</nRec><cStat>105</cStat><xMotivo>Lote em processamento</xMotivo><Password>RESPONSE_CREDENTIAL_MARKER</Password><X509Certificate>RESPONSE_CERTIFICATE_MARKER</X509Certificate><PrivateKey>RESPONSE_PRIVATE_KEY_MARKER</PrivateKey></retConsReciNFe></soap:Body></soap:Envelope>';
+
+    const outcome = await executeNFeSoapService?.({
+      authorizer: 'SP',
+      environment: 'production',
+      payloadXml:
+        '<consReciNFe><nRec>135190000000002</nRec><Password>RECEIPT_CREDENTIAL_MARKER</Password><X509Certificate>RECEIPT_CERTIFICATE_MARKER</X509Certificate><PrivateKey>RECEIPT_PRIVATE_KEY_MARKER</PrivateKey></consReciNFe>',
+      requestExecutor: async () => ({
+        headers: { 'content-type': 'application/soap+xml; charset=utf-8' },
+        responseXml,
+        status: 200,
+      }),
+      service: 'nfe-authorization-batch',
+      timeoutMs: 5000,
+    });
+    const envelopeEvidence = [
+      outcome?.evidence.requestEnvelopeXml,
+      outcome?.evidence.responseEnvelopeXml,
+    ].join('\n');
+
+    for (const sensitiveValue of sensitiveValues) {
+      expect(envelopeEvidence).not.toContain(sensitiveValue);
+    }
+    expect(outcome).toMatchObject({
+      applicationStatusCode: '105',
+      classification: 'success',
+      environment: 'production',
+      evidence: {
+        endpointUrl: 'https://nfe.fazenda.sp.gov.br/ws/nferetautorizacao4.asmx',
+        httpStatus: 200,
+        provider: 'SP',
+      },
+      service: 'nfe-authorization-batch',
+    });
+    expect(outcome?.evidence.durationMs).toEqual(expect.any(Number));
+  });
+
+  it('checks one known SP production receipt on the SP endpoint without resubmitting or polling', async () => {
+    const reconcileNFeReceipt = (publicApi as Record<string, unknown>)
+      .reconcileNFeReceipt as ReconcileNFeReceipt | undefined;
+    const responseXml = loadNFeOperationalTextFixture(
+      'authorization/receipt-response-production-authorized.xml',
+    );
+    const requestExecutor = jest.fn(
+      async (request: {
+        endpointUrl: string;
+        headers: Readonly<Record<string, string>>;
+        requestXml: string;
+        service: 'nfe-authorization-batch';
+        timeoutMs: number;
+      }) => {
+        expect(request.endpointUrl).toBe(
+          'https://nfe.fazenda.sp.gov.br/ws/nferetautorizacao4.asmx',
+        );
+        return {
+          headers: { 'content-type': 'application/soap+xml; charset=utf-8' },
+          responseXml,
+          status: 200,
+        };
+      },
+    );
+
+    const outcome = await reconcileNFeReceipt?.({
+      receiptNumber: '135260000000002',
+      requestExecutor,
+      routingContext: { authorizer: 'SP', environment: 'production' },
+      timeoutMs: 5000,
+    });
+
+    expect(outcome?.classification).toBe('authorized');
+    expect(requestExecutor).toHaveBeenCalledTimes(1);
+    expect(requestExecutor.mock.calls[0][0].endpointUrl).toBe(
+      'https://nfe.fazenda.sp.gov.br/ws/nferetautorizacao4.asmx',
+    );
+    expect(requestExecutor.mock.calls[0][0].requestXml).toContain(
+      '<consReciNFe',
+    );
+    expect(requestExecutor.mock.calls[0][0].requestXml).not.toContain(
+      '<enviNFe',
+    );
+    expect(outcome?.transportOutcome).toMatchObject({
+      environment: 'production',
+      evidence: { provider: 'SP' },
+    });
+  });
+
+  it.each([
+    {
+      classification: 'pending',
+      fixture: 'authorization/receipt-response-production-processing.xml',
+    },
+    {
+      classification: 'protocol-error',
+      fixture:
+        'authorization/receipt-response-production-wrong-environment.xml',
+    },
+    {
+      classification: 'protocol-error',
+      fixture: 'authorization/receipt-response-production-malformed.xml',
+    },
+    {
+      classification: 'protocol-error',
+      fixture:
+        'authorization/receipt-response-production-authorized-missing-protocol.xml',
+    },
+  ])(
+    'maps SP production receipt response $fixture to $classification',
+    async ({ classification, fixture }) => {
+      const reconcileNFeReceipt = (publicApi as Record<string, unknown>)
+        .reconcileNFeReceipt as ReconcileNFeReceipt | undefined;
+      const responseXml = loadNFeOperationalTextFixture(fixture);
+      const requestExecutor = jest.fn(async () => ({
+        headers: { 'content-type': 'application/soap+xml; charset=utf-8' },
+        responseXml,
+        status: 200,
+      }));
+
+      const outcome = await reconcileNFeReceipt?.({
+        receiptNumber: '135260000000002',
+        requestExecutor,
+        routingContext: { authorizer: 'SP', environment: 'production' },
+        timeoutMs: 5000,
+      });
+
+      expect(outcome?.classification).toBe(classification);
+      expect(requestExecutor).toHaveBeenCalledTimes(1);
+    },
+  );
 });

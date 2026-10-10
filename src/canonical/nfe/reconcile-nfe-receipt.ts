@@ -49,6 +49,7 @@ export async function reconcileNFeReceipt(
     input.routingContext.environment === 'production' ? '1' : '2';
   const payloadXml = buildConsReciNFeXml(receiptNumber, tpAmb);
   const transportOutcome = await executeNFeSoapService({
+    authorizer: input.routingContext.authorizer,
     environment: input.routingContext.environment,
     payloadXml,
     requestExecutor: input.requestExecutor,
@@ -93,6 +94,28 @@ export async function reconcileNFeReceipt(
   }
 
   const rawResponse = transportOutcome.evidence.responseEnvelopeXml ?? '';
+  const expectedTpAmb =
+    input.routingContext.environment === 'production' ? '1' : '2';
+  const responseTpAmb = extractTagText(rawResponse, 'tpAmb');
+
+  if (responseTpAmb !== expectedTpAmb) {
+    const failureReason =
+      `Receipt response tpAmb must match ${input.routingContext.environment}.`;
+
+    return createFailureResult({
+      classification: 'protocol-error',
+      rawResponse,
+      receiptNumber,
+      statusCode: extractTagText(rawResponse, 'cStat'),
+      statusMessage: failureReason,
+      transportOutcome: {
+        ...transportOutcome,
+        classification: 'protocol-error',
+        failureReason,
+      },
+    });
+  }
+
   const batchOutcome = parseRetConsReciNFe(rawResponse);
   const batchStatusCode = extractTagText(rawResponse, 'cStat');
   const batchStatusMessage = extractTagText(rawResponse, 'xMotivo');
@@ -157,6 +180,28 @@ export async function reconcileNFeReceipt(
       statusMessage:
         batchStatusMessage ?? 'Receipt reconciliation returned multiple protocol items.',
       transportOutcome,
+    });
+  }
+
+  if (
+    batchOutcome.items[0].classification === 'authorized' &&
+    batchOutcome.items[0].protocolNumber === undefined
+  ) {
+    const failureReason =
+      'Terminal receipt authorization is missing required nProt.';
+
+    return createFailureResult({
+      classification: 'protocol-error',
+      items: batchOutcome.items,
+      rawResponse: batchOutcome.rawResponse,
+      receiptNumber,
+      statusCode: batchOutcome.items[0].statusCode,
+      statusMessage: failureReason,
+      transportOutcome: {
+        ...transportOutcome,
+        classification: 'protocol-error',
+        failureReason,
+      },
     });
   }
 
@@ -274,7 +319,7 @@ function createFailureResult(input: {
   readonly items?: readonly AsyncBatchItemResult[];
   readonly rawResponse?: string;
   readonly receiptNumber: string;
-  readonly state?: NFeReceiptReconciliationResult['state'];
+  readonly state?: NonNullable<NFeReceiptReconciliationResult['state']>;
   readonly statusCode?: string;
   readonly statusMessage?: string;
   readonly transportOutcome: TransportOutcome;
@@ -337,5 +382,5 @@ function createSyntheticTransportOutcome(input: {
 
 function extractTagText(xml: string, tagName: string): string | undefined {
   const match = new RegExp(`<${tagName}>([^<]*)</${tagName}>`, 'u').exec(xml);
-  return match?.[1];
+  return match?.[1]?.trim();
 }
