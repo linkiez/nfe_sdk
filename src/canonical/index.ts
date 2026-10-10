@@ -13,6 +13,7 @@ export { createNFe } from './facade/create-nfe.js';
 export { createSigningContext } from './facade/create-signing-context.js';
 export { distributeRecipientDFe } from './facade/distribute-recipient-dfe.js';
 export { executeNFeSoapService } from './facade/execute-nfe-soap-service.js';
+export { generateNFCeSPQRCode } from './facade/generate-nfce-sp-qr-code.js';
 export { manifestRecipientOperation } from './facade/manifest-recipient-operation.js';
 export { retrieveRecipientDocument } from './facade/retrieve-recipient-document.js';
 export { prepareNFCeSigningPrerequisites } from './facade/prepare-nfce-signing-prerequisites.js';
@@ -53,6 +54,9 @@ export type {
   NFCeAuthorizationRequest,
   NFCeCSCInput,
   NFCeCoverageBoundary,
+  NFCeSPQRCodeRequest,
+  NFCeSPQRCodeResponse,
+  NFCeSPQRCodeResult,
   NFCeSigningPrerequisiteDependency,
   NFCeSigningPrerequisitesInput,
   NFCeSigningPrerequisitesReceivedInputs,

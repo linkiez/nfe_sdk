@@ -27,6 +27,7 @@ describe('package contract documentation', () => {
       'createSigningContext',
       'distributeRecipientDFe',
       'executeNFeSoapService',
+      'generateNFCeSPQRCode',
       'manifestRecipientOperation',
       'prepareNFCeSigningPrerequisites',
       'publicPackageContract',
@@ -62,6 +63,7 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`computeHashCSRT`');
     expect(readme).toContain('`distributeRecipientDFe`');
     expect(readme).toContain('`executeNFeSoapService`');
+    expect(readme).toContain('`generateNFCeSPQRCode`');
     expect(readme).toContain('`manifestRecipientOperation`');
     expect(readme).toContain('`retrieveRecipientDocument`');
     expect(readme).toContain('`prepareNFCeSigningPrerequisites`');
@@ -90,6 +92,10 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`consNSU`');
     expect(readme).toContain('`consChNFe`');
     expect(readme).toContain('SP + PR');
+    expect(readme).toContain('`SP`');
+    expect(readme).toContain('`PR`');
+    expect(readme).toContain('`homologation`');
+    expect(readme).toContain('`production`');
     expect(readme).toContain('`RFL-006`');
     expect(readme).toContain('`RTM-007`');
     expect(readme).toContain('`RTM-011`');

@@ -1,10 +1,12 @@
 export { authorizeNFCe } from './authorize-nfce.js';
+export { generateNFCeSPQRCode } from './generate-nfce-sp-qr-code.js';
 export { mapNFCeAuthorizationOutcome } from './authorization-outcome.js';
 export { createNFCeAuthorizationPayload } from './authorization-payload.js';
 export {
   createUnsupportedScopeNFCeCoverageBoundary,
   createUnsupportedScopeNFCeOutcome,
   createUnsupportedStateNFCeCoverageBoundary,
+  createUnsupportedStateNFCeSPQRCodeBoundary,
   createUnsupportedStateNFCeOutcome,
 } from './coverage-boundary.js';
 export {
@@ -32,6 +34,9 @@ export type {
   NFCeCoverageBoundary,
   NFCeDeferredCapability,
   NFCeCSCInput,
+  NFCeSPQRCodeRequest,
+  NFCeSPQRCodeResponse,
+  NFCeSPQRCodeResult,
   NFCeSigningPrerequisiteDependency,
   NFCeSigningPrerequisitesInput,
   NFCeSigningPrerequisitesReceivedInputs,

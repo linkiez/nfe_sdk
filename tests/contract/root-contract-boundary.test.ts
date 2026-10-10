@@ -15,6 +15,7 @@ describe('root contract boundary', () => {
         'createEnviNFe',
         'createSigningContext',
         'distributeRecipientDFe',
+        'generateNFCeSPQRCode',
         'manifestRecipientOperation',
         'retrieveRecipientDocument',
         'prepareNFCeSigningPrerequisites',
@@ -55,6 +56,7 @@ describe('root contract boundary', () => {
       'createEnviNFe',
       'createSigningContext',
       'distributeRecipientDFe',
+      'generateNFCeSPQRCode',
       'manifestRecipientOperation',
       'retrieveRecipientDocument',
       'prepareNFCeSigningPrerequisites',
@@ -93,6 +95,7 @@ describe('root contract boundary', () => {
         'The first contingency-boundary slice for NFe is anchored in authorizeNFe and now returns an explicit contingency-boundary diagnostic for production requests whose issuer UF delegates to SVC-AN or SVC-RS, instead of silently falling back to normal authorization semantics.',
         'The first NFC-e slice currently exposes authorizeNFCe as an additive root facade for homologation-only single-document authorization through the promoted SP and PR cohort while broader state coverage remains deferred.',
         'The signing-expansion slice now adds prepareNFCeSigningPrerequisites as an additive root facade that derives chNFe, cDV, and hashCSRT while keeping authorization, QR Code, and broader NFC-e rollout explicitly deferred.',
+        'The paulista QR Code slice now adds generateNFCeSPQRCode as an additive root helper for SP-only NFC-e QR Code composition in homologation and production while keeping PR, other UFs, renderer concerns, consumer consultation, CSC administration, and offline contingency outside this narrower helper boundary.',
         'The first NFC-e slice returns unsupported-state before transport when the inferred UF stays outside the published SP and PR promoted cohort.',
         'The first NFC-e slice accepts requestedCapabilities only as an explicit marker for deferred operational surfaces and returns unsupported-scope before transport for QR Code, DANFE NFC-e, CSC administration, automatic credentialing, or offline contingency.',
         'The PR promotion slice traces RFL-006, RTM-007, RTM-011, and RTM-012 through the published SP and PR cohort while keeping PB, GO, SC, CE, and MS outside the runtime slice until their state-specific evidence closes.',
@@ -105,6 +108,7 @@ describe('root contract boundary', () => {
 
     expect(publicPackageContract.repositoryEvidence).toEqual(
       expect.arrayContaining([
+        'specs/024-nfce-sp-qrcode/contracts/public-nfce-sp-qrcode-facade.md',
         'specs/023-nfce-pr-promotion/contracts/public-nfce-pr-promotion-facade.md',
       ]),
     );

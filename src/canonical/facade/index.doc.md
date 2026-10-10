@@ -9,6 +9,7 @@ Agrega as funcoes publicas da facade manual publicada pelo barrel canonico e con
 - Reexportar a autorizacao operacional de NFe publicada neste slice.
 - Reexportar as manutencoes operacionais homologadas publicadas neste slice.
 - Reexportar os wrappers publicos do slice recipient.
+- Reexportar o helper root `generateNFCeSPQRCode` para o recorte paulista de `QR Code`.
 - Reexportar as funcoes de criacao publica.
 - Reexportar as funcoes publicas de assinatura digital.
 - Reexportar os wrappers publicos do slice inicial de transporte SOAP.
@@ -19,7 +20,7 @@ Agrega as funcoes publicas da facade manual publicada pelo barrel canonico e con
 ## Entradas e saidas
 
 - Entradas: nenhuma.
-- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `distributeRecipientDFe`, `manifestRecipientOperation`, `createNFe`, `createEnviNFe`, `createSigningContext`, `signNFeXml`, `resolveNFeServiceEndpoint`, `executeNFeSoapService` e tipos operacionais compartilhados.
+- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `distributeRecipientDFe`, `generateNFCeSPQRCode`, `manifestRecipientOperation`, `createNFe`, `createEnviNFe`, `createSigningContext`, `signNFeXml`, `resolveNFeServiceEndpoint`, `executeNFeSoapService` e tipos operacionais compartilhados.
 
 ## Fluxo principal
 
@@ -32,15 +33,16 @@ flowchart TD
   B --> F[queryNFeDocumentSituation]
   B --> G[submitNFeInutilization]
   B --> H[submitNFeCorrectionLetter]
-  B --> H[distributeRecipientDFe]
-  B --> I[manifestRecipientOperation]
-  B --> J[createNFe]
-  B --> K[createEnviNFe]
-  B --> L[createSigningContext]
-  B --> M[signNFeXml]
-  B --> N[resolveNFeServiceEndpoint]
-  B --> O[executeNFeSoapService]
-  B --> P[Operational shared types]
+  B --> I[distributeRecipientDFe]
+  B --> J[generateNFCeSPQRCode]
+  B --> K[manifestRecipientOperation]
+  B --> L[createNFe]
+  B --> M[createEnviNFe]
+  B --> N[createSigningContext]
+  B --> O[signNFeXml]
+  B --> P[resolveNFeServiceEndpoint]
+  B --> Q[executeNFeSoapService]
+  B --> R[Operational shared types]
 ```
 
 ## Tratamento de erros e casos-limite
@@ -59,6 +61,7 @@ import {
   createSigningContext,
   distributeRecipientDFe,
   executeNFeSoapService,
+  generateNFCeSPQRCode,
   manifestRecipientOperation,
   queryNFeDocumentSituation,
   queryNFeServiceStatus,
@@ -78,6 +81,7 @@ import {
 - `./create-signing-context.js`
 - `./distribute-recipient-dfe.js`
 - `./execute-nfe-soap-service.js`
+- `./generate-nfce-sp-qr-code.js`
 - `./manifest-recipient-operation.js`
 - `./query-nfe-document-situation.js`
 - `./query-nfe-service-status.js`

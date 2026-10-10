@@ -1,0 +1,9 @@
+{
+  "uf": "PR",
+  "environment": "homologation",
+  "accessKey": "41260512345678000123650010000007891111122222",
+  "csc": {
+    "cscId": "000003",
+    "cscToken": "TOKEN-PR-EXAMPLE-789"
+  }
+}

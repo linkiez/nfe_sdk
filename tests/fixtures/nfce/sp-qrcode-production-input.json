@@ -1,0 +1,9 @@
+{
+  "uf": "SP",
+  "environment": "production",
+  "accessKey": "35260512345678000123650020000004561876543219",
+  "csc": {
+    "cscId": "000002",
+    "cscToken": "TOKEN-P-EXAMPLE-456"
+  }
+}

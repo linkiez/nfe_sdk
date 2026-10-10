@@ -1,4 +1,5 @@
 import type {
+  CanonicalEnvironment,
   CanonicalNFeDocument,
   CanonicalNFeInput,
 } from '../shared/contracts.js';
@@ -122,6 +123,43 @@ export interface NFCeSigningPrerequisitesResult {
   readonly deferredOperationalDependencies:
     readonly NFCeSigningPrerequisiteDependency[];
 }
+
+/**
+ * Structured request accepted by the paulista NFC-e QR Code helper.
+ */
+export interface NFCeSPQRCodeRequest {
+  /** Requested UF boundary for the helper. */
+  readonly uf: string;
+  /** Requested operational environment for local QR Code composition. */
+  readonly environment: string;
+  /** Full 44-digit NFC-e access key already prepared by the integrator. */
+  readonly accessKey: string;
+  /** Explicit CSC input validated locally before composition. */
+  readonly csc: NFCeCSCInput;
+}
+
+/**
+ * Successful structured result returned by the paulista NFC-e QR Code helper.
+ */
+export interface NFCeSPQRCodeResult {
+  /** Final QR Code consultation URL ready for rendering or storage by the integrator. */
+  readonly qrCodeUrl: string;
+  /** Normalized environment used during composition. */
+  readonly environment: CanonicalEnvironment;
+  /** Environment-specific paulista consultation base URL. */
+  readonly baseUrl: string;
+  /** Access key echoed for auditability. */
+  readonly accessKey: string;
+  /** CSC identifier echoed without exposing the raw token. */
+  readonly cscId: string;
+  /** Supported UF echoed by the helper. */
+  readonly uf: 'SP';
+}
+
+/**
+ * Public response returned by the paulista NFC-e QR Code helper.
+ */
+export type NFCeSPQRCodeResponse = NFCeSPQRCodeResult | NFCeCoverageBoundary;
 
 /**
  * Structured local validation failure emitted by the NFC-e facade.

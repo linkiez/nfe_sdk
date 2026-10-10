@@ -7,6 +7,7 @@ export { createNFe } from './create-nfe.js';
 export { createSigningContext } from './create-signing-context.js';
 export { distributeRecipientDFe } from './distribute-recipient-dfe.js';
 export { executeNFeSoapService } from './execute-nfe-soap-service.js';
+export { generateNFCeSPQRCode } from './generate-nfce-sp-qr-code.js';
 export { manifestRecipientOperation } from './manifest-recipient-operation.js';
 export { retrieveRecipientDocument } from './retrieve-recipient-document.js';
 export { prepareNFCeSigningPrerequisites } from './prepare-nfce-signing-prerequisites.js';
@@ -48,6 +49,12 @@ export type {
 	OperationalMaintenanceRequest,
 	ServiceStatusSnapshot,
 } from '../nfe/index.js';
+
+export type {
+	NFCeSPQRCodeRequest,
+	NFCeSPQRCodeResponse,
+	NFCeSPQRCodeResult,
+} from '../nfce/index.js';
 
 export type {
 	NFCeCSCInput,

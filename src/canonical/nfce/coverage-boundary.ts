@@ -47,6 +47,25 @@ export function createUnsupportedStateNFCeCoverageBoundary(
 }
 
 /**
+ * Builds the published unsupported-state boundary payload for the paulista QR Code helper.
+ *
+ * @param uf - Operational UF inferred from the NFC-e access key.
+ * @returns Structured coverage boundary returned by the helper.
+ */
+export function createUnsupportedStateNFCeSPQRCodeBoundary(
+  uf: NFCeUF,
+): NFCeCoverageBoundary {
+  return {
+    classification: 'unsupported-state',
+    code: 'nfce-unsupported-state',
+    message:
+      'generateNFCeSPQRCode currently supports only SP for paulista NFC-e QR Code operations.',
+    retryable: false,
+    uf,
+  };
+}
+
+/**
  * Builds the public NFC-e outcome used when the inferred UF is outside the published pilot.
  *
  * @param uf - Operational UF inferred from the NFC-e input.

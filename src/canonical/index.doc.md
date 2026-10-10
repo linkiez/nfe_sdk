@@ -8,6 +8,7 @@ Barrel da camada canonica manual publicada pelo root import.
 
 - Reexportar a facade publica de criacao canonica.
 - Reexportar a facade publica inicial de autorizacao operacional.
+- Reexportar o helper root paulista `generateNFCeSPQRCode`.
 - Reexportar as facades publicas iniciais de consulta operacional.
 - Reexportar as facades publicas das tres manutencoes obrigatorias do MVP.
 - Reexportar as facades publicas do slice recipient para distribuicao e manifestacao.
@@ -18,7 +19,7 @@ Barrel da camada canonica manual publicada pelo root import.
 ## Entradas e saidas
 
 - Entradas: nenhuma.
-- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `distributeRecipientDFe`, `manifestRecipientOperation`, `createNFe`, `createEnviNFe`, `createSigningContext`, `resolveNFeServiceEndpoint`, `executeNFeSoapService`, `serializeNFeXml`, `serializeEnviNFeXml`, `signNFeXml` e tipos canonicos/de assinatura/transporte/recipient.
+- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `distributeRecipientDFe`, `generateNFCeSPQRCode`, `manifestRecipientOperation`, `createNFe`, `createEnviNFe`, `createSigningContext`, `resolveNFeServiceEndpoint`, `executeNFeSoapService`, `serializeNFeXml`, `serializeEnviNFeXml`, `signNFeXml` e tipos canonicos/de assinatura/transporte/recipient.
 
 ## Fluxo principal
 
@@ -46,6 +47,7 @@ import {
   cancelNFe,
   createNFe,
   distributeRecipientDFe,
+  generateNFCeSPQRCode,
   manifestRecipientOperation,
   queryNFeDocumentSituation,
   queryNFeServiceStatus,
@@ -63,6 +65,7 @@ import {
 - `./facade/create-signing-context.js`
 - `./facade/distribute-recipient-dfe.js`
 - `./facade/execute-nfe-soap-service.js`
+- `./facade/generate-nfce-sp-qr-code.js`
 - `./facade/manifest-recipient-operation.js`
 - `./facade/query-nfe-document-situation.js`
 - `./facade/query-nfe-service-status.js`

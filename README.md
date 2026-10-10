@@ -70,6 +70,7 @@ import {
   createSigningContext,
   distributeRecipientDFe,
   executeNFeSoapService,
+  generateNFCeSPQRCode,
   manifestRecipientOperation,
   prepareNFCeSigningPrerequisites,
   publicPackageContract,
@@ -191,10 +192,34 @@ console.log(endpoint.endpointUrl, outcome.classification);
 
 - `authorizeNFCe` publica a facade inicial de NFC-e em homologacao para o cohort promovido `SP + PR`
 - `prepareNFCeSigningPrerequisites` prepara `chNFe`, `cDV` e `hashCSRT` a partir de insumos estruturados
+- `generateNFCeSPQRCode` gera a URL oficial paulista de `QR Code` no import raiz para `SP`, com semantica distinta de `homologation` e `production`, retornando `qrCodeUrl`, `baseUrl`, `accessKey`, `cscId` e `uf` sem expor o token bruto
+- o helper de `QR Code` e propositalmente menor que o cohort de autorizacao: `PR` continua fora deste recorte e recebe `unsupported-state` antes de qualquer composicao bem-sucedida
 - quando `requestedCapabilities` informa QR Code, DANFE NFC-e, administracao de CSC, credenciamento automatizado ou contingencia offline, a facade responde com `unsupported-scope` antes do transporte
 - UFs fora do cohort publicado retornam `unsupported-state`
 - a promocao atual segue a trilha editorial `RFL-006`, `RTM-007`, `RTM-011` e `RTM-012` sem abrir novo entrypoint ou importar superfices profundas
 - `PB`, `GO`, `SC`, `CE` e `MS` continuam fora deste corte porque ainda concentram gaps estaduais dominantes em `CSC`, `QR Code`, politicas de acesso, fechamento de captura ou consolidacao especifica de `NFC-e`
+
+Exemplo rapido do helper paulista:
+
+```ts
+import { generateNFCeSPQRCode } from 'nfe-sdk';
+
+const qrCode = generateNFCeSPQRCode({
+  accessKey: '35260512345678000123650010000001231123456781',
+  csc: {
+    cscId: '000001',
+    cscToken: process.env.NFCE_SP_CSC_TOKEN ?? '',
+  },
+  environment: 'homologation',
+  uf: 'SP',
+});
+
+if ('classification' in qrCode) {
+  console.log(qrCode.classification, qrCode.uf);
+} else {
+  console.log(qrCode.qrCodeUrl, qrCode.baseUrl);
+}
+```
 
 ### Assinatura digital
 
@@ -237,7 +262,7 @@ Ficam fora da promessa de compatibilidade desta fase:
 - a arvore gerada em `src/enums/`
 - `src/manifest.json`
 - qualquer subpath ou importacao profunda
-- trust chain automatizada, aquisicao de certificado, suporte a `A3`, QR Code, DANFE NFC-e e rollout operacional multi-UF
+- trust chain automatizada, aquisicao de certificado, suporte a `A3`, `QR Code` fora do helper paulista de `SP`, renderer `DANFE NFC-e`, consulta do consumidor, administracao de `CSC`, contingencia `offline` e rollout operacional multi-UF
 - `consNSU`, `consChNFe`, producao, polling agressivo e automacao assistida de backoffice para continuidade do destinatario
 
 ## Exemplos do repositório

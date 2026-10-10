@@ -13,6 +13,7 @@ Agrega a superficie publica estavel do pacote no import raiz `nfe-sdk`.
 - Publicar as primeiras consultas operacionais com `queryNFeServiceStatus` e `queryNFeDocumentSituation`.
 - Publicar as manutencoes operacionais `submitNFeInutilization`, `cancelNFe` e `submitNFeCorrectionLetter`.
 - Publicar o slice recipient com `distributeRecipientDFe` e `manifestRecipientOperation`.
+- Publicar o helper additive `generateNFCeSPQRCode` para o recorte paulista de `QR Code`.
 - Publicar o slice generic-event com `submitGenericEvents`.
 - Publicar a facade funcional inicial para criacao canonica de `NFe` e `enviNFe`.
 - Publicar o slice inicial de assinatura digital com `createSigningContext` e `signNFeXml`.
@@ -38,16 +39,17 @@ flowchart TD
   B --> I[submitNFeInutilization]
   B --> J[submitNFeCorrectionLetter]
   B --> K[distributeRecipientDFe]
-  B --> L[manifestRecipientOperation]
-  B --> M[submitGenericEvents]
-  B --> N[createNFe]
-  B --> O[createEnviNFe]
-  B --> P[createSigningContext]
-  B --> Q[resolveNFeServiceEndpoint]
-  B --> R[executeNFeSoapService]
-  B --> S[serializeNFeXml]
-  B --> T[serializeEnviNFeXml]
-  B --> U[signNFeXml]
+  B --> L[generateNFCeSPQRCode]
+  B --> M[manifestRecipientOperation]
+  B --> N[submitGenericEvents]
+  B --> O[createNFe]
+  B --> P[createEnviNFe]
+  B --> Q[createSigningContext]
+  B --> R[resolveNFeServiceEndpoint]
+  B --> S[executeNFeSoapService]
+  B --> T[serializeNFeXml]
+  B --> U[serializeEnviNFeXml]
+  B --> V[signNFeXml]
 ```
 
 ## Tratamento de erros e casos-limite
@@ -55,6 +57,7 @@ flowchart TD
 - O arquivo apenas reexporta simbolos.
 - Validacoes de entrada ficam nos modulos da facade canonica.
 - A facade NFC-e aplica bloqueios pre-transporte para UFs fora do piloto e para `requestedCapabilities` deferidas.
+- O helper paulista de `QR Code` permanece restrito a `SP`, mesmo com `PR` presente no cohort de autorizacao.
 
 ## Exemplos
 
@@ -68,6 +71,7 @@ import {
   createSigningContext,
   distributeRecipientDFe,
   executeNFeSoapService,
+  generateNFCeSPQRCode,
   manifestRecipientOperation,
   publicPackageContract,
   queryNFeDocumentSituation,

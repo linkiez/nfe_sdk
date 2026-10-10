@@ -14,6 +14,7 @@ Descreve o contrato publico estabilizado no import raiz do pacote.
 - Descrever a ampliacao additive da facade operacional de autorizacao, consultas e manutencoes homologadas.
 - Registrar que `authorizeNFe` agora devolve `contingency-boundary` explicita para `SVC-AN` e `SVC-RS` quando o pedido de producao cai na trilha observavel promovida.
 - Descrever a ampliacao additive da facade operacional inicial de NFC-e homologada para o cohort promovido `SP + PR`.
+- Descrever a ampliacao additive do helper paulista `generateNFCeSPQRCode` como recorte menor que o cohort `SP + PR`.
 - Registrar que a facade NFC-e distingue `unsupported-state` e `unsupported-scope` antes do transporte, preservando `CSC`, `QR Code` e contingencia fora do runtime.
 - Descrever a ampliacao additive do slice recipient homologado para distribuicao DFe e manifestacao.
 - Descrever a ampliacao additive do slice generic-event homologado para submissao de eventos suportados por uma facade unica.
@@ -45,6 +46,9 @@ flowchart TD
   B --> K0[promoted cohort SP + PR]
   K --> K1[unsupported-state]
   K --> K2[unsupported-scope via requestedCapabilities]
+  B --> K3[SP QR Code helper boundary]
+  K3 --> K4[generateNFCeSPQRCode]
+  K4 --> K5[SP-only]
   B --> L[operational query boundary]
   B --> M[operational maintenance boundary]
   B --> N[recipient boundary]
@@ -55,6 +59,7 @@ flowchart TD
 
 - O arquivo apenas materializa metadados do contrato.
 - Nao realiza validacoes de entrada em runtime.
+- O helper paulista de `QR Code` precisa aparecer como additive e explicitamente menor que o recorte `SP + PR`.
 
 ## Exemplos
 
@@ -73,5 +78,6 @@ import { publicPackageContract } from 'nfe-sdk';
 - `specs/006-add-soap-transport/contracts/public-soap-transport-facade.md`
 - `specs/007-nfe-operational-mvp/contracts/public-nfe-operational-facade.md`
 - `specs/010-nfce-national-core/contracts/public-nfce-operational-facade.md`
+- `specs/024-nfce-sp-qrcode/contracts/public-nfce-sp-qrcode-facade.md`
 - `specs/008-recipient-dfe-mvp/contracts/public-recipient-dfe-facade.md`
 - `specs/009-generic-event-mvp/contracts/public-generic-event-facade.md`

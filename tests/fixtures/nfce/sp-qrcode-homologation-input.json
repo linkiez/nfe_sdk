@@ -1,0 +1,9 @@
+{
+  "uf": "SP",
+  "environment": "homologation",
+  "accessKey": "35260512345678000123650010000001231123456781",
+  "csc": {
+    "cscId": "000001",
+    "cscToken": "TOKEN-H-EXAMPLE-123"
+  }
+}
