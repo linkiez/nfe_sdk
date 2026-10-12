@@ -2,7 +2,7 @@
 
 ## Visao geral
 
-Centraliza os contratos tipados do slice operacional de `NFC-e`, incluindo o cohort promovido `SP + PR`, os boundaries explicitos e o helper paulista de `QR Code` que permanece menor que o cohort de autorizacao.
+Centraliza os contratos tipados da autorizacao de `NFC-e`, do cohort homologado `SP + PR`, da producao SP modelo 65 e do helper paulista de `QR Code`.
 
 ## Responsabilidades
 
@@ -11,6 +11,7 @@ Centraliza os contratos tipados do slice operacional de `NFC-e`, incluindo o coh
 - Publicar a fonte unica de verdade do cohort promovido de `UFs`.
 - Declarar as capabilities deferidas e as dependencias preparatorias do slice.
 - Padronizar outcomes, boundaries e falhas de validacao do recorte atual.
+- Definir `csc`, `unsignedXml`, `qrCodeUrl` e a acao condicional de reconciliacao como campos aditivos da autorizacao.
 
 ## Entradas e saidas
 
@@ -33,7 +34,11 @@ flowchart TD
 
 - O modulo nao executa IO nem transporte.
 - O cohort promovido permanece fechado em `SP` e `PR`.
-- O helper de `QR Code` continua mais restrito que o cohort promovido e aceita apenas `SP`.
+- O helper de `QR Code` continua mais restrito que o cohort homologado e aceita apenas `SP`.
+- A producao exige `unsignedXml`; a homologacao existente continua aceitando requests sem `csc` ou XML assinado.
+- O XML de producao precisa ter CNPJ ou CPF do emitente coerente com as 14 posicoes fiscais da chave de acesso.
+- `NFCeAuthorizationOutcome.nextAction` pode indicar `reconcileNFeReceipt` quando a resposta estiver `received` e houver recibo; a facade nao consulta o recibo automaticamente.
+- O token bruto de `CSC` e uma entrada transitória e nunca compoe o outcome.
 - Capabilities auxiliares continuam explicitamente fora do runtime imediato.
 
 ## Exemplos
@@ -50,6 +55,8 @@ const request: NFCeSPQRCodeRequest = {
   uf: 'SP',
 };
 ```
+
+Em producao, `NFCeAuthorizationRequest` tambem precisa de `unsignedXml`, `csc`, `requestExecutor` e `signingContext`. A resposta adiciona `qrCodeUrl` apenas para uma autorizacao confirmada.
 
 ## Dependencias e integracoes
 

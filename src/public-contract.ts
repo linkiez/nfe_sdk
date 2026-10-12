@@ -60,7 +60,9 @@ const COMPATIBILITY_NOTES = [
   'The first contingency-boundary slice for NFe is anchored in authorizeNFe and now returns an explicit contingency-boundary diagnostic for production requests whose issuer UF delegates to SVC-AN or SVC-RS, instead of silently falling back to normal authorization semantics.',
   'NF-e production authorization is additive for consistently identified SP issuers only; it requires an integrator-provided mTLS-capable requestExecutor, retains homologation behavior, and never selects SVC-AN as an implicit fallback.',
   'SP production authorization and receipt reconciliation preserve non-secret transport metadata, redact sensitive envelope values, and classify mismatched tpAmb or missing required nProt/nRec as protocol-error.',
-  'The first NFC-e slice currently exposes authorizeNFCe as an additive root facade for homologation-only single-document authorization through the promoted SP and PR cohort while broader state coverage remains deferred.',
+  'The NFC-e facade preserves homologation single-document authorization for the promoted SP and PR cohort and adds normal production authorization for one SP model 65 document only.',
+  'SP NFC-e production requires matching unsigned fiscal XML, SDK SigningContext, injected mTLS-capable RequestExecutor, and caller-provisioned CSC; it signs and sends one synchronous request without retry, receipt polling, or SVC-AN failover.',
+  'authorizeNFCe exposes the SP QR Code v3 URL only after authorization and only when CSC is supplied; the URL matches the document access key and environment and never contains the raw CSC token.',
   'The signing-expansion slice now adds prepareNFCeSigningPrerequisites as an additive root facade that derives chNFe, cDV, and hashCSRT while keeping authorization, QR Code, and broader NFC-e rollout explicitly deferred.',
   'The signing-expansion slice keeps QR Code, DANFE NFC-e, and multi-UF NFC-e operational rollout outside this phase.',
   'The paulista QR Code slice now adds generateNFCeSPQRCode as an additive root helper for SP-only NFC-e QR Code composition in homologation and production while keeping PR, other UFs, renderer concerns, consumer consultation, CSC administration, and offline contingency outside this narrower helper boundary.',
@@ -94,6 +96,7 @@ const REPOSITORY_EVIDENCE = [
   'specs/021-nfe-receipt-protocol/contracts/public-nfe-receipt-protocol-facade.md',
   'specs/022-recipient-continuity/contracts/public-recipient-continuity-facade.md',
   'specs/025-nfe-sp-producao/contracts/public-nfe-sp-production-authorization.md',
+  'specs/027-nfce-sp-producao/contracts/public-nfce-sp-production-authorization.md',
 ] as const;
 
 /**

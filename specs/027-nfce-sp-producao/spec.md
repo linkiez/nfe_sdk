@@ -20,8 +20,8 @@ An enabled SP issuer submits a valid NFC-e in production and receives a clear au
 
 **Acceptance Scenarios**:
 
-1. **Given** a valid signed SP NFC-e, a production environment, and externally provisioned credentials, **When** the issuer submits it, **Then** the result reports the official terminal outcome and the associated QR Code URL.
-2. **Given** a non-SP issuer, environment mismatch, or missing required credential, **When** the issuer submits, **Then** the request is blocked with a specific boundary and is not described as authorized.
+1. **Given** a valid signed model 65 SP NFC-e, a production environment, externally provisioned issuer credentials, a caller-provided mTLS-capable executor, and the issuer's provisioned CSC, **When** the issuer submits it, **Then** the result reports the official outcome and the associated QR Code URL. The CSC is an SDK-local input prerequisite for returning the URL, not a QR Code v3 URL parameter.
+2. **Given** a non-SP issuer, environment mismatch, or missing signing context, mTLS-capable executor, or production CSC, **When** the issuer submits, **Then** the request is blocked before SOAP transport with a specific boundary and is not described as authorized.
 
 ### User Story 2 - Keep QR Code and authorization outcomes consistent (Priority: P2)
 
@@ -64,9 +64,9 @@ An issuer can use the existing SP QR Code v3 composition while keeping it distin
 
 ### Knowledge Sources & Provenance
 
-- **KS-001**: Primary sources: `SRC-RH-002`, MOC 7.0 (published November 2020; consulted 2026-05-19); `SRC-RH-003`, Manual de Especificações Técnicas do DANFE NFC-e e QR Code, version 6.0 (published March 2025; consulted 2026-05-19); and `SRC-NFCE-004`/`SRC-NFCE-005`, SEFAZ/SP pages (consulted 2026-05-16).
+- **KS-001**: Primary sources: `SRC-RH-002`, MOC 7.0 (published November 2020; consulted 2026-05-19); `SRC-RH-003`, Manual de Especificações Técnicas do DANFE NFC-e e QR Code v6.0 (published 2025-03-24; consulted 2026-05-19); `SRC-NFCE-006`/`SRC-NFCE-007`, SEFAZ/SP NFC-e `Sobre` and `WebServices` pages (consulted 2026-10-12); and `SRC-NFCE-008`/`SRC-NFCE-009`, Portal Nacional NT 2023.002 v1.01 and NT 2025.002-RTC v1.51 (consulted 2026-10-12).
 - **KS-002**: No secondary source is required.
-- **KS-003**: Current SP production endpoint behavior, credentialing steps, and any state-specific differences must be verified from official sources during planning. The QR Code manual does not establish that authorization or consumer consultation is available.
+- **KS-003**: The official SP production endpoint and the NFC-e synchronous single-document behavior are documented in `SRC-NFCE-007` and `SRC-NFCE-008`. Issuer eligibility, credentialing procedure, certificate validity, CSC provisioning, and endpoint availability remain external operational prerequisites and are not inferred by the SDK. The QR Code manual does not establish authorization or consumer-consultation availability.
 
 ### Key Entities
 
@@ -82,6 +82,7 @@ An issuer can use the existing SP QR Code v3 composition while keeping it distin
 - **SC-002**: 100% of environment, issuer, or access-key mismatches are blocked from being reported as successful authorization.
 - **SC-003**: The QR Code URL in every accepted result corresponds to the same access key and environment as the authorized document.
 - **SC-004**: Integrators can distinguish authorization, QR Code generation, DANFE rendering, and offline contingency as separate capabilities.
+- **SC-005**: Authorization protocol numbers containing either 15 or 17 digits are preserved exactly as strings through response parsing and result mapping.
 
 ## Assumptions
 

@@ -43,12 +43,14 @@ sequenceDiagram
 - Quando a combinacao nao existe no catalogo inicial, a busca retorna `undefined`.
 - Quando mais de uma entrada corresponde sem authorizer, a busca retorna `undefined` em vez de escolher uma rota arbitrariamente.
 - SP production publica `nfe-authorization` e `nfe-authorization-batch` em endpoints normais da SEFAZ/SP; contingencia SVC-AN continua sendo rota distinta.
+- SP NFC-e production publica `nfce-authorization-sp` em `https://nfce.fazenda.sp.gov.br/ws/NFeAutorizacao4.asmx`, com provider `SP`; a rota homologada existente e SVC-AN permanecem distintas.
 - Os placeholders operacionais nao sao retornados por `findTransportServiceCatalogEntry`.
 - O primeiro incremento operacional de consultas adiciona a entrada homologada de `nfe-document-situation` ao catalogo publico.
 - O MVP operacional adiciona tambem `nfe-inutilization`, `nfe-cancellation` e `nfe-correction-letter` ao catalogo homologado publicado.
 - O slice recipient adiciona as entradas nacionais `nfe-recipient-distribution` e `nfe-recipient-manifestation` ao catalogo publico homologado.
 - O slice `015` publica entradas homologada e de producao para `nfce-authorization-pr`, mantendo a proveniencia especifica de `PR` mesmo com reuso do endpoint nacional compartilhado.
 - O slice `016` nao publica novo endpoint de contingencia; ele reaproveita o catalogo existente para tornar `SVC-AN` e `SVC-RS` observaveis como diagnostico em `authorizeNFe`.
+- A origem da rota NFC-e SP production e registrada em `specs/027-nfce-sp-producao/research.md`.
 
 ## Exemplos
 

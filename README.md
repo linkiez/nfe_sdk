@@ -26,7 +26,7 @@ O foco desta fase e oferecer uma base utilizavel para fluxos operacionais homolo
 ## O que este pacote entrega hoje
 
 - autorizacao inicial de NF-e em homologacao e autorizacao normal de producao para emissores SP identificados, com boundary explicita para outras rotas de contingencia
-- facade inicial de NFC-e em homologacao para o cohort publicado de UFs
+- autorizacao de NFC-e em homologacao para o cohort `SP + PR` e autorizacao normal de producao para NFC-e modelo 65 de SP
 - assinatura digital de NF-e e eventos com validacao local de XMLDSig
 - transporte SOAP 1.2 com classificacao estruturada de resultado
 - consulta de status, situacao do documento, lote assíncrono e inscricao de contribuinte
@@ -194,7 +194,10 @@ console.log(endpoint.endpointUrl, outcome.classification);
 
 ### NFC-e
 
-- `authorizeNFCe` publica a facade inicial de NFC-e em homologacao para o cohort promovido `SP + PR`
+- `authorizeNFCe` preserva homologacao para `SP + PR` e aceita producao somente para NFC-e modelo 65 de SP
+- a producao exige `unsignedXml` com chave, `cUF`, modelo e `tpAmb` coerentes, `SigningContext` do SDK, `RequestExecutor` configurado pelo integrador para mTLS e CSC provisionado externamente
+- a chamada de producao assina o XML, envia um unico documento com `indSinc=1` ao autorizador normal de SP e nao tenta novamente, consulta recibo ou usa SVC-AN como fallback
+- quando a resposta confirma autorizacao e o CSC foi informado, `authorizeNFCe` inclui `qrCodeUrl` v3 vinculado a chave e ambiente; rejeicoes e resultados incertos nao incluem URL, e o token CSC nao e retornado
 - `prepareNFCeSigningPrerequisites` prepara `chNFe`, `cDV` e `hashCSRT` a partir de insumos estruturados
 - `generateNFCeSPQRCode` gera a URL oficial paulista de `QR Code` no import raiz para `SP`, com semantica distinta de `homologation` e `production`, retornando `qrCodeUrl`, `baseUrl`, `accessKey`, `cscId` e `uf` sem expor o token bruto
 - o helper de `QR Code` e propositalmente menor que o cohort de autorizacao: `PR` continua fora deste recorte e recebe `unsupported-state` antes de qualquer composicao bem-sucedida

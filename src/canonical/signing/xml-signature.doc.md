@@ -7,8 +7,8 @@ Concentra a montagem XMLDSig de XML de `NFe` e `evento`, com algoritmos compativ
 ## Responsabilidades
 
 - Localizar `infNFe` ou `infEvento` e usar seu atributo `Id` como referencia.
-- Assinar NF-e com SHA-256 e canonicalizacao exclusiva.
-- Assinar eventos com RSA-SHA1, digest SHA1 e canonicalizacao XML C14N 1.0 exigidos pelo XSD de XMLDSig.
+- Assinar NF-e com RSA-SHA1, digest SHA1 e canonicalizacao XML C14N 1.0, conforme as restricoes do XSD 4.00 versionado.
+- Assinar eventos com RSA-SHA1, digest SHA1 e canonicalizacao XML C14N 1.0.
 - Inserir `Signature` no XML assinado.
 
 ## Entradas e saidas
@@ -31,7 +31,7 @@ flowchart TD
 ## Tratamento de erros e casos-limite
 
 - Rejeita XML sem `infNFe` ou sem atributo `Id`.
-- Mantem algoritmos separados e fixos para NF-e e eventos, conforme seus contratos XSD.
+- Usa RSA-SHA1, digest SHA1 e C14N 1.0 para NF-e e eventos, conforme as restricoes do XSD 4.00 em `xsd/PL_010c_NT2022_002v1.30`.
 
 ## Exemplos
 

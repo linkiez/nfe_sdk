@@ -31,6 +31,7 @@ flowchart TD
 - O slice `015` adiciona proveniencia dedicada para `nfce-authorization-pr`, registrando que `PR` reaproveita o endpoint homologado compartilhado enquanto deltas auxiliares estaduais permanecem fora do runtime.
 - O slice `016` adiciona placeholders diagnosticos de contingencia para `SVC-AN` e `SVC-RS`, preservando `EPEC` e `offline` como trilhas normativas ainda deferidas.
 - O slice `025` registra a fonte oficial e a pesquisa da feature para as rotas normais de producao SP, sem promover a contingencia SVC-AN como authorizer padrao.
+- O slice `027` registra a rota normal de producao NFC-e/SP com proveniencia especifica da pesquisa da feature, mantendo SVC-AN como contingencia separada.
 
 ## Exemplos
 

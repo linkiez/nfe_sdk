@@ -17,7 +17,9 @@ Descreve o contrato publico estabilizado no import raiz do pacote.
 - Descrever a preservacao de metadados diagnosticos sem expor valores sensiveis e os erros de protocolo por `tpAmb`, `nProt` ou `nRec` inconsistentes.
 - Descrever a ampliacao additive da facade operacional inicial de NFC-e homologada para o cohort promovido `SP + PR`.
 - Descrever a ampliacao additive do helper paulista `generateNFCeSPQRCode` como recorte menor que o cohort `SP + PR`.
-- Registrar que a facade NFC-e distingue `unsupported-state` e `unsupported-scope` antes do transporte, preservando `CSC`, `QR Code` e contingencia fora do runtime.
+- Registrar a autorizacao NFC-e homologada `SP + PR` e a autorizacao sincrona de producao SP modelo 65 com XML fiscal assinado.
+- Registrar os prerequisitos de producao `unsignedXml`, `SigningContext`, executor mTLS injetado e CSC, alem da associacao opcional do QR Code a autorizacao confirmada.
+- Registrar que a facade NFC-e distingue `unsupported-state` e `unsupported-scope` antes do transporte e preserva DANFE, credenciamento e contingencia fora do runtime.
 - Descrever a ampliacao additive do slice recipient homologado para distribuicao DFe e manifestacao.
 - Descrever a ampliacao additive do slice generic-event homologado para submissao de eventos suportados por uma facade unica.
 - Registrar que o slice generic-event mantem limites e exclusoes de escopo como boundary pre-transport explicita.
@@ -53,6 +55,10 @@ flowchart TD
   B --> K3[SP QR Code helper boundary]
   K3 --> K4[generateNFCeSPQRCode]
   K4 --> K5[SP-only]
+  B --> K6[SP production authorization]
+  K6 --> K7[sign unsignedXml]
+  K7 --> K8[synchronous SP SOAP]
+  K8 --> K9[authorized-only QR URL]
   B --> L[operational query boundary]
   B --> M[operational maintenance boundary]
   B --> N[recipient boundary]
@@ -65,6 +71,7 @@ flowchart TD
 - Nao realiza validacoes de entrada em runtime.
 - O helper paulista de `QR Code` precisa aparecer como additive e explicitamente menor que o recorte `SP + PR`.
 - A autorizacao NF-e em producao permanece limitada a SP e exige executor configurado pelo integrador para mTLS.
+- A autorizacao NFC-e em producao permanece limitada a um unico documento SP modelo 65, com XML/ambiente coerentes, sem retry, polling ou fallback.
 
 ## Exemplos
 
