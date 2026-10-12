@@ -20,7 +20,7 @@ When normal authorization is unavailable and an official contingency mode is app
 
 **Acceptance Scenarios**:
 
-1. **Given** an officially active and supported contingency route, **When** the issuer submits an eligible NF-e, **Then** the result identifies the contingency mode and its distinct processing state.
+1. **Given** a production NF-e for issuer SP with a valid document identity and a mode whose prerequisites are satisfied, **When** the issuer explicitly selects and submits that mode, **Then** the result identifies the contingency mode and its distinct processing state.
 2. **Given** no official activation evidence or an unsupported mode, **When** the issuer requests contingency, **Then** the system refuses silent switching and returns an actionable boundary.
 
 ### User Story 2 - Reconcile documents after service recovery (Priority: P2)
@@ -29,7 +29,7 @@ After normal service returns, the issuer can identify pending contingency docume
 
 **Why this priority**: Contingency documents can require later transmission, confirmation, or resolution and must not disappear from the operational flow.
 
-**Independent Test**: Feed pending, accepted, rejected, and inconclusive recovery responses and verify distinct final statuses and next actions.
+**Independent Test**: Feed pending, reconciled, rejected, unavailable, and inconclusive recovery responses and verify each state and its next action remains distinct.
 
 **Acceptance Scenarios**:
 
@@ -41,6 +41,14 @@ After normal service returns, the issuer can identify pending contingency docume
 - The contingency endpoint is unavailable or reports a different environment.
 - Recovery produces a duplicate, rejection, or inconclusive result.
 - A mode requires physical forms, manual authorization, or state-specific operator action.
+
+### Mode Eligibility
+
+- Runtime contingency support is limited to production NF-e for issuer SP (`cUF` `35`) with a document key consistent with the issuer and a payload accepted by the existing NF-e validation path.
+- SVC-AN requires explicit mode selection and one fresh production SVC status query returning `107`; any other, missing, wrong-environment, or unavailable status blocks authorization before transport.
+- EPEC registration requires a schema-valid EPEC event with complete issuer, recipient, invoice-direction, and tax-total details. Registration is not NF-e authorization; the matching NF-e is a separate explicit recovery submission after normal service returns.
+- FS-DA remains an assisted/unverified boundary and is not an automated SP authorization route.
+- An uncertain normal authorization outcome never automatically qualifies for contingency fallback or retry; the caller must resolve document identity and make a separate explicit request.
 
 ## Requirements
 
@@ -61,10 +69,12 @@ After normal service returns, the issuer can identify pending contingency docume
 - **CC-002**: Any contingency-specific schema or event family must be identified before implementation; no generated artifacts are presumed changed by this specification.
 - **CC-003**: Existing outcome classifications MUST NOT change meaning silently; a breaking change requires an explicit migration decision.
 - **CC-004**: Validation MUST include focused Jest scenarios, fixture-backed recovery cases, lint, format, type/build verification, and package-contract checks.
+- **CC-005**: The package remains ESM-only and keeps its existing root entry point. Changes are additive to existing exported facades; no CommonJS path or new package subpath is introduced.
+- **CC-006**: Reuse the existing NF-e 4.00 and EPEC event schemas. No generated output is presumed to change; any schema gap must be demonstrated before regeneration.
 
 ### Knowledge Sources & Provenance
 
-- **KS-001**: Primary sources: `SRC-RH-002`, MOC 7.0 (published November 2020; consulted 2026-05-19), and its internalized Anexo III, `docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/Anexo III - Manual de Contingência - NF-e.md` (version 7.00, November 2020; consulted 2026-10-10); `SRC-NFE-003`, SEFAZ/SP operational page (consulted 2026-05-16).
+- **KS-001**: Primary sources and consultation dates are maintained in `research.md`: `SRC-RH-002` (MOC 7.00, November 2020, consulted 2026-10-10), `SRC-NFE-006` (national NF-e Web Services table, consulted 2026-10-10), `SRC-NFE-007` (SEFAZ/SP contingency page, consulted 2026-10-10), and `SRC-NFE-008` (SEFAZ/SP EPEC guidance, consulted 2026-10-10). The MOC is normative for the national procedure; current SP pages establish state-published applicability. `SRC-NFE-009` was not usable and is not relied on.
 - **KS-002**: No secondary source is required. Operational comparisons must remain explicitly non-normative if introduced during planning.
 - **KS-003**: The exact current activation source, applicability of each contingency mode to SP, and any changes after MOC 7.0 require official-source revalidation during planning.
 
