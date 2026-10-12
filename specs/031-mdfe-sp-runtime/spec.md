@@ -83,9 +83,38 @@ An integrator can use the SP production environment only after the same operatio
 
 ### Knowledge Sources & Provenance
 
-- **KS-001**: Primary MDF-e manuals, schema packages, technical notes, and service catalogs are to be identified and versioned by spec `030`; this runtime specification MUST NOT advance to implementation until those sources are attached or internally captured with provenance.
+- **KS-001**: Primary MDF-e manuals, schema packages, technical notes, and service catalogs are inventoried in the spec `030` [source register](../030-mdfe-source-schema-baseline/research.md#source-register), [schema package inspections](../030-mdfe-source-schema-baseline/research.md#schema-package-inspections), and [SVRS route register](../030-mdfe-source-schema-baseline/research.md#svrs-service-route-register). This runtime specification MUST NOT advance to implementation while required evidence remains unverified.
 - **KS-002**: State-operational references are supplemental to national normative sources and MUST be labeled as such; secondary sources cannot establish fiscal behavior.
-- **KS-003**: The existing PR/PB captures are discovery leads only. Current SP routing, production availability, issuer prerequisites, event scope, and schema applicability remain unresolved until primary sources are verified through spec `030`.
+- **KS-003**: The existing PR/PB captures are discovery leads only. Current SVRS endpoints are cataloged, and SP's NF-e/CT-e accreditation context is documented, but complete issuer eligibility, event scope, actual environment deployment, and schema applicability remain unresolved in spec `030`.
+
+### Dependency Gate: Spec 030
+
+The linked [scope matrix](../030-mdfe-source-schema-baseline/research.md#initial-scope-matrix) is the controlling operation-by-environment decision record. It currently marks homologation operations `unverified/blocked`, production operations `deferred/blocked`, and contingency `excluded` in both environments. Do not interpret cataloged national endpoints as proof of SP issuer eligibility or runtime readiness.
+
+Implementation remains blocked until all of the following evidence gaps are resolved:
+
+- SVRS lists `PL_MDFe_300b_NT012025_1.04.zip`, but the inspected archive root identifies revision 1.05; SVRS must clarify package identity before it can be selected.
+- No authoritative applicability interval was found for the inspected base/NT packages or a complete mapping of package revision to operation, environment, and UF. NT 2026.001 rollout dates are scheduled evidence, not proof of deployment.
+- The current complete SP issuer/accreditation and environment-permission matrix, plus event subtype scope, is not established by the reviewed sources.
+- No official MDF-e contingency mode, activation, route, or recovery procedure was verified; contingency remains excluded.
+
+### Implementation Breakdown
+
+This specification is the end-to-end acceptance umbrella for the SP runtime. Detailed implementation ownership belongs to the following non-overlapping slices; satisfying a catalog entry alone does not satisfy an operation's evidence gate.
+
+| Order         | Feature                                                                                | Ownership and dependency                                                                                                                                 |
+| ------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1             | [032 MDF-e baseline applicability resolution](../032-mdfe-baseline-resolution/spec.md) | Resolve package identity/applicability, SP issuer eligibility, operations, and rollout; extends Feature 030's evidence or keeps blockers.                |
+| 2             | [033 MDF-e schema package and generation](../033-mdfe-schema-codegen/spec.md)          | Import only an approved schema baseline and make generation reproducible; depends on 032.                                                                |
+| 3             | [034 MDF-e document contract and validation](../034-mdfe-document-contract/spec.md)    | Define structured document preparation, serialization, and local validation; depends on 033.                                                             |
+| 4             | [035 MDF-e homologation authorization](../035-mdfe-homologation-authorization/spec.md) | Own signed issuance and authorization outcomes in the verified SP homologation scope; depends on 032-034.                                                |
+| 5a            | [036 MDF-e query operations](../036-mdfe-query-operations/spec.md)                     | Own query-by-key, service status, and non-closed-manifest operations; depends on 032-033 and operation-specific evidence.                                |
+| 5b            | [037 MDF-e lifecycle events](../037-mdfe-lifecycle-events/spec.md)                     | Own closure, cancellation, and only other verified event subtypes; depends on 032-033 and event-specific evidence.                                       |
+| 5c            | [038 MDF-e DFe distribution](../038-mdfe-distribution-dfe/spec.md)                     | Own distribution actors, query modes, and continuation behavior; depends on 032-033 and verified permissions.                                            |
+| 6             | [039 MDF-e SP production promotion](../039-mdfe-sp-production/spec.md)                 | Promote only individually verified operations after homologation and external prerequisites pass; depends on 035-038 for each promoted operation.        |
+| Evidence-only | [040 MDF-e contingency evidence gate](../040-mdfe-contingency-evidence/spec.md)        | Determine whether an official SP contingency procedure exists. It adds no runtime behavior; any positive result requires a separate implementation spec. |
+
+Features 036, 037, and 038 may be planned in parallel after their shared schema and evidence gates, but each operation remains independently blocked when its source, actor, or applicability evidence is missing. Feature 031 is complete only when the required slices meet its acceptance criteria; contingency remains excluded unless a separate source-backed implementation feature is approved.
 
 ### Key Entities
 
