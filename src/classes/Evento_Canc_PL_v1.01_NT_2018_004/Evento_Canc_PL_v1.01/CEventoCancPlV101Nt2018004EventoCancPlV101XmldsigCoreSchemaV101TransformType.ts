@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 import { TEventoCancPlV101Nt2018004EventoCancPlV101XmldsigCoreSchemaV101TransformUri } from '../../../types/Evento_Canc_PL_v1.01_NT_2018_004/Evento_Canc_PL_v1.01/TEventoCancPlV101Nt2018004EventoCancPlV101XmldsigCoreSchemaV101TransformUri';
 
 /**
@@ -29,8 +30,7 @@ export class CEventoCancPlV101Nt2018004EventoCancPlV101XmldsigCoreSchemaV101Tran
 
         if (props) {
 
-        	this.XPath = props.XPath;
-        	this.$Algorithm = props.$Algorithm;
+            assignSchemaProperties(this, props, ["XPath", "$Algorithm"]);
         }
     }
 }

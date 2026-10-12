@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfAg100JNfagTiposBasicoV100GHistCons } from './CPlNfAg100JNfagTiposBasicoV100GHistCons';
 
 /**
@@ -29,7 +30,7 @@ export class CPlNfAg100JNfagTiposBasicoV100GAgencia {
 
         if (props) {
 
-        	this.dEmissSelo = props.dEmissSelo;
+            assignSchemaProperties(this, props, ["dEmissSelo"]);
         	this.gHistCons = (props.gHistCons) ? new CPlNfAg100JNfagTiposBasicoV100GHistCons(props.gHistCons): undefined;
         }
     }

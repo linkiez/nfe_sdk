@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CConSitNFeXmldsigCoreSchemaV101TransformsType } from './CConSitNFeXmldsigCoreSchemaV101TransformsType';
 
 import { TConSitNFeXmldsigCoreSchemaV101DigestValueType } from '../../types/ConSitNFe/TConSitNFeXmldsigCoreSchemaV101DigestValueType';
@@ -44,10 +45,7 @@ export class CConSitNFeXmldsigCoreSchemaV101ReferenceType {
         if (props) {
 
         	this.Transforms = (props.Transforms) ? new CConSitNFeXmldsigCoreSchemaV101TransformsType(props.Transforms): undefined;
-        	this.DigestValue = props.DigestValue;
-        	this.$Id = props.$Id;
-        	this.$URI = props.$URI;
-        	this.$Type = props.$Type;
+            assignSchemaProperties(this, props, ["DigestValue", "$Id", "$URI", "$Type"]);
         }
     }
 }

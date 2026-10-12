@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoInsucessoNFePlV102XmldsigCoreSchemaV101TransformUri } from '../../types/Evento_InsucessoNFe_PL_v1.02/TEventoInsucessoNFePlV102XmldsigCoreSchemaV101TransformUri';
 
 /**
@@ -29,8 +30,7 @@ export class CEventoInsucessoNFePlV102XmldsigCoreSchemaV101TransformType {
 
         if (props) {
 
-        	this.XPath = props.XPath;
-        	this.$Algorithm = props.$Algorithm;
+            assignSchemaProperties(this, props, ["XPath", "$Algorithm"]);
         }
     }
 }

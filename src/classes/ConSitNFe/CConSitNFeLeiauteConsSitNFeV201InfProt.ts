@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Dados do protocolo de status
  */
@@ -51,14 +52,7 @@ export class CConSitNFeLeiauteConsSitNFeV201InfProt {
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.verAplic = props.verAplic;
-        	this.chNFe = props.chNFe;
-        	this.dhRecbto = props.dhRecbto;
-        	this.nProt = props.nProt;
-        	this.digVal = props.digVal;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
+            assignSchemaProperties(this, props, ["tpAmb", "verAplic", "chNFe", "dhRecbto", "nProt", "digVal", "cStat", "xMotivo"]);
         }
     }
 }

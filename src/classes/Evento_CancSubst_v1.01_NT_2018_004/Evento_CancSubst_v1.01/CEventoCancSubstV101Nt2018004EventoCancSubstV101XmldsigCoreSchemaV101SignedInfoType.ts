@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 import { CEventoCancSubstV101Nt2018004EventoCancSubstV101XmldsigCoreSchemaV101ReferenceType } from './CEventoCancSubstV101Nt2018004EventoCancSubstV101XmldsigCoreSchemaV101ReferenceType';
 
 /**
@@ -30,7 +31,7 @@ export class CEventoCancSubstV101Nt2018004EventoCancSubstV101XmldsigCoreSchemaV1
         if (props) {
 
         	this.Reference = (props.Reference) ? new CEventoCancSubstV101Nt2018004EventoCancSubstV101XmldsigCoreSchemaV101ReferenceType(props.Reference): undefined;
-        	this.$Id = props.$Id;
+            assignSchemaProperties(this, props, ["$Id"]);
         }
     }
 }

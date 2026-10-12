@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Totais referentes ao ICMS
  */
@@ -47,13 +48,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100IcmsTot {
 
         if (props) {
 
-        	this.vBC = props.vBC;
-        	this.vICMS = props.vICMS;
-        	this.vICMSDeson = props.vICMSDeson;
-        	this.vFCP = props.vFCP;
-        	this.vBCST = props.vBCST;
-        	this.vST = props.vST;
-        	this.vFCPST = props.vFCPST;
+            assignSchemaProperties(this, props, ["vBC", "vICMS", "vICMSDeson", "vFCP", "vBCST", "vST", "vFCPST"]);
         }
     }
 }

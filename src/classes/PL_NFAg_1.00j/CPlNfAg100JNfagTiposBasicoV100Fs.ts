@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Taxa de Fiscalização de Serviço
  */
@@ -31,9 +32,7 @@ export class CPlNfAg100JNfagTiposBasicoV100Fs {
 
         if (props) {
 
-        	this.vBCTFS = props.vBCTFS;
-        	this.pTFS = props.pTFS;
-        	this.vTFS = props.vTFS;
+            assignSchemaProperties(this, props, ["vBCTFS", "pTFS", "vTFS"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130LeiauteNFeV400Deduc } from './CPl010CNt2022002V130LeiauteNFeV400Deduc';
 
 import { CPl010CNt2022002V130LeiauteNFeV400ForDia } from './CPl010CNt2022002V130LeiauteNFeV400ForDia';
@@ -56,13 +57,9 @@ export class CPl010CNt2022002V130LeiauteNFeV400Cana {
         if (props) {
 
         	this.forDia = (props.forDia) ? new CPl010CNt2022002V130LeiauteNFeV400ForDia(props.forDia): undefined;
-        	this.qTotMes = props.qTotMes;
-        	this.qTotAnt = props.qTotAnt;
-        	this.qTotGer = props.qTotGer;
+            assignSchemaProperties(this, props, ["qTotMes", "qTotAnt", "qTotGer"]);
         	this.deduc = (props.deduc) ? new CPl010CNt2022002V130LeiauteNFeV400Deduc(props.deduc): undefined;
-        	this.vFor = props.vFor;
-        	this.vTotDed = props.vTotDed;
-        	this.vLiqFor = props.vLiqFor;
+            assignSchemaProperties(this, props, ["vFor", "vTotDed", "vLiqFor"]);
         }
     }
 }

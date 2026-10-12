@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPl010CNt2022002V130LeiauteNFeV400VerNFe } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130LeiauteNFeV400VerNFe';
 
 /**
@@ -33,9 +34,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400ConsReciNFe {
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.nRec = props.nRec;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["tpAmb", "nRec", "$versao"]);
         }
     }
 }

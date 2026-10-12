@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Grupo de informações dos Equipamentos de Medição
  */
@@ -35,10 +36,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100GMed {
 
         if (props) {
 
-        	this.dMedAnt = props.dMedAnt;
-        	this.vMedAnt = props.vMedAnt;
-        	this.dMedAtu = props.dMedAtu;
-        	this.vMedAtu = props.vMedAtu;
+            assignSchemaProperties(this, props, ["dMedAnt", "vMedAnt", "dMedAtu", "vMedAtu"]);
         }
     }
 }

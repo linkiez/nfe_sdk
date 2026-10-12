@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130LeiauteNFeV400IcmsTot } from './CPl010CNt2022002V130LeiauteNFeV400IcmsTot';
 
 import { CPl010CNt2022002V130LeiauteNFeV400IssqNtot } from './CPl010CNt2022002V130LeiauteNFeV400IssqNtot';
@@ -52,9 +53,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Total {
         	this.CPl010CNt2022002V130LeiauteNFeV400IcmsTot = (props.CPl010CNt2022002V130LeiauteNFeV400IcmsTot) ? new CPl010CNt2022002V130LeiauteNFeV400IcmsTot(props.CPl010CNt2022002V130LeiauteNFeV400IcmsTot): undefined;
         	this.CPl010CNt2022002V130LeiauteNFeV400IssqNtot = (props.CPl010CNt2022002V130LeiauteNFeV400IssqNtot) ? new CPl010CNt2022002V130LeiauteNFeV400IssqNtot(props.CPl010CNt2022002V130LeiauteNFeV400IssqNtot): undefined;
         	this.retTrib = (props.retTrib) ? new CPl010CNt2022002V130LeiauteNFeV400RetTrib(props.retTrib): undefined;
-        	this.ISTot = props.ISTot;
-        	this.IBSCBSTot = props.IBSCBSTot;
-        	this.vNFTot = props.vNFTot;
+            assignSchemaProperties(this, props, ["ISTot", "IBSCBSTot", "vNFTot"]);
         }
     }
 }

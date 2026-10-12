@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfAg100JEventoNfAgTiposBasicoV100Evento } from './CPlNfAg100JEventoNfAgTiposBasicoV100Evento';
 
 import { CPlNfAg100JEventoNfAgTiposBasicoV100RetEvento } from './CPlNfAg100JEventoNfAgTiposBasicoV100RetEvento';
@@ -51,10 +52,7 @@ export class CPlNfAg100JEventoNfAgTiposBasicoV100ProcEvento {
 
         	this.eventoNFAg = (props.eventoNFAg) ? new CPlNfAg100JEventoNfAgTiposBasicoV100Evento(props.eventoNFAg): undefined;
         	this.retEventoNFAg = (props.retEventoNFAg) ? new CPlNfAg100JEventoNfAgTiposBasicoV100RetEvento(props.retEventoNFAg): undefined;
-        	this.$versao = props.$versao;
-        	this.$ipTransmissor = props.$ipTransmissor;
-        	this.$nPortaCon = props.$nPortaCon;
-        	this.$dhConexao = props.$dhConexao;
+            assignSchemaProperties(this, props, ["$versao", "$ipTransmissor", "$nPortaCon", "$dhConexao"]);
         }
     }
 }

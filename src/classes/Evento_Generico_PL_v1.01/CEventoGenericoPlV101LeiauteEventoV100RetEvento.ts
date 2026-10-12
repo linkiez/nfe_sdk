@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoGenericoPlV101LeiauteEventoV100InfEvento } from './CEventoGenericoPlV101LeiauteEventoV100InfEvento';
 
 import { TEventoGenericoPlV101LeiauteEventoV100VerEvento } from '../../types/Evento_Generico_PL_v1.01/TEventoGenericoPlV101LeiauteEventoV100VerEvento';
@@ -35,9 +36,9 @@ export class CEventoGenericoPlV101LeiauteEventoV100RetEvento {
 
         if (props) {
 
-        	this.unknown = props.unknown;
+            assignSchemaProperties(this, props, ["unknown"]);
         	this.infEvento = (props.infEvento) ? new CEventoGenericoPlV101LeiauteEventoV100InfEvento(props.infEvento): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

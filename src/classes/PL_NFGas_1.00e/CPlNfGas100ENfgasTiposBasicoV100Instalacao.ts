@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100ENfgasTiposBasicoV100Classe } from '../../types/PL_NFGas_1.00e/TPlNfGas100ENfgasTiposBasicoV100Classe';
 
 import { TPlNfGas100ENfgasTiposBasicoV100Ligacao } from '../../types/PL_NFGas_1.00e/TPlNfGas100ENfgasTiposBasicoV100Ligacao';
@@ -31,8 +32,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100Instalacao {
 
         if (props) {
 
-        	this.tpInstalacao = props.tpInstalacao;
-        	this.tpClasse = props.tpClasse;
+            assignSchemaProperties(this, props, ["tpInstalacao", "tpClasse"]);
         }
     }
 }

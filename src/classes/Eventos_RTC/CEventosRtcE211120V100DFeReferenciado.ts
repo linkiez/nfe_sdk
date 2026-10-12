@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informar a chave da nota (NFe ou NFCe) emitida para o fornecimento nos casos em que a legislação obriga a emissão de documento fiscal.
  */
@@ -27,8 +28,7 @@ export class CEventosRtcE211120V100DFeReferenciado {
 
         if (props) {
 
-        	this.chaveAcesso = props.chaveAcesso;
-        	this.nItem = props.nItem;
+            assignSchemaProperties(this, props, ["chaveAcesso", "nItem"]);
         }
     }
 }

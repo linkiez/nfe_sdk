@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informações do Evento de Atualização da Data de Previsão de Entrega
  */
@@ -31,9 +32,7 @@ export class CEventosRtcE112150V100DetEvento {
 
         if (props) {
 
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.verAplic = props.verAplic;
-        	this.dPrevEntrega = props.dPrevEntrega;
+            assignSchemaProperties(this, props, ["cOrgaoAutor", "verAplic", "dPrevEntrega"]);
         }
     }
 }

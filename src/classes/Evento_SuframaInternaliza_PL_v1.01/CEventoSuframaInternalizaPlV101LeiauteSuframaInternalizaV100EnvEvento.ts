@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100Evento } from './CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100Evento';
 
 import { TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100VerEnvEvento } from '../../types/Evento_SuframaInternaliza_PL_v1.01/TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100VerEnvEvento';
@@ -32,7 +33,7 @@ export class CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100EnvEven
         if (props) {
 
         	this.evento = (props.evento) ? new CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100Evento(props.evento): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

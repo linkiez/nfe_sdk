@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100EDFeTiposBasicosV100Dec030204Rtc } from '../../types/PL_NFGas_1.00e/TPlNfGas100EDFeTiposBasicosV100Dec030204Rtc';
 
 import { TPlNfGas100EDFeTiposBasicosV100Dec1302Rtc } from '../../types/PL_NFGas_1.00e/TPlNfGas100EDFeTiposBasicosV100Dec1302Rtc';
@@ -31,8 +32,7 @@ export class CPlNfGas100EDFeTiposBasicosV100Dif {
 
         if (props) {
 
-        	this.pDif = props.pDif;
-        	this.vDif = props.vDif;
+            assignSchemaProperties(this, props, ["pDif", "vDif"]);
         }
     }
 }

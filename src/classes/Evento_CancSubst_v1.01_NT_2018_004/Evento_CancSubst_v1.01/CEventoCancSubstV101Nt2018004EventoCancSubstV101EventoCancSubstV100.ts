@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 import { TEventoCancSubstV101Nt2018004EventoCancSubstV101EventoCancSubstV100Evento } from '../../../types/Evento_CancSubst_v1.01_NT_2018_004/Evento_CancSubst_v1.01/TEventoCancSubstV101Nt2018004EventoCancSubstV101EventoCancSubstV100Evento';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoCancSubstV101Nt2018004EventoCancSubstV101EventoCancSubstV100
 
         if (props) {
 
-        	this.evento = props.evento;
+            assignSchemaProperties(this, props, ["evento"]);
         }
     }
 }

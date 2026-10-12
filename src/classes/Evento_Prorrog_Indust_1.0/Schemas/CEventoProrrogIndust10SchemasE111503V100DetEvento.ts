@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 /**
  * Informações do Cancelamento de Pedido de Prorrogação
  */
@@ -23,7 +24,7 @@ export class CEventoProrrogIndust10SchemasE111503V100DetEvento {
 
         if (props) {
 
-        	this.nProt = props.nProt;
+            assignSchemaProperties(this, props, ["nProt"]);
         }
     }
 }

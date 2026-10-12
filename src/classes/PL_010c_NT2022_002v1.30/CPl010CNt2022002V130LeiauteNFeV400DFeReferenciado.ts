@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Referenciamento de item de outros DFe
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400DFeReferenciado {
 
         if (props) {
 
-        	this.chaveAcesso = props.chaveAcesso;
+            assignSchemaProperties(this, props, ["chaveAcesso"]);
         }
     }
 }

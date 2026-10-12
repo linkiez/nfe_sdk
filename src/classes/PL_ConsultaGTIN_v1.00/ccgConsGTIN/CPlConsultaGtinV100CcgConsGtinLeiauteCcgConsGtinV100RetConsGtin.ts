@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 import { TPlConsultaGtinV100CcgConsGtinLeiauteCcgConsGtinV100VerConsGtin } from '../../../types/PL_ConsultaGTIN_v1.00/ccgConsGTIN/TPlConsultaGtinV100CcgConsGtinLeiauteCcgConsGtinV100VerConsGtin';
 
 /**
@@ -49,13 +50,7 @@ export class CPlConsultaGtinV100CcgConsGtinLeiauteCcgConsGtinV100RetConsGtin {
 
         if (props) {
 
-        	this.verAplic = props.verAplic;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
-        	this.dhResp = props.dhResp;
-        	this.GTIN = props.GTIN;
-        	this.tpGTIN = props.tpGTIN;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["verAplic", "cStat", "xMotivo", "dhResp", "GTIN", "tpGTIN", "$versao"]);
         }
     }
 }

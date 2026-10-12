@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoInsucessoNFePlV102LeiauteEventoInsucessoNFeV100TretEvento } from './CEventoInsucessoNFePlV102LeiauteEventoInsucessoNFeV100TretEvento';
 
 import { TEventoInsucessoNFePlV102LeiauteEventoInsucessoNFeV100VerEnvEvento } from '../../types/Evento_InsucessoNFe_PL_v1.02/TEventoInsucessoNFePlV102LeiauteEventoInsucessoNFeV100VerEnvEvento';
@@ -51,13 +52,9 @@ export class CEventoInsucessoNFePlV102LeiauteEventoInsucessoNFeV100RetEnvEvento 
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.verAplic = props.verAplic;
-        	this.cOrgao = props.cOrgao;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
+            assignSchemaProperties(this, props, ["tpAmb", "verAplic", "cOrgao", "cStat", "xMotivo"]);
         	this.retEvento = (props.retEvento) ? new CEventoInsucessoNFePlV102LeiauteEventoInsucessoNFeV100TretEvento(props.retEvento): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

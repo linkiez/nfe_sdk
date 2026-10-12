@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoCancPlV101ProcEventoCancNFeV100ProcEventoNFe } from '../../types/Evento_Canc_PL_v1.01/TEventoCancPlV101ProcEventoCancNFeV100ProcEventoNFe';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoCancPlV101ProcEventoCancNFeV100 {
 
         if (props) {
 
-        	this.procEventoNFe = props.procEventoNFe;
+            assignSchemaProperties(this, props, ["procEventoNFe"]);
         }
     }
 }

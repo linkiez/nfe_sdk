@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Totais referentes ao ISSQN
  */
@@ -63,17 +64,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400IssqNtot {
 
         if (props) {
 
-        	this.vServ = props.vServ;
-        	this.vBC = props.vBC;
-        	this.vISS = props.vISS;
-        	this.vPIS = props.vPIS;
-        	this.vCOFINS = props.vCOFINS;
-        	this.dCompet = props.dCompet;
-        	this.vDeducao = props.vDeducao;
-        	this.vOutro = props.vOutro;
-        	this.vDescIncond = props.vDescIncond;
-        	this.vDescCond = props.vDescCond;
-        	this.vISSRet = props.vISSRet;
+            assignSchemaProperties(this, props, ["vServ", "vBC", "vISS", "vPIS", "vCOFINS", "dCompet", "vDeducao", "vOutro", "vDescIncond", "vDescCond", "vISSRet"]);
         }
     }
 }

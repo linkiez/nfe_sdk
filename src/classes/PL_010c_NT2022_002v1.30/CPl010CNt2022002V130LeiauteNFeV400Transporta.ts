@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Dados do transportador
  */
@@ -49,8 +50,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Transporta {
 
         if (props) {
 
-        	this.IE = props.IE;
-        	this.UF = props.UF;
+            assignSchemaProperties(this, props, ["IE", "UF"]);
         }
     }
 }

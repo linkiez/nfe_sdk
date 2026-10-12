@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100TretEvento } from './CEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100TretEvento';
 
 import { TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100COrgaoIbge } from '../../types/Evento_SuframaVistoria_PL_v1.01/TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100COrgaoIbge';
@@ -53,13 +54,9 @@ export class CEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100RetEnvEvento 
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.verAplic = props.verAplic;
-        	this.cOrgao = props.cOrgao;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
+            assignSchemaProperties(this, props, ["tpAmb", "verAplic", "cOrgao", "cStat", "xMotivo"]);
         	this.retEvento = (props.retEvento) ? new CEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100TretEvento(props.retEvento): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

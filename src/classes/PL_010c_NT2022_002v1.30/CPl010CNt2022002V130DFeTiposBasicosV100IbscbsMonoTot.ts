@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130DFeTiposBasicosV100Gcbs } from './CPl010CNt2022002V130DFeTiposBasicosV100Gcbs';
 
 import { CPl010CNt2022002V130DFeTiposBasicosV100GEstornoCred } from './CPl010CNt2022002V130DFeTiposBasicosV100GEstornoCred';
@@ -49,7 +50,7 @@ export class CPl010CNt2022002V130DFeTiposBasicosV100IbscbsMonoTot {
 
         if (props) {
 
-        	this.vBCIBSCBS = props.vBCIBSCBS;
+            assignSchemaProperties(this, props, ["vBCIBSCBS"]);
         	this.gIBS = (props.gIBS) ? new CPl010CNt2022002V130DFeTiposBasicosV100Gibs(props.gIBS): undefined;
         	this.gCBS = (props.gCBS) ? new CPl010CNt2022002V130DFeTiposBasicosV100Gcbs(props.gCBS): undefined;
         	this.gMono = (props.gMono) ? new CPl010CNt2022002V130DFeTiposBasicosV100GMono(props.gMono): undefined;

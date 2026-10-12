@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Dados da retenção ICMS do Transporte
  */
@@ -39,11 +40,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400RetTransp {
 
         if (props) {
 
-        	this.vServ = props.vServ;
-        	this.vBCRet = props.vBCRet;
-        	this.pICMSRet = props.pICMSRet;
-        	this.vICMSRet = props.vICMSRet;
-        	this.cMunFG = props.cMunFG;
+            assignSchemaProperties(this, props, ["vServ", "vBCRet", "pICMSRet", "vICMSRet", "cMunFG"]);
         }
     }
 }

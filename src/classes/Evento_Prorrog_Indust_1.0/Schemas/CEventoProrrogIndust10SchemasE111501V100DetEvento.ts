@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 import { CEventoProrrogIndust10SchemasE111501V100ItemPedido } from './CEventoProrrogIndust10SchemasE111501V100ItemPedido';
 
 /**
@@ -29,7 +30,7 @@ export class CEventoProrrogIndust10SchemasE111501V100DetEvento {
 
         if (props) {
 
-        	this.nProt = props.nProt;
+            assignSchemaProperties(this, props, ["nProt"]);
         	this.itemPedido = (props.itemPedido) ? new CEventoProrrogIndust10SchemasE111501V100ItemPedido(props.itemPedido): undefined;
         }
     }

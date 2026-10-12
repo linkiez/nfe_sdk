@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfGas100EDFeTiposBasicosV100GibsMun } from './CPlNfGas100EDFeTiposBasicosV100GibsMun';
 
 import { CPlNfGas100EDFeTiposBasicosV100Gibsuf } from './CPlNfGas100EDFeTiposBasicosV100Gibsuf';
@@ -47,9 +48,7 @@ export class CPlNfGas100EDFeTiposBasicosV100Gibs {
 
         	this.gIBSUF = (props.gIBSUF) ? new CPlNfGas100EDFeTiposBasicosV100Gibsuf(props.gIBSUF): undefined;
         	this.gIBSMun = (props.gIBSMun) ? new CPlNfGas100EDFeTiposBasicosV100GibsMun(props.gIBSMun): undefined;
-        	this.vIBS = props.vIBS;
-        	this.vCredPres = props.vCredPres;
-        	this.vCredPresCondSus = props.vCredPresCondSus;
+            assignSchemaProperties(this, props, ["vIBS", "vCredPres", "vCredPresCondSus"]);
         }
     }
 }

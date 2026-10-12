@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130XmldsigCoreSchemaV101TransformsType } from './CPl010CNt2022002V130XmldsigCoreSchemaV101TransformsType';
 
 import { TPl010CNt2022002V130XmldsigCoreSchemaV101DigestValueType } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130XmldsigCoreSchemaV101DigestValueType';
@@ -44,10 +45,7 @@ export class CPl010CNt2022002V130XmldsigCoreSchemaV101ReferenceType {
         if (props) {
 
         	this.Transforms = (props.Transforms) ? new CPl010CNt2022002V130XmldsigCoreSchemaV101TransformsType(props.Transforms): undefined;
-        	this.DigestValue = props.DigestValue;
-        	this.$Id = props.$Id;
-        	this.$URI = props.$URI;
-        	this.$Type = props.$Type;
+            assignSchemaProperties(this, props, ["DigestValue", "$Id", "$URI", "$Type"]);
         }
     }
 }

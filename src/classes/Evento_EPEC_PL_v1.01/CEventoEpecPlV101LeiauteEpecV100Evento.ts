@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoEpecPlV101LeiauteEpecV100InfEvento } from './CEventoEpecPlV101LeiauteEpecV100InfEvento';
 
 import { TEventoEpecPlV101LeiauteEpecV100VerEvento } from '../../types/Evento_EPEC_PL_v1.01/TEventoEpecPlV101LeiauteEpecV100VerEvento';
@@ -35,9 +36,9 @@ export class CEventoEpecPlV101LeiauteEpecV100Evento {
 
         if (props) {
 
-        	this.unknown = props.unknown;
+            assignSchemaProperties(this, props, ["unknown"]);
         	this.infEvento = (props.infEvento) ? new CEventoEpecPlV101LeiauteEpecV100InfEvento(props.infEvento): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

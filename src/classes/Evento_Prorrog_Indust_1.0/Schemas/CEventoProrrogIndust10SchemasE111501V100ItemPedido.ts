@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 /**
  * Item do Pedido de Prorrogação. Recomenda-se agrupar a maior quantidade de itens em cada Pedido de Prorrogação
  */
@@ -23,7 +24,7 @@ export class CEventoProrrogIndust10SchemasE111501V100ItemPedido {
 
         if (props) {
 
-        	this.qtdeItem = props.qtdeItem;
+            assignSchemaProperties(this, props, ["qtdeItem"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informações de crédito
  */
@@ -27,8 +28,7 @@ export class CEventosRtcE211150V100GCredito {
 
         if (props) {
 
-        	this.vCredIBS = props.vCredIBS;
-        	this.vCredCBS = props.vCredCBS;
+            assignSchemaProperties(this, props, ["vCredIBS", "vCredCBS"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130LeiauteNFeV400Lacres } from './CPl010CNt2022002V130LeiauteNFeV400Lacres';
 
 /**
@@ -33,8 +34,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Vol {
 
         if (props) {
 
-        	this.pesoL = props.pesoL;
-        	this.pesoB = props.pesoB;
+            assignSchemaProperties(this, props, ["pesoL", "pesoB"]);
         	this.lacres = (props.lacres) ? new CPl010CNt2022002V130LeiauteNFeV400Lacres(props.lacres): undefined;
         }
     }

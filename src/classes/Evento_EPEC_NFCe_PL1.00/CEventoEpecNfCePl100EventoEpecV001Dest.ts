@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Sigla da UF do destinatário.
  */
@@ -45,7 +46,7 @@ export class CEventoEpecNfCePl100EventoEpecV001Dest {
 
         if (props) {
 
-        	this.UF = props.UF;
+            assignSchemaProperties(this, props, ["UF"]);
         }
     }
 }

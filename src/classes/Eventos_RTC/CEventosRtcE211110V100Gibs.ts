@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Runtime class for CEventosRtcE211110V100Gibs.
  */
@@ -27,8 +28,7 @@ export class CEventosRtcE211110V100Gibs {
 
         if (props) {
 
-        	this.pCredPres = props.pCredPres;
-        	this.vCredPres = props.vCredPres;
+            assignSchemaProperties(this, props, ["pCredPres", "vCredPres"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100ENfgasTiposBasicoV100Email } from '../../types/PL_NFGas_1.00e/TPlNfGas100ENfgasTiposBasicoV100Email';
 
 /**
@@ -33,9 +34,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100Endereco {
 
         if (props) {
 
-        	this.cMun = props.cMun;
-        	this.UF = props.UF;
-        	this.email = props.email;
+            assignSchemaProperties(this, props, ["cMun", "UF", "email"]);
         }
     }
 }

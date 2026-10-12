@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informar a quantidade que não foi fornecida e teve o imposto antecipado
  */
@@ -23,7 +24,7 @@ export class CEventosRtcE112140V100GControleEstoque {
 
         if (props) {
 
-        	this.qNaoFornecida = props.qNaoFornecida;
+            assignSchemaProperties(this, props, ["qNaoFornecida"]);
         }
     }
 }

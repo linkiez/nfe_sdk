@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Dados das duplicatas NT 2011/004
  */
@@ -27,8 +28,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Dup {
 
         if (props) {
 
-        	this.dVenc = props.dVenc;
-        	this.vDup = props.vDup;
+            assignSchemaProperties(this, props, ["dVenc", "vDup"]);
         }
     }
 }

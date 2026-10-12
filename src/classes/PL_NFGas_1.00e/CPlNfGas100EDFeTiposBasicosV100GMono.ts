@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100EDFeTiposBasicosV100Dec1302Rtc } from '../../types/PL_NFGas_1.00e/TPlNfGas100EDFeTiposBasicosV100Dec1302Rtc';
 
 /**
@@ -45,12 +46,7 @@ export class CPlNfGas100EDFeTiposBasicosV100GMono {
 
         if (props) {
 
-        	this.vIBSMono = props.vIBSMono;
-        	this.vCBSMono = props.vCBSMono;
-        	this.vIBSMonoReten = props.vIBSMonoReten;
-        	this.vCBSMonoReten = props.vCBSMonoReten;
-        	this.vIBSMonoRet = props.vIBSMonoRet;
-        	this.vCBSMonoRet = props.vCBSMonoRet;
+            assignSchemaProperties(this, props, ["vIBSMono", "vCBSMono", "vIBSMonoReten", "vCBSMonoReten", "vIBSMonoRet", "vCBSMonoRet"]);
         }
     }
 }

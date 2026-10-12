@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoEntregaNFePlV101RetEventoEntregaNFeV100RetEnvEvento } from '../../types/Evento_EntregaNFe_PL_v1.01/TEventoEntregaNFePlV101RetEventoEntregaNFeV100RetEnvEvento';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoEntregaNFePlV101RetEventoEntregaNFeV100 {
 
         if (props) {
 
-        	this.retEnvEvento = props.retEnvEvento;
+            assignSchemaProperties(this, props, ["retEnvEvento"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoCCePlV101XmldsigCoreSchemaV101KeyInfoType } from './CEventoCCePlV101XmldsigCoreSchemaV101KeyInfoType';
 
 import { CEventoCCePlV101XmldsigCoreSchemaV101SignatureValueType } from './CEventoCCePlV101XmldsigCoreSchemaV101SignatureValueType';
@@ -44,7 +45,7 @@ export class CEventoCCePlV101XmldsigCoreSchemaV101SignatureType {
         	this.SignedInfo = (props.SignedInfo) ? new CEventoCCePlV101XmldsigCoreSchemaV101SignedInfoType(props.SignedInfo): undefined;
         	this.SignatureValue = (props.SignatureValue) ? new CEventoCCePlV101XmldsigCoreSchemaV101SignatureValueType(props.SignatureValue): undefined;
         	this.KeyInfo = (props.KeyInfo) ? new CEventoCCePlV101XmldsigCoreSchemaV101KeyInfoType(props.KeyInfo): undefined;
-        	this.$Id = props.$Id;
+            assignSchemaProperties(this, props, ["$Id"]);
         }
     }
 }

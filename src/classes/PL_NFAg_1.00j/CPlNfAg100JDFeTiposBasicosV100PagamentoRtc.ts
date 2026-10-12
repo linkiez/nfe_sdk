@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JDFeTiposBasicosV100CnpjBaseRtc } from '../../types/PL_NFAg_1.00j/TPlNfAg100JDFeTiposBasicosV100CnpjBaseRtc';
 
 import { TPlNfAg100JDFeTiposBasicosV100CnpjRtc } from '../../types/PL_NFAg_1.00j/TPlNfAg100JDFeTiposBasicosV100CnpjRtc';
@@ -45,11 +46,7 @@ export class CPlNfAg100JDFeTiposBasicosV100PagamentoRtc {
 
         if (props) {
 
-        	this.tpMeioPgto = props.tpMeioPgto;
-        	this.CNPJReceb = props.CNPJReceb;
-        	this.CNPJBasePSP = props.CNPJBasePSP;
-        	this.$nPag = props.$nPag;
-        	this.$idTransacao = props.$idTransacao;
+            assignSchemaProperties(this, props, ["tpMeioPgto", "CNPJReceb", "CNPJBasePSP", "$nPag", "$idTransacao"]);
         }
     }
 }

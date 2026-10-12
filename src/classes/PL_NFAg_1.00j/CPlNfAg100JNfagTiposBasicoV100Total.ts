@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfAg100JNfagTiposBasicoV100VRetTribTot } from './CPlNfAg100JNfagTiposBasicoV100VRetTribTot';
 
 /**
@@ -57,15 +58,9 @@ export class CPlNfAg100JNfagTiposBasicoV100Total {
 
         if (props) {
 
-        	this.vProd = props.vProd;
+            assignSchemaProperties(this, props, ["vProd"]);
         	this.vRetTribTot = (props.vRetTribTot) ? new CPlNfAg100JNfagTiposBasicoV100VRetTribTot(props.vRetTribTot): undefined;
-        	this.vCOFINS = props.vCOFINS;
-        	this.vPIS = props.vPIS;
-        	this.vTFS = props.vTFS;
-        	this.vTFU = props.vTFU;
-        	this.vNF = props.vNF;
-        	this.IBSCBSTot = props.IBSCBSTot;
-        	this.vTotDFe = props.vTotDFe;
+            assignSchemaProperties(this, props, ["vCOFINS", "vPIS", "vTFS", "vTFU", "vNF", "IBSCBSTot", "vTotDFe"]);
         }
     }
 }

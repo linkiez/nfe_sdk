@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Grupo de informações de retenção de tributos federais
  */
@@ -35,10 +36,7 @@ export class CPlNfAg100JNfagTiposBasicoV100RetTrib {
 
         if (props) {
 
-        	this.vRetPIS = props.vRetPIS;
-        	this.vRetCofins = props.vRetCofins;
-        	this.vRetCSLL = props.vRetCSLL;
-        	this.vIRRF = props.vIRRF;
+            assignSchemaProperties(this, props, ["vRetPIS", "vRetCofins", "vRetCSLL", "vIRRF"]);
         }
     }
 }

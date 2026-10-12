@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JNfagTiposBasicoV100Ligacao } from '../../types/PL_NFAg_1.00j/TPlNfAg100JNfagTiposBasicoV100Ligacao';
 
 /**
@@ -25,7 +26,7 @@ export class CPlNfAg100JNfagTiposBasicoV100Ligacao {
 
         if (props) {
 
-        	this.tpLigacao = props.tpLigacao;
+            assignSchemaProperties(this, props, ["tpLigacao"]);
         }
     }
 }

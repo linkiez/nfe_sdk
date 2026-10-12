@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Identificação do Ambiente: 1 - Produção 2 - Homologação
  */
@@ -59,16 +60,7 @@ export class CEventoInsucessoNFePlV102LeiauteEventoInsucessoNFeV100InfEvento {
 
         if (props) {
 
-        	this.detEvento = props.detEvento;
-        	this.cOrgao = props.cOrgao;
-        	this.tpAmb = props.tpAmb;
-        	this.chNFe = props.chNFe;
-        	this.dhEvento = props.dhEvento;
-        	this.verAplic = props.verAplic;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.nProt = props.nProt;
+            assignSchemaProperties(this, props, ["detEvento", "cOrgao", "tpAmb", "chNFe", "dhEvento", "verAplic", "cStat", "xMotivo", "cOrgaoAutor", "nProt"]);
         }
     }
 }

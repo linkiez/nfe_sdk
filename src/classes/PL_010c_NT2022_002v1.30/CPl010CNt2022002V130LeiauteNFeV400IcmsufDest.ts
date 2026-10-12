@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Grupo a ser informado nas vendas interestarduais para consumidor final, não contribuinte de ICMS
  */
@@ -51,14 +52,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400IcmsufDest {
 
         if (props) {
 
-        	this.vBCUFDest = props.vBCUFDest;
-        	this.vBCFCPUFDest = props.vBCFCPUFDest;
-        	this.pFCPUFDest = props.pFCPUFDest;
-        	this.pICMSUFDest = props.pICMSUFDest;
-        	this.pICMSInterPart = props.pICMSInterPart;
-        	this.vFCPUFDest = props.vFCPUFDest;
-        	this.vICMSUFDest = props.vICMSUFDest;
-        	this.vICMSUFRemet = props.vICMSUFRemet;
+            assignSchemaProperties(this, props, ["vBCUFDest", "vBCFCPUFDest", "pFCPUFDest", "pICMSUFDest", "pICMSInterPart", "vFCPUFDest", "vICMSUFDest", "vICMSUFRemet"]);
         }
     }
 }

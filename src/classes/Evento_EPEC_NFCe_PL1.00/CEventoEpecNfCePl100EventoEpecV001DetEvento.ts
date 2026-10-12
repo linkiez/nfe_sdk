@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoEpecNfCePl100EventoEpecV001Dest } from './CEventoEpecNfCePl100EventoEpecV001Dest';
 
 /**
@@ -49,13 +50,9 @@ export class CEventoEpecNfCePl100EventoEpecV001DetEvento {
 
         if (props) {
 
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.verAplic = props.verAplic;
-        	this.dhEmi = props.dhEmi;
-        	this.IE = props.IE;
+            assignSchemaProperties(this, props, ["cOrgaoAutor", "verAplic", "dhEmi", "IE"]);
         	this.dest = (props.dest) ? new CEventoEpecNfCePl100EventoEpecV001Dest(props.dest): undefined;
-        	this.vNF = props.vNF;
-        	this.vICMS = props.vICMS;
+            assignSchemaProperties(this, props, ["vNF", "vICMS"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100ENfgasTiposBasicoV100GrContrat } from '../../types/PL_NFGas_1.00e/TPlNfGas100ENfgasTiposBasicoV100GrContrat';
 
 /**
@@ -29,8 +30,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100GVolContrat {
 
         if (props) {
 
-        	this.tpVolContrat = props.tpVolContrat;
-        	this.qUnidContrat = props.qUnidContrat;
+            assignSchemaProperties(this, props, ["tpVolContrat", "qUnidContrat"]);
         }
     }
 }

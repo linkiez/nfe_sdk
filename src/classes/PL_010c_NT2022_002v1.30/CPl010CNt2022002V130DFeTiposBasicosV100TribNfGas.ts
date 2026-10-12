@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130DFeTiposBasicosV100Cibs } from './CPl010CNt2022002V130DFeTiposBasicosV100Cibs';
 
 import { CPl010CNt2022002V130DFeTiposBasicosV100EstornoCred } from './CPl010CNt2022002V130DFeTiposBasicosV100EstornoCred';
@@ -69,9 +70,7 @@ export class CPl010CNt2022002V130DFeTiposBasicosV100TribNfGas {
 
         if (props) {
 
-        	this.CST = props.CST;
-        	this.cClassTrib = props.cClassTrib;
-        	this.indDoacao = props.indDoacao;
+            assignSchemaProperties(this, props, ["CST", "cClassTrib", "indDoacao"]);
         	this.gEstornoCred = (props.gEstornoCred) ? new CPl010CNt2022002V130DFeTiposBasicosV100EstornoCred(props.gEstornoCred): undefined;
         }
     }

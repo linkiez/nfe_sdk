@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informação de IPI devolvido
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Ipi {
 
         if (props) {
 
-        	this.vIPIDevol = props.vIPIDevol;
+            assignSchemaProperties(this, props, ["vIPIDevol"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Grupo de Informação do Provedor de Assinatura e Autorização
  */
@@ -23,7 +24,7 @@ export class CPlNfAg100JNfagTiposBasicoV100InfPaa {
 
         if (props) {
 
-        	this.CNPJPAA = props.CNPJPAA;
+            assignSchemaProperties(this, props, ["CNPJPAA"]);
         }
     }
 }

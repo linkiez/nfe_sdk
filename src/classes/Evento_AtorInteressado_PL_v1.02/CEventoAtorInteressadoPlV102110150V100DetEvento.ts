@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Schema XML de validação do evento de Ator Interessado na NF-e - Transportador (110150)”
  */
@@ -27,8 +28,7 @@ export class CEventoAtorInteressadoPlV102110150V100DetEvento {
 
         if (props) {
 
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.verAplic = props.verAplic;
+            assignSchemaProperties(this, props, ["cOrgaoAutor", "verAplic"]);
         }
     }
 }

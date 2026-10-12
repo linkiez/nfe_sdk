@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100InfEvento } from './CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100InfEvento';
 
 import { TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100VerEvento } from '../../types/Evento_SuframaInternaliza_PL_v1.01/TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100VerEvento';
@@ -35,9 +36,9 @@ export class CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100TretEve
 
         if (props) {
 
-        	this.unknown = props.unknown;
+            assignSchemaProperties(this, props, ["unknown"]);
         	this.infEvento = (props.infEvento) ? new CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100InfEvento(props.infEvento): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JNfagTiposBasicoV100FatNfAg } from '../../types/PL_NFAg_1.00j/TPlNfAg100JNfagTiposBasicoV100FatNfAg';
 
 import { TPlNfAg100JNfagTiposBasicoV100FinNfAg } from '../../types/PL_NFAg_1.00j/TPlNfAg100JNfagTiposBasicoV100FinNfAg';
@@ -69,17 +70,7 @@ export class CPlNfAg100JNfagTiposBasicoV100Ide {
 
         if (props) {
 
-        	this.cUF = props.cUF;
-        	this.tpAmb = props.tpAmb;
-        	this.mod = props.mod;
-        	this.serie = props.serie;
-        	this.nNF = props.nNF;
-        	this.dhEmi = props.dhEmi;
-        	this.tpEmis = props.tpEmis;
-        	this.cMunFG = props.cMunFG;
-        	this.finNFAg = props.finNFAg;
-        	this.tpFat = props.tpFat;
-        	this.gCompraGov = props.gCompraGov;
+            assignSchemaProperties(this, props, ["cUF", "tpAmb", "mod", "serie", "nNF", "dhEmi", "tpEmis", "cMunFG", "finNFAg", "tpFat", "gCompraGov"]);
         }
     }
 }

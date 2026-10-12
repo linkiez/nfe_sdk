@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JDFeTiposBasicosV100Cst } from '../../types/PL_NFAg_1.00j/TPlNfAg100JDFeTiposBasicosV100Cst';
 
 import { TPlNfAg100JDFeTiposBasicosV100TcClassTrib } from '../../types/PL_NFAg_1.00j/TPlNfAg100JDFeTiposBasicosV100TcClassTrib';
@@ -31,8 +32,7 @@ export class CPlNfAg100JDFeTiposBasicosV100Is {
 
         if (props) {
 
-        	this.CSTIS = props.CSTIS;
-        	this.cClassTribIS = props.cClassTribIS;
+            assignSchemaProperties(this, props, ["CSTIS", "cClassTribIS"]);
         }
     }
 }

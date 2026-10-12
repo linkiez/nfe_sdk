@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPl010CNt2022002V130DFeTiposBasicosV100Dec1302Rtc } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130DFeTiposBasicosV100Dec1302Rtc';
 
 /**
@@ -29,8 +30,7 @@ export class CPl010CNt2022002V130DFeTiposBasicosV100TransfCred {
 
         if (props) {
 
-        	this.vIBS = props.vIBS;
-        	this.vCBS = props.vCBS;
+            assignSchemaProperties(this, props, ["vIBS", "vCBS"]);
         }
     }
 }

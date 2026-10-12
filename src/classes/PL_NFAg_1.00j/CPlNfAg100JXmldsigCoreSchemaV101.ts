@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JXmldsigCoreSchemaV101Signature } from '../../types/PL_NFAg_1.00j/TPlNfAg100JXmldsigCoreSchemaV101Signature';
 
 /**
@@ -25,7 +26,7 @@ export class CPlNfAg100JXmldsigCoreSchemaV101 {
 
         if (props) {
 
-        	this.signature = props.signature;
+            assignSchemaProperties(this, props, ["signature"]);
         }
     }
 }

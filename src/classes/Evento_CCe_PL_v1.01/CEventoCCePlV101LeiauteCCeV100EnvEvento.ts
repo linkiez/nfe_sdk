@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoCCePlV101LeiauteCCeV100Evento } from './CEventoCCePlV101LeiauteCCeV100Evento';
 
 import { TEventoCCePlV101LeiauteCCeV100VerEnvEvento } from '../../types/Evento_CCe_PL_v1.01/TEventoCCePlV101LeiauteCCeV100VerEnvEvento';
@@ -32,7 +33,7 @@ export class CEventoCCePlV101LeiauteCCeV100EnvEvento {
         if (props) {
 
         	this.evento = (props.evento) ? new CEventoCCePlV101LeiauteCCeV100Evento(props.evento): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

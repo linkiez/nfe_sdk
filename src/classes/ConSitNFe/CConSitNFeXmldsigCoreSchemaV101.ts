@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TConSitNFeXmldsigCoreSchemaV101Signature } from '../../types/ConSitNFe/TConSitNFeXmldsigCoreSchemaV101Signature';
 
 /**
@@ -25,7 +26,7 @@ export class CConSitNFeXmldsigCoreSchemaV101 {
 
         if (props) {
 
-        	this.signature = props.signature;
+            assignSchemaProperties(this, props, ["signature"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoEpecPlV101XmldsigCoreSchemaV101TransformUri } from '../../types/Evento_EPEC_PL_v1.01/TEventoEpecPlV101XmldsigCoreSchemaV101TransformUri';
 
 /**
@@ -29,8 +30,7 @@ export class CEventoEpecPlV101XmldsigCoreSchemaV101TransformType {
 
         if (props) {
 
-        	this.XPath = props.XPath;
-        	this.$Algorithm = props.$Algorithm;
+            assignSchemaProperties(this, props, ["XPath", "$Algorithm"]);
         }
     }
 }

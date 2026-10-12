@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informar a quantidade de consumo do item
  */
@@ -23,7 +24,7 @@ export class CEventosRtcE211140V100GControleEstoque {
 
         if (props) {
 
-        	this.qComb = props.qComb;
+            assignSchemaProperties(this, props, ["qComb"]);
         }
     }
 }

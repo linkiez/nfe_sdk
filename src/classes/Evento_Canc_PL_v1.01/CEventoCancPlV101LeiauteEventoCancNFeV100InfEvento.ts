@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoCancPlV101LeiauteEventoCancNFeV100DetEvento } from './CEventoCancPlV101LeiauteEventoCancNFeV100DetEvento';
 
 import { TEventoCancPlV101LeiauteEventoCancNFeV100COrgaoIbge } from '../../types/Evento_Canc_PL_v1.01/TEventoCancPlV101LeiauteEventoCancNFeV100COrgaoIbge';
@@ -81,15 +82,9 @@ export class CEventoCancPlV101LeiauteEventoCancNFeV100InfEvento {
 
         if (props) {
 
-        	this.cOrgao = props.cOrgao;
-        	this.tpAmb = props.tpAmb;
-        	this.chNFe = props.chNFe;
-        	this.dhEvento = props.dhEvento;
+            assignSchemaProperties(this, props, ["cOrgao", "tpAmb", "chNFe", "dhEvento"]);
         	this.detEvento = (props.detEvento) ? new CEventoCancPlV101LeiauteEventoCancNFeV100DetEvento(props.detEvento): undefined;
-        	this.verAplic = props.verAplic;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
-        	this.nProt = props.nProt;
+            assignSchemaProperties(this, props, ["verAplic", "cStat", "xMotivo", "nProt"]);
         }
     }
 }

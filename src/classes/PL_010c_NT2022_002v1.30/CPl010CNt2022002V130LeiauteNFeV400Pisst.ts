@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Dados do PIS Substituição Tributária
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Pisst {
 
         if (props) {
 
-        	this.vPIS = props.vPIS;
+            assignSchemaProperties(this, props, ["vPIS"]);
         }
     }
 }

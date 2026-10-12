@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Dados do COFINS da Substituição Tributaria;
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Cofinsst {
 
         if (props) {
 
-        	this.vCOFINS = props.vCOFINS;
+            assignSchemaProperties(this, props, ["vCOFINS"]);
         }
     }
 }

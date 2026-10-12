@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TConSitNFeConsSitNFeV201ConsSitNFe } from '../../types/ConSitNFe/TConSitNFeConsSitNFeV201ConsSitNFe';
 
 /**
@@ -25,7 +26,7 @@ export class CConSitNFeConsSitNFeV201 {
 
         if (props) {
 
-        	this.consSitNFe = props.consSitNFe;
+            assignSchemaProperties(this, props, ["consSitNFe"]);
         }
     }
 }

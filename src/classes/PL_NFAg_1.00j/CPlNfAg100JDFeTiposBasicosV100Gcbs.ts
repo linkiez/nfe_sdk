@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfAg100JDFeTiposBasicosV100DevTrib } from './CPlNfAg100JDFeTiposBasicosV100DevTrib';
 
 import { CPlNfAg100JDFeTiposBasicosV100Dif } from './CPlNfAg100JDFeTiposBasicosV100Dif';
@@ -65,12 +66,7 @@ export class CPlNfAg100JDFeTiposBasicosV100Gcbs {
 
         if (props) {
 
-        	this.vDif = props.vDif;
-        	this.vDevTrib = props.vDevTrib;
-        	this.vCBS = props.vCBS;
-        	this.vCredPres = props.vCredPres;
-        	this.vCredPresCondSus = props.vCredPresCondSus;
-        	this.pCBS = props.pCBS;
+            assignSchemaProperties(this, props, ["vDif", "vDevTrib", "vCBS", "vCredPres", "vCredPresCondSus", "pCBS"]);
         	this.gDif = (props.gDif) ? new CPlNfAg100JDFeTiposBasicosV100Dif(props.gDif): undefined;
         	this.gDevTrib = (props.gDevTrib) ? new CPlNfAg100JDFeTiposBasicosV100DevTrib(props.gDevTrib): undefined;
         	this.gRed = (props.gRed) ? new CPlNfAg100JDFeTiposBasicosV100Red(props.gRed): undefined;

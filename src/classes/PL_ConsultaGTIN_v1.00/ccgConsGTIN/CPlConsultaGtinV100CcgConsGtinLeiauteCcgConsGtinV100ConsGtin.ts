@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 import { TPlConsultaGtinV100CcgConsGtinLeiauteCcgConsGtinV100VerConsGtin } from '../../../types/PL_ConsultaGTIN_v1.00/ccgConsGTIN/TPlConsultaGtinV100CcgConsGtinLeiauteCcgConsGtinV100VerConsGtin';
 
 /**
@@ -29,8 +30,7 @@ export class CPlConsultaGtinV100CcgConsGtinLeiauteCcgConsGtinV100ConsGtin {
 
         if (props) {
 
-        	this.GTIN = props.GTIN;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["GTIN", "$versao"]);
         }
     }
 }

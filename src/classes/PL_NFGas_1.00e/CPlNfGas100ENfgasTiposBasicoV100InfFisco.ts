@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Mensagem do Fisco
  */
@@ -23,7 +24,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100InfFisco {
 
         if (props) {
 
-        	this.xMsg = props.xMsg;
+            assignSchemaProperties(this, props, ["xMsg"]);
         }
     }
 }

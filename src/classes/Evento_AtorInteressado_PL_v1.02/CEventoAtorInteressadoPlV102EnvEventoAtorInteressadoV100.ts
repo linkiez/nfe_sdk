@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoAtorInteressadoPlV102EnvEventoAtorInteressadoV100EnvEvento } from '../../types/Evento_AtorInteressado_PL_v1.02/TEventoAtorInteressadoPlV102EnvEventoAtorInteressadoV100EnvEvento';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoAtorInteressadoPlV102EnvEventoAtorInteressadoV100 {
 
         if (props) {
 
-        	this.envEvento = props.envEvento;
+            assignSchemaProperties(this, props, ["envEvento"]);
         }
     }
 }

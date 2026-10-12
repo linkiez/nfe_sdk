@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informar a quantidade do item a ser imobilizado
  */
@@ -23,7 +24,7 @@ export class CEventosRtcE211130V100GControleEstoque {
 
         if (props) {
 
-        	this.qImobilizado = props.qImobilizado;
+            assignSchemaProperties(this, props, ["qImobilizado"]);
         }
     }
 }

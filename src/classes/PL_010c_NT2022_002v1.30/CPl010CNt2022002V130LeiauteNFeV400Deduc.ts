@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Deduções - Taxas e Contribuições
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Deduc {
 
         if (props) {
 
-        	this.vDed = props.vDed;
+            assignSchemaProperties(this, props, ["vDed"]);
         }
     }
 }

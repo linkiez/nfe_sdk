@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100EDFeTiposBasicosV100Dec1302Rtc } from '../../types/PL_NFGas_1.00e/TPlNfGas100EDFeTiposBasicosV100Dec1302Rtc';
 
 /**
@@ -25,7 +26,7 @@ export class CPlNfGas100EDFeTiposBasicosV100DevTrib {
 
         if (props) {
 
-        	this.vDevTrib = props.vDevTrib;
+            assignSchemaProperties(this, props, ["vDevTrib"]);
         }
     }
 }

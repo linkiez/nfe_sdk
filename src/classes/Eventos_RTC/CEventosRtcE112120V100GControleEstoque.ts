@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informar a quantidade que não atendeu os requisitos para a conversão em isenção
  */
@@ -23,7 +24,7 @@ export class CEventosRtcE112120V100GControleEstoque {
 
         if (props) {
 
-        	this.qtde = props.qtde;
+            assignSchemaProperties(this, props, ["qtde"]);
         }
     }
 }

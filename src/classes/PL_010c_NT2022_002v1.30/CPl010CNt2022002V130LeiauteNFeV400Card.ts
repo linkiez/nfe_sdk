@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Grupo de Cartões, PIX, Boletos e outros Pagamentos Eletrônicos
  */
@@ -27,8 +28,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Card {
 
         if (props) {
 
-        	this.CNPJ = props.CNPJ;
-        	this.CNPJReceb = props.CNPJReceb;
+            assignSchemaProperties(this, props, ["CNPJ", "CNPJReceb"]);
         }
     }
 }

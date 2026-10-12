@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100ENfgasV100NfGas } from '../../types/PL_NFGas_1.00e/TPlNfGas100ENfgasV100NfGas';
 
 /**
@@ -25,7 +26,7 @@ export class CPlNfGas100ENfgasV100 {
 
         if (props) {
 
-        	this.nFGas = props.nFGas;
+            assignSchemaProperties(this, props, ["nFGas"]);
         }
     }
 }

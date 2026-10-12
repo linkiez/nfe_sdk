@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoEpecNfCePl100RetEventoEpecV001InfEvento } from './CEventoEpecNfCePl100RetEventoEpecV001InfEvento';
 
 /**
@@ -29,7 +30,7 @@ export class CEventoEpecNfCePl100RetEventoEpecV001RetEvento {
 
         if (props) {
 
-        	this.unknown = props.unknown;
+            assignSchemaProperties(this, props, ["unknown"]);
         	this.infEvento = (props.infEvento) ? new CEventoEpecNfCePl100RetEventoEpecV001InfEvento(props.infEvento): undefined;
         }
     }

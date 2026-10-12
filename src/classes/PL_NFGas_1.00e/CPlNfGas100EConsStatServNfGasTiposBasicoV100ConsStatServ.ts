@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100EConsStatServNfGasTiposBasicoV100VerConsStat } from '../../types/PL_NFGas_1.00e/TPlNfGas100EConsStatServNfGasTiposBasicoV100VerConsStat';
 
 /**
@@ -33,9 +34,7 @@ export class CPlNfGas100EConsStatServNfGasTiposBasicoV100ConsStatServ {
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.xServ = props.xServ;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["tpAmb", "xServ", "$versao"]);
         }
     }
 }

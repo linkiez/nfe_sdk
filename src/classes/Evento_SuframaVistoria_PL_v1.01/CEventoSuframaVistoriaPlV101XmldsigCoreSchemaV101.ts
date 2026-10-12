@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoSuframaVistoriaPlV101XmldsigCoreSchemaV101Signature } from '../../types/Evento_SuframaVistoria_PL_v1.01/TEventoSuframaVistoriaPlV101XmldsigCoreSchemaV101Signature';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoSuframaVistoriaPlV101XmldsigCoreSchemaV101 {
 
         if (props) {
 
-        	this.signature = props.signature;
+            assignSchemaProperties(this, props, ["signature"]);
         }
     }
 }

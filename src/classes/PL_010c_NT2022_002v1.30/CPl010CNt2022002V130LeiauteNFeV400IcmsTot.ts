@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Totais referentes ao ICMS
  */
@@ -135,35 +136,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400IcmsTot {
 
         if (props) {
 
-        	this.vBC = props.vBC;
-        	this.vICMS = props.vICMS;
-        	this.vICMSDeson = props.vICMSDeson;
-        	this.vFCPUFDest = props.vFCPUFDest;
-        	this.vICMSUFDest = props.vICMSUFDest;
-        	this.vICMSUFRemet = props.vICMSUFRemet;
-        	this.vFCP = props.vFCP;
-        	this.vBCST = props.vBCST;
-        	this.vST = props.vST;
-        	this.vFCPST = props.vFCPST;
-        	this.vFCPSTRet = props.vFCPSTRet;
-        	this.qBCMono = props.qBCMono;
-        	this.vICMSMono = props.vICMSMono;
-        	this.qBCMonoReten = props.qBCMonoReten;
-        	this.vICMSMonoReten = props.vICMSMonoReten;
-        	this.qBCMonoRet = props.qBCMonoRet;
-        	this.vICMSMonoRet = props.vICMSMonoRet;
-        	this.vProd = props.vProd;
-        	this.vFrete = props.vFrete;
-        	this.vSeg = props.vSeg;
-        	this.vDesc = props.vDesc;
-        	this.vII = props.vII;
-        	this.vIPI = props.vIPI;
-        	this.vIPIDevol = props.vIPIDevol;
-        	this.vPIS = props.vPIS;
-        	this.vCOFINS = props.vCOFINS;
-        	this.vOutro = props.vOutro;
-        	this.vNF = props.vNF;
-        	this.vTotTrib = props.vTotTrib;
+            assignSchemaProperties(this, props, ["vBC", "vICMS", "vICMSDeson", "vFCPUFDest", "vICMSUFDest", "vICMSUFRemet", "vFCP", "vBCST", "vST", "vFCPST", "vFCPSTRet", "qBCMono", "vICMSMono", "qBCMonoReten", "vICMSMonoReten", "qBCMonoRet", "vICMSMonoRet", "vProd", "vFrete", "vSeg", "vDesc", "vII", "vIPI", "vIPIDevol", "vPIS", "vCOFINS", "vOutro", "vNF", "vTotTrib"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Tipo Dados do Endereço do Emitente // 24/10/08 - desmembrado / tamanho mínimo
  */
@@ -27,8 +28,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400EnderEmi {
 
         if (props) {
 
-        	this.cMun = props.cMun;
-        	this.UF = props.UF;
+            assignSchemaProperties(this, props, ["cMun", "UF"]);
         }
     }
 }

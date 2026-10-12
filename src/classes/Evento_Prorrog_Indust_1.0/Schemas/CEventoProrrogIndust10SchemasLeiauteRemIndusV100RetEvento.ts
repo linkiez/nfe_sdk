@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 import { CEventoProrrogIndust10SchemasLeiauteRemIndusV100InfEvento } from './CEventoProrrogIndust10SchemasLeiauteRemIndusV100InfEvento';
 
 import { TEventoProrrogIndust10SchemasLeiauteRemIndusV100VerEvento } from '../../../types/Evento_Prorrog_Indust_1.0/Schemas/TEventoProrrogIndust10SchemasLeiauteRemIndusV100VerEvento';
@@ -35,9 +36,9 @@ export class CEventoProrrogIndust10SchemasLeiauteRemIndusV100RetEvento {
 
         if (props) {
 
-        	this.unknown = props.unknown;
+            assignSchemaProperties(this, props, ["unknown"]);
         	this.infEvento = (props.infEvento) ? new CEventoProrrogIndust10SchemasLeiauteRemIndusV100InfEvento(props.infEvento): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

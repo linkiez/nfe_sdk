@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoManifestaDestPlV101XmldsigCoreSchemaV101Signature } from '../../types/Evento_ManifestaDest_PL_v1.01/TEventoManifestaDestPlV101XmldsigCoreSchemaV101Signature';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoManifestaDestPlV101XmldsigCoreSchemaV101 {
 
         if (props) {
 
-        	this.signature = props.signature;
+            assignSchemaProperties(this, props, ["signature"]);
         }
     }
 }

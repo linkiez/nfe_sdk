@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100EDFeTiposBasicosV100CompetApur } from '../../types/PL_NFGas_1.00e/TPlNfGas100EDFeTiposBasicosV100CompetApur';
 
 import { TPlNfGas100EDFeTiposBasicosV100Dec1302Rtc } from '../../types/PL_NFGas_1.00e/TPlNfGas100EDFeTiposBasicosV100Dec1302Rtc';
@@ -35,9 +36,7 @@ export class CPlNfGas100EDFeTiposBasicosV100AjusteCompet {
 
         if (props) {
 
-        	this.competApur = props.competApur;
-        	this.vIBS = props.vIBS;
-        	this.vCBS = props.vCBS;
+            assignSchemaProperties(this, props, ["competApur", "vIBS", "vCBS"]);
         }
     }
 }

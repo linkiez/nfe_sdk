@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100EXmldsigCoreSchemaV101TransformUri } from '../../types/PL_NFGas_1.00e/TPlNfGas100EXmldsigCoreSchemaV101TransformUri';
 
 /**
@@ -29,8 +30,7 @@ export class CPlNfGas100EXmldsigCoreSchemaV101TransformType {
 
         if (props) {
 
-        	this.XPath = props.XPath;
-        	this.$Algorithm = props.$Algorithm;
+            assignSchemaProperties(this, props, ["XPath", "$Algorithm"]);
         }
     }
 }

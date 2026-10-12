@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoInsucessoNFePlV102XmldsigCoreSchemaV101X509DataType } from './CEventoInsucessoNFePlV102XmldsigCoreSchemaV101X509DataType';
 
 /**
@@ -30,7 +31,7 @@ export class CEventoInsucessoNFePlV102XmldsigCoreSchemaV101KeyInfoType {
         if (props) {
 
         	this.X509Data = (props.X509Data) ? new CEventoInsucessoNFePlV102XmldsigCoreSchemaV101X509DataType(props.X509Data): undefined;
-        	this.$Id = props.$Id;
+            assignSchemaProperties(this, props, ["$Id"]);
         }
     }
 }

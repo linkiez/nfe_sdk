@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informado para abater as parcelas de antecipação de pagamento, conforme Art. 10. § 4º
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400GPagAntecipado {
 
         if (props) {
 
-        	this.refNFe = props.refNFe;
+            assignSchemaProperties(this, props, ["refNFe"]);
         }
     }
 }

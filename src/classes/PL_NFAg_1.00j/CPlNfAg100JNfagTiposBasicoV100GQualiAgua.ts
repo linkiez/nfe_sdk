@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfAg100JNfagTiposBasicoV100GAnalise } from './CPlNfAg100JNfagTiposBasicoV100GAnalise';
 
 import { TPlNfAg100JNfagTiposBasicoV100Compet } from '../../types/PL_NFAg_1.00j/TPlNfAg100JNfagTiposBasicoV100Compet';
@@ -31,7 +32,7 @@ export class CPlNfAg100JNfagTiposBasicoV100GQualiAgua {
 
         if (props) {
 
-        	this.CompetAnalise = props.CompetAnalise;
+            assignSchemaProperties(this, props, ["CompetAnalise"]);
         	this.gAnalise = (props.gAnalise) ? new CPlNfAg100JNfagTiposBasicoV100GAnalise(props.gAnalise): undefined;
         }
     }

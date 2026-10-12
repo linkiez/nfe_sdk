@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoEpecNfCePl100XmldsigCoreSchemaV101Signature } from '../../types/Evento_EPEC_NFCe_PL1.00/TEventoEpecNfCePl100XmldsigCoreSchemaV101Signature';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoEpecNfCePl100XmldsigCoreSchemaV101 {
 
         if (props) {
 
-        	this.signature = props.signature;
+            assignSchemaProperties(this, props, ["signature"]);
         }
     }
 }

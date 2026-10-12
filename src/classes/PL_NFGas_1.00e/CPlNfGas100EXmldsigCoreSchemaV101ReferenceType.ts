@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfGas100EXmldsigCoreSchemaV101TransformsType } from './CPlNfGas100EXmldsigCoreSchemaV101TransformsType';
 
 import { TPlNfGas100EXmldsigCoreSchemaV101DigestValueType } from '../../types/PL_NFGas_1.00e/TPlNfGas100EXmldsigCoreSchemaV101DigestValueType';
@@ -44,10 +45,7 @@ export class CPlNfGas100EXmldsigCoreSchemaV101ReferenceType {
         if (props) {
 
         	this.Transforms = (props.Transforms) ? new CPlNfGas100EXmldsigCoreSchemaV101TransformsType(props.Transforms): undefined;
-        	this.DigestValue = props.DigestValue;
-        	this.$Id = props.$Id;
-        	this.$URI = props.$URI;
-        	this.$Type = props.$Type;
+            assignSchemaProperties(this, props, ["DigestValue", "$Id", "$URI", "$Type"]);
         }
     }
 }

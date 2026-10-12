@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfAg100JNfagTiposBasicoV100InfNfAg } from './CPlNfAg100JNfagTiposBasicoV100InfNfAg';
 
 import { CPlNfAg100JNfagTiposBasicoV100InfNfAgSupl } from './CPlNfAg100JNfagTiposBasicoV100InfNfAgSupl';
@@ -35,7 +36,7 @@ export class CPlNfAg100JNfagTiposBasicoV100NfAg {
 
         if (props) {
 
-        	this.unknown = props.unknown;
+            assignSchemaProperties(this, props, ["unknown"]);
         	this.infNFAg = (props.infNFAg) ? new CPlNfAg100JNfagTiposBasicoV100InfNfAg(props.infNFAg): undefined;
         	this.infNFAgSupl = (props.infNFAgSupl) ? new CPlNfAg100JNfagTiposBasicoV100InfNfAgSupl(props.infNFAgSupl): undefined;
         }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoAverbPlV101LeiauteAverbV100ItensAverbados } from './CEventoAverbPlV101LeiauteAverbV100ItensAverbados';
 
 /**
@@ -29,7 +30,7 @@ export class CEventoAverbPlV101LeiauteAverbV100DetEvento {
 
         if (props) {
 
-        	this.verAplic = props.verAplic;
+            assignSchemaProperties(this, props, ["verAplic"]);
         	this.itensAverbados = (props.itensAverbados) ? new CEventoAverbPlV101LeiauteAverbV100ItensAverbados(props.itensAverbados): undefined;
         }
     }

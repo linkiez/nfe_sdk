@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Dados do COFINS
  */
@@ -31,9 +32,7 @@ export class CPlNfAg100JNfagTiposBasicoV100Cofins {
 
         if (props) {
 
-        	this.vBC = props.vBC;
-        	this.pCOFINS = props.pCOFINS;
-        	this.vCOFINS = props.vCOFINS;
+            assignSchemaProperties(this, props, ["vBC", "pCOFINS", "vCOFINS"]);
         }
     }
 }

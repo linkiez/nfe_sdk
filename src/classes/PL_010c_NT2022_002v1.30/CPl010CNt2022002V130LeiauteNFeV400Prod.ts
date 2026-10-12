@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130LeiauteNFeV400DetExport } from './CPl010CNt2022002V130LeiauteNFeV400DetExport';
 
 import { CPl010CNt2022002V130LeiauteNFeV400Di } from './CPl010CNt2022002V130LeiauteNFeV400Di';
@@ -154,19 +155,10 @@ export class CPl010CNt2022002V130LeiauteNFeV400Prod {
         if (props) {
 
         	this.gCred = (props.gCred) ? new CPl010CNt2022002V130LeiauteNFeV400GCred(props.gCred): undefined;
-        	this.tpCredPresIBSZFM = props.tpCredPresIBSZFM;
-        	this.qCom = props.qCom;
-        	this.vUnCom = props.vUnCom;
-        	this.vProd = props.vProd;
-        	this.qTrib = props.qTrib;
-        	this.vUnTrib = props.vUnTrib;
-        	this.vFrete = props.vFrete;
-        	this.vSeg = props.vSeg;
-        	this.vDesc = props.vDesc;
-        	this.vOutro = props.vOutro;
+            assignSchemaProperties(this, props, ["tpCredPresIBSZFM", "qCom", "vUnCom", "vProd", "qTrib", "vUnTrib", "vFrete", "vSeg", "vDesc", "vOutro"]);
         	this.CPl010CNt2022002V130LeiauteNFeV400Di = (props.CPl010CNt2022002V130LeiauteNFeV400Di) ? new CPl010CNt2022002V130LeiauteNFeV400Di(props.CPl010CNt2022002V130LeiauteNFeV400Di): undefined;
         	this.detExport = (props.detExport) ? new CPl010CNt2022002V130LeiauteNFeV400DetExport(props.detExport): undefined;
-        	this.nFCI = props.nFCI;
+            assignSchemaProperties(this, props, ["nFCI"]);
         	this.rastro = (props.rastro) ? new CPl010CNt2022002V130LeiauteNFeV400Rastro(props.rastro): undefined;
         	this.infProdNFF = (props.infProdNFF) ? new CPl010CNt2022002V130LeiauteNFeV400InfProdNff(props.infProdNFF): undefined;
         	this.infProdEmb = (props.infProdEmb) ? new CPl010CNt2022002V130LeiauteNFeV400InfProdEmb(props.infProdEmb): undefined;

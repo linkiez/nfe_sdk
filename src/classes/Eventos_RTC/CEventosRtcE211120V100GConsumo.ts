@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventosRtcE211120V100DFeReferenciado } from './CEventosRtcE211120V100DFeReferenciado';
 
 import { CEventosRtcE211120V100GControleEstoque } from './CEventosRtcE211120V100GControleEstoque';
@@ -39,8 +40,7 @@ export class CEventosRtcE211120V100GConsumo {
 
         if (props) {
 
-        	this.vIBS = props.vIBS;
-        	this.vCBS = props.vCBS;
+            assignSchemaProperties(this, props, ["vIBS", "vCBS"]);
         	this.gControleEstoque = (props.gControleEstoque) ? new CEventosRtcE211120V100GControleEstoque(props.gControleEstoque): undefined;
         	this.CEventosRtcE211120V100DFeReferenciado = (props.CEventosRtcE211120V100DFeReferenciado) ? new CEventosRtcE211120V100DFeReferenciado(props.CEventosRtcE211120V100DFeReferenciado): undefined;
         }

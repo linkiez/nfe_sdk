@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfAg100JDFeTiposBasicosV100GMonoDif } from './CPlNfAg100JDFeTiposBasicosV100GMonoDif';
 
 import { CPlNfAg100JDFeTiposBasicosV100GMonoPadrao } from './CPlNfAg100JDFeTiposBasicosV100GMonoPadrao';
@@ -57,8 +58,7 @@ export class CPlNfAg100JDFeTiposBasicosV100Monofasia {
         	this.gMonoReten = (props.gMonoReten) ? new CPlNfAg100JDFeTiposBasicosV100GMonoReten(props.gMonoReten): undefined;
         	this.gMonoRet = (props.gMonoRet) ? new CPlNfAg100JDFeTiposBasicosV100GMonoRet(props.gMonoRet): undefined;
         	this.gMonoDif = (props.gMonoDif) ? new CPlNfAg100JDFeTiposBasicosV100GMonoDif(props.gMonoDif): undefined;
-        	this.vTotIBSMonoItem = props.vTotIBSMonoItem;
-        	this.vTotCBSMonoItem = props.vTotCBSMonoItem;
+            assignSchemaProperties(this, props, ["vTotIBSMonoItem", "vTotCBSMonoItem"]);
         }
     }
 }

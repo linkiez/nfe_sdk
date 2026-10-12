@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfAg100JNfagTiposBasicoV100GProc } from './CPlNfAg100JNfagTiposBasicoV100GProc';
 
 /**
@@ -37,9 +38,7 @@ export class CPlNfAg100JNfagTiposBasicoV100GProcRef {
 
         if (props) {
 
-        	this.vItem = props.vItem;
-        	this.qFaturada = props.qFaturada;
-        	this.vProd = props.vProd;
+            assignSchemaProperties(this, props, ["vItem", "qFaturada", "vProd"]);
         	this.gProc = (props.gProc) ? new CPlNfAg100JNfagTiposBasicoV100GProc(props.gProc): undefined;
         }
     }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Grupo de Informações do Intermediador da Transação
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400InfIntermed {
 
         if (props) {
 
-        	this.CNPJ = props.CNPJ;
+            assignSchemaProperties(this, props, ["CNPJ"]);
         }
     }
 }

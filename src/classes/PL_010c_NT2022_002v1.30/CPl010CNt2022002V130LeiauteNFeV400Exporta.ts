@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informações de exportação
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Exporta {
 
         if (props) {
 
-        	this.UFSaidaPais = props.UFSaidaPais;
+            assignSchemaProperties(this, props, ["UFSaidaPais"]);
         }
     }
 }

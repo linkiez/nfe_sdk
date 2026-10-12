@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100EDFeTiposBasicosV100Dec030204Rtc } from '../../types/PL_NFGas_1.00e/TPlNfGas100EDFeTiposBasicosV100Dec030204Rtc';
 
 import { TPlNfGas100EDFeTiposBasicosV100EnteGov } from '../../types/PL_NFGas_1.00e/TPlNfGas100EDFeTiposBasicosV100EnteGov';
@@ -37,9 +38,7 @@ export class CPlNfGas100EDFeTiposBasicosV100CompraGovReduzido {
 
         if (props) {
 
-        	this.tpEnteGov = props.tpEnteGov;
-        	this.pRedutor = props.pRedutor;
-        	this.tpOperGov = props.tpOperGov;
+            assignSchemaProperties(this, props, ["tpEnteGov", "pRedutor", "tpOperGov"]);
         }
     }
 }

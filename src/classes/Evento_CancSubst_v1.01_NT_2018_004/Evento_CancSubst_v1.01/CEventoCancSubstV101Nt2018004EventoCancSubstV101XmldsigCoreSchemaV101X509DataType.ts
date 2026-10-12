@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 /**
  * Runtime class for CEventoCancSubstV101Nt2018004EventoCancSubstV101XmldsigCoreSchemaV101X509DataType.
  */
@@ -23,7 +24,7 @@ export class CEventoCancSubstV101Nt2018004EventoCancSubstV101XmldsigCoreSchemaV1
 
         if (props) {
 
-        	this.X509Certificate = props.X509Certificate;
+            assignSchemaProperties(this, props, ["X509Certificate"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPl010CNt2022002V130DFeTiposBasicosV100Dec030204Rtc } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130DFeTiposBasicosV100Dec030204Rtc';
 
 import { TPl010CNt2022002V130DFeTiposBasicosV100EnteGov } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130DFeTiposBasicosV100EnteGov';
@@ -37,9 +38,7 @@ export class CPl010CNt2022002V130DFeTiposBasicosV100CompraGov {
 
         if (props) {
 
-        	this.tpEnteGov = props.tpEnteGov;
-        	this.pRedutor = props.pRedutor;
-        	this.tpOperGov = props.tpOperGov;
+            assignSchemaProperties(this, props, ["tpEnteGov", "pRedutor", "tpOperGov"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Total da retenção de tributos federais
  */
@@ -35,10 +36,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100VRetTribTot {
 
         if (props) {
 
-        	this.vRetPIS = props.vRetPIS;
-        	this.vRetCofins = props.vRetCofins;
-        	this.vRetCSLL = props.vRetCSLL;
-        	this.vIRRF = props.vIRRF;
+            assignSchemaProperties(this, props, ["vRetPIS", "vRetCofins", "vRetCSLL", "vIRRF"]);
         }
     }
 }

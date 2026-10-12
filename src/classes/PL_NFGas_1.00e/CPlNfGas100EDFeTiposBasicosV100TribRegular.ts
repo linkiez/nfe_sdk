@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100EDFeTiposBasicosV100Cst } from '../../types/PL_NFGas_1.00e/TPlNfGas100EDFeTiposBasicosV100Cst';
 
 import { TPlNfGas100EDFeTiposBasicosV100Dec030204Rtc } from '../../types/PL_NFGas_1.00e/TPlNfGas100EDFeTiposBasicosV100Dec030204Rtc';
@@ -59,14 +60,7 @@ export class CPlNfGas100EDFeTiposBasicosV100TribRegular {
 
         if (props) {
 
-        	this.CSTReg = props.CSTReg;
-        	this.cClassTribReg = props.cClassTribReg;
-        	this.pAliqEfetRegIBSUF = props.pAliqEfetRegIBSUF;
-        	this.vTribRegIBSUF = props.vTribRegIBSUF;
-        	this.pAliqEfetRegIBSMun = props.pAliqEfetRegIBSMun;
-        	this.vTribRegIBSMun = props.vTribRegIBSMun;
-        	this.pAliqEfetRegCBS = props.pAliqEfetRegCBS;
-        	this.vTribRegCBS = props.vTribRegCBS;
+            assignSchemaProperties(this, props, ["CSTReg", "cClassTribReg", "pAliqEfetRegIBSUF", "vTribRegIBSUF", "pAliqEfetRegIBSMun", "vTribRegIBSMun", "pAliqEfetRegCBS", "vTribRegCBS"]);
         }
     }
 }

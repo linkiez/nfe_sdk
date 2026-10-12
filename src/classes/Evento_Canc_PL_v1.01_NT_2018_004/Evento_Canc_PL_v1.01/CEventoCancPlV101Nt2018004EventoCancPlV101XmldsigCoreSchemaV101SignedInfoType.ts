@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 import { CEventoCancPlV101Nt2018004EventoCancPlV101XmldsigCoreSchemaV101ReferenceType } from './CEventoCancPlV101Nt2018004EventoCancPlV101XmldsigCoreSchemaV101ReferenceType';
 
 /**
@@ -30,7 +31,7 @@ export class CEventoCancPlV101Nt2018004EventoCancPlV101XmldsigCoreSchemaV101Sign
         if (props) {
 
         	this.Reference = (props.Reference) ? new CEventoCancPlV101Nt2018004EventoCancPlV101XmldsigCoreSchemaV101ReferenceType(props.Reference): undefined;
-        	this.$Id = props.$Id;
+            assignSchemaProperties(this, props, ["$Id"]);
         }
     }
 }

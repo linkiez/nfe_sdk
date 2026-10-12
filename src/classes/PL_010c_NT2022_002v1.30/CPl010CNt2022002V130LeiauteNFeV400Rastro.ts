@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Número do lote do produto.
  */
@@ -31,9 +32,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Rastro {
 
         if (props) {
 
-        	this.qLote = props.qLote;
-        	this.dFab = props.dFab;
-        	this.dVal = props.dVal;
+            assignSchemaProperties(this, props, ["qLote", "dFab", "dVal"]);
         }
     }
 }

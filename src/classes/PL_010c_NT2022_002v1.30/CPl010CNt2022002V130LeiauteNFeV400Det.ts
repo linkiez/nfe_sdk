@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130LeiauteNFeV400DFeReferenciado } from './CPl010CNt2022002V130LeiauteNFeV400DFeReferenciado';
 
 import { CPl010CNt2022002V130LeiauteNFeV400Imposto } from './CPl010CNt2022002V130LeiauteNFeV400Imposto';
@@ -57,7 +58,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Det {
         	this.imposto = (props.imposto) ? new CPl010CNt2022002V130LeiauteNFeV400Imposto(props.imposto): undefined;
         	this.impostoDevol = (props.impostoDevol) ? new CPl010CNt2022002V130LeiauteNFeV400ImpostoDevol(props.impostoDevol): undefined;
         	this.obsItem = (props.obsItem) ? new CPl010CNt2022002V130LeiauteNFeV400ObsItem(props.obsItem): undefined;
-        	this.vItem = props.vItem;
+            assignSchemaProperties(this, props, ["vItem"]);
         	this.CPl010CNt2022002V130LeiauteNFeV400DFeReferenciado = (props.CPl010CNt2022002V130LeiauteNFeV400DFeReferenciado) ? new CPl010CNt2022002V130LeiauteNFeV400DFeReferenciado(props.CPl010CNt2022002V130LeiauteNFeV400DFeReferenciado): undefined;
         }
     }

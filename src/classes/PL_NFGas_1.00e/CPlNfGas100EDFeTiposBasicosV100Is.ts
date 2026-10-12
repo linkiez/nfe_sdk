@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100EDFeTiposBasicosV100Cst } from '../../types/PL_NFGas_1.00e/TPlNfGas100EDFeTiposBasicosV100Cst';
 
 import { TPlNfGas100EDFeTiposBasicosV100TcClassTrib } from '../../types/PL_NFGas_1.00e/TPlNfGas100EDFeTiposBasicosV100TcClassTrib';
@@ -31,8 +32,7 @@ export class CPlNfGas100EDFeTiposBasicosV100Is {
 
         if (props) {
 
-        	this.CSTIS = props.CSTIS;
-        	this.cClassTribIS = props.cClassTribIS;
+            assignSchemaProperties(this, props, ["CSTIS", "cClassTribIS"]);
         }
     }
 }

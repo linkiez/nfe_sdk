@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * NFGas processada
  */
@@ -27,8 +28,7 @@ export class CPlNfGas100EProcNfGasV100NfgasProc {
 
         if (props) {
 
-        	this.NFGas = props.NFGas;
-        	this.protNFGas = props.protNFGas;
+            assignSchemaProperties(this, props, ["NFGas", "protNFGas"]);
         }
     }
 }

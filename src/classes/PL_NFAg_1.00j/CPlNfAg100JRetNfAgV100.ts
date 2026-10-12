@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JRetNfAgV100RetNfAg } from '../../types/PL_NFAg_1.00j/TPlNfAg100JRetNfAgV100RetNfAg';
 
 /**
@@ -25,7 +26,7 @@ export class CPlNfAg100JRetNfAgV100 {
 
         if (props) {
 
-        	this.retNFAg = props.retNFAg;
+            assignSchemaProperties(this, props, ["retNFAg"]);
         }
     }
 }

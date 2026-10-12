@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100ERetConsStatServNfGasV100RetConsStatServNfGas } from '../../types/PL_NFGas_1.00e/TPlNfGas100ERetConsStatServNfGasV100RetConsStatServNfGas';
 
 /**
@@ -25,7 +26,7 @@ export class CPlNfGas100ERetConsStatServNfGasV100 {
 
         if (props) {
 
-        	this.retConsStatServNFGas = props.retConsStatServNFGas;
+            assignSchemaProperties(this, props, ["retConsStatServNFGas"]);
         }
     }
 }

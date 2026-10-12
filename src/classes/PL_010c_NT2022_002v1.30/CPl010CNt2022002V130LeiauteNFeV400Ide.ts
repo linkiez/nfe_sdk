@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130LeiauteNFeV400GPagAntecipado } from './CPl010CNt2022002V130LeiauteNFeV400GPagAntecipado';
 
 import { TPl010CNt2022002V130LeiauteNFeV400FinNFe } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130LeiauteNFeV400FinNFe';
@@ -93,21 +94,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Ide {
 
         if (props) {
 
-        	this.cUF = props.cUF;
-        	this.mod = props.mod;
-        	this.serie = props.serie;
-        	this.nNF = props.nNF;
-        	this.dhEmi = props.dhEmi;
-        	this.dhSaiEnt = props.dhSaiEnt;
-        	this.dPrevEntrega = props.dPrevEntrega;
-        	this.cMunFG = props.cMunFG;
-        	this.cMunFGIBS = props.cMunFGIBS;
-        	this.tpAmb = props.tpAmb;
-        	this.finNFe = props.finNFe;
-        	this.tpNFDebito = props.tpNFDebito;
-        	this.tpNFCredito = props.tpNFCredito;
-        	this.procEmi = props.procEmi;
-        	this.gCompraGov = props.gCompraGov;
+            assignSchemaProperties(this, props, ["cUF", "mod", "serie", "nNF", "dhEmi", "dhSaiEnt", "dPrevEntrega", "cMunFG", "cMunFGIBS", "tpAmb", "finNFe", "tpNFDebito", "tpNFCredito", "procEmi", "gCompraGov"]);
         	this.gPagAntecipado = (props.gPagAntecipado) ? new CPl010CNt2022002V130LeiauteNFeV400GPagAntecipado(props.gPagAntecipado): undefined;
         }
     }

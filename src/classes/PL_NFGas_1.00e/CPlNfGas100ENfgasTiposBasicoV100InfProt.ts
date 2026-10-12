@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Dados do protocolo de status
  */
@@ -47,13 +48,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100InfProt {
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.verAplic = props.verAplic;
-        	this.chNFGas = props.chNFGas;
-        	this.dhRecbto = props.dhRecbto;
-        	this.nProt = props.nProt;
-        	this.digVal = props.digVal;
-        	this.xMotivo = props.xMotivo;
+            assignSchemaProperties(this, props, ["tpAmb", "verAplic", "chNFGas", "dhRecbto", "nProt", "digVal", "xMotivo"]);
         }
     }
 }

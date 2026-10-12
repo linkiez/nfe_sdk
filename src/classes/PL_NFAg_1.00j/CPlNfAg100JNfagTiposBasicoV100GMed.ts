@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Grupo de informações dos Medidores
  */
@@ -27,8 +28,7 @@ export class CPlNfAg100JNfagTiposBasicoV100GMed {
 
         if (props) {
 
-        	this.dMedAnt = props.dMedAnt;
-        	this.dMedAtu = props.dMedAtu;
+            assignSchemaProperties(this, props, ["dMedAnt", "dMedAtu"]);
         }
     }
 }

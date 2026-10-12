@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130LeiauteNFeV400Card } from './CPl010CNt2022002V130LeiauteNFeV400Card';
 
 /**
@@ -33,8 +34,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400DetPag {
 
         if (props) {
 
-        	this.vPag = props.vPag;
-        	this.dPag = props.dPag;
+            assignSchemaProperties(this, props, ["vPag", "dPag"]);
         	this.card = (props.card) ? new CPl010CNt2022002V130LeiauteNFeV400Card(props.card): undefined;
         }
     }

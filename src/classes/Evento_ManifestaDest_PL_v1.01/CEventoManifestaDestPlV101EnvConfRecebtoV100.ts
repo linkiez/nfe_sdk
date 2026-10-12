@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoManifestaDestPlV101EnvConfRecebtoV100EnvEvento } from '../../types/Evento_ManifestaDest_PL_v1.01/TEventoManifestaDestPlV101EnvConfRecebtoV100EnvEvento';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoManifestaDestPlV101EnvConfRecebtoV100 {
 
         if (props) {
 
-        	this.envEvento = props.envEvento;
+            assignSchemaProperties(this, props, ["envEvento"]);
         }
     }
 }

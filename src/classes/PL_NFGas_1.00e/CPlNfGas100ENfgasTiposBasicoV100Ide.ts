@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100ENfgasTiposBasicoV100FatNf } from '../../types/PL_NFGas_1.00e/TPlNfGas100ENfgasTiposBasicoV100FatNf';
 
 import { TPlNfGas100ENfgasTiposBasicoV100FinNf } from '../../types/PL_NFGas_1.00e/TPlNfGas100ENfgasTiposBasicoV100FinNf';
@@ -69,17 +70,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100Ide {
 
         if (props) {
 
-        	this.cUF = props.cUF;
-        	this.tpAmb = props.tpAmb;
-        	this.mod = props.mod;
-        	this.serie = props.serie;
-        	this.nNF = props.nNF;
-        	this.dhEmi = props.dhEmi;
-        	this.tpEmis = props.tpEmis;
-        	this.cMunFG = props.cMunFG;
-        	this.finNFGas = props.finNFGas;
-        	this.tpFat = props.tpFat;
-        	this.gCompraGov = props.gCompraGov;
+            assignSchemaProperties(this, props, ["cUF", "tpAmb", "mod", "serie", "nNF", "dhEmi", "tpEmis", "cMunFG", "finNFGas", "tpFat", "gCompraGov"]);
         }
     }
 }

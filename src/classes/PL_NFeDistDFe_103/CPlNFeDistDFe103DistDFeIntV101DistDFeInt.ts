@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Schema de pedido de distribuição de DF-e de interesse
  */
@@ -85,8 +86,7 @@ export class CPlNFeDistDFe103DistDFeIntV101DistDFeInt {
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.cUFAutor = props.cUFAutor;
+            assignSchemaProperties(this, props, ["tpAmb", "cUFAutor"]);
         }
     }
 }

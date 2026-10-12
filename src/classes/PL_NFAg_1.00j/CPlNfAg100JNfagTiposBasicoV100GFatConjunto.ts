@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Grupo de Informações do Faturamento conjunto
  */
@@ -23,7 +24,7 @@ export class CPlNfAg100JNfagTiposBasicoV100GFatConjunto {
 
         if (props) {
 
-        	this.chNFAgFat = props.chNFAgFat;
+            assignSchemaProperties(this, props, ["chNFAgFat"]);
         }
     }
 }

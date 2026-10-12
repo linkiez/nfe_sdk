@@ -2,6 +2,7 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as ts from 'typescript';
 import { generateTemplateClassesFromXSD } from 'xsd2ts';
+import { consolidateGeneratedConstructorAssignments } from './consolidate-generated-constructor-assignments';
 
 type DeclarationKind = 'class' | 'enum' | 'interface' | 'typeAlias';
 
@@ -52,7 +53,13 @@ const ROOT_DIR = process.cwd();
 const INPUT_ROOT = path.join(ROOT_DIR, 'xsd');
 const OUTPUT_ROOT = path.join(ROOT_DIR, 'src');
 const TEMP_ROOT = path.join(ROOT_DIR, '.xsd2ts-work');
-const SKIPPED_DIRECTORIES = new Set(['node_modules', '.git', 'src', 'dist', '.xsd2ts-work']);
+const SKIPPED_DIRECTORIES = new Set([
+  'node_modules',
+  '.git',
+  'src',
+  'dist',
+  '.xsd2ts-work',
+]);
 const OUTPUT_KIND_DIRECTORIES: Record<DeclarationKind, string> = {
   class: 'classes',
   enum: 'enums',
@@ -65,8 +72,14 @@ const OUTPUT_KIND_DIRECTORIES: Record<DeclarationKind, string> = {
  *
  * @example
  * npm run generate -- PL_010c_NT2022_002v1.30
+ * npm run generate -- --consolidate-constructors-only
  */
 function main(): void {
+  if (process.argv[2] === '--consolidate-constructors-only') {
+    consolidateGeneratedClassModules();
+    return;
+  }
+
   const filterPath = resolveFilterPath(process.argv[2]);
 
   ensureDirectory(OUTPUT_ROOT);
@@ -83,7 +96,10 @@ function main(): void {
   for (const xsdFile of xsdFiles) {
     const relativeFilePath = path.relative(INPUT_ROOT, xsdFile);
     const relativeFolderPath = path.dirname(relativeFilePath);
-    const folderResult = getOrCreateFolderResult(resultsByFolder, relativeFolderPath);
+    const folderResult = getOrCreateFolderResult(
+      resultsByFolder,
+      relativeFolderPath,
+    );
 
     console.log(`Generating ${relativeFilePath}`);
 
@@ -93,9 +109,17 @@ function main(): void {
     const modulePathMap = buildModulePathMap(relativeFolderPath, modules);
 
     for (const moduleRecord of modules) {
-      const targetFilePath = path.join(OUTPUT_ROOT, modulePathMap.get(moduleRecord.name) ?? getModuleRelativePath(relativeFolderPath, moduleRecord));
+      const targetFilePath = path.join(
+        OUTPUT_ROOT,
+        modulePathMap.get(moduleRecord.name) ??
+          getModuleRelativePath(relativeFolderPath, moduleRecord),
+      );
       const collisionKey = path.relative(OUTPUT_ROOT, targetFilePath);
-      const nextContent = renderModuleFile(moduleRecord, targetFilePath, modulePathMap);
+      const nextContent = renderModuleFile(
+        moduleRecord,
+        targetFilePath,
+        modulePathMap,
+      );
 
       ensureDirectory(path.dirname(targetFilePath));
 
@@ -147,7 +171,10 @@ function resolveFilterPath(filterArgument?: string): string | undefined {
 /**
  * Gets an existing folder result or creates a fresh one.
  */
-function getOrCreateFolderResult(resultsByFolder: Map<string, FolderResult>, folderPath: string): FolderResult {
+function getOrCreateFolderResult(
+  resultsByFolder: Map<string, FolderResult>,
+  folderPath: string,
+): FolderResult {
   const existingResult = resultsByFolder.get(folderPath);
 
   if (existingResult) {
@@ -200,23 +227,40 @@ function collectXsdFiles(currentPath: string, filterPath?: string): string[] {
  * Checks whether the current path belongs to the requested subtree.
  */
 function isPathRelevant(candidatePath: string, filterPath: string): boolean {
-  return candidatePath.startsWith(filterPath) || filterPath.startsWith(candidatePath);
+  return (
+    candidatePath.startsWith(filterPath) || filterPath.startsWith(candidatePath)
+  );
 }
 
 /**
  * Converts one XSD into a normalized TypeScript source string.
  */
-function generateSourceFromXsd(xsdFilePath: string, folderResult: FolderResult): string {
-  const generatedFileName = path.basename(xsdFilePath).replace(/\.xsd$/i, '.ts');
+function generateSourceFromXsd(
+  xsdFilePath: string,
+  folderResult: FolderResult,
+): string {
+  const generatedFileName = path
+    .basename(xsdFilePath)
+    .replace(/\.xsd$/i, '.ts');
 
   try {
-    return normalizeGeneratedSource(runXsd2Ts(xsdFilePath, generatedFileName), xsdFilePath);
+    return normalizeGeneratedSource(
+      runXsd2Ts(xsdFilePath, generatedFileName),
+      xsdFilePath,
+    );
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     const sanitizedFilePath = createSanitizedRetryFile(xsdFilePath);
-    folderResult.retriesWithSanitizedPatterns.push(path.relative(INPUT_ROOT, xsdFilePath));
-    console.warn(`Retrying ${path.relative(INPUT_ROOT, xsdFilePath)} without pattern restrictions: ${errorMessage}`);
-    return normalizeGeneratedSource(runXsd2Ts(sanitizedFilePath, generatedFileName), xsdFilePath);
+    folderResult.retriesWithSanitizedPatterns.push(
+      path.relative(INPUT_ROOT, xsdFilePath),
+    );
+    console.warn(
+      `Retrying ${path.relative(INPUT_ROOT, xsdFilePath)} without pattern restrictions: ${errorMessage}`,
+    );
+    return normalizeGeneratedSource(
+      runXsd2Ts(sanitizedFilePath, generatedFileName),
+      xsdFilePath,
+    );
   }
 }
 
@@ -234,7 +278,10 @@ function runXsd2Ts(inputFilePath: string, generatedFileName: string): string {
   try {
     process.chdir(workDirectory);
     generateTemplateClassesFromXSD(inputFilePath);
-    return fs.readFileSync(path.join(workDirectory, 'src', 'generated', generatedFileName), 'utf8');
+    return fs.readFileSync(
+      path.join(workDirectory, 'src', 'generated', generatedFileName),
+      'utf8',
+    );
   } finally {
     process.chdir(previousDirectory);
   }
@@ -248,7 +295,10 @@ function createSanitizedRetryFile(sourceFilePath: string): string {
   const relativeSourcePath = path.relative(INPUT_ROOT, sourceFilePath);
   const sourceDirectoryPath = path.dirname(sourceFilePath);
   const relativeDirectoryPath = path.dirname(relativeSourcePath);
-  const targetDirectoryPath = path.join(retryDirectory, relativeDirectoryPath === '.' ? '' : relativeDirectoryPath);
+  const targetDirectoryPath = path.join(
+    retryDirectory,
+    relativeDirectoryPath === '.' ? '' : relativeDirectoryPath,
+  );
   const targetFilePath = path.join(retryDirectory, relativeSourcePath);
   const xsdContent = fs.readFileSync(sourceFilePath, 'utf8');
   const sanitizedContent = xsdContent
@@ -267,23 +317,33 @@ function createSanitizedRetryFile(sourceFilePath: string): string {
 /**
  * Makes the generated TypeScript easier to parse and split.
  */
-function normalizeGeneratedSource(sourceText: string, xsdFilePath: string): string {
+function normalizeGeneratedSource(
+  sourceText: string,
+  xsdFilePath: string,
+): string {
   const normalizedSource = sourceText
     .replace(/^\/\*{11}[\s\S]*?\*{11}\/\s*/u, '')
     .replace(/:\s*([A-Za-z_]\w*)\.([A-Za-z_]\w*)/g, ': $2')
     .replace(/new\s+([A-Za-z_]\w*)\.([A-Za-z_]\w*)/g, 'new $2')
     .trim();
 
-  return rewriteExportNames(augmentSimpleTypeDeclarations(normalizedSource, xsdFilePath), xsdFilePath);
+  return rewriteExportNames(
+    augmentSimpleTypeDeclarations(normalizedSource, xsdFilePath),
+    xsdFilePath,
+  );
 }
 
 /**
  * Appends fallback simple type aliases parsed directly from the XSD when xsd2ts does not emit them.
  */
-function augmentSimpleTypeDeclarations(sourceText: string, xsdFilePath: string): string {
+function augmentSimpleTypeDeclarations(
+  sourceText: string,
+  xsdFilePath: string,
+): string {
   const existingExportNames = collectRawExportNames(sourceText);
   const xsdContent = fs.readFileSync(xsdFilePath, 'utf8');
-  const simpleTypePattern = /<(?:xs:)?simpleType\b[^>]*name="([^"]+)"[^>]*>([\s\S]*?)<\/(?:xs:)?simpleType>/g;
+  const simpleTypePattern =
+    /<(?:xs:)?simpleType\b[^>]*name="([^"]+)"[^>]*>([\s\S]*?)<\/(?:xs:)?simpleType>/g;
   const fallbackDeclarations: string[] = [];
   let match: RegExpExecArray | null = simpleTypePattern.exec(xsdContent);
 
@@ -296,10 +356,15 @@ function augmentSimpleTypeDeclarations(sourceText: string, xsdFilePath: string):
       continue;
     }
 
-    const enumerationValues = [...simpleTypeBody.matchAll(/<(?:xs:)?enumeration\b[^>]*value="([^"]*)"\s*\/>/g)].map((valueMatch) => valueMatch[1]);
-    const typeBody = enumerationValues.length > 0
-      ? enumerationValues.map((value) => JSON.stringify(value)).join(' | ')
-      : 'string';
+    const enumerationValues = [
+      ...simpleTypeBody.matchAll(
+        /<(?:xs:)?enumeration\b[^>]*value="([^"]*)"\s*\/>/g,
+      ),
+    ].map((valueMatch) => valueMatch[1]);
+    const typeBody =
+      enumerationValues.length > 0
+        ? enumerationValues.map((value) => JSON.stringify(value)).join(' | ')
+        : 'string';
 
     fallbackDeclarations.push(`export type ${simpleTypeName} = ${typeBody};`);
     existingExportNames.add(simpleTypeName);
@@ -341,7 +406,10 @@ function rewriteExportNames(sourceText: string, xsdFilePath: string): string {
     const kind: DeclarationKind = match[1] === 'class' ? 'class' : 'typeAlias';
     const rawName = match[2];
 
-    renameMap.set(rawName, buildHierarchicalIdentifier(xsdFilePath, rawName, kind));
+    renameMap.set(
+      rawName,
+      buildHierarchicalIdentifier(xsdFilePath, rawName, kind),
+    );
 
     match = exportNamePattern.exec(sourceText);
   }
@@ -358,10 +426,18 @@ function rewriteExportNames(sourceText: string, xsdFilePath: string): string {
 /**
  * Builds a stable hierarchical identifier from the schema path and original export name.
  */
-function buildHierarchicalIdentifier(xsdFilePath: string, rawName: string, kind: DeclarationKind): string {
-  const relativeSchemaPath = path.relative(INPUT_ROOT, xsdFilePath).replace(/\.xsd$/i, '');
+function buildHierarchicalIdentifier(
+  xsdFilePath: string,
+  rawName: string,
+  kind: DeclarationKind,
+): string {
+  const relativeSchemaPath = path
+    .relative(INPUT_ROOT, xsdFilePath)
+    .replace(/\.xsd$/i, '');
   const hierarchicalPrefix = toPascalCaseIdentifier(relativeSchemaPath);
-  const normalizedRawName = toPascalCaseIdentifier(stripSchemaTypePrefix(rawName));
+  const normalizedRawName = toPascalCaseIdentifier(
+    stripSchemaTypePrefix(rawName),
+  );
   const hierarchicalName = hierarchicalPrefix.endsWith(normalizedRawName)
     ? hierarchicalPrefix
     : `${hierarchicalPrefix}${normalizedRawName}`;
@@ -406,7 +482,10 @@ function stripSchemaTypePrefix(rawName: string): string {
 /**
  * Replaces the leading declaration prefix while preserving the hierarchical PascalCase suffix.
  */
-function replaceDeclarationPrefix(name: string, kind: 'enum' | 'interface'): string {
+function replaceDeclarationPrefix(
+  name: string,
+  kind: 'enum' | 'interface',
+): string {
   const suffix = name.slice(1);
   return `${DECLARATION_PREFIXES[kind]}${suffix}`;
 }
@@ -414,9 +493,16 @@ function replaceDeclarationPrefix(name: string, kind: 'enum' | 'interface'): str
 /**
  * Replaces identifier occurrences without touching longer adjacent identifiers.
  */
-function replaceIdentifier(sourceText: string, currentName: string, nextName: string): string {
+function replaceIdentifier(
+  sourceText: string,
+  currentName: string,
+  nextName: string,
+): string {
   const escapedName = escapeRegExp(currentName);
-  const identifierPattern = new RegExp(`(?<![A-Za-z0-9_$])${escapedName}(?![A-Za-z0-9_$])`, 'g');
+  const identifierPattern = new RegExp(
+    `(?<![A-Za-z0-9_$])${escapedName}(?![A-Za-z0-9_$])`,
+    'g',
+  );
   return sourceText.replace(identifierPattern, nextName);
 }
 
@@ -430,29 +516,57 @@ function escapeRegExp(value: string): string {
 /**
  * Splits the generated monolithic source into one declaration record per export.
  */
-function extractDeclarations(sourceText: string, xsdFilePath: string): DeclarationRecord[] {
-  const sourceFile = ts.createSourceFile('generated.ts', sourceText, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
-  const exportedStatements = sourceFile.statements.filter(isSupportedExportedStatement);
-  const exportedNames = new Set<string>(exportedStatements.map(getStatementName));
+function extractDeclarations(
+  sourceText: string,
+  xsdFilePath: string,
+): DeclarationRecord[] {
+  const sourceFile = ts.createSourceFile(
+    'generated.ts',
+    sourceText,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  const exportedStatements = sourceFile.statements.filter(
+    isSupportedExportedStatement,
+  );
+  const exportedNames = new Set<string>(
+    exportedStatements.map(getStatementName),
+  );
   const documentationContext = extractSchemaDocumentationContext(xsdFilePath);
 
   return exportedStatements.map((statement) => {
     const name = getStatementName(statement);
     const kind = ts.isClassDeclaration(statement) ? 'class' : 'typeAlias';
     const declarationDoc = documentationContext.declarationDocs.get(name);
-    const memberDocs = documentationContext.memberDocs.get(name) ?? new Map<string, string>();
+    const memberDocs =
+      documentationContext.memberDocs.get(name) ?? new Map<string, string>();
 
     return {
       name,
       kind,
       references: collectReferences(statement, exportedNames, name),
       statementText: ts.isClassDeclaration(statement)
-        ? createStrictSafeClassText(statement, sourceFile, declarationDoc, memberDocs, documentationContext.declarationDocs)
+        ? createStrictSafeClassText(
+            statement,
+            sourceFile,
+            declarationDoc,
+            memberDocs,
+            documentationContext.declarationDocs,
+          )
         : createTypeAliasText(statement, sourceFile, declarationDoc),
       interfaceText: ts.isClassDeclaration(statement)
-        ? createInterfaceFromClass(statement, sourceFile, declarationDoc, memberDocs, documentationContext.declarationDocs)
+        ? createInterfaceFromClass(
+            statement,
+            sourceFile,
+            declarationDoc,
+            memberDocs,
+            documentationContext.declarationDocs,
+          )
         : undefined,
-      enumText: ts.isTypeAliasDeclaration(statement) ? createEnumFromTypeAlias(statement, declarationDoc) : undefined,
+      enumText: ts.isTypeAliasDeclaration(statement)
+        ? createEnumFromTypeAlias(statement, declarationDoc)
+        : undefined,
     };
   });
 }
@@ -460,7 +574,9 @@ function extractDeclarations(sourceText: string, xsdFilePath: string): Declarati
 /**
  * Splits declaration companions into dedicated output modules by kind.
  */
-function expandDeclarationModules(declaration: DeclarationRecord): OutputModuleRecord[] {
+function expandDeclarationModules(
+  declaration: DeclarationRecord,
+): OutputModuleRecord[] {
   const modules: OutputModuleRecord[] = [
     {
       kind: declaration.kind,
@@ -494,11 +610,17 @@ function expandDeclarationModules(declaration: DeclarationRecord): OutputModuleR
 /**
  * Maps each emitted symbol name to its relative output module path.
  */
-function buildModulePathMap(relativeFolderPath: string, modules: OutputModuleRecord[]): Map<string, string> {
+function buildModulePathMap(
+  relativeFolderPath: string,
+  modules: OutputModuleRecord[],
+): Map<string, string> {
   const modulePathMap = new Map<string, string>();
 
   for (const moduleRecord of modules) {
-    modulePathMap.set(moduleRecord.name, getModuleRelativePath(relativeFolderPath, moduleRecord));
+    modulePathMap.set(
+      moduleRecord.name,
+      getModuleRelativePath(relativeFolderPath, moduleRecord),
+    );
   }
 
   return modulePathMap;
@@ -507,26 +629,53 @@ function buildModulePathMap(relativeFolderPath: string, modules: OutputModuleRec
 /**
  * Builds the output module path for one emitted declaration.
  */
-function getModuleRelativePath(relativeFolderPath: string, moduleRecord: OutputModuleRecord): string {
+function getModuleRelativePath(
+  relativeFolderPath: string,
+  moduleRecord: OutputModuleRecord,
+): string {
   const basePath = relativeFolderPath === '.' ? '' : relativeFolderPath;
 
-  return path.join(OUTPUT_KIND_DIRECTORIES[moduleRecord.kind], basePath, `${moduleRecord.name}.ts`);
+  return path.join(
+    OUTPUT_KIND_DIRECTORIES[moduleRecord.kind],
+    basePath,
+    `${moduleRecord.name}.ts`,
+  );
 }
 
 /**
  * Extracts declaration and member documentation from one schema file.
  */
-function extractSchemaDocumentationContext(xsdFilePath: string): SchemaDocumentationContext {
+function extractSchemaDocumentationContext(
+  xsdFilePath: string,
+): SchemaDocumentationContext {
   const xsdContent = fs.readFileSync(xsdFilePath, 'utf8');
   const declarationDocs = new Map<string, string>();
   const memberDocs = new Map<string, Map<string, string>>();
-  const schemaBlocks: Array<{ kind: 'class' | 'typeAlias'; blocks: SchemaDeclarationBlock[] }> = [
-    { kind: 'class', blocks: [...findNamedSchemaBlocks(xsdContent, 'complexType'), ...findNamedSchemaBlocks(xsdContent, 'element')] },
-    { kind: 'typeAlias', blocks: findNamedSchemaBlocks(xsdContent, 'simpleType') },
+  const schemaBlocks: Array<{
+    kind: 'class' | 'typeAlias';
+    blocks: SchemaDeclarationBlock[];
+  }> = [
+    {
+      kind: 'class',
+      blocks: [
+        ...findNamedSchemaBlocks(xsdContent, 'complexType'),
+        ...findNamedSchemaBlocks(xsdContent, 'element'),
+      ],
+    },
+    {
+      kind: 'typeAlias',
+      blocks: findNamedSchemaBlocks(xsdContent, 'simpleType'),
+    },
   ];
 
   for (const { kind, blocks } of schemaBlocks) {
-    collectDocumentationEntries(xsdFilePath, kind, blocks, declarationDocs, memberDocs);
+    collectDocumentationEntries(
+      xsdFilePath,
+      kind,
+      blocks,
+      declarationDocs,
+      memberDocs,
+    );
   }
 
   return { declarationDocs, memberDocs };
@@ -548,23 +697,43 @@ function collectDocumentationEntries(
   memberDocs: Map<string, Map<string, string>>,
 ): void {
   for (const block of blocks) {
-    const declarationName = buildHierarchicalIdentifier(xsdFilePath, block.name, kind);
-    registerDeclarationDocumentation(declarationName, kind, block.xml, declarationDocs, memberDocs);
+    const declarationName = buildHierarchicalIdentifier(
+      xsdFilePath,
+      block.name,
+      kind,
+    );
+    registerDeclarationDocumentation(
+      declarationName,
+      kind,
+      block.xml,
+      declarationDocs,
+      memberDocs,
+    );
   }
 }
 
 /**
  * Finds full named XSD declaration blocks for one tag type.
  */
-function findNamedSchemaBlocks(xsdContent: string, tagName: 'complexType' | 'element' | 'simpleType'): SchemaDeclarationBlock[] {
+function findNamedSchemaBlocks(
+  xsdContent: string,
+  tagName: 'complexType' | 'element' | 'simpleType',
+): SchemaDeclarationBlock[] {
   const blocks: SchemaDeclarationBlock[] = [];
-  const openingTagPattern = new RegExp(String.raw`<(?:xs:)?${tagName}\b[^>]*name="([^"]+)"[^>]*>`, 'g');
+  const openingTagPattern = new RegExp(
+    String.raw`<(?:xs:)?${tagName}\b[^>]*name="([^"]+)"[^>]*>`,
+    'g',
+  );
   let match: RegExpExecArray | null = openingTagPattern.exec(xsdContent);
 
   while (match) {
     const blockStart = match.index;
     const openingTag = match[0];
-    const blockEnd = findSchemaBlockEnd(xsdContent, tagName, blockStart + openingTag.length);
+    const blockEnd = findSchemaBlockEnd(
+      xsdContent,
+      tagName,
+      blockStart + openingTag.length,
+    );
 
     if (blockEnd !== undefined) {
       blocks.push({
@@ -582,8 +751,15 @@ function findNamedSchemaBlocks(xsdContent: string, tagName: 'complexType' | 'ele
 /**
  * Locates the end offset for one named XSD block, accounting for nested blocks of the same tag.
  */
-function findSchemaBlockEnd(xsdContent: string, tagName: 'complexType' | 'element' | 'simpleType', searchStart: number): number | undefined {
-  const tokenPattern = new RegExp(String.raw`<(?:xs:)?${tagName}\b[^>]*>|</(?:xs:)?${tagName}>`, 'g');
+function findSchemaBlockEnd(
+  xsdContent: string,
+  tagName: 'complexType' | 'element' | 'simpleType',
+  searchStart: number,
+): number | undefined {
+  const tokenPattern = new RegExp(
+    String.raw`<(?:xs:)?${tagName}\b[^>]*>|</(?:xs:)?${tagName}>`,
+    'g',
+  );
   tokenPattern.lastIndex = searchStart;
   let depth = 1;
   let tokenMatch: RegExpExecArray | null = tokenPattern.exec(xsdContent);
@@ -623,7 +799,10 @@ function registerDeclarationDocumentation(
     declarationDocs.set(declarationName, summary);
 
     if (kind === 'class') {
-      declarationDocs.set(replaceDeclarationPrefix(declarationName, 'interface'), summary);
+      declarationDocs.set(
+        replaceDeclarationPrefix(declarationName, 'interface'),
+        summary,
+      );
     }
   }
 
@@ -638,7 +817,10 @@ function registerDeclarationDocumentation(
   }
 
   memberDocs.set(declarationName, members);
-  memberDocs.set(replaceDeclarationPrefix(declarationName, 'interface'), members);
+  memberDocs.set(
+    replaceDeclarationPrefix(declarationName, 'interface'),
+    members,
+  );
 }
 
 /**
@@ -646,8 +828,10 @@ function registerDeclarationDocumentation(
  */
 function extractMemberDocumentation(schemaBody: string): Map<string, string> {
   const docs = new Map<string, string>();
-  const memberPattern = /<(?:xs:)?(?:element|attribute)\b[^>]*name="([^"]+)"[^>]*>\s*<(?:xs:)?annotation>\s*<(?:xs:)?documentation>([\s\S]*?)<\/(?:xs:)?documentation>\s*<\/(?:xs:)?annotation>/g;
-  const anyPattern = /<(?:xs:)?any\b[^>]*>\s*<(?:xs:)?annotation>\s*<(?:xs:)?documentation>([\s\S]*?)<\/(?:xs:)?documentation>\s*<\/(?:xs:)?annotation>/g;
+  const memberPattern =
+    /<(?:xs:)?(?:element|attribute)\b[^>]*name="([^"]+)"[^>]*>\s*<(?:xs:)?annotation>\s*<(?:xs:)?documentation>([\s\S]*?)<\/(?:xs:)?documentation>\s*<\/(?:xs:)?annotation>/g;
+  const anyPattern =
+    /<(?:xs:)?any\b[^>]*>\s*<(?:xs:)?annotation>\s*<(?:xs:)?documentation>([\s\S]*?)<\/(?:xs:)?documentation>\s*<\/(?:xs:)?annotation>/g;
   let match: RegExpExecArray | null = memberPattern.exec(schemaBody);
 
   while (match) {
@@ -680,7 +864,10 @@ function extractMemberDocumentation(schemaBody: string): Map<string, string> {
  * Reads and normalizes xs:documentation blocks into a compact summary.
  */
 function extractDocumentationText(xmlFragment: string): string | undefined {
-  const firstMatch = /<(?:xs:)?documentation>([\s\S]*?)<\/(?:xs:)?documentation>/u.exec(xmlFragment);
+  const firstMatch =
+    /<(?:xs:)?documentation>([\s\S]*?)<\/(?:xs:)?documentation>/u.exec(
+      xmlFragment,
+    );
 
   if (!firstMatch) {
     return undefined;
@@ -704,18 +891,27 @@ function normalizeDocumentationText(rawText: string): string | undefined {
 /**
  * Checks whether the statement is a supported exported declaration.
  */
-function isSupportedExportedStatement(statement: ts.Statement): statement is ts.ClassDeclaration | ts.TypeAliasDeclaration {
-  const modifiers = ts.canHaveModifiers(statement) ? ts.getModifiers(statement) ?? [] : [];
+function isSupportedExportedStatement(
+  statement: ts.Statement,
+): statement is ts.ClassDeclaration | ts.TypeAliasDeclaration {
+  const modifiers = ts.canHaveModifiers(statement)
+    ? (ts.getModifiers(statement) ?? [])
+    : [];
   const hasExportModifier = modifiers.some(
     (modifier) => modifier.kind === ts.SyntaxKind.ExportKeyword,
   );
-  return hasExportModifier && (ts.isClassDeclaration(statement) || ts.isTypeAliasDeclaration(statement));
+  return (
+    hasExportModifier &&
+    (ts.isClassDeclaration(statement) || ts.isTypeAliasDeclaration(statement))
+  );
 }
 
 /**
  * Gets the declared name from a supported exported statement.
  */
-function getStatementName(statement: ts.ClassDeclaration | ts.TypeAliasDeclaration): string {
+function getStatementName(
+  statement: ts.ClassDeclaration | ts.TypeAliasDeclaration,
+): string {
   if (!statement.name) {
     throw new Error('Encountered an unnamed exported declaration.');
   }
@@ -726,7 +922,11 @@ function getStatementName(statement: ts.ClassDeclaration | ts.TypeAliasDeclarati
 /**
  * Collects local declaration dependencies required as sibling imports.
  */
-function collectReferences(statement: ts.Node, exportedNames: Set<string>, selfName: string): string[] {
+function collectReferences(
+  statement: ts.Node,
+  exportedNames: Set<string>,
+  selfName: string,
+): string[] {
   const references = new Set<string>();
 
   const visit = (node: ts.Node): void => {
@@ -736,7 +936,12 @@ function collectReferences(statement: ts.Node, exportedNames: Set<string>, selfN
     }
 
     if (ts.isNewExpression(node) && ts.isIdentifier(node.expression)) {
-      maybeAddReference(node.expression.text, exportedNames, selfName, references);
+      maybeAddReference(
+        node.expression.text,
+        exportedNames,
+        selfName,
+        references,
+      );
     }
 
     ts.forEachChild(node, visit);
@@ -757,7 +962,12 @@ function getEntityNameText(entityName: ts.EntityName): string {
 /**
  * Adds a reference if it points to a sibling exported declaration.
  */
-function maybeAddReference(name: string, exportedNames: Set<string>, selfName: string, references: Set<string>): void {
+function maybeAddReference(
+  name: string,
+  exportedNames: Set<string>,
+  selfName: string,
+  references: Set<string>,
+): void {
   if (name !== selfName && exportedNames.has(name)) {
     references.add(name);
   }
@@ -786,8 +996,15 @@ function createInterfaceFromClass(
       }
 
       seenProperties.add(propertyName);
-      const typeText = member.type ? member.type.getText(sourceFile) : 'unknown';
-      const propertyDoc = resolvePropertyDocumentation(member, sourceFile, memberDocs, declarationDocs);
+      const typeText = member.type
+        ? member.type.getText(sourceFile)
+        : 'unknown';
+      const propertyDoc = resolvePropertyDocumentation(
+        member,
+        sourceFile,
+        memberDocs,
+        declarationDocs,
+      );
 
       return [
         indentJsDoc(createJsDoc(propertyDoc), '  '),
@@ -825,9 +1042,15 @@ function createStrictSafeClassText(
   return enrichClassTextWithJsDoc(
     sanitizeClassImplementation(
       deduplicateClassMembers(
-      classText
-      .replace(/(export\s+class\s+[A-Za-z_$][\w$]*\s*\{\n)/u, `$1    public "@class"?: string;\n\n`)
-      .replace(/^(\s*public\s+)([A-Za-z_$][\w$]*)(\s*:\s*[^;]+;\s*)$/gmu, '$1$2?$3'),
+        classText
+          .replace(
+            /(export\s+class\s+[A-Za-z_$][\w$]*\s*\{\n)/u,
+            `$1    public "@class"?: string;\n\n`,
+          )
+          .replace(
+            /^(\s*public\s+)([A-Za-z_$][\w$]*)(\s*:\s*[^;]+;\s*)$/gmu,
+            '$1$2?$3',
+          ),
       ),
     ),
     declarationDoc ?? `Runtime class for ${getStatementName(statement)}.`,
@@ -839,7 +1062,10 @@ function createStrictSafeClassText(
 /**
  * Creates a minimal strict-safe class when the parser only recovered a truncated class declaration.
  */
-function createFallbackClassText(className: string, declarationDoc?: string): string {
+function createFallbackClassText(
+  className: string,
+  declarationDoc?: string,
+): string {
   return [
     createJsDoc(declarationDoc ?? `Runtime class for ${className}.`),
     `export class ${className} {`,
@@ -865,12 +1091,26 @@ function enrichClassTextWithJsDoc(
 ): string {
   const lines = classText.split('\n');
   const enrichedLines: string[] = [];
-  const sourceFile = ts.createSourceFile('class.ts', classText, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
-  const propertyDocumentation = buildClassPropertyDocumentationMap(sourceFile, memberDocs, declarationDocs);
+  const sourceFile = ts.createSourceFile(
+    'class.ts',
+    classText,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  const propertyDocumentation = buildClassPropertyDocumentationMap(
+    sourceFile,
+    memberDocs,
+    declarationDocs,
+  );
 
   for (const line of lines) {
     if (line.startsWith('export class ')) {
-      appendLineWithOptionalJsDoc(enrichedLines, line, createJsDoc(declarationDoc));
+      appendLineWithOptionalJsDoc(
+        enrichedLines,
+        line,
+        createJsDoc(declarationDoc),
+      );
       continue;
     }
 
@@ -878,10 +1118,16 @@ function enrichClassTextWithJsDoc(
 
     if (propertyName) {
       const normalizedPropertyName = propertyName.replace(/^"|"$/g, '');
-      const summary = normalizedPropertyName === '@class'
-        ? 'Runtime class discriminator.'
-        : propertyDocumentation.get(normalizedPropertyName) ?? createPropertyFallbackDocumentation(normalizedPropertyName);
-      appendLineWithOptionalJsDoc(enrichedLines, line, indentJsDoc(createJsDoc(summary), '    '));
+      const summary =
+        normalizedPropertyName === '@class'
+          ? 'Runtime class discriminator.'
+          : (propertyDocumentation.get(normalizedPropertyName) ??
+            createPropertyFallbackDocumentation(normalizedPropertyName));
+      appendLineWithOptionalJsDoc(
+        enrichedLines,
+        line,
+        indentJsDoc(createJsDoc(summary), '    '),
+      );
       continue;
     }
 
@@ -891,7 +1137,13 @@ function enrichClassTextWithJsDoc(
       appendLineWithOptionalJsDoc(
         enrichedLines,
         line,
-        indentJsDoc(createConstructorJsDoc(extractClassNameFromClassText(classText), declarationDoc), '    '),
+        indentJsDoc(
+          createConstructorJsDoc(
+            extractClassNameFromClassText(classText),
+            declarationDoc,
+          ),
+          '    ',
+        ),
       );
       continue;
     }
@@ -900,8 +1152,14 @@ function enrichClassTextWithJsDoc(
 
     if (methodMatch) {
       const methodName = methodMatch[1];
-      const summary = memberDocs.get(methodName) ?? `Updates the ${methodName} branch for this schema choice.`;
-      appendLineWithOptionalJsDoc(enrichedLines, line, indentJsDoc(createChoiceMethodJsDoc(methodName, summary), '    '));
+      const summary =
+        memberDocs.get(methodName) ??
+        `Updates the ${methodName} branch for this schema choice.`;
+      appendLineWithOptionalJsDoc(
+        enrichedLines,
+        line,
+        indentJsDoc(createChoiceMethodJsDoc(methodName, summary), '    '),
+      );
       continue;
     }
 
@@ -931,8 +1189,18 @@ function buildClassPropertyDocumentationMap(
         continue;
       }
 
-      const propertyName = member.name.getText(sourceFile).replace(/^"|"$/g, '');
-      propertyDocs.set(propertyName, resolvePropertyDocumentation(member, sourceFile, memberDocs, declarationDocs));
+      const propertyName = member.name
+        .getText(sourceFile)
+        .replace(/^"|"$/g, '');
+      propertyDocs.set(
+        propertyName,
+        resolvePropertyDocumentation(
+          member,
+          sourceFile,
+          memberDocs,
+          declarationDocs,
+        ),
+      );
     }
   }
 
@@ -955,7 +1223,10 @@ function resolvePropertyDocumentation(
     return directDoc;
   }
 
-  const referencedDeclarationDoc = resolveReferencedDeclarationDocumentation(member.type, declarationDocs);
+  const referencedDeclarationDoc = resolveReferencedDeclarationDocumentation(
+    member.type,
+    declarationDocs,
+  );
 
   if (referencedDeclarationDoc) {
     return referencedDeclarationDoc;
@@ -968,7 +1239,9 @@ function resolvePropertyDocumentation(
  * Creates a readable fallback description for properties without schema documentation.
  */
 function createPropertyFallbackDocumentation(propertyName: string): string {
-  const normalizedPropertyName = propertyName.replace(/^"|"$/g, '').replace(/[?.]+$/g, '');
+  const normalizedPropertyName = propertyName
+    .replace(/^"|"$/g, '')
+    .replace(/[?.]+$/g, '');
 
   if (normalizedPropertyName === 'unknown') {
     return 'Referenced or wildcard schema content not fully resolved by the generator.';
@@ -993,7 +1266,10 @@ function resolveReferencedDeclarationDocumentation(
   }
 
   if (ts.isArrayTypeNode(typeNode)) {
-    return resolveReferencedDeclarationDocumentation(typeNode.elementType, declarationDocs);
+    return resolveReferencedDeclarationDocumentation(
+      typeNode.elementType,
+      declarationDocs,
+    );
   }
 
   if (ts.isTypeReferenceNode(typeNode)) {
@@ -1006,7 +1282,11 @@ function resolveReferencedDeclarationDocumentation(
 /**
  * Appends one source line and an optional leading JSDoc block.
  */
-function appendLineWithOptionalJsDoc(targetLines: string[], sourceLine: string, jsDoc?: string): void {
+function appendLineWithOptionalJsDoc(
+  targetLines: string[],
+  sourceLine: string,
+  jsDoc?: string,
+): void {
   if (jsDoc) {
     targetLines.push(jsDoc);
   }
@@ -1030,12 +1310,17 @@ function extractClassNameFromClassText(classText: string): string {
 /**
  * Builds constructor JSDoc with declaration context and parameter details.
  */
-function createConstructorJsDoc(className: string, declarationDoc?: string): string {
+function createConstructorJsDoc(
+  className: string,
+  declarationDoc?: string,
+): string {
   const summary = declarationDoc
     ? `Creates a new schema-backed ${className} instance.\nSchema context: ${declarationDoc}`
     : `Creates a new schema-backed ${className} instance.`;
 
-  return createJsDoc(summary, ['@param props - Initial schema-backed values used to populate the instance.']);
+  return createJsDoc(summary, [
+    '@param props - Initial schema-backed values used to populate the instance.',
+  ]);
 }
 
 /**
@@ -1046,7 +1331,9 @@ function createChoiceMethodJsDoc(methodName: string, summary: string): string {
     ? `Selects the ${humanizeIdentifier(methodName).toLowerCase()} branch for this schema choice.`
     : summary;
 
-  return createJsDoc(normalizedSummary, [`@param arg - Branch value assigned to ${methodName}.`]);
+  return createJsDoc(normalizedSummary, [
+    `@param arg - Branch value assigned to ${methodName}.`,
+  ]);
 }
 
 /**
@@ -1117,7 +1404,10 @@ function deduplicateClassMembers(classText: string): string {
 function sanitizeClassImplementation(classText: string): string {
   return classText
     .replace(/public\s+([A-Za-z_$][\w$]*)\?\(/g, 'public $1(')
-    .replace(/public\s+(?!constructor)([A-Za-z_$][\w$]*)\(arg:\s*[^)]+\)\s*\{/g, 'public $1(arg: unknown) {')
+    .replace(
+      /public\s+(?!constructor)([A-Za-z_$][\w$]*)\(arg:\s*[^)]+\)\s*\{/g,
+      'public $1(arg: unknown) {',
+    )
     .replace(/(\(this as any\)\.[A-Za-z_$][\w$]*)\?/g, '$1')
     .replace(
       /this\.(\$?[A-Za-z_$][\w$]*)\s*=\s*\(props\.\1\)\s*\?\s*new\s+([A-Za-z_$][\w$]*)\[\]\(props\.\1\):\s*undefined;/g,
@@ -1138,7 +1428,8 @@ function getPropertyDeclarationName(line: string): string | undefined {
  * Extracts the assigned property name from a constructor assignment line.
  */
 function getAssignmentPropertyName(line: string): string | undefined {
-  const assignmentPattern = /^\s*this(?:\["([^"]+)"\]|\.([A-Za-z_$][\w$]*))\s*=/u;
+  const assignmentPattern =
+    /^\s*this(?:\["([^"]+)"\]|\.([A-Za-z_$][\w$]*))\s*=/u;
   const assignmentMatch = assignmentPattern.exec(line);
 
   if (!assignmentMatch) {
@@ -1151,7 +1442,10 @@ function getAssignmentPropertyName(line: string): string | undefined {
 /**
  * Creates a companion enum for finite literal unions.
  */
-function createEnumFromTypeAlias(statement: ts.TypeAliasDeclaration, declarationDoc?: string): string | undefined {
+function createEnumFromTypeAlias(
+  statement: ts.TypeAliasDeclaration,
+  declarationDoc?: string,
+): string | undefined {
   if (!ts.isUnionTypeNode(statement.type)) {
     return undefined;
   }
@@ -1162,7 +1456,10 @@ function createEnumFromTypeAlias(statement: ts.TypeAliasDeclaration, declaration
         return undefined;
       }
 
-      if (ts.isStringLiteral(typeNode.literal) || ts.isNumericLiteral(typeNode.literal)) {
+      if (
+        ts.isStringLiteral(typeNode.literal) ||
+        ts.isNumericLiteral(typeNode.literal)
+      ) {
         return typeNode.literal.getText().replace(/^['"]|['"]$/g, '');
       }
 
@@ -1170,7 +1467,11 @@ function createEnumFromTypeAlias(statement: ts.TypeAliasDeclaration, declaration
     })
     .filter((member): member is string => typeof member === 'string');
 
-  if (members.length !== statement.type.types.length || members.length === 0 || members.length > 50) {
+  if (
+    members.length !== statement.type.types.length ||
+    members.length === 0 ||
+    members.length > 50
+  ) {
     return undefined;
   }
 
@@ -1183,7 +1484,9 @@ function createEnumFromTypeAlias(statement: ts.TypeAliasDeclaration, declaration
   });
 
   return [
-    createJsDoc(declarationDoc ?? `Enumerates allowed values for ${statement.name.text}.`),
+    createJsDoc(
+      declarationDoc ?? `Enumerates allowed values for ${statement.name.text}.`,
+    ),
     `export enum ${enumName} {`,
     ...enumLines,
     '}',
@@ -1199,7 +1502,12 @@ function createJsDoc(summary: string, tags: string[] = []): string {
     .map((line) => line.trim())
     .filter((line) => line.length > 0);
 
-  return ['/**', ...lines.map((line) => ` * ${line}`), ...tags.map((line) => ` * ${line}`), ' */'].join('\n');
+  return [
+    '/**',
+    ...lines.map((line) => ` * ${line}`),
+    ...tags.map((line) => ` * ${line}`),
+    ' */',
+  ].join('\n');
 }
 
 /**
@@ -1232,7 +1540,10 @@ function sanitizeEnumMemberName(value: string): string {
 /**
  * Ensures enum member names stay unique in the generated enum.
  */
-function getUniqueEnumMemberName(baseName: string, usedNames: Set<string>): string {
+function getUniqueEnumMemberName(
+  baseName: string,
+  usedNames: Set<string>,
+): string {
   if (!usedNames.has(baseName)) {
     usedNames.add(baseName);
     return baseName;
@@ -1253,15 +1564,21 @@ function getUniqueEnumMemberName(baseName: string, usedNames: Set<string>): stri
 /**
  * Renders one emitted module into its own TypeScript file.
  */
-function renderModuleFile(moduleRecord: OutputModuleRecord, moduleFilePath: string, modulePathMap: Map<string, string>): string {
+function renderModuleFile(
+  moduleRecord: OutputModuleRecord,
+  moduleFilePath: string,
+  modulePathMap: Map<string, string>,
+): string {
   const imports = moduleRecord.references
-    .map((reference) => buildModuleImportLine(reference, moduleFilePath, modulePathMap))
+    .map((reference) =>
+      buildModuleImportLine(reference, moduleFilePath, modulePathMap),
+    )
     .filter((line): line is string => typeof line === 'string')
     .sort((left, right) => left.localeCompare(right));
-  const segments = [
-    ...imports,
-    moduleRecord.statementText,
-  ].filter((segment): segment is string => typeof segment === 'string' && segment.length > 0);
+  const segments = [...imports, moduleRecord.statementText].filter(
+    (segment): segment is string =>
+      typeof segment === 'string' && segment.length > 0,
+  );
 
   return normalizeGenericPropertyJsDoc(`${segments.join('\n\n')}\n`);
 }
@@ -1269,7 +1586,11 @@ function renderModuleFile(moduleRecord: OutputModuleRecord, moduleFilePath: stri
 /**
  * Builds an import line for one referenced symbol when its output module is known.
  */
-function buildModuleImportLine(referenceName: string, moduleFilePath: string, modulePathMap: Map<string, string>): string | undefined {
+function buildModuleImportLine(
+  referenceName: string,
+  moduleFilePath: string,
+  modulePathMap: Map<string, string>,
+): string | undefined {
   const targetRelativePath = modulePathMap.get(referenceName);
 
   if (!targetRelativePath) {
@@ -1289,7 +1610,10 @@ function normalizeGenericPropertyJsDoc(sourceText: string): string {
   return sourceText.replace(
     /(\n\s*\/\*\*\n\s*\* )Schema property [^.]+\.(\n\s*\*\/\n\s*[^\n]*:\s*[^;]+;)/g,
     (match, prefix: string, suffix: string) => {
-      const propertyMatch = /(?:public\s+)?((?:"[^"]+")|[A-Za-z_$][\w$]*)\??:\s*[^;]+;/u.exec(suffix);
+      const propertyMatch =
+        /(?:public\s+)?((?:"[^"]+")|[A-Za-z_$][\w$]*)\??:\s*[^;]+;/u.exec(
+          suffix,
+        );
 
       if (!propertyMatch) {
         return match;
@@ -1314,13 +1638,84 @@ function postProcessGeneratedModules(): void {
   const exportMap = buildDirectoryExportMap(moduleFiles);
 
   for (const moduleFilePath of moduleFiles) {
+    if (!isGeneratedModule(moduleFilePath)) {
+      continue;
+    }
+
     const sourceText = fs.readFileSync(moduleFilePath, 'utf8');
-    const nextSourceText = normalizeGenericPropertyJsDoc(rewriteCrossFileReferences(moduleFilePath, sourceText, exportMap));
+    let nextSourceText = normalizeGenericPropertyJsDoc(
+      rewriteCrossFileReferences(moduleFilePath, sourceText, exportMap),
+    );
+
+    if (isGeneratedClassModule(moduleFilePath)) {
+      nextSourceText = consolidateGeneratedConstructorAssignments(
+        moduleFilePath,
+        nextSourceText,
+        path.join(
+          OUTPUT_ROOT,
+          'canonical',
+          'shared',
+          'assign-schema-properties.ts',
+        ),
+      );
+    }
 
     if (nextSourceText !== sourceText) {
       fs.writeFileSync(moduleFilePath, nextSourceText, 'utf8');
     }
   }
+}
+
+function consolidateGeneratedClassModules(): void {
+  const classesRoot = path.join(OUTPUT_ROOT, 'classes');
+  const helperFilePath = path.join(
+    OUTPUT_ROOT,
+    'canonical',
+    'shared',
+    'assign-schema-properties.ts',
+  );
+
+  for (const moduleFilePath of collectGeneratedModuleFiles(classesRoot)) {
+    const sourceText = fs.readFileSync(moduleFilePath, 'utf8');
+    const nextSourceText = consolidateGeneratedConstructorAssignments(
+      moduleFilePath,
+      sourceText,
+      helperFilePath,
+    );
+
+    if (nextSourceText !== sourceText) {
+      fs.writeFileSync(moduleFilePath, nextSourceText, 'utf8');
+    }
+  }
+}
+
+function isGeneratedModule(moduleFilePath: string): boolean {
+  const generatedRoots = ['classes', 'enums', 'interfaces', 'types'].map(
+    (directory) => path.join(OUTPUT_ROOT, directory),
+  );
+
+  return generatedRoots.some((generatedRoot) => {
+    const relativePath = path.relative(generatedRoot, moduleFilePath);
+
+    return (
+      relativePath.length > 0 &&
+      !relativePath.startsWith(`..${path.sep}`) &&
+      !path.isAbsolute(relativePath)
+    );
+  });
+}
+
+function isGeneratedClassModule(moduleFilePath: string): boolean {
+  const relativePath = path.relative(
+    path.join(OUTPUT_ROOT, 'classes'),
+    moduleFilePath,
+  );
+
+  return (
+    relativePath.length > 0 &&
+    !relativePath.startsWith(`..${path.sep}`) &&
+    !path.isAbsolute(relativePath)
+  );
 }
 
 /**
@@ -1338,7 +1733,11 @@ function collectGeneratedModuleFiles(directoryPath: string): string[] {
       continue;
     }
 
-    if (entry.isFile() && entry.name.endsWith('.ts') && entry.name !== 'index.ts') {
+    if (
+      entry.isFile() &&
+      entry.name.endsWith('.ts') &&
+      entry.name !== 'index.ts'
+    ) {
       moduleFiles.push(entryPath);
     }
   }
@@ -1349,15 +1748,35 @@ function collectGeneratedModuleFiles(directoryPath: string): string[] {
 /**
  * Collects exported symbols for all generated modules in one directory.
  */
-function buildDirectoryExportMap(moduleFilePaths: string[]): Map<string, string[]> {
+function buildDirectoryExportMap(
+  moduleFilePaths: string[],
+): Map<string, string[]> {
   const exportMap = new Map<string, string[]>();
 
   for (const moduleFilePath of moduleFilePaths) {
     const sourceText = fs.readFileSync(moduleFilePath, 'utf8');
-    const sourceFile = ts.createSourceFile(moduleFilePath, sourceText, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
+    const sourceFile = ts.createSourceFile(
+      moduleFilePath,
+      sourceText,
+      ts.ScriptTarget.Latest,
+      true,
+      ts.ScriptKind.TS,
+    );
     const exportedNames = sourceFile.statements
-      .filter((statement) => ts.isClassDeclaration(statement) || ts.isTypeAliasDeclaration(statement) || ts.isInterfaceDeclaration(statement) || ts.isEnumDeclaration(statement))
-      .filter((statement) => ts.canHaveModifiers(statement) && (ts.getModifiers(statement) ?? []).some((modifier) => modifier.kind === ts.SyntaxKind.ExportKeyword))
+      .filter(
+        (statement) =>
+          ts.isClassDeclaration(statement) ||
+          ts.isTypeAliasDeclaration(statement) ||
+          ts.isInterfaceDeclaration(statement) ||
+          ts.isEnumDeclaration(statement),
+      )
+      .filter(
+        (statement) =>
+          ts.canHaveModifiers(statement) &&
+          (ts.getModifiers(statement) ?? []).some(
+            (modifier) => modifier.kind === ts.SyntaxKind.ExportKeyword,
+          ),
+      )
       .map((statement) => {
         if (!statement.name) {
           return undefined;
@@ -1376,8 +1795,18 @@ function buildDirectoryExportMap(moduleFilePaths: string[]): Map<string, string[
 /**
  * Rewrites unresolved raw references to the unique hierarchical export available in the same folder.
  */
-function rewriteCrossFileReferences(moduleFilePath: string, sourceText: string, exportMap: Map<string, string[]>): string {
-  const sourceFile = ts.createSourceFile(moduleFilePath, sourceText, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
+function rewriteCrossFileReferences(
+  moduleFilePath: string,
+  sourceText: string,
+  exportMap: Map<string, string[]>,
+): string {
+  const sourceFile = ts.createSourceFile(
+    moduleFilePath,
+    sourceText,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
   const localExports = new Set(exportMap.get(moduleFilePath) ?? []);
   const importedNames = collectImportedNames(sourceFile);
   const referencedNames = collectReferencedNames(sourceFile);
@@ -1393,22 +1822,40 @@ function rewriteCrossFileReferences(moduleFilePath: string, sourceText: string, 
     const primitiveTypeName = XML_SCHEMA_TYPE_MAP[referenceName];
 
     if (primitiveTypeName) {
-      nextSourceText = replaceIdentifier(nextSourceText, referenceName, primitiveTypeName);
+      nextSourceText = replaceIdentifier(
+        nextSourceText,
+        referenceName,
+        primitiveTypeName,
+      );
       continue;
     }
 
-    const candidate = resolveExportCandidate(referenceName, moduleFilePath, exportMap);
+    const candidate = resolveExportCandidate(
+      referenceName,
+      moduleFilePath,
+      exportMap,
+    );
 
     if (!candidate) {
       if (/^[A-Z]/.test(referenceName)) {
-        nextSourceText = replaceIdentifier(nextSourceText, referenceName, 'unknown');
+        nextSourceText = replaceIdentifier(
+          nextSourceText,
+          referenceName,
+          'unknown',
+        );
       }
 
       continue;
     }
 
-    nextSourceText = replaceIdentifier(nextSourceText, referenceName, candidate.exportName);
-    importLines.add(`import { ${candidate.exportName} } from './${candidate.importPath}';`);
+    nextSourceText = replaceIdentifier(
+      nextSourceText,
+      referenceName,
+      candidate.exportName,
+    );
+    importLines.add(
+      `import { ${candidate.exportName} } from './${candidate.importPath}';`,
+    );
   }
 
   if (importLines.size === 0) {
@@ -1484,12 +1931,21 @@ function collectReferencedNames(sourceFile: ts.SourceFile): Set<string> {
 /**
  * Merges newly discovered import lines into the top import block of a source file.
  */
-function mergeImportLines(sourceText: string, importLines: Set<string>): string {
+function mergeImportLines(
+  sourceText: string,
+  importLines: Set<string>,
+): string {
   const currentLines = sourceText.split('\n');
   const bodyLines = currentLines.filter((line) => !importLines.has(line));
-  const existingImportLines = bodyLines.filter((line) => line.startsWith('import '));
-  const nonImportLines = bodyLines.filter((line) => !line.startsWith('import '));
-  const mergedImportLines = [...new Set([...existingImportLines, ...importLines])].sort((left, right) => left.localeCompare(right));
+  const existingImportLines = bodyLines.filter((line) =>
+    line.startsWith('import '),
+  );
+  const nonImportLines = bodyLines.filter(
+    (line) => !line.startsWith('import '),
+  );
+  const mergedImportLines = [
+    ...new Set([...existingImportLines, ...importLines]),
+  ].sort((left, right) => left.localeCompare(right));
 
   return `${[...mergedImportLines, ...nonImportLines].join('\n')}\n`;
 }
@@ -1497,8 +1953,16 @@ function mergeImportLines(sourceText: string, importLines: Set<string>): string 
 /**
  * Resolves a raw symbol name to one unique exported symbol in the same generated folder.
  */
-function resolveExportCandidate(referenceName: string, moduleFilePath: string, exportMap: Map<string, string[]>): { exportName: string; importPath: string } | undefined {
-  const candidates: Array<{ exportName: string; filePath: string; score: number }> = [];
+function resolveExportCandidate(
+  referenceName: string,
+  moduleFilePath: string,
+  exportMap: Map<string, string[]>,
+): { exportName: string; importPath: string } | undefined {
+  const candidates: Array<{
+    exportName: string;
+    filePath: string;
+    score: number;
+  }> = [];
   const moduleBaseName = path.basename(moduleFilePath, '.ts');
 
   for (const [candidateFilePath, exportedNames] of exportMap.entries()) {
@@ -1507,11 +1971,18 @@ function resolveExportCandidate(referenceName: string, moduleFilePath: string, e
     }
 
     for (const exportName of exportedNames) {
-      if (exportName === referenceName || exportName.endsWith(`_${referenceName}`)) {
+      if (
+        exportName === referenceName ||
+        exportName.endsWith(`_${referenceName}`)
+      ) {
         candidates.push({
           exportName,
           filePath: candidateFilePath,
-          score: scoreExportCandidate(moduleBaseName, path.basename(candidateFilePath, '.ts'), referenceName),
+          score: scoreExportCandidate(
+            moduleBaseName,
+            path.basename(candidateFilePath, '.ts'),
+            referenceName,
+          ),
         });
       }
     }
@@ -1521,7 +1992,11 @@ function resolveExportCandidate(referenceName: string, moduleFilePath: string, e
     return undefined;
   }
 
-  candidates.sort((left, right) => right.score - left.score || left.exportName.localeCompare(right.exportName));
+  candidates.sort(
+    (left, right) =>
+      right.score - left.score ||
+      left.exportName.localeCompare(right.exportName),
+  );
 
   if (candidates.length > 1 && candidates[0].score === candidates[1].score) {
     return undefined;
@@ -1529,29 +2004,42 @@ function resolveExportCandidate(referenceName: string, moduleFilePath: string, e
 
   return {
     exportName: candidates[0].exportName,
-      importPath: toImportSpecifier(moduleFilePath, candidates[0].filePath),
+    importPath: toImportSpecifier(moduleFilePath, candidates[0].filePath),
   };
 }
 
-  /**
-   * Converts two module file paths into a relative TypeScript import specifier.
-   */
-  function toImportSpecifier(fromFilePath: string, toFilePath: string): string {
-    const relativeImportPath = path.relative(path.dirname(fromFilePath), toFilePath).replaceAll('\\', '/').replace(/\.ts$/i, '');
+/**
+ * Converts two module file paths into a relative TypeScript import specifier.
+ */
+function toImportSpecifier(fromFilePath: string, toFilePath: string): string {
+  const relativeImportPath = path
+    .relative(path.dirname(fromFilePath), toFilePath)
+    .replaceAll('\\', '/')
+    .replace(/\.ts$/i, '');
 
-    return relativeImportPath.startsWith('.') ? relativeImportPath : `./${relativeImportPath}`;
-  }
+  return relativeImportPath.startsWith('.')
+    ? relativeImportPath
+    : `./${relativeImportPath}`;
+}
 
 /**
  * Scores candidate exports by how much hierarchical prefix they share with the current module.
  */
-function scoreExportCandidate(moduleBaseName: string, candidateBaseName: string, referenceName: string): number {
+function scoreExportCandidate(
+  moduleBaseName: string,
+  candidateBaseName: string,
+  referenceName: string,
+): number {
   const moduleParts = moduleBaseName.split('_');
   const candidateParts = candidateBaseName.split('_');
 
   let sharedPrefixLength = 0;
 
-  for (let index = 0; index < Math.min(moduleParts.length, candidateParts.length); index += 1) {
+  for (
+    let index = 0;
+    index < Math.min(moduleParts.length, candidateParts.length);
+    index += 1
+  ) {
     if (moduleParts[index] !== candidateParts[index]) {
       break;
     }
@@ -1559,7 +2047,9 @@ function scoreExportCandidate(moduleBaseName: string, candidateBaseName: string,
     sharedPrefixLength += 1;
   }
 
-  const exactSuffixBonus = candidateBaseName.endsWith(`_${referenceName}`) ? 1 : 0;
+  const exactSuffixBonus = candidateBaseName.endsWith(`_${referenceName}`)
+    ? 1
+    : 0;
 
   return sharedPrefixLength * 10 + exactSuffixBonus;
 }
@@ -1589,7 +2079,11 @@ function writeIndexFiles(directoryPath: string): void {
     });
 
   if (exportLines.length > 0) {
-    fs.writeFileSync(path.join(directoryPath, 'index.ts'), `${exportLines.join('\n')}\n`, 'utf8');
+    fs.writeFileSync(
+      path.join(directoryPath, 'index.ts'),
+      `${exportLines.join('\n')}\n`,
+      'utf8',
+    );
   }
 }
 
@@ -1597,14 +2091,20 @@ function writeIndexFiles(directoryPath: string): void {
  * Writes a compact manifest with retries and collisions.
  */
 function writeManifest(resultsByFolder: Map<string, FolderResult>): void {
-  const manifest = [...resultsByFolder.entries()].map(([folderPath, result]) => ({
-    collisions: result.collisions,
-    files: result.files,
-    folderPath,
-    retriesWithSanitizedPatterns: result.retriesWithSanitizedPatterns,
-  }));
+  const manifest = [...resultsByFolder.entries()].map(
+    ([folderPath, result]) => ({
+      collisions: result.collisions,
+      files: result.files,
+      folderPath,
+      retriesWithSanitizedPatterns: result.retriesWithSanitizedPatterns,
+    }),
+  );
 
-  fs.writeFileSync(path.join(OUTPUT_ROOT, 'manifest.json'), JSON.stringify(manifest, null, 2), 'utf8');
+  fs.writeFileSync(
+    path.join(OUTPUT_ROOT, 'manifest.json'),
+    JSON.stringify(manifest, null, 2),
+    'utf8',
+  );
 }
 
 /**

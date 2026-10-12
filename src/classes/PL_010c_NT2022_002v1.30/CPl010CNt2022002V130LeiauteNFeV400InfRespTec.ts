@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informações do Responsável Técnico pela emissão do DF-e
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400InfRespTec {
 
         if (props) {
 
-        	this.CNPJ = props.CNPJ;
+            assignSchemaProperties(this, props, ["CNPJ"]);
         }
     }
 }

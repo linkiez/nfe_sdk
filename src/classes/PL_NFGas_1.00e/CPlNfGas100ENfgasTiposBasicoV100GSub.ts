@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100ENfgasTiposBasicoV100MotSub } from '../../types/PL_NFGas_1.00e/TPlNfGas100ENfgasTiposBasicoV100MotSub';
 
 /**
@@ -47,7 +48,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100GSub {
 
         if (props) {
 
-        	this.motSub = props.motSub;
+            assignSchemaProperties(this, props, ["motSub"]);
         }
     }
 }

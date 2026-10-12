@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100CnpjDest } from '../../types/Evento_SuframaVistoria_PL_v1.01/TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100CnpjDest';
 
 import { TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100CpfDest } from '../../types/Evento_SuframaVistoria_PL_v1.01/TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100CpfDest';
@@ -79,13 +80,7 @@ export class CEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100Ctg {
 
         if (props) {
 
-        	this.nFormSeg = props.nFormSeg;
-        	this.TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100UfDest = props.TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100UfDest;
-        	this.tpEmis = props.tpEmis;
-        	this.vTotalNFe = props.vTotalNFe;
-        	this.indICMS = props.indICMS;
-        	this.indICMSST = props.indICMSST;
-        	this.diaEmi = props.diaEmi;
+            assignSchemaProperties(this, props, ["nFormSeg", "TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100UfDest", "tpEmis", "vTotalNFe", "indICMS", "indICMSST", "diaEmi"]);
         }
     }
 }

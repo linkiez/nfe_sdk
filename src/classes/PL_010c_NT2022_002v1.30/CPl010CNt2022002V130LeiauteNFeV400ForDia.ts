@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Fornecimentos diários
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400ForDia {
 
         if (props) {
 
-        	this.qtde = props.qtde;
+            assignSchemaProperties(this, props, ["qtde"]);
         }
     }
 }

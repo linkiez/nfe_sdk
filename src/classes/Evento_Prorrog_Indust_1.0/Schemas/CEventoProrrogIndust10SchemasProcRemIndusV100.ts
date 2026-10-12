@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 import { TEventoProrrogIndust10SchemasProcRemIndusV100ProcEventoNFe } from '../../../types/Evento_Prorrog_Indust_1.0/Schemas/TEventoProrrogIndust10SchemasProcRemIndusV100ProcEventoNFe';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoProrrogIndust10SchemasProcRemIndusV100 {
 
         if (props) {
 
-        	this.procEventoNFe = props.procEventoNFe;
+            assignSchemaProperties(this, props, ["procEventoNFe"]);
         }
     }
 }

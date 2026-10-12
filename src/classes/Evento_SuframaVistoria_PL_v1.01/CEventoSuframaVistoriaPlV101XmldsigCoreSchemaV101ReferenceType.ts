@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoSuframaVistoriaPlV101XmldsigCoreSchemaV101TransformsType } from './CEventoSuframaVistoriaPlV101XmldsigCoreSchemaV101TransformsType';
 
 import { TEventoSuframaVistoriaPlV101XmldsigCoreSchemaV101DigestValueType } from '../../types/Evento_SuframaVistoria_PL_v1.01/TEventoSuframaVistoriaPlV101XmldsigCoreSchemaV101DigestValueType';
@@ -44,10 +45,7 @@ export class CEventoSuframaVistoriaPlV101XmldsigCoreSchemaV101ReferenceType {
         if (props) {
 
         	this.Transforms = (props.Transforms) ? new CEventoSuframaVistoriaPlV101XmldsigCoreSchemaV101TransformsType(props.Transforms): undefined;
-        	this.DigestValue = props.DigestValue;
-        	this.$Id = props.$Id;
-        	this.$URI = props.$URI;
-        	this.$Type = props.$Type;
+            assignSchemaProperties(this, props, ["DigestValue", "$Id", "$URI", "$Type"]);
         }
     }
 }

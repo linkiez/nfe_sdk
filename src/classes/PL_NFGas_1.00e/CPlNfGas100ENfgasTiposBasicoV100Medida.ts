@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfGas100ENfgasTiposBasicoV100UMed } from '../../types/PL_NFGas_1.00e/TPlNfGas100ENfgasTiposBasicoV100UMed';
 
 /**
@@ -29,8 +30,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100Medida {
 
         if (props) {
 
-        	this.uMed = props.uMed;
-        	this.vMed = props.vMed;
+            assignSchemaProperties(this, props, ["uMed", "vMed"]);
         }
     }
 }

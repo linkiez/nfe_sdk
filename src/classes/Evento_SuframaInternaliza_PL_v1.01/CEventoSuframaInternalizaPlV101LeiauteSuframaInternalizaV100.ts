@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100Ctg } from './CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100Ctg';
 
 import { CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100ModalOutro } from './CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100ModalOutro';
@@ -171,34 +172,11 @@ export class CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100 {
 
         if (props) {
 
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.cPostoUF = props.cPostoUF;
-        	this.cPFOper = props.cPFOper;
-        	this.dhPas = props.dhPas;
-        	this.uFDest = props.uFDest;
-        	this.chMDFe = props.chMDFe;
-        	this.chCTe = props.chCTe;
-        	this.placaVeic = props.placaVeic;
-        	this.uFVeic = props.uFVeic;
-        	this.placaCarreta = props.placaCarreta;
-        	this.uFCarreta = props.uFCarreta;
-        	this.placaCarreta2 = props.placaCarreta2;
-        	this.uFCarreta2 = props.uFCarreta2;
-        	this.cNPJDest = props.cNPJDest;
-        	this.cPFDest = props.cPFDest;
-        	this.vTotalNFe = props.vTotalNFe;
-        	this.diaEmi = props.diaEmi;
+            assignSchemaProperties(this, props, ["cOrgaoAutor", "cPostoUF", "cPFOper", "dhPas", "uFDest", "chMDFe", "chCTe", "placaVeic", "uFVeic", "placaCarreta", "uFCarreta", "placaCarreta2", "uFCarreta2", "cNPJDest", "cPFDest", "vTotalNFe", "diaEmi"]);
         	this.modalRodov = (props.modalRodov) ? new CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100ModalRodov(props.modalRodov): undefined;
         	this.modalOutro = (props.modalOutro) ? new CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100ModalOutro(props.modalOutro): undefined;
         	this.ctg = (props.ctg) ? new CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100Ctg(props.ctg): undefined;
-        	this.descEvento = props.descEvento;
-        	this.indOffline = props.indOffline;
-        	this.sentidoVia = props.sentidoVia;
-        	this.indRet = props.indRet;
-        	this.tpModal = props.tpModal;
-        	this.tpEmis = props.tpEmis;
-        	this.indICMS = props.indICMS;
-        	this.indICMSST = props.indICMSST;
+            assignSchemaProperties(this, props, ["descEvento", "indOffline", "sentidoVia", "indRet", "tpModal", "tpEmis", "indICMS", "indICMSST"]);
         }
     }
 }

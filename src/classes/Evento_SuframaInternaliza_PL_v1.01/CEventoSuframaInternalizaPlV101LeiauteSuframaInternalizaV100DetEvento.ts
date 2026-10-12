@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Schema XML de validação do evento do Confirmação de Internalização da Mercadoria na SUFRAMA 990910
  */
@@ -23,7 +24,7 @@ export class CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100DetEven
 
         if (props) {
 
-        	this.dVistoria = props.dVistoria;
+            assignSchemaProperties(this, props, ["dVistoria"]);
         }
     }
 }

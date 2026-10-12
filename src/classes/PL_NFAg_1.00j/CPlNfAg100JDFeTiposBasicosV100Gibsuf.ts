@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JDFeTiposBasicosV100Dec1302Rtc } from '../../types/PL_NFAg_1.00j/TPlNfAg100JDFeTiposBasicosV100Dec1302Rtc';
 
 /**
@@ -33,9 +34,7 @@ export class CPlNfAg100JDFeTiposBasicosV100Gibsuf {
 
         if (props) {
 
-        	this.vDif = props.vDif;
-        	this.vDevTrib = props.vDevTrib;
-        	this.vIBSUF = props.vIBSUF;
+            assignSchemaProperties(this, props, ["vDif", "vDevTrib", "vIBSUF"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoEpecNfCePl100RetEventoEpecV001COrgaoIbge } from '../../types/Evento_EPEC_NFCe_PL1.00/TEventoEpecNfCePl100RetEventoEpecV001COrgaoIbge';
 
 /**
@@ -61,16 +62,7 @@ export class CEventoEpecNfCePl100RetEventoEpecV001InfEvento {
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.verAplic = props.verAplic;
-        	this.cOrgao = props.cOrgao;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
-        	this.chNFe = props.chNFe;
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.dhRegEvento = props.dhRegEvento;
-        	this.nProt = props.nProt;
-        	this.chNFePend = props.chNFePend;
+            assignSchemaProperties(this, props, ["tpAmb", "verAplic", "cOrgao", "cStat", "xMotivo", "chNFe", "cOrgaoAutor", "dhRegEvento", "nProt", "chNFePend"]);
         }
     }
 }

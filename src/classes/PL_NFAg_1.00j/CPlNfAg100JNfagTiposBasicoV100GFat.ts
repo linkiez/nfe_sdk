@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfAg100JNfagTiposBasicoV100EndeEmi } from './CPlNfAg100JNfagTiposBasicoV100EndeEmi';
 
 import { CPlNfAg100JNfagTiposBasicoV100Gpix } from './CPlNfAg100JNfagTiposBasicoV100Gpix';
@@ -49,10 +50,7 @@ export class CPlNfAg100JNfagTiposBasicoV100GFat {
 
         if (props) {
 
-        	this.CompetFat = props.CompetFat;
-        	this.dVencFat = props.dVencFat;
-        	this.dApresFat = props.dApresFat;
-        	this.dProxLeitura = props.dProxLeitura;
+            assignSchemaProperties(this, props, ["CompetFat", "dVencFat", "dApresFat", "dProxLeitura"]);
         	this.enderCorresp = (props.enderCorresp) ? new CPlNfAg100JNfagTiposBasicoV100EndeEmi(props.enderCorresp): undefined;
         	this.gPIX = (props.gPIX) ? new CPlNfAg100JNfagTiposBasicoV100Gpix(props.gPIX): undefined;
         }

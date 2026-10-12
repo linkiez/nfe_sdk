@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JNfagTiposBasicoV100Compet } from '../../types/PL_NFAg_1.00j/TPlNfAg100JNfagTiposBasicoV100Compet';
 
 import { TPlNfAg100JNfagTiposBasicoV100UMedAg } from '../../types/PL_NFAg_1.00j/TPlNfAg100JNfagTiposBasicoV100UMedAg';
@@ -43,11 +44,7 @@ export class CPlNfAg100JNfagTiposBasicoV100GCons {
 
         if (props) {
 
-        	this.CompetFat = props.CompetFat;
-        	this.uMed = props.uMed;
-        	this.medDiaria = props.medDiaria;
-        	this.consumo = props.consumo;
-        	this.volFat = props.volFat;
+            assignSchemaProperties(this, props, ["CompetFat", "uMed", "medDiaria", "consumo", "volFat"]);
         }
     }
 }

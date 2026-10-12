@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfAg100JNfagTiposBasicoV100ProtNfAg } from './CPlNfAg100JNfagTiposBasicoV100ProtNfAg';
 
 import { TPlNfAg100JNfagTiposBasicoV100VerNfAg } from '../../types/PL_NFAg_1.00j/TPlNfAg100JNfagTiposBasicoV100VerNfAg';
@@ -51,13 +52,9 @@ export class CPlNfAg100JNfagTiposBasicoV100RetNfAg {
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.cUF = props.cUF;
-        	this.verAplic = props.verAplic;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
+            assignSchemaProperties(this, props, ["tpAmb", "cUF", "verAplic", "cStat", "xMotivo"]);
         	this.protNFAg = (props.protNFAg) ? new CPlNfAg100JNfagTiposBasicoV100ProtNfAg(props.protNFAg): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

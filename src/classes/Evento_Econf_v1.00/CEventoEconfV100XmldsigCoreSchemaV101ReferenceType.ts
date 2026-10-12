@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoEconfV100XmldsigCoreSchemaV101TransformsType } from './CEventoEconfV100XmldsigCoreSchemaV101TransformsType';
 
 import { TEventoEconfV100XmldsigCoreSchemaV101DigestValueType } from '../../types/Evento_Econf_v1.00/TEventoEconfV100XmldsigCoreSchemaV101DigestValueType';
@@ -44,10 +45,7 @@ export class CEventoEconfV100XmldsigCoreSchemaV101ReferenceType {
         if (props) {
 
         	this.Transforms = (props.Transforms) ? new CEventoEconfV100XmldsigCoreSchemaV101TransformsType(props.Transforms): undefined;
-        	this.DigestValue = props.DigestValue;
-        	this.$Id = props.$Id;
-        	this.$URI = props.$URI;
-        	this.$Type = props.$Type;
+            assignSchemaProperties(this, props, ["DigestValue", "$Id", "$URI", "$Type"]);
         }
     }
 }

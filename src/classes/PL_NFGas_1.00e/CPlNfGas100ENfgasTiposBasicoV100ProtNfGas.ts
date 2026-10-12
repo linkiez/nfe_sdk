@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfGas100ENfgasTiposBasicoV100InfFisco } from './CPlNfGas100ENfgasTiposBasicoV100InfFisco';
 
 import { CPlNfGas100ENfgasTiposBasicoV100InfProt } from './CPlNfGas100ENfgasTiposBasicoV100InfProt';
@@ -41,10 +42,10 @@ export class CPlNfGas100ENfgasTiposBasicoV100ProtNfGas {
 
         if (props) {
 
-        	this.unknown = props.unknown;
+            assignSchemaProperties(this, props, ["unknown"]);
         	this.infProt = (props.infProt) ? new CPlNfGas100ENfgasTiposBasicoV100InfProt(props.infProt): undefined;
         	this.infFisco = (props.infFisco) ? new CPlNfGas100ENfgasTiposBasicoV100InfFisco(props.infFisco): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

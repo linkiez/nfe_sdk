@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoInsucessoNFePlV102EnvEventoInsucessoNFeV100EnvEvento } from '../../types/Evento_InsucessoNFe_PL_v1.02/TEventoInsucessoNFePlV102EnvEventoInsucessoNFeV100EnvEvento';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoInsucessoNFePlV102EnvEventoInsucessoNFeV100 {
 
         if (props) {
 
-        	this.envEvento = props.envEvento;
+            assignSchemaProperties(this, props, ["envEvento"]);
         }
     }
 }

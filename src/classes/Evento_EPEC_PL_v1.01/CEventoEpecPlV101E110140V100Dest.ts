@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoEpecPlV101E110140V100Ie } from '../../types/Evento_EPEC_PL_v1.01/TEventoEpecPlV101E110140V100Ie';
 
 import { TEventoEpecPlV101E110140V100Uf } from '../../types/Evento_EPEC_PL_v1.01/TEventoEpecPlV101E110140V100Uf';
@@ -71,11 +72,7 @@ export class CEventoEpecPlV101E110140V100Dest {
 
         if (props) {
 
-        	this.TEventoEpecPlV101E110140V100Uf = props.TEventoEpecPlV101E110140V100Uf;
-        	this.TEventoEpecPlV101E110140V100Ie = props.TEventoEpecPlV101E110140V100Ie;
-        	this.vNF = props.vNF;
-        	this.vICMS = props.vICMS;
-        	this.vST = props.vST;
+            assignSchemaProperties(this, props, ["TEventoEpecPlV101E110140V100Uf", "TEventoEpecPlV101E110140V100Ie", "vNF", "vICMS", "vST"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 /**
  * Schema XML de validação do evento do cancelamento por substituição 110112
  */
@@ -39,11 +40,7 @@ export class CEventoCancSubstV101Nt2018004EventoCancSubstV101LeiauteEventoCancSu
 
         if (props) {
 
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.verAplic = props.verAplic;
-        	this.nProt = props.nProt;
-        	this.xJust = props.xJust;
-        	this.chNFeRef = props.chNFeRef;
+            assignSchemaProperties(this, props, ["cOrgaoAutor", "verAplic", "nProt", "xJust", "chNFeRef"]);
         }
     }
 }

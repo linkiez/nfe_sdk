@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JDFeTiposBasicosV100Dec030204Rtc } from '../../types/PL_NFAg_1.00j/TPlNfAg100JDFeTiposBasicosV100Dec030204Rtc';
 
 /**
@@ -29,8 +30,7 @@ export class CPlNfAg100JDFeTiposBasicosV100Red {
 
         if (props) {
 
-        	this.pRedAliq = props.pRedAliq;
-        	this.pAliqEfet = props.pAliqEfet;
+            assignSchemaProperties(this, props, ["pRedAliq", "pAliqEfet"]);
         }
     }
 }

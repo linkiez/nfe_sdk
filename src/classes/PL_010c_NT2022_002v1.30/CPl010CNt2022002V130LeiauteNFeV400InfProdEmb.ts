@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informações mais detalhadas do produto (usada na NFF)
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400InfProdEmb {
 
         if (props) {
 
-        	this.qVolEmb = props.qVolEmb;
+            assignSchemaProperties(this, props, ["qVolEmb"]);
         }
     }
 }

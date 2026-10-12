@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPl010CNt2022002V130DFeTiposBasicosV100Dec030204Rtc } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130DFeTiposBasicosV100Dec030204Rtc';
 
 import { TPl010CNt2022002V130DFeTiposBasicosV100Dec1302Rtc } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130DFeTiposBasicosV100Dec1302Rtc';
@@ -47,12 +48,7 @@ export class CPl010CNt2022002V130DFeTiposBasicosV100TribCompraGov {
 
         if (props) {
 
-        	this.pAliqIBSUF = props.pAliqIBSUF;
-        	this.vTribIBSUF = props.vTribIBSUF;
-        	this.pAliqIBSMun = props.pAliqIBSMun;
-        	this.vTribIBSMun = props.vTribIBSMun;
-        	this.pAliqCBS = props.pAliqCBS;
-        	this.vTribCBS = props.vTribCBS;
+            assignSchemaProperties(this, props, ["pAliqIBSUF", "vTribIBSUF", "pAliqIBSMun", "vTribIBSMun", "pAliqCBS", "vTribCBS"]);
         }
     }
 }

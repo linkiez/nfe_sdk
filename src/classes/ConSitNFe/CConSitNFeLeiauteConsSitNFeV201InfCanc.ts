@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Dados do Resultado do Pedido de Cancelamento da Nota Fiscal Eletrônica
  */
@@ -51,14 +52,7 @@ export class CConSitNFeLeiauteConsSitNFeV201InfCanc {
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.verAplic = props.verAplic;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
-        	this.cUF = props.cUF;
-        	this.chNFe = props.chNFe;
-        	this.dhRecbto = props.dhRecbto;
-        	this.nProt = props.nProt;
+            assignSchemaProperties(this, props, ["tpAmb", "verAplic", "cStat", "xMotivo", "cUF", "chNFe", "dhRecbto", "nProt"]);
         }
     }
 }

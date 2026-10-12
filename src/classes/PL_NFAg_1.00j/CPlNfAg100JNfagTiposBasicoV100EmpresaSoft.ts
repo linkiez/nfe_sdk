@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JNfagTiposBasicoV100Email } from '../../types/PL_NFAg_1.00j/TPlNfAg100JNfagTiposBasicoV100Email';
 
 /**
@@ -47,7 +48,7 @@ export class CPlNfAg100JNfagTiposBasicoV100EmpresaSoft {
 
         if (props) {
 
-        	this.email = props.email;
+            assignSchemaProperties(this, props, ["email"]);
         }
     }
 }

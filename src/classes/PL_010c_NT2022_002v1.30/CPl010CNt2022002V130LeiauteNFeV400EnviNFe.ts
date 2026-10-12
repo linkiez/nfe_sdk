@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130LeiauteNFeV400NFe } from './CPl010CNt2022002V130LeiauteNFeV400NFe';
 
 import { TPl010CNt2022002V130LeiauteNFeV400IdLote } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130LeiauteNFeV400IdLote';
@@ -37,9 +38,9 @@ export class CPl010CNt2022002V130LeiauteNFeV400EnviNFe {
 
         if (props) {
 
-        	this.idLote = props.idLote;
+            assignSchemaProperties(this, props, ["idLote"]);
         	this.NFe = (props.NFe) ? new CPl010CNt2022002V130LeiauteNFeV400NFe(props.NFe): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

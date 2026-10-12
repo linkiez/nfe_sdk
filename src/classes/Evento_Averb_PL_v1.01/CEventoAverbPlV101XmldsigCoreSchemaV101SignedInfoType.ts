@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoAverbPlV101XmldsigCoreSchemaV101ReferenceType } from './CEventoAverbPlV101XmldsigCoreSchemaV101ReferenceType';
 
 /**
@@ -30,7 +31,7 @@ export class CEventoAverbPlV101XmldsigCoreSchemaV101SignedInfoType {
         if (props) {
 
         	this.Reference = (props.Reference) ? new CEventoAverbPlV101XmldsigCoreSchemaV101ReferenceType(props.Reference): undefined;
-        	this.$Id = props.$Id;
+            assignSchemaProperties(this, props, ["$Id"]);
         }
     }
 }

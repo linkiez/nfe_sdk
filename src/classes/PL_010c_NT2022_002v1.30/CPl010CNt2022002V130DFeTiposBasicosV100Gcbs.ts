@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130DFeTiposBasicosV100DevTrib } from './CPl010CNt2022002V130DFeTiposBasicosV100DevTrib';
 
 import { CPl010CNt2022002V130DFeTiposBasicosV100Dif } from './CPl010CNt2022002V130DFeTiposBasicosV100Dif';
@@ -65,12 +66,7 @@ export class CPl010CNt2022002V130DFeTiposBasicosV100Gcbs {
 
         if (props) {
 
-        	this.vDif = props.vDif;
-        	this.vDevTrib = props.vDevTrib;
-        	this.vCBS = props.vCBS;
-        	this.vCredPres = props.vCredPres;
-        	this.vCredPresCondSus = props.vCredPresCondSus;
-        	this.pCBS = props.pCBS;
+            assignSchemaProperties(this, props, ["vDif", "vDevTrib", "vCBS", "vCredPres", "vCredPresCondSus", "pCBS"]);
         	this.gDif = (props.gDif) ? new CPl010CNt2022002V130DFeTiposBasicosV100Dif(props.gDif): undefined;
         	this.gDevTrib = (props.gDevTrib) ? new CPl010CNt2022002V130DFeTiposBasicosV100DevTrib(props.gDevTrib): undefined;
         	this.gRed = (props.gRed) ? new CPl010CNt2022002V130DFeTiposBasicosV100Red(props.gRed): undefined;

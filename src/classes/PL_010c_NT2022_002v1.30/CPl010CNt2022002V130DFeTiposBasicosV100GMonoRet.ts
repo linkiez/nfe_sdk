@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPl010CNt2022002V130DFeTiposBasicosV100Dec030204Rtc } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130DFeTiposBasicosV100Dec030204Rtc';
 
 import { TPl010CNt2022002V130DFeTiposBasicosV100Dec1104Rtc } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130DFeTiposBasicosV100Dec1104Rtc';
@@ -45,11 +46,7 @@ export class CPl010CNt2022002V130DFeTiposBasicosV100GMonoRet {
 
         if (props) {
 
-        	this.qBCMonoRet = props.qBCMonoRet;
-        	this.adRemIBSRet = props.adRemIBSRet;
-        	this.vIBSMonoRet = props.vIBSMonoRet;
-        	this.adRemCBSRet = props.adRemCBSRet;
-        	this.vCBSMonoRet = props.vCBSMonoRet;
+            assignSchemaProperties(this, props, ["qBCMonoRet", "adRemIBSRet", "vIBSMonoRet", "adRemCBSRet", "vCBSMonoRet"]);
         }
     }
 }

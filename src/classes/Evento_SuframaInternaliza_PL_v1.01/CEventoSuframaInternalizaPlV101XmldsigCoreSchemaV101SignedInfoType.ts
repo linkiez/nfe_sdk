@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoSuframaInternalizaPlV101XmldsigCoreSchemaV101ReferenceType } from './CEventoSuframaInternalizaPlV101XmldsigCoreSchemaV101ReferenceType';
 
 /**
@@ -30,7 +31,7 @@ export class CEventoSuframaInternalizaPlV101XmldsigCoreSchemaV101SignedInfoType 
         if (props) {
 
         	this.Reference = (props.Reference) ? new CEventoSuframaInternalizaPlV101XmldsigCoreSchemaV101ReferenceType(props.Reference): undefined;
-        	this.$Id = props.$Id;
+            assignSchemaProperties(this, props, ["$Id"]);
         }
     }
 }

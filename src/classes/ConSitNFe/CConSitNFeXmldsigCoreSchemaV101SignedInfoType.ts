@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CConSitNFeXmldsigCoreSchemaV101ReferenceType } from './CConSitNFeXmldsigCoreSchemaV101ReferenceType';
 
 /**
@@ -30,7 +31,7 @@ export class CConSitNFeXmldsigCoreSchemaV101SignedInfoType {
         if (props) {
 
         	this.Reference = (props.Reference) ? new CConSitNFeXmldsigCoreSchemaV101ReferenceType(props.Reference): undefined;
-        	this.$Id = props.$Id;
+            assignSchemaProperties(this, props, ["$Id"]);
         }
     }
 }

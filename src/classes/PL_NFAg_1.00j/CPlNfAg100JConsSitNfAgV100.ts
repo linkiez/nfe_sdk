@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JConsSitNfAgV100ConsSitNfAg } from '../../types/PL_NFAg_1.00j/TPlNfAg100JConsSitNfAgV100ConsSitNfAg';
 
 /**
@@ -25,7 +26,7 @@ export class CPlNfAg100JConsSitNfAgV100 {
 
         if (props) {
 
-        	this.consSitNFAg = props.consSitNFAg;
+            assignSchemaProperties(this, props, ["consSitNFAg"]);
         }
     }
 }

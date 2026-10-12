@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CConSitNFeXmldsigCoreSchemaV101KeyInfoType } from './CConSitNFeXmldsigCoreSchemaV101KeyInfoType';
 
 import { CConSitNFeXmldsigCoreSchemaV101SignatureValueType } from './CConSitNFeXmldsigCoreSchemaV101SignatureValueType';
@@ -44,7 +45,7 @@ export class CConSitNFeXmldsigCoreSchemaV101SignatureType {
         	this.SignedInfo = (props.SignedInfo) ? new CConSitNFeXmldsigCoreSchemaV101SignedInfoType(props.SignedInfo): undefined;
         	this.SignatureValue = (props.SignatureValue) ? new CConSitNFeXmldsigCoreSchemaV101SignatureValueType(props.SignatureValue): undefined;
         	this.KeyInfo = (props.KeyInfo) ? new CConSitNFeXmldsigCoreSchemaV101KeyInfoType(props.KeyInfo): undefined;
-        	this.$Id = props.$Id;
+            assignSchemaProperties(this, props, ["$Id"]);
         }
     }
 }

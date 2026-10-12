@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoSuframaInternalizaPlV101SuframaInternalizaV100Evento } from '../../types/Evento_SuframaInternaliza_PL_v1.01/TEventoSuframaInternalizaPlV101SuframaInternalizaV100Evento';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoSuframaInternalizaPlV101SuframaInternalizaV100 {
 
         if (props) {
 
-        	this.evento = props.evento;
+            assignSchemaProperties(this, props, ["evento"]);
         }
     }
 }

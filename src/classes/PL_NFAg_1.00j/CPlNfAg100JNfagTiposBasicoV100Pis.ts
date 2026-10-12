@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Dados do PIS
  */
@@ -31,9 +32,7 @@ export class CPlNfAg100JNfagTiposBasicoV100Pis {
 
         if (props) {
 
-        	this.vBC = props.vBC;
-        	this.pPIS = props.pPIS;
-        	this.vPIS = props.vPIS;
+            assignSchemaProperties(this, props, ["vBC", "pPIS", "vPIS"]);
         }
     }
 }

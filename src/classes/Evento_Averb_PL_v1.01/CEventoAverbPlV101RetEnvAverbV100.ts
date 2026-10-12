@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoAverbPlV101RetEnvAverbV100RetEnvEvento } from '../../types/Evento_Averb_PL_v1.01/TEventoAverbPlV101RetEnvAverbV100RetEnvEvento';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoAverbPlV101RetEnvAverbV100 {
 
         if (props) {
 
-        	this.retEnvEvento = props.retEnvEvento;
+            assignSchemaProperties(this, props, ["retEnvEvento"]);
         }
     }
 }

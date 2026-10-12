@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TConSitNFeLeiauteConsSitNFeV201VerConsSitNFe } from '../../types/ConSitNFe/TConSitNFeLeiauteConsSitNFeV201VerConsSitNFe';
 
 /**
@@ -33,9 +34,7 @@ export class CConSitNFeLeiauteConsSitNFeV201ConsSitNFe {
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.chNFe = props.chNFe;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["tpAmb", "chNFe", "$versao"]);
         }
     }
 }

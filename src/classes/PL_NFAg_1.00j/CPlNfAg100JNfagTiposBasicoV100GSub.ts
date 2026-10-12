@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JNfagTiposBasicoV100MotSubAg } from '../../types/PL_NFAg_1.00j/TPlNfAg100JNfagTiposBasicoV100MotSubAg';
 
 /**
@@ -29,8 +30,7 @@ export class CPlNfAg100JNfagTiposBasicoV100GSub {
 
         if (props) {
 
-        	this.chNFAg = props.chNFAg;
-        	this.motSub = props.motSub;
+            assignSchemaProperties(this, props, ["chNFAg", "motSub"]);
         }
     }
 }

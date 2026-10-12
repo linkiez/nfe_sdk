@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 import { CEventoProrrogIndust10SchemasLeiauteRemIndusV100DetEvento } from './CEventoProrrogIndust10SchemasLeiauteRemIndusV100DetEvento';
 
 import { TEventoProrrogIndust10SchemasLeiauteRemIndusV100COrgaoIbge } from '../../../types/Evento_Prorrog_Indust_1.0/Schemas/TEventoProrrogIndust10SchemasLeiauteRemIndusV100COrgaoIbge';
@@ -85,16 +86,9 @@ export class CEventoProrrogIndust10SchemasLeiauteRemIndusV100InfEvento {
 
         if (props) {
 
-        	this.cOrgao = props.cOrgao;
-        	this.tpAmb = props.tpAmb;
-        	this.chNFe = props.chNFe;
-        	this.dhEvento = props.dhEvento;
+            assignSchemaProperties(this, props, ["cOrgao", "tpAmb", "chNFe", "dhEvento"]);
         	this.detEvento = (props.detEvento) ? new CEventoProrrogIndust10SchemasLeiauteRemIndusV100DetEvento(props.detEvento): undefined;
-        	this.verAplic = props.verAplic;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.nProt = props.nProt;
+            assignSchemaProperties(this, props, ["verAplic", "cStat", "xMotivo", "cOrgaoAutor", "nProt"]);
         }
     }
 }

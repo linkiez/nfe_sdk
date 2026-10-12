@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Schema XML de validação do evento de Comprovante de Entrega da NF-e
  */
@@ -43,12 +44,7 @@ export class CEventoInsucessoNFePlV102E110192V100DetEvento {
 
         if (props) {
 
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.verAplic = props.verAplic;
-        	this.dhTentativaEntrega = props.dhTentativaEntrega;
-        	this.latGPS = props.latGPS;
-        	this.longGPS = props.longGPS;
-        	this.dhHashTentativaEntrega = props.dhHashTentativaEntrega;
+            assignSchemaProperties(this, props, ["cOrgaoAutor", "verAplic", "dhTentativaEntrega", "latGPS", "longGPS", "dhHashTentativaEntrega"]);
         }
     }
 }

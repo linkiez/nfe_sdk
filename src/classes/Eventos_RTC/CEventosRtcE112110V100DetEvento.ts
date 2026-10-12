@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informações do Evento de Informação de efetivo pagamento integral para liberar crédito presumido do adquirente
  */
@@ -27,8 +28,7 @@ export class CEventosRtcE112110V100DetEvento {
 
         if (props) {
 
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.verAplic = props.verAplic;
+            assignSchemaProperties(this, props, ["cOrgaoAutor", "verAplic"]);
         }
     }
 }

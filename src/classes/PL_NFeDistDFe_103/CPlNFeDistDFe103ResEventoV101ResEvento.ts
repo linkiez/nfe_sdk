@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Schema da estrutura XML gerada pelo Ambiente Nacional com o conjunto de informações resumidas de um evento de NF-e
  */
@@ -61,11 +62,7 @@ export class CPlNFeDistDFe103ResEventoV101ResEvento {
 
         if (props) {
 
-        	this.cOrgao = props.cOrgao;
-        	this.chNFe = props.chNFe;
-        	this.dhEvento = props.dhEvento;
-        	this.dhRecbto = props.dhRecbto;
-        	this.nProt = props.nProt;
+            assignSchemaProperties(this, props, ["cOrgao", "chNFe", "dhEvento", "dhRecbto", "nProt"]);
         }
     }
 }

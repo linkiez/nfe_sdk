@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Grupo de informações sobre o CréditoPresumido
  */
@@ -27,8 +28,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400GCred {
 
         if (props) {
 
-        	this.pCredPresumido = props.pCredPresumido;
-        	this.vCredPresumido = props.vCredPresumido;
+            assignSchemaProperties(this, props, ["pCredPresumido", "vCredPresumido"]);
         }
     }
 }

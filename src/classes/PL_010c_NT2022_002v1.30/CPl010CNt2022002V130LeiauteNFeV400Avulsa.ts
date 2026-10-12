@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Emissão de avulsa, informar os dados do Fisco emitente
  */
@@ -39,11 +40,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Avulsa {
 
         if (props) {
 
-        	this.CNPJ = props.CNPJ;
-        	this.UF = props.UF;
-        	this.dEmi = props.dEmi;
-        	this.vDAR = props.vDAR;
-        	this.dPag = props.dPag;
+            assignSchemaProperties(this, props, ["CNPJ", "UF", "dEmi", "vDAR", "dPag"]);
         }
     }
 }

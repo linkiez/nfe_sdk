@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informar a quantidade para consumo de pessoa física
  */
@@ -23,7 +24,7 @@ export class CEventosRtcE211120V100GControleEstoque {
 
         if (props) {
 
-        	this.qConsumo = props.qConsumo;
+            assignSchemaProperties(this, props, ["qConsumo"]);
         }
     }
 }

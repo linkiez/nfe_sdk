@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoEpecPlV101E110140V100Dest } from './CEventoEpecPlV101E110140V100Dest';
 
 import { TEventoEpecPlV101E110140V100COrgaoAutor } from '../../types/Evento_EPEC_PL_v1.01/TEventoEpecPlV101E110140V100COrgaoAutor';
@@ -61,13 +62,7 @@ export class CEventoEpecPlV101E110140V100DetEvento {
 
         if (props) {
 
-        	this.descEvento = props.descEvento;
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.tpAutor = props.tpAutor;
-        	this.verAplic = props.verAplic;
-        	this.dhEmi = props.dhEmi;
-        	this.tpNF = props.tpNF;
-        	this.TEventoEpecPlV101E110140V100Ie = props.TEventoEpecPlV101E110140V100Ie;
+            assignSchemaProperties(this, props, ["descEvento", "cOrgaoAutor", "tpAutor", "verAplic", "dhEmi", "tpNF", "TEventoEpecPlV101E110140V100Ie"]);
         	this.dest = (props.dest) ? new CEventoEpecPlV101E110140V100Dest(props.dest): undefined;
         }
     }

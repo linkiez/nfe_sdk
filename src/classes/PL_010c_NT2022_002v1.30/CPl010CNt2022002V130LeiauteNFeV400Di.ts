@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130LeiauteNFeV400Adi } from './CPl010CNt2022002V130LeiauteNFeV400Adi';
 
 /**
@@ -67,11 +68,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Di {
 
         if (props) {
 
-        	this.dDI = props.dDI;
-        	this.UFDesemb = props.UFDesemb;
-        	this.dDesemb = props.dDesemb;
-        	this.vAFRMM = props.vAFRMM;
-        	this.UFTerceiro = props.UFTerceiro;
+            assignSchemaProperties(this, props, ["dDI", "UFDesemb", "dDesemb", "vAFRMM", "UFTerceiro"]);
         	this.adi = (props.adi) ? new CPl010CNt2022002V130LeiauteNFeV400Adi(props.adi): undefined;
         }
     }

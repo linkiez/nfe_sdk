@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoEconfV100RetEventoCancEConfV100RetEnvEvento } from '../../types/Evento_Econf_v1.00/TEventoEconfV100RetEventoCancEConfV100RetEnvEvento';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoEconfV100RetEventoCancEConfV100 {
 
         if (props) {
 
-        	this.retEnvEvento = props.retEnvEvento;
+            assignSchemaProperties(this, props, ["retEnvEvento"]);
         }
     }
 }

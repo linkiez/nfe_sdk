@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventosRtcE211140V100GConsumoComb } from './CEventosRtcE211140V100GConsumoComb';
 
 /**
@@ -33,8 +34,7 @@ export class CEventosRtcE211140V100DetEvento {
 
         if (props) {
 
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.verAplic = props.verAplic;
+            assignSchemaProperties(this, props, ["cOrgaoAutor", "verAplic"]);
         	this.gConsumoComb = (props.gConsumoComb) ? new CEventosRtcE211140V100GConsumoComb(props.gConsumoComb): undefined;
         }
     }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../../canonical/shared/assign-schema-properties';
 import { TEventoProrrogIndust10SchemasRetEnvRemIndusV100RetEnvEvento } from '../../../types/Evento_Prorrog_Indust_1.0/Schemas/TEventoProrrogIndust10SchemasRetEnvRemIndusV100RetEnvEvento';
 
 /**
@@ -25,7 +26,7 @@ export class CEventoProrrogIndust10SchemasRetEnvRemIndusV100 {
 
         if (props) {
 
-        	this.retEnvEvento = props.retEnvEvento;
+            assignSchemaProperties(this, props, ["retEnvEvento"]);
         }
     }
 }

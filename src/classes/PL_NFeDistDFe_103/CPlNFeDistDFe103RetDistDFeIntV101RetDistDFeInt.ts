@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNFeDistDFe103RetDistDFeIntV101LoteDistDFeInt } from './CPlNFeDistDFe103RetDistDFeIntV101LoteDistDFeInt';
 
 /**
@@ -53,13 +54,7 @@ export class CPlNFeDistDFe103RetDistDFeIntV101RetDistDFeInt {
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.verAplic = props.verAplic;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
-        	this.dhResp = props.dhResp;
-        	this.ultNSU = props.ultNSU;
-        	this.maxNSU = props.maxNSU;
+            assignSchemaProperties(this, props, ["tpAmb", "verAplic", "cStat", "xMotivo", "dhResp", "ultNSU", "maxNSU"]);
         	this.loteDistDFeInt = (props.loteDistDFeInt) ? new CPlNFeDistDFe103RetDistDFeIntV101LoteDistDFeInt(props.loteDistDFeInt): undefined;
         }
     }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Tipo Dados do Local de Retirada ou Entrega // 24/10/08 - tamanho mínimo // v2.0
  */
@@ -53,9 +54,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Local {
 
         if (props) {
 
-        	this.cMun = props.cMun;
-        	this.UF = props.UF;
-        	this.IE = props.IE;
+            assignSchemaProperties(this, props, ["cMun", "UF", "IE"]);
         }
     }
 }

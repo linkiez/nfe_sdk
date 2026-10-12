@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informações do Cancelamento de evento
  */
@@ -31,9 +32,7 @@ export class CEventosRtcE110001V100DetEvento {
 
         if (props) {
 
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.verAplic = props.verAplic;
-        	this.nProtEvento = props.nProtEvento;
+            assignSchemaProperties(this, props, ["cOrgaoAutor", "verAplic", "nProtEvento"]);
         }
     }
 }

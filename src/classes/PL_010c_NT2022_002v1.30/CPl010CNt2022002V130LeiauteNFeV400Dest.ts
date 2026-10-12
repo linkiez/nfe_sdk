@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130LeiauteNFeV400Endereco } from './CPl010CNt2022002V130LeiauteNFeV400Endereco';
 
 /**
@@ -52,7 +53,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Dest {
         if (props) {
 
         	this.enderDest = (props.enderDest) ? new CPl010CNt2022002V130LeiauteNFeV400Endereco(props.enderDest): undefined;
-        	this.IE = props.IE;
+            assignSchemaProperties(this, props, ["IE"]);
         }
     }
 }

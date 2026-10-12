@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfGas100ENfgasTiposBasicoV100ProtNfGas } from './CPlNfGas100ENfgasTiposBasicoV100ProtNfGas';
 
 import { TPlNfGas100ENfgasTiposBasicoV100VerNfGas } from '../../types/PL_NFGas_1.00e/TPlNfGas100ENfgasTiposBasicoV100VerNfGas';
@@ -51,13 +52,9 @@ export class CPlNfGas100ENfgasTiposBasicoV100RetNfGas {
 
         if (props) {
 
-        	this.tpAmb = props.tpAmb;
-        	this.cUF = props.cUF;
-        	this.verAplic = props.verAplic;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
+            assignSchemaProperties(this, props, ["tpAmb", "cUF", "verAplic", "cStat", "xMotivo"]);
         	this.protNFGas = (props.protNFGas) ? new CPlNfGas100ENfgasTiposBasicoV100ProtNfGas(props.protNFGas): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

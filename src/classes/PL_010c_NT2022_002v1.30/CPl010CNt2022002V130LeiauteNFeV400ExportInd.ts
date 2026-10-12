@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Exportação indireta
  */
@@ -27,8 +28,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400ExportInd {
 
         if (props) {
 
-        	this.chNFe = props.chNFe;
-        	this.qExport = props.qExport;
+            assignSchemaProperties(this, props, ["chNFe", "qExport"]);
         }
     }
 }

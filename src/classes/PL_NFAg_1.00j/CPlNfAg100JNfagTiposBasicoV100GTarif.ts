@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JNfagTiposBasicoV100Faixa } from '../../types/PL_NFAg_1.00j/TPlNfAg100JNfagTiposBasicoV100Faixa';
 
 /**
@@ -33,9 +34,7 @@ export class CPlNfAg100JNfagTiposBasicoV100GTarif {
 
         if (props) {
 
-        	this.dIniTarif = props.dIniTarif;
-        	this.dFimTarif = props.dFimTarif;
-        	this.tpFaixaCons = props.tpFaixaCons;
+            assignSchemaProperties(this, props, ["dIniTarif", "dFimTarif", "tpFaixaCons"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Tipo Dados do Veículo
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Veiculo {
 
         if (props) {
 
-        	this.UF = props.UF;
+            assignSchemaProperties(this, props, ["UF"]);
         }
     }
 }

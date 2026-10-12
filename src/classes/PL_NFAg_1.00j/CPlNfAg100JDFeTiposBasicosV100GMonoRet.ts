@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPlNfAg100JDFeTiposBasicosV100Dec030204Rtc } from '../../types/PL_NFAg_1.00j/TPlNfAg100JDFeTiposBasicosV100Dec030204Rtc';
 
 import { TPlNfAg100JDFeTiposBasicosV100Dec1104Rtc } from '../../types/PL_NFAg_1.00j/TPlNfAg100JDFeTiposBasicosV100Dec1104Rtc';
@@ -45,11 +46,7 @@ export class CPlNfAg100JDFeTiposBasicosV100GMonoRet {
 
         if (props) {
 
-        	this.qBCMonoRet = props.qBCMonoRet;
-        	this.adRemIBSRet = props.adRemIBSRet;
-        	this.vIBSMonoRet = props.vIBSMonoRet;
-        	this.adRemCBSRet = props.adRemCBSRet;
-        	this.vCBSMonoRet = props.vCBSMonoRet;
+            assignSchemaProperties(this, props, ["qBCMonoRet", "adRemIBSRet", "vIBSMonoRet", "adRemCBSRet", "vCBSMonoRet"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CConSitNFeLeiauteConsSitNFeV201InfProt } from './CConSitNFeLeiauteConsSitNFeV201InfProt';
 
 import { TConSitNFeLeiauteConsSitNFeV201VerNFe } from '../../types/ConSitNFe/TConSitNFeLeiauteConsSitNFeV201VerNFe';
@@ -35,9 +36,9 @@ export class CConSitNFeLeiauteConsSitNFeV201ProtNFe {
 
         if (props) {
 
-        	this.unknown = props.unknown;
+            assignSchemaProperties(this, props, ["unknown"]);
         	this.infProt = (props.infProt) ? new CConSitNFeLeiauteConsSitNFeV201InfProt(props.infProt): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

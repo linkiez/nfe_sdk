@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Adições (NT 2011/004)
  */
@@ -23,7 +24,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Adi {
 
         if (props) {
 
-        	this.vDescDI = props.vDescDI;
+            assignSchemaProperties(this, props, ["vDescDI"]);
         }
     }
 }

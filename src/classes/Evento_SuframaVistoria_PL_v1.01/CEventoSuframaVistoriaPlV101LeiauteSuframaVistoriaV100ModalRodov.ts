@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100PlacaCarreta } from '../../types/Evento_SuframaVistoria_PL_v1.01/TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100PlacaCarreta';
 
 import { TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100PlacaCarreta2 } from '../../types/Evento_SuframaVistoria_PL_v1.01/TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100PlacaCarreta2';
@@ -55,12 +56,7 @@ export class CEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100ModalRodov {
 
         if (props) {
 
-        	this.placaVeic = props.placaVeic;
-        	this.TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100UfVeic = props.TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100UfVeic;
-        	this.placaCarreta = props.placaCarreta;
-        	this.TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100UfCarreta = props.TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100UfCarreta;
-        	this.placaCarreta2 = props.placaCarreta2;
-        	this.TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100UfCarreta2 = props.TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100UfCarreta2;
+            assignSchemaProperties(this, props, ["placaVeic", "TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100UfVeic", "placaCarreta", "TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100UfCarreta", "placaCarreta2", "TEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100UfCarreta2"]);
         }
     }
 }

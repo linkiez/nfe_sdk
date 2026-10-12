@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Taxa de Fiscalização de Uso
  */
@@ -31,9 +32,7 @@ export class CPlNfAg100JNfagTiposBasicoV100Fu {
 
         if (props) {
 
-        	this.vBCTFU = props.vBCTFU;
-        	this.pTFU = props.pTFU;
-        	this.vTFU = props.vTFU;
+            assignSchemaProperties(this, props, ["vBCTFU", "pTFU", "vTFU"]);
         }
     }
 }

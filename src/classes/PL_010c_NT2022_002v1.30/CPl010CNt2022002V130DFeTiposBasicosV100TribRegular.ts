@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TPl010CNt2022002V130DFeTiposBasicosV100Cst } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130DFeTiposBasicosV100Cst';
 
 import { TPl010CNt2022002V130DFeTiposBasicosV100Dec030204Rtc } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130DFeTiposBasicosV100Dec030204Rtc';
@@ -59,14 +60,7 @@ export class CPl010CNt2022002V130DFeTiposBasicosV100TribRegular {
 
         if (props) {
 
-        	this.CSTReg = props.CSTReg;
-        	this.cClassTribReg = props.cClassTribReg;
-        	this.pAliqEfetRegIBSUF = props.pAliqEfetRegIBSUF;
-        	this.vTribRegIBSUF = props.vTribRegIBSUF;
-        	this.pAliqEfetRegIBSMun = props.pAliqEfetRegIBSMun;
-        	this.vTribRegIBSMun = props.vTribRegIBSMun;
-        	this.pAliqEfetRegCBS = props.pAliqEfetRegCBS;
-        	this.vTribRegCBS = props.vTribRegCBS;
+            assignSchemaProperties(this, props, ["CSTReg", "cClassTribReg", "pAliqEfetRegIBSUF", "vTribRegIBSUF", "pAliqEfetRegIBSMun", "vTribRegIBSMun", "pAliqEfetRegCBS", "vTribRegCBS"]);
         }
     }
 }

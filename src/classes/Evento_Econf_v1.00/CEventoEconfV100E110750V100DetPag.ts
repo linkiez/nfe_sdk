@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Grupo de detalhamento da forma de pagamento.
  */
@@ -27,8 +28,7 @@ export class CEventoEconfV100E110750V100DetPag {
 
         if (props) {
 
-        	this.vPag = props.vPag;
-        	this.dPag = props.dPag;
+            assignSchemaProperties(this, props, ["vPag", "dPag"]);
         }
     }
 }

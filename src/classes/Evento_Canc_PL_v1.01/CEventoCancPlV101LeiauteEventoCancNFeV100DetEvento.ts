@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Schema XML de validação do evento do cancelamento 1101111
  */
@@ -27,8 +28,7 @@ export class CEventoCancPlV101LeiauteEventoCancNFeV100DetEvento {
 
         if (props) {
 
-        	this.nProt = props.nProt;
-        	this.xJust = props.xJust;
+            assignSchemaProperties(this, props, ["nProt", "xJust"]);
         }
     }
 }

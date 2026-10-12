@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfGas100ENfgasTiposBasicoV100GCons } from './CPlNfGas100ENfgasTiposBasicoV100GCons';
 
 /**
@@ -30,7 +31,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100GHistCons {
         if (props) {
 
         	this.gCons = (props.gCons) ? new CPlNfGas100ENfgasTiposBasicoV100GCons(props.gCons): undefined;
-        	this.medMensal = props.medMensal;
+            assignSchemaProperties(this, props, ["medMensal"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130LeiauteNFeV400Cofinsst } from './CPl010CNt2022002V130LeiauteNFeV400Cofinsst';
 
 import { CPl010CNt2022002V130LeiauteNFeV400IcmsufDest } from './CPl010CNt2022002V130LeiauteNFeV400IcmsufDest';
@@ -49,12 +50,11 @@ export class CPl010CNt2022002V130LeiauteNFeV400Imposto {
 
         if (props) {
 
-        	this.vTotTrib = props.vTotTrib;
+            assignSchemaProperties(this, props, ["vTotTrib"]);
         	this.CPl010CNt2022002V130LeiauteNFeV400Pisst = (props.CPl010CNt2022002V130LeiauteNFeV400Pisst) ? new CPl010CNt2022002V130LeiauteNFeV400Pisst(props.CPl010CNt2022002V130LeiauteNFeV400Pisst): undefined;
         	this.CPl010CNt2022002V130LeiauteNFeV400Cofinsst = (props.CPl010CNt2022002V130LeiauteNFeV400Cofinsst) ? new CPl010CNt2022002V130LeiauteNFeV400Cofinsst(props.CPl010CNt2022002V130LeiauteNFeV400Cofinsst): undefined;
         	this.CPl010CNt2022002V130LeiauteNFeV400IcmsufDest = (props.CPl010CNt2022002V130LeiauteNFeV400IcmsufDest) ? new CPl010CNt2022002V130LeiauteNFeV400IcmsufDest(props.CPl010CNt2022002V130LeiauteNFeV400IcmsufDest): undefined;
-        	this.IS = props.IS;
-        	this.IBSCBS = props.IBSCBS;
+            assignSchemaProperties(this, props, ["IS", "IBSCBS"]);
         }
     }
 }

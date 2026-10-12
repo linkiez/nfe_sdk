@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Runtime class for CEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100ModalOutro.
  */
@@ -27,8 +28,7 @@ export class CEventoSuframaVistoriaPlV101LeiauteSuframaVistoriaV100ModalOutro {
 
         if (props) {
 
-        	this.tpModal = props.tpModal;
-        	this.xIdent = props.xIdent;
+            assignSchemaProperties(this, props, ["tpModal", "xIdent"]);
         }
     }
 }

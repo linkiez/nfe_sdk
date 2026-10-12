@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPl010CNt2022002V130LeiauteNFeV400InfProt } from './CPl010CNt2022002V130LeiauteNFeV400InfProt';
 
 import { TPl010CNt2022002V130LeiauteNFeV400VerNFe } from '../../types/PL_010c_NT2022_002v1.30/TPl010CNt2022002V130LeiauteNFeV400VerNFe';
@@ -35,9 +36,9 @@ export class CPl010CNt2022002V130LeiauteNFeV400ProtNFe {
 
         if (props) {
 
-        	this.unknown = props.unknown;
+            assignSchemaProperties(this, props, ["unknown"]);
         	this.infProt = (props.infProt) ? new CPl010CNt2022002V130LeiauteNFeV400InfProt(props.infProt): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

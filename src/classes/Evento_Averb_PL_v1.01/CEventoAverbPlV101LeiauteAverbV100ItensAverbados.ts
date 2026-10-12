@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoAverbPlV101LeiauteAverbV100Enquad } from './CEventoAverbPlV101LeiauteAverbV100Enquad';
 
 /**
@@ -37,9 +38,7 @@ export class CEventoAverbPlV101LeiauteAverbV100ItensAverbados {
 
         if (props) {
 
-        	this.dhEmbarque = props.dhEmbarque;
-        	this.dhAverbacao = props.dhAverbacao;
-        	this.qItem = props.qItem;
+            assignSchemaProperties(this, props, ["dhEmbarque", "dhAverbacao", "qItem"]);
         	this.enquad = (props.enquad) ? new CEventoAverbPlV101LeiauteAverbV100Enquad(props.enquad): undefined;
         }
     }

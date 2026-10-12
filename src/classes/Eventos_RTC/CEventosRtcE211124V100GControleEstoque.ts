@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Informar a quantidade que foi objeto de roubo, perda, furto ou perecimento
  */
@@ -23,7 +24,7 @@ export class CEventosRtcE211124V100GControleEstoque {
 
         if (props) {
 
-        	this.qPerecimento = props.qPerecimento;
+            assignSchemaProperties(this, props, ["qPerecimento"]);
         }
     }
 }

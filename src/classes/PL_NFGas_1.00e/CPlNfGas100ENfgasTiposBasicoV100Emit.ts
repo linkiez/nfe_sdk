@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfGas100ENfgasTiposBasicoV100EndeEmi } from './CPlNfGas100ENfgasTiposBasicoV100EndeEmi';
 
 /**
@@ -33,8 +34,7 @@ export class CPlNfGas100ENfgasTiposBasicoV100Emit {
 
         if (props) {
 
-        	this.CNPJ = props.CNPJ;
-        	this.IE = props.IE;
+            assignSchemaProperties(this, props, ["CNPJ", "IE"]);
         	this.enderEmit = (props.enderEmit) ? new CPlNfGas100ENfgasTiposBasicoV100EndeEmi(props.enderEmit): undefined;
         }
     }

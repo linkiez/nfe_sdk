@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100CnpjDest } from '../../types/Evento_SuframaInternaliza_PL_v1.01/TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100CnpjDest';
 
 import { TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100CpfDest } from '../../types/Evento_SuframaInternaliza_PL_v1.01/TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100CpfDest';
@@ -79,13 +80,7 @@ export class CEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100Ctg {
 
         if (props) {
 
-        	this.nFormSeg = props.nFormSeg;
-        	this.TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100UfDest = props.TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100UfDest;
-        	this.tpEmis = props.tpEmis;
-        	this.vTotalNFe = props.vTotalNFe;
-        	this.indICMS = props.indICMS;
-        	this.indICMSST = props.indICMSST;
-        	this.diaEmi = props.diaEmi;
+            assignSchemaProperties(this, props, ["nFormSeg", "TEventoSuframaInternalizaPlV101LeiauteSuframaInternalizaV100UfDest", "tpEmis", "vTotalNFe", "indICMS", "indICMSST", "diaEmi"]);
         }
     }
 }

@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Retenção de Tributos Federais
  */
@@ -47,13 +48,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400RetTrib {
 
         if (props) {
 
-        	this.vRetPIS = props.vRetPIS;
-        	this.vRetCOFINS = props.vRetCOFINS;
-        	this.vRetCSLL = props.vRetCSLL;
-        	this.vBCIRRF = props.vBCIRRF;
-        	this.vIRRF = props.vIRRF;
-        	this.vBCRetPrev = props.vBCRetPrev;
-        	this.vRetPrev = props.vRetPrev;
+            assignSchemaProperties(this, props, ["vRetPIS", "vRetCOFINS", "vRetCSLL", "vBCIRRF", "vIRRF", "vBCRetPrev", "vRetPrev"]);
         }
     }
 }

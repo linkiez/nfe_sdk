@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoAtorInteressadoPlV102LeiauteEventoAtorInteressadoV100DetEvento } from './CEventoAtorInteressadoPlV102LeiauteEventoAtorInteressadoV100DetEvento';
 
 /**
@@ -61,16 +62,9 @@ export class CEventoAtorInteressadoPlV102LeiauteEventoAtorInteressadoV100InfEven
 
         if (props) {
 
-        	this.cOrgao = props.cOrgao;
-        	this.tpAmb = props.tpAmb;
-        	this.chNFe = props.chNFe;
-        	this.dhEvento = props.dhEvento;
+            assignSchemaProperties(this, props, ["cOrgao", "tpAmb", "chNFe", "dhEvento"]);
         	this.detEvento = (props.detEvento) ? new CEventoAtorInteressadoPlV102LeiauteEventoAtorInteressadoV100DetEvento(props.detEvento): undefined;
-        	this.verAplic = props.verAplic;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.nProt = props.nProt;
+            assignSchemaProperties(this, props, ["verAplic", "cStat", "xMotivo", "cOrgaoAutor", "nProt"]);
         }
     }
 }

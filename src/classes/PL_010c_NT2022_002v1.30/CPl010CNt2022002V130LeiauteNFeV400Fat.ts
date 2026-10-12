@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Dados da fatura
  */
@@ -31,9 +32,7 @@ export class CPl010CNt2022002V130LeiauteNFeV400Fat {
 
         if (props) {
 
-        	this.vOrig = props.vOrig;
-        	this.vDesc = props.vDesc;
-        	this.vLiq = props.vLiq;
+            assignSchemaProperties(this, props, ["vOrig", "vDesc", "vLiq"]);
         }
     }
 }

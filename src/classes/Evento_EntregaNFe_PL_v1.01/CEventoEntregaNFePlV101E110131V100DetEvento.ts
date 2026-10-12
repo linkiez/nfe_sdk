@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 /**
  * Schema XML de validação do evento de Cancelamento do Comprovante de Entrega da NF-e
  */
@@ -31,9 +32,7 @@ export class CEventoEntregaNFePlV101E110131V100DetEvento {
 
         if (props) {
 
-        	this.cOrgaoAutor = props.cOrgaoAutor;
-        	this.verAplic = props.verAplic;
-        	this.nProtEvento = props.nProtEvento;
+            assignSchemaProperties(this, props, ["cOrgaoAutor", "verAplic", "nProtEvento"]);
         }
     }
 }

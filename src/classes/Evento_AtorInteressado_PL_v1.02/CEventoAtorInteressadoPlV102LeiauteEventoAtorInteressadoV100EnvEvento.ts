@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CEventoAtorInteressadoPlV102LeiauteEventoAtorInteressadoV100Evento } from './CEventoAtorInteressadoPlV102LeiauteEventoAtorInteressadoV100Evento';
 
 import { TEventoAtorInteressadoPlV102LeiauteEventoAtorInteressadoV100VerEnvEvento } from '../../types/Evento_AtorInteressado_PL_v1.02/TEventoAtorInteressadoPlV102LeiauteEventoAtorInteressadoV100VerEnvEvento';
@@ -32,7 +33,7 @@ export class CEventoAtorInteressadoPlV102LeiauteEventoAtorInteressadoV100EnvEven
         if (props) {
 
         	this.evento = (props.evento) ? new CEventoAtorInteressadoPlV102LeiauteEventoAtorInteressadoV100Evento(props.evento): undefined;
-        	this.$versao = props.$versao;
+            assignSchemaProperties(this, props, ["$versao"]);
         }
     }
 }

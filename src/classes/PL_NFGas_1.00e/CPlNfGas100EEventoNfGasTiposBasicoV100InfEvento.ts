@@ -1,3 +1,4 @@
+import { assignSchemaProperties } from '../../canonical/shared/assign-schema-properties';
 import { CPlNfGas100EEventoNfGasTiposBasicoV100DetEvento } from './CPlNfGas100EEventoNfGasTiposBasicoV100DetEvento';
 
 /**
@@ -65,17 +66,9 @@ export class CPlNfGas100EEventoNfGasTiposBasicoV100InfEvento {
 
         if (props) {
 
-        	this.cOrgao = props.cOrgao;
-        	this.tpAmb = props.tpAmb;
-        	this.CNPJ = props.CNPJ;
-        	this.chNFGas = props.chNFGas;
-        	this.dhEvento = props.dhEvento;
+            assignSchemaProperties(this, props, ["cOrgao", "tpAmb", "CNPJ", "chNFGas", "dhEvento"]);
         	this.detEvento = (props.detEvento) ? new CPlNfGas100EEventoNfGasTiposBasicoV100DetEvento(props.detEvento): undefined;
-        	this.verAplic = props.verAplic;
-        	this.cStat = props.cStat;
-        	this.xMotivo = props.xMotivo;
-        	this.dhRegEvento = props.dhRegEvento;
-        	this.nProt = props.nProt;
+            assignSchemaProperties(this, props, ["verAplic", "cStat", "xMotivo", "dhRegEvento", "nProt"]);
         }
     }
 }
