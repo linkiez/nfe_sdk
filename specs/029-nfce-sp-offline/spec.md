@@ -49,10 +49,10 @@ After connectivity returns, the issuer can identify documents requiring transmis
 
 - **FR-001**: The system MUST establish and document the current official conditions under which SP NFC-e offline issuance is permitted before enabling the flow.
 - **FR-002**: The system MUST distinguish offline preparation/issuance, official authorization, and later reconciliation as separate document states.
-- **FR-003**: The system MUST enforce all official document identity, environment, timing, sequencing, and issuer prerequisites applicable to the confirmed SP procedure.
-- **FR-004**: The system MUST provide the auxiliary representation and consumer information required for an eligible offline document, consistent with the dedicated DANFE slice and current official rules.
+- **FR-003**: The system MUST enforce the confirmed SP model 65 offline XML identity and field requirements, verify that the caller-supplied transmission deadline follows the official business-day rule, and reject documents past that deadline. The caller is responsible for deriving the deadline from its applicable business calendar.
+- **FR-004**: The system MUST provide the auxiliary representation and consumer information required for an eligible offline document, including the official contingency notice and offline QR Code, through the dedicated DANFE slice.
 - **FR-005**: The system MUST retain enough association information to reconcile the original offline document with later transmission and response.
-- **FR-006**: The system MUST prevent silent duplicate follow-up and distinguish authorized, rejected, pending, unavailable, and inconclusive outcomes.
+- **FR-006**: The system MUST make every reconciliation attempt explicit, preserve its evidence, correlate its result to the original access key and signed XML digest, and expose duplicate or ambiguous responses for operator action. The stateless SDK MUST NOT claim to prevent replays across calls or processes; callers MUST persist attempt state and prevent concurrent or accidental replays.
 - **FR-007**: If required external activation, official conditions, or necessary evidence cannot be confirmed, the system MUST stop or return a clearly bounded assisted procedure rather than inventing permission.
 - **FR-008**: The system MUST disclose records that require operator attention and MUST NOT silently discard an offline document or its unresolved state.
 - **FR-009**: The system MUST keep broader automatic multi-document recovery or indefinite background polling outside scope unless explicitly added through a separate decision.
@@ -66,9 +66,9 @@ After connectivity returns, the issuer can identify documents requiring transmis
 
 ### Knowledge Sources & Provenance
 
-- **KS-001**: Primary sources: `SRC-RH-002`, MOC 7.0 (November 2020; consulted 2026-05-19), and `SRC-RH-003`, DANFE NFC-e/QR Code manual v6.0 (March 2025; consulted 2026-05-19); the current official SP offline instructions and service status must be identified before implementation.
+- **KS-001**: Primary sources: current consolidated Ajuste SINIEF 19/2016, Manual Offline NFC-e v2.0 (2016), MOC 7.0 Annex IV (November 2020), the checked-in NFC-e v4.00 schema, DANFE NFC-e/QR Code manual v6.0 (March 2025), and current SP Portaria SRE 40/2024, consulted 2026-10-12.
 - **KS-002**: No secondary source is normative. Any operational comparison is non-normative and must be labeled accordingly.
-- **KS-003**: Captured local sources do not establish the current complete SP NFC-e offline policy, activation mechanism, timing limits, or state-specific recovery requirements. Planning MUST resolve and record these from current primary sources; runtime behavior MUST NOT be implemented from inferred NF-e or historical rules.
+- **KS-003**: SP permits offline `tpEmis=9` for NFC-e when technical problems prevent transmission or receipt of authorization, subject to current state rules. Runtime MUST remain an explicit caller-selected procedure and MUST NOT infer outages, copy NF-e behavior, or claim authorization before a correlated official response.
 
 ### Key Entities
 
