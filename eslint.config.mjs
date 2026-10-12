@@ -7,7 +7,10 @@ export default [
     ignores: [
       '.venv/**',
       'dist/**',
+      'build/**',
+      'coverage/**',
       '.xsd2ts-work/**',
+      '**/*.min.js',
       'eslint.config.mjs',
       'jest.config.ts',
       'src/**',

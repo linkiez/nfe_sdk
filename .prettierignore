@@ -1,4 +1,9 @@
 dist
+build/
+coverage/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 .xsd2ts-work
 node_modules
 .venv

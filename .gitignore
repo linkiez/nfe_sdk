@@ -1,5 +1,7 @@
 node_modules/
 dist/
+build/
+coverage/
 .xsd2ts-work/
 .env*
 .DS_Store
