@@ -11,6 +11,10 @@ const NFE_SIGNATURE_LOCATION_XPATH = "//*[local-name(.)='NFe']";
 const EVENT_REFERENCE_XPATH = "//*[local-name(.)='infEvento']";
 const EVENT_SIGNATURE_LOCATION_XPATH = "//*[local-name(.)='evento']";
 const SIGNATURE_ALGORITHM = 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256';
+const EVENT_DIGEST_ALGORITHM = 'http://www.w3.org/2000/09/xmldsig#sha1';
+const EVENT_SIGNATURE_ALGORITHM = 'http://www.w3.org/2000/09/xmldsig#rsa-sha1';
+const EVENT_XML_CANONICALIZATION =
+  'http://www.w3.org/TR/2001/REC-xml-c14n-20010315';
 const XML_CANONICALIZATION = 'http://www.w3.org/2001/10/xml-exc-c14n#';
 
 /**
@@ -95,11 +99,11 @@ export function signEventXmlDocument(input: {
     publicCert: input.publicCertPem,
   });
 
-  signedXml.canonicalizationAlgorithm = XML_CANONICALIZATION;
-  signedXml.signatureAlgorithm = SIGNATURE_ALGORITHM;
+  signedXml.canonicalizationAlgorithm = EVENT_XML_CANONICALIZATION;
+  signedXml.signatureAlgorithm = EVENT_SIGNATURE_ALGORITHM;
   signedXml.addReference({
-    digestAlgorithm: DIGEST_ALGORITHM,
-    transforms: [ENVELOPED_SIGNATURE_TRANSFORM, XML_CANONICALIZATION],
+    digestAlgorithm: EVENT_DIGEST_ALGORITHM,
+    transforms: [ENVELOPED_SIGNATURE_TRANSFORM, EVENT_XML_CANONICALIZATION],
     uri: `#${input.documentId}`,
     xpath: EVENT_REFERENCE_XPATH,
   });

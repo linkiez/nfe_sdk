@@ -2,6 +2,7 @@ import type { EPECEventInput } from './contracts.js';
 
 /** Event code for EPEC per MOC §3.3. */
 export const EPEC_EVENT_CODE = '110140';
+const EPEC_DECIMAL_PATTERN = /^\d{1,13}(?:\.\d{1,2})?$/u;
 
 /** EPEC event description as required by the XSD. */
 const EPEC_DESC_EVENTO = 'EPEC';
@@ -29,8 +30,7 @@ export function buildEPECDetailXml(input: EPECEventInput): string {
   const recipientTag = buildRecipientDocumentTag(input.recipientDocument);
   // Extract issuer UF IBGE code from the access key (first 2 digits = cUF)
   const cOrgaoAutor = input.chNFe.slice(0, 2);
-  // Use issuer UF as recipient UF for MVP (inter-state refinement is future work)
-  const destUF = resolveUFAbbreviation(cOrgaoAutor);
+  const destUF = input.recipientUF ?? resolveUFAbbreviation(cOrgaoAutor);
 
   return [
     '<detEvento versao="1.00">',
@@ -39,14 +39,15 @@ export function buildEPECDetailXml(input: EPECEventInput): string {
     `<tpAutor>${TP_AUTOR_EMITENTE}</tpAutor>`,
     `<verAplic>${VER_APLIC}</verAplic>`,
     `<dhEmi>${input.emissionDateTime}</dhEmi>`,
-    `<tpNF>${TP_NF_SAIDA}</tpNF>`,
-    '<IE>ISENTO</IE>',
+    `<tpNF>${input.tpNF ?? TP_NF_SAIDA}</tpNF>`,
+    `<IE>${input.issuerIE ?? 'ISENTO'}</IE>`,
     '<dest>',
     `<UF>${destUF}</UF>`,
     recipientTag,
+    ...(input.recipientIE ? [`<IE>${input.recipientIE}</IE>`] : []),
     `<vNF>${input.totalValue}</vNF>`,
-    '<vICMS>0.00</vICMS>',
-    '<vST>0.00</vST>',
+    `<vICMS>${input.totalICMS ?? '0.00'}</vICMS>`,
+    `<vST>${input.totalICMSST ?? '0.00'}</vST>`,
     '</dest>',
     '</detEvento>',
   ].join('');
@@ -64,23 +65,96 @@ export function buildEPECEnvelopeXml(input: EPECEventInput): string {
   const detailXml = buildEPECDetailXml(input);
 
   return [
-    '<envEvento versao="1.00">',
+    '<envEvento xmlns="http://www.portalfiscal.inf.br/nfe" versao="1.00">',
     '<idLote>1</idLote>',
     '<evento versao="1.00">',
     `<infEvento Id="ID${EPEC_EVENT_CODE}${input.chNFe}${seqEvento}">`,
     `<cOrgao>${SVCAN_C_ORGAO}</cOrgao>`,
-    '<tpAmb>2</tpAmb>',
+    `<tpAmb>${input.environment === 'production' ? '1' : '2'}</tpAmb>`,
     issuerTag,
     `<chNFe>${input.chNFe}</chNFe>`,
     `<dhEvento>${input.emissionDateTime}</dhEvento>`,
     `<tpEvento>${EPEC_EVENT_CODE}</tpEvento>`,
-    `<nSeqEvento>${seqEvento}</nSeqEvento>`,
+    `<nSeqEvento>${Number(seqEvento)}</nSeqEvento>`,
     '<verEvento>1.00</verEvento>',
     detailXml,
     '</infEvento>',
     '</evento>',
     '</envEvento>',
   ].join('');
+}
+
+/**
+ * Validates production-only EPEC fiscal details before SOAP transport.
+ *
+ * @param input - Structured EPEC event input.
+ * @returns A usage-error reason, or `undefined` when the production input is valid.
+ */
+export function validateProductionEPECInput(
+  input: EPECEventInput,
+): string | undefined {
+  if (input.environment !== 'production') {
+    return undefined;
+  }
+
+  if (input.issuerUF !== '35' || !/^35\d{42}$/u.test(input.chNFe)) {
+    return 'Production EPEC currently supports only an SP issuer with a matching 44-digit access key.';
+  }
+
+  if (!/^\d{14}$/u.test(input.issuerCNPJ)) {
+    return 'Production EPEC requires a 14-digit issuer CNPJ.';
+  }
+
+  if (input.chNFe.slice(6, 20) !== input.issuerCNPJ) {
+    return 'Production EPEC issuer CNPJ must match the CNPJ embedded in the NF-e access key.';
+  }
+
+  if (!input.issuerIE || !/^\d{2,14}$/u.test(input.issuerIE)) {
+    return 'Production EPEC requires a numeric issuer IE with 2 to 14 digits.';
+  }
+
+  if (input.tpNF !== '0' && input.tpNF !== '1') {
+    return 'Production EPEC requires tpNF to be 0 (entry) or 1 (exit).';
+  }
+
+  if (!input.recipientUF || !/^(?:[A-Z]{2}|EX)$/u.test(input.recipientUF)) {
+    return 'Production EPEC requires a destination UF abbreviation or EX.';
+  }
+
+  if (!isValidRecipientDocument(input.recipientDocument)) {
+    return 'Production EPEC requires a valid recipient CNPJ, CPF, or foreign identifier.';
+  }
+
+  if (input.recipientIE && !/^\d{2,14}$/u.test(input.recipientIE)) {
+    return 'Production EPEC recipient IE must contain 2 to 14 digits when supplied.';
+  }
+
+  if (
+    !EPEC_DECIMAL_PATTERN.test(input.totalValue) ||
+    !input.totalICMS ||
+    !EPEC_DECIMAL_PATTERN.test(input.totalICMS) ||
+    !input.totalICMSST ||
+    !EPEC_DECIMAL_PATTERN.test(input.totalICMSST)
+  ) {
+    return 'Production EPEC requires valid vNF, vICMS, and vST decimal totals.';
+  }
+
+  if (!isValidDateTimeWithOffset(input.emissionDateTime)) {
+    return 'Production EPEC requires a valid emission date-time with timezone.';
+  }
+
+  return undefined;
+}
+
+function isValidRecipientDocument(recipientDocument: string): boolean {
+  return /^\d{11}$|^\d{14}$/u.test(recipientDocument) ||
+    /^[!-ÿ]{5,20}$/u.test(recipientDocument);
+}
+
+function isValidDateTimeWithOffset(value: string): boolean {
+  return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/u.test(
+    value,
+  ) && Number.isFinite(Date.parse(value));
 }
 
 function buildRecipientDocumentTag(recipientDocument: string): string {
@@ -92,7 +166,16 @@ function buildRecipientDocumentTag(recipientDocument: string): string {
     return `<CPF>${digitsOnly}</CPF>`;
   }
   // Treat as foreign identifier if neither CNPJ nor CPF length
-  return `<idEstrangeiro>${recipientDocument}</idEstrangeiro>`;
+  return `<idEstrangeiro>${escapeXmlText(recipientDocument)}</idEstrangeiro>`;
+}
+
+function escapeXmlText(value: string): string {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&apos;');
 }
 
 /** Maps a 2-digit IBGE UF code to the 2-letter UF abbreviation. */

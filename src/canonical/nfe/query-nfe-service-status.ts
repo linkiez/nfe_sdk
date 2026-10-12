@@ -14,12 +14,16 @@ export function mapServiceStatusTransportOutcome(
   transportOutcome: TransportOutcome,
 ): ServiceStatusSnapshot {
   const mappedTransport = mapTransportOutcomeToQueryClassification(transportOutcome);
+  const responseEnvironment = resolveResponseEnvironment(
+    transportOutcome.evidence.responseEnvelopeXml,
+  );
 
   return {
     applicationStatusCode: transportOutcome.applicationStatusCode,
     applicationStatusMessage: transportOutcome.applicationStatusMessage,
     classification: mappedTransport.classification,
     observedAt: new Date().toISOString(),
+    responseEnvironment,
     transportOutcome,
   };
 }
@@ -34,6 +38,7 @@ export async function queryNFeServiceStatus(
   input: NFeServiceStatusRequest,
 ): Promise<ServiceStatusSnapshot> {
   const transportOutcome = await executeNFeSoapService({
+    authorizer: input.authorizer,
     environment: input.environment,
     payloadXml: '<consStatServNFe versao="4.00" />',
     requestExecutor: input.requestExecutor,
@@ -42,4 +47,22 @@ export async function queryNFeServiceStatus(
   });
 
   return mapServiceStatusTransportOutcome(transportOutcome);
+}
+
+function resolveResponseEnvironment(
+  responseXml: string | undefined,
+): ServiceStatusSnapshot['responseEnvironment'] {
+  const tpAmb = /<(?:\w+:)?tpAmb\b[^>]*>([^<]+)<\/(?:\w+:)?tpAmb>/u.exec(
+    responseXml ?? '',
+  )?.[1]?.trim();
+
+  if (tpAmb === '1') {
+    return 'production';
+  }
+
+  if (tpAmb === '2') {
+    return 'homologation';
+  }
+
+  return undefined;
 }

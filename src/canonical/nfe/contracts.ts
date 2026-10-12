@@ -7,6 +7,7 @@ import type {
 import type { SigningContext } from '../signing/contracts.js';
 import type { RequestExecutor } from '../transport/request-executor.js';
 import type {
+  NFeSEFAZProvider,
   ObservableContingencyBoundary,
   ObservableContingencyEnvironment,
   TransportOutcome,
@@ -68,6 +69,10 @@ export interface NFeAuthorizationRequest {
   readonly environment: string;
   /** Single-document or batch authorization payload. */
   readonly documents: NFeAuthorizationDocumentsInput;
+  /** Explicit contingency request; omitted requests retain normal authorization. */
+  readonly contingency?: NFeContingencyRequest;
+  /** Explicit context for a later contingency recovery submission. */
+  readonly recoveryContext?: NFeRecoveryContext;
   /** Reusable signing context prepared by the signing slice. */
   readonly signingContext: SigningContext;
   /** Optional network executor override. */
@@ -99,6 +104,73 @@ export type NFeAuthorizationClassification =
 export type NFeContingencyEnvironment = ObservableContingencyEnvironment;
 
 export type NFeContingencyBoundary = ObservableContingencyBoundary;
+
+/** Public NF-e execution modes represented by the operational facade. */
+export type NFeExecutionMode = 'normal' | NFeContingencyMode;
+
+/** Explicit contingency modes accepted by SP NF-e operations. */
+export type NFeContingencyMode = 'svc-an' | 'epec' | 'fs-da';
+
+/** State attached to an explicit contingency attempt. */
+export type NFeContingencyState =
+  | 'activation-verified'
+  | 'awaiting-recovery'
+  | 'authorized'
+  | 'inconclusive'
+  | 'operator-assisted'
+  | 'pending'
+  | 'reconciled'
+  | 'rejected'
+  | 'unavailable'
+  | 'unsupported';
+
+/** Caller-supplied evidence from a single production SVC activation query. */
+export interface NFeSVCActivationObservation {
+  /** Environment used for the status query. */
+  readonly environment: 'production';
+  /** Local time at which the SVC status response was observed. */
+  readonly observedAt: string;
+  /** Provider that served the status query. */
+  readonly provider: 'SVCAN';
+  /** Status code returned by the service, when present. */
+  readonly statusCode?: string;
+}
+
+/** Optional prior submission evidence used to prevent duplicate contingency writes. */
+export interface NFePriorSubmissionContext {
+  /** NF-e access key associated with the previous submission. */
+  readonly documentKey: string;
+  /** Classification returned by the previous authorization attempt. */
+  readonly classification: NFeAuthorizationClassification;
+}
+
+/** Explicit request to use one supported SP contingency mode. */
+export interface NFeContingencyRequest {
+  /** Access key of the NF-e for this contingency attempt. */
+  readonly documentKey?: string;
+  /** Selected mode; the SDK never selects a mode as an automatic fallback. */
+  readonly mode: NFeContingencyMode;
+  /** Previous submission evidence relevant to duplicate-risk validation. */
+  readonly previousSubmission?: NFePriorSubmissionContext;
+}
+
+/** Final or non-terminal state projected for a caller-owned recovery attempt. */
+export type NFeRecoveryState =
+  | 'inconclusive'
+  | 'pending'
+  | 'reconciled'
+  | 'rejected'
+  | 'unavailable';
+
+/** Caller-owned context that correlates an explicit recovery operation. */
+export interface NFeRecoveryContext {
+  /** Original NF-e access key associated with the contingency. */
+  readonly documentKey: string;
+  /** Accepted EPEC event protocol, required when mode is `epec`. */
+  readonly eventProtocol?: string;
+  /** Contingency mode whose recovery is being reported. */
+  readonly mode: NFeContingencyMode;
+}
 
 /**
  * Query result classifications exposed by the operational slice.
@@ -225,16 +297,33 @@ export interface NFeAuthorizationDocumentStatus {
 export interface NFeAuthorizationOutcome {
   /** Operational authorization classification. */
   readonly classification: NFeAuthorizationClassification;
+  /** Activation evidence used to permit an explicit SVC-AN authorization. */
+  readonly activationEvidence?: NFeSVCActivationObservation;
   /** Explicit contingency boundary when the flow is diagnosed before transport. */
   readonly coverageBoundary?: NFeContingencyBoundary;
+  /** Contingency processing state, distinct from authorization classification. */
+  readonly contingencyState?: NFeContingencyState;
+  /** NF-e access key correlated with the contingency attempt. */
+  readonly documentKey?: string;
   /** Per-document statuses observed in the response. */
   readonly documentStatuses: readonly NFeAuthorizationDocumentStatus[];
+  /** EPEC protocol correlated with a later explicit recovery submission. */
+  readonly eventProtocol?: string;
+  /** Mode used for this authorization attempt; defaults to `normal`. */
+  readonly executionMode?: NFeExecutionMode;
   /** Synthesized failure reason when the flow cannot complete. */
   readonly failureReason?: string;
   /** Existing facade to call when authorization returns a known receipt. */
-  readonly nextAction?: 'reconcileNFeReceipt';
+  readonly nextAction?:
+    | 'reconcileNFeReceipt'
+    | 'submitEPECEvent'
+    | 'transmitNFeAfterRecovery';
   /** Protocol number when immediately available. */
   readonly protocolNumber?: string;
+  /** Caller-owned contingency context echoed by an explicit recovery attempt. */
+  readonly recoveryContext?: NFeRecoveryContext;
+  /** Recovery state mapped without changing authorization classification. */
+  readonly recoveryState?: NFeRecoveryState;
   /** Receipt number when the exchange remains intermediate. */
   readonly receiptNumber?: string;
   /** Underlying transport evidence reused by the operational slice. */
@@ -257,6 +346,8 @@ export interface NFeReceiptRoutingContext {
 export interface NFeReceiptReconciliationRequest {
   /** Known receipt number returned by a previous authorization submission. */
   readonly receiptNumber: string;
+  /** Caller-owned contingency context to preserve recovery correlation. */
+  readonly recoveryContext?: NFeRecoveryContext;
   /** Explicit routing context for the lookup. */
   readonly routingContext: NFeReceiptRoutingContext;
   /** Optional network executor override. */
@@ -271,12 +362,24 @@ export interface NFeReceiptReconciliationRequest {
 export interface NFeReceiptReconciliationResult {
   /** Receipt reconciliation classification. */
   readonly classification: NFeReceiptReconciliationClassification;
+  /** Contingency state projected from the caller-owned recovery context. */
+  readonly contingencyState?: NFeContingencyState;
+  /** Recovery action that remains available to the caller. */
+  readonly nextAction?: 'reconcileNFeReceipt';
   /** Access key resolved from the reconciled protocol item when available. */
   readonly documentKey?: string;
+  /** EPEC event protocol correlated with this receipt, when applicable. */
+  readonly eventProtocol?: string;
+  /** Contingency mode associated with the recovery context. */
+  readonly executionMode?: NFeExecutionMode;
   /** Batch items observed in the official response. */
   readonly items: readonly AsyncBatchItemResult[];
   /** Final protocol number when available. */
   readonly protocolNumber?: string;
+  /** Caller-owned contingency context echoed by the receipt result. */
+  readonly recoveryContext?: NFeRecoveryContext;
+  /** Recovery state mapped without changing the receipt classification. */
+  readonly recoveryState?: NFeRecoveryState;
   /** Queried receipt number. */
   readonly receiptNumber: string;
   /** Raw official response when available. */
@@ -297,6 +400,8 @@ export interface NFeReceiptReconciliationResult {
 export interface NFeServiceStatusRequest {
   /** Query target environment. */
   readonly environment: string;
+  /** Optional provider selector for an explicit SVC-AN activation query. */
+  readonly authorizer?: NFeSEFAZProvider;
   /** Optional network executor override. */
   readonly requestExecutor?: RequestExecutor;
   /** Optional operation timeout in milliseconds. */
@@ -309,6 +414,8 @@ export interface NFeServiceStatusRequest {
 export interface ServiceStatusSnapshot {
   /** Application-oriented query classification. */
   readonly classification: NFeQueryClassification;
+  /** Environment declared by the status response's `tpAmb`, when present. */
+  readonly responseEnvironment?: 'homologation' | 'production';
   /** Observed SEFAZ status code. */
   readonly applicationStatusCode?: string;
   /** Observed SEFAZ status message. */

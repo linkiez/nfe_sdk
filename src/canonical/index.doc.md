@@ -12,6 +12,7 @@ Barrel da camada canonica manual publicada pelo root import.
 - Reexportar as facades publicas iniciais de consulta operacional.
 - Reexportar as facades publicas das tres manutencoes obrigatorias do MVP.
 - Reexportar as facades publicas do slice recipient para distribuicao e manifestacao.
+- Reexportar autorizacao, consulta de status, conciliacao de recibo e submissao EPEC para NF-e.
 - Reexportar a facade publica de assinatura digital.
 - Reexportar a facade publica inicial de transporte SOAP.
 - Reexportar os tipos publicos usados pela facade.
@@ -19,7 +20,7 @@ Barrel da camada canonica manual publicada pelo root import.
 ## Entradas e saidas
 
 - Entradas: nenhuma.
-- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `distributeRecipientDFe`, `generateNFCeSPQRCode`, `manifestRecipientOperation`, `createNFe`, `createEnviNFe`, `createSigningContext`, `resolveNFeServiceEndpoint`, `executeNFeSoapService`, `serializeNFeXml`, `serializeEnviNFeXml`, `signNFeXml` e tipos canonicos/de assinatura/transporte/recipient.
+- Saidas: facades canonicas de NF-e/NFC-e, incluindo `authorizeNFe`, `queryNFeServiceStatus`, `reconcileNFeReceipt` e `submitEPECEvent`, alem de tipos de contingencia e recovery.
 
 ## Fluxo principal
 
@@ -32,6 +33,7 @@ flowchart TD
   B --> F[transport facade]
   B --> G[serialization facade]
   B --> H[shared contracts]
+  B --> I[EPEC e recovery facades]
 ```
 
 ## Tratamento de erros e casos-limite

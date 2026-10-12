@@ -9,6 +9,7 @@ Expõe a consulta estruturada de status do servico de NFe no root import.
 - Receber o request estruturado do integrador.
 - Delegar a consulta para a camada operacional.
 - Preservar a fronteira entre facade publica e implementacao interna.
+- Permitir a selecao explicita de `SVCAN` em uma consulta de ativacao de contingencia.
 
 ## Entradas e saidas
 
@@ -32,6 +33,7 @@ sequenceDiagram
 
 - O wrapper nao adiciona validacoes novas.
 - O dominio operacional concentra classificacao e evidencia.
+- Para ativacao SVC, o chamador informa ambiente `production` e `authorizer: SVCAN`; a resposta carrega o ambiente extraido de `tpAmb`.
 
 ## Exemplos
 

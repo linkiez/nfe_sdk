@@ -12,6 +12,7 @@ Agrupa os contratos, erros e helpers internos que sustentam o slice operacional 
 - Reexportar a orquestracao e os mapeadores iniciais de autorizacao.
 - Reexportar a orquestracao e os mapeadores iniciais de consulta.
 - Reexportar a orquestracao e o mapeamento compartilhado das manutencoes homologadas.
+- Reexportar a submissao EPEC e os tipos publicos de contingencia e recovery.
 
 ## Entradas e saidas
 
@@ -28,8 +29,10 @@ flowchart TD
   B --> E[authorization-batch.ts]
   B --> F[transport-outcome-mapper.ts]
   B --> G[authorize-nfe.ts]
-  B --> H[query modules]
-  B --> I[maintenance modules]
+  B --> H[submit-epec-event.ts]
+  B --> I[receipt reconciliation]
+  B --> J[query modules]
+  B --> K[maintenance modules]
 ```
 
 ## Tratamento de erros e casos-limite

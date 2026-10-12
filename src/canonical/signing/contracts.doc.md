@@ -14,7 +14,7 @@ Define o contrato tipado do slice inicial de assinatura digital e da expansao ad
 ## Entradas e saidas
 
 - Entradas: objetos `CreateSigningContextInput`, `SignNFeXmlInput` e `SignEventXmlInput`.
-- Saidas: tipos publicos, constantes de algoritmo e helpers de runtime.
+- Saidas: tipos publicos, algoritmos SHA-256 para NF-e, algoritmos XMLDSig do XSD de eventos e helpers de runtime.
 
 ## Fluxo principal
 
@@ -29,6 +29,7 @@ flowchart TD
 
 - O arquivo nao lanca erros diretamente.
 - O `WeakMap` evita expor PEMs no objeto publico retornado ao consumidor.
+- O contexto anuncia os algoritmos utilizados pelo signer de NF-e e pelo signer de eventos.
 
 ## Exemplos
 

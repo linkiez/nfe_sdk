@@ -8,6 +8,8 @@ import {
 import type {
   AsyncBatchItemResult,
   NFeOperationalPrimaryState,
+  NFeRecoveryContext,
+  NFeRecoveryState,
   NFeReceiptReconciliationClassification,
   NFeReceiptReconciliationRequest,
   NFeReceiptReconciliationResult,
@@ -28,6 +30,32 @@ const UNAVAILABLE_STATUS_CODES = new Set(['108', '109']);
  * @returns Structured receipt reconciliation result.
  */
 export async function reconcileNFeReceipt(
+  input: NFeReceiptReconciliationRequest,
+): Promise<NFeReceiptReconciliationResult> {
+  const result = await reconcileNFeReceiptCore(input);
+  const recoveryContext = input.recoveryContext;
+  if (recoveryContext === undefined) {
+    return result;
+  }
+
+  const recoveryState = mapReceiptRecoveryState(result, recoveryContext);
+  return {
+    ...result,
+    contingencyState: recoveryState,
+    eventProtocol: recoveryContext.eventProtocol,
+    executionMode: recoveryContext.mode,
+    nextAction:
+      recoveryState === 'pending' ||
+      recoveryState === 'unavailable' ||
+      recoveryState === 'inconclusive'
+        ? 'reconcileNFeReceipt'
+        : undefined,
+    recoveryContext,
+    recoveryState,
+  };
+}
+
+async function reconcileNFeReceiptCore(
   input: NFeReceiptReconciliationRequest,
 ): Promise<NFeReceiptReconciliationResult> {
   const receiptNumber = input.receiptNumber.trim();
@@ -211,6 +239,40 @@ export async function reconcileNFeReceipt(
     receiptNumber,
     transportOutcome,
   });
+}
+
+function mapReceiptRecoveryState(
+  result: NFeReceiptReconciliationResult,
+  recoveryContext: NFeRecoveryContext,
+): NFeRecoveryState {
+  if (
+    recoveryContext.mode === 'epec' &&
+    (recoveryContext.eventProtocol === undefined ||
+      !/^\d{15}$/u.test(recoveryContext.eventProtocol))
+  ) {
+    return 'inconclusive';
+  }
+
+  if (
+    result.documentKey !== undefined &&
+    result.documentKey !== recoveryContext.documentKey
+  ) {
+    return 'inconclusive';
+  }
+
+  switch (result.classification) {
+    case 'authorized':
+      return 'reconciled';
+    case 'denied':
+    case 'rejected':
+      return 'rejected';
+    case 'pending':
+      return 'pending';
+    case 'unavailable':
+      return 'unavailable';
+    default:
+      return 'inconclusive';
+  }
 }
 
 function mapSingleBatchItem(input: {

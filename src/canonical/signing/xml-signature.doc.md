@@ -2,12 +2,13 @@
 
 ## Visao geral
 
-Concentra a montagem XMLDSig do XML de `NFe` e a deteccao do `Id` assinavel.
+Concentra a montagem XMLDSig de XML de `NFe` e `evento`, com algoritmos compativeis com cada familia de schema.
 
 ## Responsabilidades
 
-- Localizar `infNFe` e extrair seu atributo `Id`.
-- Configurar `xml-crypto` com SHA-256, XMLDSig enveloped e canonicalizacao exclusiva.
+- Localizar `infNFe` ou `infEvento` e usar seu atributo `Id` como referencia.
+- Assinar NF-e com SHA-256 e canonicalizacao exclusiva.
+- Assinar eventos com RSA-SHA1, digest SHA1 e canonicalizacao XML C14N 1.0 exigidos pelo XSD de XMLDSig.
 - Inserir `Signature` no XML assinado.
 
 ## Entradas e saidas
@@ -19,17 +20,18 @@ Concentra a montagem XMLDSig do XML de `NFe` e a deteccao do `Id` assinavel.
 
 ```mermaid
 flowchart TD
-  A[unsigned XML] --> B[detect infNFe Id]
+  A[unsigned XML] --> B[detect infNFe or infEvento Id]
   B --> C[configure SignedXml]
-  C --> D[add reference]
-  D --> E[compute signature]
-  E --> F[signed XML]
+  C --> D[select schema-compatible algorithms]
+  D --> E[add reference]
+  E --> F[compute signature]
+  F --> G[signed XML]
 ```
 
 ## Tratamento de erros e casos-limite
 
 - Rejeita XML sem `infNFe` ou sem atributo `Id`.
-- Mantem os algoritmos explicitamente fixos para previsibilidade da regressao.
+- Mantem algoritmos separados e fixos para NF-e e eventos, conforme seus contratos XSD.
 
 ## Exemplos
 

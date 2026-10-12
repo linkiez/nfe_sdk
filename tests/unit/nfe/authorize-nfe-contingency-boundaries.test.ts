@@ -5,6 +5,11 @@ import { buildAuthorizeNFeSingleInput } from '../../fixtures/nfe/build-nfe-fixtu
 import { createTestA1FixtureSource } from '../../fixtures/signing/test-a1-fixture';
 
 type AuthorizeNFe = (input: {
+  contingency?: {
+    documentKey?: string;
+    mode: 'svc-an' | 'epec' | 'fs-da';
+    previousSubmission?: { classification: string; documentKey: string };
+  };
   environment: string;
   documents: unknown;
   requestExecutor?: jest.Mock;
@@ -13,6 +18,9 @@ type AuthorizeNFe = (input: {
 }) => Promise<{
   classification: string;
   coverageBoundary?: { contingencyEnvironment?: string };
+  contingencyState?: string;
+  executionMode?: string;
+  failureReason?: string;
 }>;
 
 const INVALID_PRODUCTION_IDENTITY_CASES = [
@@ -152,6 +160,113 @@ describe('authorizeNFe contingency boundaries', () => {
       }),
     ).rejects.toThrow(/issuer UF 35/i);
 
+    expect(requestExecutor).not.toHaveBeenCalled();
+  });
+
+  it('keeps FS-DA as an explicit boundary and sends no authorization request', async () => {
+    const authorizeNFe = getAuthorizeNFe();
+    const requestExecutor = jest.fn(async () => ({
+      headers: { 'content-type': 'application/soap+xml; charset=utf-8' },
+      responseXml: '<retEnviNFe><tpAmb>1</tpAmb><cStat>104</cStat></retEnviNFe>',
+      status: 200,
+    }));
+    const input = buildAuthorizeNFeSingleInput({
+      cUF: '35',
+      documentId: `35${'0'.repeat(42)}`,
+    });
+
+    const outcome = await authorizeNFe?.({
+      ...input,
+      contingency: { mode: 'fs-da' },
+      requestExecutor,
+      signingContext: await createSigningContextForTest(),
+      timeoutMs: 5000,
+    });
+
+    expect(outcome?.classification).toBe('contingency-boundary');
+    expect(outcome?.failureReason).toMatch(/FS-DA|assisted|unverified/i);
+    expect(requestExecutor).not.toHaveBeenCalled();
+  });
+
+  it('does not start contingency after an uncertain normal authorization', async () => {
+    const authorizeNFe = getAuthorizeNFe();
+    const requestExecutor = jest.fn(async () => {
+      throw new Error('connection timed out');
+    });
+    const input = buildAuthorizeNFeSingleInput({
+      cUF: '35',
+      documentId: `35${'0'.repeat(42)}`,
+    });
+
+    await expect(
+      authorizeNFe?.({
+        ...input,
+        requestExecutor,
+        signingContext: await createSigningContextForTest(),
+        timeoutMs: 5000,
+      }),
+    ).rejects.toThrow(/connection timed out/i);
+
+    expect(requestExecutor).toHaveBeenCalledTimes(1);
+  });
+
+  it('rejects contingency evidence from the wrong environment before transport', async () => {
+    const authorizeNFe = getAuthorizeNFe();
+    const requestExecutor = jest.fn();
+    const input = buildAuthorizeNFeSingleInput({
+      cUF: '35',
+      documentId: `35${'0'.repeat(42)}`,
+      environment: 'homologation',
+    });
+
+    const outcome = await authorizeNFe?.({
+      ...input,
+      contingency: { mode: 'svc-an' },
+      requestExecutor,
+      signingContext: await createSigningContextForTest(),
+      timeoutMs: 5000,
+    });
+
+    expect(outcome?.classification).toBe('contingency-boundary');
+    expect(outcome?.failureReason).toMatch(/only in production/i);
+    expect(requestExecutor).not.toHaveBeenCalled();
+  });
+
+  it('rejects a contingency key that conflicts with the submitted NF-e identity', async () => {
+    const authorizeNFe = getAuthorizeNFe();
+    const requestExecutor = jest.fn();
+    const documentKey = `35${'0'.repeat(42)}`;
+
+    const outcome = await authorizeNFe?.({
+      ...buildAuthorizeNFeSingleInput({ cUF: '35', documentId: documentKey }),
+      contingency: { documentKey: `35${'1'.repeat(42)}`, mode: 'svc-an' },
+      requestExecutor,
+      signingContext: await createSigningContextForTest(),
+      timeoutMs: 5000,
+    });
+
+    expect(outcome?.classification).toBe('contingency-boundary');
+    expect(requestExecutor).not.toHaveBeenCalled();
+  });
+
+  it('blocks the same access key after an uncertain prior submission', async () => {
+    const authorizeNFe = getAuthorizeNFe();
+    const requestExecutor = jest.fn();
+    const documentKey = `35${'0'.repeat(42)}`;
+
+    const outcome = await authorizeNFe?.({
+      ...buildAuthorizeNFeSingleInput({ cUF: '35', documentId: documentKey }),
+      contingency: {
+        mode: 'svc-an',
+        previousSubmission: { classification: 'timeout', documentKey },
+      },
+      requestExecutor,
+      signingContext: await createSigningContextForTest(),
+      timeoutMs: 5000,
+    });
+
+    expect(outcome?.classification).toBe('contingency-boundary');
+    expect(outcome?.contingencyState).toBe('inconclusive');
     expect(requestExecutor).not.toHaveBeenCalled();
   });
 

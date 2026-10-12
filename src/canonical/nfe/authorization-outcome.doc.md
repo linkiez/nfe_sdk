@@ -11,6 +11,7 @@ Traduz a resposta do transporte de autorizacao para um resultado operacional vol
 - Confirmar `tpAmb` e os identificadores exigidos antes de mapear sucesso em producao.
 - Produzir um resultado uniforme para documento unico ou lote.
 - Indicar `reconcileNFeReceipt` como proxima acao quando houver recebimento confirmado e `nRec`.
+- Manter a classificacao fiscal separada dos metadados de contingency/recovery adicionados pela orquestracao.
 
 ## Entradas e saidas
 
@@ -36,6 +37,7 @@ sequenceDiagram
 - Em producao, `tpAmb` diferente de `1`, `nProt` ausente em `100`/`104` ou `nRec` ausente em `103` resulta em `protocol-error`.
 - Para a classificacao `received` com `receiptNumber`, `nextAction` identifica a facade de continuacao; nao inicia consulta automaticamente.
 - Outros cenarios reaproveitam a classificacao herdada do transporte.
+- A orquestracao pode acrescentar `executionMode`, `contingencyState`, chave, protocolo EPEC, `recoveryContext` e `recoveryState` sem reclassificar o resultado do transporte.
 
 ## Exemplos
 

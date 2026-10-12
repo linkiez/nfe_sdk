@@ -8,6 +8,7 @@ Centraliza os contratos tipados que descrevem entradas, resultados e limites do 
 
 - Definir o formato da autorizacao operacional.
 - Tipar `nextAction` como a facade de reconciliacao do recibo quando uma autorizacao retorna um recibo conhecido.
+- Definir o contexto caller-owned de recovery e os estados projetados sem alterar classificacoes existentes.
 - Definir os resultados de consulta e manutencao.
 - Publicar as classificacoes operacionais aceitas pelo slice.
 
@@ -32,6 +33,8 @@ flowchart TD
 - As classificacoes ficam centralizadas para evitar duplicacao entre autorizacao, consulta e manutencao.
 - `NFeAuthorizationRequest` aceita producao apenas para documentos identificados como SP e requer executor externo para mTLS.
 - `NFeAuthorizationOutcome.nextAction` e opcional e usa o literal `reconcileNFeReceipt`; resultados sem recibo nao anunciam essa continuacao.
+- `NFeRecoveryContext` correlaciona modo, chave e protocolo EPEC opcional; para recovery EPEC, runtime exige protocolo de 15 digitos.
+- `NFeReceiptReconciliationResult` pode carregar modo, chave, protocolo, contexto, estado, e proxima acao sem modificar `classification`.
 
 ## Exemplos
 

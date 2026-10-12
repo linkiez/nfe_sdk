@@ -3,6 +3,11 @@ import * as publicApi from '../../src/index';
 import { loadNFeOperationalTextFixture } from '../fixtures/nfe-operational/load-nfe-operational-fixture';
 
 type ReconcileNFeReceipt = (input: {
+  recoveryContext?: {
+    documentKey: string;
+    eventProtocol?: string;
+    mode: 'svc-an' | 'epec' | 'fs-da';
+  };
   receiptNumber: string;
   requestExecutor?: (input: {
     endpointUrl: string;
@@ -22,6 +27,15 @@ type ReconcileNFeReceipt = (input: {
   timeoutMs: number;
 }) => Promise<{
   classification: string;
+  contingencyState?: string;
+  recoveryContext?: {
+    documentKey: string;
+    eventProtocol?: string;
+    mode: string;
+  };
+  recoveryState?: string;
+  eventProtocol?: string;
+  executionMode?: string;
   protocolNumber?: string;
   receiptNumber: string;
   state?: {
@@ -172,6 +186,37 @@ describe('reconcileNFeReceipt integration', () => {
       );
     },
   );
+
+  it('preserves EPEC recovery context without changing the receipt classification', async () => {
+    const reconcileNFeReceipt = (publicApi as Record<string, unknown>)
+      .reconcileNFeReceipt as ReconcileNFeReceipt | undefined;
+    const recoveryContext = {
+      documentKey: '35240100000000000000550010000000011000000010',
+      eventProtocol: '135260000000001',
+      mode: 'epec' as const,
+    };
+
+    const outcome = await reconcileNFeReceipt?.({
+      receiptNumber: '135190000000002',
+      recoveryContext,
+      requestExecutor: async () => ({
+        headers: { 'content-type': 'application/soap+xml; charset=utf-8' },
+        responseXml: loadNFeOperationalTextFixture(
+          'authorization/receipt-response-authorized.xml',
+        ),
+        status: 200,
+      }),
+      routingContext: { authorizer: 'SVCAN', environment: 'homologation' },
+      timeoutMs: 5000,
+    });
+
+    expect(outcome?.classification).toBe('authorized');
+    expect(outcome?.contingencyState).toBe('reconciled');
+    expect(outcome?.executionMode).toBe('epec');
+    expect(outcome?.eventProtocol).toBe('135260000000001');
+    expect(outcome?.recoveryState).toBe('reconciled');
+    expect(outcome?.recoveryContext).toEqual(recoveryContext);
+  });
 
   it('maps a receipt not found response into an explicit boundary classification', async () => {
     const reconcileNFeReceipt = (publicApi as Record<string, unknown>)

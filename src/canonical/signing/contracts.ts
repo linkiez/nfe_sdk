@@ -1,6 +1,8 @@
 const SIGNATURE_ALGORITHMS = [
   'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256',
   'http://www.w3.org/2001/04/xmlenc#sha256',
+  'http://www.w3.org/2000/09/xmldsig#rsa-sha1',
+  'http://www.w3.org/2000/09/xmldsig#sha1',
 ] as const;
 
 const SOURCE_TYPES = ['file-path', 'in-memory-content'] as const;

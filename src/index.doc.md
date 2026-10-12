@@ -10,6 +10,8 @@ Agrega a superficie publica estavel do pacote no import raiz `nfe-sdk`.
 - Publicar a primeira facade operacional de NFC-e com `authorizeNFCe`.
 - Publicar a boundary taxonomy de NFC-e com `unsupported-state` e `unsupported-scope` sem expor subpaths adicionais.
 - Publicar a primeira facade operacional de NFe com `authorizeNFe`.
+- Publicar os tipos de contingencia/recovery de NF-e e a facade `submitEPECEvent`.
+- Publicar a reconciliacao one-shot de recibos conhecidos com metadados caller-owned de recovery.
 - Publicar as primeiras consultas operacionais com `queryNFeServiceStatus` e `queryNFeDocumentSituation`.
 - Publicar as manutencoes operacionais `submitNFeInutilization`, `cancelNFe` e `submitNFeCorrectionLetter`.
 - Publicar o slice recipient com `distributeRecipientDFe` e `manifestRecipientOperation`.
@@ -33,6 +35,8 @@ flowchart TD
   B --> C[publicPackageContract]
   B --> D[authorizeNFCe]
   B --> E[authorizeNFe]
+  B --> E1[submitEPECEvent]
+  B --> E2[reconcileNFeReceipt]
   B --> F[cancelNFe]
   B --> G[queryNFeServiceStatus]
   B --> H[queryNFeDocumentSituation]
@@ -56,6 +60,7 @@ flowchart TD
 
 - O arquivo apenas reexporta simbolos.
 - Validacoes de entrada ficam nos modulos da facade canonica.
+- O recovery usa chamadas explicitas; modo, chave, protocolo e estado nao iniciam polling nem persistencia no SDK.
 - A facade NFC-e aplica bloqueios pre-transporte para UFs fora do piloto e para `requestedCapabilities` deferidas.
 - O helper paulista de `QR Code` permanece restrito a `SP`, mesmo com `PR` presente no cohort de autorizacao.
 
