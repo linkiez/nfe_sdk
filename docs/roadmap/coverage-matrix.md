@@ -65,9 +65,11 @@ lacuna explicita do roadmap.
 | `Assinatura com certificado A3`                                         | `documented-gap` | `fora-do-escopo` | `Fase 3`      | [public-signing-expansion-facade.md](../../specs/014-expand-signing-coverage/contracts/public-signing-expansion-facade.md) | documentation-only | O boundary publicado da `014` permanece restrito ao contexto reutilizavel com A1.                                                         |
 | `Consulta auxiliar por chave para documento nao previamente persistido` | `documented-gap` | `backlog`        | `Fase 5`      | [docs/roadmap/ROADMAP.md](./ROADMAP.md)                                                                                    | documentation-only | Ha export utilitario, mas a experiencia operacional completa ainda nao esta estabilizada.                                                 |
 | `Recuperacao pos-transmissao e polling de recibo/protocolo`             | `documented-gap` | `backlog`        | `Fase 5`      | [docs/roadmap/ROADMAP.md](./ROADMAP.md)                                                                                    | documentation-only | O roadmap explicita busca de retorno, polling e recuperacao como parte do fluxo minimo ainda em endurecimento.                            |
+| `MDF-e SP`                                                              | `documented-gap` | `backlog`        | `Fase 9`      | [research.md](../../specs/030-mdfe-source-schema-baseline/research.md)                                                     | documentation-only | Feature `030` concluiu a curadoria; schemas e runtime seguem ausentes ate resolver os gates de pacote, cohort e rollout em `032`.         |
 
 ## Notas de reconciliacao
 
 - A lista acima cobre cada item de `documentedSurface` em [src/public-contract.ts](../../src/public-contract.ts) exatamente uma vez, incluindo a expansao additive da spec `014`.
+- A linha `MDF-e SP` e lacuna adicional do roadmap, nao item de `documentedSurface` nem capacidade exportada.
 - Sempre que a melhor evidencia disponivel for apenas unitaria, contratual ou de smoke do tarball, o status fica em `beta`.
 - As lacunas continuam visiveis mesmo quando existe utilitario parcial relacionado, para evitar que o backlog operacional pareca resolvido antes da validacao homologada correspondente.

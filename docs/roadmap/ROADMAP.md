@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Definir uma sequencia unica de implantacao para evoluir o repositorio de um gerador de artefatos TypeScript baseado em XSD para um SDK que implemente codigo para `100%` das features fiscais priorizadas de `NF-e` e `NFC-e`, usando `SP` como baseline obrigatoria de `homologacao` ate `producao`, e tratando o restante do acervo oficial como trilha de expansao depois que esse caminho paulista estiver fechado com runtime, tooling executavel e boundaries operacionais verificaveis.
+Definir uma sequencia unica de implantacao para evoluir o repositorio de um gerador de artefatos TypeScript baseado em XSD para um SDK que implemente codigo para `100%` das features fiscais priorizadas de `NF-e` e `NFC-e`, usando `SP` como baseline obrigatoria de `homologacao` ate `producao`. A trilha de `MDF-e` para `SP` tem cadeia propria de evidencia e implementacao, sem promover operacoes antes de resolver aplicabilidade de schema e elegibilidade do emissor.
 
 ## Papel deste documento
 
@@ -47,7 +47,7 @@ O roadmap agora considera obrigatoria a cobertura planejada de todos os itens ab
 | Acervo oficial raiz  | Todo host sob `docs/_sources/markdown/official/`, mesmo quando nao pertença ao portal nacional                                                                                   | Cada host precisa entrar como evidencia estadual, fonte complementar, falha aberta ou trilha de observacao |
 | Estados              | Todas as `27` UFs precisam ter status explicito de cobertura editorial, mesmo que ainda sem promocao runtime                                                                     | Nenhuma UF pode ficar fora do planejamento                                                                 |
 | Ambientes            | `homologacao`, `producao`, `ambiente nacional`, `SVAN`, `SVRS`, `SVC-AN`, `SVC-RS`, `offline`, consulta publica resumida, consulta autenticada e credenciamento                  | Cada ambiente precisa ter fronteira funcional, destino e fase                                              |
-| Familias documentais | `NF-e`, `NFC-e`, Manifestacao, eventos genericos, `EPEC`, `NFGas`, `NFAg`, `NF-e ABI` e familias proximas do portal                                                              | Cada familia precisa ter classificacao entre fluxo priorizado, observacao arquitetural ou backlog          |
+| Familias documentais | `NF-e`, `NFC-e`, `MDF-e` (trilha inicial limitada a `SP`), Manifestacao, eventos genericos, `EPEC`, `NFGas`, `NFAg`, `NF-e ABI` e familias proximas do portal                    | Cada familia precisa ter classificacao entre fluxo priorizado, observacao arquitetural ou backlog          |
 | Mudancas recorrentes | `NTs`, informes, tabelas auxiliares, indisponibilidades e deltas estaduais                                                                                                       | Watchlist viva com impacto em schema, validacao, evento, consulta, ambiente ou contrato                    |
 
 ## Modelo de detalhamento e status
@@ -67,14 +67,14 @@ Para que o roadmap fique utilizavel como plano de execucao, cada unidade de cobe
 
 `100%` neste roadmap deixa de ser apenas cobertura planejada e passa a significar fechamento de codigo para as features fiscais priorizadas, com `SP` como baseline obrigatoria de `homologacao` ate `producao`.
 
-| Unidade            | Condicao minima para contar no `100%` do roadmap                                                                     |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| Tema               | ter feature codificada em `runtime`, `tooling` executavel ou `exemplo`, com testes e boundary operacional            |
-| Host oficial       | estar classificado e conectado a uma entrega tecnica concreta, nao apenas a uma nota editorial                       |
-| UF                 | ter caminho operacional reconciliado por ambiente; para `SP`, isso inclui `homologacao` e `producao`                 |
-| Ambiente           | ter `tpAmb`, endpoint, dependencia externa, fallback e gate de validacao localizados em codigo ou runbook executavel |
-| Familia documental | ter decisao explicita entre `runtime`, `tooling` executavel, `exemplo` shipped ou backlog adiado apos `SP`           |
-| Mudanca recorrente | ter impacto traduzido em implementacao, teste, fixture, dado externo versionado ou backlog tecnico localizado        |
+| Unidade            | Condicao minima para contar no `100%` do roadmap                                                                                                                               |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Tema               | ter feature codificada em `runtime`, `tooling` executavel ou `exemplo`, com testes e boundary operacional                                                                      |
+| Host oficial       | estar classificado e conectado a uma entrega tecnica concreta, nao apenas a uma nota editorial                                                                                 |
+| UF                 | ter caminho operacional reconciliado por ambiente; para `SP`, isso inclui `homologacao` e `producao`                                                                           |
+| Ambiente           | ter `tpAmb`, endpoint, dependencia externa, fallback e gate de validacao localizados em codigo ou runbook executavel                                                           |
+| Familia documental | ter decisao explicita entre `runtime`, `tooling` executavel, `exemplo` shipped ou backlog adiado apos `SP`; para `MDF-e`, medir somente o cohort e as operacoes SP verificadas |
+| Mudanca recorrente | ter impacto traduzido em implementacao, teste, fixture, dado externo versionado ou backlog tecnico localizado                                                                  |
 
 ## Sinais oficiais que puxam este redirecionamento
 
@@ -113,27 +113,28 @@ O roadmap passa a tratar como lacunas reais, extraidas do `Manual do Emissor de 
 
 Esta secao absorve a antiga matriz tematica e vira a referencia canonica para leitura de backlog por tema.
 
-| ID      | Tema consolidado                                                                                                                           | Destino primario       | Fase-alvo inicial | Desfecho minimo esperado                                                                   |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- | ----------------- | ------------------------------------------------------------------------------------------ |
-| RTM-001 | Contrato publico, manifesto gerado, build `ESM`, distribuicao e rastreabilidade documental                                                 | `runtime`              | Fase 1            | Contrato root explicito, manifesto auditavel e build repetivel                             |
-| RTM-002 | Modelagem canonica, serializacao XML, validacao estrutural e maquina de estados do documento                                               | `runtime`              | Fase 2            | Facades e primitives previsiveis acima dos artefatos gerados                               |
-| RTM-003 | Assinatura digital, certificados, cadeia de confianca, `SSL`, `WSDL` e autenticacao mutua                                                  | `runtime`              | Fase 3            | XML assinado e validavel com precondicoes tecnicas rastreadas                              |
-| RTM-004 | Transporte `SOAP`, autorizadores nacionais e virtuais, disponibilidade, consulta, recibo, protocolo e polling                              | `runtime`              | Fase 4            | Cliente e catalogo de servicos com diagnostico operacional compreensivel                   |
-| RTM-005 | Contingencia de `NF-e`, contingencia `offline` de `NFC-e`, `SVC`, `EPEC` e mecanismos equivalentes por fluxo                               | `runtime`              | Fase 4            | Boundary de contingencia definida e mapeada por ambiente                                   |
-| RTM-006 | Pos-autorizacao e reconciliacao                                                                                                            | `runtime`              | Fase 5            | API capaz de acompanhar cancelamento, carta, inutilizacao e consultas auxiliares           |
-| RTM-007 | Representacoes auxiliares como `DANFE`, `DANFE NFC-e`, `QR Code`, `CSC` e exportacao previsivel de XMLs                                    | `exemplo`              | Fase 5            | Delimitacao clara do que vira API e do que fica como apoio ou backlog                      |
-| RTM-008 | Eventos de maior impacto operacional, incluindo Manifestacao, comprovante de entrega, ator interessado, conciliacao financeira e insucesso | `runtime`              | Fase 6            | Slice inicial de eventos com crescimento additive                                          |
-| RTM-009 | Governanca de compatibilidade para `NTs`, informes, series recorrentes e versionamento de contratos e schemas                              | `documentacao`         | Fase 1            | Processo explicito para classificar mudancas por impacto                                   |
-| RTM-010 | Tabelas auxiliares e parametros externos, como `NCM`, meios de pagamento, `FCP`, municipios, `ANP`, `CFOP`, `CBS` e `IBS`                  | `tooling`              | Fase 8            | Politica de atualizacao propria e separada do nucleo runtime                               |
-| RTM-011 | Complementos estaduais por UF                                                                                                              | `documentacao`         | Fase 7            | Matriz por UF ligada a comportamento real do SDK e criterio claro de promocao              |
-| RTM-012 | Ambientes e superfices operacionais, incluindo `homologacao`, `producao`, `SVAN`, `SVRS`, `SVC`, consulta autenticada e credenciamento     | `documentacao`         | Fase 3            | Cada ambiente com fronteira, dependencia externa e backlog associado                       |
-| RTM-013 | Tooling e operacao assistida para integradores, incluindo fixtures, import/export de XML, snapshots, diagnostico, exemplos e runbooks      | `tooling`              | Fase 8            | Kit de suporte a homologacao e regressao sem inflar a superficie runtime                   |
-| RTM-014 | Curadoria do acervo oficial convertido e fechamento das falhas de conversao                                                                | `documentacao`         | Fase 1            | Todo host oficial com status claro e nenhuma falha sem dono                                |
-| RTM-015 | Watchlist de mudancas recentes com impacto atual                                                                                           | `documentacao`         | Fase 1            | Deltas recentes absorvidos no planejamento e na governanca de compatibilidade              |
-| RTM-016 | Familias documentais paralelas como `NFGas`, `NFAg` e `NF-e ABI`                                                                           | `trilha de observacao` | Fase 2            | Watchlist arquitetural ativa, sem promessa operacional antecipada                          |
-| RTM-017 | Descoberta publica do portal nacional, FAQ, consulta resumida, estatisticas e superfices autenticadas                                      | `documentacao`         | Fase 1            | Separar descoberta publica, acesso autenticado, telemetria publica e suporte ao integrador |
-| RTM-018 | Downloads, cadeia de certificados, Visualizador `DF-e` e artefatos auxiliares do portal                                                    | `tooling`              | Fase 3            | Classificar cadeia, dependencias externas e utilitarios auxiliares sem inflar o runtime    |
-| RTM-019 | Tabelas externas e familias emergentes do portal, como `NF-e ABI`, `NCM/UTrib` e derivados                                                 | `trilha de observacao` | Fase 8            | Politica explicita para promover tabelas ou familias para `tooling` ou `runtime`           |
+| ID      | Tema consolidado                                                                                                                           | Destino primario           | Fase-alvo inicial | Desfecho minimo esperado                                                                                               |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| RTM-001 | Contrato publico, manifesto gerado, build `ESM`, distribuicao e rastreabilidade documental                                                 | `runtime`                  | Fase 1            | Contrato root explicito, manifesto auditavel e build repetivel                                                         |
+| RTM-002 | Modelagem canonica, serializacao XML, validacao estrutural e maquina de estados do documento                                               | `runtime`                  | Fase 2            | Facades e primitives previsiveis acima dos artefatos gerados                                                           |
+| RTM-003 | Assinatura digital, certificados, cadeia de confianca, `SSL`, `WSDL` e autenticacao mutua                                                  | `runtime`                  | Fase 3            | XML assinado e validavel com precondicoes tecnicas rastreadas                                                          |
+| RTM-004 | Transporte `SOAP`, autorizadores nacionais e virtuais, disponibilidade, consulta, recibo, protocolo e polling                              | `runtime`                  | Fase 4            | Cliente e catalogo de servicos com diagnostico operacional compreensivel                                               |
+| RTM-005 | Contingencia de `NF-e`, contingencia `offline` de `NFC-e`, `SVC`, `EPEC` e mecanismos equivalentes por fluxo                               | `runtime`                  | Fase 4            | Boundary de contingencia definida e mapeada por ambiente                                                               |
+| RTM-006 | Pos-autorizacao e reconciliacao                                                                                                            | `runtime`                  | Fase 5            | API capaz de acompanhar cancelamento, carta, inutilizacao e consultas auxiliares                                       |
+| RTM-007 | Representacoes auxiliares como `DANFE`, `DANFE NFC-e`, `QR Code`, `CSC` e exportacao previsivel de XMLs                                    | `exemplo`                  | Fase 5            | Delimitacao clara do que vira API e do que fica como apoio ou backlog                                                  |
+| RTM-008 | Eventos de maior impacto operacional, incluindo Manifestacao, comprovante de entrega, ator interessado, conciliacao financeira e insucesso | `runtime`                  | Fase 6            | Slice inicial de eventos com crescimento additive                                                                      |
+| RTM-009 | Governanca de compatibilidade para `NTs`, informes, series recorrentes e versionamento de contratos e schemas                              | `documentacao`             | Fase 1            | Processo explicito para classificar mudancas por impacto                                                               |
+| RTM-010 | Tabelas auxiliares e parametros externos, como `NCM`, meios de pagamento, `FCP`, municipios, `ANP`, `CFOP`, `CBS` e `IBS`                  | `tooling`                  | Fase 8            | Politica de atualizacao propria e separada do nucleo runtime                                                           |
+| RTM-011 | Complementos estaduais por UF                                                                                                              | `documentacao`             | Fase 7            | Matriz por UF ligada a comportamento real do SDK e criterio claro de promocao                                          |
+| RTM-012 | Ambientes e superfices operacionais, incluindo `homologacao`, `producao`, `SVAN`, `SVRS`, `SVC`, consulta autenticada e credenciamento     | `documentacao`             | Fase 3            | Cada ambiente com fronteira, dependencia externa e backlog associado                                                   |
+| RTM-013 | Tooling e operacao assistida para integradores, incluindo fixtures, import/export de XML, snapshots, diagnostico, exemplos e runbooks      | `tooling`                  | Fase 8            | Kit de suporte a homologacao e regressao sem inflar a superficie runtime                                               |
+| RTM-014 | Curadoria do acervo oficial convertido e fechamento das falhas de conversao                                                                | `documentacao`             | Fase 1            | Todo host oficial com status claro e nenhuma falha sem dono                                                            |
+| RTM-015 | Watchlist de mudancas recentes com impacto atual                                                                                           | `documentacao`             | Fase 1            | Deltas recentes absorvidos no planejamento e na governanca de compatibilidade                                          |
+| RTM-016 | Familias documentais paralelas como `NFGas`, `NFAg` e `NF-e ABI`                                                                           | `trilha de observacao`     | Fase 2            | Watchlist arquitetural ativa, sem promessa operacional antecipada                                                      |
+| RTM-017 | Descoberta publica do portal nacional, FAQ, consulta resumida, estatisticas e superfices autenticadas                                      | `documentacao`             | Fase 1            | Separar descoberta publica, acesso autenticado, telemetria publica e suporte ao integrador                             |
+| RTM-018 | Downloads, cadeia de certificados, Visualizador `DF-e` e artefatos auxiliares do portal                                                    | `tooling`                  | Fase 3            | Classificar cadeia, dependencias externas e utilitarios auxiliares sem inflar o runtime                                |
+| RTM-019 | Tabelas externas e familias emergentes do portal, como `NF-e ABI`, `NCM/UTrib` e derivados                                                 | `trilha de observacao`     | Fase 8            | Politica explicita para promover tabelas ou familias para `tooling` ou `runtime`                                       |
+| RTM-020 | Baseline normativa, schemas e runtime operacional de `MDF-e` para cohort inicial `SP`                                                      | `runtime` + `documentacao` | Fase 9            | Resolver identidade/aplicabilidade, depois promover somente operacoes SP verificadas; contingencia segue gate separado |
 
 ## Cobertura estadual obrigatoria
 
@@ -462,6 +463,27 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 
 **Criterio de saida**: pacote pronto para publicacao recorrente, consumo controlado por integradores externos e manutencao continua do acervo oficial sem fragmentacao de backlog.
 
+### Fase 9 - Trilha MDF-e de SP com gates de evidencia
+
+**Meta**: estabelecer uma capacidade MDF-e delimitada para `SP`, sem inferir suporte a partir de tipos incidentais, do catalogo nacional ou de pacotes com identidade/aplicabilidade nao confirmadas.
+
+**Entregas**:
+
+- resolver primeiro identidade e aplicabilidade dos pacotes, elegibilidade do emissor paulista, permissoes por operacao e rollout real conforme Feature `032`;
+- importar e gerar somente a familia oficial confirmada, com reproducibilidade e impacto isolado, conforme Feature `033`;
+- definir contrato de documento e validacao local antes de assinatura/transmissao, conforme Feature `034`;
+- construir autorizacao de homologacao como fatia propria (`035`), com consultas (`036`), eventos (`037`) e distribuicao (`038`) dependentes de evidencia por operacao;
+- promover para producao apenas operacoes que passaram pelo fluxo homologado e por verificacoes externas atuais, conforme Feature `039`;
+- manter contingencia como investigacao documental (`040`); qualquer resultado positivo exige uma spec de implementacao separada.
+
+**Gates de validacao**:
+
+- nenhuma geracao usa o pacote SVRS `1.04` enquanto o arquivo interno continuar identificado como `1.05` sem esclarecimento oficial;
+- nenhuma operacao entra em runtime sem aplicabilidade de schema, permissao do cohort SP, ambiente e rota verificados;
+- nenhuma contingencia MDF-e e inferida de NF-e/NFC-e, de avisos de indisponibilidade ou da existencia de endpoint nacional.
+
+**Criterio de saida**: cada operacao MDF-e promovida para `SP` tem fonte primaria, schema aplicavel, issuer/ambiente/rota, testes controlados e boundary publica; gaps nao resolvidos continuam explicitamente bloqueados.
+
 ## Levantamento de lacunas para producao: `NF-e`, `NFC-e` e `MDF-e`
 
 **Data de referencia**: `2026-10-10`. Este levantamento descreve a prontidao observavel no repositorio, nao uma autorizacao para transmitir documentos fiscais reais. Uma spec com todas as tasks fechadas prova a entrega daquele recorte; nao prova operacao ponta a ponta em producao.
@@ -480,15 +502,17 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 
 ### `MDF-e`
 
-- **Base presente**: nao ha API operacional de MDF-e no root, nem familia dedicada de XSD em `xsd/`. As ocorrencias de `chMDFe` encontradas sao propriedades em dois eventos SUFRAMA e nao constituem suporte ao manifesto.
-- **Bloqueios para producao**: o acervo ja contem referencias estaduais do [PR](../_sources/markdown/official/sped.fazenda.pr.gov.br/index-704e8b126d.md) e da [PB](../_sources/markdown/official/www.sefaz.pb.gov.br/info/documentos-fiscais/mdf-e/index-72e0d57492.md), mas ainda falta consolidar a curadoria normativa e a baseline de XSD/versoes aplicaveis em uma spec propria. Tambem faltam modelo canonico, serializacao e validacao XSD, assinatura, catalogo de servicos por UF/ambiente, transporte, parsing de retornos e ciclo operacional. Autorizacao, consulta, encerramento, cancelamento, eventos e contingencia ainda precisam ter escopo e cobertura definidos.
-- **Gate de saida**: abrir uma trilha/spec separada que escolha versoes, UFs e operacoes suportadas; internalizar fontes oficiais; implementar e testar o fluxo homologado completo; depois validar producao com autorizacao e credenciais externas aprovadas. MDF-e nao deve ser contado como cobertura por causa de tipos de eventos que apenas referenciam sua chave.
+- **Base presente**: Feature `030` concluiu a curadoria documental, registrou fontes CONFAZ/SVRS/Fazenda SP, inspecionou pacotes oficiais e mapeou rotas e operacoes. Ainda nao ha API operacional MDF-e no root nem familia dedicada de XSD em `xsd/`; campos incidentais `chMDFe` em eventos SUFRAMA nao constituem suporte ao manifesto.
+- **Evidencia registrada em 2026-10-12**: o pacote base `PL_MDFe_300b.zip` foi inspecionado (42 XSDs; SHA-256 `bfb192ab1b97f48efadb51a735274b1da134b0733430b38ba47f369e0ff5a48d`) e permanece candidato sem intervalo oficial de aplicabilidade. O SVRS rotula o overlay como `PL_MDFe_300b_NT012025_1.04.zip`, mas o diretorio interno identifica `1.05` (41 XSDs; SHA-256 `fc53c880bd757d5b03b79de15dd7687259dfbfa38fed85e9ebb9c638b93854cc`); ele segue nao verificado. Ver [registro e inspecao completos](../../specs/030-mdfe-source-schema-baseline/research.md).
+- **Bloqueios atuais**: identidade/aplicabilidade do pacote, matriz completa de elegibilidade/permissoes de emissores SP, escopo por subtipo de evento e implantacao real por ambiente continuam sem verificacao suficiente. A homologacao permanece `unverified/blocked`, producao `deferred/blocked` e contingencia excluida; Feature `031` e spec de aceite ponta a ponta, nao declaracao de prontidao.
+- **Cadeia de specs**: `032` resolve evidencia; `033` schemas/codegen; `034` documento/validacao; `035` autorizacao homologada; `036` consultas, `037` eventos, `038` distribuicao; `039` promocao individual para producao; `040` pesquisa de contingencia sem runtime. Ver [implementacao e cobertura por spec](./specs-implementacao.md) e a [decomposicao da spec 031](../../specs/031-mdfe-sp-runtime/spec.md#implementation-breakdown).
+- **Gate de saida**: nenhuma geracao XSD ou implementacao runtime antes do gate `032`. MDF-e so conta como cobertura quando cada operacao e o cohort SP estao verificados e testados; escopo nacional, producao e contingencia nao sao inferidos do catalogo SVRS.
 
 ### Ordem de fechamento
 
 1. Fechar `NF-e` de `SP` em producao, incluindo recibo/protocolo e contingencia executavel.
 2. Fechar `NFC-e` de `SP` em producao, separando autorizacao, QR Code, `DANFE NFC-e` e contingencia `offline`.
-3. Iniciar a trilha de descoberta e especificacao de `MDF-e`; nao existe baseline runtime para promover.
+3. Executar a trilha MDF-e SP a partir da resolucao documental de `032`; avancar para schema, documento, homologacao e operacoes conforme as dependencias de `032` a `039`. A pesquisa `030` esta concluida, mas nao promoveu baseline runtime.
 
 ## Backlog imediato recomendado
 
@@ -498,6 +522,7 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 - tratar `PR`, `MS`, `PB`, `CE`, `SC` e `RJ` como segunda onda de expansao, depois que `SP` estiver tecnicamente fechado;
 - manter familias paralelas como `NFGas`, `NFAg` e `NF-e ABI` em observacao arquitetural sem disputar o backlog imediato de `SP`.
 - desdobrar as proximas expansoes tecnicas em slices menores e additive, usando o anexo de recortes funcionais prioritarios como ponte entre `RTM-*` e novas specs.
+- manter MDF-e SP como trilha gated: priorizar a resolucao `032`, preservar o conflito do pacote ate esclarecimento oficial e nao contar nenhuma operacao como incluida enquanto a matriz `030` seguir bloqueada.
 
 ## Riscos principais
 
