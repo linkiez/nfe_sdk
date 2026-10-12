@@ -4,6 +4,7 @@ import type {
 } from './contracts.js';
 import {
   getInitialTransportCatalogProvenance,
+  getNFCeSPProductionTransportCatalogProvenance,
   getNFeSPProductionTransportCatalogProvenance,
   getNFCePRPilotTransportCatalogProvenance,
   getNFCeSPPilotTransportCatalogProvenance,
@@ -14,6 +15,7 @@ import {
 
 const TRANSPORT_CATALOG_VERSION = '2026-05-18-initial-draft' as const;
 const SP_NFE_PRODUCTION_CATALOG_VERSION = '2026-10-10-sp-production' as const;
+const SP_NFCE_PRODUCTION_CATALOG_VERSION = '2026-10-12-nfce-sp-production' as const;
 
 const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
   {
@@ -96,6 +98,15 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
     layoutVersion: '4.00',
     provider: 'SVCAN',
     provenance: getNFCeSPPilotTransportCatalogProvenance(),
+    service: 'nfce-authorization-sp',
+  },
+  {
+    catalogVersion: SP_NFCE_PRODUCTION_CATALOG_VERSION,
+    endpointUrl: 'https://nfce.fazenda.sp.gov.br/ws/NFeAutorizacao4.asmx',
+    environment: 'production',
+    layoutVersion: '4.00',
+    provider: 'SP',
+    provenance: getNFCeSPProductionTransportCatalogProvenance(),
     service: 'nfce-authorization-sp',
   },
   {

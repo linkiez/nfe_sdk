@@ -26,6 +26,7 @@ describe('authorizeNFCe validation', () => {
           },
           environment: 'production',
         }),
+        environment: 'sandbox',
         signingContext,
       }),
     ).rejects.toThrow(NFCeOperationalUnsupportedScopeError);

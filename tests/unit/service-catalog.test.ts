@@ -72,6 +72,21 @@ describe('service catalog resolution', () => {
     },
   );
 
+  it('resolves the SP NFC-e production authorizer without using an NF-e or contingency endpoint', () => {
+    const entry = resolveNFeServiceEndpoint({
+      authorizer: 'SP',
+      environment: 'production',
+      service: 'nfce-authorization-sp',
+    });
+
+    expect(entry).toMatchObject({
+      endpointUrl: 'https://nfce.fazenda.sp.gov.br/ws/NFeAutorizacao4.asmx',
+      environment: 'production',
+      provider: 'SP',
+      service: 'nfce-authorization-sp',
+    });
+  });
+
   it('fails closed for an unqualified production service with multiple providers', () => {
     expect(() =>
       resolveNFeServiceEndpoint({

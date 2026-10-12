@@ -209,6 +209,10 @@ export interface NFCeAuthorizationRequest {
   readonly correlationId?: string;
   /** Optional deferred capabilities the integrator tried to enable in this slice. */
   readonly requestedCapabilities?: readonly NFCeDeferredCapability[];
+  /** Optional caller-provisioned CSC used to associate a QR URL with authorization. */
+  readonly csc?: NFCeCSCInput;
+  /** Unsigned fiscal NFe XML required for production signing and transport. */
+  readonly unsignedXml?: string;
 }
 
 /**
@@ -225,10 +229,14 @@ export interface NFCeAuthorizationOutcome {
   readonly coverageBoundary?: NFCeCoverageBoundary;
   /** Protocol number when immediately available. */
   readonly protocolNumber?: string;
+  /** Explicit follow-up operation for a received authorization with a receipt. */
+  readonly nextAction?: 'reconcileNFeReceipt';
   /** Receipt number when the exchange remains intermediate. */
   readonly receiptNumber?: string;
   /** Underlying transport evidence when the request was executed remotely. */
   readonly transportOutcome?: TransportOutcome;
+  /** QR Code v3 consultation URL for the exact authorized SP NFC-e, when composed. */
+  readonly qrCodeUrl?: string;
 }
 
 /**

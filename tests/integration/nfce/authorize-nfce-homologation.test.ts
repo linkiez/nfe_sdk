@@ -12,6 +12,7 @@ import {
   loadNFCeTextFixture,
 } from '../../fixtures/nfce/build-nfce-fixtures';
 import { createTestA1FixtureSource } from '../../fixtures/signing/test-a1-fixture';
+import { createSigningContext, authorizeNFCe } from '../../../src/index';
 
 type HomologationNFCeAuthorizationRequest = Omit<
   FixtureNFCeAuthorizationRequest,
@@ -107,5 +108,41 @@ describe('authorizeNFCe homologation integration', () => {
       outcome?.transportOutcome?.evidence.responseEnvelopeXml ?? '',
       '100',
     );
+  });
+
+  it('associates a homologation QR URL only with the authorized model 65 document', async () => {
+    const fixtureSource = createTestA1FixtureSource();
+    const signingContext = await createSigningContext({
+      passphrase: fixtureSource.passphrase,
+      source: {
+        contentBase64: fixtureSource.certificateBase64,
+        type: 'in-memory-content',
+      },
+    });
+    const accessKey = '35260512345678000123650010000001231123456781';
+    const outcome = await authorizeNFCe({
+      document: {
+        documentId: accessKey,
+        environment: 'homologation',
+        version: '4.00',
+      },
+      environment: 'homologation',
+      signingContext,
+      csc: { cscId: '000001', cscToken: 'test-token' },
+      requestExecutor: async () => ({
+        headers: { 'content-type': 'application/soap+xml; charset=utf-8' },
+        responseXml:
+          '<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"><soap:Body><retEnviNFe xmlns="http://www.portalfiscal.inf.br/nfe"><tpAmb>2</tpAmb><cStat>100</cStat><xMotivo>Autorizado</xMotivo><protNFe><infProt><chNFe>' +
+          accessKey +
+          '</chNFe><nProt>135190000000001</nProt></infProt></protNFe></retEnviNFe></soap:Body></soap:Envelope>',
+        status: 200,
+      }),
+    });
+
+    expect(outcome.classification).toBe('authorized');
+    expect(outcome.qrCodeUrl).toBe(
+      `https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx?p=${accessKey}|3|2`,
+    );
+    expect(JSON.stringify(outcome)).not.toContain('test-token');
   });
 });

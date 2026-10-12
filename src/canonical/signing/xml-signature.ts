@@ -3,19 +3,20 @@ import { SignedXml } from 'xml-crypto';
 
 import { SignNFeXmlError } from './errors.js';
 
-const DIGEST_ALGORITHM = 'http://www.w3.org/2001/04/xmlenc#sha256';
+const DIGEST_ALGORITHM = 'http://www.w3.org/2000/09/xmldsig#sha1';
 const ENVELOPED_SIGNATURE_TRANSFORM =
   'http://www.w3.org/2000/09/xmldsig#enveloped-signature';
 const NFE_REFERENCE_XPATH = "//*[local-name(.)='infNFe']";
 const NFE_SIGNATURE_LOCATION_XPATH = "//*[local-name(.)='NFe']";
 const EVENT_REFERENCE_XPATH = "//*[local-name(.)='infEvento']";
 const EVENT_SIGNATURE_LOCATION_XPATH = "//*[local-name(.)='evento']";
-const SIGNATURE_ALGORITHM = 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256';
+const SIGNATURE_ALGORITHM = 'http://www.w3.org/2000/09/xmldsig#rsa-sha1';
 const EVENT_DIGEST_ALGORITHM = 'http://www.w3.org/2000/09/xmldsig#sha1';
 const EVENT_SIGNATURE_ALGORITHM = 'http://www.w3.org/2000/09/xmldsig#rsa-sha1';
 const EVENT_XML_CANONICALIZATION =
   'http://www.w3.org/TR/2001/REC-xml-c14n-20010315';
-const XML_CANONICALIZATION = 'http://www.w3.org/2001/10/xml-exc-c14n#';
+const XML_CANONICALIZATION =
+  'http://www.w3.org/TR/2001/REC-xml-c14n-20010315';
 
 /**
  * Detects the signed NFe document identifier from an unsigned XML payload.

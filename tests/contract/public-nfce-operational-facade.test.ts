@@ -1,4 +1,8 @@
 import * as publicApi from '../../src/index';
+import type {
+  NFCeAuthorizationOutcome,
+  NFCeAuthorizationRequest,
+} from '../../src/canonical/nfce/contracts';
 
 describe('public nfce operational facade contract', () => {
   it('publishes the first NFC-e operational facade from the root entrypoint', () => {
@@ -49,5 +53,20 @@ describe('public nfce operational facade contract', () => {
     expect(publicApi).not.toHaveProperty('interfaces');
     expect(publicApi).not.toHaveProperty('types');
     expect(publicApi).not.toHaveProperty('enums');
+  });
+
+  it('adds CSC input and QR URL output without changing root exports', () => {
+    const requestContract: Pick<NFCeAuthorizationRequest, 'csc'> = {
+      csc: { cscId: '000002', cscToken: 'test-token' },
+    };
+    const outcomeContract: Pick<NFCeAuthorizationOutcome, 'qrCodeUrl'> = {
+      qrCodeUrl: 'https://example.invalid/qr',
+    };
+
+    expect(requestContract.csc?.cscId).toBe('000002');
+    expect(outcomeContract.qrCodeUrl).toContain('/qr');
+    expect(Object.keys(publicApi)).toContain('authorizeNFCe');
+    expect(Object.keys(publicApi)).toContain('generateNFCeSPQRCode');
+    expect(outcomeContract).not.toHaveProperty('cscToken');
   });
 });

@@ -12,6 +12,8 @@ const SP_NFCE_PORTAL_SOURCE =
   'docs/_sources/markdown/official/portal.fazenda.sp.gov.br/servicos/nfe/paginas/servicos-9594adb2c3.md' as const;
 const SP_NFE_PRODUCTION_RESEARCH_SOURCE =
   'specs/025-nfe-sp-producao/research.md' as const;
+const SP_NFCE_PRODUCTION_RESEARCH_SOURCE =
+  'specs/027-nfce-sp-producao/research.md' as const;
 
 const CONTINGENCY_BOUNDARIES_RESEARCH_SOURCE =
   'specs/016-contingency-boundaries/research.md' as const;
@@ -97,6 +99,22 @@ export function getNFeSPProductionTransportCatalogProvenance(): {
     notes:
       'Normal SP production authorizer routes; SVC-AN remains a separate contingency provider.',
     sources: [OFFICIAL_SHARED_CATALOG_SOURCE, SP_NFE_PRODUCTION_RESEARCH_SOURCE],
+  };
+}
+
+/**
+ * Returns official-source provenance for the normal SP NFC-e production route.
+ *
+ * @returns Stable provenance metadata for the NFC-e/SP production entry.
+ */
+export function getNFCeSPProductionTransportCatalogProvenance(): {
+  readonly notes: string;
+  readonly sources: readonly string[];
+} {
+  return {
+    notes:
+      'Normal SP NFC-e production authorizer; SVC-AN remains a separate contingency provider.',
+    sources: [SP_NFCE_PRODUCTION_RESEARCH_SOURCE],
   };
 }
 
