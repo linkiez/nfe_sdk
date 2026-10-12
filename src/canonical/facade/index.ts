@@ -11,6 +11,7 @@ export { generateNFCeSPQRCode } from './generate-nfce-sp-qr-code.js';
 export { manifestRecipientOperation } from './manifest-recipient-operation.js';
 export { retrieveRecipientDocument } from './retrieve-recipient-document.js';
 export { prepareNFCeSigningPrerequisites } from './prepare-nfce-signing-prerequisites.js';
+export { renderNFCeSPDANFE } from './render-nfce-sp-danfe.js';
 export { queryContributorRegistration } from './query-contributor-registration.js';
 export { queryNFeByAccessKey } from './query-nfe-by-key.js';
 export { queryNFeByNSU } from './query-nfe-by-nsu.js';
@@ -28,6 +29,11 @@ export { submitNFeCorrectionLetter } from './submit-nfe-correction-letter.js';
 export { submitNFeInutilization } from './submit-nfe-inutilization.js';
 export { validateNFeXsd } from './validate-nfe-xsd.js';
 export type { XsdValidationClassification, XsdValidationOptions, XsdValidationResult } from './validate-nfe-xsd.js';
+
+export type {
+  NFCeSPDanfeResult,
+  RenderNFCeSPDANFEInput,
+} from '../nfce/contracts.js';
 
 export type {
 	DocumentSituationRequest,

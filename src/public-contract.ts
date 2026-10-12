@@ -16,6 +16,9 @@ const DOCUMENTED_SURFACE = [
   'manifestRecipientOperation',
   'retrieveRecipientDocument',
   'prepareNFCeSigningPrerequisites',
+  'prepareNFCeSPOffline',
+  'reconcileNFCeSPOffline',
+  'renderNFCeSPDANFE',
   'queryContributorRegistration',
   'queryNFeByAccessKey',
   'queryNFeByNSU',
@@ -66,8 +69,10 @@ const COMPATIBILITY_NOTES = [
   'The signing-expansion slice now adds prepareNFCeSigningPrerequisites as an additive root facade that derives chNFe, cDV, and hashCSRT while keeping authorization, QR Code, and broader NFC-e rollout explicitly deferred.',
   'The signing-expansion slice keeps QR Code, DANFE NFC-e, and multi-UF NFC-e operational rollout outside this phase.',
   'The paulista QR Code slice now adds generateNFCeSPQRCode as an additive root helper for SP-only NFC-e QR Code composition in homologation and production while keeping PR, other UFs, renderer concerns, consumer consultation, CSC administration, and offline contingency outside this narrower helper boundary.',
+  'The SP DANFE slice adds renderNFCeSPDANFE as an additive root renderer that accepts correlated authorized evidence and returns self-contained HTML without changing NFC-e authorization or QR Code composition.',
+  'The SP offline NFC-e slice adds prepareNFCeSPOffline and reconcileNFCeSPOffline for local signing and one explicit correlated submission; preparation validates caller-provided business-calendar evidence and a 23:59:59 first-business-day deadline without authenticating the source, its pending DANFE uses QR Code v2, and persistence, retries, and replay prevention remain caller-owned or unchanged.',
   'The first NFC-e slice returns unsupported-state before transport when the inferred UF stays outside the published SP and PR promoted cohort.',
-  'The first NFC-e slice accepts requestedCapabilities only as an explicit marker for deferred operational surfaces and returns unsupported-scope before transport for QR Code, DANFE NFC-e, CSC administration, automatic credentialing, or offline contingency.',
+  'The first NFC-e authorization slice accepts requestedCapabilities only as an explicit marker for deferred operations and returns unsupported-scope before transport for its built-in QR Code, DANFE NFC-e, CSC administration, automatic credentialing, or contingency paths; the additive SP offline facade is an explicit separate operation.',
   'The PR promotion slice traces RFL-006, RTM-007, RTM-011, and RTM-012 through the published SP and PR cohort while keeping PB, GO, SC, CE, and MS outside the runtime slice until their state-specific evidence closes.',
   'The recipient continuity slice now exposes distributeRecipientDFe, manifestRecipientOperation, and retrieveRecipientDocument for homologation-only recipient workflows via distNSU, while keeping manifestation registration and later document retrieval as explicit separate steps.',
   'The recipient continuity slice keeps consNSU, consChNFe, production, aggressive polling, and assisted backoffice automation outside the root contract in this phase.',
@@ -97,6 +102,8 @@ const REPOSITORY_EVIDENCE = [
   'specs/022-recipient-continuity/contracts/public-recipient-continuity-facade.md',
   'specs/025-nfe-sp-producao/contracts/public-nfe-sp-production-authorization.md',
   'specs/027-nfce-sp-producao/contracts/public-nfce-sp-production-authorization.md',
+  'specs/028-nfce-sp-danfe/contracts/public-nfce-sp-danfe-rendering.md',
+  'specs/029-nfce-sp-offline/contracts/public-nfce-sp-offline.md',
 ] as const;
 
 /**

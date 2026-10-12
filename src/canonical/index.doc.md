@@ -9,6 +9,8 @@ Barrel da camada canonica manual publicada pelo root import.
 - Reexportar a facade publica de criacao canonica.
 - Reexportar a facade publica inicial de autorizacao operacional.
 - Reexportar o helper root paulista `generateNFCeSPQRCode`.
+- Reexportar `renderNFCeSPDANFE` e os tipos publicos de resultado e entrada.
+- Reexportar as facades de preparo e reconciliacao offline SP e a evidencia tipada de calendario.
 - Reexportar as facades publicas iniciais de consulta operacional.
 - Reexportar as facades publicas das tres manutencoes obrigatorias do MVP.
 - Reexportar as facades publicas do slice recipient para distribuicao e manifestacao.
@@ -20,7 +22,7 @@ Barrel da camada canonica manual publicada pelo root import.
 ## Entradas e saidas
 
 - Entradas: nenhuma.
-- Saidas: facades canonicas de NF-e/NFC-e, incluindo `authorizeNFe`, `queryNFeServiceStatus`, `reconcileNFeReceipt` e `submitEPECEvent`, alem de tipos de contingencia e recovery.
+- Saidas: facades canonicas de NF-e/NFC-e, incluindo `authorizeNFe`, `queryNFeServiceStatus`, `reconcileNFeReceipt`, `prepareNFCeSPOffline`, `reconcileNFCeSPOffline` e `submitEPECEvent`, alem de tipos de contingencia e recovery.
 
 ## Fluxo principal
 
@@ -34,6 +36,7 @@ flowchart TD
   B --> G[serialization facade]
   B --> H[shared contracts]
   B --> I[EPEC e recovery facades]
+  B --> J[SP DANFE renderer facade]
 ```
 
 ## Tratamento de erros e casos-limite
@@ -68,6 +71,7 @@ import {
 - `./facade/distribute-recipient-dfe.js`
 - `./facade/execute-nfe-soap-service.js`
 - `./facade/generate-nfce-sp-qr-code.js`
+- `./facade/render-nfce-sp-danfe.js`
 - `./facade/manifest-recipient-operation.js`
 - `./facade/query-nfe-document-situation.js`
 - `./facade/query-nfe-service-status.js`

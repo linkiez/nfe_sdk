@@ -17,6 +17,9 @@ export { generateNFCeSPQRCode } from './facade/generate-nfce-sp-qr-code.js';
 export { manifestRecipientOperation } from './facade/manifest-recipient-operation.js';
 export { retrieveRecipientDocument } from './facade/retrieve-recipient-document.js';
 export { prepareNFCeSigningPrerequisites } from './facade/prepare-nfce-signing-prerequisites.js';
+export { prepareNFCeSPOffline } from './facade/prepare-nfce-sp-offline.js';
+export { reconcileNFCeSPOffline } from './facade/reconcile-nfce-sp-offline.js';
+export { renderNFCeSPDANFE } from './facade/render-nfce-sp-danfe.js';
 export { queryContributorRegistration } from './facade/query-contributor-registration.js';
 export { queryNFeByAccessKey } from './facade/query-nfe-by-key.js';
 export { queryNFeByNSU } from './facade/query-nfe-by-nsu.js';
@@ -52,6 +55,15 @@ export type {
   NFCeAuthorizationDocumentInput,
   NFCeAuthorizationOutcome,
   NFCeAuthorizationRequest,
+  NFCeSPOfflineRecord,
+  NFCeSPOfflineBusinessCalendarDate,
+  NFCeSPOfflineBusinessCalendarEvidence,
+  NFCeSPOfflineReconciliationClassification,
+  NFCeSPOfflineReconciliationResult,
+  NFCeSPOfflineDanfeResult,
+  PrepareNFCeSPOfflineInput,
+  ReconcileNFCeSPOfflineInput,
+  NFCeSPDanfeResult,
   NFCeCSCInput,
   NFCeCoverageBoundary,
   NFCeSPQRCodeRequest,
@@ -62,6 +74,9 @@ export type {
   NFCeSigningPrerequisitesReceivedInputs,
   NFCeSigningPrerequisitesResult,
   NFCeValidationFailure,
+  RenderNFCeSPDANFEInput,
+  RenderNFCeSPDANFEOfflineInput,
+  RenderNFCeSPDANFERequest,
 } from './nfce/contracts.js';
 
 export type {

@@ -30,13 +30,16 @@ describe('package contract documentation', () => {
       'generateNFCeSPQRCode',
       'manifestRecipientOperation',
       'prepareNFCeSigningPrerequisites',
+      'prepareNFCeSPOffline',
       'publicPackageContract',
       'queryContributorRegistration',
       'queryNFeByAccessKey',
       'queryNFeByNSU',
       'queryNFeDocumentSituation',
       'queryNFeServiceStatus',
+      'reconcileNFCeSPOffline',
       'reconcileNFeReceipt',
+      'renderNFCeSPDANFE',
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',
       'retrieveNFeAuthorizationBatch',
@@ -64,6 +67,9 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`distributeRecipientDFe`');
     expect(readme).toContain('`executeNFeSoapService`');
     expect(readme).toContain('`generateNFCeSPQRCode`');
+    expect(readme).toContain('`renderNFCeSPDANFE`');
+    expect(readme).toContain('`prepareNFCeSPOffline`');
+    expect(readme).toContain('`reconcileNFCeSPOffline`');
     expect(readme).toContain('`manifestRecipientOperation`');
     expect(readme).toContain('`retrieveRecipientDocument`');
     expect(readme).toContain('`prepareNFCeSigningPrerequisites`');

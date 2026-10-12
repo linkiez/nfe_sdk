@@ -22,6 +22,9 @@ export {
 export { normalizeNFCeInput } from './normalize-nfce-input.js';
 export { parseRetEnviNFCe } from './parse-ret-envi-nfce.js';
 export { prepareNFCeSigningPrerequisites } from './prepare-signing-prerequisites.js';
+export { prepareNFCeSPOffline } from './prepare-nfce-sp-offline.js';
+export { reconcileNFCeSPOffline } from './reconcile-nfce-sp-offline.js';
+export { renderNFCeSPDANFE } from './render-nfce-sp-danfe.js';
 export { resolveNFCeUF } from './resolve-nfce-uf.js';
 export { selectNFCeProfile } from './select-nfce-profile.js';
 export { getSPNFCePilotProfile } from './sp-pilot-profile.js';
@@ -31,7 +34,19 @@ export type {
   NFCeAuthorizationDocumentInput,
   NFCeAuthorizationOutcome,
   NFCeAuthorizationRequest,
+  NFCeSPOfflineRecord,
+  NFCeSPOfflineBusinessCalendarDate,
+  NFCeSPOfflineBusinessCalendarEvidence,
+  NFCeSPOfflineReconciliationClassification,
+  NFCeSPOfflineReconciliationResult,
+  NFCeSPOfflineDanfeResult,
+  PrepareNFCeSPOfflineInput,
+  ReconcileNFCeSPOfflineInput,
+  NFCeSPDanfeResult,
   NFCeCoverageBoundary,
+  RenderNFCeSPDANFEOfflineInput,
+  RenderNFCeSPDANFERequest,
+  RenderNFCeSPDANFEInput,
   NFCeDeferredCapability,
   NFCeCSCInput,
   NFCeSPQRCodeRequest,

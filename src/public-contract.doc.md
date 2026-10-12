@@ -17,6 +17,8 @@ Descreve o contrato publico estabilizado no import raiz do pacote.
 - Descrever a preservacao de metadados diagnosticos sem expor valores sensiveis e os erros de protocolo por `tpAmb`, `nProt` ou `nRec` inconsistentes.
 - Descrever a ampliacao additive da facade operacional inicial de NFC-e homologada para o cohort promovido `SP + PR`.
 - Descrever a ampliacao additive do helper paulista `generateNFCeSPQRCode` como recorte menor que o cohort `SP + PR`.
+- Descrever a ampliacao additive de `renderNFCeSPDANFE` para HTML autocontido derivado de evidencia de autorizacao coerente.
+- Descrever o preparo e a reconciliacao offline SP com evidência de calendário caller-owned e consistência do prazo validada no SDK.
 - Registrar a autorizacao NFC-e homologada `SP + PR` e a autorizacao sincrona de producao SP modelo 65 com XML fiscal assinado.
 - Registrar os prerequisitos de producao `unsignedXml`, `SigningContext`, executor mTLS injetado e CSC, alem da associacao opcional do QR Code a autorizacao confirmada.
 - Registrar que a facade NFC-e distingue `unsupported-state` e `unsupported-scope` antes do transporte e preserva DANFE, credenciamento e contingencia fora do runtime.
@@ -55,6 +57,12 @@ flowchart TD
   B --> K3[SP QR Code helper boundary]
   K3 --> K4[generateNFCeSPQRCode]
   K4 --> K5[SP-only]
+  B --> K13[SP offline NFC-e]
+  K13 --> K14[Calendar evidence and deadline validation]
+  K14 --> K15[One explicit reconciliation attempt]
+  B --> K10[SP DANFE renderer]
+  K10 --> K11[authorized evidence correlation]
+  K11 --> K12[self-contained HTML and inline QR]
   B --> K6[SP production authorization]
   K6 --> K7[sign unsignedXml]
   K7 --> K8[synchronous SP SOAP]
@@ -70,6 +78,8 @@ flowchart TD
 - O arquivo apenas materializa metadados do contrato.
 - Nao realiza validacoes de entrada em runtime.
 - O helper paulista de `QR Code` precisa aparecer como additive e explicitamente menor que o recorte `SP + PR`.
+- O renderer SP aceita outcome autorizado ou registro offline pendente, sem consulta ao consumidor, PDF ou layouts de outras UFs.
+- A evidência oficial do calendário e sua autoridade pertencem ao integrador; o SDK valida cobertura das datas e correspondência do prazo.
 - A autorizacao NF-e em producao permanece limitada a SP e exige executor configurado pelo integrador para mTLS.
 - A autorizacao NFC-e em producao permanece limitada a um unico documento SP modelo 65, com XML/ambiente coerentes, sem retry, polling ou fallback.
 
@@ -91,6 +101,7 @@ import { publicPackageContract } from 'nfe-sdk';
 - `specs/007-nfe-operational-mvp/contracts/public-nfe-operational-facade.md`
 - `specs/010-nfce-national-core/contracts/public-nfce-operational-facade.md`
 - `specs/024-nfce-sp-qrcode/contracts/public-nfce-sp-qrcode-facade.md`
+- `specs/028-nfce-sp-danfe/contracts/public-nfce-sp-danfe-rendering.md`
 - `specs/008-recipient-dfe-mvp/contracts/public-recipient-dfe-facade.md`
 - `specs/009-generic-event-mvp/contracts/public-generic-event-facade.md`
 - `specs/025-nfe-sp-producao/contracts/public-nfe-sp-production-authorization.md`

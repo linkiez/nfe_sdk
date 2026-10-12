@@ -10,6 +10,7 @@ Agrega as funcoes publicas da facade manual publicada pelo barrel canonico e con
 - Reexportar as manutencoes operacionais homologadas publicadas neste slice.
 - Reexportar os wrappers publicos do slice recipient.
 - Reexportar o helper root `generateNFCeSPQRCode` para o recorte paulista de `QR Code`.
+- Reexportar `renderNFCeSPDANFE` e os tipos do renderer HTML paulista.
 - Reexportar as funcoes de criacao publica.
 - Reexportar as funcoes publicas de assinatura digital.
 - Reexportar os wrappers publicos do slice inicial de transporte SOAP.
@@ -20,7 +21,7 @@ Agrega as funcoes publicas da facade manual publicada pelo barrel canonico e con
 ## Entradas e saidas
 
 - Entradas: nenhuma.
-- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `distributeRecipientDFe`, `generateNFCeSPQRCode`, `manifestRecipientOperation`, `createNFe`, `createEnviNFe`, `createSigningContext`, `signNFeXml`, `resolveNFeServiceEndpoint`, `executeNFeSoapService` e tipos operacionais compartilhados.
+- Saidas: `authorizeNFe`, `cancelNFe`, `queryNFeServiceStatus`, `queryNFeDocumentSituation`, `submitNFeCorrectionLetter`, `submitNFeInutilization`, `distributeRecipientDFe`, `generateNFCeSPQRCode`, `renderNFCeSPDANFE`, `manifestRecipientOperation`, `createNFe`, `createEnviNFe`, `createSigningContext`, `signNFeXml`, `resolveNFeServiceEndpoint`, `executeNFeSoapService` e tipos operacionais compartilhados.
 
 ## Fluxo principal
 
@@ -35,6 +36,7 @@ flowchart TD
   B --> H[submitNFeCorrectionLetter]
   B --> I[distributeRecipientDFe]
   B --> J[generateNFCeSPQRCode]
+  B --> J1[renderNFCeSPDANFE]
   B --> K[manifestRecipientOperation]
   B --> L[createNFe]
   B --> M[createEnviNFe]
@@ -43,6 +45,7 @@ flowchart TD
   B --> P[resolveNFeServiceEndpoint]
   B --> Q[executeNFeSoapService]
   B --> R[Operational shared types]
+  B --> S[DANFE result types]
 ```
 
 ## Tratamento de erros e casos-limite
@@ -62,6 +65,7 @@ import {
   distributeRecipientDFe,
   executeNFeSoapService,
   generateNFCeSPQRCode,
+  renderNFCeSPDANFE,
   manifestRecipientOperation,
   queryNFeDocumentSituation,
   queryNFeServiceStatus,
@@ -82,6 +86,7 @@ import {
 - `./distribute-recipient-dfe.js`
 - `./execute-nfe-soap-service.js`
 - `./generate-nfce-sp-qr-code.js`
+- `./render-nfce-sp-danfe.js`
 - `./manifest-recipient-operation.js`
 - `./query-nfe-document-situation.js`
 - `./query-nfe-service-status.js`

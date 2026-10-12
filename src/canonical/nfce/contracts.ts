@@ -240,6 +240,174 @@ export interface NFCeAuthorizationOutcome {
 }
 
 /**
+ * Input accepted by the SP NFC-e DANFE renderer.
+ */
+export interface RenderNFCeSPDANFEInput {
+  /** Matching authorized outcome returned by the NFC-e authorization flow. */
+  readonly authorization: NFCeAuthorizationOutcome;
+  /** Paper width in millimeters; defaults to 80 and supports 56 through 210. */
+  readonly paperWidthMm?: number;
+}
+
+/**
+ * Input accepted by the SP DANFE renderer for an offline NFC-e record.
+ */
+export interface RenderNFCeSPDANFEOfflineInput {
+  /** Signed offline record returned by `prepareNFCeSPOffline`. */
+  readonly offlineRecord: NFCeSPOfflineRecord;
+  /** Paper width in millimeters; defaults to 80 and supports 56 through 210. */
+  readonly paperWidthMm?: number;
+}
+
+/**
+ * One date evaluated by the caller's business calendar.
+ */
+export interface NFCeSPOfflineBusinessCalendarDate {
+  /** Calendar date evaluated in the evidence time zone. */
+  readonly date: string;
+  /** Whether the date is a business day according to the caller's source. */
+  readonly isBusinessDay: boolean;
+}
+
+/**
+ * Caller-provided calendar evidence covering every date through the first following business day.
+ */
+export interface NFCeSPOfflineBusinessCalendarEvidence {
+  /** Identifier of the calendar or source used by the caller. */
+  readonly calendarId: string;
+  /** IANA time zone used to evaluate issuance and the submission deadline. */
+  readonly timeZone: string;
+  /** Consecutive dates after issuance, ending at the first business day. */
+  readonly evaluatedDates: readonly NFCeSPOfflineBusinessCalendarDate[];
+}
+
+/**
+ * Immutable signed SP NFC-e prepared for offline authorization reconciliation.
+ */
+export interface NFCeSPOfflineRecord {
+  /** 44-digit access key of the signed model 65 XML. */
+  readonly accessKey: string;
+  /** Environment encoded by the fiscal XML. */
+  readonly environment: CanonicalEnvironment;
+  /** Timestamp of fiscal issuance taken from `ide/dhEmi`. */
+  readonly issuedAt: string;
+  /** Official SP offline QR Code v2 consultation URL. */
+  readonly qrCodeUrl: string;
+  /** Exact locally signed XML to retain and later transmit. */
+  readonly signedXml: string;
+  /** SHA-256 digest of the exact signed XML. */
+  readonly signedXmlSha256: string;
+  /** Caller-provided calendar evidence used to verify the submission deadline. */
+  readonly businessCalendarEvidence: NFCeSPOfflineBusinessCalendarEvidence;
+  /** End of the first following business day in the evidence time zone. */
+  readonly submissionDeadline: string;
+  /** Explicit state; preparation never implies authorization. */
+  readonly status: 'pending-reconciliation';
+}
+
+/**
+ * Input used to validate, sign, and prepare one SP NFC-e for offline operation.
+ */
+export interface PrepareNFCeSPOfflineInput {
+  /** CSC data used only to derive the offline QR Code hash. */
+  readonly csc: NFCeCSCInput;
+  /** Requested NFC-e environment; must match XML `tpAmb`. */
+  readonly environment: string;
+  /** Signing context created by this SDK instance. */
+  readonly signingContext: SigningContext;
+  /** Caller-provided calendar evidence for every date through the first following business day. */
+  readonly businessCalendarEvidence: NFCeSPOfflineBusinessCalendarEvidence;
+  /** End of the first following business day in the evidence time zone. */
+  readonly submissionDeadline: string;
+  /** Unsigned SP NFC-e XML with `tpEmis=9` and contingency fields. */
+  readonly unsignedXml: string;
+}
+
+/**
+ * Self-contained HTML result for an authorized SP NFC-e DANFE.
+ */
+export interface NFCeSPDanfeResult {
+  /** Access key correlated across the signed XML, response, and QR URL. */
+  readonly accessKey: string;
+  /** Authorization environment correlated across all captured evidence. */
+  readonly environment: 'homologation' | 'production';
+  /** Complete self-contained HTML document with inline QR SVG. */
+  readonly html: string;
+  /** Media type of the rendered result. */
+  readonly mediaType: 'text/html';
+  /** Authorization protocol retained exactly as received. */
+  readonly protocolNumber: string;
+  /** SHA-256 of the exact captured SOAP request envelope. */
+  readonly requestEnvelopeSha256: string;
+}
+
+/**
+ * Self-contained HTML result for an offline NFC-e awaiting authorization.
+ */
+export interface NFCeSPOfflineDanfeResult {
+  /** Access key correlated across the signed XML and QR URL. */
+  readonly accessKey: string;
+  /** Explicit non-authorized classification printed on the auxiliary document. */
+  readonly classification: 'pending-authorization';
+  /** Fiscal environment encoded by the XML. */
+  readonly environment: CanonicalEnvironment;
+  /** Complete self-contained HTML document with inline offline QR v2 SVG. */
+  readonly html: string;
+  /** Media type of the rendered result. */
+  readonly mediaType: 'text/html';
+  /** SHA-256 of the exact signed offline XML. */
+  readonly signedXmlSha256: string;
+}
+
+/** Input union accepted by the authorized and offline DANFE rendering paths. */
+export type RenderNFCeSPDANFERequest =
+  | RenderNFCeSPDANFEInput
+  | RenderNFCeSPDANFEOfflineInput;
+
+/** Classifications for one explicit offline NFC-e authorization attempt. */
+export type NFCeSPOfflineReconciliationClassification =
+  | 'authorized'
+  | 'deadline-expired'
+  | 'duplicate'
+  | 'inconclusive'
+  | 'received'
+  | 'rejected'
+  | 'timeout'
+  | 'unavailable';
+
+/** Input accepted for one explicit offline NFC-e reconciliation attempt. */
+export interface ReconcileNFCeSPOfflineInput {
+  /** Pending offline record returned by `prepareNFCeSPOffline`. */
+  readonly offlineRecord: NFCeSPOfflineRecord;
+  /** Optional injected SOAP transport; called no more than once. */
+  readonly requestExecutor?: RequestExecutor;
+  /** Optional transport timeout in milliseconds. */
+  readonly timeoutMs?: number;
+}
+
+/** Result of one offline NFC-e reconciliation attempt. */
+export interface NFCeSPOfflineReconciliationResult {
+  /** Access key retained from the submitted offline record. */
+  readonly accessKey: string;
+  /** Outcome classification for this single attempt. */
+  readonly classification: NFCeSPOfflineReconciliationClassification;
+  /** Whether caller/operator action is needed to resolve the record. */
+  readonly operatorActionRequired: boolean;
+  /** Receipt number when SEFAZ accepted the XML for asynchronous processing. */
+  readonly receiptNumber?: string;
+  /** Exact signed XML digest that was submitted, when transmission occurred. */
+  readonly signedXmlSha256: string;
+  /** Official application status code, when returned. */
+  readonly statusCode?: string;
+  /** Official application status message, when returned. */
+  readonly statusMessage?: string;
+  /** Authorization protocol only when a correlated authorization was returned. */
+  readonly protocolNumber?: string;
+  /** Structured transport result and request/response evidence. */
+  readonly transportOutcome?: TransportOutcome;
+}
+
+/**
  * Returns the supported classification values for the initial NFC-e authorization slice.
  *
  * @returns Read-only NFC-e authorization classifications.

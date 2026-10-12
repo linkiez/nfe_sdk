@@ -1,0 +1,17 @@
+{
+  "authorized": {
+    "batchStatus": "104",
+    "message": "Lote processado",
+    "protocolNumber": "13526000000000001",
+    "protocolStatus": "100"
+  },
+  "duplicate": {
+    "batchStatus": "204",
+    "message": "Duplicidade de documento fiscal"
+  },
+  "receipt": {
+    "batchStatus": "103",
+    "message": "Lote recebido com sucesso",
+    "receiptNumber": "351000000000001"
+  }
+}

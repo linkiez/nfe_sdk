@@ -16,6 +16,8 @@ Agrega a superficie publica estavel do pacote no import raiz `nfe-sdk`.
 - Publicar as manutencoes operacionais `submitNFeInutilization`, `cancelNFe` e `submitNFeCorrectionLetter`.
 - Publicar o slice recipient com `distributeRecipientDFe` e `manifestRecipientOperation`.
 - Publicar o helper additive `generateNFCeSPQRCode` para o recorte paulista de `QR Code`.
+- Publicar `renderNFCeSPDANFE` e os tipos de entrada/resultado para DANFE NFC-e SP em HTML.
+- Publicar o preparo e a reconciliacao explicita da contingencia offline SP, incluindo evidencia de calendario e classificacoes de tentativa.
 - Publicar o slice generic-event com `submitGenericEvents`.
 - Publicar a facade funcional inicial para criacao canonica de `NFe` e `enviNFe`.
 - Publicar o slice inicial de assinatura digital com `createSigningContext` e `signNFeXml`.
@@ -44,6 +46,7 @@ flowchart TD
   B --> J[submitNFeCorrectionLetter]
   B --> K[distributeRecipientDFe]
   B --> L[generateNFCeSPQRCode]
+  B --> L1[renderNFCeSPDANFE]
   B --> M[manifestRecipientOperation]
   B --> N[submitGenericEvents]
   B --> O[createNFe]
@@ -63,6 +66,8 @@ flowchart TD
 - O recovery usa chamadas explicitas; modo, chave, protocolo e estado nao iniciam polling nem persistencia no SDK.
 - A facade NFC-e aplica bloqueios pre-transporte para UFs fora do piloto e para `requestedCapabilities` deferidas.
 - O helper paulista de `QR Code` permanece restrito a `SP`, mesmo com `PR` presente no cohort de autorizacao.
+- O renderer DANFE aceita evidência autorizada correlacionada ou registro offline pendente validado; nao realiza autorizacao ou consulta externa.
+- O preparo offline valida a evidencia do calendario e nao transmite; a reconciliacao faz no maximo uma tentativa e nao garante replay prevention entre processos.
 
 ## Exemplos
 
@@ -77,6 +82,7 @@ import {
   distributeRecipientDFe,
   executeNFeSoapService,
   generateNFCeSPQRCode,
+  renderNFCeSPDANFE,
   manifestRecipientOperation,
   publicPackageContract,
   queryNFeDocumentSituation,

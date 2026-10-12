@@ -73,6 +73,9 @@ import {
   generateNFCeSPQRCode,
   manifestRecipientOperation,
   prepareNFCeSigningPrerequisites,
+  prepareNFCeSPOffline,
+  reconcileNFCeSPOffline,
+  renderNFCeSPDANFE,
   publicPackageContract,
   queryContributorRegistration,
   queryNFeByAccessKey,
@@ -200,8 +203,14 @@ console.log(endpoint.endpointUrl, outcome.classification);
 - quando a resposta confirma autorizacao e o CSC foi informado, `authorizeNFCe` inclui `qrCodeUrl` v3 vinculado a chave e ambiente; rejeicoes e resultados incertos nao incluem URL, e o token CSC nao e retornado
 - `prepareNFCeSigningPrerequisites` prepara `chNFe`, `cDV` e `hashCSRT` a partir de insumos estruturados
 - `generateNFCeSPQRCode` gera a URL oficial paulista de `QR Code` no import raiz para `SP`, com semantica distinta de `homologation` e `production`, retornando `qrCodeUrl`, `baseUrl`, `accessKey`, `cscId` e `uf` sem expor o token bruto
+- `renderNFCeSPDANFE` aceita evidencia autorizada correlacionada ou registro offline assinado da NFC-e SP e gera HTML autocontido; o QR permanece inline, o estado pendente nao exibe protocolo e homologacao recebe o aviso sem valor fiscal
+- `prepareNFCeSPOffline` valida e assina localmente NFC-e SP com `tpEmis=9`, devolve o XML exato, SHA-256, prazo e URL offline QR v2 em estado `pending-reconciliation`; a preparacao nao transmite nem representa autorizacao
+- o integrador calcula o prazo ate o fim do primeiro dia util seguinte com o calendario aplicavel, persiste com seguranca o XML/DANFE e controla concorrencia e reenvios; o SDK valida o instante informado e nao oferece persistencia nem retry automatico
+- `renderNFCeSPDANFE({ offlineRecord })` imprime `EMITIDA EM CONTINGÊNCIA Pendente de autorização`, usa o QR v2 do registro e omite protocolo de autorizacao
+- `reconcileNFCeSPOffline` faz uma unica submissao explicita do XML retido; somente protocolo `100` correlacionado autoriza, `103` permanece recebido e duplicidade, timeout ou resposta ambigua exigem tratamento do integrador
+- o renderer aceita apenas evidencias autorizadas coerentes, imprime todos os itens, e suporta papel de 56 a 210 mm; nao autoriza documentos nem produz PDF ou layouts de outras UFs
 - o helper de `QR Code` e propositalmente menor que o cohort de autorizacao: `PR` continua fora deste recorte e recebe `unsupported-state` antes de qualquer composicao bem-sucedida
-- quando `requestedCapabilities` informa QR Code, DANFE NFC-e, administracao de CSC, credenciamento automatizado ou contingencia offline, a facade responde com `unsupported-scope` antes do transporte
+- quando `requestedCapabilities` informa QR Code, DANFE NFC-e, administracao de CSC, credenciamento automatizado ou contingencia offline, `authorizeNFCe` responde com `unsupported-scope` antes do transporte; o fluxo offline SP usa a facade dedicada
 - UFs fora do cohort publicado retornam `unsupported-state`
 - a promocao atual segue a trilha editorial `RFL-006`, `RTM-007`, `RTM-011` e `RTM-012` sem abrir novo entrypoint ou importar superfices profundas
 - `PB`, `GO`, `SC`, `CE` e `MS` continuam fora deste corte porque ainda concentram gaps estaduais dominantes em `CSC`, `QR Code`, politicas de acesso, fechamento de captura ou consolidacao especifica de `NFC-e`
@@ -227,6 +236,30 @@ if ('classification' in qrCode) {
   console.log(qrCode.qrCodeUrl, qrCode.baseUrl);
 }
 ```
+
+Fluxo offline SP e independente da autorizacao normal e deve ser iniciado somente quando a contingencia oficial se aplicar:
+
+```ts
+const offlineRecord = await prepareNFCeSPOffline({
+  csc: {
+    cscId: process.env.NFCE_SP_CSC_ID ?? '',
+    cscToken: process.env.NFCE_SP_CSC_TOKEN ?? '',
+  },
+  businessCalendarEvidence: officialBusinessCalendarEvidence,
+  environment: 'production',
+  signingContext,
+  submissionDeadline: officialSubmissionDeadline,
+  unsignedXml,
+});
+
+const pendingDanfe = await renderNFCeSPDANFE({ offlineRecord });
+const reconciliation = await reconcileNFCeSPOffline({
+  offlineRecord,
+  requestExecutor,
+});
+```
+
+Armazene o XML assinado e o resultado de cada tentativa de forma duravel. `officialBusinessCalendarEvidence` deve registrar a fonte/calendario, o fuso IANA e cada data avaliada ate o primeiro dia util seguinte; o SDK verifica a sequencia e o prazo, mas nao autentica a fonte. Nao repita uma chamada ambigua sem conciliar antes seu estado local.
 
 ### Assinatura digital
 
@@ -269,7 +302,7 @@ Ficam fora da promessa de compatibilidade desta fase:
 - a arvore gerada em `src/enums/`
 - `src/manifest.json`
 - qualquer subpath ou importacao profunda
-- trust chain automatizada, aquisicao de certificado, suporte a `A3`, `QR Code` fora do helper paulista de `SP`, renderer `DANFE NFC-e`, consulta do consumidor, administracao de `CSC`, contingencia `offline` e rollout operacional multi-UF
+- trust chain automatizada, aquisicao de certificado, suporte a `A3`, `QR Code` fora do helper paulista de `SP`, expansao do renderer DANFE para outros recortes, consulta do consumidor, administracao de `CSC`, contingencias offline fora do fluxo SP modelo 65 e rollout operacional multi-UF
 - `consNSU`, `consChNFe`, producao, polling agressivo e automacao assistida de backoffice para continuidade do destinatario
 
 ## Exemplos do repositório
