@@ -76,7 +76,7 @@ A maintainer and integrator can see which issuer cohort, environments, document 
 - **MDF-e normative source**: Official publication that defines a fiscal requirement or valid schema.
 - **Schema baseline**: Verified set of schema versions and applicability intervals for the selected document/events.
 - **Service route**: Official destination and operation mapping by UF and environment.
-- **Scope matrix**: Explicit mapping of supported issuer cohort, operations, environment, and evidence maturity.
+- **Scope matrix**: Explicit mapping of issuer cohort, UF, environment, operation, schema package, service route, decision, and evidence maturity.
 
 ## Success Criteria
 
