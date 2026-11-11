@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/linkiez/nfe_sdk/compare/v1.0.0...v1.0.1) (2026-11-11)
+
+
+### Bug Fixes
+
+* **ci:** autenticar publicação do pacote no GitHub Packages ([27e396e](https://github.com/linkiez/nfe_sdk/commit/27e396ec138c19d0b9a83fee4af623dfde709656))
+
 # 1.0.0 (2026-11-11)
 
 
