@@ -18,7 +18,7 @@ Explicitar, para as specs ainda abertas, quais tasks permanecem em aberto, qual 
 - A spec `015-nfce-uf-promotion` ficou reduzida a uma unica task de validacao final (`T027`) depois que a promocao de `PR`, a rastreabilidade `RFL-006` / `RTM-007` / `RTM-011` / `RTM-012` e a coerencia do cohort `SP + PR` foram aterradas.
 - A spec `016-contingency-boundaries` foi implementada como fechamento additive de `RFL-005`, consolidando `authorizeNFe` como primeira facade com `contingency-boundary` observavel para `SVC-AN` e `SVC-RS` e removendo esse slice do conjunto de specs abertas.
 - As specs `017-close-operational-specs`, `018-external-table-policy`, `019-trust-chain-diagnostics` e `020-nfe-state-operations` foram implementadas e absorvidas pelo roadmap, respectivamente como reconciliacao editorial, politica canonica de `RTM-010`, trilha diagnostica de `RTM-018` e leitura additive de estado para `NF-e`.
-- A spec `021-nfe-receipt-protocol` segue em execucao como a principal continuidade runtime de `NF-e`, ainda aberta em torno de scaffolds de fixture/teste, contrato root e reconciliacao dedicada por `nRec`.
+- A spec `021-nfe-receipt-protocol` foi implementada (`30/30`): fixtures, contrato root e reconciliacao dedicada por `nRec` com `reconcileNFeReceipt`.
 - A spec `022-recipient-continuity` foi implementada como fechamento additive de continuidade do destinatario sobre `distNSU`, com recuperacao posterior via `retrieveRecipientDocument` e boundaries explicitas para `consNSU`, `consChNFe`, producao e polling agressivo.
 - A spec `023-nfce-pr-promotion` foi implementada como corte menor de promocao runtime para `PR` acima do baseline `SP`, fechando o primeiro cohort `SP + PR` sem promover `CSC`, `QR Code`, consulta do consumidor ou contingencia offline.
 - A Feature `030-mdfe-source-schema-baseline` concluiu `15/15` tasks de pesquisa documental. A Feature `031` permanece bloqueada; specs `032`-`040` decompoem as proximas fatias, sem promover schemas ou runtime.
@@ -69,7 +69,7 @@ As tasks de assinatura estao fechadas. A continuidade de eventos e precondicoes 
 | ------------------------- | -------------------------------------------------------------- |
 | Fase do roadmap impactada | Fase 5                                                         |
 | Tema principal            | `RFL-001`, `RTM-004` e `RTM-006`                               |
-| Status atual              | `16/30` tasks fechadas                                         |
+| Status atual              | `30/30` tasks fechadas (implementada)                          |
 | Tipo de pendencia         | Slice runtime em execucao com backlog ainda concentrado no MVP |
 
 ### Tasks ainda abertas
@@ -114,8 +114,7 @@ O cohort `SP + PR` esta implementado com boundaries para UFs e capacidades fora 
 
 ## Sintese executiva
 
-| Spec  | Natureza real da abertura                         | Melhor proximo passo                                                       |
-| ----- | ------------------------------------------------- | -------------------------------------------------------------------------- |
-| `015` | slice quase fechada, pendente so de validacao     | executar `T027` e promover para `implementada` se o gate final passar      |
-| `021` | continuidade runtime de `NF-e` ainda em execucao  | fechar o MVP de recibo/protocolo com facade dedicada e contrato observavel |
-| `031` | runtime MDF-e SP bloqueado por gates de evidencia | executar `032` e liberar as dependencias somente com fontes verificadas    |
+| Spec  | Natureza real da abertura                         | Melhor proximo passo                                                    |
+| ----- | ------------------------------------------------- | ----------------------------------------------------------------------- |
+| `015` | slice quase fechada, pendente so de validacao     | executar `T027` e promover para `implementada` se o gate final passar   |
+| `031` | runtime MDF-e SP bloqueado por gates de evidencia | executar `032` e liberar as dependencias somente com fontes verificadas |

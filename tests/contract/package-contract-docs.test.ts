@@ -31,20 +31,29 @@ describe('package contract documentation', () => {
       'createMutualTlsRequestExecutor',
       'createNFe',
       'createSigningContext',
+      'distributeMDFe',
       'distributeRecipientDFe',
       'executeNFeSoapService',
       'generateNFCeSPQRCode',
       'manifestRecipientOperation',
+      'MDFeDamdfeUsageError',
+      'MDFeParseError',
+      'MDFeTransportError',
+      'parseMDFeXml',
       'prepareNFCeSigningPrerequisites',
       'prepareNFCeSPOffline',
       'publicPackageContract',
       'queryContributorRegistration',
+      'queryMDFeByAccessKey',
+      'queryMDFeNotClosed',
+      'queryMDFeServiceStatus',
       'queryNFeByAccessKey',
       'queryNFeByNSU',
       'queryNFeDocumentSituation',
       'queryNFeServiceStatus',
       'reconcileNFCeSPOffline',
       'reconcileNFeReceipt',
+      'renderDAMDFE',
       'renderNFCeSPDANFE',
       'renderNFeDANFE',
       'resolveNFeServiceEndpoint',
@@ -61,6 +70,7 @@ describe('package contract documentation', () => {
       'submitICMSDeferralEvent',
       'submitNFeCorrectionLetter',
       'submitNFeInutilization',
+      'validateMDFeXml',
       'validateNFeXsd',
     ]);
     expect(readme).toContain('`authorizeNFe`');
@@ -81,6 +91,8 @@ describe('package contract documentation', () => {
     expect(readme).toContain('`manifestRecipientOperation`');
     expect(readme).toContain('`retrieveRecipientDocument`');
     expect(readme).toContain('`prepareNFCeSigningPrerequisites`');
+    expect(readme).toContain('`distributeMDFe`');
+    expect(readme).toContain('`renderDAMDFE`');
     expect(readme).toContain('`queryNFeDocumentSituation`');
     expect(readme).toContain('`reconcileNFeReceipt`');
     expect(readme).toContain('`queryNFeServiceStatus`');

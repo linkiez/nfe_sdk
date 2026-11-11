@@ -202,4 +202,15 @@ export type {
   ServiceCatalogEntry,
   TransportOutcome,
 } from './transport/contracts.js';
-export type { RequestExecutor } from './transport/request-executor.js';
+export type { RequestExecutor } from './transport/request-executor.js';export {
+  distributeMDFe,
+  MDFeDamdfeUsageError,
+  MDFeParseError,
+  MDFeTransportError,
+  parseMDFeXml,
+  queryMDFeByAccessKey,
+  queryMDFeNotClosed,
+  queryMDFeServiceStatus,
+  renderDAMDFE,
+  validateMDFeXml,
+} from './mdfe/index.js';

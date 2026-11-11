@@ -1072,5 +1072,21 @@
       "PL_NFGas_1.00e/DFeTiposBasicos_v1.00.xsd",
       "PL_NFGas_1.00e/tiposGeralNFGas_v1.00.xsd"
     ]
+  },
+  {
+    "collisions": [],
+    "files": 450,
+    "folderPath": "PL_MDFe_300b_NT012025_1.05",
+    "retriesWithSanitizedPatterns": [
+      "PL_MDFe_300b_NT012025_1.05/tiposGeralMDFe_v3.00.xsd"
+    ]
+  },
+  {
+    "collisions": [],
+    "files": 116,
+    "folderPath": "PL_MDFeDistDFe_100",
+    "retriesWithSanitizedPatterns": [
+      "PL_MDFeDistDFe_100/tiposGeralMDFe_v1.00.xsd"
+    ]
   }
 ]

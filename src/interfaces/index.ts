@@ -18,6 +18,8 @@ export * from './Evento_SuframaVistoria_PL_v1.01';
 export * from './Eventos_RTC';
 export * from './PL_010c_NT2022_002v1.30';
 export * from './PL_ConsultaGTIN_v1.00';
+export * from './PL_MDFe_300b_NT012025_1.05';
+export * from './PL_MDFeDistDFe_100';
 export * from './PL_NFAg_1.00j';
 export * from './PL_NFeDistDFe_103';
 export * from './PL_NFGas_1.00e';

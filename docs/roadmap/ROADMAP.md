@@ -226,8 +226,8 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 ## Registro de implementacao via specs
 
 - Specs com `tasks.md` totalmente fechada: `001`, `002`, `003`, `004`, `005`, `006`, `007`, `008`, `009`, `010`, `011`, `012`, `013`, `014`, `016`, `017`, `018`, `019`, `020`, `022`, `023` e `024`.
-- Specs com implementacao iniciada e ainda aberta: `015` (`26/27` tasks) e `021` (`16/30` tasks).
-- Leitura por fase: Fase 1=`001`,`002`,`003`,`011`; Fase 2=`004` com fechamento transversal de `012`; Fase 3=`005`,`012`,`014`,`019`; Fase 4=`006`,`012`; Fase 5=`007`,`012`,`016`,`017`,`020`, com `021` aberta; Fase 6=`008`,`009`,`012`,`022`; Fase 7=`010`,`012`,`014`,`023`,`024`, com `015` aberta; Fase 8=`013`,`018`.
+- Specs com implementacao iniciada e ainda aberta: `015` (`26/27` tasks).
+- Leitura por fase: Fase 1=`001`,`002`,`003`,`011`; Fase 2=`004` com fechamento transversal de `012`; Fase 3=`005`,`012`,`014`,`019`; Fase 4=`006`,`012`; Fase 5=`007`,`012`,`016`,`017`,`020`,`021`,`025`,`026`; Fase 6=`008`,`009`,`012`,`022`; Fase 7=`010`,`012`,`014`,`023`,`024`, com `015` aberta; Fase 8=`013`,`018`.
 
 ## Fases do roadmap
 
@@ -486,12 +486,13 @@ Esta secao concentra a watchlist canonica de mudancas recentes.
 
 ## Levantamento de lacunas para producao: `NF-e`, `NFC-e` e `MDF-e`
 
-**Data de referencia**: `2026-10-10`. Este levantamento descreve a prontidao observavel no repositorio, nao uma autorizacao para transmitir documentos fiscais reais. Uma spec com todas as tasks fechadas prova a entrega daquele recorte; nao prova operacao ponta a ponta em producao.
+**Data de referencia**: `2026-10-10` (atualizada para `NF-e` em `2026-11-11`). Este levantamento descreve a prontidao observavel no repositorio, nao uma autorizacao para transmitir documentos fiscais reais. Uma spec com todas as tasks fechadas prova a entrega daquele recorte; nao prova operacao ponta a ponta em producao.
 
 ### `NF-e`
 
 - **Base presente**: facades para criacao, serializacao, assinatura, transporte SOAP, autorizacao em homologacao, consulta/manutencao, cancelamento, carta de correcao, inutilizacao e algumas operacoes de recibo e destinatario.
-- **Bloqueios para producao**: `authorizeNFe` aceita autorizacao normal somente em `homologation`; em `production`, devolve apenas `contingency-boundary` para UFs roteadas a `SVC-AN`/`SVC-RS` e rejeita o restante. A boundary nao executa failover. A spec `021` segue aberta (`16/30`) para fechar o ciclo assincrono de recibo/protocolo. O transporte e as operacoes ainda precisam de um caminho normal de producao comprovado por servico, autorizador e UF.
+- **Estado em 2026-11-11**: `authorizeNFe` autoriza em producao para `SP` (rota `built-document` com `wireFormat`, mTLS por `requestExecutor` e `nfeProc`); `reconcileNFeReceipt` fecha o ciclo de recibo (spec `021`, `30/30`); a contingencia `SVC-AN` cobre documento montado (`tpEmis` 6, `dhCont`, `xJust`) alem do payload legado; eventos de cancelamento, carta de correcao e inutilizacao sao assinados e roteados por UF; a distribuicao e a manifestacao do destinatario usam o formato oficial e producao. A matriz completa esta em [lifecycle-matrix.md](lifecycle-matrix.md).
+- **Bloqueios para producao**: nenhuma linha foi exercitada contra a SEFAZ real (aceite de producao pendente, T074 da feature `JCMAP-1502`); UFs diferentes de `SP` seguem recusadas em producao; eventos, recibo e inutilizacao de documento emitido em `SVC-AN` ainda vao ao autorizador de `SP`.
 - **Gate de saida**: provar `tpAmb=1` coerente com endpoint de producao; fechar submissao e retorno terminal/recibo/protocolo para `SP`; validar assinatura, TLS/certificado, rejeicoes e timeouts; executar homologacao ponta a ponta antes de um canario real aprovado pelo responsavel fiscal. A trilha de contingencia so conta como fechada quando houver comportamento operacional testado, nao apenas diagnostico.
 
 ### `NFC-e`
