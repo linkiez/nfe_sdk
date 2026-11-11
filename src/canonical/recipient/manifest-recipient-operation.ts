@@ -1,3 +1,4 @@
+import { manifestRecipientOperationWire } from './recipient-wire.js';
 import { executeNFeSoapService } from '../transport/execute-nfe-soap-service.js';
 
 import {
@@ -25,6 +26,10 @@ const RECIPIENT_MANIFESTATION_SERVICE = 'nfe-recipient-manifestation' as const;
 export async function manifestRecipientOperation(
 	input: RecipientManifestationRequest,
 ): Promise<RecipientManifestationOutcome> {
+	if (input.wireFormat === true) {
+		return manifestRecipientOperationWire(input);
+	}
+
 	if (input.environment !== 'homologation') {
 		const failureReason = createUnsupportedRecipientScopeMessage(
 			input.environment,

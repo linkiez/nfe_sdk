@@ -20,10 +20,12 @@ export type TransportEnvironment = (typeof TRANSPORT_ENVIRONMENTS)[number];
  * SEFAZ autorizador provider identifiers for the 14 NF-e autorizadores.
  *
  * 12 UFs operate their own autorizador; two virtual environments
- * (SVCAN for SVC-AN, SVCRS for SVC-RS) serve the remaining 15 UFs.
+ * (SVCAN for SVC-AN, SVCRS for SVC-RS) serve the remaining 15 UFs. `AN` is the
+ * Ambiente Nacional, which serves recipient distribution and manifestation.
  */
 export type NFeSEFAZProvider =
   | 'AM'
+  | 'AN'
   | 'BA'
   | 'CE'
   | 'GO'
@@ -94,6 +96,12 @@ export interface ExecuteNFeSoapServiceInput {
   readonly requestExecutor?: RequestExecutor;
   readonly service: string;
   readonly timeoutMs?: number;
+  /**
+   * Sends the payload inside `nfeDadosMsg` qualified by the service WSDL namespace
+   * (the format SEFAZ expects). Only for services with a verified namespace; the
+   * default keeps the legacy envelope.
+   */
+  readonly wireFormat?: boolean;
 }
 
 /**

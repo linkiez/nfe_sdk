@@ -1,4 +1,4 @@
-# nfe-sdk
+# @linkiez/nfe-sdk
 
 SDK em TypeScript para integracoes com NF-e, NFC-e e Manifestacao do Destinatario, publicado como pacote ESM com contrato publico controlado no import raiz.
 
@@ -42,9 +42,39 @@ O foco desta fase e oferecer uma base utilizavel para fluxos operacionais homolo
 
 ## Instalacao
 
-```bash
-npm install nfe-sdk
+O pacote e publicado no GitHub Packages (registro privado do escopo `@linkiez`).
+Configure o registro e o token de leitura (`read:packages`) por variavel de ambiente,
+nunca em arquivo versionado:
+
+```ini
+# .npmrc do consumidor
+@linkiez:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGES_TOKEN}
 ```
+
+```bash
+npm install @linkiez/nfe-sdk
+```
+
+## Desenvolvimento local sem publicar
+
+O unico consumidor e o `JCMserver3` (repositorio irmao `../JCMserver3`, com `node_modules`
+instalado). Para ver uma alteracao do SDK no servidor sem publicar uma versao:
+
+```bash
+npm run sync:local             # build + copia para ../JCMserver3/node_modules/@linkiez/nfe-sdk
+npm run sync:local:skip-build  # reaproveita o dist atual
+npm run sync:local:revert      # remove a copia local e restaura a versao publicada
+```
+
+- A copia grava `.local-sync.json` (versao, commit, arvore suja, data/hora, origem) e o
+  script imprime `modo local ativo`; o servidor registra um aviso na inicializacao.
+- `package.json` e `yarn.lock` do consumidor nao sao alterados.
+- `yarn check:no-local-sdk` (JCMserver3, pre-commit, pre-push e CI) falha enquanto o
+  marcador existir: reverta antes de commitar ou entregar.
+- Saidas: `0` sucesso, `1` falha de build/contrato/reversao (nada aplicado), `2` argumentos
+  invalidos, `3` consumidor ou `node_modules` ausente.
+- Ferramenta de desenvolvimento: nunca use em builds de entrega, imagens ou producao.
 
 ## Comece por aqui
 
@@ -59,13 +89,18 @@ O pacote publica apenas o import raiz:
 
 ```ts
 import {
+  assertRuntimeDependencies,
   authorizeNFCe,
   authorizeNFe,
+  buildNFeDocument,
+  BuildNFeDocumentError,
   cancelNFe,
   changeManifestRecipientOperation,
+  checkRuntimeDependencies,
   computeHashCSRT,
   computeNFeAccessKey,
   createEnviNFe,
+  createMutualTlsRequestExecutor,
   createNFe,
   createSigningContext,
   distributeRecipientDFe,
@@ -76,6 +111,8 @@ import {
   prepareNFCeSPOffline,
   reconcileNFCeSPOffline,
   renderNFCeSPDANFE,
+  renderNFeDANFE,
+  RuntimeDependencyError,
   publicPackageContract,
   queryContributorRegistration,
   queryNFeByAccessKey,
@@ -97,7 +134,7 @@ import {
   submitNFeCorrectionLetter,
   submitNFeInutilization,
   validateNFeXsd,
-} from 'nfe-sdk';
+} from '@linkiez/nfe-sdk';
 ```
 
 `publicPackageContract` continua sendo a ancora estavel para inspecionar o contrato publicado nesta fase.
@@ -107,7 +144,7 @@ import {
 ### 1. Criar o contexto de assinatura
 
 ```ts
-import { createSigningContext } from 'nfe-sdk';
+import { createSigningContext } from '@linkiez/nfe-sdk';
 
 const signingContext = await createSigningContext({
   passphrase: process.env.NFE_CERT_PASSPHRASE ?? '',
@@ -118,10 +155,47 @@ const signingContext = await createSigningContext({
 });
 ```
 
+### 1.1. Montar o documento da NF-e
+
+```ts
+import {
+  buildNFeDocument,
+  createSigningContext,
+  signNFeXml,
+  validateNFeXsd,
+} from '@linkiez/nfe-sdk';
+
+const built = buildNFeDocument(draft); // nomes do XSD; decimais como texto
+const signedXml = await signNFeXml({ signingContext, unsignedXml: built.xml });
+validateNFeXsd(signedXml); // exige xmllint
+```
+
+`buildNFeDocument` deriva `cNF`, `cDV`, a chave de acesso (`built.accessKey`), o `Id` e a numeracao dos itens, emite na ordem do layout 4.00 e recusa, antes de assinar, entrada incompleta ou nao suportada (`BuildNFeDocumentError.issues`). Para autorizar, use `authorizeNFe({ documents: { kind: 'built-document', payload: built }, ... })`.
+
+### 1.2. DANFE da NF-e autorizada
+
+```ts
+import { renderNFeDANFE } from '@linkiez/nfe-sdk';
+
+const pdf = await renderNFeDANFE({ authorizedXml: outcome.authorizedXml }); // Uint8Array
+```
+
+`renderNFeDANFE` desenha o DANFE (PDF, via `node-sped-pdf`) a partir do `nfeProc` exato de uma NF-e modelo 55 autorizada (`cStat` 100 ou 150); recusa XML malformado, de outro modelo ou sem autorizacao (`NFeDanfeUsageError`). O renderizador e carregado sob demanda e depende do modulo nativo `canvas`.
+
+### 1.3. Dependências de execução
+
+```ts
+import { assertRuntimeDependencies } from '@linkiez/nfe-sdk';
+
+assertRuntimeDependencies(); // lança RuntimeDependencyError se faltar xmllint ou o Node for < 18.18
+```
+
+`assertRuntimeDependencies` falha na inicialização, com todas as pendências em `RuntimeDependencyError.problems`, quando o host não tem Node.js 18.18+ ou `xmllint` (libxml2), usado por `validateNFeXsd` para validar o XML contra o XSD oficial. `checkRuntimeDependencies` devolve o mesmo diagnóstico sem lançar.
+
 ### 2. Autorizar uma NF-e
 
 ```ts
-import { authorizeNFe, createSigningContext } from 'nfe-sdk';
+import { authorizeNFe, createSigningContext } from '@linkiez/nfe-sdk';
 
 const signingContext = await createSigningContext({
   passphrase: process.env.NFE_CERT_PASSPHRASE ?? '',
@@ -158,7 +232,10 @@ Uma autorizacao que retorna `nRec` continua pelo fluxo existente `reconcileNFeRe
 ### 3. Executar uma consulta SOAP direta
 
 ```ts
-import { executeNFeSoapService, resolveNFeServiceEndpoint } from 'nfe-sdk';
+import {
+  executeNFeSoapService,
+  resolveNFeServiceEndpoint,
+} from '@linkiez/nfe-sdk';
 
 const endpoint = resolveNFeServiceEndpoint({
   environment: 'homologation',
@@ -218,7 +295,7 @@ console.log(endpoint.endpointUrl, outcome.classification);
 Exemplo rapido do helper paulista:
 
 ```ts
-import { generateNFCeSPQRCode } from 'nfe-sdk';
+import { generateNFCeSPQRCode } from '@linkiez/nfe-sdk';
 
 const qrCode = generateNFCeSPQRCode({
   accessKey: '35260512345678000123650010000001231123456781',
@@ -307,7 +384,7 @@ Ficam fora da promessa de compatibilidade desta fase:
 
 ## Exemplos do repositório
 
-Os exemplos abaixo consomem o pacote compilado via import raiz `nfe-sdk`:
+Os exemplos abaixo consomem o pacote compilado via import raiz `@linkiez/nfe-sdk`:
 
 ```bash
 npm run build

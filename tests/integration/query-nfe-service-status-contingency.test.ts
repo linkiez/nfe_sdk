@@ -11,6 +11,7 @@ function loadNFeContingencyFixture(relativePath: string): string {
 }
 
 type QueryNFeServiceStatus = (input: {
+  authorizer?: 'SVCAN';
   environment: 'production';
   requestExecutor: (input: {
     endpointUrl: string;
@@ -40,6 +41,7 @@ describe('queryNFeServiceStatus contingency integration', () => {
     const responseXml = loadNFeContingencyFixture('svc-an-status-response.xml');
 
     const outcome = await queryNFeServiceStatus?.({
+      authorizer: 'SVCAN',
       environment: 'production',
       requestExecutor: async () => ({
         headers: { 'content-type': 'application/soap+xml; charset=utf-8' },

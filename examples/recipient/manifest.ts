@@ -11,7 +11,10 @@
  * - NFE_MANIFEST_JUSTIFICATION
  * - NFE_REQUEST_TIMEOUT_MS
  */
-import { createSigningContext, manifestRecipientOperation } from 'nfe-sdk';
+import {
+  createSigningContext,
+  manifestRecipientOperation,
+} from '@linkiez/nfe-sdk';
 
 import {
   createMutualTlsRequestExecutor,

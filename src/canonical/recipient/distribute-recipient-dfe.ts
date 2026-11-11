@@ -1,3 +1,4 @@
+import { distributeRecipientDFeWire } from './recipient-wire.js';
 import { executeNFeSoapService } from '../transport/execute-nfe-soap-service.js';
 
 import {
@@ -27,6 +28,10 @@ const RECIPIENT_DISTRIBUTION_SERVICE = 'nfe-recipient-distribution' as const;
 export async function distributeRecipientDFe(
 	input: RecipientDistributionQuery,
 ): Promise<RecipientDistributionOutcome> {
+	if (input.wireFormat === true) {
+		return distributeRecipientDFeWire(input);
+	}
+
 	if (input.environment !== 'homologation') {
 		const failureReason = createUnsupportedRecipientScopeMessage(
 			input.environment,

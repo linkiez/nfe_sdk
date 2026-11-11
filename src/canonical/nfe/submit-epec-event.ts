@@ -35,6 +35,8 @@ export async function submitEPECEvent(
   });
 
   const transportOutcome = await executeNFeSoapService({
+    // EPEC keeps routing through the SVC-AN entry; SP routes now exist and must not be implied.
+    authorizer: 'SVCAN',
     environment: input.environment ?? 'homologation',
     payloadXml,
     requestExecutor: input.requestExecutor,

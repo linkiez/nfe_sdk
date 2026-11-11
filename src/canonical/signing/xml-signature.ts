@@ -8,6 +8,8 @@ const ENVELOPED_SIGNATURE_TRANSFORM =
   'http://www.w3.org/2000/09/xmldsig#enveloped-signature';
 const NFE_REFERENCE_XPATH = "//*[local-name(.)='infNFe']";
 const NFE_SIGNATURE_LOCATION_XPATH = "//*[local-name(.)='NFe']";
+const INUT_REFERENCE_XPATH = "//*[local-name(.)='infInut']";
+const INUT_SIGNATURE_LOCATION_XPATH = "//*[local-name(.)='inutNFe']";
 const EVENT_REFERENCE_XPATH = "//*[local-name(.)='infEvento']";
 const EVENT_SIGNATURE_LOCATION_XPATH = "//*[local-name(.)='evento']";
 const SIGNATURE_ALGORITHM = 'http://www.w3.org/2000/09/xmldsig#rsa-sha1';
@@ -113,6 +115,39 @@ export function signEventXmlDocument(input: {
       action: 'append',
       reference: EVENT_SIGNATURE_LOCATION_XPATH,
     },
+  });
+
+  return signedXml.getSignedXml();
+}
+
+/**
+ * Signs the `infInut` of an `inutNFe` request (RSA-SHA1, C14N, enveloped), appending the
+ * signature to `inutNFe` as the layout requires.
+ *
+ * @param input - Referenced `Id`, key material and unsigned XML.
+ * @returns Signed `inutNFe` XML.
+ */
+export function signInutilizationXmlDocument(input: {
+  documentId: string;
+  privateKeyPem: string;
+  publicCertPem: string;
+  unsignedXml: string;
+}): string {
+  const signedXml = new SignedXml({
+    privateKey: input.privateKeyPem,
+    publicCert: input.publicCertPem,
+  });
+
+  signedXml.canonicalizationAlgorithm = EVENT_XML_CANONICALIZATION;
+  signedXml.signatureAlgorithm = EVENT_SIGNATURE_ALGORITHM;
+  signedXml.addReference({
+    digestAlgorithm: EVENT_DIGEST_ALGORITHM,
+    transforms: [ENVELOPED_SIGNATURE_TRANSFORM, EVENT_XML_CANONICALIZATION],
+    uri: `#${input.documentId}`,
+    xpath: INUT_REFERENCE_XPATH,
+  });
+  signedXml.computeSignature(input.unsignedXml, {
+    location: { action: 'append', reference: INUT_SIGNATURE_LOCATION_XPATH },
   });
 
   return signedXml.getSignedXml();

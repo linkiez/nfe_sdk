@@ -1,0 +1,67 @@
+name: Release
+
+# Publishes @linkiez/nfe-sdk to GitHub Packages with semantic-release.
+# Runs only on pushes to main (or manually); pull requests never publish.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install XML Schema validator
+        run: sudo apt-get update && sudo apt-get install --yes libxml2-utils
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          registry-url: https://npm.pkg.github.com
+          scope: '@linkiez'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build gate
+        run: npm run build
+
+      - name: Lint gate
+        run: npm run lint
+
+      - name: Typecheck gate
+        run: npm run typecheck
+
+      - name: Test gate
+        run: npm test
+
+      - name: Package contract gate
+        run: npm run validate:tarball
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release

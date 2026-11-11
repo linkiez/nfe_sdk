@@ -1,3 +1,4 @@
+import { queryWireDocumentSituation } from './queries/wire-document-situation.js';
 import { executeNFeSoapService } from '../transport/execute-nfe-soap-service.js';
 import type { TransportOutcome } from '../transport/contracts.js';
 
@@ -43,6 +44,10 @@ export function mapDocumentSituationTransportOutcome(
 export async function queryNFeDocumentSituation(
   input: DocumentSituationRequest,
 ): Promise<DocumentSituationResult> {
+  if (input.wireFormat === true) {
+    return queryWireDocumentSituation(input);
+  }
+
   const payloadXml = `<consSitNFe versao="4.00"><xChNFe>${escapeXml(
     input.accessKey,
   )}</xChNFe></consSitNFe>`;

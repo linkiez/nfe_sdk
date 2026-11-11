@@ -93,6 +93,13 @@ export interface RecipientContinuationState {
 	readonly reason: RecipientDistributionClassification;
 	/** Suggested wait time before another continuation attempt when applicable. */
 	readonly recommendedBackoffMs?: number;
+	/**
+	 * Earliest instant (ISO 8601) a new distribution query is allowed. Authoritative over
+	 * `recommendedBackoffMs`: it is at least one hour when `ultNSU` equals `maxNSU`, after
+	 * an empty batch (137) and after consumption abuse (656). Absent while documents are
+	 * immediately available.
+	 */
+	readonly nextAllowedAt?: string;
 }
 
 /**
@@ -170,6 +177,12 @@ export interface RecipientDistributionQuery {
 	readonly requestExecutor?: RequestExecutor;
 	/** Optional timeout in milliseconds. */
 	readonly timeoutMs?: number;
+	/** Optional clock used to compute `nextAllowedAt` (defaults to the system time). */
+	readonly now?: () => Date;
+	/** Official wire format: real `distDFeInt`, `NFeDistribuicaoDFe` envelope, production support. */
+	readonly wireFormat?: boolean;
+	/** 2-digit IBGE code of the author UF (`cUFAutor`); required with `wireFormat`. */
+	readonly authorUF?: string;
 }
 
 /**
@@ -260,6 +273,10 @@ export interface RecipientManifestationRequest {
 	readonly requestExecutor?: RequestExecutor;
 	/** Optional timeout in milliseconds. */
 	readonly timeoutMs?: number;
+	/** Official wire format: complete signed `envEvento`, national route, production support. */
+	readonly wireFormat?: boolean;
+	/** Event date/time with UTC offset (`dhEvento`); required with `wireFormat`. */
+	readonly eventDateTime?: string;
 }
 
 /**

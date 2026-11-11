@@ -2,7 +2,7 @@
 
 ## Visao geral
 
-Agrega a superficie publica estavel do pacote no import raiz `nfe-sdk`.
+Agrega a superficie publica estavel do pacote no import raiz `@linkiez/nfe-sdk`.
 
 ## Responsabilidades
 
@@ -33,7 +33,7 @@ Agrega a superficie publica estavel do pacote no import raiz `nfe-sdk`.
 
 ```mermaid
 flowchart TD
-  A[Consumer importa nfe-sdk] --> B[src/index.ts]
+  A[Consumer importa @linkiez/nfe-sdk] --> B[src/index.ts]
   B --> C[publicPackageContract]
   B --> D[authorizeNFCe]
   B --> E[authorizeNFe]
@@ -94,7 +94,7 @@ import {
   submitGenericEvents,
   submitNFeCorrectionLetter,
   submitNFeInutilization,
-} from 'nfe-sdk';
+} from '@linkiez/nfe-sdk';
 ```
 
 ## Dependencias e integracoes

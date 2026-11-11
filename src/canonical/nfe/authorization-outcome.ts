@@ -5,6 +5,10 @@ import { mapTransportOutcomeToAuthorizationClassification } from './transport-ou
 
 const AUTHORIZED_STATUS_CODES = new Set(['100', '104']);
 const RECEIVED_STATUS_CODE = '103';
+/** Protocol statuses that mean the document was authorized (100; 150 = out of time). */
+const AUTHORIZED_PROTOCOL_STATUS_CODES = new Set(['100', '150']);
+/** Uso Denegado: emitente (301), destinatario (302) e demais irregularidades (110). */
+const DENIED_STATUS_CODES = new Set(['110', '301', '302']);
 
 /**
  * Maps the transport-layer authorization exchange into an operational outcome.
@@ -37,19 +41,40 @@ export function mapAuthorizationTransportOutcome(
         };
   const mappedTransport =
     mapTransportOutcomeToAuthorizationClassification(transportOutcome);
-  const classification = resolveAuthorizationClassification(
-    mappedTransport.classification,
-    protocolNumber,
-    receiptNumber,
-    transportOutcome.applicationStatusCode,
-  );
+  const protocolStatus = extractProtocolStatus(responseXml);
+  const baseClassification = isDeniedResponse(transportOutcome, responseXml)
+    ? ('denied' as const)
+    : resolveAuthorizationClassification(
+        mappedTransport.classification,
+        protocolNumber,
+        receiptNumber,
+        transportOutcome.applicationStatusCode,
+      );
+  // A processed batch (cStat 104) can carry a rejection inside protNFe/infProt.
+  const classification =
+    baseClassification === 'authorized' &&
+    protocolStatus !== undefined &&
+    !AUTHORIZED_PROTOCOL_STATUS_CODES.has(protocolStatus.code)
+      ? ('rejected' as const)
+      : baseClassification;
 
   return {
     classification,
     documentStatuses: batch.documents.map((document) => ({
       documentId: document.metadata.documentId,
     })),
-    failureReason: mappedTransport.failureReason,
+    failureReason:
+      classification === 'rejected' && protocolStatus !== undefined
+        ? (protocolStatus.message ?? mappedTransport.failureReason)
+        : mappedTransport.failureReason,
+    ...(protocolStatus === undefined
+      ? {}
+      : {
+          protocolStatusCode: protocolStatus.code,
+          ...(protocolStatus.message === undefined
+            ? {}
+            : { protocolStatusMessage: protocolStatus.message }),
+        }),
     ...(classification === 'received' && receiptNumber !== undefined
       ? { nextAction: 'reconcileNFeReceipt' as const }
       : {}),
@@ -95,6 +120,43 @@ function getProductionProtocolFailureReason(
   }
 
   return undefined;
+}
+
+/**
+ * A denial arrives either as the top-level `cStat` or as the `cStat` of `protNFe/infProt`
+ * (the batch itself is reported as processed). It must never be read as authorized even
+ * though the denied document carries a protocol number.
+ */
+function isDeniedResponse(
+  transportOutcome: TransportOutcome,
+  responseXml: string,
+): boolean {
+  if (
+    transportOutcome.classification !== 'success' &&
+    transportOutcome.classification !== 'functional-rejection'
+  ) {
+    return false;
+  }
+
+  const protocolStatus = /<infProt>[\s\S]*?<cStat>([^<]+)<\/cStat>/u
+    .exec(responseXml)?.[1]
+    ?.trim();
+
+  return [transportOutcome.applicationStatusCode, protocolStatus].some(
+    (code) => code !== undefined && DENIED_STATUS_CODES.has(code),
+  );
+}
+
+/** `cStat`/`xMotivo` of `protNFe/infProt`, when the response carries a protocol. */
+function extractProtocolStatus(
+  responseXml: string,
+): { code: string; message?: string } | undefined {
+  const infProt = /<infProt>([\s\S]*?)<\/infProt>/u.exec(responseXml)?.[1];
+  const code = infProt === undefined ? undefined : extractFirstTagText(infProt, 'cStat');
+
+  return code === undefined
+    ? undefined
+    : { code, message: extractFirstTagText(infProt ?? '', 'xMotivo') };
 }
 
 function extractFirstTagText(xml: string, tagName: string): string | undefined {

@@ -166,8 +166,15 @@ describe('async batch retrieval parsing', () => {
       expect(classifyAsyncBatchItem('302')).toBe('denied');
     });
 
-    it('classifies unknown cStat as processing-error', () => {
+    it('classifies any other 2xx-9xx cStat as rejected (e.g. 539) and 110 as denied', () => {
+      expect(classifyAsyncBatchItem('539')).toBe('rejected');
+      expect(classifyAsyncBatchItem('110')).toBe('denied');
+      expect(classifyAsyncBatchItem('150')).toBe('authorized');
+    });
+
+    it('keeps unrecognized values and 999 (uncatalogued error) as processing-error', () => {
       expect(classifyAsyncBatchItem('999')).toBe('processing-error');
+      expect(classifyAsyncBatchItem('000')).toBe('processing-error');
     });
   });
 });

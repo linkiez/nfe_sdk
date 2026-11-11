@@ -9,7 +9,7 @@ executavel ou `exemplo` shipped para completar o baseline paulista.
 
 ## Como ler
 
-- `Runtime publicado` significa comportamento ja exposto no import raiz `nfe-sdk`, com
+- `Runtime publicado` significa comportamento ja exposto no import raiz `@linkiez/nfe-sdk`, com
   evidencia em `src/public-contract.ts`, `src/index.ts` e na matriz de cobertura.
 - `Runtime em promocao` significa slice pequena, additive e rastreavel, ja derivada do
   roadmap, mas ainda nao estabilizada como comportamento publicado completo.
@@ -23,7 +23,7 @@ executavel ou `exemplo` shipped para completar o baseline paulista.
 
 | Item                 | Leitura atual                                                          |
 | -------------------- | ---------------------------------------------------------------------- |
-| Import estavel       | apenas `nfe-sdk` via `package.json#exports["."]`                       |
+| Import estavel       | apenas `@linkiez/nfe-sdk` via `package.json#exports["."]`              |
 | Runtime alvo         | Node.js `>=18.18` em pacote `ESM`                                      |
 | Contrato canonico    | `publicPackageContract` em `src/public-contract.ts`                    |
 | Inventario publicado | `src/index.ts` + [coverage-matrix](./coverage-matrix.md)               |

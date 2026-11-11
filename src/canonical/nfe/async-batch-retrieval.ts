@@ -15,7 +15,7 @@ const BATCH_PROCESSING_STAT = '105';
 const BATCH_NOT_FOUND_STAT = '215';
 
 /** Item-level status codes that correspond to authorization. */
-const AUTHORIZED_ITEM_STATS = new Set(['100']);
+const AUTHORIZED_ITEM_STATS = new Set(['100', '150']);
 /** Item-level status codes that correspond to cancellation. */
 const CANCELLED_ITEM_STATS = new Set(['101', '102', '103', '135', '151', '152']);
 /** Item-level status codes that correspond to pending processing. */
@@ -23,7 +23,12 @@ const PENDING_ITEM_STATS = new Set(['105']);
 /** Item-level status codes that correspond to rejection. */
 const REJECTED_ITEM_STATS = new Set(['204', '205']);
 /** Item-level status codes that correspond to denial (uso denegado). */
-const DENIED_ITEM_STATS = new Set(['301', '302']);
+const DENIED_ITEM_STATS = new Set(['110', '301', '302']);
+/**
+ * Rejections are the 2xx–9xx statuses that are not authorized, denied or pending. 999 (uncatalogued
+ * error) stays a processing error: it is not evidence of a terminal rejection.
+ */
+const REJECTION_RANGE = /^(?!999$)[2-9]\d{2}$/u;
 
 /**
  * Classifies a single NF-e item in an async batch by its SEFAZ status code.
@@ -39,6 +44,7 @@ export function classifyAsyncBatchItem(
   if (PENDING_ITEM_STATS.has(statusCode)) return 'pending';
   if (REJECTED_ITEM_STATS.has(statusCode)) return 'rejected';
   if (DENIED_ITEM_STATS.has(statusCode)) return 'denied';
+  if (REJECTION_RANGE.test(statusCode)) return 'rejected';
   return 'processing-error';
 }
 
@@ -134,7 +140,13 @@ export function parseRetConsReciNFe(xml: string): NFeAsyncBatchOutcome {
   }
 
   if (document.documentElement?.localName !== 'retConsReciNFe') {
-    return { classification: 'protocol-error', items: [], rawResponse: xml };
+    // SEFAZ answers inside a SOAP envelope (`nfeResultMsg`): unwrap the payload element.
+    const wrapped = /<retConsReciNFe\b[\s\S]*<\/retConsReciNFe>/u.exec(xml)?.[0];
+
+    return wrapped !== undefined &&
+      document.getElementsByTagName('retConsReciNFe').length > 0
+      ? parseRetConsReciNFe(wrapped)
+      : { classification: 'protocol-error', items: [], rawResponse: xml };
   }
 
   const outerStat = extractTagText(xml, 'cStat');

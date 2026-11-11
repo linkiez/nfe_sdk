@@ -190,6 +190,8 @@ function createRecipientDistributionOutcome(input: {
 			input.input.ultNSU,
 			input.cursor,
 			input.classification,
+			input.applicationStatusCode,
+			(input.input.now ?? (() => new Date()))(),
 		),
 		cursor: input.cursor,
 		documents: input.documents,
@@ -202,14 +204,23 @@ function createRecipientContinuationState(
 	inputUltNSU: string,
 	cursor: RecipientDistributionCursor,
 	classification: RecipientDistributionOutcome['classification'],
+	applicationStatusCode: string | undefined,
+	now: Date,
 ): RecipientContinuationState {
 	const cursorAdvanced = BigInt(cursor.ultNSU) > BigInt(inputUltNSU);
+	const nextAllowedAt = resolveNextAllowedAt(
+		cursor,
+		classification,
+		applicationStatusCode,
+		now,
+	);
 
 	if (classification === 'documents-available') {
 		return {
 			cursorAdvanced,
 			nextAction: 'consume-documents',
 			reason: classification,
+			...(nextAllowedAt === undefined ? {} : { nextAllowedAt }),
 		};
 	}
 
@@ -219,6 +230,7 @@ function createRecipientContinuationState(
 			nextAction: 'await-backoff',
 			reason: classification,
 			recommendedBackoffMs: cursor.recommendedBackoffMs,
+			...(nextAllowedAt === undefined ? {} : { nextAllowedAt }),
 		};
 	}
 
@@ -232,6 +244,7 @@ function createRecipientContinuationState(
 			nextAction: 'retry-later',
 			reason: classification,
 			recommendedBackoffMs: cursor.recommendedBackoffMs,
+			...(nextAllowedAt === undefined ? {} : { nextAllowedAt }),
 		};
 	}
 
@@ -239,7 +252,40 @@ function createRecipientContinuationState(
 		cursorAdvanced,
 		nextAction: 'resolve-boundary',
 		reason: classification,
+		...(nextAllowedAt === undefined ? {} : { nextAllowedAt }),
 	};
+}
+
+const ONE_HOUR_MS = 60 * 60 * 1000;
+const EMPTY_BATCH_STATUS = '137';
+const CONSUMPTION_ABUSE_STATUS = '656';
+
+/**
+ * Official wait rule: when `ultNSU` equals `maxNSU` (no documents left), after an empty
+ * batch (137) and after consumption abuse (656) a new query must wait at least one hour.
+ * While `maxNSU` is ahead of `ultNSU` the next page may be requested immediately.
+ */
+function resolveNextAllowedAt(
+	cursor: RecipientDistributionCursor,
+	classification: RecipientDistributionOutcome['classification'],
+	applicationStatusCode: string | undefined,
+	now: Date,
+): string | undefined {
+	const caughtUp = BigInt(cursor.maxNSU) <= BigInt(cursor.ultNSU);
+	const mustWaitOneHour =
+		applicationStatusCode === EMPTY_BATCH_STATUS ||
+		applicationStatusCode === CONSUMPTION_ABUSE_STATUS ||
+		(caughtUp && classification === 'documents-available');
+
+	if (mustWaitOneHour) {
+		return new Date(
+			now.getTime() + Math.max(ONE_HOUR_MS, cursor.recommendedBackoffMs ?? 0),
+		).toISOString();
+	}
+
+	return cursor.recommendedBackoffMs === undefined
+		? undefined
+		: new Date(now.getTime() + cursor.recommendedBackoffMs).toISOString();
 }
 
 function extractFirstTagText(xml: string, tagName: string): string | undefined {

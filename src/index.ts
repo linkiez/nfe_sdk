@@ -2,6 +2,8 @@ export { publicPackageContract } from './public-contract.js';
 export {
 	authorizeNFCe,
 	authorizeNFe,
+	BuildNFeDocumentError,
+	buildNFeDocument,
 	cancelNFe,
 	changeManifestRecipientOperation,
 	computeHashCSRT,
@@ -10,6 +12,7 @@ export {
 	retrieveNFeAuthorizationBatch,
 	submitEPECEvent,
 	createEnviNFe,
+	createMutualTlsRequestExecutor,
 	createNFe,
 	createSigningContext,
 	distributeRecipientDFe,
@@ -21,6 +24,7 @@ export {
 	prepareNFCeSPOffline,
 	reconcileNFCeSPOffline,
 	renderNFCeSPDANFE,
+	renderNFeDANFE,
 	queryContributorRegistration,
 	queryNFeByAccessKey,
 	queryNFeByNSU,
@@ -37,9 +41,14 @@ export {
 	submitNFeCorrectionLetter,
 	submitNFeInutilization,
 	validateNFeXsd,
+	assertRuntimeDependencies,
+	checkRuntimeDependencies,
+	RuntimeDependencyError,
 } from './canonical/index.js';
 
 export type {
+	RuntimeDependenciesOptions,
+	RuntimeDependenciesReport,
 	AccessKeyFields,
 	AccessKeyResult,
 	AsyncBatchItemClassification,
@@ -129,6 +138,12 @@ export type {
 
 export type {
 	AccessKeyQueryOutcome,
+	BuiltNFeDocument,
+	NFeDetInput,
+	NFeDocumentInput,
+	NFeIdeInput,
+	RenderNFeDANFEInput,
+	NFeInfNFeInput,
 	ContributorRegistrationClassification,
 	ContributorRegistrationOutcome,
 	ContributorRegistrationQuery,

@@ -15,6 +15,9 @@ const SP_NFE_PRODUCTION_RESEARCH_SOURCE =
 const SP_NFCE_PRODUCTION_RESEARCH_SOURCE =
   'specs/027-nfce-sp-producao/research.md' as const;
 
+const SVAN_SVC_AN_UNIFICATION_NOTICE_SOURCE =
+  'docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-unificacao-svan-svc-an-2024-2025.md' as const;
+
 const CONTINGENCY_BOUNDARIES_RESEARCH_SOURCE =
   'specs/016-contingency-boundaries/research.md' as const;
 
@@ -83,6 +86,22 @@ export function getInitialTransportCatalogProvenance(): {
 } {
   return {
     sources: [OFFICIAL_SHARED_CATALOG_SOURCE, INITIAL_TRANSPORT_RESEARCH_SOURCE],
+  };
+}
+
+/**
+ * Adds the official SVAN/SVC-AN unification notices to an entry's provenance. SVAN and SVC-AN
+ * share one set of endpoints (`www.sefazvirtual.fazenda.gov.br` in production,
+ * `hom.sefazvirtual.fazenda.gov.br` in homologation).
+ *
+ * @param provenance - Provenance the entry already carries.
+ * @returns The same sources plus the unification notices.
+ */
+export function withSvanUnificationNotice(provenance: {
+  readonly sources: readonly string[];
+}): { readonly sources: readonly string[] } {
+  return {
+    sources: [...provenance.sources, SVAN_SVC_AN_UNIFICATION_NOTICE_SOURCE],
   };
 }
 
@@ -179,5 +198,40 @@ export function getNFCePRPilotTransportCatalogProvenance(): {
       NFCE_NATIONAL_CORE_RESEARCH_SOURCE,
       NFCE_UF_PROMOTION_RESEARCH_SOURCE,
     ],
+  };
+}
+
+const SEFAZ_SP_OFFICIAL_URL_SOURCE =
+  'https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/URL-WEBSERVICES.aspx (SEFAZ/SP, consultado em 2026-11-10)' as const;
+
+/**
+ * Returns provenance for the SEFAZ/SP NF-e 4.00 routes published by the state portal.
+ *
+ * @returns Stable provenance metadata for the SP homologation/production entries.
+ */
+export function getNFeSPOfficialTransportCatalogProvenance(): {
+  readonly notes: string;
+  readonly sources: readonly string[];
+} {
+  return {
+    notes:
+      'SEFAZ/SP NF-e 4.00 web service URL published by the state portal for the issuer UF 35.',
+    sources: [SEFAZ_SP_OFFICIAL_URL_SOURCE],
+  };
+}
+
+/**
+ * Returns provenance for the Ambiente Nacional (AN) routes, published on the same portal.
+ *
+ * @returns Stable provenance metadata for recipient distribution and manifestation.
+ */
+export function getNFeNationalEnvironmentTransportCatalogProvenance(): {
+  readonly notes: string;
+  readonly sources: readonly string[];
+} {
+  return {
+    notes:
+      'Ambiente Nacional (AN) route for recipient distribution (NFeDistribuicaoDFe) and manifestation (RecepcaoEvento).',
+    sources: [SEFAZ_SP_OFFICIAL_URL_SOURCE],
   };
 }

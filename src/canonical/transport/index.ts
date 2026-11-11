@@ -27,6 +27,8 @@ export {
   getDefaultTransportTimeoutMs,
   normalizeTransportTimeout,
 } from './request-executor.js';
+export { createMutualTlsRequestExecutor } from './mutual-tls-request-executor.js';
+export type { MutualTlsRequestExecutorOptions } from './mutual-tls-request-executor.js';
 export { getTransportServiceCatalog } from './service-catalog.js';
 export {
   getSupportedTransportServiceDefinition,

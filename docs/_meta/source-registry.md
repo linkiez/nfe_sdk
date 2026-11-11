@@ -201,7 +201,7 @@ Uma NT e considerada incorporada quando:
 | `.github/workflows/ci.yml`                        | workflow     | specs/013-release-hardening, `package.json` scripts canonicos                                                                            |
 | `docs/roadmap/coverage-matrix.md`                 | documentacao | specs/013-release-hardening, `src/public-contract.ts`, `docs/roadmap/ROADMAP.md`, `tests/contract/`, `tests/integration/`, `tests/unit/` |
 | `docs/roadmap/proximas-iteracoes-recomendadas.md` | runbook-like | specs/013-release-hardening, SRC-RH-001, SRC-RH-002, SRC-RH-003                                                                          |
-| `examples/shared/homologation-support.ts`         | helper       | specs/013-release-hardening, contrato publico `nfe-sdk`, mTLS homologado por certificado A1                                              |
+| `examples/shared/homologation-support.ts`         | helper       | specs/013-release-hardening, contrato publico `@linkiez/nfe-sdk`, mTLS homologado por certificado A1                                     |
 | `examples/nfe/authorize.ts`                       | exemplo      | specs/013-release-hardening, `authorizeNFe`, `createSigningContext`                                                                      |
 | `examples/recipient/manifest.ts`                  | exemplo      | specs/013-release-hardening, `manifestRecipientOperation`, `createSigningContext`                                                        |
 | `examples/validation/validate-xsd.ts`             | exemplo      | specs/013-release-hardening, `validateNFeXsd`                                                                                            |

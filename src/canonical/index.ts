@@ -13,6 +13,18 @@ export { createNFe } from './facade/create-nfe.js';
 export { createSigningContext } from './facade/create-signing-context.js';
 export { distributeRecipientDFe } from './facade/distribute-recipient-dfe.js';
 export { executeNFeSoapService } from './facade/execute-nfe-soap-service.js';
+export { buildNFeDocument, BuildNFeDocumentError } from './nfe/builder/build-nfe-document.js';
+export type {
+  BuiltNFeDocument,
+  NFeDetInput,
+  NFeDocumentInput,
+  NFeIdeInput,
+  NFeInfNFeInput,
+} from './nfe/builder/build-nfe-document.js';
+export { renderNFeDANFE } from './danfe/render-nfe-danfe.js';
+export type { RenderNFeDANFEInput } from './danfe/render-nfe-danfe.js';
+export { createMutualTlsRequestExecutor } from './transport/mutual-tls-request-executor.js';
+export type { MutualTlsRequestExecutorOptions } from './transport/mutual-tls-request-executor.js';
 export { generateNFCeSPQRCode } from './facade/generate-nfce-sp-qr-code.js';
 export { manifestRecipientOperation } from './facade/manifest-recipient-operation.js';
 export { retrieveRecipientDocument } from './facade/retrieve-recipient-document.js';
@@ -36,6 +48,15 @@ export type { ICMSDeferralEventInput } from './facade/submit-icms-deferral-event
 export { submitNFeCorrectionLetter } from './facade/submit-nfe-correction-letter.js';
 export { submitNFeInutilization } from './facade/submit-nfe-inutilization.js';
 export { validateNFeXsd } from './facade/validate-nfe-xsd.js';
+export {
+  assertRuntimeDependencies,
+  checkRuntimeDependencies,
+} from './validation/assert-runtime-dependencies.js';
+export type {
+  RuntimeDependenciesOptions,
+  RuntimeDependenciesReport,
+} from './validation/assert-runtime-dependencies.js';
+export { RuntimeDependencyError } from './validation/runtime-dependency-error.js';
 export type { XsdValidationClassification, XsdValidationOptions, XsdValidationResult } from './facade/validate-nfe-xsd.js';
 
 export type { AccessKeyFields, AccessKeyResult } from './facade/compute-nfe-access-key.js';

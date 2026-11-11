@@ -98,6 +98,7 @@ describe('root recipient continuity facade contract', () => {
     expect(outcome?.continuation).toEqual({
       cursorAdvanced: true,
       nextAction: 'consume-documents',
+      nextAllowedAt: expect.any(String),
       reason: 'documents-available',
     });
   });

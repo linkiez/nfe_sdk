@@ -12,9 +12,9 @@ describe('service catalog resolution', () => {
     });
 
     expect(statusEntry).toEqual({
-      catalogVersion: '2026-05-18-initial-draft',
+      catalogVersion: '2026-11-11-svan-svc-an-unified',
       endpointUrl:
-        'https://www.sefazvirtual.fazenda.gov.br/NFeStatusServico4/NFeStatusServico4.asmx',
+        'https://hom.sefazvirtual.fazenda.gov.br/NFeStatusServico4/NFeStatusServico4.asmx',
       environment: 'homologation',
       layoutVersion: '4.00',
       provider: 'SVCAN',
@@ -22,16 +22,18 @@ describe('service catalog resolution', () => {
         sources: [
           'docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/webservices-9bfd6ee423.md',
           'specs/006-add-soap-transport/research.md',
+          'docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-unificacao-svan-svc-an-2024-2025.md',
         ],
       },
       service: 'nfe-status-service',
     });
     expect(authorizationEntry.endpointUrl).toBe(
-      'https://www.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx',
+      'https://hom.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx',
     );
     expect(authorizationEntry.provider).toBe('SVCAN');
 
     const productionStatusEntry = resolveNFeServiceEndpoint({
+      authorizer: 'SVCAN',
       environment: 'production',
       service: 'nfe-status-service',
     });
@@ -94,5 +96,50 @@ describe('service catalog resolution', () => {
         service: 'nfe-authorization',
       }),
     ).toThrow();
+  });
+
+  it('routes every homologation SVAN/SVC-AN service to hom.sefazvirtual and production to www.sefazvirtual', () => {
+    const services = [
+      ['nfe-status-service', 'NFeStatusServico4/NFeStatusServico4.asmx'],
+      [
+        'nfe-document-situation',
+        'NFeConsultaProtocolo4/NFeConsultaProtocolo4.asmx',
+      ],
+      ['nfe-authorization', 'NFeAutorizacao4/NFeAutorizacao4.asmx'],
+      ['nfe-authorization-batch', 'NFeRetAutorizacao4/NFeRetAutorizacao4.asmx'],
+      ['nfe-inutilization', 'NFeInutilizacao4/NFeInutilizacao4.asmx'],
+      ['nfe-cancellation', 'NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx'],
+      ['nfe-correction-letter', 'NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx'],
+      ['nfe-generic-event', 'NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx'],
+    ] as const;
+
+    for (const [service, path] of services) {
+      expect(
+        resolveNFeServiceEndpoint({
+          authorizer: 'SVCAN',
+          environment: 'homologation',
+          service,
+        }).endpointUrl,
+      ).toBe(`https://hom.sefazvirtual.fazenda.gov.br/${path}`);
+      expect(
+        resolveNFeServiceEndpoint({
+          authorizer: 'SVCAN',
+          environment: 'production',
+          service,
+        }).endpointUrl,
+      ).toBe(`https://www.sefazvirtual.fazenda.gov.br/${path}`);
+    }
+  });
+
+  it('never routes to the discontinued *.svc.fazenda.gov.br hosts', () => {
+    for (const environment of ['homologation', 'production'] as const) {
+      expect(
+        resolveNFeServiceEndpoint({
+          authorizer: 'SVCAN',
+          environment,
+          service: 'nfe-authorization',
+        }).endpointUrl,
+      ).not.toContain('svc.fazenda.gov.br');
+    }
   });
 });

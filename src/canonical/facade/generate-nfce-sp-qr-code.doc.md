@@ -36,7 +36,7 @@ sequenceDiagram
 ## Exemplos
 
 ```ts
-import { generateNFCeSPQRCode } from 'nfe-sdk';
+import { generateNFCeSPQRCode } from '@linkiez/nfe-sdk';
 ```
 
 ## Dependencias e integracoes

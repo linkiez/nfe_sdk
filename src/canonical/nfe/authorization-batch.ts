@@ -6,6 +6,7 @@ import {
   type NFeAuthorizationBatch,
   type NFeAuthorizationDocumentsInput,
 } from './contracts.js';
+import { NFeOperationalUsageError } from './errors.js';
 import type {
   CanonicalEnviNFeDocument,
   CanonicalNFeDocument,
@@ -33,6 +34,12 @@ export function buildNFeAuthorizationBatch(
       documents: [document],
       submissionMode: 'single-document',
     };
+  }
+
+  if (input.kind === 'built-document') {
+    throw new NFeOperationalUsageError(
+      'A built-document is authorized by authorizeBuiltDocument, not as a canonical batch.',
+    );
   }
 
   const batch = isCanonicalEnviNFeDocument(input.payload)
