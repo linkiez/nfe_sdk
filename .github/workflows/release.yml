@@ -18,6 +18,10 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    outputs:
+      new_release_published: ${{ steps.semantic.outputs.new_release_published }}
+      released_tag: ${{ steps.semantic.outputs.released_tag }}
+      released_version: ${{ steps.semantic.outputs.released_version }}
     permissions:
       contents: write
       issues: write
@@ -64,7 +68,67 @@ jobs:
         run: npm run validate:tarball
 
       - name: Release
+        id: semantic
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: |
+          before="$(git tag --sort=-version:refname | sed -n '1p')"
+          npx semantic-release
+          after="$(git tag --sort=-version:refname | sed -n '1p')"
+          if [ "$before" != "$after" ]; then
+            echo "new_release_published=true" >> "$GITHUB_OUTPUT"
+            echo "released_tag=$after" >> "$GITHUB_OUTPUT"
+            echo "released_version=${after#v}" >> "$GITHUB_OUTPUT"
+          else
+            echo "new_release_published=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  publish-npmjs:
+    name: Mirror release to npmjs
+    needs: release
+    if: needs.release.outputs.new_release_published == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+      id-token: write
+    steps:
+      - name: Setup Node.js for GitHub Packages
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://npm.pkg.github.com
+          scope: '@linkiez'
+
+      - name: Pack the published GitHub package
+        id: pack
+        working-directory: ${{ runner.temp }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASED_VERSION: ${{ needs.release.outputs.released_version }}
+        run: |
+          tarball="$(npm pack "@linkiez/nfe-sdk@${RELEASED_VERSION}" --silent)"
+          echo "path=${RUNNER_TEMP}/${tarball}" >> "$GITHUB_OUTPUT"
+
+      - name: Setup npmjs registry
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Require npmjs publishing token
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [ -z "${NODE_AUTH_TOKEN:-}" ]; then
+            echo "::error::Configure the NPM_TOKEN repository secret before publishing a release to npmjs."
+            exit 1
+          fi
+
+      - name: Publish to npmjs
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
+          TARBALL: ${{ steps.pack.outputs.path }}
+        run: npm publish "$TARBALL" --registry=https://registry.npmjs.org --access public --provenance
