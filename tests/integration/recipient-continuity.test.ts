@@ -107,6 +107,7 @@ describe('recipient continuity integration', () => {
     expect(outcome?.continuation).toEqual({
       cursorAdvanced: true,
       nextAction: 'consume-documents',
+      nextAllowedAt: expect.any(String),
       reason: 'documents-available',
     });
   });
@@ -137,6 +138,7 @@ describe('recipient continuity integration', () => {
     expect(outcome?.continuation).toEqual({
       cursorAdvanced: false,
       nextAction: 'await-backoff',
+      nextAllowedAt: expect.any(String),
       reason: 'no-new-documents',
       recommendedBackoffMs: 300000,
     });

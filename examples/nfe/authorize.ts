@@ -7,7 +7,7 @@
  * Optional environment variables:
  * - NFE_REQUEST_TIMEOUT_MS
  */
-import { authorizeNFe, createSigningContext } from 'nfe-sdk';
+import { authorizeNFe, createSigningContext } from '@linkiez/nfe-sdk';
 
 import {
   createMutualTlsRequestExecutor,

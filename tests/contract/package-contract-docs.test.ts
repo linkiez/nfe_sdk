@@ -4,7 +4,8 @@ import { resolve } from 'node:path';
 describe('package contract documentation', () => {
   it('documents the same root facade surface that the package contract probes expect', () => {
     const readme = readFileSync(resolve(process.cwd(), 'README.md'), 'utf8');
-    const rootImportExpression = /import\s*\{([\s\S]*?)\}\s*from 'nfe-sdk';/;
+    const rootImportExpression =
+      /import\s*\{([\s\S]*?)\}\s*from '@linkiez\/nfe-sdk';/;
     const rootImportMatch = rootImportExpression.exec(readme);
 
     expect(rootImportMatch).not.toBeNull();
@@ -16,13 +17,18 @@ describe('package contract documentation', () => {
       .sort((left, right) => left.localeCompare(right));
 
     expect(documentedExports).toEqual([
+      'assertRuntimeDependencies',
       'authorizeNFCe',
       'authorizeNFe',
+      'buildNFeDocument',
+      'BuildNFeDocumentError',
       'cancelNFe',
       'changeManifestRecipientOperation',
+      'checkRuntimeDependencies',
       'computeHashCSRT',
       'computeNFeAccessKey',
       'createEnviNFe',
+      'createMutualTlsRequestExecutor',
       'createNFe',
       'createSigningContext',
       'distributeRecipientDFe',
@@ -40,10 +46,12 @@ describe('package contract documentation', () => {
       'reconcileNFCeSPOffline',
       'reconcileNFeReceipt',
       'renderNFCeSPDANFE',
+      'renderNFeDANFE',
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',
       'retrieveNFeAuthorizationBatch',
       'retrieveRecipientDocument',
+      'RuntimeDependencyError',
       'serializeEnviNFeXml',
       'serializeNFeXml',
       'signEventXml',

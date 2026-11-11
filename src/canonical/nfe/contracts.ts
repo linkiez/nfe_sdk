@@ -1,3 +1,4 @@
+import type { BuiltNFeDocument } from './builder/build-nfe-document.js';
 import type {
   CanonicalEnviNFeDocument,
   CanonicalEnviNFeInput,
@@ -16,6 +17,7 @@ import type {
 const AUTHORIZATION_CLASSIFICATIONS = [
   'authorized',
   'contingency-boundary',
+  'denied',
   'received',
   'rejected',
   'timeout',
@@ -59,6 +61,16 @@ export type NFeAuthorizationDocumentsInput =
       readonly kind: 'batch';
       /** Canonical batch input or normalized canonical batch. */
       readonly payload: CanonicalEnviNFeDocument | CanonicalEnviNFeInput;
+    }
+  | {
+      /**
+       * Real document produced by `buildNFeDocument`: signed, sent as a layout-4.00
+       * `enviNFe` (synchronous) inside the SEFAZ SOAP envelope.
+       */
+      readonly kind: 'built-document';
+      readonly payload: BuiltNFeDocument;
+      /** 1–15 digit batch identifier (`idLote`); generated when omitted. */
+      readonly batchId?: string;
     };
 
 /**
@@ -124,10 +136,10 @@ export type NFeContingencyState =
   | 'unavailable'
   | 'unsupported';
 
-/** Caller-supplied evidence from a single production SVC activation query. */
+/** Evidence from the single SVC activation status query made before a contingency submission. */
 export interface NFeSVCActivationObservation {
-  /** Environment used for the status query. */
-  readonly environment: 'production';
+  /** Environment used for the status query (`homologation` only for built documents). */
+  readonly environment: 'homologation' | 'production';
   /** Local time at which the SVC status response was observed. */
   readonly observedAt: string;
   /** Provider that served the status query. */
@@ -203,6 +215,7 @@ export type NFeReceiptReconciliationClassification =
 
 export type NFeOperationalPrimaryState =
   | 'authorized'
+  | 'denied'
   | 'rejected'
   | 'canceled'
   | 'inutilized'
@@ -320,6 +333,14 @@ export interface NFeAuthorizationOutcome {
     | 'transmitNFeAfterRecovery';
   /** Protocol number when immediately available. */
   readonly protocolNumber?: string;
+  /** Official `cStat` of the document protocol (`protNFe/infProt`), when present. */
+  readonly protocolStatusCode?: string;
+  /** Official `xMotivo` of the document protocol, when present. */
+  readonly protocolStatusMessage?: string;
+  /** Signed `NFe` XML that was sent (only for `built-document`). */
+  readonly signedXml?: string;
+  /** `nfeProc` (signed NFe + protocol) of an authorized `built-document`. */
+  readonly authorizedXml?: string;
   /** Caller-owned contingency context echoed by an explicit recovery attempt. */
   readonly recoveryContext?: NFeRecoveryContext;
   /** Recovery state mapped without changing authorization classification. */
@@ -350,6 +371,8 @@ export interface NFeReceiptReconciliationRequest {
   readonly recoveryContext?: NFeRecoveryContext;
   /** Explicit routing context for the lookup. */
   readonly routingContext: NFeReceiptRoutingContext;
+  /** Sends the official `consReciNFe` in the SEFAZ SOAP envelope. */
+  readonly wireFormat?: boolean;
   /** Optional network executor override. */
   readonly requestExecutor?: RequestExecutor;
   /** Optional operation timeout in milliseconds. */
@@ -400,6 +423,10 @@ export interface NFeReceiptReconciliationResult {
 export interface NFeServiceStatusRequest {
   /** Query target environment. */
   readonly environment: string;
+  /** Sends the official `consStatServ` in the SEFAZ SOAP envelope (requires `issuerUF`). */
+  readonly wireFormat?: boolean;
+  /** 2-digit IBGE code of the queried UF (`cUF`) for `wireFormat`. */
+  readonly issuerUF?: string;
   /** Optional provider selector for an explicit SVC-AN activation query. */
   readonly authorizer?: NFeSEFAZProvider;
   /** Optional network executor override. */
@@ -432,8 +459,18 @@ export interface ServiceStatusSnapshot {
 export interface DocumentSituationRequest {
   /** Access key used as the public lookup identifier. */
   readonly accessKey: string;
+  /** Sends the official `consSitNFe` in the SEFAZ SOAP envelope and reads the full answer. */
+  readonly wireFormat?: boolean;
   /** Query target environment. */
   readonly environment: string;
+  /** Authorizer to ask; defaults to the one of the access key UF (`SVCAN` for contingency). */
+  readonly authorizer?: NFeSEFAZProvider;
+  /**
+   * Signed `NFe` XML of the document (e.g. rebuilt deterministically). With `wireFormat`, when
+   * the answer is an authorization whose protocol digest matches this XML, the result carries
+   * the assembled `nfeProc` in `authorizedXml`.
+   */
+  readonly signedXml?: string;
   /** Optional network executor override. */
   readonly requestExecutor?: RequestExecutor;
   /** Optional operation timeout in milliseconds. */
@@ -456,8 +493,26 @@ export interface DocumentSituationResult {
   readonly protocolNumber?: string;
   /** Shared operational-state projection for the queried document. */
   readonly state: NFeOperationalState;
+  /** Registered events reported by the official query (`wireFormat` only). */
+  readonly events?: readonly NFeDocumentSituationEvent[];
+  /** `protNFe` block of the answer, as received (`wireFormat` only). */
+  readonly protocolXml?: string;
+  /** `nfeProc` (signed NFe + `protNFe`) of an authorized document, when `signedXml` matches. */
+  readonly authorizedXml?: string;
+  /** Why `authorizedXml` could not be assembled although `signedXml` was provided. */
+  readonly authorizedXmlIssue?: 'digest-mismatch';
   /** Underlying transport evidence reused by the operational slice. */
   readonly transportOutcome: TransportOutcome;
+}
+
+/** Event listed by an official protocol query (`procEventoNFe/retEvento`). */
+export interface NFeDocumentSituationEvent {
+  /** Event code, e.g. `110111` (cancellation) or `110110` (correction letter). */
+  readonly type: string;
+  readonly sequence: number;
+  readonly protocol?: string;
+  /** `cStat` of the event registration. */
+  readonly statusCode: string;
 }
 
 /**
@@ -482,6 +537,11 @@ export interface OperationalMaintenanceRequest {
   readonly canonicalPayload: Readonly<Record<string, string>>;
   /** Reusable signing context for signed maintenance flows. */
   readonly signingContext?: SigningContext;
+  /**
+   * Real signed event (cancellation or correction letter) in the official `envEvento`
+   * envelope. Without it the legacy flat payload is sent (homologation only).
+   */
+  readonly signedEvent?: NFeSignedEventDetails;
   /** Optional network executor override. */
   readonly requestExecutor?: RequestExecutor;
   /** Optional operation timeout in milliseconds. */
@@ -506,8 +566,54 @@ export interface OperationalMaintenanceOutcome {
   readonly protocolNumber?: string;
   /** Shared operational-state projection when the maintenance succeeds. */
   readonly updatedState?: NFeOperationalState;
+  /** Signed `envEvento` that was sent (only for `signedEvent`). */
+  readonly signedXml?: string;
+  /** `procEventoNFe` (signed event + `retEvento`) of a registered event. */
+  readonly authorizedXml?: string;
   /** Underlying transport evidence reused by the operational slice. */
   readonly transportOutcome: TransportOutcome;
+}
+
+/**
+ * Details of a real signed NF-e event. `accessKey` and `environment` come from the request.
+ */
+export interface NFeSignedEventDetails {
+  /** Reusable signing context created by this SDK. */
+  readonly signingContext: SigningContext;
+  /** 14-digit CNPJ or 11-digit CPF of the issuer. */
+  readonly issuerTaxId: string;
+  /** Event date/time with UTC offset, e.g. `2026-11-10T12:30:00-03:00`. */
+  readonly eventDateTime: string;
+  /** Sequence of the event for the document (1–99); defaults to 1. */
+  readonly sequence?: number;
+  /** Authorization protocol of the NF-e being cancelled (15 digits). */
+  readonly protocol?: string;
+  /** Cancellation justification (15–255 characters). */
+  readonly justification?: string;
+  /** Correction letter text (15–1000 characters). */
+  readonly correctionText?: string;
+  /** 1–15 digit batch identifier (`idLote`); defaults to 1. */
+  readonly batchId?: string;
+  /** Range data for an inutilization (`submit-nfe-inutilization`). */
+  readonly inutilization?: NFeInutilizationRange;
+}
+
+/**
+ * Number range of an inutilization request (layout `inutNFe` 4.00).
+ */
+export interface NFeInutilizationRange {
+  /** 2-digit IBGE UF code of the issuer. */
+  readonly cUF: string;
+  /** 2-digit year of the request (e.g. `26`). */
+  readonly year: string;
+  /** Document model; defaults to `55`. */
+  readonly model?: string;
+  /** Series, 0 to 999. */
+  readonly series: number;
+  /** First number of the range (≥ 1). */
+  readonly numberStart: number;
+  /** Last number of the range (at most 10,000 numbers in total). */
+  readonly numberEnd: number;
 }
 
 /**

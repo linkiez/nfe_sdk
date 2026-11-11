@@ -86,7 +86,7 @@ flowchart TD
 ## Exemplos
 
 ```ts
-import { publicPackageContract } from 'nfe-sdk';
+import { publicPackageContract } from '@linkiez/nfe-sdk';
 ```
 
 ## Dependencias e integracoes

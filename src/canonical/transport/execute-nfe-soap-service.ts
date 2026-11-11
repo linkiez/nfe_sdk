@@ -4,7 +4,11 @@ import { extractApplicationStatus } from './application-status.js';
 import { classifyTransportOutcome } from './transport-outcome-classification.js';
 import { fetchRequestExecutor } from './fetch-request-executor.js';
 import { normalizeTransportTimeout } from './request-executor.js';
-import { buildSoapEnvelope } from './soap-envelope.js';
+import {
+  buildSoapEnvelope,
+  buildWireSoapEnvelope,
+  resolveWireService,
+} from './soap-envelope.js';
 import { resolveNFeServiceEndpoint } from './resolve-nfe-service-endpoint.js';
 
 const SENSITIVE_XML_ELEMENT_NAMES = [
@@ -58,10 +62,24 @@ export async function executeNFeSoapService(
     service: input.service,
   });
   const payloadXml = input.payloadXml.trim();
+  const wire = input.wireFormat === true;
+
+  if (wire) {
+    try {
+      resolveWireService(catalogEntry.service);
+    } catch (error) {
+      throw new ExecuteNFeSoapServiceError(
+        error instanceof Error ? error.message : 'Unsupported wire format.',
+      );
+    }
+  }
+
   const requestEnvelopeXml =
     payloadXml.length === 0
       ? ''
-      : buildSoapEnvelope(catalogEntry.service, payloadXml);
+      : wire
+        ? buildWireSoapEnvelope(catalogEntry.service, payloadXml)
+        : buildSoapEnvelope(catalogEntry.service, payloadXml);
   const requestEnvelopeEvidenceXml =
     redactSensitiveEnvelopeValues(requestEnvelopeXml);
   const requestExecutor = input.requestExecutor ?? fetchRequestExecutor;
@@ -89,7 +107,9 @@ export async function executeNFeSoapService(
     const executionResponse = await requestExecutor({
       endpointUrl: catalogEntry.endpointUrl,
       headers: {
-        'content-type': 'application/soap+xml; charset=utf-8',
+        'content-type': wire
+          ? `application/soap+xml; charset=utf-8; action="${resolveWireService(catalogEntry.service).actionUri}"`
+          : 'application/soap+xml; charset=utf-8',
       },
       requestXml: requestEnvelopeXml,
       service: catalogEntry.service,

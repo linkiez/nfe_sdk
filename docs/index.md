@@ -34,6 +34,10 @@ Este conjunto documental consolida referencias oficiais e complementares necessa
 - [Indice de metadados e governanca](./_meta/index.md)
 - [Documentos oficiais convertidos do Portal Nacional da NF-e](./documentos-oficiais-portal-nfe.md)
 
+## Pacote e sincronizacao local
+
+O SDK e publicado como `@linkiez/nfe-sdk` no GitHub Packages. Durante o desenvolvimento, `npm run sync:local` copia o build local para o `JCMserver3` sem publicar (marcador `.local-sync.json`, guarda `check:no-local-sdk` no servidor e `npm run sync:local:revert` para voltar a versao publicada). Detalhes de comandos, codigos de saida e restricoes no [README](../README.md#desenvolvimento-local-sem-publicar).
+
 ## Politica de fontes
 
 - Priorizar fontes primarias oficiais.

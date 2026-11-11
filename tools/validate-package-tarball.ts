@@ -70,7 +70,7 @@ export async function validatePackageTarball(
     await writeFile(
       smokeScriptPath,
       [
-        "import * as pkg from 'nfe-sdk';",
+        "import * as pkg from '@linkiez/nfe-sdk';",
         "const exportedKeys = Object.keys(pkg).sort((left, right) => left.localeCompare(right));",
         "const result = {",
         "  exportedKeys,",
@@ -84,7 +84,7 @@ export async function validatePackageTarball(
     const smokeProbe = JSON.parse(smokeOutput) as SmokeProbeOutput;
 
     return {
-      consumedEntrypoint: 'nfe-sdk',
+      consumedEntrypoint: '@linkiez/nfe-sdk',
       exportedKeys: smokeProbe.exportedKeys,
       publishedFiles: packEntry.files
         .map((entry) => entry.path)

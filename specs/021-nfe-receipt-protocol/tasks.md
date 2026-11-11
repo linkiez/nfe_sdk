@@ -22,10 +22,10 @@ description: 'Task list for the NFe receipt protocol slice'
 
 **Purpose**: Establish receipt-protocol fixtures and failing test scaffolds for the new runtime slice.
 
-- [ ] T001 Create receipt-response fixture scaffolds in `tests/fixtures/nfe-operational/authorization/receipt-response-authorized.xml`, `tests/fixtures/nfe-operational/authorization/receipt-response-rejected.xml`, `tests/fixtures/nfe-operational/authorization/receipt-response-denied.xml`, `tests/fixtures/nfe-operational/authorization/receipt-response-unavailable.xml`, `tests/fixtures/nfe-operational/authorization/receipt-response-inconclusive.xml`, and `tests/fixtures/nfe-operational/authorization/receipt-response-processing.xml`
-- [ ] T002 [P] Create the root receipt-facade contract scaffold in `tests/contract/root-nfe-receipt-facade.test.ts`
-- [ ] T003 [P] Create the receipt reconciliation integration scaffold in `tests/integration/reconcile-nfe-receipt.test.ts`
-- [ ] T004 [P] Create the receipt reconciliation unit scaffold in `tests/unit/nfe-receipt-reconciliation.test.ts`
+- [x] T001 Create receipt-response fixture scaffolds in `tests/fixtures/nfe-operational/authorization/receipt-response-authorized.xml`, `tests/fixtures/nfe-operational/authorization/receipt-response-rejected.xml`, `tests/fixtures/nfe-operational/authorization/receipt-response-denied.xml`, `tests/fixtures/nfe-operational/authorization/receipt-response-unavailable.xml`, `tests/fixtures/nfe-operational/authorization/receipt-response-inconclusive.xml`, and `tests/fixtures/nfe-operational/authorization/receipt-response-processing.xml`
+- [x] T002 [P] Create the root receipt-facade contract scaffold in `tests/contract/root-nfe-receipt-facade.test.ts`
+- [x] T003 [P] Create the receipt reconciliation integration scaffold in `tests/integration/reconcile-nfe-receipt.test.ts`
+- [x] T004 [P] Create the receipt reconciliation unit scaffold in `tests/unit/nfe-receipt-reconciliation.test.ts`
 
 ---
 
@@ -35,10 +35,10 @@ description: 'Task list for the NFe receipt protocol slice'
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T005 Establish receipt-protocol contracts and routing-context types in `src/canonical/nfe/contracts.ts`
-- [ ] T006 [P] Extend the async receipt parser baseline in `src/canonical/nfe/async-batch-retrieval.ts` and `tests/unit/canonical/nfe/async-batch-retrieval.test.ts`
-- [ ] T007 [P] Wire receipt-protocol module boundaries in `src/canonical/nfe/index.ts`, `src/canonical/facade/index.ts`, `src/canonical/index.ts`, and `src/index.ts`
-- [ ] T008 [P] Prepare root contract and package-boundary baseline for receipt promotion in `src/public-contract.ts` and `README.md`
+- [x] T005 Establish receipt-protocol contracts and routing-context types in `src/canonical/nfe/contracts.ts`
+- [x] T006 [P] Extend the async receipt parser baseline in `src/canonical/nfe/async-batch-retrieval.ts` and `tests/unit/canonical/nfe/async-batch-retrieval.test.ts`
+- [x] T007 [P] Wire receipt-protocol module boundaries in `src/canonical/nfe/index.ts`, `src/canonical/facade/index.ts`, `src/canonical/index.ts`, and `src/index.ts`
+- [x] T008 [P] Prepare root contract and package-boundary baseline for receipt promotion in `src/public-contract.ts` and `README.md`
 
 **Checkpoint**: Foundation ready - receipt-protocol user story work can now begin.
 
@@ -52,15 +52,15 @@ description: 'Task list for the NFe receipt protocol slice'
 
 ### Tests for User Story 1 ⚠️
 
-- [ ] T009 [P] [US1] Make the async authorization receipt regression fail in `tests/integration/authorize-nfe-batch.test.ts`
-- [ ] T010 [P] [US1] Make the receipt-aware authorization mapping regression fail in `tests/unit/nfe-receipt-reconciliation.test.ts`
+- [x] T009 [P] [US1] Make the async authorization receipt regression fail in `tests/integration/authorize-nfe-batch.test.ts`
+- [x] T010 [P] [US1] Make the receipt-aware authorization mapping regression fail in `tests/unit/nfe-receipt-reconciliation.test.ts`
 
 ### Implementation for User Story 1
 
-- [ ] T011 [P] [US1] Add or update the received-batch fixture expectations in `tests/fixtures/nfe-operational/authorization/batch-response-received.xml` and `tests/integration/authorize-nfe-batch.test.ts`
-- [ ] T012 [P] [US1] Implement or adjust async submission mapping in `src/canonical/nfe/authorize-nfe.ts` and `src/canonical/nfe/authorization-outcome.ts`
-- [ ] T013 [US1] Align the public authorization contract for observable `receiptNumber` behavior in `src/canonical/nfe/contracts.ts` and `src/canonical/nfe/index.ts`
-- [ ] T014 [US1] Document the async submission outcome in `README.md` and `specs/021-nfe-receipt-protocol/quickstart.md`
+- [x] T011 [P] [US1] Add or update the received-batch fixture expectations in `tests/fixtures/nfe-operational/authorization/batch-response-received.xml` and `tests/integration/authorize-nfe-batch.test.ts`
+- [x] T012 [P] [US1] Implement or adjust async submission mapping in `src/canonical/nfe/authorize-nfe.ts` and `src/canonical/nfe/authorization-outcome.ts`
+- [x] T013 [US1] Align the public authorization contract for observable `receiptNumber` behavior in `src/canonical/nfe/contracts.ts` and `src/canonical/nfe/index.ts`
+- [x] T014 [US1] Document the async submission outcome in `README.md` and `specs/021-nfe-receipt-protocol/quickstart.md`
 
 **Checkpoint**: User Story 1 should allow integrators to distinguish terminal authorization from async receipt-based continuation without opening generic polling.
 

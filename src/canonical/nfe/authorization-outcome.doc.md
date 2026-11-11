@@ -36,6 +36,7 @@ sequenceDiagram
 - `cStat` `103` com recibo e tratado como estado intermediario recebido.
 - Em producao, `tpAmb` diferente de `1`, `nProt` ausente em `100`/`104` ou `nRec` ausente em `103` resulta em `protocol-error`.
 - Para a classificacao `received` com `receiptNumber`, `nextAction` identifica a facade de continuacao; nao inicia consulta automaticamente.
+- `denied`: o `cStat` de topo ou o `cStat` de `protNFe/infProt` e 110, 301 ou 302 (Uso Denegado). O documento denegado carrega `nProt`, mas nunca e lido como autorizado e nao tem `nextAction`; o consumidor o trata como terminal e nao editavel.
 - Outros cenarios reaproveitam a classificacao herdada do transporte.
 - A orquestracao pode acrescentar `executionMode`, `contingencyState`, chave, protocolo EPEC, `recoveryContext` e `recoveryState` sem reclassificar o resultado do transporte.
 

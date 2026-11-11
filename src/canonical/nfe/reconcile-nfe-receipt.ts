@@ -83,6 +83,7 @@ async function reconcileNFeReceiptCore(
     requestExecutor: input.requestExecutor,
     service: 'nfe-authorization-batch',
     timeoutMs: input.timeoutMs,
+    ...(input.wireFormat === true ? { wireFormat: true } : {}),
   });
 
   if (transportOutcome.classification === 'usage-error') {

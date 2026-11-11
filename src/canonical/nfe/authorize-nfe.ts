@@ -1,5 +1,7 @@
 import { executeNFeSoapService } from '../transport/execute-nfe-soap-service.js';
 
+import { authorizeBuiltDocument } from './authorize-built-document.js';
+import { createContingencyBoundaryOutcome } from './contingency-boundary-outcome.js';
 import { buildNFeAuthorizationBatch } from './authorization-batch.js';
 import { mapAuthorizationTransportOutcome } from './authorization-outcome.js';
 import {
@@ -50,6 +52,10 @@ export async function authorizeNFe(
     throw new NFeOperationalUsageError(
       'authorizeNFe requires a signingContext created by this SDK.',
     );
+  }
+
+  if (input.documents.kind === 'built-document') {
+    return authorizeBuiltDocument(input, normalizedEnvironment);
   }
 
   if (input.recoveryContext !== undefined) {
@@ -363,31 +369,6 @@ async function executeAuthorization(
   });
 
   return mapAuthorizationTransportOutcome(authorizationBatch, transportOutcome);
-}
-
-function createContingencyBoundaryOutcome(
-  mode: NFeContingencyMode,
-  reason: string,
-  state: NFeContingencyState,
-  documentKey?: string,
-): NFeAuthorizationOutcome {
-  const provider = mode === 'svc-an' || mode === 'epec' ? 'SVCAN' : 'SP';
-
-  return {
-    classification: 'contingency-boundary',
-    contingencyState: state,
-    documentKey,
-    documentStatuses: [],
-    executionMode: mode,
-    failureReason: reason,
-    transportOutcome: {
-      classification: 'usage-error',
-      environment: 'production',
-      evidence: { endpointUrl: '', provider, requestEnvelopeXml: '' },
-      failureReason: reason,
-      service: 'nfe-authorization',
-    },
-  };
 }
 
 function createRecoveryBoundaryOutcome(

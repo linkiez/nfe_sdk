@@ -8,7 +8,7 @@
  */
 import { readFile } from 'node:fs/promises';
 
-import { validateNFeXsd } from 'nfe-sdk';
+import { validateNFeXsd } from '@linkiez/nfe-sdk';
 
 const SAMPLE_NFE_XML =
   '<?xml version="1.0" encoding="utf-8"?><NFe xmlns="http://www.portalfiscal.inf.br/nfe"><infNFe versao="4.00" Id="NFe35160512345678000123550010000000011000000011"></infNFe></NFe>';

@@ -75,6 +75,7 @@ export function validateRecipientManifestationRequest(
  */
 export function createRecipientManifestationPayloadXml(
 	input: RecipientManifestationRequest,
+	wire?: { readonly eventDateTime: string; readonly namespace: string },
 ): string {
 	const documentNumber = normalizeRecipientDocumentNumber(input.actor.documentNumber);
 	const documentTagName = input.actor.documentType === 'cpf' ? 'CPF' : 'CNPJ';
@@ -84,14 +85,17 @@ export function createRecipientManifestationPayloadXml(
 		: '';
 
 	return [
-		'<envEvento versao="1.00">',
+		wire
+			? `<envEvento xmlns="${wire.namespace}" versao="1.00">`
+			: '<envEvento versao="1.00">',
 		'<idLote>1</idLote>',
 		'<evento versao="1.00">',
 		`<infEvento Id="ID${eventCode}${input.accessKey}01">`,
 		'<cOrgao>91</cOrgao>',
-		'<tpAmb>2</tpAmb>',
+		`<tpAmb>${wire && input.environment === 'production' ? '1' : '2'}</tpAmb>`,
 		`<${documentTagName}>${documentNumber}</${documentTagName}>`,
 		`<chNFe>${escapeRecipientXml(input.accessKey)}</chNFe>`,
+		...(wire ? [`<dhEvento>${wire.eventDateTime}</dhEvento>`] : []),
 		`<tpEvento>${eventCode}</tpEvento>`,
 		'<nSeqEvento>1</nSeqEvento>',
 		'<verEvento>1.00</verEvento>',

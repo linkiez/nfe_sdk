@@ -1,3 +1,4 @@
+import { queryWireServiceStatus } from './queries/wire-service-status.js';
 import { executeNFeSoapService } from '../transport/execute-nfe-soap-service.js';
 import type { TransportOutcome } from '../transport/contracts.js';
 
@@ -37,6 +38,10 @@ export function mapServiceStatusTransportOutcome(
 export async function queryNFeServiceStatus(
   input: NFeServiceStatusRequest,
 ): Promise<ServiceStatusSnapshot> {
+  if (input.wireFormat === true) {
+    return queryWireServiceStatus(input);
+  }
+
   const transportOutcome = await executeNFeSoapService({
     authorizer: input.authorizer,
     environment: input.environment,

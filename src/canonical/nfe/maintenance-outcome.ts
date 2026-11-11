@@ -7,6 +7,7 @@ import type {
   OperationalMaintenanceOutcome,
   OperationalMaintenanceRequest,
 } from './contracts.js';
+import { executeSignedNFeEvent } from './events/nfe-signed-event.js';
 import { mapMaintenanceToOperationalState } from './operational-state.js';
 import { mapTransportOutcomeToMaintenanceClassification } from './transport-outcome-mapper.js';
 
@@ -97,6 +98,10 @@ export function createUnsupportedScopeMaintenanceOutcome(
 export async function executeOperationalMaintenanceOperation(
   input: OperationalMaintenanceRequest,
 ): Promise<OperationalMaintenanceOutcome> {
+  if (input.signedEvent !== undefined) {
+    return executeSignedNFeEvent(input);
+  }
+
   if (input.environment !== SUPPORTED_OPERATIONAL_ENVIRONMENT) {
     return createUnsupportedScopeMaintenanceOutcome(
       input.operation,
