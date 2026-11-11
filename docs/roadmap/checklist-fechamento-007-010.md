@@ -14,7 +14,7 @@ Transformar a iteracao `1` do roadmap em uma saida executavel e auditavel, deixa
 
 ### Estado auditado de origem
 
-- `T037` em [specs/007-nfe-operational-mvp/tasks.md](/home/linkiez/Projetos/nfe_sdk/specs/007-nfe-operational-mvp/tasks.md) ja aparece como concluida.
+- `T037` em [specs/007-nfe-operational-mvp/tasks.md](../../specs/007-nfe-operational-mvp/tasks.md) ja aparece como concluida.
 - O roadmap permanecia stale ao tratar a spec como `em execucao`.
 
 ### Checklist de saida
@@ -32,7 +32,7 @@ Transformar a iteracao `1` do roadmap em uma saida executavel e auditavel, deixa
 
 ### Estado auditado de origem
 
-- `T002` em [specs/010-nfce-national-core/tasks.md](/home/linkiez/Projetos/nfe_sdk/specs/010-nfce-national-core/tasks.md) ja aparece como concluida.
+- `T002` em [specs/010-nfce-national-core/tasks.md](../../specs/010-nfce-national-core/tasks.md) ja aparece como concluida.
 - Os arquivos `.gitkeep` residuais previstos inicialmente nao existem mais no repositorio e a divergencia remanescente e editorial.
 
 ### Checklist de saida
@@ -50,7 +50,7 @@ Transformar a iteracao `1` do roadmap em uma saida executavel e auditavel, deixa
 
 1. Auditar primeiro as tasks de origem e o status stale do roadmap.
 2. Registrar a evidencia canonica de reconciliacao em `specs/017-close-operational-specs/research.md`.
-3. Atualizar depois [docs/roadmap/specs-implementacao.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/specs-implementacao.md) e [docs/roadmap/specs-pendencias-abertas.md](/home/linkiez/Projetos/nfe_sdk/docs/roadmap/specs-pendencias-abertas.md) para remover o estado residual.
+3. Atualizar depois [docs/roadmap/specs-implementacao.md](specs-implementacao.md) e [docs/roadmap/specs-pendencias-abertas.md](specs-pendencias-abertas.md) para remover o estado residual.
 
 ## Regra de uso
 
