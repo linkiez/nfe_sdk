@@ -85,13 +85,12 @@ jobs:
           fi
 
   # GitHub Packages (published by the Release job) is the registry the consumers use. The npmjs
-  # mirror is optional: it is skipped without NPM_TOKEN and never fails the release.
+  # mirror is optional: it is skipped without NPM_TOKEN.
   publish-npmjs:
     name: Mirror release to npmjs
     needs: release
     if: needs.release.outputs.new_release_published == 'true'
     runs-on: ubuntu-latest
-    continue-on-error: true
     permissions:
       contents: read
       packages: read
