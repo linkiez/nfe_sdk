@@ -77,4 +77,16 @@ describe('authorizeNFe denied classification', () => {
     expect(authorized.classification).toBe('authorized');
     expect(rejected.classification).toBe('rejected');
   });
+
+  it('classifies a processed batch (104) whose infProt carries a rejection without nProt as rejected', async () => {
+    const outcome = await authorizeWith(
+      loadNFeOperationalTextFixture(
+        'authorization/single-response-production-batch-processed-schema-rejection.xml',
+      ),
+    );
+
+    expect(outcome.classification).toBe('rejected');
+    expect(outcome.protocolNumber).toBeUndefined();
+    expect(outcome.failureReason).toContain('Schema');
+  });
 });

@@ -34,7 +34,8 @@ sequenceDiagram
 
 - `cStat` `100` e `104` com protocolo sao tratados como autorizacao concluida.
 - `cStat` `103` com recibo e tratado como estado intermediario recebido.
-- Em producao, `tpAmb` diferente de `1`, `nProt` ausente em `100`/`104` ou `nRec` ausente em `103` resulta em `protocol-error`.
+- Em producao, `tpAmb` diferente de `1`, `nProt` ausente em `100`/`104` (sem rejeicao no `infProt`) ou `nRec` ausente em `103` resulta em `protocol-error`.
+- `rejected` tambem cobre o lote processado (`104`) cujo `protNFe/infProt` traz um `cStat` que nao e autorizacao nem denegacao (ex.: 225, falha de schema): o documento rejeitado nao recebe `nProt`, e `protocolStatusCode`/`protocolStatusMessage` carregam o motivo.
 - Para a classificacao `received` com `receiptNumber`, `nextAction` identifica a facade de continuacao; nao inicia consulta automaticamente.
 - `denied`: o `cStat` de topo ou o `cStat` de `protNFe/infProt` e 110, 301 ou 302 (Uso Denegado). O documento denegado carrega `nProt`, mas nunca e lido como autorizado e nao tem `nextAction`; o consumidor o trata como terminal e nao editavel.
 - Outros cenarios reaproveitam a classificacao herdada do transporte.
