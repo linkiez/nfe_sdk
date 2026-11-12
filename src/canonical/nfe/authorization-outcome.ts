@@ -25,11 +25,13 @@ export function mapAuthorizationTransportOutcome(
     originalTransportOutcome.evidence.responseEnvelopeXml ?? '';
   const protocolNumber = extractFirstTagText(responseXml, 'nProt');
   const receiptNumber = extractFirstTagText(responseXml, 'nRec');
+  const protocolStatus = extractProtocolStatus(responseXml);
   const protocolFailureReason = getProductionProtocolFailureReason(
     originalTransportOutcome,
     responseXml,
     protocolNumber,
     receiptNumber,
+    protocolStatus,
   );
   const transportOutcome =
     protocolFailureReason === undefined
@@ -41,7 +43,6 @@ export function mapAuthorizationTransportOutcome(
         };
   const mappedTransport =
     mapTransportOutcomeToAuthorizationClassification(transportOutcome);
-  const protocolStatus = extractProtocolStatus(responseXml);
   const baseClassification = isDeniedResponse(transportOutcome, responseXml)
     ? ('denied' as const)
     : resolveAuthorizationClassification(
@@ -50,11 +51,14 @@ export function mapAuthorizationTransportOutcome(
         receiptNumber,
         transportOutcome.applicationStatusCode,
       );
-  // A processed batch (cStat 104) can carry a rejection inside protNFe/infProt.
+  // A processed batch (cStat 104) can carry a rejection inside protNFe/infProt. A rejected
+  // document gets no nProt, so the batch is not 'authorized' here and would stay 'received'.
   const classification =
-    baseClassification === 'authorized' &&
-    protocolStatus !== undefined &&
-    !AUTHORIZED_PROTOCOL_STATUS_CODES.has(protocolStatus.code)
+    isRejectedInProcessedBatch(
+      baseClassification,
+      transportOutcome.applicationStatusCode,
+      protocolStatus,
+    )
       ? ('rejected' as const)
       : baseClassification;
 
@@ -89,6 +93,7 @@ function getProductionProtocolFailureReason(
   responseXml: string,
   protocolNumber: string | undefined,
   receiptNumber: string | undefined,
+  protocolStatus: { code: string; message?: string } | undefined,
 ): string | undefined {
   if (transportOutcome.environment !== 'production') {
     return undefined;
@@ -107,7 +112,9 @@ function getProductionProtocolFailureReason(
 
   if (
     AUTHORIZED_STATUS_CODES.has(transportOutcome.applicationStatusCode ?? '') &&
-    protocolNumber === undefined
+    protocolNumber === undefined &&
+    (protocolStatus === undefined ||
+      AUTHORIZED_PROTOCOL_STATUS_CODES.has(protocolStatus.code))
   ) {
     return 'Authorized production response is missing required nProt.';
   }
@@ -144,6 +151,31 @@ function isDeniedResponse(
 
   return [transportOutcome.applicationStatusCode, protocolStatus].some(
     (code) => code !== undefined && DENIED_STATUS_CODES.has(code),
+  );
+}
+
+/**
+ * True when the batch was processed (authorized-like top-level status) but its document status
+ * is neither an authorization nor a denial: the document itself was rejected.
+ */
+function isRejectedInProcessedBatch(
+  classification: NFeAuthorizationOutcome['classification'],
+  applicationStatusCode: string | undefined,
+  protocolStatus: { code: string } | undefined,
+): boolean {
+  if (protocolStatus === undefined) {
+    return false;
+  }
+  if (AUTHORIZED_PROTOCOL_STATUS_CODES.has(protocolStatus.code)) {
+    return false;
+  }
+  if (classification === 'authorized') {
+    return true;
+  }
+
+  return (
+    classification === 'received' &&
+    AUTHORIZED_STATUS_CODES.has(applicationStatusCode ?? '')
   );
 }
 
