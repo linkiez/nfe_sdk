@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/linkiez/nfe_sdk/compare/v1.0.1...v1.1.0) (2026-11-12)
+
+
+### Features
+
+* **mdfe:** adicionar suporte a MDF-e ([0dd745c](https://github.com/linkiez/nfe_sdk/commit/0dd745c22054a94740ba909a21a14c49c9da88cd))
+
 ## [1.0.1](https://github.com/linkiez/nfe_sdk/compare/v1.0.0...v1.0.1) (2026-11-11)
 
 
