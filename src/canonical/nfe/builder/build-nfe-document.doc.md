@@ -7,6 +7,7 @@ Monta o XML não assinado da NF-e (layout 4.00, `PL_010c_NT2022_002v1.30`) a par
 ## Responsabilidades
 
 - Derivar `cNF` (8 dígitos, diferente de `nNF` e fora da lista oficial de valores inválidos), `cDV`, a chave de acesso (44 dígitos), `Id` (`NFe` + chave), `versao` e `@nItem`.
+- Em homologação (`ide.tpAmb` = `2`), escrever em `dest.xNome` o texto fixo exigido pela SEFAZ (regra 598): `NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL`. Em produção o nome informado é mantido.
 - Emitir cada elemento na ordem do XSD, independentemente da ordem das chaves no rascunho.
 - Recusar, antes de assinar, entrada incompleta, campo não suportado, alternativas conflitantes, valores vazios ou com espaços nas pontas, números não inteiros e mais de 990 itens.
 

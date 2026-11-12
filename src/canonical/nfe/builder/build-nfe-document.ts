@@ -11,6 +11,8 @@ import type {
 const LAYOUT_VERSION = '4.00';
 const NFE_NAMESPACE = 'http://www.portalfiscal.inf.br/nfe';
 const MAX_ITEMS = 990;
+/** SEFAZ rule 598: in homologation (`tpAmb` 2) the recipient name is this exact text. */
+const HOMOLOGATION_RECIPIENT_NAME = 'NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL';
 /** Official invalid cNF values (MOC, rule B09-20): repeated and sequential digits. */
 const INVALID_CNF = new Set([
   ...Array.from({ length: 10 }, (_, digit) => String(digit).repeat(8)),
@@ -172,7 +174,8 @@ function deriveKey(
  * Derives `cNF`, `cDV`, the access key, `Id`, `versao` and the item numbers, emits every
  * element in XSD order, keeps decimals exactly as informed and refuses — before anything
  * is signed — incomplete input, unknown fields, conflicting choices and values outside
- * the occurrence limits (for example more than 990 items).
+ * the occurrence limits (for example more than 990 items). In homologation (`tpAmb` 2) the
+ * recipient name is replaced by the fixed text SEFAZ demands (rule 598).
  *
  * @param input - Draft following the official element names.
  * @returns The XML, access key and `infNFe` identifier.
@@ -194,6 +197,9 @@ export function buildNFeDocument(input: NFeDocumentInput): BuiltNFeDocument {
     '@Id': key ? `NFe${key.accessKey}` : 'NFe',
     '@versao': LAYOUT_VERSION,
     det: numbered(infNFe.det, issues),
+    ...(text(ide.tpAmb) === '2' && infNFe.dest !== undefined
+      ? { dest: { ...asRecord(infNFe.dest), xNome: HOMOLOGATION_RECIPIENT_NAME } }
+      : {}),
     ide: { ...ide, ...(key ? { cDV: key.cDV, cNF: key.cNF } : {}) },
   };
   const body = serializeComplex('infNFe', NFE_LAYOUT_ROOT_TYPE, prepared, 'infNFe', issues);
