@@ -90,6 +90,28 @@ describe('buildNFeDocument', () => {
     );
   });
 
+  it('writes the fixed recipient name SEFAZ requires in homologation (rule 598)', () => {
+    const draft = baseDraft();
+    (draft.infNFe.dest as { xNome: string }).xNome = 'CLIENTE REAL LTDA';
+
+    const { xml } = buildNFeDocument(draft);
+
+    expect(xml).toContain(
+      '<xNome>NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</xNome>',
+    );
+    expect(xml).not.toContain('CLIENTE REAL LTDA');
+  });
+
+  it('keeps the real recipient name in production', () => {
+    const draft = baseDraft();
+    (draft.infNFe.ide as { tpAmb: string }).tpAmb = '1';
+    (draft.infNFe.dest as { xNome: string }).xNome = 'CLIENTE REAL LTDA';
+
+    expect(buildNFeDocument(draft).xml).toContain(
+      '<xNome>CLIENTE REAL LTDA</xNome>',
+    );
+  });
+
   it('escapes XML special characters in text values', () => {
     const draft = baseDraft();
     (draft.infNFe.det[0].prod as { xProd: string }).xProd =
