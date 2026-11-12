@@ -112,6 +112,16 @@ import {
   reconcileNFCeSPOffline,
   renderNFCeSPDANFE,
   renderNFeDANFE,
+  distributeMDFe,
+  MDFeDamdfeUsageError,
+  MDFeParseError,
+  MDFeTransportError,
+  parseMDFeXml,
+  queryMDFeByAccessKey,
+  queryMDFeNotClosed,
+  queryMDFeServiceStatus,
+  renderDAMDFE,
+  validateMDFeXml,
   RuntimeDependencyError,
   publicPackageContract,
   queryContributorRegistration,
@@ -181,6 +191,18 @@ const pdf = await renderNFeDANFE({ authorizedXml: outcome.authorizedXml }); // U
 ```
 
 `renderNFeDANFE` desenha o DANFE (PDF, via `node-sped-pdf`) a partir do `nfeProc` exato de uma NF-e modelo 55 autorizada (`cStat` 100 ou 150); recusa XML malformado, de outro modelo ou sem autorizacao (`NFeDanfeUsageError`). O renderizador e carregado sob demanda e depende do modulo nativo `canvas`.
+
+### MDF-e (somente consumo)
+
+O SDK le MDF-e de terceiros do autorizador nacional (SVRS); nao emite, encerra nem cancela MDF-e. Os esquemas usados sao os pacotes `PL_MDFe_300b_NT012025_1.05` (documentos, eventos e consultas) e `PL_MDFeDistDFe_100` (distribuicao), adotados por decisao do mantenedor (registro em `specs/032-mdfe-baseline-resolution/research.md`).
+
+- `parseMDFeXml(xml)` le `mdfeProc`/`MDFe` e `procEventoMDFe`/`eventoMDFe` (chave, emitente, rota, totais, protocolo, evento) e recusa XML invalido, raiz desconhecida ou versao diferente de `3.00` (`MDFeParseError`).
+- `validateMDFeXml(xml)` valida pelo XSD com `xmllint` (documentos, eventos, mensagens de consulta e de distribuicao); raiz ou versao desconhecida devolve `schema-not-found`.
+- `queryMDFeServiceStatus`, `queryMDFeByAccessKey` (situacao, protocolo e eventos) e `queryMDFeNotClosed` (MDF-e nao encerrados do emitente) usam SOAP 1.2 com `mdfeDadosMsg` e exigem um `requestExecutor` com TLS mutuo.
+- `distributeMDFe` busca documentos e eventos de interesse por `ultNSU` (`distNSU`) ou por um NSU (`consNSU`), descompacta os `docZip` e devolve o cursor; impoe `nextAllowedAt` de 1 hora com `ultNSU = maxNSU` e classifica a rejeicao 678 como `misuse`.
+- `renderDAMDFE` (entrada `{ authorizedXml }`) desenha um resumo em PDF (chave com codigo de barras Code 128C, protocolo, emitente, rota, totais e chaves dos documentos) so a partir do XML autorizado; nao e o leiaute oficial completo (sem QR Code).
+
+Somente homologacao: toda operacao de producao responde `unsupported` ate ser promovida com evidencia de homologacao (feature 039).
 
 ### 1.3. Dependências de execução
 

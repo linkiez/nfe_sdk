@@ -1,3 +1,5 @@
+import type { SupportedMDFeSoapService } from '../mdfe/mdfe-service-definitions.js';
+
 import type { SupportedNFeSoapService } from './supported-services.js';
 
 const DEFAULT_TRANSPORT_TIMEOUT_MS = 5000;
@@ -18,7 +20,7 @@ export interface RequestExecutorInput {
   readonly endpointUrl: string;
   readonly headers: Readonly<Record<string, string>>;
   readonly requestXml: string;
-  readonly service: SupportedNFeSoapService;
+  readonly service: SupportedNFeSoapService | SupportedMDFeSoapService;
   readonly timeoutMs: number;
 }
 

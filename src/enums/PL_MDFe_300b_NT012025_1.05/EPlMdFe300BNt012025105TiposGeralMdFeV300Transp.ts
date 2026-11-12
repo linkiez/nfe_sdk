@@ -1,0 +1,8 @@
+/**
+ * Tipo Transportador
+ */
+export enum EPlMdFe300BNt012025105TiposGeralMdFeV300Transp {
+  Value1 = "1",
+  Value2 = "2",
+  Value3 = "3",
+}

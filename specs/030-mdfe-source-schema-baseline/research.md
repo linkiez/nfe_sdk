@@ -105,6 +105,18 @@ The official ZIP filenames, retrieval endpoint, digest, archive root, entrypoint
 
 No unsupported claim is promoted as a verified schema or runtime rule. The unresolved revision identity and applicability gaps remain blockers for dependent implementation.
 
+### Resolution Review (Feature 032, consulted 2026-11-11)
+
+**Re-verification of the candidate packages.** Both archives were downloaded again on 2026-11-11 from the same SVRS `DownloadArquivoEstatico` endpoint (`tipoArquivo=2`) and their SHA-256 are identical to the 2026-10-12 values (`PL_MDFe_300b.zip` `bfb192ab…5a48d`; `PL_MDFe_300b_NT012025_1.04.zip` `fc53c880…854cc`). ZIP integrity passed. The package did not change in the interval.
+
+**Portal facts (SRC-005, re-read 2026-11-11).** The SVRS MDF-e documents page lists the NT 2025.001 package with revisions `1.01` (correction of basic event types), `1.02` (QR Code accepts alphanumeric CNPJ), `1.03` (component type 4 for payment and service-confirmation events) and `1.04` (`procEmi` value 4 for the PAA); it lists nothing labeled `1.05`. The published NT 2025.001 PDF is version `1.03` (`MDFe_Nota_Tecnica_2025_001_1.03.pdf`) and does not describe 1.04. The NT 2025.001 production date on the page is 6 Oct 2025; the 25 Apr 2026 date belongs to the package listing entry. No page, NT, or search result found explains why the archive labeled 1.04 has the root directory `PL_MDFe_300b_NT012025_1.05`.
+
+**Content comparison (informational, not authoritative).** Against `PL_MDFe_300b`, the 1.04 archive changes `consSitMDFeTiposBasico` (adds the `procInfraSA` group with `nProtDTe`/`dhProt`, the NT 2023.002 query return), `mdfeTiposBasico` (adds `procEmi` value `4`), the road and waterway modals, the payment/closure event types and `tiposGeralMDFe`; it keeps every schema used by the consume-only operations (`consSitMDFe`, `consMDFeNaoEnc`/`retConsMDFeNaoEnc_v3.00`, `distMDFe`/`retDistMDFe`/`leiauteDistMDFe`, `consStatServMDFe`) and omits only the legacy `retConsMDFeNaoEnc_v1.00.xsd`. The content is consistent with a later superset, but content similarity does not establish revision identity or an effective interval (FR-001, CC-003).
+
+**Applicability dimensions.** Package revision, effective interval, environment, UF and operation: not established by any primary source for the 1.04/1.05 archive. Legal effectivity (Ajuste SINIEF) and schema rollout remain separate facts (FR-003). The Distribution service package (`v1.00b`) is listed separately by SVRS and was not inspected in this review. Actor permissions for query and distribution (which CNPJ roles may query a third party's MDF-e or receive it through distribution) are not described on the pages reviewed; SVRS says distribution serves "atores interessados" and the NT 2022.002 text adds the contractor NSU, but no page maps roles to operations for an SP freight taker.
+
+**Outcome.** No item was promoted to verified. Package identity and applicability stay `unverified`, actor permissions stay `unverified`, and the dependent slices (033 onward) remain blocked. See `../032-mdfe-baseline-resolution/research.md` for the gate record.
+
 ### SVRS Service Route Register
 
 The SVRS catalog (SRC-006) lists the following national authorizer services in both environments. `verified` here means that the named catalog endpoint was present when consulted; it does not establish SP issuer eligibility, a service's current live availability, or the applicable schema revision.

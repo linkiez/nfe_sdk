@@ -26,6 +26,16 @@ const DOCUMENTED_SURFACE = [
   'reconcileNFCeSPOffline',
   'renderNFCeSPDANFE',
   'renderNFeDANFE',
+  'parseMDFeXml',
+  'validateMDFeXml',
+  'queryMDFeServiceStatus',
+  'queryMDFeByAccessKey',
+  'queryMDFeNotClosed',
+  'distributeMDFe',
+  'renderDAMDFE',
+  'MDFeParseError',
+  'MDFeDamdfeUsageError',
+  'MDFeTransportError',
   'queryContributorRegistration',
   'queryNFeByAccessKey',
   'queryNFeByNSU',
@@ -58,6 +68,7 @@ const EXCLUDED_SURFACE = [
 ] as const;
 
 const COMPATIBILITY_NOTES = [
+  'The MDF-e slice is additive and consume-only: parseMDFeXml, validateMDFeXml, queryMDFeServiceStatus, queryMDFeByAccessKey, queryMDFeNotClosed, distributeMDFe and renderDAMDFE read documents of the SVRS national authorizer in homologation; production answers unsupported until each operation is promoted, and MDF-e issuance, closure and cancellation are outside the contract.',
   'Only the root import is stable in this phase.',
   'The initial functional facade is limited to canonical NFe and enviNFe creation, deterministic XML serialization, the first additive digital-signing slice, the first additive SOAP transport slice, and the first additive operational authorization facade in this phase.',
   'Generated schema trees remain internal inventory until a later contract decision promotes them.',
