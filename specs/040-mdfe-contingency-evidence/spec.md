@@ -2,7 +2,7 @@
 
 **Feature Branch**: `040-mdfe-contingency-evidence`
 **Created**: 2026-10-12
-**Status**: Draft
+**Status**: Draft — research started on 2026-11-12, see [research.md](./research.md) (partially evidenced; runtime still excluded)
 **Input**: Resolve whether an official MDF-e contingency mode exists for the proposed SP cohort before any contingency runtime design is approved.
 
 ## User Scenarios & Testing
