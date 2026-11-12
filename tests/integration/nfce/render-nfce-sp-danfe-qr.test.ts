@@ -22,9 +22,13 @@ describe('renderNFCeSPDANFE QR output', () => {
       expect(qrSvg).toContain('width="25mm" height="25mm"');
 
       const declaredPixels = Math.round((25 * 96) / 25.4);
-      const { data, info } = await sharp(Buffer.from(qrSvg ?? ''), {
-        density: 96,
-      })
+      // Rasterize with an explicit pixel size: librsvg versions differ in how they convert the
+      // physical `mm` size, and this test checks that the QR decodes, not that conversion.
+      const pixelSvg = (qrSvg ?? '').replace(
+        'width="25mm" height="25mm"',
+        `width="${declaredPixels}" height="${declaredPixels}"`,
+      );
+      const { data, info } = await sharp(Buffer.from(pixelSvg))
         .greyscale()
         .raw()
         .toBuffer({ resolveWithObject: true });
