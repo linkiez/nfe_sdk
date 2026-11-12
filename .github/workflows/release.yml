@@ -84,11 +84,14 @@ jobs:
             echo "new_release_published=false" >> "$GITHUB_OUTPUT"
           fi
 
+  # GitHub Packages (published by the Release job) is the registry the consumers use. The npmjs
+  # mirror is optional: it is skipped without NPM_TOKEN and never fails the release.
   publish-npmjs:
     name: Mirror release to npmjs
     needs: release
     if: needs.release.outputs.new_release_published == 'true'
     runs-on: ubuntu-latest
+    continue-on-error: true
     permissions:
       contents: read
       packages: read
@@ -117,18 +120,22 @@ jobs:
           node-version: 22
           registry-url: https://registry.npmjs.org
 
-      - name: Require npmjs publishing token
+      - name: Check npmjs publishing token
+        id: npm_token
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           if [ -z "${NODE_AUTH_TOKEN:-}" ]; then
-            echo "::error::Configure the NPM_TOKEN repository secret before publishing a release to npmjs."
-            exit 1
+            echo "::notice::NPM_TOKEN is not configured: skipping the optional npmjs mirror (GitHub Packages already has the release)."
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=true" >> "$GITHUB_OUTPUT"
           fi
 
+      # Provenance is only accepted from public repositories (npm answers 422 for private ones).
       - name: Publish to npmjs
+        if: steps.npm_token.outputs.present == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
           TARBALL: ${{ steps.pack.outputs.path }}
-        run: npm publish "$TARBALL" --registry=https://registry.npmjs.org --access public --provenance
+        run: npm publish "$TARBALL" --registry=https://registry.npmjs.org --access public
