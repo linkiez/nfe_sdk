@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/linkiez/nfe_sdk/compare/v1.1.0...v1.1.1) (2026-11-12)
+
+
+### Bug Fixes
+
+* **nfe:** classificar como rejeitada a NF-e recusada dentro de lote processado ([b945450](https://github.com/linkiez/nfe_sdk/commit/b94545096f954c41b936fd221159413aa40bded3))
+* **nfe:** usar o nome fixo do destinatário em homologação ([22fbd76](https://github.com/linkiez/nfe_sdk/commit/22fbd76868179ae152d29e534089288c7b8f8adf))
+
 # [1.1.0](https://github.com/linkiez/nfe_sdk/compare/v1.0.1...v1.1.0) (2026-11-12)
 
 
