@@ -165,7 +165,7 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
   {
     catalogVersion: SEFAZ_OFFICIAL_CATALOG_VERSION,
     endpointUrl:
-      'https://hom.nfe.fazenda.gov.br/NFeDistribuicaoDFe/NFeDistribuicaoDFe.asmx',
+      'https://hom1.nfe.fazenda.gov.br/NFeDistribuicaoDFe/NFeDistribuicaoDFe.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
     provider: 'AN',
@@ -175,7 +175,7 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
   {
     catalogVersion: SEFAZ_OFFICIAL_CATALOG_VERSION,
     endpointUrl:
-      'https://hom.nfe.fazenda.gov.br/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx',
+      'https://hom1.nfe.fazenda.gov.br/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
     provider: 'AN',
