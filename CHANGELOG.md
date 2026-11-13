@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/linkiez/nfe_sdk/compare/v1.2.0...v1.3.0) (2026-11-13)
+
+
+### Features
+
+* **xsd:** adicionar schemas fiscais PL_010f e PL_010g ([354b356](https://github.com/linkiez/nfe_sdk/commit/354b3562f61d8d243bbbfc56b72cf626fc4535f9))
+
 # [1.2.0](https://github.com/linkiez/nfe_sdk/compare/v1.1.2...v1.2.0) (2026-11-13)
 
 
