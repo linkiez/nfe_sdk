@@ -42,6 +42,7 @@ sequenceDiagram
 - O arquivo nao lanca erros diretamente.
 - Quando a combinacao nao existe no catalogo inicial, a busca retorna `undefined`.
 - Quando mais de uma entrada corresponde sem authorizer, a busca retorna `undefined` em vez de escolher uma rota arbitrariamente.
+- Ambiente Nacional (AN) em homologacao: `nfe-recipient-distribution` e `nfe-recipient-manifestation` usam `hom1.nfe.fazenda.gov.br`; o host `hom.nfe.fazenda.gov.br` responde 404 para esses servicos (verificado contra a SEFAZ).
 - SP production publica `nfe-authorization` e `nfe-authorization-batch` em endpoints normais da SEFAZ/SP; contingencia SVC-AN continua sendo rota distinta.
 - SP NFC-e production publica `nfce-authorization-sp` em `https://nfce.fazenda.sp.gov.br/ws/NFeAutorizacao4.asmx`, com provider `SP`; a rota homologada existente e SVC-AN permanecem distintas.
 - Os placeholders operacionais nao sao retornados por `findTransportServiceCatalogEntry`.

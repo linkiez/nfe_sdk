@@ -146,7 +146,7 @@ describe('distributeRecipientDFe (official wire format, production)', () => {
     } as never);
 
     expect(calls[0].endpointUrl).toBe(
-      'https://hom.nfe.fazenda.gov.br/NFeDistribuicaoDFe/NFeDistribuicaoDFe.asmx',
+      'https://hom1.nfe.fazenda.gov.br/NFeDistribuicaoDFe/NFeDistribuicaoDFe.asmx',
     );
     expect(noExecutor.classification).toBe('usage-error');
     expect(noUf.classification).toBe('usage-error');

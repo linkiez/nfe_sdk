@@ -39,7 +39,7 @@ describe('SEFAZ official catalog entries', () => {
     [
       'homologation',
       'nfe-recipient-distribution',
-      'https://hom.nfe.fazenda.gov.br/NFeDistribuicaoDFe/NFeDistribuicaoDFe.asmx',
+      'https://hom1.nfe.fazenda.gov.br/NFeDistribuicaoDFe/NFeDistribuicaoDFe.asmx',
     ],
     [
       'production',
@@ -49,7 +49,7 @@ describe('SEFAZ official catalog entries', () => {
     [
       'homologation',
       'nfe-recipient-manifestation',
-      'https://hom.nfe.fazenda.gov.br/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx',
+      'https://hom1.nfe.fazenda.gov.br/NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx',
     ],
     [
       'production',
