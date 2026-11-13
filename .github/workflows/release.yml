@@ -137,4 +137,11 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           TARBALL: ${{ steps.pack.outputs.path }}
-        run: npm publish "$TARBALL" --registry=https://registry.npmjs.org --access public
+        # The packed manifest carries publishConfig.registry (GitHub Packages), which wins over the
+        # --registry flag, so the unpacked manifest is pointed at npmjs before publishing.
+        run: |
+          mkdir -p "${RUNNER_TEMP}/mirror"
+          tar -xzf "$TARBALL" -C "${RUNNER_TEMP}/mirror"
+          cd "${RUNNER_TEMP}/mirror/package"
+          npm pkg set publishConfig.registry=https://registry.npmjs.org
+          npm publish --registry=https://registry.npmjs.org --access public --ignore-scripts
