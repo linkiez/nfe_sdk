@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/linkiez/nfe_sdk/compare/v1.1.2...v1.2.0) (2026-11-13)
+
+
+### Features
+
+* **mdfe:** promover a produção as consultas de status, não encerrados e distribuição ([b584fff](https://github.com/linkiez/nfe_sdk/commit/b584fff3d8f6329af8f5f5c0f4e87719d33414fd))
+
 ## [1.1.2](https://github.com/linkiez/nfe_sdk/compare/v1.1.1...v1.1.2) (2026-11-13)
 
 
