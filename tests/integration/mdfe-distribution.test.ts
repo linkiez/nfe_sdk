@@ -233,19 +233,29 @@ describe('distributeMDFe', () => {
     expect(calls).toHaveLength(0);
   });
 
-  it('answers unsupported for production and keeps the cursor', async () => {
+  it('sends the distribution request to the production route with tpAmb 1', async () => {
     const calls: Call[] = [];
     const result = await distributeMDFe({
       ...base,
       environment: 'production',
       ultNSU: '000000000000003',
-      requestExecutor: executor(calls, ''),
+      requestExecutor: executor(
+        calls,
+        answer(
+          '137',
+          '<ultNSU>000000000000003</ultNSU><maxNSU>000000000000003</maxNSU>',
+        ),
+      ),
     });
 
+    expect(calls).toHaveLength(1);
+    expect(calls[0].endpointUrl).toBe(
+      'https://mdfe.svrs.rs.gov.br/ws/MDFeDistribuicaoDFe/MDFeDistribuicaoDFe.asmx',
+    );
+    expect(calls[0].requestXml).toContain('<tpAmb>1</tpAmb>');
     expect(result).toMatchObject({
-      classification: 'unsupported',
+      classification: 'no-new-documents',
       cursor: { ultNSU: '000000000000003' },
     });
-    expect(calls).toHaveLength(0);
   });
 });

@@ -202,7 +202,7 @@ O SDK le MDF-e de terceiros do autorizador nacional (SVRS); nao emite, encerra n
 - `distributeMDFe` busca documentos e eventos de interesse por `ultNSU` (`distNSU`) ou por um NSU (`consNSU`), descompacta os `docZip` e devolve o cursor; impoe `nextAllowedAt` de 1 hora com `ultNSU = maxNSU` e classifica a rejeicao 678 como `misuse`.
 - `renderDAMDFE` (entrada `{ authorizedXml }`) desenha um resumo em PDF (chave com codigo de barras Code 128C, protocolo, emitente, rota, totais e chaves dos documentos) so a partir do XML autorizado; nao e o leiaute oficial completo (sem QR Code).
 
-Somente homologacao: toda operacao de producao responde `unsupported` ate ser promovida com evidencia de homologacao (feature 039).
+Producao (feature 039): `queryMDFeServiceStatus`, `queryMDFeNotClosed` e `distributeMDFe` foram promovidas e consultam a rota de producao da SVRS; `queryMDFeByAccessKey` segue respondendo `unsupported` em producao ate ter evidencia de homologacao com uma chave real. O registro por operacao esta em `specs/039-mdfe-sp-production/research.md`.
 
 ### 1.3. Dependências de execução
 
