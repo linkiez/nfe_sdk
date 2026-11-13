@@ -24,8 +24,10 @@ export interface MDFeServiceDefinition {
 
 /**
  * Definitions from the MOC 3.00b services (MOC Online MDF-e, consulted 2026-11-11) and the SVRS
- * route register (`R-HOM-*`/`R-PROD-*`). Production stays off for every operation until each one
- * has homologation evidence (T086).
+ * route register (`R-HOM-*`/`R-PROD-*`). Production is promoted per operation, only with
+ * homologation evidence and a current official production route (T086, spec 039 research):
+ * status, not-closed and distribution are promoted; document situation by key stays off until it
+ * has homologation evidence with a real MDF-e key.
  */
 export const MDFE_SERVICE_DEFINITIONS: Readonly<
   Record<SupportedMDFeSoapService, MDFeServiceDefinition>
@@ -37,7 +39,7 @@ export const MDFE_SERVICE_DEFINITIONS: Readonly<
     successStatusCodes: ['107'],
     layoutVersion: '3.00',
     soapHeader: false,
-    productionPromoted: false,
+    productionPromoted: true,
   },
   'mdfe-document-situation': {
     service: 'mdfe-document-situation',
@@ -55,7 +57,7 @@ export const MDFE_SERVICE_DEFINITIONS: Readonly<
     successStatusCodes: ['111', '112'],
     layoutVersion: '3.00',
     soapHeader: false,
-    productionPromoted: false,
+    productionPromoted: true,
   },
   'mdfe-distribution': {
     service: 'mdfe-distribution',
@@ -64,6 +66,6 @@ export const MDFE_SERVICE_DEFINITIONS: Readonly<
     successStatusCodes: ['137', '138'],
     layoutVersion: '1.00',
     soapHeader: true,
-    productionPromoted: false,
+    productionPromoted: true,
   },
 };

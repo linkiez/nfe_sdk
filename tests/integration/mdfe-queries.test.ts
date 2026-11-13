@@ -88,18 +88,23 @@ describe('queryMDFeServiceStatus', () => {
     },
   );
 
-  it('answers unsupported for production without calling SEFAZ', async () => {
+  it('sends the status request to the production route with tpAmb 1', async () => {
     const calls: Call[] = [];
     const result = await queryMDFeServiceStatus({
       environment: 'production',
       requestExecutor: executor(calls, answer('107')),
     });
 
+    expect(calls).toHaveLength(1);
+    expect(calls[0].endpointUrl).toBe(
+      'https://mdfe.svrs.rs.gov.br/ws/MDFeStatusServico/MDFeStatusServico.asmx',
+    );
+    expect(calls[0].requestXml).toContain('<tpAmb>1</tpAmb>');
     expect(result).toMatchObject({
-      classification: 'unsupported',
-      available: false,
+      classification: 'success',
+      available: true,
+      statusCode: '107',
     });
-    expect(calls).toHaveLength(0);
   });
 
   it('classifies a timeout and an answer without cStat', async () => {
@@ -266,7 +271,7 @@ describe('queryMDFeNotClosed', () => {
     });
   });
 
-  it('refuses an invalid tax id and production', async () => {
+  it('refuses an invalid tax id without calling SEFAZ', async () => {
     const calls: Call[] = [];
     expect(
       (
@@ -277,16 +282,26 @@ describe('queryMDFeNotClosed', () => {
         })
       ).classification,
     ).toBe('usage-error');
-    expect(
-      (
-        await queryMDFeNotClosed({
-          taxId: '11222333000181',
-          environment: 'production',
-          requestExecutor: executor(calls, ''),
-        })
-      ).classification,
-    ).toBe('unsupported');
     expect(calls).toHaveLength(0);
+  });
+
+  it('sends the not-closed query to the production route with tpAmb 1', async () => {
+    const calls: Call[] = [];
+    const result = await queryMDFeNotClosed({
+      taxId: '11222333000181',
+      environment: 'production',
+      requestExecutor: executor(calls, answer('112')),
+    });
+
+    expect(calls).toHaveLength(1);
+    expect(calls[0].endpointUrl).toBe(
+      'https://mdfe.svrs.rs.gov.br/ws/MDFeConsNaoEnc/MDFeConsNaoEnc.asmx',
+    );
+    expect(calls[0].requestXml).toContain('<tpAmb>1</tpAmb>');
+    expect(result).toMatchObject({
+      classification: 'success',
+      statusCode: '112',
+    });
   });
 });
 
