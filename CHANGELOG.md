@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/linkiez/nfe_sdk/compare/v1.1.1...v1.1.2) (2026-11-13)
+
+
+### Bug Fixes
+
+* **nfe:** usar o host hom1 do Ambiente Nacional na distribuição e manifestação ([a804e67](https://github.com/linkiez/nfe_sdk/commit/a804e6705998e5aee20c17a9d091916dd2633305))
+
 ## [1.1.1](https://github.com/linkiez/nfe_sdk/compare/v1.1.0...v1.1.1) (2026-11-12)
 
 
