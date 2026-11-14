@@ -1,3 +1,11 @@
+# [1.4.0](https://github.com/linkiez/nfe_sdk/compare/v1.3.0...v1.4.0) (2026-11-14)
+
+
+### Features
+
+* **nfce:** ciclo de vida da NFC-e de SP no SDK ([fce22e1](https://github.com/linkiez/nfe_sdk/commit/fce22e1b46a620414c7525e6363644cd4d2f96a8))
+* **nfce:** montagem, autorização e DANFE do modelo 65 ([a3646a1](https://github.com/linkiez/nfe_sdk/commit/a3646a1cc9c5367f9aeca948256b44a329c65371))
+
 # [1.3.0](https://github.com/linkiez/nfe_sdk/compare/v1.2.0...v1.3.0) (2026-11-13)
 
 
