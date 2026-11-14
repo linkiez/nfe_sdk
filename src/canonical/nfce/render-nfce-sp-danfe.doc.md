@@ -2,7 +2,7 @@
 
 ## Visao geral
 
-`renderNFCeSPDANFE` produz HTML autocontido para uma NFC-e de SP autorizada ou para um registro offline explicitamente pendente. O modulo nao transmite XML nem consulta a SEFAZ.
+`renderNFCeSPDANFE` produz HTML autocontido para uma NFC-e de SP autorizada (a partir da evidencia SOAP capturada ou do `nfeProc` autorizado armazenado) ou para um registro offline explicitamente pendente. O modulo nao transmite XML nem consulta a SEFAZ.
 
 ## Responsabilidades
 
@@ -14,9 +14,11 @@
 
 ## Entradas e saidas
 
-- Entrada: `RenderNFCeSPDANFERequest` com evidência autorizada ou registro offline pendente e largura opcional entre 56 e 210 mm.
+- Entrada: `RenderNFCeSPDANFERequest` com evidência autorizada, `authorizedXml` (o `nfeProc` autorizado, ver [render-nfce-sp-danfe-authorized-xml](./render-nfce-sp-danfe-authorized-xml.doc.md)) ou registro offline pendente, `copy` opcional (`consumer` ou `establishment`) e largura opcional entre 56 e 210 mm (58 mm e 80 mm sao as larguras termicas de balcao).
 - Saida: `NFCeSPDanfeResult` para autorização ou `NFCeSPOfflineDanfeResult` para contingência pendente.
 - Homologacao imprime o aviso `EMITIDA EM AMBIENTE DE HOMOLOGAÇÃO – SEM VALOR FISCAL`.
+- Registro offline imprime `EMITIDA EM CONTINGÊNCIA – Pendente de autorização`, sem protocolo. `copy: 'establishment'` (so offline) acrescenta o rotulo `Via do Estabelecimento` da segunda via exigida pelo Anexo IV do MOC 7.0; para documento autorizado a opcao e recusada com `NFCeOperationalUsageError`. A guarda eletronica do XML dispensa a segunda via impressa, mas o DANFE continua imprimivel a qualquer momento.
+- Os itens (descricao, quantidade, unidade, preco e total) saem na secao `Itens da compra` das duas vias, que cumpre o papel do Detalhe da Venda.
 
 ## API / Assinatura
 

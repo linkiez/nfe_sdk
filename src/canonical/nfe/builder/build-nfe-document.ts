@@ -92,7 +92,13 @@ function text(value: unknown): string | undefined {
   return typeof value === 'string' ? value : typeof value === 'number' ? String(value) : undefined;
 }
 
-function generateCnf(nNF: string): string {
+/**
+ * Draws a valid `cNF`: 8 digits, not an official invalid value and different from `nNF`.
+ *
+ * @param nNF - Document number the code must differ from.
+ * @returns A new 8-digit code.
+ */
+export function generateCnf(nNF: string): string {
   for (;;) {
     const candidate = String(randomInt(0, 100_000_000)).padStart(8, '0');
 

@@ -34,6 +34,7 @@ describe('generateNFCeSPQRCode production integration', () => {
         'https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx?p=' +
         input.accessKey +
         '|3|1',
+      qrCodeVersion: '3',
       uf: 'SP',
     });
   });

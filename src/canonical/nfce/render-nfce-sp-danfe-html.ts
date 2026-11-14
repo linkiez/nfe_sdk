@@ -14,8 +14,11 @@ interface NFCeIdentity {
   readonly protocolNumber?: string;
   readonly qrCodeUrl: string;
   readonly requestEnvelopeSha256?: string;
+  readonly authorizedXmlSha256?: string;
   readonly signedXmlSha256?: string;
   readonly pendingAuthorization?: boolean;
+  /** Offline contingency only: `establishment` prints the "Via do Estabelecimento" label. */
+  readonly copy?: 'consumer' | 'establishment';
 }
 
 function escapeHtml(value: string): string {
@@ -108,8 +111,12 @@ export default async function renderNFCeHtml(
       ? `<p class="homologation-notice" data-layout-block>${HOMOLOGATION_NOTICE}</p>`
       : '';
   const contingencyNotice = result.pendingAuthorization
-    ? '<p class="contingency-notice" data-layout-block>EMITIDA EM CONTINGÊNCIA Pendente de autorização</p>'
+    ? '<p class="contingency-notice" data-layout-block>EMITIDA EM CONTINGÊNCIA – Pendente de autorização</p>'
     : '';
+  const copyNotice =
+    result.copy === 'establishment'
+      ? '<p class="copy-notice" data-layout-block>Via do Estabelecimento</p>'
+      : '';
   const consumer =
     presentation.consumer === undefined
       ? ''
@@ -130,16 +137,21 @@ export default async function renderNFCeHtml(
   const qrContent = renderQrSvg(qrSvg);
   const consultationUrl = escapeHtml(result.qrCodeUrl);
   const digest = escapeHtml(
-    result.requestEnvelopeSha256 ?? result.signedXmlSha256 ?? '',
+    result.requestEnvelopeSha256 ??
+      result.authorizedXmlSha256 ??
+      result.signedXmlSha256 ??
+      '',
   );
   const digestName = result.pendingAuthorization
     ? 'nfe-sdk-signed-xml-sha256'
-    : 'nfe-sdk-request-envelope-sha256';
+    : result.authorizedXmlSha256 === undefined
+      ? 'nfe-sdk-request-envelope-sha256'
+      : 'nfe-sdk-authorized-xml-sha256';
   const authorizationDetails =
     result.protocolNumber !== undefined &&
     presentation.authorizationDate !== undefined
       ? `<p>Protocolo de autorização: ${escapeHtml(result.protocolNumber)} - ${escapeHtml(presentation.authorizationDate)}</p>`
-      : '<p>EMITIDA EM CONTINGÊNCIA Pendente de autorização</p>';
+      : '<p>EMITIDA EM CONTINGÊNCIA – Pendente de autorização</p>';
 
   return `<!doctype html>
 <html lang="pt-BR">
@@ -177,6 +189,7 @@ export default async function renderNFCeHtml(
 <main class="danfe" data-paper-width-mm="${paperWidthMm}">
   ${homologationNotice}
   ${contingencyNotice}
+  ${copyNotice}
   <header data-layout-block>
     <h1>${escapeHtml(presentation.issuerName)}</h1>
     <p>${escapeHtml(presentation.issuerDocument)}</p>

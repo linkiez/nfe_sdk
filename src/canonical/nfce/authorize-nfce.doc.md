@@ -6,13 +6,14 @@ Expõe a autorizacao NFC-e pelo facade interno. Mantem o fluxo homologado SP/PR 
 
 ## Responsabilidades
 
-- Validar ambiente, escopo estadual, todos os campos fiscais derivados da chave, identificador do emitente no XML fiscal, CSC e transporte antes de uma autorizacao de producao.
+- Validar ambiente, escopo estadual, todos os campos fiscais derivados da chave, identificador do emitente no XML fiscal, o CSC quando informado e o transporte antes de uma autorizacao de producao.
 - Assinar o XML NFC-e com o `SigningContext` do SDK e enviar um unico documento pelo servico paulista normal.
 - Mapear a resposta sincronica e compor a URL QR v3 somente depois de autorizacao confirmada.
 
 ## Entradas e saidas
 
 - Entrada: `NFCeAuthorizationRequest`, com documento, ambiente e contexto de assinatura; producao tambem exige `unsignedXml`, `csc` e `requestExecutor` mTLS-capable.
+- Classificacoes: `authorized`, `received`, `rejected`, `timeout`, `unavailable`, `protocol-error`, `usage-error`, `unsupported-state`, `unsupported-scope` e `validation-error`; nunca `denied`. A autorizacao e sincrona (`indSinc` 1, uma NFC-e por envio).
 - Saida: `NFCeAuthorizationOutcome`, com classificacao, protocolo preservado como texto, evidencias de transporte e `qrCodeUrl` opcional.
 
 ## Fluxo principal
@@ -42,11 +43,13 @@ sequenceDiagram
 
 ## Tratamento de erros e casos-limite
 
-- Producao fora de SP, chave que nao seja modelo 65, ambiente divergente, CNPJ/CPF do emitente diferente da chave, campos fiscais incoerentes com a chave, XML incompatível, assinatura ausente, CSC ausente ou executor ausente falham antes do transporte.
+- Producao fora de SP, chave que nao seja modelo 65, ambiente divergente, CNPJ/CPF do emitente diferente da chave, campos fiscais incoerentes com a chave, XML incompatível, assinatura ausente, XML nao assinado ausente ou executor ausente falham antes do transporte.
 - Uma resposta de autorizacao com `chNFe` ausente ou diferente da chave solicitada e classificada como `protocol-error`; nenhuma URL QR e retornada.
 - Uma resposta `received` com recibo pode indicar `reconcileNFeReceipt` como proxima acao; o fluxo nao executa reconciliacao, polling ou retry automaticamente.
 - Rejeicao, pendencia, timeout, indisponibilidade e erro de protocolo nao recebem URL QR. O fluxo nao repete a requisicao nem troca para contingencia.
-- O token CSC nao integra a URL v3 nem o resultado publico.
+- O CSC e opcional: a URL do QR Code v3 e composta sem ele (`qrCodeUrl` volta mesmo sem CSC) e um CSC informado e validado. O token CSC nao integra a URL v3 nem o resultado publico.
+- Na producao o resultado traz `signedXml` (XML assinado exatamente como enviado, mesmo em rejeicao) e, quando autorizada, `authorizedXml` (`nfeProc` com a NFe assinada e o `protNFe`), para o chamador guardar o XML e imprimir o DANFE.
+- `cStat` 150 no protocolo marca `authorizedLate` e `protocolStatusCode` fica no resultado.
 
 ## Exemplos
 

@@ -134,8 +134,11 @@ export interface NFCeSPQRCodeRequest {
   readonly environment: string;
   /** Full 44-digit NFC-e access key already prepared by the integrator. */
   readonly accessKey: string;
-  /** Explicit CSC input validated locally before composition. */
-  readonly csc: NFCeCSCInput;
+  /**
+   * Optional CSC. The QR Code v3 (NT 2025.001) does not need it; when informed it is validated
+   * and only its identifier is echoed. The token never enters the URL or the result.
+   */
+  readonly csc?: NFCeCSCInput;
 }
 
 /**
@@ -150,8 +153,10 @@ export interface NFCeSPQRCodeResult {
   readonly baseUrl: string;
   /** Access key echoed for auditability. */
   readonly accessKey: string;
-  /** CSC identifier echoed without exposing the raw token. */
-  readonly cscId: string;
+  /** QR Code version used to compose the URL. */
+  readonly qrCodeVersion: '3';
+  /** CSC identifier echoed without exposing the raw token; absent when no CSC was informed. */
+  readonly cscId?: string;
   /** Supported UF echoed by the helper. */
   readonly uf: 'SP';
 }
@@ -209,7 +214,7 @@ export interface NFCeAuthorizationRequest {
   readonly correlationId?: string;
   /** Optional deferred capabilities the integrator tried to enable in this slice. */
   readonly requestedCapabilities?: readonly NFCeDeferredCapability[];
-  /** Optional caller-provisioned CSC used to associate a QR URL with authorization. */
+  /** Optional CSC: the QR Code v3 is composed without it; when informed it is validated and never echoed. */
   readonly csc?: NFCeCSCInput;
   /** Unsigned fiscal NFe XML required for production signing and transport. */
   readonly unsignedXml?: string;
@@ -237,6 +242,16 @@ export interface NFCeAuthorizationOutcome {
   readonly transportOutcome?: TransportOutcome;
   /** QR Code v3 consultation URL for the exact authorized SP NFC-e, when composed. */
   readonly qrCodeUrl?: string;
+  /** Signed `NFe` XML exactly as sent, when the flow signed and sent it. */
+  readonly signedXml?: string;
+  /** Authorized `nfeProc` (signed NFe plus `protNFe`), when the SEFAZ authorized the note. */
+  readonly authorizedXml?: string;
+  /** True when the SEFAZ authorized the note after the deadline (`cStat` 150). */
+  readonly authorizedLate?: boolean;
+  /** Official `cStat` of the document protocol, when present. */
+  readonly protocolStatusCode?: string;
+  /** Reason of a rejection or of an unexpected answer, when the flow did not authorize. */
+  readonly failureReason?: string;
 }
 
 /**
@@ -245,6 +260,20 @@ export interface NFCeAuthorizationOutcome {
 export interface RenderNFCeSPDANFEInput {
   /** Matching authorized outcome returned by the NFC-e authorization flow. */
   readonly authorization: NFCeAuthorizationOutcome;
+  /** Only `consumer` is valid for an authorized document; `establishment` is refused. */
+  readonly copy?: 'consumer' | 'establishment';
+  /** Paper width in millimeters; defaults to 80 and supports 56 through 210. */
+  readonly paperWidthMm?: number;
+}
+
+/**
+ * Input accepted by the SP NFC-e DANFE renderer from the stored authorized `nfeProc` XML.
+ */
+export interface RenderNFCeSPDANFEAuthorizedXmlInput {
+  /** Authorized `nfeProc` (signed NFe plus `protNFe`) exactly as stored. */
+  readonly authorizedXml: string;
+  /** Only `consumer` is valid for an authorized document; `establishment` is refused. */
+  readonly copy?: 'consumer' | 'establishment';
   /** Paper width in millimeters; defaults to 80 and supports 56 through 210. */
   readonly paperWidthMm?: number;
 }
@@ -255,6 +284,8 @@ export interface RenderNFCeSPDANFEInput {
 export interface RenderNFCeSPDANFEOfflineInput {
   /** Signed offline record returned by `prepareNFCeSPOffline`. */
   readonly offlineRecord: NFCeSPOfflineRecord;
+  /** `establishment` prints the second copy "Via do Estabelecimento" required in offline contingency. */
+  readonly copy?: 'consumer' | 'establishment';
   /** Paper width in millimeters; defaults to 80 and supports 56 through 210. */
   readonly paperWidthMm?: number;
 }
@@ -342,6 +373,24 @@ export interface NFCeSPDanfeResult {
 }
 
 /**
+ * Self-contained HTML result for an SP NFC-e DANFE rendered from its authorized `nfeProc`.
+ */
+export interface NFCeSPAuthorizedXmlDanfeResult {
+  /** Access key shared by the NFe, the protocol and the QR URL. */
+  readonly accessKey: string;
+  /** SHA-256 of the exact authorized XML that was rendered. */
+  readonly authorizedXmlSha256: string;
+  /** Authorization environment encoded by the XML and confirmed by the protocol. */
+  readonly environment: 'homologation' | 'production';
+  /** Complete self-contained HTML document with inline QR SVG. */
+  readonly html: string;
+  /** Media type of the rendered result. */
+  readonly mediaType: 'text/html';
+  /** Authorization protocol retained exactly as received. */
+  readonly protocolNumber: string;
+}
+
+/**
  * Self-contained HTML result for an offline NFC-e awaiting authorization.
  */
 export interface NFCeSPOfflineDanfeResult {
@@ -362,6 +411,7 @@ export interface NFCeSPOfflineDanfeResult {
 /** Input union accepted by the authorized and offline DANFE rendering paths. */
 export type RenderNFCeSPDANFERequest =
   | RenderNFCeSPDANFEInput
+  | RenderNFCeSPDANFEAuthorizedXmlInput
   | RenderNFCeSPDANFEOfflineInput;
 
 /** Classifications for one explicit offline NFC-e authorization attempt. */

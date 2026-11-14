@@ -46,6 +46,7 @@ describe('root nfce sp qrcode facade contract', () => {
         'https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx?p=' +
         supportedInput.accessKey +
         '|3|2',
+      qrCodeVersion: '3',
       uf: 'SP',
     });
     expectNFCeSPQRCodeUnsupportedStateBoundary(unsupportedResult, 'PR');

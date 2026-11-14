@@ -11,15 +11,10 @@ import type {
   PrepareNFCeSPOfflineInput,
 } from './contracts.js';
 import { validateNFCeSPOfflineBusinessCalendar } from './offline-business-calendar.js';
+import { SP_QR_CODE_BASE_URLS } from './resolve-nfce-qr-code-endpoint.js';
 
 const NFCe_NAMESPACE = 'http://www.portalfiscal.inf.br/nfe';
 const XML_SIGNATURE_NAMESPACE = 'http://www.w3.org/2000/09/xmldsig#';
-const SP_QR_CODE_BASE_URLS: Readonly<Record<CanonicalEnvironment, string>> = {
-  homologation:
-    'https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx',
-  production:
-    'https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx',
-};
 
 type XmlDocument = ReturnType<DOMParser['parseFromString']>;
 type XmlElement = import('@xmldom/xmldom').Element;

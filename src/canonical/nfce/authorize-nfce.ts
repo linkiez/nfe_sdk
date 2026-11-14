@@ -22,6 +22,7 @@ import {
   NFCeOperationalUsageError,
 } from './errors.js';
 import { mapNFCeAuthorizationOutcome } from './authorization-outcome.js';
+import { assembleNfeProc } from '../nfe/assemble-nfe-proc.js';
 import { generateNFCeSPQRCode } from './generate-nfce-sp-qr-code.js';
 import {
   assertNFCeModel65,
@@ -82,10 +83,9 @@ export async function authorizeNFCe(
     assertProductionNFCePrerequisites(input, resolvedUF, documentDetails);
   }
 
+  // QR Code v3 does not need the CSC; when one is informed it is still validated.
   const canComposeQRCode =
-    resolvedUF === 'SP' &&
-    documentDetails.documentId.slice(20, 22) === '65' &&
-    input.csc !== undefined;
+    resolvedUF === 'SP' && documentDetails.documentId.slice(20, 22) === '65';
 
   if (canComposeQRCode && input.csc) {
     assertValidNFCeCSCInput(input.csc);
@@ -105,10 +105,10 @@ export async function authorizeNFCe(
         });
 
   const qrCode =
-    outcome.classification === 'authorized' && canComposeQRCode && input.csc
+    outcome.classification === 'authorized' && canComposeQRCode
       ? generateNFCeSPQRCode({
           accessKey: documentDetails.documentId,
-          csc: input.csc,
+          ...(input.csc === undefined ? {} : { csc: input.csc }),
           environment: normalizedEnvironment,
           uf: resolvedUF,
         })
@@ -168,13 +168,10 @@ function assertProductionNFCePrerequisites(
     );
   }
 
-  if (!input.csc) {
-    throw new NFCeOperationalUsageError(
-      'Production authorizeNFCe requires the issuer CSC to compose its QR Code URL.',
-    );
+  // The QR Code v3 does not need the CSC (NT 2025.001); a CSC that is informed is still validated.
+  if (input.csc) {
+    assertValidNFCeCSCInput(input.csc);
   }
-
-  assertValidNFCeCSCInput(input.csc);
 
   if (!input.unsignedXml?.trim()) {
     throw new NFCeOperationalUsageError(
@@ -230,10 +227,23 @@ async function authorizeNFCeSPProduction(
     payload: input.document,
   });
 
-  return mapAuthorizationTransportOutcome(
+  const outcome = mapAuthorizationTransportOutcome(
     authorizationBatch,
     validatedTransportOutcome,
   );
+  const authorizedXml =
+    outcome.classification === 'authorized'
+      ? assembleNfeProc(
+          signedXml,
+          validatedTransportOutcome.evidence.responseEnvelopeXml ?? '',
+        )
+      : undefined;
+
+  return {
+    ...outcome,
+    signedXml,
+    ...(authorizedXml === undefined ? {} : { authorizedXml }),
+  };
 }
 
 function extractNFCeResponseAccessKey(responseXml: string): string | undefined {

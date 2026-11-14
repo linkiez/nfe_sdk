@@ -92,6 +92,8 @@ import {
   assertRuntimeDependencies,
   authorizeNFCe,
   authorizeNFe,
+  buildNFCeDocument,
+  BuildNFCeDocumentError,
   buildNFeDocument,
   BuildNFeDocumentError,
   cancelNFe,
@@ -106,10 +108,13 @@ import {
   distributeRecipientDFe,
   executeNFeSoapService,
   generateNFCeSPQRCode,
+  getNFCeAcceptedFiscalCodes,
+  isNFCeResendWindowOpen,
   manifestRecipientOperation,
   prepareNFCeSigningPrerequisites,
   prepareNFCeSPOffline,
   reconcileNFCeSPOffline,
+  remountNFCeDocument,
   renderNFCeSPDANFE,
   renderNFeDANFE,
   distributeMDFe,
@@ -181,6 +186,16 @@ validateNFeXsd(signedXml); // exige xmllint
 ```
 
 `buildNFeDocument` deriva `cNF`, `cDV`, a chave de acesso (`built.accessKey`), o `Id` e a numeracao dos itens, emite na ordem do layout 4.00 e recusa, antes de assinar, entrada incompleta ou nao suportada (`BuildNFeDocumentError.issues`). Para autorizar, use `authorizeNFe({ documents: { kind: 'built-document', payload: built }, ... })`.
+
+#### Montar o documento da NFC-e (modelo 65)
+
+```ts
+import { buildNFCeDocument } from '@linkiez/nfe-sdk';
+
+const built = buildNFCeDocument(draft); // mesmos nomes do XSD; mod 65, tpImp 4 ou 5
+```
+
+`buildNFCeDocument` reaproveita o construtor da NF-e (mesmo XSD, chave e serializacao) e antes confere o que so a NFC-e fixa: modelo 65, saida, operacao interna, consumidor final, emissao normal ou contingencia offline (com `dhCont` e `xJust`, so presencial), sem transporte, cobranca nem entrega, e com pagamento. O consumidor (`dest`) e opcional. Problemas voltam todos juntos em `BuildNFCeDocumentError.issues`. Alem da identidade, aplica as regras de validacao do modelo 65 (MOC 7.0 Anexo I), cada uma com o codigo de rejeicao que antecipa: CFOP, CST e CSOSN aceitos, grupos vedados (IPI, II, PIS ST, COFINS ST, exportacao, compra, cana), pagamento coerente com o total e com troco, consumidor obrigatorio acima de R$ 10.000,00, total ate R$ 200.000,00 e a descricao do primeiro item em homologacao. `isNFCeResendWindowOpen` e `remountNFCeDocument` apoiam o reenvio: o mesmo XML assinado so pode ser reenviado em ate 5 minutos da emissao; depois, consulte pela chave e, se a nota nao constar, remonte com nova data de emissao e novo `cNF` (mesmo numero e serie). `getNFCeAcceptedFiscalCodes()` devolve as listas de CFOP, CST e CSOSN aceitos para o cliente restringir as escolhas sem repetir a regra.
 
 ### 1.2. DANFE da NF-e autorizada
 
@@ -303,6 +318,8 @@ console.log(endpoint.endpointUrl, outcome.classification);
 - `prepareNFCeSigningPrerequisites` prepara `chNFe`, `cDV` e `hashCSRT` a partir de insumos estruturados
 - `generateNFCeSPQRCode` gera a URL oficial paulista de `QR Code` no import raiz para `SP`, com semantica distinta de `homologation` e `production`, retornando `qrCodeUrl`, `baseUrl`, `accessKey`, `cscId` e `uf` sem expor o token bruto
 - `renderNFCeSPDANFE` aceita evidencia autorizada correlacionada ou registro offline assinado da NFC-e SP e gera HTML autocontido; o QR permanece inline, o estado pendente nao exibe protocolo e homologacao recebe o aviso sem valor fiscal
+- `renderNFCeSPDANFE({ authorizedXml })` desenha o DANFE a partir do `nfeProc` autorizado guardado pelo integrador (sem a evidencia SOAP): confere chave, SP, modelo 65, ambiente, protocolo (`cStat` 100 ou 150) e o QR v3 da chave, e devolve o SHA-256 do XML desenhado
+- ciclo de vida da NFC-e de SP: a chave de modelo 65 faz `queryNFeDocumentSituation` e `cancelNFe` usarem os servicos `nfce-document-situation` e `nfce-event` (hosts `nfce.fazenda.sp.gov.br` e `homologacao.nfce.fazenda.sp.gov.br`); `queryNFeServiceStatus({ documentModel: 65 })` consulta o `nfce-status-service`; `cancelNFe` com `signedEvent.substituteAccessKey` e `applicationVersion` envia o cancelamento por substituicao (110112, valido contra o XSD oficial); a carta de correcao e recusada para a NFC-e; `submitNFeInutilization` com `inutilization.model = '65'` usa `nfce-inutilization` e e recusada sem requisicao para SP, AC e BA (dispensada desde 2026-11-01). Todos esses campos sao opcionais e nao alteram o comportamento da NF-e
 - `prepareNFCeSPOffline` valida e assina localmente NFC-e SP com `tpEmis=9`, devolve o XML exato, SHA-256, prazo e URL offline QR v2 em estado `pending-reconciliation`; a preparacao nao transmite nem representa autorizacao
 - o integrador calcula o prazo ate o fim do primeiro dia util seguinte com o calendario aplicavel, persiste com seguranca o XML/DANFE e controla concorrencia e reenvios; o SDK valida o instante informado e nao oferece persistencia nem retry automatico
 - `renderNFCeSPDANFE({ offlineRecord })` imprime `EMITIDA EM CONTINGÊNCIA Pendente de autorização`, usa o QR v2 do registro e omite protocolo de autorizacao

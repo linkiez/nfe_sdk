@@ -12,8 +12,10 @@ export interface NFCeSPQRCodeResultAssertion {
   readonly baseUrl: string;
   /** Access key echoed by the helper. */
   readonly accessKey: string;
-  /** Auditable CSC identifier echoed by the helper. */
-  readonly cscId: string;
+  /** Auditable CSC identifier echoed by the helper when a CSC was informed. */
+  readonly cscId?: string;
+  /** QR Code version used by the helper. */
+  readonly qrCodeVersion: '3';
   /** Supported UF echoed by the helper. */
   readonly uf: 'SP';
 }

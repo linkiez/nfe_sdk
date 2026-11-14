@@ -6,9 +6,9 @@ Gera o resultado local do `QR Code` oficial da `NFC-e` paulista para `homologati
 
 ## Responsabilidades
 
-- Validar `accessKey`, `CSC`, ambiente e coerencia entre `uf` e a chave.
+- Validar `accessKey`, ambiente e coerencia entre `uf` e a chave; validar o `CSC` somente quando informado (o `QR Code` versao 3 nao o exige).
 - Selecionar a `baseUrl` paulista correta para `homologation` ou `production`.
-- Compor a URL final do `QR Code` na forma online da versao `3`.
+- Compor a URL final do `QR Code` na forma online da versao `3` (chave, versao e `tpAmb`) e informar a versao usada em `qrCodeVersion`.
 - Devolver `unsupported-state` explicita quando a requisicao nao pertencer a `SP`.
 
 ## Entradas e saidas
@@ -33,19 +33,19 @@ flowchart TD
 ## Tratamento de erros e casos-limite
 
 - Falha com `NFCeOperationalUsageError` quando `accessKey` nao tem 44 digitos, nao corresponde ao modelo `65`, ou quando `uf` diverge da chave.
-- Falha com `NFCeOperationalUsageError` quando `cscId` ou `cscToken` chegam vazios.
+- Falha com `NFCeOperationalUsageError` quando um `CSC` informado traz `cscId` ou `cscToken` vazios; a ausencia de `CSC` e valida.
 - Retorna `unsupported-state` para `PR` e qualquer `UF` fora de `SP`.
-- Nao devolve o token bruto de `CSC` em nenhuma resposta.
+- Nao devolve o token bruto de `CSC` em nenhuma resposta nem o coloca na URL; `cscId` so volta quando um `CSC` foi informado.
 
 ## Exemplos
 
 ```ts
 const result = generateNFCeSPQRCode({
   accessKey: '35260512345678000123650010000001231123456781',
-  csc: { cscId: '000001', cscToken: 'TOKEN-H-EXAMPLE-123' },
   environment: 'homologation',
   uf: 'SP',
 });
+// result.qrCodeVersion === '3'; passar `csc: { cscId, cscToken }` continua valido.
 ```
 
 ## Dependencias e integracoes

@@ -9,7 +9,7 @@ describe('renderNFCeSPDANFE', () => {
 
     expect(result.classification).toBe('pending-authorization');
     expect(result.html).toContain(
-      'EMITIDA EM CONTINGÊNCIA Pendente de autorização',
+      'EMITIDA EM CONTINGÊNCIA – Pendente de autorização',
     );
     expect(result.html).not.toContain('Protocolo de autorização');
     expect(result.html).toContain(record.qrCodeUrl);
@@ -130,5 +130,61 @@ describe('renderNFCeSPDANFE', () => {
 
     expect(result.html).toContain('&lt;script&gt;alert(1)&lt;/script&gt;');
     expect(result.html).not.toContain('<script>alert(1)</script>');
+  });
+
+  describe('offline contingency copies (MOC 7.0 Annex IV)', () => {
+    it('prints the official contingency message in the consumer copy without the establishment label', async () => {
+      const result = await renderNFCeSPDANFE({
+        offlineRecord: buildNFCeSPOfflineRecord(),
+      });
+
+      expect(result.html).toContain(
+        'EMITIDA EM CONTINGÊNCIA – Pendente de autorização',
+      );
+      expect(result.html).not.toContain('Via do Estabelecimento');
+    });
+
+    it('labels the second copy "Via do Estabelecimento" and keeps the contingency message', async () => {
+      const result = await renderNFCeSPDANFE({
+        copy: 'establishment',
+        offlineRecord: buildNFCeSPOfflineRecord(),
+      });
+
+      expect(result.html).toContain('Via do Estabelecimento');
+      expect(result.html).toContain(
+        'EMITIDA EM CONTINGÊNCIA – Pendente de autorização',
+      );
+    });
+
+    it('keeps the item details (Detalhe da Venda) in both copies', async () => {
+      const record = buildNFCeSPOfflineRecord();
+      const consumer = await renderNFCeSPDANFE({ offlineRecord: record });
+      const establishment = await renderNFCeSPDANFE({
+        copy: 'establishment',
+        offlineRecord: record,
+      });
+
+      expect(establishment.html).toContain('Itens da compra');
+      expect(consumer.html).toContain('Itens da compra');
+    });
+
+    it('refuses the establishment copy for an authorized online document', async () => {
+      await expect(
+        renderNFCeSPDANFE({
+          authorization: buildSPDanfeAuthorizationOutcome(),
+          copy: 'establishment',
+        }),
+      ).rejects.toThrow(/offline contingency/u);
+    });
+
+    it('supports the 58 mm thermal width used by cash registers', async () => {
+      const result = await renderNFCeSPDANFE({
+        copy: 'establishment',
+        offlineRecord: buildNFCeSPOfflineRecord(),
+        paperWidthMm: 58,
+      });
+
+      expect(result.html).toContain('58mm');
+    });
   });
 });
