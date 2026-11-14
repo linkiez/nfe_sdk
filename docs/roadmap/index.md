@@ -25,6 +25,7 @@
 - [rtm-cobertura-oficial](./rtm-cobertura-oficial.md): cobertura oficial por tema consolidado `RTM-*`.
 - [criterios-promocao](./criterios-promocao.md): regras para subir algo de documentacao/tooling para runtime.
 - [nfce-operacional-promovivel](./nfce-operacional-promovivel.md): criterio especifico para promocao operacional de NFC-e.
+- [nfce-lifecycle-matrix](./nfce-lifecycle-matrix.md): matriz do ciclo de vida da NFC-e (modelo 65) por operacao e UF, enderecos de SP, calendario da contingencia e conteudo do DANFE.
 
 ### Fontes tematicas e evidencia operacional
 

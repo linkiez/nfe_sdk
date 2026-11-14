@@ -1,0 +1,54 @@
+# Matriz do Ciclo de Vida da NFC-e (modelo 65)
+
+## Objetivo
+
+Registrar, uma linha por operação, evento ou estado da NFC-e, a regra oficial, a UF, o ambiente, a cobertura no SDK e a situação. Nenhum item `bloqueado`, `parcial` ou `fora de escopo` pode ser tratado como suportado. Esta matriz é a parte NFC-e de [lifecycle-matrix](./lifecycle-matrix.md) e nasceu da spec JCMAP-1678 (`specs/042-nfce-ciclo-completo`).
+
+- **Fontes** (conferidas em 2026-11-13 e 2026-11-14): Manual de Padrões do DANFE NFC-e e QR Code (versão de 24/03/2025, cópia em `docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/`), NT 2025.001 v1.03, MOC 7.0 Anexos I e IV, Ajustes SINIEF 10/2023, 19/16, 23/26, 38/26 e 40/26, Portaria SRE 40/2024 de SP, Resposta à Consulta SP 34105/2026 e o portal da SEFAZ/SP (`/servicos/nfce/Paginas/WebServices.aspx`, 2026-11-14).
+- **Situação**: `coberto` (contrato, evidência de integração no SDK e uso pelo sistema), `parcial`, `bloqueado`, `fora de escopo`.
+- **Produção real**: nenhuma linha foi exercitada contra a SEFAZ real; a rodada de homologação do modelo 65 (T033) e o aceite de produção (T079) seguem pendentes, por isso as linhas de transporte estão `parcial`.
+
+## Matriz
+
+| Operação/evento/estado | Regra oficial e fonte | UF | Ambiente | Cobertura no SDK | Situação |
+| --- | --- | --- | --- | --- | --- |
+| Montagem do documento (layout 4.00, sem transporte, entrega nem cobrança) | MOC 7.0 Anexo I; `buildNFCeDocument` valida o Anexo I (CFOP, CST/CSOSN, pagamento, limites, consumidor a partir de R$ 10.000) | SP, PR | ambos | `buildNFCeDocument`, `getNFCeAcceptedFiscalCodes` | coberto |
+| Autorização síncrona (`indSinc` 1) | MOC 7.0 §4.3.1; resposta 100 ou 150 (autorizada fora do prazo) | SP (homologação e produção); PR (homologação) | ambos | `authorizeNFCe` (sem CSC; XML assinado e `nfeProc` na resposta) | parcial |
+| Denegação | Não existe para a NFC-e (Ajuste SINIEF 10/2023, NT 2023.002); emitente irregular recebe a rejeição 781 | todas | ambos | `authorizeNFCe` nunca devolve `denied`: um 110/301/302 vira `protocol-error` e não é estado final | coberto |
+| QR Code | Versão 3 aceita por todas as UFs, opcional para CNPJ, assinatura só em contingência (NT 2025.001 v1.03; Manual de Padrões 6.0); a versão 2 com CSC segue válida; exceção do PR só para produtor rural pessoa física | SP, PR | ambos | `generateNFCeSPQRCode` (v3, sem CSC), `infNFeSupl` no XML | coberto (SP) |
+| Reenvio e remontagem | Reenviar a mesma NFC-e assinada só em até 5 minutos da emissão (rejeição 704 depois); depois consulta pela chave e, se desconhecida, remonta com novo `dhEmi` e `cNF` e o mesmo número | todas | ambos | `isNFCeResendWindowOpen`, `remountNFCeDocument` | coberto |
+| Consulta de situação por chave | MOC 7.0 §5.4; limite de 10 consultas por hora por chave (rejeição 656) | SP; homologação nacional | ambos | `queryNFeDocumentSituation` com chave de modelo 65 (`nfce-document-situation`) | parcial |
+| Status do serviço | MOC 7.0 §5.5 | SP; homologação nacional | ambos | `queryNFeServiceStatus({ documentModel: 65 })` (`nfce-status-service`) | parcial |
+| Cancelamento (110111) | Até 30 minutos da autorização, ou o prazo menor da UF; justificativa de 15 a 255 caracteres; em SP fora do prazo o pedido de regularização é feito pela denúncia espontânea no SIPET (fora do sistema) | SP; homologação nacional | ambos | `cancelNFe` com chave de modelo 65 (`nfce-event`); o prazo é decidido pela SEFAZ | parcial |
+| Cancelamento por substituição (110112) | Regra nacional: referencia a NFC-e emitida em contingência; prazo de 168 horas ou o menor da UF (XSD `Evento_CancSubst_v1.01`) | SP; homologação nacional | ambos | `cancelNFe` com `signedEvent.substituteAccessKey` e `applicationVersion`, válido contra o XSD; as condições de valor, itens e consumidor ficam no servidor | parcial |
+| Carta de correção | Não existe para a NFC-e | todas | ambos | `submitNFeCorrectionLetter` recusa chave de modelo 65 antes de assinar | fora de escopo |
+| Inutilização | Dispensada em SP, AC e BA desde 01/11/2026 (Ajuste SINIEF 38/26; serviço desativado em 11/11/2026, rejeição 998); mantida nas demais UFs (por exemplo PR) | SP, AC, BA: dispensada; PR: mantida | ambos | `submitNFeInutilization` com `inutilization.model = '65'` (`nfce-inutilization`); recusa SP, AC e BA sem requisição | parcial |
+| Contingência offline | Portaria SRE 40/2024 (SP) e Ajuste SINIEF 19/16: transmitir até o fim do primeiro dia útil subsequente; DANFE com a mensagem de contingência, sem protocolo, mais a "Via do Estabelecimento" ou a guarda eletrônica do XML | SP | ambos | `prepareNFCeSPOffline`, `reconcileNFCeSPOffline`, `renderNFCeSPDANFE({ offlineRecord })` | parcial |
+| DANFE NFC-e | Manual de Padrões, seção 3.1 (divisões I a IX; ver abaixo) | SP | ambos | `renderNFCeSPDANFE` com evidência SOAP, com `authorizedXml` ou com registro offline | coberto (SP) |
+| EPEC da NFC-e | Em SP só é ativado pela própria SEFAZ quando o ambiente normal está fora do ar; o emissor não o escolhe | SP | produção | Fora do SDK | fora de escopo |
+
+## Endereços dos serviços de SP (SEFAZ/SP, 2026-11-14)
+
+Produção: `https://nfce.fazenda.sp.gov.br/ws/` com `NFeAutorizacao4`, `NFeRetAutorizacao4`, `NFeInutilizacao4`, `NFeConsultaProtocolo4`, `NFeRecepcaoEvento4` e `NFeStatusServico4` (`.asmx`). Homologação: o mesmo caminho em `https://homologacao.nfce.fazenda.sp.gov.br/ws/`. O catálogo do SDK (`nfce-lifecycle-catalog-entries.ts`) usa esses endereços para status, consulta, evento e inutilização. **Pendência para a rodada de homologação (T033)**: a autorização da NFC-e em homologação segue, nas specs 015 e 027, o ambiente nacional (SVC-AN), enquanto os demais serviços usam o host de homologação do próprio SP; é preciso confirmar com o certificado de teste que a nota autorizada em um é consultada no outro, e unificar se necessário.
+
+## Calendário de dias úteis da contingência (T019)
+
+O prazo é o fim do primeiro dia útil subsequente à emissão. O SDK não conhece feriados: `prepareNFCeSPOffline` recebe a evidência `{ calendarId, timeZone, evaluatedDates[] }` com cada data até o primeiro dia útil e confere que o prazo informado termina nesse dia (`offline-business-calendar.ts`). Cabe ao servidor produzir a evidência. Regra proposta para as empresas de SP, **sujeita à confirmação do responsável fiscal** (nenhuma fonte oficial lida define "dia útil" além do Ajuste SINIEF 19/16): sábados e domingos; feriados nacionais fixos (01/01, 21/04, 01/05, 07/09, 12/10, 02/11, 15/11, 20/11 e 25/12) e móveis (Sexta-feira Santa e Corpus Christi); feriado estadual de 9 de julho; e os feriados do município sede do estabelecimento, configuráveis por empresa. O calendário usado fica identificado em `calendarId` e gravado com a NFC-e.
+
+## Conteúdo obrigatório do DANFE NFC-e (T020)
+
+Fonte: Manual de Padrões, seção 3.1, `docs/_sources/.../20250324 - Manual_de_Especificações_Técnicas_do_DANFE_NFC-e_QR_Code.md`.
+
+| Divisão | Conteúdo obrigatório |
+| --- | --- |
+| I Cabeçalho | CNPJ (máscara `99.999.999/9999-99`) ou CPF do emitente, razão social, endereço completo sem o país, texto "Documento Auxiliar da Nota Fiscal de Consumidor Eletrônica" |
+| II Itens | Código, descrição, quantidade, unidade, valor unitário e valor total de cada item (a UF pode autorizar imprimir sem o detalhamento, com a concordância do consumidor); valores com vírgula decimal e ponto de milhar |
+| III Totais | Quantidade total de itens, valor total; acréscimos e descontos e valor a pagar só quando existirem; forma e valor de cada pagamento; troco |
+| IV Consulta por chave | Texto "Consulte pela Chave de Acesso em", endereço de consulta da UF e a chave em 11 blocos de 4 dígitos |
+| V QR Code | Mínimo de 25 mm por 25 mm (22 mm de conteúdo e 3 mm de margem), à esquerda ou centralizado |
+| VI Consumidor | "CONSUMIDOR CNPJ:", "CONSUMIDOR CPF:" ou "CONSUMIDOR Id. Estrangeiro:" quando informado; "CONSUMIDOR NÃO IDENTIFICADO" quando não; nome e endereço de entrega obrigatórios na entrega em domicílio |
+| VII Identificação | Número, série e data e hora de emissão no horário local; "Protocolo de autorização:" com o número e a data e hora da autorização (suprimido na contingência) |
+| VIII Mensagem fiscal | `infAdFisco`; em contingência, "EMITIDA EM CONTINGÊNCIA" e "Pendente de autorização" em duas linhas, abaixo do cabeçalho e abaixo da identificação; na segunda via, "Via do Estabelecimento" ao lado da data e hora; em homologação, "EMITIDA EM AMBIENTE DE HOMOLOGAÇÃO – SEM VALOR FISCAL" centralizado e em caixa alta |
+| IX Contribuinte | `infCpl`; tributos da Lei 12.741/2012 a critério do emissor |
+
+**Pendência para o responsável fiscal**: confirmar se a legislação de SP fixa limites ou condições ao Ajuste SINIEF 23/26, § 3º (consumidor com CNPJ) e se a UF dispensa a segunda via da contingência.
