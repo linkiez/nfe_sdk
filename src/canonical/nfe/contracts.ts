@@ -429,6 +429,8 @@ export interface NFeServiceStatusRequest {
   readonly issuerUF?: string;
   /** Optional provider selector for an explicit SVC-AN activation query. */
   readonly authorizer?: NFeSEFAZProvider;
+  /** Document model whose service is queried: 55 NF-e (default) or 65 NFC-e. */
+  readonly documentModel?: 55 | 65;
   /** Optional network executor override. */
   readonly requestExecutor?: RequestExecutor;
   /** Optional operation timeout in milliseconds. */
@@ -596,6 +598,13 @@ export interface NFeSignedEventDetails {
   readonly batchId?: string;
   /** Range data for an inutilization (`submit-nfe-inutilization`). */
   readonly inutilization?: NFeInutilizationRange;
+  /**
+   * NFC-e only: access key of the NFC-e that replaces the cancelled one. When present, the
+   * cancellation is sent as the cancellation by substitution (event 110112).
+   */
+  readonly substituteAccessKey?: string;
+  /** Caller application version (`verAplic`, 1–20 characters), required by the 110112 event. */
+  readonly applicationVersion?: string;
 }
 
 /**

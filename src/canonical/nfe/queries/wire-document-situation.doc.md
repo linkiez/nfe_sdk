@@ -47,3 +47,7 @@ const { authorizedXml, authorizedXmlIssue } = await queryNFeDocumentSituation({
 ## Dependências e integrações
 
 `nfe-query-payloads`, `resolveIssuerAuthorizer`, `executeNFeSoapService`, `operational-state`.
+
+## NFC-e (modelo 65)
+
+A chave de NFC-e (dígitos 21 e 22 iguais a `65`) consulta o serviço `nfce-document-situation`, com os hosts NFC-e de SP; as demais chaves seguem o `nfe-document-situation`. `queryNFeServiceStatus` aceita `documentModel: 65` para consultar o `nfce-status-service`.

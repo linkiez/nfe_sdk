@@ -1,3 +1,4 @@
+import nfceRules from '../../nfce/nfce-lifecycle-rules.js';
 import { signEventXml } from '../../signing/sign-event-xml.js';
 import { signInutilizationXml } from '../../signing/sign-inutilization-xml.js';
 import type { TransportOutcome } from '../../transport/contracts.js';
@@ -36,6 +37,34 @@ const EVENT_KINDS: Readonly<Partial<Record<NFeMaintenanceOperation, EventKindDef
     service: 'nfe-correction-letter',
   },
 };
+
+const SUBSTITUTION_KIND: EventKindDefinition = {
+  code: '110112',
+  description: 'Cancelamento por substituicao',
+  service: 'nfce-event',
+};
+
+/**
+ * Event definition of an operation for an access key: an NFC-e is served by the NFC-e event
+ * service, and a cancellation carrying `substituteAccessKey` is the cancellation by substitution.
+ */
+function resolveEventDefinition(
+  operation: NFeMaintenanceOperation,
+  accessKey: string | undefined,
+  event: NFeSignedEventDetails | undefined,
+): EventKindDefinition | undefined {
+  const base = EVENT_KINDS[operation];
+
+  if (base === undefined || !nfceRules.isNfceAccessKey(accessKey)) {
+    return event?.substituteAccessKey === undefined ? base : { ...SUBSTITUTION_KIND };
+  }
+
+  return event?.substituteAccessKey === undefined
+    ? operation === 'cancel-nfe'
+      ? { ...base, service: 'nfce-event' }
+      : base
+    : SUBSTITUTION_KIND;
+}
 
 const escapeXml = (value: string): string =>
   value
@@ -83,6 +112,9 @@ function validateEvent(
   if (event.batchId !== undefined && !/^\d{1,15}$/u.test(event.batchId)) {
     return 'batchId (idLote) must contain 1 to 15 digits.';
   }
+  if (operation === 'submit-nfe-correction-letter' && nfceRules.isNfceAccessKey(accessKey)) {
+    return 'The correction letter does not exist for the NFC-e (model 65).';
+  }
   if (operation === 'cancel-nfe') {
     if (sequence !== 1) return 'A cancellation always has sequence 1.';
     if (event.protocol === undefined || !/^\d{15}$/u.test(event.protocol)) {
@@ -91,7 +123,9 @@ function validateEvent(
     if (!textBetween(event.justification, 15, 255)) {
       return 'The cancellation justification must have 15 to 255 characters without padding.';
     }
-    return undefined;
+    return event.substituteAccessKey === undefined
+      ? undefined
+      : nfceRules.validateSubstitution(accessKey, event);
   }
   if (!textBetween(event.correctionText, 15, 1000)) {
     return 'The correction letter text must have 15 to 1000 characters without padding.';
@@ -99,8 +133,20 @@ function validateEvent(
   return undefined;
 }
 
-function buildDetail(operation: NFeMaintenanceOperation, event: NFeSignedEventDetails): string {
-  const definition = EVENT_KINDS[operation] as EventKindDefinition;
+function buildDetail(
+  operation: NFeMaintenanceOperation,
+  event: NFeSignedEventDetails,
+  accessKey: string,
+): string {
+  const definition = resolveEventDefinition(operation, accessKey, event) as EventKindDefinition;
+
+  if (event.substituteAccessKey !== undefined) {
+    return `<detEvento versao="1.00"><descEvento>${definition.description}</descEvento>` +
+      `<cOrgaoAutor>${accessKey.slice(0, 2)}</cOrgaoAutor><tpAutor>1</tpAutor>` +
+      `<verAplic>${escapeXml(event.applicationVersion ?? '')}</verAplic><nProt>${event.protocol}</nProt>` +
+      `<xJust>${escapeXml(event.justification ?? '')}</xJust>` +
+      `<chNFeRef>${event.substituteAccessKey}</chNFeRef></detEvento>`;
+  }
 
   return operation === 'cancel-nfe'
     ? `<detEvento versao="1.00"><descEvento>${definition.description}</descEvento>` +
@@ -126,7 +172,7 @@ export function buildNFeEventEnvelope(
   environment: string,
   event: NFeSignedEventDetails,
 ): { readonly id: string; readonly xml: string } {
-  const definition = EVENT_KINDS[operation] as EventKindDefinition;
+  const definition = resolveEventDefinition(operation, accessKey, event) as EventKindDefinition;
   const sequence = event.sequence ?? 1;
   const id = `ID${definition.code}${accessKey}${String(sequence).padStart(2, '0')}`;
   const taxIdTag = event.issuerTaxId.length === 14 ? 'CNPJ' : 'CPF';
@@ -136,7 +182,7 @@ export function buildNFeEventEnvelope(
     `<tpAmb>${environment === 'production' ? '1' : '2'}</tpAmb><${taxIdTag}>${event.issuerTaxId}</${taxIdTag}>` +
     `<chNFe>${accessKey}</chNFe><dhEvento>${event.eventDateTime}</dhEvento>` +
     `<tpEvento>${definition.code}</tpEvento><nSeqEvento>${sequence}</nSeqEvento><verEvento>1.00</verEvento>` +
-    `${buildDetail(operation, event)}</infEvento></evento></envEvento>`;
+    `${buildDetail(operation, event, accessKey)}</infEvento></evento></envEvento>`;
 
   return { id, xml };
 }
@@ -224,7 +270,7 @@ export async function executeSignedNFeEvent(
   if (operation === 'submit-nfe-inutilization') {
     return executeSignedInutilization(input, environment);
   }
-  const definition = EVENT_KINDS[operation];
+  const definition = resolveEventDefinition(operation, input.accessKey, event);
 
   if (definition === undefined) {
     return refusal(operation, 'unsupported-scope', environment, `Signed events do not support ${operation}.`);
@@ -346,7 +392,18 @@ async function executeSignedInutilization(
   if (problem !== undefined) {
     return refusal(operation, 'usage-error', environment, problem);
   }
-  const uf = (event.inutilization as NonNullable<NFeSignedEventDetails['inutilization']>).cUF;
+  const range = event.inutilization as NonNullable<NFeSignedEventDetails['inutilization']>;
+  const uf = range.cUF;
+  const nfce = range.model === '65';
+
+  if (nfce && nfceRules.isInutilizationDispensed(uf)) {
+    return refusal(
+      operation,
+      'unsupported-scope',
+      environment,
+      `The NFC-e inutilization is dispensed for UF ${uf} (SP, AC and BA) since 2026-11-01; no request is sent.`,
+    );
+  }
 
   if (environment === 'production') {
     if (uf !== SP_UF) {
@@ -356,16 +413,17 @@ async function executeSignedInutilization(
       return refusal(operation, 'usage-error', environment, 'Production inutilization requires an injected requestExecutor for mTLS.');
     }
   }
+  const inutilizationService: SupportedNFeSoapService = nfce ? 'nfce-inutilization' : INUTILIZATION_SERVICE;
   const { xml } = buildNFeInutilizationEnvelope(environment, event);
   const signedXml = stripDeclaration(
     await signInutilizationXml({ signingContext: event.signingContext, unsignedXml: xml }),
   );
   const transportOutcome = await executeNFeSoapService({
-    authorizer: resolveIssuerAuthorizer(uf, environment, INUTILIZATION_SERVICE),
+    authorizer: resolveIssuerAuthorizer(uf, environment, inutilizationService),
     environment,
     payloadXml: signedXml,
     requestExecutor: input.requestExecutor,
-    service: INUTILIZATION_SERVICE,
+    service: inutilizationService,
     timeoutMs: input.timeoutMs,
     wireFormat: true,
   });

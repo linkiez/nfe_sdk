@@ -72,3 +72,7 @@ Além das entradas SVC-AN herdadas, o catálogo contém as rotas publicadas pela
 Resolução sem `authorizer`: em produção, mais de um provedor para o mesmo serviço falha fechado (informe o provedor, por exemplo `'SP'` para emitente da UF 35 ou `'SVCAN'` para contingência). Em homologação mantém-se o padrão histórico SVC-AN para quem nunca informou provedor. Serviços exclusivos do AN resolvem sem `authorizer`.
 
 SVAN e SVC-AN foram unificadas pelos avisos oficiais de 25/04/2024 (homologação) e 16/09/2024 (produção, vigente a partir de 11/02/2025) e compartilham os endereços: `https://www.sefazvirtual.fazenda.gov.br/…` em produção e `https://hom.sefazvirtual.fazenda.gov.br/…` em homologação, com o serviço de eventos em `NFeRecepcaoEvento4/NFeRecepcaoEvento4.asmx`. Os hosts `*.svc.fazenda.gov.br` foram descontinuados. As entradas de homologação carregam a versão de catálogo `2026-11-11-svan-svc-an-unified` e citam [o registro dos avisos](../../../docs/_sources/markdown/official/www.nfe.fazenda.gov.br/portal/informe-unificacao-svan-svc-an-2024-2025.md). `nfe-contributor-registration` não faz parte da unificação e mantém seu endereço.
+
+## NFC-e
+
+As entradas do ciclo de vida do modelo 65 ficam em [nfce-lifecycle-catalog-entries](./nfce-lifecycle-catalog-entries.doc.md) e são somadas ao catálogo.

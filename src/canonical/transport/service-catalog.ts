@@ -15,6 +15,7 @@ import {
   getOperationalTransportCatalogSources,
   withSvanUnificationNotice,
 } from './catalog-provenance.js';
+import { NFCE_LIFECYCLE_CATALOG_ENTRIES } from './nfce-lifecycle-catalog-entries.js';
 
 const TRANSPORT_CATALOG_VERSION = '2026-05-18-initial-draft' as const;
 const SP_NFE_PRODUCTION_CATALOG_VERSION = '2026-10-10-sp-production' as const;
@@ -23,6 +24,7 @@ const SEFAZ_OFFICIAL_CATALOG_VERSION = '2026-11-10-sefaz-official' as const;
 const SP_NFCE_PRODUCTION_CATALOG_VERSION = '2026-10-12-nfce-sp-production' as const;
 
 const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
+  ...NFCE_LIFECYCLE_CATALOG_ENTRIES,
   {
     catalogVersion: SVAN_UNIFIED_CATALOG_VERSION,
     endpointUrl:

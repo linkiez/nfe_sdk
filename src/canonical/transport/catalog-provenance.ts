@@ -201,6 +201,9 @@ export function getNFCePRPilotTransportCatalogProvenance(): {
   };
 }
 
+const SEFAZ_SP_NFCE_OFFICIAL_URL_SOURCE =
+  'https://portal.fazenda.sp.gov.br/servicos/nfce/Paginas/WebServices.aspx (SEFAZ/SP, consultado em 2026-11-14)' as const;
+
 const SEFAZ_SP_OFFICIAL_URL_SOURCE =
   'https://portal.fazenda.sp.gov.br/servicos/nfe/Paginas/URL-WEBSERVICES.aspx (SEFAZ/SP, consultado em 2026-11-10)' as const;
 
@@ -233,5 +236,22 @@ export function getNFeNationalEnvironmentTransportCatalogProvenance(): {
     notes:
       'Ambiente Nacional (AN) route for recipient distribution (NFeDistribuicaoDFe) and manifestation (RecepcaoEvento).',
     sources: [SEFAZ_SP_OFFICIAL_URL_SOURCE],
+  };
+}
+
+/**
+ * Returns provenance for the SEFAZ/SP NFC-e 4.00 lifecycle routes (status, situation, events and
+ * inutilization) published by the state portal.
+ *
+ * @returns Stable provenance metadata for the NFC-e/SP homologation and production entries.
+ */
+export function getNFCeSPOfficialTransportCatalogProvenance(): {
+  readonly notes: string;
+  readonly sources: readonly string[];
+} {
+  return {
+    notes:
+      'SEFAZ/SP NFC-e 4.00 web service URL published by the state portal for the issuer UF 35.',
+    sources: [SEFAZ_SP_NFCE_OFFICIAL_URL_SOURCE],
   };
 }

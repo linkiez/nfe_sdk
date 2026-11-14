@@ -67,3 +67,7 @@ const service = getSupportedTransportServiceDefinition('nfe-status-service');
 - `service-catalog.ts`
 - `soap-envelope.ts`
 - `transport-outcome-classification.ts`
+
+## Serviços da NFC-e
+
+`nfce-status-service`, `nfce-document-situation`, `nfce-event` e `nfce-inutilization` completam o ciclo de vida do modelo 65 (família `nfce`); usam os mesmos elementos de requisição e códigos de sucesso dos serviços equivalentes da NF-e (107, 100, 128 e 102).
