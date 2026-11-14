@@ -47,3 +47,7 @@ import { getOperationalTransportCatalogPlaceholders } from './catalog-provenance
 - `specs/007-nfe-operational-mvp/research.md`
 - `specs/015-nfce-uf-promotion/research.md`
 - `specs/025-nfe-sp-producao/research.md`
+
+## NFC-e de SP
+
+`getNFCeSPOfficialTransportCatalogProvenance` registra a fonte dos endereços de ciclo de vida da NFC-e: portal da SEFAZ/SP (`/servicos/nfce/Paginas/WebServices.aspx`), consultado em 2026-11-14.

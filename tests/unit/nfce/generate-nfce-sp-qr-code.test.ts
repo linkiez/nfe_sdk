@@ -34,6 +34,7 @@ describe('generateNFCeSPQRCode', () => {
         'https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx?p=' +
         input.accessKey +
         '|3|2',
+      qrCodeVersion: '3',
       uf: 'SP',
     });
   });
@@ -55,6 +56,7 @@ describe('generateNFCeSPQRCode', () => {
         'https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx?p=' +
         input.accessKey +
         '|3|1',
+      qrCodeVersion: '3',
       uf: 'SP',
     });
   });

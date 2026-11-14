@@ -1,4 +1,3 @@
-import type { CanonicalEnvironment } from '../shared/contracts.js';
 import { normalizeEnvironment } from '../shared/environment-rule.js';
 
 import type {
@@ -9,29 +8,10 @@ import type {
 import { createUnsupportedStateNFCeSPQRCodeBoundary } from './coverage-boundary.js';
 import { NFCeOperationalUsageError } from './errors.js';
 import { assertNFCeModel65, assertValidNFCeCSCInput } from './prepare-signing-prerequisites.js';
+import { resolveNFCeQRCodeEndpoint } from './resolve-nfce-qr-code-endpoint.js';
 import { resolveNFCeUF } from './resolve-nfce-uf.js';
 
-const SP_QR_CODE_BASE_URL_BY_ENVIRONMENT: Readonly<Record<CanonicalEnvironment, string>> = {
-  homologation:
-    'https://www.homologacao.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx',
-  production:
-    'https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx',
-};
-
-const QR_CODE_VERSION = '3' as const;
 const SUPPORTED_QR_CODE_UF = 'SP' as const;
-
-/**
- * Maps the canonical environment to the NFC-e QR Code `tpAmb` value.
- *
- * @param environment - Normalized canonical environment.
- * @returns QR Code environment marker expected by the paulista consultation URL.
- */
-function mapEnvironmentToQRCodeTpAmb(
-  environment: CanonicalEnvironment,
-): '1' | '2' {
-  return environment === 'production' ? '1' : '2';
-}
 
 /**
  * Validates that the provided access key is shaped like a published NFC-e key.
@@ -52,7 +32,10 @@ function assertValidNFCeAccessKey(accessKey: string): void {
 /**
  * Generates the paulista NFC-e QR Code consultation URL for the supported local slice.
  *
- * @param input - Explicit SP request with access key, environment, and CSC input.
+ * The v3 online URL carries only the access key, the version and the environment; the CSC is
+ * optional and, when informed, only its identifier is echoed.
+ *
+ * @param input - Explicit SP request with access key and environment; the CSC is optional.
  * @returns Successful QR Code result or an explicit unsupported-state boundary.
  * @throws {NFCeOperationalUsageError} When the access key, environment, or CSC input is invalid.
  */
@@ -62,7 +45,9 @@ export function generateNFCeSPQRCode(
   const normalizedEnvironment = normalizeEnvironment(input.environment);
 
   assertValidNFCeAccessKey(input.accessKey);
-  assertValidNFCeCSCInput(input.csc);
+  if (input.csc !== undefined) {
+    assertValidNFCeCSCInput(input.csc);
+  }
 
   const resolvedUF = resolveNFCeUF(input.accessKey);
 
@@ -72,21 +57,21 @@ export function generateNFCeSPQRCode(
     );
   }
 
-  if (resolvedUF !== SUPPORTED_QR_CODE_UF) {
+  const endpoint = resolveNFCeQRCodeEndpoint(resolvedUF, normalizedEnvironment);
+
+  if (endpoint === undefined) {
     return createUnsupportedStateNFCeSPQRCodeBoundary(resolvedUF);
   }
 
-  const baseUrl = SP_QR_CODE_BASE_URL_BY_ENVIRONMENT[normalizedEnvironment];
-  const qrCodeUrl =
-    `${baseUrl}?p=${input.accessKey}|${QR_CODE_VERSION}|` +
-    mapEnvironmentToQRCodeTpAmb(normalizedEnvironment);
+  const qrCodeUrl = endpoint.composeOnlineUrl(input.accessKey);
 
   const result: NFCeSPQRCodeResult = {
     accessKey: input.accessKey,
-    baseUrl,
-    cscId: input.csc.cscId,
+    baseUrl: endpoint.baseUrl,
+    ...(input.csc === undefined ? {} : { cscId: input.csc.cscId }),
     environment: normalizedEnvironment,
     qrCodeUrl,
+    qrCodeVersion: endpoint.qrCodeVersion,
     uf: SUPPORTED_QR_CODE_UF,
   };
 

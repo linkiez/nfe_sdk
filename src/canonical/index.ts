@@ -14,6 +14,9 @@ export { createSigningContext } from './facade/create-signing-context.js';
 export { distributeRecipientDFe } from './facade/distribute-recipient-dfe.js';
 export { executeNFeSoapService } from './facade/execute-nfe-soap-service.js';
 export { buildNFeDocument, BuildNFeDocumentError } from './nfe/builder/build-nfe-document.js';
+export { buildNFCeDocument, BuildNFCeDocumentError } from './nfce/build-nfce-document.js';
+export { getNFCeAcceptedFiscalCodes } from './nfce/nfce-model-rules.js';
+export { isNFCeResendWindowOpen, remountNFCeDocument } from './nfce/remount-nfce-document.js';
 export type {
   BuiltNFeDocument,
   NFeDetInput,
@@ -81,6 +84,7 @@ export type {
   NFCeSPOfflineBusinessCalendarEvidence,
   NFCeSPOfflineReconciliationClassification,
   NFCeSPOfflineReconciliationResult,
+  NFCeSPAuthorizedXmlDanfeResult,
   NFCeSPOfflineDanfeResult,
   PrepareNFCeSPOfflineInput,
   ReconcileNFCeSPOfflineInput,
@@ -95,6 +99,7 @@ export type {
   NFCeSigningPrerequisitesReceivedInputs,
   NFCeSigningPrerequisitesResult,
   NFCeValidationFailure,
+  RenderNFCeSPDANFEAuthorizedXmlInput,
   RenderNFCeSPDANFEInput,
   RenderNFCeSPDANFEOfflineInput,
   RenderNFCeSPDANFERequest,

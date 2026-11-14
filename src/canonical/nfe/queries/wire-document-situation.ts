@@ -1,3 +1,4 @@
+import nfceRules from '../../nfce/nfce-lifecycle-rules.js';
 import { executeNFeSoapService } from '../../transport/execute-nfe-soap-service.js';
 import { resolveIssuerAuthorizer } from '../../transport/issuer-authorizer.js';
 import type {
@@ -107,14 +108,17 @@ export async function queryWireDocumentSituation(
     return refuse(input, environment, 'Production queries require an injected requestExecutor for mTLS.');
   }
 
+  const service = nfceRules.isNfceAccessKey(input.accessKey)
+    ? 'nfce-document-situation'
+    : 'nfe-document-situation';
   const transportOutcome = await executeNFeSoapService({
     authorizer:
       input.authorizer ??
-      resolveIssuerAuthorizer(input.accessKey.slice(0, 2), environment, 'nfe-document-situation'),
+      resolveIssuerAuthorizer(input.accessKey.slice(0, 2), environment, service),
     environment,
     payloadXml: buildConsSitNFeXml(environment, input.accessKey),
     requestExecutor: input.requestExecutor,
-    service: 'nfe-document-situation',
+    service,
     timeoutMs: input.timeoutMs,
     wireFormat: true,
   });

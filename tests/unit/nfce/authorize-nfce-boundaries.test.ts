@@ -118,7 +118,7 @@ describe('authorizeNFCe boundaries', () => {
     expect(transportWasCalled).toBe(false);
   });
 
-  it('requires an injected executor and CSC for production before transport', async () => {
+  it('requires an injected executor and the unsigned XML for production before transport', async () => {
     const fixtureSource = createTestA1FixtureSource();
     const signingContext = await createSigningContext({
       passphrase: fixtureSource.passphrase,
@@ -148,7 +148,31 @@ describe('authorizeNFCe boundaries', () => {
           status: 200,
         }),
       }),
-    ).rejects.toThrow(/CSC/u);
+    ).rejects.toThrow(/unsignedXml/u);
+  });
+
+  it('does not require a CSC in production: the QR Code v3 is composed without it', async () => {
+    const fixtureSource = createTestA1FixtureSource();
+    const signingContext = await createSigningContext({
+      passphrase: fixtureSource.passphrase,
+      source: {
+        contentBase64: fixtureSource.certificateBase64,
+        type: 'in-memory-content',
+      },
+    });
+
+    await expect(
+      authorizeNFCe({
+        document: {
+          documentId: '35260512345678000123650020000004561876543219',
+          environment: 'production',
+          version: '4.00',
+        },
+        environment: 'production',
+        signingContext,
+        requestExecutor: async () => ({ headers: {}, responseXml: '<unused />', status: 200 }),
+      }),
+    ).rejects.not.toThrow(/CSC/u);
   });
 
   it('requires signing context for production before transport', async () => {

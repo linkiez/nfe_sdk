@@ -114,6 +114,66 @@ describe('authorizeNFCe SP production integration', () => {
     },
   );
 
+  it('returns the signed XML and, when authorized, the assembled nfeProc', async () => {
+    const signingContext = await createTestSigningContext();
+    const run = async (statusCode: string, protocol?: string) =>
+      authorizeNFCe({
+        document: { documentId: ACCESS_KEY, environment: 'production', version: '4.00' },
+        environment: 'production',
+        signingContext,
+        requestExecutor: jest.fn().mockResolvedValue({
+          headers: { 'content-type': 'application/soap+xml; charset=utf-8' },
+          responseXml: authorizationResponse(statusCode, protocol),
+          status: 200,
+        }),
+        unsignedXml: UNSIGNED_NFE_XML,
+      });
+
+    const authorized = await run('100', '135190000000003');
+    const rejected = await run('204');
+
+    expect(authorized.signedXml).toContain('<Signature');
+    expect(authorized.signedXml).toContain(`Id="NFe${ACCESS_KEY}"`);
+    expect(authorized.authorizedXml).toMatch(/^<nfeProc /u);
+    expect(authorized.authorizedXml).toContain('<protNFe');
+    expect(authorized.authorizedXml).toContain('<nProt>135190000000003</nProt>');
+    expect(rejected.signedXml).toContain('<Signature');
+    expect(rejected.authorizedXml).toBeUndefined();
+  });
+
+  it('composes the QR Code v3 and flags cStat 150 as late without any CSC', async () => {
+    const signingContext = await createTestSigningContext();
+    const requestExecutor = jest
+      .fn<ReturnType<RequestExecutor>, Parameters<RequestExecutor>>()
+      .mockResolvedValue({
+        headers: { 'content-type': 'application/soap+xml; charset=utf-8' },
+        responseXml: authorizationResponse('100', '135190000000002').replace(
+          '<nProt>',
+          '<cStat>150</cStat><nProt>',
+        ),
+        status: 200,
+      });
+
+    const outcome = await authorizeNFCe({
+      document: {
+        documentId: ACCESS_KEY,
+        environment: 'production',
+        version: '4.00',
+      },
+      environment: 'production',
+      signingContext,
+      requestExecutor,
+      unsignedXml: UNSIGNED_NFE_XML,
+    });
+
+    expect(outcome.classification).toBe('authorized');
+    expect(outcome.qrCodeUrl).toBe(
+      `https://www.nfce.fazenda.sp.gov.br/NFCeConsultaPublica/Paginas/ConsultaQRCode.aspx?p=${ACCESS_KEY}|3|1`,
+    );
+    expect(outcome.authorizedLate).toBe(true);
+    expect(outcome.protocolStatusCode).toBe('150');
+  });
+
   it.each([
     { statusCode: '204', expected: 'rejected' },
     {

@@ -37,13 +37,14 @@ export async function queryWireServiceStatus(
     return refuse(environment, 'Production queries require an injected requestExecutor for mTLS.');
   }
 
+  const service = input.documentModel === 65 ? 'nfce-status-service' : 'nfe-status-service';
   const transportOutcome = await executeNFeSoapService({
     authorizer:
-      input.authorizer ?? resolveIssuerAuthorizer(input.issuerUF, environment, 'nfe-status-service'),
+      input.authorizer ?? resolveIssuerAuthorizer(input.issuerUF, environment, service),
     environment,
     payloadXml: buildConsStatServXml(environment, input.issuerUF),
     requestExecutor: input.requestExecutor,
-    service: 'nfe-status-service',
+    service,
     timeoutMs: input.timeoutMs,
     wireFormat: true,
   });

@@ -1,5 +1,9 @@
 export { authorizeNFCe } from './authorize-nfce.js';
 export { generateNFCeSPQRCode } from './generate-nfce-sp-qr-code.js';
+export { buildNFCeDocument, BuildNFCeDocumentError } from './build-nfce-document.js';
+export { getNFCeAcceptedFiscalCodes } from './nfce-model-rules.js';
+export { isNFCeResendWindowOpen, remountNFCeDocument } from './remount-nfce-document.js';
+export type { BuiltNFCeDocument, NFCeDocumentInput } from './build-nfce-document.js';
 export { mapNFCeAuthorizationOutcome } from './authorization-outcome.js';
 export { createNFCeAuthorizationPayload } from './authorization-payload.js';
 export {

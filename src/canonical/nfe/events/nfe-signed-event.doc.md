@@ -52,3 +52,7 @@ const outcome = await cancelNFe({
 ## Dependências e integrações
 
 `signEventXml`, `signInutilizationXml`, `executeNFeSoapService` (`wireFormat`), `resolveIssuerAuthorizer` (SP quando a UF é 35) e `mapOperationalMaintenanceTransportOutcome`.
+
+## NFC-e (modelo 65)
+
+Quando a chave é de NFC-e, o cancelamento (110111) segue o serviço `nfce-event` (hosts NFC-e de SP) em vez do `nfe-cancellation`; a carta de correção não existe para a NFC-e e é recusada antes de assinar. Um cancelamento com `substituteAccessKey` e `applicationVersion` é enviado como cancelamento por substituição (evento 110112, XSD `envEventoCancSubst_v1.00`): `descEvento` "Cancelamento por substituicao", `cOrgaoAutor`, `tpAutor` 1, `verAplic`, `nProt`, `xJust` e `chNFeRef`; as regras estão em [nfce-lifecycle-rules](../../nfce/nfce-lifecycle-rules.doc.md). A inutilização com `inutilization.model = '65'` usa `nfce-inutilization` e é recusada sem requisição para SP, AC e BA (dispensada desde 2026-11-01).
