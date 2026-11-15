@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/linkiez/nfe_sdk/compare/v1.4.2...v1.4.3) (2026-11-15)
+
+
+### Bug Fixes
+
+* **nfce:** enviar a NFC-e de SP no envelope SOAP da SEFAZ em homologação e produção ([#23](https://github.com/linkiez/nfe_sdk/issues/23)) ([029a056](https://github.com/linkiez/nfe_sdk/commit/029a05689264e2821aee033d5855eb41097fed34))
+
 ## [1.4.2](https://github.com/linkiez/nfe_sdk/compare/v1.4.1...v1.4.2) (2026-11-15)
 
 
