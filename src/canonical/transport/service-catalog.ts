@@ -9,6 +9,7 @@ import {
   getNFeSPOfficialTransportCatalogProvenance,
   getNFeSPProductionTransportCatalogProvenance,
   getNFCePRPilotTransportCatalogProvenance,
+  getNFCeSPOfficialTransportCatalogProvenance,
   getNFCeSPPilotTransportCatalogProvenance,
   getObservableContingencyDiagnosticPlaceholders,
   getOperationalTransportCatalogPlaceholders,
@@ -22,6 +23,7 @@ const SP_NFE_PRODUCTION_CATALOG_VERSION = '2026-10-10-sp-production' as const;
 const SVAN_UNIFIED_CATALOG_VERSION = '2026-11-11-svan-svc-an-unified' as const;
 const SEFAZ_OFFICIAL_CATALOG_VERSION = '2026-11-10-sefaz-official' as const;
 const SP_NFCE_PRODUCTION_CATALOG_VERSION = '2026-10-12-nfce-sp-production' as const;
+const SP_NFCE_HOMOLOGATION_CATALOG_VERSION = '2026-11-15-nfce-sp-homologation' as const;
 
 const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
   ...NFCE_LIFECYCLE_CATALOG_ENTRIES,
@@ -98,13 +100,13 @@ const SERVICE_CATALOG_ENTRIES: readonly ServiceCatalogEntry[] = [
     service: 'nfce-authorization-pr',
   },
   {
-    catalogVersion: SVAN_UNIFIED_CATALOG_VERSION,
+    catalogVersion: SP_NFCE_HOMOLOGATION_CATALOG_VERSION,
     endpointUrl:
-      'https://hom.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx',
+      'https://homologacao.nfce.fazenda.sp.gov.br/ws/NFeAutorizacao4.asmx',
     environment: 'homologation',
     layoutVersion: '4.00',
-    provider: 'SVCAN',
-    provenance: withSvanUnificationNotice(getNFCeSPPilotTransportCatalogProvenance()),
+    provider: 'SP',
+    provenance: getNFCeSPOfficialTransportCatalogProvenance(),
     service: 'nfce-authorization-sp',
   },
   {
