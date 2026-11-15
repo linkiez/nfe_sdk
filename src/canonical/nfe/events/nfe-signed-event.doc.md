@@ -6,7 +6,7 @@ Monta, assina, envia e classifica os eventos reais da NF-e no envelope oficial: 
 
 ## Responsabilidades
 
-- Validar antes de assinar ou enviar: chave de 44 dígitos, CNPJ/CPF, data/hora com fuso, sequência 1–99, justificativa de cancelamento (15–255 caracteres, sem espaços nas pontas) e protocolo de 15 dígitos, texto da carta (15–1000), faixa de inutilização (início ≥ 1, fim ≥ início, no máximo 10.000 números, série 0–999).
+- Validar antes de assinar ou enviar: chave de 44 dígitos, CNPJ/CPF, data/hora com fuso, sequência 1–99, justificativa de cancelamento (15–255 caracteres, sem espaços nas pontas) e protocolo de autorização de 15 ou 17 dígitos (17 desde a NT 2025.002), texto da carta (15–1000), faixa de inutilização (início ≥ 1, fim ≥ início, no máximo 10.000 números, série 0–999).
 - Montar `envEvento/evento/infEvento/detEvento` com `Id` = `ID` + `tpEvento` + chave + sequência (2 dígitos) e `inutNFe/infInut` com `Id` = `ID` + cUF + ano + CNPJ + modelo + série (3) + números (9 + 9).
 - Assinar (`signEventXml`, `signInutilizationXml`) e enviar pelo envelope SOAP `nfeDadosMsg` (`NFeRecepcaoEvento4` / `NFeInutilizacao4`).
 - Classificar pelo protocolo: evento registrado com `cStat` 135, 136 ou 155; inutilização homologada com 102; qualquer outro vira `rejected` com o motivo oficial.
