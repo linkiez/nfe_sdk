@@ -72,3 +72,7 @@ Em producao, `NFCeAuthorizationRequest` tambem precisa de `unsignedXml`, `csc`, 
 - `select-nfce-profile.ts`
 - `prepare-signing-prerequisites.ts`
 - `render-nfce-sp-danfe.ts`
+
+## Motivo do protocolo
+
+`NFCeAuthorizationOutcome.protocolStatusMessage` traz o `xMotivo` do protocolo do documento, quando a SEFAZ o informa.

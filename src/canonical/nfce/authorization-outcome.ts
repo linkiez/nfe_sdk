@@ -30,6 +30,9 @@ export function mapNFCeAuthorizationOutcome(
     ...(outcome.protocolStatusCode === undefined
       ? {}
       : { protocolStatusCode: outcome.protocolStatusCode }),
+    ...(outcome.protocolStatusMessage === undefined
+      ? {}
+      : { protocolStatusMessage: outcome.protocolStatusMessage }),
     ...(denied
       ? {
           failureReason: `Resposta de denegacao inesperada para NFC-e (cStat ${outcome.protocolStatusCode ?? 'desconhecido'}); consulte a situacao pela chave.`,

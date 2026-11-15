@@ -52,3 +52,7 @@ const outcome = mapNFCeAuthorizationOutcome(authorizedNFeOutcome, qrCodeUrl);
 
 - `../nfe/contracts.js` define o resultado compartilhado de autorizacao.
 - `./contracts.js` define o contrato NFC-e.
+
+## Motivo do protocolo
+
+O desfecho da NFC-e repassa `protocolStatusMessage` (o `xMotivo` do protocolo do documento) junto com `protocolStatusCode`. É o motivo real de uma rejeição, diferente do motivo do lote ("Lote processado").

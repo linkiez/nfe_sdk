@@ -1,7 +1,9 @@
 import { mapNFCeAuthorizationOutcome } from '../../../src/canonical/nfce/authorization-outcome';
 import type { NFeAuthorizationOutcome } from '../../../src/canonical/nfe/contracts';
 
-const outcome = (overrides: Partial<NFeAuthorizationOutcome> = {}): NFeAuthorizationOutcome =>
+const outcome = (
+  overrides: Partial<NFeAuthorizationOutcome> = {},
+): NFeAuthorizationOutcome =>
   ({
     classification: 'authorized',
     documentStatuses: [],
@@ -12,7 +14,9 @@ const outcome = (overrides: Partial<NFeAuthorizationOutcome> = {}): NFeAuthoriza
 
 describe('mapNFCeAuthorizationOutcome (authorization after the deadline and no denial)', () => {
   it('flags cStat 150 (authorized out of time) as authorized late', () => {
-    const mapped = mapNFCeAuthorizationOutcome(outcome({ protocolStatusCode: '150' }));
+    const mapped = mapNFCeAuthorizationOutcome(
+      outcome({ protocolStatusCode: '150' }),
+    );
 
     expect(mapped.classification).toBe('authorized');
     expect(mapped.authorizedLate).toBe(true);
@@ -35,12 +39,37 @@ describe('mapNFCeAuthorizationOutcome (authorization after the deadline and no d
     expect(mapped.authorizedLate).toBeUndefined();
   });
 
+  it('exposes the document protocol reason (xMotivo) of a rejection, not only its cStat', () => {
+    const mapped = mapNFCeAuthorizationOutcome(
+      outcome({
+        classification: 'rejected',
+        protocolStatusCode: '245',
+        protocolStatusMessage: 'Rejeicao: CNPJ Emitente nao cadastrado',
+      }),
+    );
+
+    expect(mapped.protocolStatusCode).toBe('245');
+    expect(mapped.protocolStatusMessage).toBe(
+      'Rejeicao: CNPJ Emitente nao cadastrado',
+    );
+  });
+
+  it('omits the protocol reason when the answer carries none', () => {
+    expect(mapNFCeAuthorizationOutcome(outcome())).not.toHaveProperty(
+      'protocolStatusMessage',
+    );
+  });
+
   it('keeps the QR Code only for an authorized document', () => {
     const url = 'https://www.nfce.fazenda.sp.gov.br/qr?p=1|3|1';
 
-    expect(mapNFCeAuthorizationOutcome(outcome({ protocolStatusCode: '150' }), url).qrCodeUrl).toBe(url);
     expect(
-      mapNFCeAuthorizationOutcome(outcome({ classification: 'rejected' }), url).qrCodeUrl,
+      mapNFCeAuthorizationOutcome(outcome({ protocolStatusCode: '150' }), url)
+        .qrCodeUrl,
+    ).toBe(url);
+    expect(
+      mapNFCeAuthorizationOutcome(outcome({ classification: 'rejected' }), url)
+        .qrCodeUrl,
     ).toBeUndefined();
   });
 
@@ -48,7 +77,8 @@ describe('mapNFCeAuthorizationOutcome (authorization after the deadline and no d
     const mapped = mapNFCeAuthorizationOutcome(
       outcome({
         classification: 'rejected',
-        failureReason: 'Rejeicao 781: emissor nao habilitado para emissao da NFC-e',
+        failureReason:
+          'Rejeicao 781: emissor nao habilitado para emissao da NFC-e',
         protocolStatusCode: '781',
       }),
     );

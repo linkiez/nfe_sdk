@@ -250,6 +250,8 @@ export interface NFCeAuthorizationOutcome {
   readonly authorizedLate?: boolean;
   /** Official `cStat` of the document protocol, when present. */
   readonly protocolStatusCode?: string;
+  /** Official `xMotivo` of the document protocol (the reason of a rejection), when present. */
+  readonly protocolStatusMessage?: string;
   /** Reason of a rejection or of an unexpected answer, when the flow did not authorize. */
   readonly failureReason?: string;
 }
