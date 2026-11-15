@@ -5,6 +5,7 @@ import type NFCePresentation from './render-nfce-sp-danfe-model.js';
 
 const HOMOLOGATION_NOTICE =
   'EMITIDA EM AMBIENTE DE HOMOLOGAÇÃO – SEM VALOR FISCAL';
+const UNIDENTIFIED_CONSUMER_NOTICE = 'CONSUMIDOR NÃO IDENTIFICADO';
 const QR_FOOTPRINT_MM = 25;
 const QR_CONTENT_MM = 22;
 
@@ -117,9 +118,10 @@ export default async function renderNFCeHtml(
     result.copy === 'establishment'
       ? '<p class="copy-notice" data-layout-block>Via do Estabelecimento</p>'
       : '';
+  // MOC DANFE NFC-e, block VI: a document without a consumer prints the fixed notice.
   const consumer =
     presentation.consumer === undefined
-      ? ''
+      ? `<p>${UNIDENTIFIED_CONSUMER_NOTICE}</p>`
       : `<p>Consumidor: ${escapeHtml(presentation.consumer)}</p>`;
   const delivery =
     presentation.deliveryAddress === undefined

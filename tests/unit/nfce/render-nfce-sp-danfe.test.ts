@@ -16,6 +16,42 @@ describe('renderNFCeSPDANFE', () => {
     expect(result.signedXmlSha256).toBe(record.signedXmlSha256);
   });
 
+  describe('consumer block (MOC DANFE NFC-e, block VI)', () => {
+    const renderWith = (transform: (envelope: string) => string) => {
+      const authorization = buildSPDanfeAuthorizationOutcome();
+      const evidence = authorization.transportOutcome!.evidence;
+
+      return renderNFCeSPDANFE({
+        authorization: {
+          ...authorization,
+          transportOutcome: {
+            ...authorization.transportOutcome!,
+            evidence: {
+              ...evidence,
+              requestEnvelopeXml: transform(evidence.requestEnvelopeXml),
+            },
+          },
+        },
+      });
+    };
+
+    it('prints "CONSUMIDOR NÃO IDENTIFICADO" when the document has no consumer', async () => {
+      const result = await renderWith((envelope) =>
+        envelope.replace(/<dest>[\s\S]*?<\/dest>/u, ''),
+      );
+
+      expect(result.html).toContain('CONSUMIDOR NÃO IDENTIFICADO');
+      expect(result.html).not.toContain('Consumidor:');
+    });
+
+    it('prints the identified consumer and not the unidentified notice', async () => {
+      const result = await renderWith((envelope) => envelope);
+
+      expect(result.html).toContain('Consumidor: Consumidor Entrega');
+      expect(result.html).not.toContain('CONSUMIDOR NÃO IDENTIFICADO');
+    });
+  });
+
   it('rejects outcomes that are not authorized', async () => {
     const authorization = {
       ...buildSPDanfeAuthorizationOutcome(),
