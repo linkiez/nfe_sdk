@@ -49,3 +49,7 @@ const envelope = buildSoapEnvelope('nfe-status-service', '<consStatServNFe />');
 
 - `execute-nfe-soap-service.ts`
 - `supported-services.ts`
+
+## NFC-e de SP
+
+O serviço `nfce-authorization-sp` está na tabela de serviços com envelope verificado: usa o WSDL `NFeAutorizacao4` e a ação `nfeAutorizacaoLote`, os mesmos da autorização da NF-e.
