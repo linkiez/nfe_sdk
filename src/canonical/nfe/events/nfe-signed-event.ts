@@ -117,8 +117,8 @@ function validateEvent(
   }
   if (operation === 'cancel-nfe') {
     if (sequence !== 1) return 'A cancellation always has sequence 1.';
-    if (event.protocol === undefined || !/^\d{15}$/u.test(event.protocol)) {
-      return 'A cancellation requires the 15-digit authorization protocol.';
+    if (event.protocol === undefined || !/^(?:\d{15}|\d{17})$/u.test(event.protocol)) {
+      return 'A cancellation requires the 15- or 17-digit authorization protocol (NT 2025.002).';
     }
     if (!textBetween(event.justification, 15, 255)) {
       return 'The cancellation justification must have 15 to 255 characters without padding.';

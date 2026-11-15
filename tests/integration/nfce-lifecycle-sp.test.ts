@@ -192,6 +192,46 @@ describe('NFC-e (model 65) lifecycle routes of SP', () => {
       expect(outcome.classification).toBe('success');
     });
 
+    it('sends the cancellation of an NFC-e authorized with the 17-digit protocol (NT 2025.002)', async () => {
+      const calls: Call[] = [];
+      const outcome = await cancelNFe({
+        accessKey: KEY,
+        canonicalPayload: {},
+        environment: 'homologation',
+        requestExecutor: executor(calls, eventResponse('135', '110111')),
+        signedEvent: {
+          eventDateTime: NOW,
+          issuerTaxId: '11222333000181',
+          justification: 'Venda cancelada a pedido do consumidor',
+          protocol: '13526000000000001',
+          signingContext: await signingContext(),
+        },
+      } as never);
+
+      expect(calls[0].requestXml).toContain('<nProt>13526000000000001</nProt>');
+      expect(outcome.classification).toBe('success');
+    });
+
+    it('refuses a cancellation protocol that is neither 15 nor 17 digits', async () => {
+      const calls: Call[] = [];
+      const outcome = await cancelNFe({
+        accessKey: KEY,
+        canonicalPayload: {},
+        environment: 'homologation',
+        requestExecutor: executor(calls, eventResponse('135', '110111')),
+        signedEvent: {
+          eventDateTime: NOW,
+          issuerTaxId: '11222333000181',
+          justification: 'Venda cancelada a pedido do consumidor',
+          protocol: '1352600000000001',
+          signingContext: await signingContext(),
+        },
+      } as never);
+
+      expect(calls).toHaveLength(0);
+      expect(outcome.failureReason).toContain('15- or 17-digit');
+    });
+
     it('sends the cancellation by substitution (110112) with the referenced NFC-e', async () => {
       const calls: Call[] = [];
       const outcome = await cancelNFe({
