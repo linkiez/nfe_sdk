@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/linkiez/nfe_sdk/compare/v1.4.4...v1.4.5) (2026-11-15)
+
+
+### Bug Fixes
+
+* **nfce:** aceitar o protocolo de 17 posições no cancelamento ([#25](https://github.com/linkiez/nfe_sdk/issues/25)) ([84fbebe](https://github.com/linkiez/nfe_sdk/commit/84fbebeb6e755f349a764b93bde34802beb352d2))
+
 ## [1.4.4](https://github.com/linkiez/nfe_sdk/compare/v1.4.3...v1.4.4) (2026-11-15)
 
 
