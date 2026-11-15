@@ -70,3 +70,7 @@ const outcome = await authorizeNFCe({
 - `../transport/execute-nfe-soap-service.js` encaminha uma requisicao pelo catalogo de servicos.
 - `./generate-nfce-sp-qr-code.js` compoe a URL v3 paulista.
 - `./authorization-outcome.js` adapta o resultado compartilhado ao contrato NFC-e.
+
+## Envio da NFC-e de SP (homologação e produção)
+
+Em produção, e em homologação quando o chamador informa `unsignedXml`, a NFC-e de SP é assinada pelo SDK e enviada sozinha, de forma síncrona (`indSinc` 1), ao autorizador de SP do ambiente, no formato SOAP 1.2 que a SEFAZ espera (`wireFormat`): sem declaração XML dentro do corpo e com o namespace e a ação do serviço `NFeAutorizacao4`. Sem `unsignedXml`, a homologação mantém a rota piloto anterior. Em homologação o `tpAmb` do XML deve ser `2`. A resposta `100` ou `104` só é aceita quando traz a mesma `chNFe` do documento.

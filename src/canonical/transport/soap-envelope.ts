@@ -29,7 +29,7 @@ const WSDL_NAMESPACE_ROOT = 'http://www.portalfiscal.inf.br/nfe/wsdl';
 
 /**
  * WSDL namespace and SOAP action per service, for services whose official 4.00 WSDL was
- * verified (NFeAutorizacao4, NFeRetAutorizacao4, NFeStatusServico4, NFeConsultaProtocolo4,
+ * verified (NFeAutorizacao4 for the NF-e and for the SP NFC-e, NFeRetAutorizacao4, NFeStatusServico4, NFeConsultaProtocolo4,
  * NFeInutilizacao4, NFeRecepcaoEvento4). Other services are added only after
  * their WSDL namespace is confirmed; asking for them fails instead of guessing.
  */
@@ -51,6 +51,7 @@ const VERIFIED_WIRE_SERVICES: Readonly<
   'nfe-status-service': { action: 'nfeStatusServicoNF', wsdl: 'NFeStatusServico4' },
   'nfe-document-situation': { action: 'nfeConsultaNF', wsdl: 'NFeConsultaProtocolo4' },
   'nfe-inutilization': { action: 'nfeInutilizacaoNF', wsdl: 'NFeInutilizacao4' },
+  'nfce-authorization-sp': { action: 'nfeAutorizacaoLote', wsdl: 'NFeAutorizacao4' },
   'nfce-status-service': { action: 'nfeStatusServicoNF', wsdl: 'NFeStatusServico4' },
   'nfce-document-situation': { action: 'nfeConsultaNF', wsdl: 'NFeConsultaProtocolo4' },
   'nfce-event': { action: 'nfeRecepcaoEvento', wsdl: 'NFeRecepcaoEvento4' },

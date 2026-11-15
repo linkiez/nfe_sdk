@@ -81,6 +81,8 @@ export async function authorizeNFCe(
 
   if (normalizedEnvironment === 'production') {
     assertProductionNFCePrerequisites(input, resolvedUF, documentDetails);
+  } else if (resolvedUF === 'SP' && input.unsignedXml !== undefined) {
+    assertHomologationNFCeSubmission(input, documentDetails);
   }
 
   // QR Code v3 does not need the CSC; when one is informed it is still validated.
@@ -97,12 +99,16 @@ export async function authorizeNFCe(
     return createUnsupportedStateNFCeOutcome(resolvedUF);
   }
 
-  const outcome =
-    normalizedEnvironment === 'production'
-      ? await authorizeNFCeSPProduction(input)
-      : await authorizeInternalNFe(createNFCeAuthorizationPayload(input), {
-          transportService: selectedProfile.transportService,
-        });
+  // SP signs and sends the NFC-e itself: always in production and, in homologation, whenever the
+  // caller supplies the unsigned XML. Without it, homologation keeps the legacy pilot route.
+  const submitsSignedNFCe =
+    normalizedEnvironment === 'production' ||
+    (resolvedUF === 'SP' && input.unsignedXml !== undefined);
+  const outcome = submitsSignedNFCe
+    ? await authorizeNFCeSP(input, normalizedEnvironment)
+    : await authorizeInternalNFe(createNFCeAuthorizationPayload(input), {
+        transportService: selectedProfile.transportService,
+      });
 
   const qrCode =
     outcome.classification === 'authorized' && canComposeQRCode
@@ -182,13 +188,53 @@ function assertProductionNFCePrerequisites(
   assertProductionNFCeXmlIdentity(input.unsignedXml, documentDetails.documentId);
 }
 
-async function authorizeNFCeSPProduction(
+function assertHomologationNFCeSubmission(
   input: NFCeAuthorizationRequest,
+  documentDetails: { readonly documentId: string; readonly environment: string },
+): void {
+  assertNFCeModel65(documentDetails.documentId.slice(20, 22), 'authorizeNFCe homologation');
+
+  if (documentDetails.environment.trim().toLowerCase() !== 'homologation') {
+    throw new NFCeOperationalUsageError(
+      'authorizeNFCe homologation requires the document environment to match the authorization environment.',
+    );
+  }
+
+  if (!input.requestExecutor) {
+    throw new NFCeOperationalUsageError(
+      'SP authorizeNFCe requires an injected mTLS-capable requestExecutor.',
+    );
+  }
+
+  if (input.csc) {
+    assertValidNFCeCSCInput(input.csc);
+  }
+
+  if (!input.unsignedXml?.trim()) {
+    throw new NFCeOperationalUsageError(
+      'SP authorizeNFCe requires unsignedXml so the SDK can sign the fiscal NFC-e before transport.',
+    );
+  }
+
+  assertProductionNFCeXmlIdentity(
+    input.unsignedXml,
+    documentDetails.documentId,
+    '2',
+  );
+}
+
+/**
+ * Signs the NFC-e and sends it, alone and synchronously, to the SEFAZ/SP authorizer of the
+ * environment, in the SOAP 1.2 wire format the web service expects.
+ */
+async function authorizeNFCeSP(
+  input: NFCeAuthorizationRequest,
+  environment: string,
 ): Promise<NFeAuthorizationOutcome> {
   const unsignedXml = input.unsignedXml;
   if (unsignedXml === undefined) {
     throw new NFCeOperationalUsageError(
-      'Production authorizeNFCe requires unsignedXml.',
+      `${environment === 'production' ? 'Production' : 'SP'} authorizeNFCe requires unsignedXml.`,
     );
   }
 
@@ -198,11 +244,12 @@ async function authorizeNFCeSPProduction(
   });
   const transportOutcome = await executeNFeSoapService({
     authorizer: 'SP',
-    environment: 'production',
+    environment,
     payloadXml: createSynchronousNFCePayload(signedXml),
     requestExecutor: input.requestExecutor,
     service: 'nfce-authorization-sp',
     timeoutMs: input.timeoutMs,
+    wireFormat: true,
   });
   const requiresResponseIdentityCheck =
     transportOutcome.classification === 'success' &&
@@ -219,7 +266,7 @@ async function authorizeNFCeSPProduction(
           ...transportOutcome,
           classification: 'protocol-error' as const,
           failureReason:
-            'Production NFC-e authorization response is missing or has a mismatched chNFe.',
+            'NFC-e authorization response is missing or has a mismatched chNFe.',
         }
       : transportOutcome;
   const authorizationBatch = buildNFeAuthorizationBatch({
@@ -258,6 +305,7 @@ function extractNFCeResponseAccessKey(responseXml: string): string | undefined {
 function assertProductionNFCeXmlIdentity(
   unsignedXml: string,
   expectedAccessKey: string,
+  expectedEnvironmentCode: '1' | '2' = '1',
 ): void {
   const parsedXml = new DOMParser().parseFromString(unsignedXml, 'application/xml');
   const root = parsedXml.documentElement;
@@ -300,10 +348,10 @@ function assertProductionNFCeXmlIdentity(
   if (
     readIdeValue('cUF') !== '35' ||
     readIdeValue('mod') !== '65' ||
-    readIdeValue('tpAmb') !== '1'
+    readIdeValue('tpAmb') !== expectedEnvironmentCode
   ) {
     throw new NFCeOperationalUsageError(
-      'Production authorizeNFCe unsignedXml must match SP model 65 and production tpAmb "1".',
+      `Production authorizeNFCe unsignedXml must match SP model 65 and ${expectedEnvironmentCode === '1' ? 'production' : 'homologation'} tpAmb "${expectedEnvironmentCode}".`,
     );
   }
 

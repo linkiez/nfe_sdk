@@ -52,3 +52,5 @@ Fonte: Manual de Padrões, seção 3.1, `docs/_sources/.../20250324 - Manual_de_
 | IX Contribuinte       | `infCpl`; tributos da Lei 12.741/2012 a critério do emissor                                                                                                                                                                                                                                                               |
 
 **Pendência para o responsável fiscal**: confirmar se a legislação de SP fixa limites ou condições ao Ajuste SINIEF 23/26, § 3º (consumidor com CNPJ) e se a UF dispensa a segunda via da contingência.
+
+**Formato do envelope na autorização**: a primeira rodada de homologação mostrou que a SEFAZ/SP recusa (HTTP 500, "Unexpected XML declaration") um corpo SOAP com declaração XML dentro de `nfeDadosMsg`. A autorização da NFC-e de SP passou a usar o formato de envelope da SEFAZ (`wireFormat`), em homologação e em produção; antes, a produção usava o envelope genérico e a homologação enviava um payload canônico em vez do XML assinado.
