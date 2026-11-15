@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/linkiez/nfe_sdk/compare/v1.4.0...v1.4.1) (2026-11-15)
+
+
+### Bug Fixes
+
+* **nfce:** imprimir CONSUMIDOR NÃO IDENTIFICADO no DANFE sem consumidor ([#20](https://github.com/linkiez/nfe_sdk/issues/20)) ([dbc64c0](https://github.com/linkiez/nfe_sdk/commit/dbc64c02cfa302d2379f44b661af388b34bf001c))
+
 # [1.4.0](https://github.com/linkiez/nfe_sdk/compare/v1.3.0...v1.4.0) (2026-11-14)
 
 
