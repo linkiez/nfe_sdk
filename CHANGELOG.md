@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/linkiez/nfe_sdk/compare/v1.4.3...v1.4.4) (2026-11-15)
+
+
+### Bug Fixes
+
+* **nfce:** expor o motivo do protocolo da NFC-e rejeitada ([#24](https://github.com/linkiez/nfe_sdk/issues/24)) ([3f2c923](https://github.com/linkiez/nfe_sdk/commit/3f2c923e2479951b3622ff35d3084fb16b44961e))
+
 ## [1.4.3](https://github.com/linkiez/nfe_sdk/compare/v1.4.2...v1.4.3) (2026-11-15)
 
 
