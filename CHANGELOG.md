@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/linkiez/nfe_sdk/compare/v1.4.1...v1.4.2) (2026-11-15)
+
+
+### Bug Fixes
+
+* **nfce:** autorizar a NFC-e de SP em homologação no host de SP ([#22](https://github.com/linkiez/nfe_sdk/issues/22)) ([a9fc1ae](https://github.com/linkiez/nfe_sdk/commit/a9fc1aeded0d4dcf1801c65dfb9056ca3e2aaf65))
+
 ## [1.4.1](https://github.com/linkiez/nfe_sdk/compare/v1.4.0...v1.4.1) (2026-11-15)
 
 
