@@ -89,6 +89,34 @@ describe('service catalog resolution', () => {
     });
   });
 
+  it('resolves the SP NFC-e homologation authorizer at the SEFAZ/SP homologation host, not the national environment', () => {
+    const entry = resolveNFeServiceEndpoint({
+      environment: 'homologation',
+      service: 'nfce-authorization-sp',
+    });
+
+    expect(entry).toMatchObject({
+      endpointUrl:
+        'https://homologacao.nfce.fazenda.sp.gov.br/ws/NFeAutorizacao4.asmx',
+      environment: 'homologation',
+      provider: 'SP',
+      service: 'nfce-authorization-sp',
+    });
+  });
+
+  it('keeps the PR NFC-e homologation authorizer in the national environment', () => {
+    expect(
+      resolveNFeServiceEndpoint({
+        environment: 'homologation',
+        service: 'nfce-authorization-pr',
+      }),
+    ).toMatchObject({
+      endpointUrl:
+        'https://hom.sefazvirtual.fazenda.gov.br/NFeAutorizacao4/NFeAutorizacao4.asmx',
+      provider: 'SVCAN',
+    });
+  });
+
   it('fails closed for an unqualified production service with multiple providers', () => {
     expect(() =>
       resolveNFeServiceEndpoint({

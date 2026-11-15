@@ -76,3 +76,7 @@ SVAN e SVC-AN foram unificadas pelos avisos oficiais de 25/04/2024 (homologaçã
 ## NFC-e
 
 As entradas do ciclo de vida do modelo 65 ficam em [nfce-lifecycle-catalog-entries](./nfce-lifecycle-catalog-entries.doc.md) e são somadas ao catálogo.
+
+## Autorização da NFC-e de SP em homologação
+
+`nfce-authorization-sp` em homologação resolve para `https://homologacao.nfce.fazenda.sp.gov.br/ws/NFeAutorizacao4.asmx` (provedor `SP`), como já faziam status, consulta, evento e inutilização. A rota anterior, o ambiente nacional (SVC-AN), recusava a autorização com HTTP 500 na rodada de homologação. A NFC-e do PR em homologação continua no ambiente nacional.

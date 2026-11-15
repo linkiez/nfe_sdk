@@ -29,7 +29,7 @@ Registrar, uma linha por operação, evento ou estado da NFC-e, a regra oficial,
 
 ## Endereços dos serviços de SP (SEFAZ/SP, 2026-11-14)
 
-Produção: `https://nfce.fazenda.sp.gov.br/ws/` com `NFeAutorizacao4`, `NFeRetAutorizacao4`, `NFeInutilizacao4`, `NFeConsultaProtocolo4`, `NFeRecepcaoEvento4` e `NFeStatusServico4` (`.asmx`). Homologação: o mesmo caminho em `https://homologacao.nfce.fazenda.sp.gov.br/ws/`. O catálogo do SDK (`nfce-lifecycle-catalog-entries.ts`) usa esses endereços para status, consulta, evento e inutilização. **Pendência para a rodada de homologação (T033)**: a autorização da NFC-e em homologação segue, nas specs 015 e 027, o ambiente nacional (SVC-AN), enquanto os demais serviços usam o host de homologação do próprio SP; é preciso confirmar com o certificado de teste que a nota autorizada em um é consultada no outro, e unificar se necessário.
+Produção: `https://nfce.fazenda.sp.gov.br/ws/` com `NFeAutorizacao4`, `NFeRetAutorizacao4`, `NFeInutilizacao4`, `NFeConsultaProtocolo4`, `NFeRecepcaoEvento4` e `NFeStatusServico4` (`.asmx`). Homologação: o mesmo caminho em `https://homologacao.nfce.fazenda.sp.gov.br/ws/`. O catálogo do SDK (`nfce-lifecycle-catalog-entries.ts`) usa esses endereços para status, consulta, evento e inutilização. **Autorização em homologação**: a rodada de homologação (T033) mostrou que o ambiente nacional (SVC-AN) recusa a autorização da NFC-e de SP (HTTP 500, `protocol-error`); a autorização passou a usar o host de homologação do próprio SP (`https://homologacao.nfce.fazenda.sp.gov.br/ws/NFeAutorizacao4.asmx`), o mesmo dos demais serviços. Outras UFs em homologação continuam no ambiente nacional.
 
 ## Calendário de dias úteis da contingência (T019)
 
