@@ -8,6 +8,7 @@ O modulo converte o modelo fiscal interno e a identidade de autorizacao validada
 
 - Escapar todos os valores textuais antes de inseri-los no markup.
 - Renderizar emissor, consumidor, entrega, itens, totais, pagamentos, chave e protocolo.
+- Imprimir `CONSUMIDOR NÃO IDENTIFICADO` no bloco do consumidor quando a nota não tem `dest` (MOC do DANFE NFC-e, bloco VI); com consumidor, imprime `Consumidor: <nome> - <documento>`.
 - Marcar cada artigo de item como bloco individual para validacao geometrica.
 - Gerar o QR Code a partir da URL oficial validada, com correcao M e footprint de 25 mm.
 - Aplicar a largura de papel ja validada pelo chamador.
