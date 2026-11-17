@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/linkiez/nfe_sdk/compare/v1.4.5...v1.5.0) (2026-11-17)
+
+
+### Features
+
+* **danfe:** aceitar logotipo do emitente na renderização da NF-e ([a42ed23](https://github.com/linkiez/nfe_sdk/commit/a42ed23586b7c3e7ab176253cafc2914150bd494))
+
 ## [1.4.5](https://github.com/linkiez/nfe_sdk/compare/v1.4.4...v1.4.5) (2026-11-15)
 
 
