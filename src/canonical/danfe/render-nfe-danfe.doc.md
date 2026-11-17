@@ -7,12 +7,13 @@ Gera o DANFE (PDF) de uma NF-e modelo 55 autorizada a partir do XML `nfeProc` ex
 ## Responsabilidades
 
 - Recusar XML malformado, que não seja modelo 55 ou sem protocolo autorizado (`cStat` 100 ou 150) com `NFeDanfeUsageError`.
+- Aceitar `logo` opcional (URL `http(s)` ou data URI `data:image/...;base64,...`); qualquer outro valor é recusado com `NFeDanfeUsageError`.
 - Delegar o desenho ao `DANFe` de `node-sped-pdf` e devolver os bytes do PDF.
 
 ## Entradas e saídas
 
 ```ts
-renderNFeDANFE({ authorizedXml: string }): Promise<Uint8Array>
+renderNFeDANFE({ authorizedXml: string, logo?: string }): Promise<Uint8Array>
 class NFeDanfeUsageError extends Error
 ```
 
@@ -33,6 +34,7 @@ Documentos denegados ou rejeitados não geram DANFE. O XML original não é alte
 
 ```ts
 const pdf = await renderNFeDANFE({ authorizedXml });
+const withLogo = await renderNFeDANFE({ authorizedXml, logo: 'data:image/png;base64,iVBORw0KGgo=' });
 ```
 
 ## Dependências e integrações

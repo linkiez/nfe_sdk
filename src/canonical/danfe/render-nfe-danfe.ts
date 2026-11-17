@@ -7,7 +7,14 @@ const AUTHORIZED_PROTOCOL_STATUS = new Set(['100', '150']);
 export interface RenderNFeDANFEInput {
   /** `nfeProc` XML (signed NFe + `protNFe`) of an authorized model-55 NF-e. */
   readonly authorizedXml: string;
+  /**
+   * Issuer logo drawn on the DANFE: an `http(s)` image URL or an image data URI
+   * (`data:image/...;base64,...`). Omit it to draw the DANFE without a logo.
+   */
+  readonly logo?: string;
 }
+
+const LOGO_SOURCE = /^(https?:\/\/\S+|data:image\/[a-z0-9.+-]+;base64,[A-Za-z0-9+/=]+)$/i;
 
 /** Raised when the XML cannot be rendered as a DANFE (malformed, not authorized, not model 55). */
 export class NFeDanfeUsageError extends Error {
@@ -44,6 +51,11 @@ function firstText(
 export async function renderNFeDANFE(
   input: RenderNFeDANFEInput,
 ): Promise<Uint8Array> {
+  if (input.logo !== undefined && !LOGO_SOURCE.test(input.logo.trim())) {
+    throw new NFeDanfeUsageError(
+      'renderNFeDANFE logo must be an http(s) URL or an image data URI.',
+    );
+  }
   const failures: string[] = [];
   let document: ReturnType<DOMParser['parseFromString']> | null = null;
   try {
@@ -80,5 +92,8 @@ export async function renderNFeDANFE(
   // that never draw a DANFE must not pay for (or fail on) loading it.
   const { DANFe } = await import('node-sped-pdf');
 
-  return DANFe({ xml: input.authorizedXml });
+  return DANFe({
+    xml: input.authorizedXml,
+    ...(input.logo ? { logo: input.logo.trim() } : {}),
+  });
 }

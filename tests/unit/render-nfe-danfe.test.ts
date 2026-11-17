@@ -21,6 +21,17 @@ describe('renderNFeDANFE input validation', () => {
     });
   });
 
+  it.each([
+    ['plain text', 'logo.png'],
+    ['a local path', '/tmp/logo.png'],
+    ['a non-image data URI', 'data:text/plain;base64,AAAA'],
+    ['an empty string', '  '],
+  ])('refuses a logo that is %s', async (_name, logo) => {
+    await expect(
+      renderNFeDANFE({ authorizedXml: nfeProc('55', '100'), logo }),
+    ).rejects.toMatchObject({ name: 'NFeDanfeUsageError' });
+  });
+
   it('is exposed on the root entrypoint', () => {
     expect(typeof renderNFeDANFE).toBe('function');
   });
