@@ -12,7 +12,11 @@ describe('published package files', () => {
     };
 
     expect(Object.keys(packageJson.exports ?? {})).toEqual(['.']);
-    expect(packageJson.files).toEqual(['dist', 'README.md']);
+    expect(packageJson.files).toEqual([
+      'dist',
+      'README.md',
+      'xsd/PL_010g_v1.03/NFe',
+    ]);
     expect(packageJson.scripts).toEqual(
       expect.objectContaining({
         'audit:public-contract': expect.any(String),

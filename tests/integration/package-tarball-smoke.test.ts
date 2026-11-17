@@ -70,6 +70,8 @@ describe('package tarball smoke validation', () => {
     expect(result.publishedFiles).toEqual(
       expect.arrayContaining([
         'README.md',
+        'xsd/PL_010g_v1.03/NFe/leiauteNFe_v4.00.xsd',
+        'xsd/PL_010g_v1.03/NFe/nfe_v4.00.xsd',
         'dist/canonical/facade/authorize-nfce.d.ts',
         'dist/canonical/facade/cancel-nfe.d.ts',
         'dist/canonical/facade/create-envi-nfe.d.ts',

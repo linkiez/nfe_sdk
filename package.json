@@ -21,7 +21,8 @@
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "xsd/PL_010g_v1.03/NFe"
   ],
   "engines": {
     "node": ">=18.18"

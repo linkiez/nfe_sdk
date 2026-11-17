@@ -438,6 +438,8 @@ Variaveis esperadas:
 - `examples/recipient/manifest.ts`: `NFE_CERT_PFX_PATH`, `NFE_CERT_PASSPHRASE`, `NFE_ACCESS_KEY`, `NFE_ACTOR_DOCUMENT_NUMBER`
 - `examples/validation/validate-xsd.ts`: `NFE_XML_PATH` e `NFE_XSD_DIR` sao opcionais
 
+O pacote publicado inclui o schema `xsd/PL_010g_v1.03/NFe` (leiaute com IBS/CBS). Para validar com ele, passe `xsdDir` a `validateNFeXsd`, apontando para `node_modules/@linkiez/nfe-sdk/xsd/PL_010g_v1.03/NFe`.
+
 ## Desenvolvimento local
 
 Scripts principais:
