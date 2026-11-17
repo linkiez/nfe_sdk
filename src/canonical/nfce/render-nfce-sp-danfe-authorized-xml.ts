@@ -36,6 +36,7 @@ function usage(message: string): NFCeOperationalUsageError {
 export default async function renderFromAuthorizedXml(
   authorizedXml: string,
   paperWidthMm: number,
+  logo?: string,
 ): Promise<NFCeSPAuthorizedXmlDanfeResult> {
   const document = parseXml(authorizedXml, 'authorized nfeProc');
   const root = document.documentElement;
@@ -113,6 +114,7 @@ export default async function renderFromAuthorizedXml(
       projectNFCe(nfe, accessKey, authorizationDate),
       { accessKey, environment, protocolNumber, qrCodeUrl, authorizedXmlSha256 },
       paperWidthMm,
+      logo,
     ),
     mediaType: 'text/html',
     protocolNumber,

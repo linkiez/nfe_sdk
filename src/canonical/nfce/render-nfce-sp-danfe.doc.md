@@ -14,10 +14,11 @@
 
 ## Entradas e saidas
 
-- Entrada: `RenderNFCeSPDANFERequest` com evidência autorizada, `authorizedXml` (o `nfeProc` autorizado, ver [render-nfce-sp-danfe-authorized-xml](./render-nfce-sp-danfe-authorized-xml.doc.md)) ou registro offline pendente, `copy` opcional (`consumer` ou `establishment`) e largura opcional entre 56 e 210 mm (58 mm e 80 mm sao as larguras termicas de balcao).
+- Entrada: `RenderNFCeSPDANFERequest` com evidência autorizada, `authorizedXml` (o `nfeProc` autorizado, ver [render-nfce-sp-danfe-authorized-xml](./render-nfce-sp-danfe-authorized-xml.doc.md)) ou registro offline pendente, `copy` opcional (`consumer` ou `establishment`) largura opcional entre 56 e 210 mm (58 mm e 80 mm sao as larguras termicas de balcao) e `logo` opcional (data URI base64 PNG, JPEG, GIF ou WebP do emitente; use a versao preto e branco para impressao termica).
 - Saida: `NFCeSPDanfeResult` para autorização ou `NFCeSPOfflineDanfeResult` para contingência pendente.
 - Homologacao imprime o aviso `EMITIDA EM AMBIENTE DE HOMOLOGAÇÃO – SEM VALOR FISCAL`.
 - Registro offline imprime `EMITIDA EM CONTINGÊNCIA – Pendente de autorização`, sem protocolo. `copy: 'establishment'` (so offline) acrescenta o rotulo `Via do Estabelecimento` da segunda via exigida pelo Anexo IV do MOC 7.0; para documento autorizado a opcao e recusada com `NFCeOperationalUsageError`. A guarda eletronica do XML dispensa a segunda via impressa, mas o DANFE continua imprimivel a qualquer momento.
+- Com `logo`, a imagem sai centralizada acima do nome do emitente (altura maxima de 18 mm); sem `logo`, nenhuma imagem e desenhada.
 - Os itens (descricao, quantidade, unidade, preco e total) saem na secao `Itens da compra` das duas vias, que cumpre o papel do Detalhe da Venda.
 
 ## API / Assinatura
@@ -58,7 +59,8 @@ sequenceDiagram
 - Chave deve ser SP modelo 65, com 44 digitos e digito verificador valido.
 - Largura deve ser finita e inclusiva no intervalo de 56 a 210 mm; o padrao e 80 mm.
 - Todo item exige codigo, descricao, quantidade, unidade, preco unitario e total; nao ha truncamento de item.
-- Texto XML e escapado; HTML nao inclui scripts, imagens externas ou estilos remotos.
+- `logo` que nao seja data URI de imagem raster em base64 (URL remota, SVG, texto, valor com aspas) causa `NFCeOperationalUsageError`.
+- Texto XML e escapado; HTML nao inclui scripts, imagens externas (o logotipo e sempre inline) ou estilos remotos.
 
 ## Exemplos
 

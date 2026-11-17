@@ -5,6 +5,7 @@ import { NFCeOperationalUsageError } from './errors.js';
 import { SP_QR_CODE_BASE_URLS } from './resolve-nfce-qr-code-endpoint.js';
 import projectNFCe from './render-nfce-sp-danfe-projection.js';
 import renderNFCeHtml from './render-nfce-sp-danfe-html.js';
+import resolveNFCeLogo from './render-nfce-sp-danfe-logo.js';
 import renderFromAuthorizedXml from './render-nfce-sp-danfe-authorized-xml.js';
 import support from './render-nfce-sp-danfe-support.js';
 import xml from './render-nfce-sp-danfe-xml.js';
@@ -337,6 +338,7 @@ export async function renderNFCeSPDANFE(
       'renderNFCeSPDANFE paperWidthMm must be between 56 and 210 mm.',
     );
   }
+  const logo = resolveNFCeLogo(input.logo);
   if ('offlineRecord' in input) {
     const { nfe, identity } = getOfflineNFe(input.offlineRecord);
     const presentation = projectNFCe(
@@ -356,6 +358,7 @@ export async function renderNFCeSPDANFE(
           pendingAuthorization: true,
         },
         paperWidthMm,
+        logo,
       ),
       mediaType: 'text/html',
       signedXmlSha256: identity.signedXmlSha256,
@@ -369,7 +372,7 @@ export async function renderNFCeSPDANFE(
   }
 
   if ('authorizedXml' in input) {
-    return renderFromAuthorizedXml(input.authorizedXml, paperWidthMm);
+    return renderFromAuthorizedXml(input.authorizedXml, paperWidthMm, logo);
   }
 
   const { authorization } = input;
@@ -394,6 +397,7 @@ export async function renderNFCeSPDANFE(
         requestEnvelopeSha256,
       },
       paperWidthMm,
+      logo,
     ),
     mediaType: 'text/html',
     protocolNumber: identity.protocolNumber,

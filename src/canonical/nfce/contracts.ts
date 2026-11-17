@@ -266,6 +266,11 @@ export interface RenderNFCeSPDANFEInput {
   readonly copy?: 'consumer' | 'establishment';
   /** Paper width in millimeters; defaults to 80 and supports 56 through 210. */
   readonly paperWidthMm?: number;
+  /**
+   * Issuer logo drawn at the top of the DANFE: a base64 PNG, JPEG, GIF or WebP data URI
+   * (`data:image/png;base64,...`). Use the black-and-white logo for thermal printing.
+   */
+  readonly logo?: string;
 }
 
 /**
@@ -278,6 +283,11 @@ export interface RenderNFCeSPDANFEAuthorizedXmlInput {
   readonly copy?: 'consumer' | 'establishment';
   /** Paper width in millimeters; defaults to 80 and supports 56 through 210. */
   readonly paperWidthMm?: number;
+  /**
+   * Issuer logo drawn at the top of the DANFE: a base64 PNG, JPEG, GIF or WebP data URI
+   * (`data:image/png;base64,...`). Use the black-and-white logo for thermal printing.
+   */
+  readonly logo?: string;
 }
 
 /**
@@ -290,6 +300,11 @@ export interface RenderNFCeSPDANFEOfflineInput {
   readonly copy?: 'consumer' | 'establishment';
   /** Paper width in millimeters; defaults to 80 and supports 56 through 210. */
   readonly paperWidthMm?: number;
+  /**
+   * Issuer logo drawn at the top of the DANFE: a base64 PNG, JPEG, GIF or WebP data URI
+   * (`data:image/png;base64,...`). Use the black-and-white logo for thermal printing.
+   */
+  readonly logo?: string;
 }
 
 /**

@@ -95,12 +95,14 @@ function renderQrSvg(qrSvg: string): string {
  * @param presentation - Escaped-at-output fiscal content projected from XML.
  * @param result - Validated document and authorization identity.
  * @param paperWidthMm - Supported physical output width.
+ * @param logo - Validated issuer logo data URI drawn above the issuer name, if any.
  * @returns Complete self-contained HTML document.
  */
 export default async function renderNFCeHtml(
   presentation: NFCePresentation,
   result: NFCeIdentity,
   paperWidthMm: number,
+  logo?: string,
 ): Promise<string> {
   const qrSvg = await QRCode.toString(result.qrCodeUrl, {
     errorCorrectionLevel: 'M',
@@ -136,6 +138,10 @@ export default async function renderNFCeHtml(
         `<p><span>${escapeHtml(label)}</span><strong>R$ ${escapeHtml(value)}</strong></p>`,
     )
     .join('');
+  const logoImage =
+    logo === undefined
+      ? ''
+      : `<img class="issuer-logo" src="${logo}" alt="Logotipo do emitente">`;
   const qrContent = renderQrSvg(qrSvg);
   const consultationUrl = escapeHtml(result.qrCodeUrl);
   const digest = escapeHtml(
@@ -169,6 +175,7 @@ export default async function renderNFCeHtml(
   .danfe { width: min(${paperWidthMm}mm, calc(100vw - 16px)); margin: 0 auto; padding: 2mm; background: #fff; overflow-wrap: anywhere; }
   h1, h2, h3, p, address { margin: 0 0 5px; }
   h1 { font-size: 16px; text-align: center; }
+  .issuer-logo { display: block; max-width: 100%; max-height: 18mm; margin: 0 auto 4px; object-fit: contain; }
   h2 { font-size: 13px; border-bottom: 1px solid #333; padding-bottom: 3px; }
   h3 { font-size: 12px; }
   section, header, footer { margin-bottom: 8px; }
@@ -193,6 +200,7 @@ export default async function renderNFCeHtml(
   ${contingencyNotice}
   ${copyNotice}
   <header data-layout-block>
+    ${logoImage}
     <h1>${escapeHtml(presentation.issuerName)}</h1>
     <p>${escapeHtml(presentation.issuerDocument)}</p>
     <address>${escapeHtml(presentation.issuerAddress)}</address>
