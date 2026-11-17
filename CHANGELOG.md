@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/linkiez/nfe_sdk/compare/v1.5.0...v1.6.0) (2026-11-17)
+
+
+### Features
+
+* **nfce:** aceitar logotipo do emitente no DANFE da NFC-e ([859a4de](https://github.com/linkiez/nfe_sdk/commit/859a4de8d78698bde9cfd2e6deae61b149af4a93))
+
 # [1.5.0](https://github.com/linkiez/nfe_sdk/compare/v1.4.5...v1.5.0) (2026-11-17)
 
 
