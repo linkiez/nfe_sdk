@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/linkiez/nfe_sdk/compare/v1.6.0...v1.7.0) (2026-11-17)
+
+
+### Features
+
+* **package:** incluir o schema PL_010g da NF-e no pacote publicado ([9817579](https://github.com/linkiez/nfe_sdk/commit/98175794e2bbc69f55f7f8e34b494d1804d7cb7d))
+
 # [1.6.0](https://github.com/linkiez/nfe_sdk/compare/v1.5.0...v1.6.0) (2026-11-17)
 
 
