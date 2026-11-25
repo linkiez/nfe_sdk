@@ -74,8 +74,8 @@ function buildKey43(fields: AccessKeyFields): string {
 /**
  * Computes the modulo-11 check digit (cDV) over a 43-digit numeric string.
  *
- * Weights cycle 2–9 from right to left. When the remainder is 0 or 1, cDV = 1;
- * otherwise cDV = 11 − remainder.
+ * Weights cycle 2–9 from right to left. When the remainder is 0 or 1, cDV = 0
+ * (MOC §2.2.6); otherwise cDV = 11 − remainder.
  *
  * @param key43 - 43-digit numeric string.
  * @returns Single-digit check value (0–9).
@@ -90,7 +90,7 @@ function computeModulo11CheckDigit(key43: string): number {
   }
 
   const remainder = sum % 11;
-  return remainder === 0 || remainder === 1 ? 1 : 11 - remainder;
+  return remainder < 2 ? 0 : 11 - remainder;
 }
 
 /**

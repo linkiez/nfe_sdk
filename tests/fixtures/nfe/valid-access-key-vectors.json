@@ -34,7 +34,7 @@
     }
   },
   {
-    "description": "PR note, high cNF and nNF, edge case cDV=1 (remainder ≤ 1 rule)",
+    "description": "PR note, high cNF and nNF, edge case cDV=0 (remainder 1 → 0 rule)",
     "input": {
       "cUF": "41",
       "AAMM": "2412",
@@ -46,8 +46,8 @@
       "cNF": "87654321"
     },
     "expected": {
-      "chNFe": "41241299999999000191550010000009991876543211",
-      "cDV": 1
+      "chNFe": "41241299999999000191550010000009991876543210",
+      "cDV": 0
     }
   },
   {
@@ -68,7 +68,7 @@
     }
   },
   {
-    "description": "SP contingency note tpEmis=4, cDV=1 (second edge case for remainder ≤ 1 rule)",
+    "description": "SP contingency note tpEmis=4, cDV=0 (second edge case for remainder 1 → 0 rule)",
     "input": {
       "cUF": "35",
       "AAMM": "2501",
@@ -80,8 +80,25 @@
       "cNF": "00000002"
     },
     "expected": {
-      "chNFe": "35250111444777000161550010000000024000000021",
-      "cDV": 1
+      "chNFe": "35250111444777000161550010000000024000000020",
+      "cDV": 0
+    }
+  },
+  {
+    "description": "SP note whose remainder is 0, cDV=0 (remainder 0 → 0 rule; SEFAZ rejection 253 when cDV=1)",
+    "input": {
+      "cUF": "35",
+      "AAMM": "2611",
+      "CNPJ": "11444777000161",
+      "mod": "55",
+      "serie": "001",
+      "nNF": "000017232",
+      "tpEmis": "1",
+      "cNF": "21221804"
+    },
+    "expected": {
+      "chNFe": "35261111444777000161550010000172321212218040",
+      "cDV": 0
     }
   }
 ]
