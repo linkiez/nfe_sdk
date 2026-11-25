@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/linkiez/nfe_sdk/compare/v1.7.0...v1.7.1) (2026-11-25)
+
+
+### Bug Fixes
+
+* **access-key:** usar dígito 0 quando o resto do módulo 11 for 0 ou 1 ([c053832](https://github.com/linkiez/nfe_sdk/commit/c053832af216f352e8aeae97def365adf7793204))
+
 # [1.7.0](https://github.com/linkiez/nfe_sdk/compare/v1.6.0...v1.7.0) (2026-11-17)
 
 
