@@ -2,7 +2,7 @@
 
 ## Visão geral
 
-Caminho do `renderNFCeSPDANFE` que desenha o DANFE a partir do `nfeProc` autorizado (NFe assinada mais `protNFe`), o artefato legal que o integrador guarda, sem exigir a evidencia SOAP capturada.
+Caminho do `renderNFCeSPDANFE` que desenha o DANFE a partir do `nfeProc` autorizado (NFe assinada mais `protNFe`), o artefato legal que o integrador guarda, sem exigir a evidencia SOAP capturada. A validacao e a projecao ficam em [render-nfce-sp-danfe-authorized-projection](render-nfce-sp-danfe-authorized-projection.ts), compartilhadas com o DANFE em PDF ([render-nfce-sp-danfe-pdf](render-nfce-sp-danfe-pdf.ts)).
 
 ## Responsabilidades
 

@@ -6,6 +6,7 @@ import { SP_QR_CODE_BASE_URLS } from './resolve-nfce-qr-code-endpoint.js';
 import projectNFCe from './render-nfce-sp-danfe-projection.js';
 import renderNFCeHtml from './render-nfce-sp-danfe-html.js';
 import resolveNFCeLogo from './render-nfce-sp-danfe-logo.js';
+import resolveNFCePaperWidth from './render-nfce-sp-danfe-paper.js';
 import renderFromAuthorizedXml from './render-nfce-sp-danfe-authorized-xml.js';
 import support from './render-nfce-sp-danfe-support.js';
 import xml from './render-nfce-sp-danfe-xml.js';
@@ -23,7 +24,6 @@ import type {
 
 const NFCE_NAMESPACE = 'http://www.portalfiscal.inf.br/nfe';
 const XML_SIGNATURE_NAMESPACE = 'http://www.w3.org/2000/09/xmldsig#';
-const SUPPORTED_PAPER_WIDTH_MM = { maximum: 210, minimum: 56 } as const;
 type XmlDocument = ReturnType<DOMParser['parseFromString']>;
 type XmlElement = NonNullable<XmlDocument['documentElement']>;
 const { child, localName, requiredText, text } = xml;
@@ -328,16 +328,7 @@ export async function renderNFCeSPDANFE(
 ): Promise<
   NFCeSPDanfeResult | NFCeSPAuthorizedXmlDanfeResult | NFCeSPOfflineDanfeResult
 > {
-  const paperWidthMm = input.paperWidthMm ?? 80;
-  if (
-    !Number.isFinite(paperWidthMm) ||
-    paperWidthMm < SUPPORTED_PAPER_WIDTH_MM.minimum ||
-    paperWidthMm > SUPPORTED_PAPER_WIDTH_MM.maximum
-  ) {
-    throw new NFCeOperationalUsageError(
-      'renderNFCeSPDANFE paperWidthMm must be between 56 and 210 mm.',
-    );
-  }
+  const paperWidthMm = resolveNFCePaperWidth(input.paperWidthMm);
   const logo = resolveNFCeLogo(input.logo);
   if ('offlineRecord' in input) {
     const { nfe, identity } = getOfflineNFe(input.offlineRecord);

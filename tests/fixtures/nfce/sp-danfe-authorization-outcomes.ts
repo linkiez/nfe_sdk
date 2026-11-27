@@ -44,3 +44,22 @@ export function buildSPDanfeAuthorizationOutcome(
     validationFailures: [],
   };
 }
+
+/** Builds the `nfeProc` of the sanitized fixture: its signed NFe plus the authorized `protNFe`. */
+export function buildSPDanfeAuthorizedXml(
+  environment: 'homologation' | 'production' = 'production',
+  override: {
+    readonly nfe?: (xml: string) => string;
+    readonly prot?: (xml: string) => string;
+  } = {},
+): string {
+  const { transportOutcome } = buildSPDanfeAuthorizationOutcome(environment);
+  const request = transportOutcome!.evidence.requestEnvelopeXml;
+  const response = transportOutcome!.evidence.responseEnvelopeXml!;
+  const nfe = /<NFe [\s\S]*<\/NFe>/u.exec(request)![0];
+  const prot = /<protNFe>[\s\S]*<\/protNFe>/u.exec(response)![0];
+  const proc = (value: string, fn?: (xml: string) => string) =>
+    fn ? fn(value) : value;
+
+  return `<nfeProc xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">${proc(nfe, override.nfe)}${proc(prot, override.prot)}</nfeProc>`;
+}

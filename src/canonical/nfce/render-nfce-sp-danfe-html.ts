@@ -2,10 +2,14 @@ import QRCode from 'qrcode';
 
 import { NFCeOperationalUsageError } from './errors.js';
 import type NFCePresentation from './render-nfce-sp-danfe-model.js';
+import danfeTexts from './render-nfce-sp-danfe-texts.js';
 
-const HOMOLOGATION_NOTICE =
-  'EMITIDA EM AMBIENTE DE HOMOLOGAÇÃO – SEM VALOR FISCAL';
-const UNIDENTIFIED_CONSUMER_NOTICE = 'CONSUMIDOR NÃO IDENTIFICADO';
+const {
+  formatAccessKey,
+  homologationNotice: HOMOLOGATION_NOTICE,
+  title: DANFE_TITLE,
+  unidentifiedConsumerNotice: UNIDENTIFIED_CONSUMER_NOTICE,
+} = danfeTexts;
 const QR_FOOTPRINT_MM = 25;
 const QR_CONTENT_MM = 22;
 
@@ -29,10 +33,6 @@ function escapeHtml(value: string): string {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
-}
-
-function formatAccessKey(accessKey: string): string {
-  return accessKey.match(/.{4}/gu)?.join(' ') ?? accessKey;
 }
 
 function renderItems(items: NFCePresentation['items']): string {
@@ -206,7 +206,7 @@ export default async function renderNFCeHtml(
     <address>${escapeHtml(presentation.issuerAddress)}</address>
     ${consumer}
     ${delivery}
-    <p>DANFE NFC-e - Documento Auxiliar da Nota Fiscal de Consumidor Eletrônica</p>
+    <p>${DANFE_TITLE}</p>
     <p>Número ${escapeHtml(presentation.documentNumber)} - Série ${escapeHtml(presentation.documentSeries)}</p>
     <p>Emissão: ${escapeHtml(presentation.documentDate)}</p>
   </header>

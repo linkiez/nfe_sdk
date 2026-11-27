@@ -1,28 +1,9 @@
 import { createHash } from 'node:crypto';
 
-import { buildSPDanfeAuthorizationOutcome } from '../../fixtures/nfce/sp-danfe-authorization-outcomes.js';
+import { buildSPDanfeAuthorizedXml as buildAuthorizedXml } from '../../fixtures/nfce/sp-danfe-authorization-outcomes.js';
 import { renderNFCeSPDANFE } from '../../../src/canonical/nfce/render-nfce-sp-danfe.js';
 
 const KEY = '35260512345678000123650020000004561876543219';
-
-/** Builds the `nfeProc` of the sanitized fixture: its signed NFe plus the authorized `protNFe`. */
-function buildAuthorizedXml(
-  environment: 'homologation' | 'production' = 'production',
-  override: {
-    readonly nfe?: (xml: string) => string;
-    readonly prot?: (xml: string) => string;
-  } = {},
-): string {
-  const { transportOutcome } = buildSPDanfeAuthorizationOutcome(environment);
-  const request = transportOutcome!.evidence.requestEnvelopeXml;
-  const response = transportOutcome!.evidence.responseEnvelopeXml!;
-  const nfe = /<NFe [\s\S]*<\/NFe>/u.exec(request)![0];
-  const prot = /<protNFe>[\s\S]*<\/protNFe>/u.exec(response)![0];
-  const proc = (value: string, fn?: (xml: string) => string) =>
-    fn ? fn(value) : value;
-
-  return `<nfeProc xmlns="http://www.portalfiscal.inf.br/nfe" versao="4.00">${proc(nfe, override.nfe)}${proc(prot, override.prot)}</nfeProc>`;
-}
 
 describe('renderNFCeSPDANFE from the authorized XML', () => {
   it('renders the DANFE of an authorized nfeProc with its protocol and the v3 QR Code', async () => {
