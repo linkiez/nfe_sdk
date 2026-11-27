@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/linkiez/nfe_sdk/compare/v1.7.1...v1.8.0) (2026-11-27)
+
+
+### Features
+
+* **nfce:** gerar o DANFE NFC-e em PDF a partir do XML autorizado ([c57b557](https://github.com/linkiez/nfe_sdk/commit/c57b557ee585c00406f1540a70f91a172ec4b510))
+
 ## [1.7.1](https://github.com/linkiez/nfe_sdk/compare/v1.7.0...v1.7.1) (2026-11-25)
 
 
