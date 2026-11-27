@@ -48,6 +48,7 @@ describe('root transport facade contract', () => {
       'remountNFCeDocument',
       'renderDAMDFE',
       'renderNFCeSPDANFE',
+      'renderNFCeSPDANFEPdf',
       'renderNFeDANFE',
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',

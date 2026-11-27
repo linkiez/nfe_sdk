@@ -49,6 +49,7 @@ describe('package tarball smoke validation', () => {
       'remountNFCeDocument',
       'renderDAMDFE',
       'renderNFCeSPDANFE',
+      'renderNFCeSPDANFEPdf',
       'renderNFeDANFE',
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',

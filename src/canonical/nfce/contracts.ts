@@ -392,6 +392,35 @@ export interface NFCeSPDanfeResult {
 /**
  * Self-contained HTML result for an SP NFC-e DANFE rendered from its authorized `nfeProc`.
  */
+/** Input of `renderNFCeSPDANFEPdf`: the stored authorized `nfeProc` of an SP NFC-e. */
+export interface RenderNFCeSPDANFEPdfInput {
+  /** Authorized `nfeProc` (signed NFe plus `protNFe`) exactly as stored. */
+  readonly authorizedXml: string;
+  /** Paper width in millimeters; defaults to 80 and supports 56 through 210. */
+  readonly paperWidthMm?: number;
+  /**
+   * Issuer logo drawn at the top: a base64 PNG, JPEG, GIF or WebP data URI. Only PNG and JPEG
+   * are drawn in the PDF; other formats are left out.
+   */
+  readonly logo?: string;
+}
+
+/** PDF DANFE of an authorized SP NFC-e, with the identity of the rendered authorization. */
+export interface NFCeSPDanfePdfResult {
+  /** Access key shared by the NFe, the protocol and the QR URL. */
+  readonly accessKey: string;
+  /** SHA-256 of the exact authorized XML that was rendered. */
+  readonly authorizedXmlSha256: string;
+  /** Authorization environment encoded by the XML and confirmed by the protocol. */
+  readonly environment: 'homologation' | 'production';
+  /** One-page PDF as wide as the paper and as tall as the content. */
+  readonly pdf: Uint8Array;
+  /** Media type of the rendered result. */
+  readonly mediaType: 'application/pdf';
+  /** Authorization protocol retained exactly as received. */
+  readonly protocolNumber: string;
+}
+
 export interface NFCeSPAuthorizedXmlDanfeResult {
   /** Access key shared by the NFe, the protocol and the QR URL. */
   readonly accessKey: string;

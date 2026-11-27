@@ -52,6 +52,7 @@ describe('public nfce operational facade contract', () => {
       'remountNFCeDocument',
       'renderDAMDFE',
       'renderNFCeSPDANFE',
+      'renderNFCeSPDANFEPdf',
       'renderNFeDANFE',
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',

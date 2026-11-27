@@ -35,6 +35,7 @@ export { prepareNFCeSigningPrerequisites } from './facade/prepare-nfce-signing-p
 export { prepareNFCeSPOffline } from './facade/prepare-nfce-sp-offline.js';
 export { reconcileNFCeSPOffline } from './facade/reconcile-nfce-sp-offline.js';
 export { renderNFCeSPDANFE } from './facade/render-nfce-sp-danfe.js';
+export { renderNFCeSPDANFEPdf } from './nfce/render-nfce-sp-danfe-pdf.js';
 export { queryContributorRegistration } from './facade/query-contributor-registration.js';
 export { queryNFeByAccessKey } from './facade/query-nfe-by-key.js';
 export { queryNFeByNSU } from './facade/query-nfe-by-nsu.js';
@@ -85,6 +86,7 @@ export type {
   NFCeSPOfflineReconciliationClassification,
   NFCeSPOfflineReconciliationResult,
   NFCeSPAuthorizedXmlDanfeResult,
+  NFCeSPDanfePdfResult,
   NFCeSPOfflineDanfeResult,
   PrepareNFCeSPOfflineInput,
   ReconcileNFCeSPOfflineInput,
@@ -100,6 +102,7 @@ export type {
   NFCeSigningPrerequisitesResult,
   NFCeValidationFailure,
   RenderNFCeSPDANFEAuthorizedXmlInput,
+  RenderNFCeSPDANFEPdfInput,
   RenderNFCeSPDANFEInput,
   RenderNFCeSPDANFEOfflineInput,
   RenderNFCeSPDANFERequest,

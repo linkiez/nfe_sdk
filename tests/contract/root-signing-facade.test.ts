@@ -48,6 +48,7 @@ describe('root signing facade contract', () => {
       'remountNFCeDocument',
       'renderDAMDFE',
       'renderNFCeSPDANFE',
+      'renderNFCeSPDANFEPdf',
       'renderNFeDANFE',
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',

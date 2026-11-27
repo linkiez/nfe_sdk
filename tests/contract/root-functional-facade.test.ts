@@ -48,6 +48,7 @@ describe('root functional facade contract', () => {
       'remountNFCeDocument',
       'renderDAMDFE',
       'renderNFCeSPDANFE',
+      'renderNFCeSPDANFEPdf',
       'renderNFeDANFE',
       'resolveNFeServiceEndpoint',
       'resolveUFAutorizador',

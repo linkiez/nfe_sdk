@@ -29,6 +29,7 @@ export { prepareNFCeSigningPrerequisites } from './prepare-signing-prerequisites
 export { prepareNFCeSPOffline } from './prepare-nfce-sp-offline.js';
 export { reconcileNFCeSPOffline } from './reconcile-nfce-sp-offline.js';
 export { renderNFCeSPDANFE } from './render-nfce-sp-danfe.js';
+export { renderNFCeSPDANFEPdf } from './render-nfce-sp-danfe-pdf.js';
 export { resolveNFCeUF } from './resolve-nfce-uf.js';
 export { selectNFCeProfile } from './select-nfce-profile.js';
 export { getSPNFCePilotProfile } from './sp-pilot-profile.js';

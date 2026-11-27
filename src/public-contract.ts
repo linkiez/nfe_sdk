@@ -30,6 +30,7 @@ const DOCUMENTED_SURFACE = [
   'reconcileNFCeSPOffline',
   'remountNFCeDocument',
   'renderNFCeSPDANFE',
+  'renderNFCeSPDANFEPdf',
   'renderNFeDANFE',
   'parseMDFeXml',
   'validateMDFeXml',
